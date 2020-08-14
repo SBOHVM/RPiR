@@ -1,9 +1,9 @@
 ---
-title: "Tutorial"
+title: "Reproducible Programming in R Practical 2-1"
 output: 
   learnr::tutorial
 runtime: shiny_prerendered
-description: "Welcome to learnr tutorials!"
+description: "Reproducible Programming in R Practical 2-1!"
 ---
 
 ```{r setup, include=FALSE}
