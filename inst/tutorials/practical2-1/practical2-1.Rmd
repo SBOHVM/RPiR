@@ -80,7 +80,7 @@ print(N)
 
 ... and try re-running with different values of `lambda`:
 
-```{r simple-for-loop3, exercise = TRUE}
+```{r simple-for-loop4, exercise = TRUE}
 N <- 5
 lambda <- 0.1
 
@@ -94,7 +94,7 @@ If we wanted to print out the population at every step rather than just at the e
 
 So we would update the previous code and print the results as follows:
 
-```{r simple-for-loop4, exercise = TRUE}
+```{r simple-for-loop5, exercise = TRUE}
 N <- 5
 for (i in seq(from=1, to=5))
 {
