@@ -74,7 +74,7 @@ for (i in seq(from=1, to=20)) {
 print(N)
 ```
 
-<div id="print-populationvector-hint">
+<div id="simple-for-loop3-hint">
 **Hint:** Remember that `seq()` is used to create a sequence of numbers. 
 </div>
 
