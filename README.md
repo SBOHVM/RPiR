@@ -3,8 +3,9 @@
 
 To install this package:
 ```
+install.packages(c("devtools", "learnr")
 library(devtools)
-install_github("soniamitchell", "progInR")
+install_github("soniamitchell/progInR")
 ```
 
 To run the practical:
