@@ -3,7 +3,7 @@
 
 To install this package:
 ```
-install.packages(c("devtools", "learnr")
+install.packages(c("devtools", "learnr"))
 library(devtools)
 install_github("soniamitchell/progInR")
 ```
