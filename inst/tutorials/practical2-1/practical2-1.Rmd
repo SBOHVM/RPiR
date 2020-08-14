@@ -50,7 +50,7 @@ for (i in seq(from=1, to=20)) {
 print(N)
 ```
 
-Now edit the code to change the initial population size, `N`. 
+Now edit the code to change the initial population size, `N`:
 
 ```{r simple-for-loop2, exercise = TRUE}
 N <- 5
@@ -62,7 +62,23 @@ for (i in seq(from=1, to=20)) {
 print(N)
 ```
 
-Now try re-running for 5 days rather than 20 and see if you can check that R’s answer is correct by making the calculation on a calculator. Try re-running with different values of `lambda`. 
+Now try re-running for 5 days rather than 20 and see if you can check that R’s answer is correct by making the calculation on a calculator:
+
+```{r simple-for-loop3, exercise = TRUE}
+N <- 5
+lambda <- 0.1
+
+for (i in seq(from=1, to=20)) {
+  N <- N + lambda * N
+}
+print(N)
+```
+
+<div id="print-populationvector-hint">
+**Hint:** Remember that `seq()` is used to create a sequence of numbers. 
+</div>
+
+... and try re-running with different values of `lambda`:
 
 ```{r simple-for-loop3, exercise = TRUE}
 N <- 5
