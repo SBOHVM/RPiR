@@ -1,0 +1,147 @@
+---
+title: "Tutorial"
+output: 
+  learnr::tutorial
+runtime: shiny_prerendered
+description: "Welcome to learnr tutorials!"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+# tutorial_options(exercise.checker = checkr::check_for_learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+
+## Overview
+
+*In this session you will type in and run a simple program in R and then immortalise the results as an html report. It will run the difference equation model of exponential growth discussed in the lecture.*
+
+
+## Introduction 
+
+Suppose we want model the growth of a population in R. We will use the exponential growth model that we talked about in the lecture, and describe it as a difference equation, so that we are updating the population in discrete steps. In words, the behaviour of the model could be described as something like:
+
+"The change in population size is the growth rate times the current population size."
+
+Or, if we wanted to write this out more fully (though possibly less elegantly!), we might say:
+
+"The population size at the next time point is the current population size plus the growth rate times the current population size."
+
+We can also use mathematics to describe the behaviour more precisely. In this case: 
+
+$$N(t+1) = N(t) + \lambda \times N(t)$$
+
+where $N(t)$ is the population size at time $t$, and $\lambda$ is the growth rate. We want to convert this equation into R code, and run the model of exponential growth in a population, initially with a starting population size of 5, a growth rate of 0.1 per day, and to run it for 20 days.
+
+First we’ll create a new project, which on my computer (a Mac) we do through File > New project > New Directory > Empty Project, and then choose a location and a name. Then create a new R file, which I do through File > New > R Script. 
+
+We can now start by writing the following, first initialising the population, $N$, and setting the growth rate parameter (remembering that $\lambda$ is the greek letter written as `lambda` in English – since R doesn’t understand greek!). Then create a `for()` loop to repeatedly update the population (20 times in this case), and print out the final answer. If you run this code, it should give you a final population size of 33.6375.
+
+```{r simple-for-loop, exercise = TRUE}
+N <- 5
+lambda <- 0.1
+
+for (i in seq(from=1, to=20)) {
+  N <- N + lambda * N
+}
+print(N)
+```
+
+Now edit the code to change the initial population size, `N`. 
+
+```{r simple-for-loop2, exercise = TRUE}
+N <- 5
+lambda <- 0.1
+
+for (i in seq(from=1, to=20)) {
+  N <- N + lambda * N
+}
+print(N)
+```
+
+Now try re-running for 5 days rather than 20 and see if you can check that R’s answer is correct by making the calculation on a calculator. Try re-running with different values of `lambda`. 
+
+```{r simple-for-loop3, exercise = TRUE}
+N <- 5
+lambda <- 0.1
+
+for (i in seq(from=1, to=20)) {
+  N <- N + lambda * N
+}
+print(N)
+```
+
+If we wanted to print out the population at every step rather than just at the end, we would have to put the print statement in the loop as well as updating `N`. How could we do this? Remember that `for()` will repeat only the next instruction, but we can use curly brackets `{ ... }` to make several lines appear to be only one so that they all get repeated.
+
+So we would update the previous code and print the results as follows:
+
+```{r simple-for-loop4, exercise = TRUE}
+N <- 5
+for (i in seq(from=1, to=5))
+{
+  N <- N + lambda * N
+  print(N)
+}
+```
+
+We will further develop your skills in writing and using scripts (and in the next exercise we will learn how to write functions).
+
+## Tasks
+
+We’re now going to start again, but write out our code more clearly. In particular we’re going to name our variables well, so we know what they are, and comment the code (we call it adding documentation) so that we know what the code is doing. At the end of this document is an R program to run a difference equation model of an exponentially growing population, but I will go through it step by step. First, some initial documentation. You can put in as little or as much as you like, but we recommend something to describe the aim of the script, and then some details on exactly what is going on.
+
+The text after a # symbol and coloured here in light green are comments. These are ignored by R, but are there to help you and others to understand your programs. Good commenting is a difficult but important programming skill. 
+You should save the file and give it a sensible name – we have decided to call it 0201-growth-loop.r. We have included numbers in our file names for convenience as the first four digits will correspond to the practical number you are currently on. It is not necessary for you to do this if you don’t want to, but it may help to this or something similar to keep track of your code.  Some of our code will be made available at appropriate points during the practicals. 
+Then continue entering the code:
+
+```{r}
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+```
+
+We used lambda when describing the model mathematically but it is good practice to use give things meaningful names in a computer program, so we are going to use the name `growth.rate` instead. We have also switched to use the correct values for human demographic growth, rather than the simple numbers we used earlier. The code should now look like this:
+
+Note that a dot is a valid part of a name in R, though not in all programming languages. But don’t use spaces or arithmetic symbols (e.g. the minus sign).
+Then we set the start and end times for the simulation:
+
+```{r}
+# And setting times
+start.time <- 0
+end.time <- 100
+```
+
+Having specified these parameters we now start entering the comments and code that describe the simulation:
+
+```{r}
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+```
+
+We’ve chosen to write this in markdown, so that it will define a section in the final report. Our simple model earlier only gave us the final population size, but we want to be able to plot the population size against time so we want to store each new population size as it is generated. To do this we use the `c()` command create a vector called `population` whose entries will be the population size at successive times.
+
+```{r}
+# Set up the population starting size (at the first timestep)
+population.vector <- c(initial.count)
+```
+
+At this point, it's a good idea to view the population size to check the code is working correctly 
+
+```{r print-populationvector, exercise = TRUE}
+
+```
+
+```{r print-populationvector-solution}
+print(population.vector)
+```
+
+<div id="print-populationvector-hint">
+**Hint:** Use`print()` to print the contents of an object to the console. 
+</div>
+
+and you would see that population is currently a vector of length 1 with value 5
