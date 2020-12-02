@@ -8,7 +8,9 @@ description: "Reproducible Programming in R Practical 2-1!"
 
 ```{r setup, include=FALSE}
 library(learnr)
-
+# Show "Start Over" button on exercise
+tutorial_options(exercise.startover = TRUE)
+# 
 knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
 ```
@@ -23,18 +25,13 @@ set.seed(123)
 
 Suppose we want model the growth of a population in R. We will use the 
 exponential growth model that we talked about in the lecture, and describe it 
-as a difference equation, so that we are updating the population in discrete 
+as a **difference equation**, so that we are updating the population in discrete 
 steps. In words, the behaviour of the model could be described as something 
-like:
-
-"The change in population size is the growth rate times the current population 
+like: "The change in population size is the growth rate times the current 
+population size". Or, if we wanted to write this out more fully (though possibly 
+less elegantly!), we might say: "The population size at the next time point is 
+the current population size plus the growth rate times the current population 
 size."
-
-Or, if we wanted to write this out more fully (though possibly less elegantly!), 
-we might say:
-
-"The population size at the next time point is the current population size plus 
-the growth rate times the current population size."
 
 We can also use mathematics to describe the behaviour more precisely. In this 
 case: 
@@ -47,8 +44,9 @@ exponential growth in a population, initially with a starting population size
 of 5, a growth rate of 0.1 per day, and to run it for 20 days.
 
 First we’ll create a new project, which on my computer (a Mac) we do through 
-File > New project > New Directory > Empty Project, and then choose a location 
-and a name. Then create a new R file, which I do through File > New > R Script. 
+<span style="color: #1697C0;">File > New project > New Directory > Empty 
+Project</span>, and then choose a location and a name. Then create a new R file, 
+which I do through <span style="color: #1697C0;">File > New > R Script</span>. 
 
 We can now start by writing the following, first initialising the population, 
 $N$, and setting the growth rate parameter (remembering that $\lambda$ is the 
@@ -73,73 +71,92 @@ reset):
 
 ```{r change-N, echo=FALSE}
 question("What initial population size results in a final population size of 53.82?",
-  answer("3"),
-  answer("5"),
-  answer("8", correct = TRUE),
-  answer("10")
+         answer("3"),
+         answer("5"),
+         answer("8", correct = TRUE),
+         answer("10"),
+         allow_retry = TRUE
 )
 ```
 
 ```{r change-days, echo=FALSE}
 question("How many days does it take for the population size to grow to 8.05255?",
-  answer("2"),
-  answer("5", correct = TRUE),
-  answer("12"),
-  answer("16")
+         answer("2"),
+         answer("5", correct = TRUE),
+         answer("12"),
+         answer("16"),
+         allow_retry = TRUE
 )
 ```
 
 ```{r change-lambda, echo=FALSE}
 question("What growth rate results in a final population size of 5555.676",
-  answer("0.16"),
-  answer("0.3"),
-  answer("0.399"),
-  answer("0.42", correct = TRUE)
+         answer("0.16"),
+         answer("0.3"),
+         answer("0.399"),
+         answer("0.42", correct = TRUE),
+         allow_retry = TRUE
 )
 ```
 
 If we wanted to print out the population at every step rather than just at the 
 end, we would have to put the print statement in the loop as well as updating 
 `N`. How could we do this? Remember that `for()` will repeat only the next 
-instruction, but we can use curly brackets `{ ... }` to make several lines 
-appear to be only one so that they all get repeated.
+instruction, but we can use curly brackets `{ ... }` to combine several lines 
+so that they all get repeated.
 
 So we would update the previous code and print the results as follows:
 
 ```{r simple-for-loop2, exercise = TRUE}
 N <- 5
-for (i in seq(from=1, to=5))
-{
+lambda <- 0.1
+days <- seq(from = 1, to = 20)
+
+for (i in days) {
   N <- N + lambda * N
   print(N)
 }
 ```
 
-We will further develop your skills in writing and using scripts (and in the 
-next exercise we will learn how to write functions).
+We will further develop your skills in writing and using **scripts** (and in the 
+next exercise we will learn how to write **functions**).
 
 ## Tasks
 
 We’re now going to start again, but write out our code more clearly. In 
 particular we’re going to name our variables well, so we know what they are, 
 and comment the code (we call it adding documentation) so that we know what the 
-code is doing. At the end of this document is an R program to run a difference 
+code is doing. At the end of this document is an **R program** to run a difference 
 equation model of an exponentially growing population, but I will go through it 
 step by step. First, some initial documentation. You can put in as little or as 
 much as you like, but we recommend something to describe the aim of the script, 
 and then some details on exactly what is going on.
 
+```{r}
+#' ---
+#' title: "Simple growth difference equation model"
+#' author: "Richard Reeve"
+#' date: "9th January 2018"
+#' output: html_document
+#' ---
+
+#' File: 0101-growth-loop.r
+#' ========================
+#' 
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation
+
+# Set the growth rate
+```
+
 The text after a `#` symbol are comments. These are ignored by R, but are there 
 to help you and others to understand your programs. Good commenting is a 
 difficult but important programming skill. 
 
-You should save the file and give it a sensible name – we have decided to call 
-it 0201-growth-loop.r. We have included numbers in our file names for 
-convenience as the first four digits will correspond to the practical number 
-you are currently on. It is not necessary for you to do this if you don’t want 
-to, but it may help to this or something similar to keep track of your code.  
-Some of our code will be made available at appropriate points during the 
-practicals. 
+You should save the file as **0201-growth-loop.r**. We have included numbers in 
+our file names for convenience as the first four digits will correspond to the 
+practical number you are currently on. 
 
 Then continue entering the code:
 
@@ -150,14 +167,28 @@ growth.rate <- 0.015
 initial.count <- 7000000000
 ```
 
-We used lambda when describing the model mathematically but it is good practice 
-to use give things meaningful names in a computer program, so we are going to 
-use the name `growth.rate` instead. We have also switched to use the correct 
-values for human demographic growth, rather than the simple numbers we used 
-earlier. The code should now look like this:
+We used **lambda** when describing the model mathematically but it is good 
+practice to use give things **meaningful names** in a computer program, so we 
+are going to use the name `growth.rate` instead. We have also switched to use 
+the correct values for human demographic growth, rather than the simple numbers 
+we used earlier. The code should now look like this:
+
+```{r}
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation
+
+# Set the growth rate
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+```
 
 Note that a dot is a valid part of a name in R, though not in all programming 
-languages. But don’t use spaces or arithmetic symbols (e.g. the minus sign).
+languages. But **don’t use** spaces or arithmetic symbols (*e.g.* the minus 
+sign). 
+
 Then we set the start and end times for the simulation:
 
 ```{r}
@@ -202,4 +233,183 @@ print(population.vector)
 **Hint:** Use`print()` to print the contents of an object to the console. 
 </div>
 
-and you would see that population is currently a vector of length 1 with value 5
+and you would see that population is currently a vector of length 1 with value 
+7e+09.
+
+We specify the sequence of timesteps:
+
+```{r}
+# The timesteps that the simulation will run through
+timesteps <- seq(from=start.time + 1, to=end.time)
+```
+
+and start the main loop (which is similar to what we had above):
+
+```{r}
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # First extract the current population size
+  current.population <- tail(population.vector, 1)
+  # Calculate changes to population (births)
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Add new element onto end of population vector
+  population.vector <- append(population.vector, next.population)
+}
+```
+
+The variable `new.time` will count the timesteps from `start.time + 1` to the 
+`end.time`. Inside the loop (the bit inside the curly brackets – remembering 
+that curly brackets allow you to repeat multiple lines of commands in a `for()` 
+loop instead of the just one). The first step on each run through the loop is to 
+extract the current population size from our population vector using the 
+`tail()` command. By default `tail(population)` would give the last 5 values in 
+the vector, but by specifying a value of 1, we are asking it to return only the 
+last value in the vector. The command `head()` does the same thing with the 
+first values of a vector. Then we calculate the births. Then we add the births 
+to the existing population to create the population at the next timestep. 
+Finally we update the vector of population values by adding the latest value 
+onto the end of the vector. We then return to the start of the loop until we 
+have completed the timesteps.
+
+Optional extra: To check what is happening in the loop you could print the timestep, 
+the current population, and the number of new births.
+
+When we have completed the timesteps we exit the loop and plot our results. Here 
+we are plotting the values of the vector population against the values of 
+another vector of times. Note that these vectors need to be the same length, so 
+the command `append(start.time, timesteps)` is used to append the vector of 
+timesteps which started at 1 onto timepoint 0. We could also have used `c()` 
+again instead of `append()`, but append is easier to read.
+
+```{r}
+# Now we can plot the timesteps against the population vector
+plot(append(start.time, timesteps), population.vector, type = "l")
+```
+
+Now you should have a complete program in your R script editor that looks like 
+this:
+
+```{r eval = FALSE, attr.source='.numberLines'}
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation.
+
+# Set the growth rate
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+
+# And setting times
+start.time <- 0
+end.time <- 100
+
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+
+# Set up the population starting size (at the first timestep)
+population.vector <- c(initial.count)
+
+# The timesteps that the simulation will run through
+timesteps <- seq(from=start.time + 1, to=end.time)
+
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # First extract the current population size
+  current.population <- tail(population.vector, 1)
+  # Calculate changes to population (births)
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Add new element onto end of population vector
+  population.vector <- append(population.vector, next.population)
+}
+
+#' Plot the results
+#' ----------------
+#' And finally we output the results.
+
+# Now we can plot the timesteps against the population vector
+plot(append(start.time, timesteps), population.vector, type = "l")
+```
+
+You should see a little triangle to the left of `for (new.time in timesteps) {`. 
+If you click on it, the multiple lines of the `for()` loop will “collapse” to 
+show they are all part of the command that is repeated for every repeat of 
+`for()`. Click it again and the repeating code will reappear. You can use this 
+(or just look for the `}`) to check whether you have the right code being 
+repeated inside the loop. You can also select the whole file and go to the 
+menus and select <span style="color: #1697C0;">Code -> Reindent Lines</span>. 
+This will make sure that everything inside a `for()` loop (or a function 
+definition as we will discover later) is moved a little bit to the right to make 
+it clear by inspection that the correct bits are inside the loop. If you delete 
+the `{` and the `}`, select all of the code and reindent the lines again, you’ll 
+see that code gets unindented to show it’s no longer in the loop, and so only 
+`current.population` is getting calculated each time, which would be a mistake. 
+Add the `{` and `}` back in and select all the text and reindent the lines a 
+final time to make sure you have done it correctly. Your code should look like 
+the image above again.
+
+It is critical when writing `for()` loops and `function()`s, `while()` loops and 
+`if()` statements (as we’ll see later) which all have a bit of code associated 
+with them to make sure the right commands are associated with them and these are 
+very simple but useful ways of checking, so remember them for future use.
+
+## Running the code
+
+When running code in R we have the option of selecting the whole program or 
+running selected parts. Doing the latter will help you understand what the 
+program is doing and find errors. We may also want to produce the vector of 
+population sizes without the plot, in which case we can run the code but exclude 
+the section that plots the graph.
+
+The program outputs a vector `population.vector` which you can treat as you would 
+any other piece of data in R. For example, we could run the following commands 
+in the console:
+
+```{r}
+summary(population.vector)
+```
+
+```{r}
+head(population.vector)
+```
+
+```{r}
+head(population.vector, 3)
+```
+
+```{r}
+tail(population.vector,1)
+```
+
+```{r}
+summary(tail(population.vector, 10))
+```
+
+Run the code for different initial conditions and different growth rates. Test 
+the code using the value of the human population growth rate we used in the 
+lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that 
+you agree with the doubling time we calculated theoretically of ~46 years.
+
+## Reporting the results
+
+Your report should show the growth of the human population from 7 billion. In 
+the first instance, we just want to know that the code really works and can 
+generate a report, so save your code and go to the 
+<span style="color: #1697C0;">File</span> menu, choose 
+<span style="color: #1697C0;">Compile Notebook...</span> and choose the 
+<span style="color: #1697C0;">html</span> output format and press 
+<span style="color: #1697C0;">Compile</span> if necessary. A webpage should pop 
+up in a viewer after a couple of seconds, and a new file should appear in the 
+directory you are working in called, **0201-growth-loop.html**. You can check 
+that this has really worked by opening the file in a web browser. At this point, 
+you can improve the commenting on the document, so that it uses more of the 
+features of the markdown format. Once you’re happy with it, generate a notebook 
+again. This is your report for this practical, and should be submitted together 
+with your code.
+
+**All subsequent practicals should result in a similar (or more complex!) report as well as all of the R code itself. This will show that you have a working R program which you can run on your machine without errors. All of these files should be submitted together.**
