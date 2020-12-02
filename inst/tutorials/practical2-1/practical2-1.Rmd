@@ -171,23 +171,11 @@ We used **lambda** when describing the model mathematically but it is good
 practice to use give things **meaningful names** in a computer program, so we 
 are going to use the name `growth.rate` instead. We have also switched to use 
 the correct values for human demographic growth, rather than the simple numbers 
-we used earlier. The code should now look like this:
+we used earlier.
 
-```{r}
-#' Set up the simulation parameters
-#' --------------------------------
-#' First we set up the parameters for the simulation
-
-# Set the growth rate
-growth.rate <- 0.015
-
-# Starting population size
-initial.count <- 7000000000
-```
-
-Note that a dot is a valid part of a name in R, though not in all programming 
-languages. But **don’t use** spaces or arithmetic symbols (*e.g.* the minus 
-sign). 
+Note that a dot is a valid part of an object name in R, though not in all  
+programming languages. But **don’t use** spaces or arithmetic symbols (*e.g.* 
+the minus sign). 
 
 Then we set the start and end times for the simulation:
 
