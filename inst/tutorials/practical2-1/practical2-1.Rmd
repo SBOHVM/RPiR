@@ -2,17 +2,14 @@
 title: "Reproducible Programming in R Practical 2-1"
 output: 
   learnr::tutorial:
-    # theme: lumen
-    theme: paper
+    theme: lumen
 runtime: shiny_prerendered
 description: "Reproducible Programming in R Practical 2-1!"
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
-# Show "Start Over" button on exercise
-tutorial_options(exercise.startover = TRUE)
-# 
+ 
 knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
 ```
