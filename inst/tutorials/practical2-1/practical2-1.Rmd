@@ -370,23 +370,23 @@ The program outputs a vector `population.vector` which you can treat as you woul
 any other piece of data in R. For example, we could run the following commands 
 in the console:
 
-```{r}
+```{r try-summary, exercise = TRUE}
 summary(population.vector)
 ```
 
-```{r}
+```{r try-head1, exercise = TRUE}
 head(population.vector)
 ```
 
-```{r}
+```{r try-head2, exercise = TRUE}
 head(population.vector, 3)
 ```
 
-```{r}
+```{r try-tail1, exercise = TRUE}
 tail(population.vector,1)
 ```
 
-```{r}
+```{r try-tail2, exercise = TRUE}
 summary(tail(population.vector, 10))
 ```
 
