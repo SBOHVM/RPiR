@@ -173,7 +173,7 @@ are going to use the name `growth.rate` instead. We have also switched to use
 the correct values for human demographic growth, rather than the simple numbers 
 we used earlier.
 
-Note that a dot is a valid part of an object name in R, though not in all  
+Note that a dot is a valid part of an object name in R, though not in all
 programming languages. But **don’t use** spaces or arithmetic symbols (*e.g.* 
 the minus sign). 
 
