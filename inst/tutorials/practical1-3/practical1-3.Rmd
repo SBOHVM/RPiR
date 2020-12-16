@@ -4,7 +4,7 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 1-3!"
+description: "Add functions and documentation to a data package"
 ---
 
 ```{r setup, include=FALSE}
