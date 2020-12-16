@@ -1,0 +1,119 @@
+---
+title: "Reproducible Programming in R Practical 4-3"
+output: 
+  learnr::tutorial:
+    theme: lumen
+runtime: shiny_prerendered
+description: "Reproducible Programming in R Practical 4-3!"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+## Overview
+
+*In this practical we develop and run our first stochastic version of the SIS model.*
+
+## Background
+
+We saw in the previous practicals the impact of including randomness into the
+exponential model with births and deaths. Having developed the programming 
+framework, it is now time to investigate the impact of randomness in the 
+simplest epidemiological model – the SIS model.
+
+## Tasks
+
+In this practical we will write a stochastic version of the SIS model. You have been provided with `run_simulation()` in the ProgInR package, which allows some extra functionality over
+`run_simple()` to run simulations using the older deterministic models, and some other code you will need in later exercises. You need to write **0403-run-SIS.r** and **0403-stochastic-SIS.r**, adapting **0402-run-birth-death.r** and **0401-stochastic-birth-death.r** to handle the SIS model rather than exponential growth. Pay attention in particular to writing the function in **0403-stochastic-SIS.r**, where the most important changes need to be made:
+
+The function will need a new name, perhaps `timestep_stochastic_SIS()`:
+
+```{r]}
+timestep_stochastic_SIS <- function(latest, transmission.rate,
+                                    # -- some code --
+                                    }
+```
+
+It proceeds much as before with the deterministic SIS model, calculating the 
+effective beta and sigma at this timestep, and then as with the stochastic birth 
+death model, you need to work out whether the individual rate of infection or 
+recovery per timestep is greater than 1, in which case it cannot be used as a
+probability. In this case, the actual individual infection rate is
+
+$$effective.transmission.rate \times \frac{I}{N}$$
+
+and the individual recovery rate is `effective.recovery.rate`.
+
+Now for the key step... you need to sample from the binomial distribution (as 
+described in the lecture) to determine the number of new infecteds and 
+susceptibles using `rbinom()` with the probability of "success" set to the
+individual rates detailed above. Then update the populations, and if there are
+no infecteds left, then the epidemic is over, so set `is.finished` to `TRUE.` 
+
+```{r}
+is.finished <- next.infecteds == 0
+```
+
+Then append the new data to the data frame as usual, and return a list with the
+updated population data frame and the variable that tell us whether we are 
+finished or not.
+
+```{r}
+list(updated.pop = next.population, end.experiment = is.finished)
+```
+
+## Running the code / Report
+
+When you are happy with the structure of the code, run it a few times with the 
+same parameter values and observe the variability. Try changing beta (which will
+change $R_0$) and the initial number of infecteds and see how the likelihood of
+early extinction changes. Notice that we can automate overlaying multiple 
+simulations on the same graph:
+
+```{r}
+## We want a total of 10 plots
+first.graph <- TRUE 
+for (loop in 1:10) {
+  final.populations <- run_simulation(timestep_stochastic_SIS,
+                                      initial.populations,
+                                      end.time,
+                                      transmission.rate = ecoli.trans, 
+                                      recovery.rate = ecoli.recov, 
+                                      timestep = working.timestep)
+  # First time, make a new plot, afterwards just draw lines
+  if (first.graph) {
+    plot_populations(final.populations,
+                     new.graph = TRUE, 
+                     col = c(susceptibles  ="green", infecteds = "red"))
+    first.graph <- FALSE 
+  } else {
+    plot_populations(final.populations,
+                     new.graph = FALSE,
+                     col = c(susceptibles = "green", infecteds = "red"))
+  }
+}
+```
+
+You could do all ten plots in a single loop by setting `new.graph` appropriately
+by starting with `TRUE` and them changing it to `FALSE` as I did in the slides,
+or changing it depending on what value `loop` has, for instance. Try changing 
+the total population size and see the impact on the observed variability. You 
+should also overlay the deterministic results from Practical 3.3. 
+`run_simulation()` will now work with this as well since it automatically 
+detects that it just returns a dataframe, and behaves appropriately:
+
+```{r}
+final.populations <- run_simulation(timestep_deterministic_SIS, 
+                                    initial.populations,
+                                    end.time,
+                                    transmission.rate = ecoli.trans,
+                                    recovery.rate = ecoli.recov, 
+                                    timestep = working.timestep)
+```
+
+Write a report to demonstrate the variability in the results of the stochastic
+model.

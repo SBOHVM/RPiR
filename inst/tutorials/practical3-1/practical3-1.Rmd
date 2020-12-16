@@ -1,0 +1,151 @@
+---
+title: "Reproducible Programming in R Practical 3-1"
+output: 
+  learnr::tutorial:
+    theme: lumen
+runtime: shiny_prerendered
+description: "Reproducible Programming in R Practical 3-1!"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+## Overview
+
+*In this practical we will look at programming a simple epidemiological model – the Susceptible-Infected-Susceptible or SIS model. We will report on the transmission of E. coli O157 in cattle.*
+
+## Background
+
+We have now built a simple population dynamics model, but the framework we are 
+using is capable of handling much more. We will start with the simplest model of
+infectious disease dynamics – the SIS model – which we covered in the
+epidemiology lecture.
+
+## Tasks
+
+The SIS model requires two populations (of susceptible and infected animals) to
+replace the single population we have used so far, and susceptibles, $S$, and
+infecteds, $I$, are updated as follows:
+
+$$S(t+1) = S(t) – \beta\; \frac{S(t)\; I(t)}{N} + \sigma\; I(t)$$
+$$I(t+1) = I(t) + \beta\; \frac{S(t)\; I(t)}{N} – \sigma\; I(t)$$
+
+(the total population, $N = S(t) + I(t)$, the sum of the number of
+susceptibles and infected is constant)
+
+We will call the two populations `susceptibles` and `infecteds.` The two 
+parameters are normally called $\beta$ (`beta`) and and $\sigma$ (`sigma`) – 
+these Greek letters are almost universally used as the names of the transmission 
+and recovery rates. However, unless you’re doing a lot of epidemiology, this
+isn’t very obvious, so we’ll give them more descriptive names to avoid any
+potential confusion. In our function definition we are calling them generically
+`transmission.rate` and `recovery.rate`, and more specifically in the script we
+will call them `ecoli.transmission` and `ecoli.recovery` since this is the 
+disease we are going to be modelling (it also avoids reusing the same variable
+names).
+
+First, remember to create a <span style="color: #1697C0;">New Project</span> in
+<span style="color: #1697C0;">RStudio</span> for this practical series. You can 
+adapt the code from Practical 2-5, creating 2 files again – **0301-run-SIS.r** 
+and **0301-step-SIS.r** – but where in 2-5 the data frame had only a `count` 
+column, now you will need to have two – `susceptibles` and `infecteds.` You 
+don’t need to have the total population size in there, because at every step it
+is just `susceptibles + infecteds`. In fact, with no death in this model, it is 
+just constant. You could for instance start things up with:
+
+```{r}
+num.cattle <- 100
+initial.infecteds <- 2
+initial.susceptibles <- num.cattle - initial.infecteds
+```
+
+This allows us to easily keep the things we want to fixed, in this case the 
+total population size, while allowing us to vary the things we are 
+investigating. Writing the code to make this as easy as possible makes it harder 
+to make mistakes, and that is always a good thing!
+
+Once we’ve done that, we can create the data frame with those values – this is
+the initial state of the population when we start the simulation:
+
+```{r}
+herd.df <- data.frame(susceptibles = initial.susceptibles,
+                      infecteds = initial.infecteds)
+```
+
+Then we call the new step function with the current population and the
+parameters:
+
+```{r}
+next.population <- step_deterministic_SIS(latest = tail(herd.df, 1), 
+                                          transmission.rate = ecoli.transmission,
+                                          recovery.rate = ecoli.recovery)
+```
+
+If you are finding writing this code difficult, just ask, but remember that your
+function should take in a data frame with the latest population sizes and the
+parameters of the model, calculate the next numbers of susceptibles and
+infecteds from the latest (most recent) numbers and the parameters using the
+formulae above, and then return a data frame with these updated values to the
+main script.
+
+## Running the code
+
+Run the code in **0301-run-SIS.r**. Remember that the `source()` command means 
+that it automatically looks in **0301-step-SIS.r** and **0204-plot-helper.r** 
+without you needing to load these files yourself. Don’t forget to check that
+your function is not using any global variables. Check that you get the same
+results as you saw in the lecture. Adding the argument `col = c("green", "red")` 
+to `plot.populations()` will allow you to change the colours of the (now) two
+populations in the plot to match those from the lecture.
+
+## The science
+
+Remember from the lecture that the **basic reproduction number**, $R_0$, is 
+given by 
+
+$$R_0 = \frac{\beta}{\sigma}$$
+
+By changing the transmission rate, try running simulations for different values
+of $R_0$. What happens when $R_0 > 1$ and when $R_0 < 1$? Run the
+simulations for different values of the transmission rate as suggested in the
+table (with the default value of the recovery rate set to 1/3). Calculate and 
+enter the corresponding value of $R_0$ using the formula, which we can rewrite
+as:
+
+```{r}
+R0 <- ecoli.transmission / ecoli.recovery
+```
+
+Either using your plots or by asking <span style="color: #1697C0;">R</span> to 
+print out the data frame `population` work out the proportion of the population
+susceptible at equilibrium and compare it with the value of $\frac{1}{R_0}$.
+
+| ------------ | ----- | ------- | ------- |
+| Transmission | $R_0$ | Proportion susceptible at equilibrium $\frac{S}{N}$ | $\frac{1}{R_0}$ |
+| ------------ | ----- | ------- | ------- |
+| 1/2 | | | |
+| 2/3 | | | |
+| 1   | | | |
+| 4/3 | | | |
+| ------------ | ----- | ------- | ------- |
+
+Remember that throughout this series of exercises, the total population size,
+$N$, is easily calculated from the different parts of the population.
+
+## Report
+Adapt your script to generate a report which shows you running the model with at 
+least a couple of different transmission rates and calculating different values
+for $R_0$ from the results with some explanation of what’s going on. You 
+should also submit a table in Word or Excel with the above values filled in – 
+just save it in the project folder. In particular for E. coli O157 infections in
+cattle, for timesteps in weeks, the recovery rate is about 1/3 and the 
+transmission rate is 1.
+
+Optionally, if you are very enthusiastic, try putting the table into the report
+(possibly using the `kable()` function in the `knitr` package), though this is
+not at all straightforward. The table itself (in any form) is sufficient for
+assessment.

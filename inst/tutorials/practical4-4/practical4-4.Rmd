@@ -1,0 +1,67 @@
+---
+title: "Reproducible Programming in R Practical 4-4"
+output: 
+  learnr::tutorial:
+    theme: lumen
+runtime: shiny_prerendered
+description: "Reproducible Programming in R Practical 4-4!"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+## Overview
+
+*In this practical we start to run a stochastic version of the SIR model.*
+
+## Background
+
+Having created our stochastic version of the SIS model in the previous practical
+we are now ready to extend this framework to the SIR model.
+
+## Tasks
+
+Using the code from the previous practical **0403-run-SIS.r** and
+**0403-stochastic-SIS.r**, create two new files **0404-run-SIR.r** and
+**0404-stochastic-SIR.r** that will simulate the stochastic SIR model.
+
+This should be relatively straightforward. To produce **0404-run-SIR.r** you 
+need to add a “recovereds” population to the data frame, remembering to specify 
+initial values for this new population.
+
+To produce **0404-stochastic-SIR.r** requires a small change to the update step
+to move the newly recovered individuals into the recovered class rather than 
+back into the susceptible class. Remember also to include the recovereds in the
+population size calculation.
+
+To overlay the corresponding plot from the deterministic model you will also 
+need to use `run_simulation()` on the `timestep_deterministic_SIR()` function 
+from Practical 3.4, and then plot using `new.graph = FALSE`.
+
+## Running the code / Report
+
+Run the code for different values of beta, the initial conditions and the
+population size. Why do the plots of the stochastic simulation end before those
+of the deterministic simulation? What happens as you increase the population 
+size?
+
+Write a report demonstrating some of these effects.
+
+Now try increasing the transmission rate to increase the value of R0. Given the 
+default value for the recovery rate of 0.1 what would beta need to be to 
+simulate an outbreak with an R0 of 15? What happens when you do this when the
+time step is 1? You should get an error message saying the time step is too
+large. You may still get a plot though! This is because R is plotting the 
+previous value of populations held in its memory. This is why you have 
+previously been told to use `rm(list=ls())` to get rid of previous history. 
+However, we now achieve this by generating a report that starts a new copy of R
+and so is a much better check of whether the script can run on its own.
+
+Clear what is held in R’s workspace in RStudio. Now rerun with $R_0 = 15$ and 
+confirm that you do not get an output when the error message shows. Remember
+that clearing the workspace and trying again is often a very useful trick when
+you get unexpected results.

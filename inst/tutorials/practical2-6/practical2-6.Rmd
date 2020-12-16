@@ -1,0 +1,82 @@
+---
+title: "Reproducible Programming in R Practical 2-5"
+output: 
+  learnr::tutorial:
+    theme: lumen
+runtime: shiny_prerendered
+description: "Reproducible Programming in R Practical 2-5!"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+ 
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+## Overview
+
+*In this session we will take the code for the models with just growth (1-4) and with births and deaths (2-5) and make a clearer report comparing the two.*
+
+## Background
+
+We are now going to demonstrate in a small way why it’s worth dividing up the
+code into separate functions, and indeed separate files. Previously we wrote a
+simple growth model, and a model of birth and death. We’re now going to use the
+two-step functions we created and run both models in a new script that compares 
+them.
+
+## Tasks
+
+Remember again that our first model of simple population growth model looks like
+this:
+
+$$N(t+1) = N(t) + \lambda\; N(t)$$
+
+The birth and death model is slightly more complex:
+
+$$ N(t+1) = N(t)+ b\; N(t) – d\; N(t)$$
+
+Remember that **0204-step-growth.r** has the `step_deterministic_growth()` 
+function and **0205-step-birth-death.r** has the 
+`step_deterministic_birth_death()` function, so we need to `source()` both of
+these files (as well as **0204-plot-helper.r**).
+
+Now we want to compare the models, so write some code that first runs a 
+simulation with one model and plots it, and then with the other model and plots 
+that as well. Remember that you can plot a second (or third, etc.) result on top
+of a first with commands like:
+
+```{r}
+plot_populations(population.b, new.graph = FALSE, col = "red")
+```
+
+For instance you could try running (1) the more complex model with a single
+given birth and death rate, and then run the simpler model (2) with the birth 
+rate as the growth rate, (3) with minus the death rate as the (negative) growth
+rate, and then (4) the difference as the growth rate.
+
+## Running the code
+
+**Try running your code** and you should find that the graphs are very likely on
+different scales. You can set the y-axis limits of the second graph to the same 
+as the first by reading off what they are on the first graph, and then plotting
+the second as follows:
+
+```{r}
+plot_populations(population.df, ylim = c(0, 20000000000))
+```
+
+Once you’ve done this it should be easier to compare the two (by eye at least).
+
+## Report
+
+For this report, we want something substantially clearer and better laid out, 
+showing something that demonstrates the relationship between the growth and the
+birth-death models, noting for instance that the crude global birth and death 
+rates are around 23 per 1000 population and 8 per 1000 respectively. You can see
+an example of most of the possible formatting options in 
+**0200-example-notebook.r**. Use an understanding of what you want to describe –
+and formatting from the example file or elsewhere – to break up your script so 
+that your code and the results and figures are interspersed with a reasonable
+explanation of what is going on.

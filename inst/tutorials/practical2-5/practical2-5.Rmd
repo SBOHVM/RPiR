@@ -1,0 +1,99 @@
+---
+title: "Reproducible Programming in R Practical 2-5"
+output: 
+  learnr::tutorial:
+    theme: lumen
+runtime: shiny_prerendered
+description: "Reproducible Programming in R Practical 2-5!"
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+ 
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+
+## Overview
+*In this session we generalise the code from a growth model to a model with births and deaths.*
+
+## Background
+
+There are many refinements to our code that we could make, and indeed we will work through several of them during the course, but our current framework is already sufficiently sophisticated to handle some much more complex population dynamics. We are therefore ready to start to thinking about our models rather than the mechanics of what we are doing.
+
+## Tasks
+
+In the modelling lecture we discussed a simple population growth model of the form
+
+$$N(t+1) = N(t) + \lambda\; N(t)$$
+
+which we can state roughly in English as
+
+*the next population size is the current size plus the new additions (lambda times the current size)*
+
+and this can be rewritten in turn in R as
+
+```{r}
+next.count <- latest$count + lambda * latest$count
+```
+
+This use of greek letters is fine for mathematicians, but we use `growth.rate` 
+for `lambda` in our code as we want the code to read more like English. We also 
+write this on multiple lines as we calculate the new additions separately and 
+then add them in. Note that, for consistency, throughout these practicals our 
+code will refer to the data frame with the current latest population counts in 
+as `latest` as in Practical 2-4, and these are referred to in the equations such
+as those on this page as $N(t)$, etc. The updated values, referred to above as
+$N(t+1)$, appear as `next.something.or.other` in the function in R if they 
+have a name at all, and I have tended to call things
+`updated.something.or.other` in the main script just to be distinct. This is
+purely for consistency of style on my part, and obviously you can do as you 
+please so long as you choose something that makes sense in the context of the
+problem you are solving.
+
+We now want to update the model to include both births and deaths, *i.e.*
+
+$$N(t+1) = N(t) + b\; N(t) – d\; N(t)$$
+which can be similarly translated as
+*the next population size is the current size plus the new births (b times the current size) minus the new deaths (d times the current size)*
+where $b$ represents the birth rate and d represents the death rate.
+
+We will now reuse **0204-plot-helper.r** while adapting the other files 
+appropriately. Take **0204-run-growth.r** and **0204-step-growth.r** from the 
+previous practical session and edit these programs to produce new versions (we
+have called them **0205-run-birth-death.r** and **0205-step-birth-death.r**, and 
+the function `step_deterministic_birth_death()`). Things to remember are:
+
+* to give the parameters sensible and explanatory names in the program, not just `b` and `d`.
+* that there is now an additional parameter in the specification
+* that you need to pass the new parameter as an argument to any function that uses it
+* that you will still need **0204-plot-helper.r**
+
+## Running the code
+
+**Try running your new code** and compare the outputs as you vary the birth and death rates. You can plot a second (or third, etc.) result on top of a first with commands like:
+
+```{r}
+plot_populations(population.b, new.graph = FALSE, col = "red")
+```
+
+Remember that `col` sets the colour of the line in the plot – either use numbers 
+(1 is black, 2, 3, *etc.*) or names "red", "blue", *etc.*
+
+When do you get the same answer?
+
+You should find that you get the same output if the difference between the birth
+and death rate is equal to the net growth rate in the previous model. This may
+seem a little dull and obvious but things will get more interesting when we 
+consider stochastic models.
+
+## Report
+
+Edit your script, suitably commented, to show a few situations in which you get 
+the same population growth with different birth and death rates – read the
+documentation for `plot.populations()` to work out how to do this (or use some 
+other plot function), but you might, for instance, use its optional argument 
+`lty` for different data frames to get one to show up as a dashed line on top of
+another. In any event, generate a report from the script that shows this in a 
+readable way.
