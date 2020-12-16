@@ -4,7 +4,7 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 2-1!"
+description: "Write a report"
 ---
 
 ```{r setup, include=FALSE}
@@ -43,9 +43,9 @@ exponential growth in a population, initially with a starting population size
 of 5, a growth rate of 0.1 per day, and to run it for 20 days.
 
 First we’ll create a new project, which on my computer (a Mac) we do through 
-<span style="color: #1697C0;">File > New project > New Directory > Empty 
+<span style="color: #de77ae;">File > New project > New Directory > Empty 
 Project</span>, and then choose a location and a name. Then create a new R file, 
-which I do through <span style="color: #1697C0;">File > New > R Script</span>. 
+which I do through <span style="color: #de77ae;">File > New > R Script</span>. 
 
 We can now start by writing the following, first initialising the population, 
 $N$, and setting the growth rate parameter (remembering that $\lambda$ is the 
@@ -153,9 +153,9 @@ The text after a `#` symbol are comments. These are ignored by R, but are there
 to help you and others to understand your programs. Good commenting is a 
 difficult but important programming skill. 
 
-You should save the file as **0201-growth-loop.r**. We have included numbers in 
-our file names for convenience as the first four digits will correspond to the 
-practical number you are currently on. 
+You should save the file as <span style="color: #de77ae;">0201-growth-loop.r
+</span>. We have included numbers in our file names for convenience as the first 
+four digits will correspond to the practical number you are currently on. 
 
 Then continue entering the code:
 
@@ -227,7 +227,7 @@ We specify the sequence of timesteps:
 
 ```{r}
 # The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
+timesteps <- seq(from = start.time + 1, to = end.time)
 ```
 
 and start the main loop (which is similar to what we had above):
@@ -270,7 +270,7 @@ the command `append(start.time, timesteps)` is used to append the vector of
 timesteps which started at 1 onto timepoint 0. We could also have used `c()` 
 again instead of `append()`, but append is easier to read.
 
-```{r}
+```{r plot_graph, exercise = TRUE}
 # Now we can plot the timesteps against the population vector
 plot(append(start.time, timesteps), population.vector, type = "l")
 ```
@@ -324,12 +324,12 @@ plot(append(start.time, timesteps), population.vector, type = "l")
 ```
 
 You should see a little triangle to the left of `for (new.time in timesteps) {`. 
-If you click on it, the multiple lines of the `for()` loop will “collapse” to 
+If you click on it, the multiple lines of the `for()` loop will "collapse" to 
 show they are all part of the command that is repeated for every repeat of 
 `for()`. Click it again and the repeating code will reappear. You can use this 
 (or just look for the `}`) to check whether you have the right code being 
 repeated inside the loop. You can also select the whole file and go to the 
-menus and select <span style="color: #1697C0;">Code -> Reindent Lines</span>. 
+menus and select <span style="color: #de77ae;">Code > Reindent Lines</span>. 
 This will make sure that everything inside a `for()` loop (or a function 
 definition as we will discover later) is moved a little bit to the right to make 
 it clear by inspection that the correct bits are inside the loop. If you delete 
@@ -387,12 +387,12 @@ you agree with the doubling time we calculated theoretically of ~46 years.
 Your report should show the growth of the human population from 7 billion. In 
 the first instance, we just want to know that the code really works and can 
 generate a report, so save your code and go to the 
-<span style="color: #1697C0;">File</span> menu, choose 
-<span style="color: #1697C0;">Compile Notebook...</span> and choose the 
-<span style="color: #1697C0;">html</span> output format and press 
-<span style="color: #1697C0;">Compile</span> if necessary. A webpage should pop 
+<span style="color: #de77ae;">File</span> menu, select 
+<span style="color: #de77ae;">Compile Notebook...</span> and choose the 
+<span style="color: #de77ae;">html</span> output format, then 
+<span style="color: #de77ae;">Compile</span> if necessary. A webpage should pop 
 up in a viewer after a couple of seconds, and a new file should appear in the 
-directory you are working in called, **0201-growth-loop.html**. You can check 
+directory you are working in called, <span style="color: #de77ae;">0201-growth-loop.html</span>. You can check 
 that this has really worked by opening the file in a web browser. At this point, 
 you can improve the commenting on the document, so that it uses more of the 
 features of the markdown format. Once you’re happy with it, generate a notebook 
