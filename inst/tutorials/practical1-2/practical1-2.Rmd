@@ -22,8 +22,7 @@ set.seed(123)
 ## Background
 
 Now you have a package with your data in it, we can easily run analyses, simply
-starting each analysis script with the R command `library(mypackage)`, where
-`mypackage` is the name of the package you created. 
+starting each analysis script with the R command `library(BCI)`. 
 
 There are an enormous number of different ways of measuring diversity, to the 
 extent that diversity itself has been declared a "non-concept" in the past (by
@@ -135,11 +134,11 @@ part of the demo! The script will be measuring several kinds of alpha,
 beta and gamma diversity, detailed below. But in order to do some work with 
 measures of taxonomic diversity, the taxonomy will first need to match the 
 species abundance data from the BCI dataset, exactly. Here I’m assuming that you
-created the package `{mypackage}`, and in it `bci_taxa` contains the taxonomy of 
+created the package `{BCI}`, and in it `bci_taxa` contains the taxonomy of 
 all BCI species and `bci_2010` contains the 2010 BCI census:
 
 ```{r eval = FALSE}
-library(mypackage)
+library(BCI)
 library(dplyr)
 # First filter for the correct species, either using dplyr: 
 taxonomy <- bci_taxa %>%
@@ -251,10 +250,10 @@ you are working in. You can check that this has really worked by opening the
 file in a web browser. At this point, you can improve the commenting on the 
 document, so that it uses more of the features of the markdown format. Once 
 you’re happy with it, recompile the report, and check it seems okay. Now
-reinstall the package, call `library(mypackage)` and run 
+reinstall the package, call `library(BCI)` and run 
 `demo("diversity-of-BCI")` or whatever you called the package and script – make 
 sure that it runs as expected when you do this. Alternatively you can call 
-`demo("diversity-of-BCI", package = "mypackage")` without loading the library 
+`demo("diversity-of-BCI", package = "BCI")` without loading the library 
 first.
 
 ## Reporting the results
@@ -276,7 +275,7 @@ You can also generate a report from the demo as follows:
 
 ```{r eval = FALSE}
 rmarkdown::render(system.file("demo/diversity-of-BCI.R", 
-                              package = "notmypackage"),
+                              package = "notmyBCI"),
                   output_dir = ".")
 ```
 

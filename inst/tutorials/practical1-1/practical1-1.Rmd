@@ -91,10 +91,10 @@ repository web page.
 ## Running the code
 
 The critical test is that you can restart R, call `library(mypackage)` on your
-package (where `mypackage` is the name of the package you created), and then
-immediately access the data that you created. If you are testing someone else’s 
-you’ll need to download it first by creating a new project based on the GitHub
-repository or by calling `devtools::install_github("username/packagename")`.
+package (where `mypackage` is the name of the package you created, I’m going to 
+call it <span style="color: #de77ae;">BCI</span>), and then immediately access 
+the data that you created. If you are testing someone else’s you’ll need to 
+download it first by creating a new project based on the GitHub repository or by calling `devtools::install_github("username/packagename")`.
 
 ## Additional work
 
