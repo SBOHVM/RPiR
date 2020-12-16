@@ -1,5 +1,5 @@
 ---
-  title: "Reproducible Programming in R Practical 2-2"
+title: "Reproducible Programming in R Practical 2-2"
 output:
   learnr::tutorial:
   theme: lumen
@@ -21,7 +21,8 @@ set.seed(123)
 
 ## Background
 
-When we look at our first program – **0201-growth-loop.r** – there are several
+When we look at our first program – 
+<span style="color: #de77ae;">0201-growth-loop.r</span> – there are several
 distinct parts to the code, despite its brevity. We first set the initial 
 conditions of the simulation, then we run the simulation itself, and finally we 
 plot the output. Inside the simulation, we have the mechanics of iterating over 
@@ -118,9 +119,9 @@ So do we. Bear with us, though – we will stop doing it at the end of this
 practical.
 
 Having now defined the function, the code should proceed much as 
-**0201-growth-loop.r** but rather than have a chunk of code inside the loop we 
-can just assign the `next.population` variable to the output of the function 
-`step_simple_growth()`.
+<span style="color: #de77ae;">0201-growth-loop.r</span> but rather than have a 
+chunk of code inside the loop we can just assign the `next.population` variable 
+to the output of the function `step_simple_growth()`.
 
 Within the `for()` loop where the time gets updated the code will now contain 
 the line:
@@ -147,15 +148,19 @@ the loop, as before):
 population.vector <- append(population.vector, next.population)
 ```
 
-Using your first program **0201-growth-loop.r**, try to create this new code, 
-**0202-growth-functional.r**.
+Using your first program <span style="color: #de77ae;">0201-growth-loop.r
+</span>, try to create this new code, <span style="color: #de77ae;">
+0202-growth-functional.r</span>.
 
 ## Running the code
 
 You can either compare the values of `population` or the plotted outputs of 
-**0201-growth-loop.r** and the new **0202-growth-functional.r** to check that 
-your new code works exactly as the old. **0202-growth-functional.r** does 
-exactly what the **0201-growth-loop.r** did but is structured in a better style.
+<span style="color: #de77ae;">0201-growth-loop.r</span> and the new 
+<span style="color: #de77ae;">0202-growth-functional.r</span> to check that 
+your new code works exactly as the old. <span style="color: #de77ae;">
+0202-growth-functional.r</span> does exactly what the 
+<span style="color: #de77ae;">0201-growth-loop.r</span> did but is structured 
+in a better style.
 
 ## Names of arguments to functions
 
@@ -165,17 +170,21 @@ argument in the function and the name of the variable in the script, and
 `next.population` is used in the function and in the main script. As we said 
 above, this does not have to be the case and can be confusing.
 
-Copy the **0202-growth-functional.r** file which contains the new function and 
-code and save it somewhere else. We’re going to edit this new file to show what 
-changes don’t matter, and then we’re going to delete the file, so **be sure you’ve copied the file before you start messing with it**. Open the new file and 
-use the Find... option in RStudio to find all the instances of `growth.rate` and 
-replace them with `rate1` in the `step_simple_growth()` function **but not in the script that follows**. Save the file and rerun the whole file in the usual 
-way. What happens? It should not work, and it will tell you that you have an 
-unused argument, `growth.rate` when you call `step_simple_growth()`. This is 
-because when you call the function, you set its argument called growth.rate to 
-the script’s value of growth.rate, but the function now only has an argument 
-called `rate1`. Change the call to `step_simple_growth()` to say 
-`rate1=growth.rate`, and now rerun it. It should now run identically to before.
+Copy the <span style="color: #de77ae;">0202-growth-functional.r</span> file 
+which contains the new function and code and save it somewhere else. We’re going 
+to edit this new file to show what changes don’t matter, and then we’re going to 
+delete the file, so 
+**be sure you’ve copied the file before you start messing with it**. Open the 
+new file and use the Find... option in RStudio to find all the instances of
+`growth.rate` and replace them with `rate1` in the `step_simple_growth()` 
+function **but not in the script that follows**. Save the file and rerun the 
+whole file in the usual way. What happens? It should not work, and it will tell 
+you that you have an unused argument, `growth.rate` when you call
+`step_simple_growth()`. This is because when you call the function, you set its
+argument called growth.rate to the script’s value of growth.rate, but the 
+function now only has an argument called `rate1`. Change the call to
+`step_simple_growth()` to say `rate1=growth.rate`, and now rerun it. It should 
+now run identically to before.
 
 Now do the same with `next.population`, replacing it **just in the function** 
 with `my.value`, or anything, `frogs`, `water`, etc. Save the file and rerun it. 
@@ -200,9 +209,10 @@ for the time being.
 
 For this practical, we are working with the human population in the script, so 
 change the `growth.rate` variable in the main script of 
-**0202-growth-functional.r** to `human.annual.growth`, and change 
-`next.population` in the main script to `updated.human.population`. Then rerun 
-the report. This is the code and report that should be submitted.
+<span style="color: #de77ae;">0202-growth-functional.r</span> to
+`human.annual.growth`, and change `next.population` in the main script to
+`updated.human.population`. Then rerun the report. This is the code and report 
+that should be submitted.
 
 ## Report
 
