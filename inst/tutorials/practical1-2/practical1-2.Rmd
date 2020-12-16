@@ -23,7 +23,7 @@ set.seed(123)
 
 Now you have a package with your data in it, we can easily run analyses, simply
 starting each analysis script with the R command `library(mypackage)`, where
-`mypackage` is the name of the package you created.
+`mypackage` is the name of the package you created. 
 
 There are an enormous number of different ways of measuring diversity, to the 
 extent that diversity itself has been declared a "non-concept" in the past (by
@@ -210,23 +210,23 @@ diversity measures following these instructions will simply count in effective
 numbers of genera or families, respectively, rather than species.
 
 Moving on to beta diversity, we now want to find out which quadrats in the BCI 
-study site are the most distinct. We can measure average distinctiveness of all 
-of the quadrats in the plot using `raw_meta_beta()`, but you can also ask for 
-the distinctiveness of every quadrat individually using `raw_sub_beta()`. 
-Calculate that for a single value of q, say qs=1, and show a histogram of the
-distinctivenesses (the diversity column) of the subcommunities. Sort the data 
-frame by distinctiveness and output just the highest values. Bearing in mind 
-that the first two digits of the quadrat name are an x-coordinate, and the
+study site are the most distinct. We can measure the average distinctiveness of 
+all of the quadrats in the plot using `raw_meta_beta()`, but you can also ask 
+for the distinctiveness of every quadrat individually using `raw_sub_beta()`. 
+Calculate that for a single value of $q$, say `qs=1`, and show a histogram of 
+the distinctivenesses (the diversity column) of the subcommunities. Sort the 
+data frame by distinctiveness and output just the highest values. Bearing in 
+mind that the first two digits of the quadrat name are an x-coordinate, and the
 second two are a y-coordinate, is there any pattern about these distinct areas?
 If so write about it in the report.
 
-A similar option in vegan is the function `betadiver()`. Look at the 
-documentation in R for this function – you will see that it can use a very large
-range of different beta diversity measures – and calculate the beta diversities
-for the subcommunities using the `"j"` Jaccard and `"sor"` Sorensen similarity
-measures. This function calculates pairwise similarities between the quadrats as
-`dist` objects. You can convert these to a matrix and then calculate the average
-similarities to all of the quadrats by using `as.matrix()` and then 
+A similar option in {vegan} is the function `betadiver()`. Look at the 
+documentation in R for this function – you will see that it can calculate a very 
+large range of different beta diversity measures – and calculate the beta 
+diversities for the subcommunities using the `"j"` Jaccard and `"sor"` Sorensen 
+similarity measures. This function calculates pairwise similarities between the 
+quadrats as `dist` objects. You can convert these to a matrix and then calculate 
+the average similarities to all of the quadrats by using `as.matrix()` and then 
 `rowMeans()`. You should be able to show that some of the identified quadrats 
 (with the lowest average similarity to the other quadrats) are the same, even
 though the exact beta diversity measure, and indeed even its direction, is 
@@ -236,47 +236,53 @@ Remember if you want to add some plain text into a report, you just write it
 after a `#'` comment:
 
 ```{r}
-#' We can make an observation here that Sorensen, Jaccard and
-#' rdiversity's beta diversity measures identify overlapping
-#' quadrats as the least similar / most distinct and it will appear #' as plain text in the report.
+#' We can make an observation here that Sorensen, Jaccard and {rdiversity}'s 
+#' beta diversity measures identify overlapping quadrats as the least similar /
+#' most distinct and it will appear as plain text in the report.
 ```
 
 Generate a report from the script(s) – for each file go to the 
 <span style="color: #de77ae;">File</span> menu, choose 
-<span style="color: #de77ae;">Compile Report...</span> and choose the 
-<span style="color: #de77ae;">html</span> output format and press 
+<span style="color: #de77ae;">Compile Report...</span>, select the 
+<span style="color: #de77ae;">html</span> output format, and click 
 <span style="color: #de77ae;">Compile</span>. A webpage should pop up in a 
 viewer after a couple of seconds, and a new file should appear in the directory 
 you are working in. You can check that this has really worked by opening the 
 file in a web browser. At this point, you can improve the commenting on the 
 document, so that it uses more of the features of the markdown format. Once 
-you’re happy with it, generate a notebook again, and check it seems okay. Now
-reinstall the package, call `library(BCI)` and run `demo("diversity-of-BCI")` or
-whatever you called the package and script – make sure that it runs as expected 
-when you do this. Alternatively you can call 
-`demo("diversity-of-BCI", package="BCI")` without loading the library first.
+you’re happy with it, recompile the report, and check it seems okay. Now
+reinstall the package, call `library(mypackage)` and run 
+`demo("diversity-of-BCI")` or whatever you called the package and script – make 
+sure that it runs as expected when you do this. Alternatively you can call 
+`demo("diversity-of-BCI", package = "mypackage")` without loading the library 
+first.
 
 ## Reporting the results
 
 You now have a demo file that will install with your package and show examples
-of diversity calculations of the BCI data. You should now commit all of these 
-changes (except the html file generated as the report, you should delete this)
-using git and push the committed changes to GitHub. Now open an issue on GitHub 
-asking your partner/collaborator to test the package for you.
+of diversity calculations of the BCI data. You should commit all of these 
+changes with an informative message (except the html file generated as the 
+report, **you should delete this**) and push the committed changes to GitHub. 
+Now open an issue on GitHub asking your partner/collaborator to test the package 
+for you.
 
 Your collaborator should now check the package to make sure that they can see
-and run the demo successfully. As the collaborator, you should attempt to 
-install the package again using `devtools::install_github()`. You can then test
-the demo by using the `demo()` function. You can also generate the report from
-the demo as follows:
+and run the demo successfully. 
 
-```{r}
-rmarkdown::render(system.file("demo/diversity-of-BCI.R", package="BCI"), output_dir = ".")
+As the collaborator, you should attempt to install your partner's package using 
+`devtools::install_github()` using your partner's GitHub username and the name 
+of their repository. You can then test the demo by using the `demo()` function. 
+You can also generate a report from the demo as follows:
+
+```{r eval = FALSE}
+rmarkdown::render(system.file("demo/diversity-of-BCI.R", 
+                              package = "notmypackage"),
+                  output_dir = ".")
 ```
 
 The report will be saved to the base folder of your current project (or whatever 
 your current working directory is). Check that it looks okay by opening it in a
-web browser (you can delete it afterwards). If everything looks okay, or if you
-identify a problem, you should reply to the issue saying what you find. 
-Depending on whether there was a problem, you may need to go back and forth, or
-that may be everything finished...
+web browser (you can delete the html file afterwards). If everything looks okay, 
+or if you identify a problem, you should reply to the issue saying what you 
+find. Depending on whether there was a problem, you may need to go back and 
+forth, or that may be everything finished...
