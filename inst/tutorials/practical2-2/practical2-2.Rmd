@@ -100,15 +100,15 @@ we load in the codetools library (you may have to install it first), and then
 call the `findGlobals()` function giving it the name of our function, as 
 follows:
 
-```{r}
+```{r globals, exercise = TRUE}
 library(codetools) 
 findGlobals(step_simple_growth, merge=FALSE)
 ```
 
 This will return some built in functionality of R which your function uses under 
-“functions”, and then hopefully nothing under variables (it actually says 
-character(0) if you have succeeded – obscurely!). Next note that the variable 
-names `new.additions` and `next.population` remains internal to the function 
+"functions", and then hopefully nothing under variables (it actually says 
+`character(0)`, which is code speak for exit_success). Next note that the object 
+names `new.additions` and `next.population` remain internal to the function 
 `step_simple_growth()`. We could call them `louise.matthews` and `richard.reeve` 
 rather than `next.population` if we wanted. What is important is the name that 
 we assign to the output of the function in the main script, which in this case 
@@ -124,25 +124,25 @@ to the output of the function `step_simple_growth()`.
 Within the `for()` loop where the time gets updated the code will now contain 
 the line:
 
-```{r}
+```{r, eval = FALSE}
 next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
                                       growth.rate = growth.rate)
 ```
 
 `current.population` is now an argument of the `step_simple_growth()` function, 
 and so you set its value using `=` inside the function call instead of using 
-`<-` in the main script as you did in 1-1, growth.rate is both an argument of 
-the function and a variable in the main script, so we ended up setting one to 
-the other rather confusingly with `growth.rate=growth.rate`. As we said above, 
+`<-` in the main script as you did in 1-1, `growth.rate` is both an argument of 
+the function and an object in the main script, so we ended up setting one to 
+the other rather confusingly with `growth.rate = growth.rate`. As we said above, 
 we will fix this later to make it look a bit less strange! Note, that we always 
-set arguments to functions with `argument=value`, and we strongly recommend 
+set arguments to functions with `argument = value`, and we strongly recommend 
 using `variable <- value` to set variables in your code to make the distinction 
 clear. We’ve now replaced the first three lines of code in the `for()` loop with 
 that one line, but there’s still one line remaining from 1-1: we still haven’t 
 updated the population vector itself, so we now need to update it (still inside 
 the loop, as before):
 
-```{r}
+```{r, eval = FALSE}
 population.vector <- append(population.vector, next.population)
 ```
 
