@@ -64,26 +64,23 @@ of `growth.rate` as inputs – they are called arguments – update the populati
 size and return it. This is the framework for such a function with comments 
 (replace `# -- some arguments --` with working code):
 
-```{r}
+```{r globals-setup}
 #' ### Function: step_simple_growth() 
-#'
 #' Run one step of a simple deterministic exponential growth model. 
 #'
 #' Arguments: 
-#'
 #' - current.population -- the population count now
 #' - growth.rate -- the growth rate 
 #'
 #' Returns:
-#'
 #' - the updated population count
-step_simple_growth <- function(current.population, growth.rate)
-{
+#'
+step_simple_growth <- function(current.population, growth.rate) {
   # Calculate changes to population
   new.additions <- # -- some arguments --
-    next.population <- # -- some arguments --
-    # Return updated population
-    next.population
+  next.population <- # -- some arguments --
+  # Return updated population
+  next.population
 }
 ```
 The `function()` command, like `for()`, has one line of code after it (comments 
