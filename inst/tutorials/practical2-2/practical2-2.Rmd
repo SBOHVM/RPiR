@@ -2,7 +2,7 @@
 title: "Reproducible Programming in R Practical 2-2"
 output:
   learnr::tutorial:
-  theme: lumen
+    theme: lumen
 runtime: shiny_prerendered
 description: "Reproducible Programming in R Practical 2-2!"
 ---
