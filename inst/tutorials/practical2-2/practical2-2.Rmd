@@ -31,11 +31,12 @@ of the growth model itself, which occurs inside the curly brackets. Obviously in
 this case none of these four steps are very complex (and you indeed might decide 
 there are fewer – or even more – that are actually important), but as we develop 
 more complex models some or all of them will become more complicated, and if 
-there are all written out in one continuous piece of code it will become harder 
+they are all written out in one continuous piece of code it will become harder 
 and harder to work out where one part ends and another begins, and how we need 
 to change the code if we want, for instance, to change the underlying model of 
 population growth, but not change the technique used for simulation or the plots 
-produced, **in the same way as you might wish this paragraph had been broken into sentences instead of running on seemingly for ever!**
+produced, in the same way as you might wish this paragraph had been broken into
+sentences instead of running on seemingly for ever!
 
 What we need to do is to introduce exactly the computing equivalent of 
 punctuation and sentence/paragraph structure into the code. We introduce this 
