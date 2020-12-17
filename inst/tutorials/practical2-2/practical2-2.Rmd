@@ -9,6 +9,7 @@ description: "Reproducible Programming in R Practical 2-2!"
 
 ```{r setup, include=FALSE}
 library(learnr)
+gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
@@ -21,22 +22,67 @@ set.seed(123)
 
 ## Background
 
-When we look at our first program – 
-<span style="color: #de77ae;">0201-growth-loop.r</span> – there are several
+When we look at our first program (from Practical 2-1) there are several
 distinct parts to the code, despite its brevity. We first set the initial 
 conditions of the simulation, then we run the simulation itself, and finally we 
-plot the output. Inside the simulation, we have the mechanics of iterating over 
-the timesteps and keeping track of the results, and there is the implementation 
-of the growth model itself, which occurs inside the curly brackets. Obviously in 
-this case none of these four steps are very complex (and you indeed might decide 
-there are fewer – or even more – that are actually important), but as we develop 
-more complex models some or all of them will become more complicated, and if 
-they are all written out in one continuous piece of code it will become harder 
-and harder to work out where one part ends and another begins, and how we need 
-to change the code if we want, for instance, to change the underlying model of 
-population growth, but not change the technique used for simulation or the plots 
-produced, in the same way as you might wish this paragraph had been broken into
-sentences instead of running on seemingly for ever!
+plot the output.
+
+```{r plot, exercise=TRUE, exercise.lines = 42}
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation.
+
+# Set the growth rate
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+
+# And setting times
+start.time <- 0
+end.time <- 100
+
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+
+# Set up the population starting size (at the first timestep)
+population.vector <- c(initial.count)
+
+# The timesteps that the simulation will run through
+timesteps <- seq(from=start.time + 1, to=end.time)
+
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # First extract the current population size
+  current.population <- tail(population.vector, 1)
+  # Calculate changes to population (births)
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Add new element onto end of population vector
+  population.vector <- append(population.vector, next.population)
+}
+
+#' Plot the results
+#' ----------------
+#' And finally we output the results.
+
+# Now we can plot the timesteps against the population vector
+plot(append(start.time, timesteps), population.vector, type = "l")
+```
+
+Inside the simulation, we have the mechanics of iterating over the timesteps and keeping track of the results, and there is the implementation of the growth 
+model itself, which occurs inside the curly brackets. Obviously in this case 
+none of these four steps are very complex (and you indeed might decide there are
+fewer – or even more – that are actually important), but as we develop more 
+complex models some or all of them will become more complicated, and if they are 
+all written out in one continuous piece of code it will become harder and harder 
+to work out where one part ends and another begins, and how we need to change
+the code if we want, for instance, to change the underlying model of population
+growth, but not change the technique used for simulation or the plots produced,
+in the same way as you might wish this paragraph had been broken into sentences
+instead of running on seemingly for ever!
 
 What we need to do is to introduce exactly the computing equivalent of 
 punctuation and sentence/paragraph structure into the code. We introduce this 
@@ -58,13 +104,12 @@ birth and death into the model, or make it a model of disease spread rather than
 population growth. The rest would remain pretty much the same.
 
 We want to take this code and put it into its own function at the beginning of 
-the program (we call it `step_simple_growth()` in our version). It should take 
-the current population count from the vector `population.vector`, and the value 
-of `growth.rate` as inputs – they are called arguments – update the population 
-size and return it. This is the framework for such a function with comments 
-(replace `# -- some arguments --` with working code):
+the program (we'll call it `step_simple_growth()`). It should take 
+the current population count from the vector `population.vector` and the value 
+of `growth.rate` as inputs (they are called arguments), update the population 
+size, and return it. This is the framework for such a function with comments:
 
-```{r globals-setup}
+```{r stepsimplegrowth, exercise = TRUE, exercise.lines = 20}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
 #'
@@ -77,21 +122,36 @@ size and return it. This is the framework for such a function with comments
 #'
 step_simple_growth <- function(current.population, growth.rate) {
   # Calculate changes to population
-  new.additions <- # -- some arguments --
-  next.population <- # -- some arguments --
+  new.additions <- # --- ? ---
+  # --- ? ---
+  next.population <- # --- ? ---
   # Return updated population
   next.population
 }
 ```
+
+```{r stepsimplegrowth-solution}
+step_simple_growth <- function(current.population, growth.rate) {
+  # Calculate changes to population
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Return updated population
+  next.population
+}
+```
+
+```{r stepsimplegrowth-check}
+grade_code()
+```
+
 The `function()` command, like `for()`, has one line of code after it (comments 
 are ignored) that defines what the function does. Because nearly all functions 
 need multiple lines to define what they do, we nearly always use `{ ... }` 
 syntax (as with `for()`) to allow us to write multiple commands all as part of 
 the function definition. Remember that whatever appears last in the function 
 definition will be returned to script that calls it, in this case 
-`next.population`. Again, you can click on the little triangle to the left of 
-the opening bracket a couple of times to check that the right bit is in the 
-function definition, or you can select all of the code, and reindent it.
+`next.population`. 
 
 To make sure that the function is only using the information given to it in its 
 arguments, we are going to use `findGlobals()` to check that it does not use any 
@@ -100,6 +160,15 @@ we load in the codetools library (you may have to install it first), and then
 call the `findGlobals()` function giving it the name of our function, as 
 follows:
 
+```{r globals-setup}
+step_simple_growth <- function(current.population, growth.rate) {
+  current.population <- tail(population.vector, 1)
+  new.additions <- growth.rate * current.population
+  next.population <- current.population + new.additions
+  next.population
+}
+```
+
 ```{r globals, exercise = TRUE}
 library(codetools) 
 findGlobals(step_simple_growth, merge=FALSE)
@@ -107,21 +176,93 @@ findGlobals(step_simple_growth, merge=FALSE)
 
 This will return some built in functionality of R which your function uses under 
 "functions", and then hopefully nothing under variables (it actually says 
-`character(0)`, which is code speak for exit_success). Next note that the object 
-names `new.additions` and `next.population` remain internal to the function 
-`step_simple_growth()`. We could call them `louise.matthews` and `richard.reeve` 
-rather than `next.population` if we wanted. What is important is the name that 
-we assign to the output of the function in the main script, which in this case 
-is also `next.population`. You may find this reuse of names slightly confusing. 
-So do we. Bear with us, though – we will stop doing it at the end of this 
-practical.
+`character(0)`, which is code speak for "exit success"). 
 
-Having now defined the function, the code should proceed much as 
-<span style="color: #de77ae;">0201-growth-loop.r</span> but rather than have a 
-chunk of code inside the loop we can just assign the `next.population` variable 
-to the output of the function `step_simple_growth()`.
+Note that the objects `new.additions` and `next.population` remain internal to 
+the function `step_simple_growth()` and have no effect on the main script. 
+Objects within a function exist seperately from those in the main script and 
+only exist for the length of time the function is run (see the example below). 
+We could call them `x` and `y` if we wanted to, it doesn't matter. What is 
+important, is the name that we assign to the 
+**output of the function in the main script**, which in this case is also
+`next.population`. This reuse of names is slightly confusing, but doesn't
+affect the running of the code. For clarity, however, and general readability 
+of the code we'll rename these objects later (don't worry about them right now).
 
-Within the `for()` loop where the time gets updated the code will now contain 
+```{r inout, exercise = TRUE}
+# Simple function that adds 1 to an input
+my_function <- function(input) {
+  x <- input + 1
+  print(paste("inside x =", x))
+}
+
+# Test the function
+x <- 10
+my_function(x)
+print(x)
+```
+
+Having now defined the function, the code should proceed much as before but 
+rather than have a chunk of code inside the loop we can just assign the output 
+of the function `step_simple_growth()` to the `next.population` object
+(replacing the first three lines of code in the `for()` loop with one line of 
+code). Try it now and then run the code again, comparing the plotted outputs
+to check that your new code works exactly as the old version did (but structured 
+in a better style):
+ 
+```{r nextstep-setup}
+step_simple_growth <- function(current.population, growth.rate) {
+  # Calculate changes to population
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Return updated population
+  next.population
+}
+```
+
+```{r nextstep, exercise = TRUE, exercise.lines = 42}
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation.
+
+# Set the growth rate
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+
+# And setting times
+start.time <- 0
+end.time <- 100
+
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+
+# Set up the population starting size (at the first timestep)
+population.vector <- c(initial.count)
+
+# The timesteps that the simulation will run through
+timesteps <- seq(from=start.time + 1, to=end.time)
+
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # --- ? ---
+  next.population <- # --- ? ---
+  # Add new element onto end of population vector
+  population.vector <- c(population.vector, next.population)
+}
+
+#' Plot the results
+#' ----------------
+#' And finally we output the results.
+
+# Now we can plot the timesteps against the population vector
+plot(append(start.time, timesteps), population.vector, type = "l")
+```
+
+Within the `for()` loop where the time gets updated the code should now contain 
 the line:
 
 ```{r, eval = FALSE}
@@ -131,68 +272,92 @@ next.population <- step_simple_growth(current.population = tail(population.vecto
 
 `current.population` is now an argument of the `step_simple_growth()` function, 
 and so you set its value using `=` inside the function call instead of using 
-`<-` in the main script as you did in 1-1, `growth.rate` is both an argument of 
-the function and an object in the main script, so we ended up setting one to 
-the other rather confusingly with `growth.rate = growth.rate`. As we said above, 
-we will fix this later to make it look a bit less strange! Note, that we always 
-set arguments to functions with `argument = value`, and we strongly recommend 
-using `variable <- value` to set variables in your code to make the distinction 
-clear. We’ve now replaced the first three lines of code in the `for()` loop with 
-that one line, but there’s still one line remaining from 1-1: we still haven’t 
-updated the population vector itself, so we now need to update it (still inside 
-the loop, as before):
-
-```{r, eval = FALSE}
-population.vector <- append(population.vector, next.population)
-```
-
-Using your first program <span style="color: #de77ae;">0201-growth-loop.r
-</span>, try to create this new code, <span style="color: #de77ae;">
-0202-growth-functional.r</span>.
-
-## Running the code
-
-You can either compare the values of `population` or the plotted outputs of 
-<span style="color: #de77ae;">0201-growth-loop.r</span> and the new 
-<span style="color: #de77ae;">0202-growth-functional.r</span> to check that 
-your new code works exactly as the old. <span style="color: #de77ae;">
-0202-growth-functional.r</span> does exactly what the 
-<span style="color: #de77ae;">0201-growth-loop.r</span> did but is structured 
-in a better style.
-
-## Names of arguments to functions
+`<-` in the main script as you did in 1-1. `growth.rate` is both an
+argument of the function and an object in the main script. Note that we 
+always set arguments to functions with `argument = value`, and we strongly 
+recommend using `object <- value` to set variables in your code to make the
+distinction clear. 
 
 When you are happy with the code and its outputs there is another task. If you 
 look at the whole code, you will see that `growth.rate` is both the name of the
 argument in the function and the name of the variable in the script, and
 `next.population` is used in the function and in the main script. As we said 
-above, this does not have to be the case and can be confusing.
+above, this does not affect the running of the code but can be difficult to 
+read and can result in confusion when debugging for example.
 
-Copy the <span style="color: #de77ae;">0202-growth-functional.r</span> file 
-which contains the new function and code and save it somewhere else. We’re going 
-to edit this new file to show what changes don’t matter, and then we’re going to 
-delete the file, so 
-**be sure you’ve copied the file before you start messing with it**. Open the 
-new file and use the Find... option in RStudio to find all the instances of
-`growth.rate` and replace them with `rate1` in the `step_simple_growth()` 
-function **but not in the script that follows**. Save the file and rerun the 
-whole file in the usual way. What happens? It should not work, and it will tell 
-you that you have an unused argument, `growth.rate` when you call
-`step_simple_growth()`. This is because when you call the function, you set its
-argument called growth.rate to the script’s value of growth.rate, but the 
-function now only has an argument called `rate1`. Change the call to
-`step_simple_growth()` to say `rate1=growth.rate`, and now rerun it. It should 
-now run identically to before.
+Here's the latest version of the code to play with, complete with the 
+`step_simple_growth()` function:
+
+```{r laststep, exercise = TRUE, exercise.lines = 42}
+#' step_simple_growth function
+step_simple_growth <- function(current.population, growth.rate) {
+  # Calculate changes to population
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Return updated population
+  next.population
+}
+
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation.
+
+# Set the growth rate
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+
+# And setting times
+start.time <- 0
+end.time <- 100
+
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+
+# Set up the population starting size (at the first timestep)
+population.vector <- c(initial.count)
+
+# The timesteps that the simulation will run through
+timesteps <- seq(from=start.time + 1, to=end.time)
+
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # Calculate population at next timestep
+  next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
+                                      growth.rate = growth.rate)
+  # Add new element onto end of population vector
+  population.vector <- c(population.vector, next.population)
+}
+
+#' Plot the results
+#' ----------------
+#' And finally we output the results.
+
+# Now we can plot the timesteps against the population vector
+plot(append(start.time, timesteps), population.vector, type = "l")
+```
+
+Find all the instances of `growth.rate` and replace them with `rate1` in the 
+`step_simple_growth()` function **but not in the script that follows**, then
+run the code. What happens? You should get an error. It will tell you that you 
+have an unused argument, `growth.rate` when you call `step_simple_growth()`. 
+This is because when you call the function (on line 38), you set its 
+`growth.rate` argument to the main script’s value of `growth.rate`, but the 
+function now only has an argument called `rate1` (line 2). To fix this, we can 
+change the call to `step_simple_growth()` to say `rate1 = growth.rate` (on line 
+38). Now rerun the code and check it works.
 
 Now do the same with `next.population`, replacing it **just in the function** 
-with `my.value`, or anything, `frogs`, `water`, etc. Save the file and rerun it. 
-What happens? You should find that the model runs exactly as before this time. 
-This is because none of the names of variables being used in the function matter 
-– even if their values are being given back (we say **returned**) to the main 
-script. The only thing that matters is that they are used consistently within 
-the function, and when you call the function in the main script. Those names and 
-their values are thrown away when the function finishes. Only the variables in 
-the main script are retained. **You should now discard this file and go back to the original file for the rest of the exercise.**
+with `my.value`, or something sensible, then run the code. What happens? You 
+should find that the model runs exactly as before this time. This is because 
+none of the names of objects being used in the function matter – even if their
+values are being returned to the main script. Object names and values are 
+thrown away when the function finishes. Only the objects in the main script are 
+retained. The only thing that matters is that object names are used consistently
+within the function, and when you call the function in the main script. 
 
 We need to use meaningful names to remind us what we are doing, but it can be 
 confusing and cause subtle errors if we use the same variable names in many 
@@ -206,13 +371,6 @@ can relax this requirement in the real world, but it is best to be over-cautious
 for the time being.
 
 For this practical, we are working with the human population in the script, so 
-change the `growth.rate` variable in the main script of 
-<span style="color: #de77ae;">0202-growth-functional.r</span> to
-`human.annual.growth`, and change `next.population` in the main script to
-`updated.human.population`. Then rerun the report. This is the code and report 
-that should be submitted.
-
-## Report
-
-Generate a report by generating a notebook from the script you have written and 
-check the results are the same as for 2-1.
+in the following exercises we'll change the `growth.rate` variable (in the main 
+script) to `human.annual.growth`, and change `next.population` (in the main 
+script) to `updated.human.population`. 

@@ -1,7 +1,7 @@
 Package: progInR
 Type: Package
 Title: Advanced Programming in R course
-Version: 0.3.9
+Version: 0.3.10
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
