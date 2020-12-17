@@ -54,7 +54,7 @@ greek!). Then create a `for()` loop to repeatedly update the population (20
 times in this case), and print out the final answer. If you run this code, it 
 should give you a final population size of 33.6375.
 
-```{r simple-for-loop, exercise = TRUE}
+```{r forloop, exercise=TRUE}
 N <- 5
 lambda <- 0.1
 days <- seq(from = 1, to = 20)
@@ -68,7 +68,7 @@ print(N)
 Now edit the code above and answer the following questions (hit Start Over to 
 reset): 
 
-```{r change-N, echo=FALSE}
+```{r N, echo=FALSE}
 question("What initial population size results in a final population size of 53.82?",
          answer("3"),
          answer("5"),
@@ -78,7 +78,7 @@ question("What initial population size results in a final population size of 53.
 )
 ```
 
-```{r change-days, echo=FALSE}
+```{r days, echo=FALSE}
 question("How many days does it take for the population size to grow to 8.05255?",
          answer("2"),
          answer("5", correct = TRUE),
@@ -88,7 +88,7 @@ question("How many days does it take for the population size to grow to 8.05255?
 )
 ```
 
-```{r change-lambda, echo=FALSE}
+```{r lambda, echo=FALSE}
 question("What growth rate results in a final population size of 5555.676",
          answer("0.16"),
          answer("0.3"),
@@ -106,7 +106,7 @@ so that they all get repeated.
 
 So we would update the previous code and print the results as follows:
 
-```{r simple-for-loop2, exercise = TRUE}
+```{r forloop2, exercise=TRUE}
 N <- 5
 lambda <- 0.1
 days <- seq(from = 1, to = 20)
@@ -208,11 +208,19 @@ population.vector <- c(initial.count)
 At this point, it's a good idea to view the population size to check the code 
 is working correctly 
 
-```{r print-populationvector, exercise = TRUE}
+```{r print-setup}
+growth.rate <- 0.015
+initial.count <- 7000000000
+start.time <- 0
+end.time <- 100
+population.vector <- c(initial.count)
+```
+
+```{r print, exercise=TRUE}
 
 ```
 
-```{r print-populationvector-solution}
+```{r print-solution}
 print(population.vector)
 ```
 
@@ -270,7 +278,7 @@ the command `append(start.time, timesteps)` is used to append the vector of
 timesteps which started at 1 onto timepoint 0. We could also have used `c()` 
 again instead of `append()`, but append is easier to read.
 
-```{r plot_graph, exercise = TRUE}
+```{r, eval=FALSE}
 # Now we can plot the timesteps against the population vector
 plot(append(start.time, timesteps), population.vector, type = "l")
 ```
@@ -278,7 +286,7 @@ plot(append(start.time, timesteps), population.vector, type = "l")
 Now you should have a complete program in your R script editor that looks like 
 this:
 
-```{r eval = FALSE, attr.source='.numberLines'}
+```{r plot, exercise=TRUE}
 #' Set up the simulation parameters
 #' --------------------------------
 #' First we set up the parameters for the simulation.
@@ -323,7 +331,7 @@ for (new.time in timesteps) {
 plot(append(start.time, timesteps), population.vector, type = "l")
 ```
 
-You should see a little triangle to the left of `for (new.time in timesteps) {`. 
+In RStudio, you should see a little triangle to the left of `for (new.time in timesteps) {`. 
 If you click on it, the multiple lines of the `for()` loop will "collapse" to 
 show they are all part of the command that is repeated for every repeat of 
 `for()`. Click it again and the repeating code will reappear. You can use this 
@@ -357,23 +365,23 @@ The program outputs a vector `population.vector` which you can treat as you woul
 any other piece of data in R. For example, we could run the following commands 
 in the console:
 
-```{r try-summary, exercise = TRUE}
+```{r try-summary, exercise = TRUE, exercise.setup = "plot"}
 summary(population.vector)
 ```
 
-```{r try-head1, exercise = TRUE}
+```{r try-head1, exercise = TRUE, exercise.setup = "plot"}
 head(population.vector)
 ```
 
-```{r try-head2, exercise = TRUE}
+```{r try-head2, exercise = TRUE, exercise.setup = "plot"}
 head(population.vector, 3)
 ```
 
-```{r try-tail1, exercise = TRUE}
+```{r try-tail1, exercise = TRUE, exercise.setup = "plot"}
 tail(population.vector,1)
 ```
 
-```{r try-tail2, exercise = TRUE}
+```{r try-tail2, exercise = TRUE, exercise.setup = "plot"}
 summary(tail(population.vector, 10))
 ```
 
