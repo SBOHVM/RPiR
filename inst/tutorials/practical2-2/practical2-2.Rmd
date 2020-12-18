@@ -1,376 +1,84 @@
 ---
-title: "Reproducible Programming in R Practical 2-2"
-output:
+title: "Reproducible Programming in R Practical 3-2"
+output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 2-2!"
+description: "Reproducible Programming in R Practical 3-2!"
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
-gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
 ```
 
-
 ## Overview
 
-*In this session you will break the program 0201-growth-loop.r into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
+*In this practical we will examine the effect of changing the time step on the model outputs. Remember that in the lecture we said that we increase the accuracy of simulations when we use small time steps, and we reduce the accuracy (but speed up the simulation) when we use large time steps.*
 
 ## Background
 
-When we look at our first program (from Practical 2-1) there are several
-distinct parts to the code, despite its brevity. We first set the initial 
-conditions of the simulation, then we run the simulation itself, and finally we 
-plot the output.
-
-```{r plot, exercise=TRUE, exercise.lines = 42}
-#' Set up the simulation parameters
-#' --------------------------------
-#' First we set up the parameters for the simulation.
-
-# Set the growth rate
-growth.rate <- 0.015
-
-# Starting population size
-initial.count <- 7000000000
-
-# And setting times
-start.time <- 0
-end.time <- 100
-
-#' Run the simplest possible simulation
-#' ------------------------------------
-#' Then run it so that we can get the output we need
-
-# Set up the population starting size (at the first timestep)
-population.vector <- c(initial.count)
-
-# The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
-
-# Now we loop through the time itself (starting at the second timestep)
-for (new.time in timesteps) {
-  # First extract the current population size
-  current.population <- tail(population.vector, 1)
-  # Calculate changes to population (births)
-  new.additions <- growth.rate * current.population
-  # Calculate population at next timestep
-  next.population <- current.population + new.additions
-  # Add new element onto end of population vector
-  population.vector <- append(population.vector, next.population)
-}
-
-#' Plot the results
-#' ----------------
-#' And finally we output the results.
-
-# Now we can plot the timesteps against the population vector
-plot(append(start.time, timesteps), population.vector, type = "l")
-```
-
-Inside the simulation, we have the mechanics of iterating over the timesteps and keeping track of the results, and there is the implementation of the growth 
-model itself, which occurs inside the curly brackets. Obviously in this case 
-none of these four steps are very complex (and you indeed might decide there are
-fewer – or even more – that are actually important), but as we develop more 
-complex models some or all of them will become more complicated, and if they are 
-all written out in one continuous piece of code it will become harder and harder 
-to work out where one part ends and another begins, and how we need to change
-the code if we want, for instance, to change the underlying model of population
-growth, but not change the technique used for simulation or the plots produced,
-in the same way as you might wish this paragraph had been broken into sentences
-instead of running on seemingly for ever!
-
-What we need to do is to introduce exactly the computing equivalent of 
-punctuation and sentence/paragraph structure into the code. We introduce this 
-partly by commenting the code well, which we have already started to do, but 
-mostly by separating out conceptually distinct parts of the code into separate 
-functions. This process will continue through the whole course as we identify 
-reusable pieces of code that we can get right once, and then (hopefully) never 
-have to worry about again. This often turns out to be more of an aspiration than 
-reality, but nonetheless, when we do want to improve specific parts of our 
-models, it is much easier to do it when the code is well structured.
+So far, we have written code to model difference equations, where events happen
+at fixed intervals. For some biological populations such as insects reproducing
+on an annual cycle this framework is very appropriate. However, in general we
+are interested in events that could happen at any point, and importantly once an
+event has happened it can affect the rate at which new events happen – for
+instance, when the first infected animal in a large population succeeds in 
+infecting a second, the rate of infection approximately doubles. If we use large
+time steps we may miss this effect of changing transmission rates between one 
+time step and the next, whereas if we use very small timesteps, we will be
+accurate but many steps will contain no events, thus wasting computational time.
+In this practical we will see the size of the time step affects our model.
 
 ## Tasks
 
-Look at the code from the last practical. The code in the for loop, that is to 
-say inside the curly brackets, describes the way that the population changes 
-from one point in time to the next. This (together with, perhaps, the starting 
-conditions) is what we would be changing if we wanted to explicitly introduce 
-birth and death into the model, or make it a model of disease spread rather than 
-population growth. The rest would remain pretty much the same.
+To change the model to handle timesteps, then we have to consider that by 
+default, in the previous programs we were using a timestep of 1. In this case of
+E. coli transmission in cattle from Practical 3-1 these are measured in weeks,
+which means that if our rates were given to us in units of weeks, then we are
+stepping forward one week at a time. If our rates were given to us per day 
+rather than per week we would be stepping forward day by day. If a rate is given 
+to us in weeks, we would scale it down accordingly to get the rate per day. Or,
+we could scale it up to get the rate per month. So to change our program to step
+forward on a different time scale, we scale the parameters. Our parameters (the
+transmission and recovery rates) will help us determine the number of 
+transmissions and recoveries that occur in one unit of time. To simulate
+stepping forward in larger of smaller amounts of time we scale the parameters by
+the new time step.
 
-We want to take this code and put it into its own function at the beginning of 
-the program (we'll call it `step_simple_growth()`). It should take 
-the current population count from the vector `population.vector` and the value 
-of `growth.rate` as inputs (they are called arguments), update the population 
-size, and return it. This is the framework for such a function with comments:
+The task now is edit **0301-run-SIS.r** so that it is easy to alter the timestep
+of the simulation – you can reuse `step_deterministic_SIS()`. All you need to do
+is to write a new script file which creates a new parameter, `timestep`, so that
+you can scale `transmission.rate` and `recovery.rate` to 
+`ecoli.transmission * timestep` and `ecoli.recovery * timestep` before passing 
+them to `step_deterministic_SIS()`. You also need to remember that the vector of
+`timesteps` to loop through is now also wrong. Make sure that you adjust it 
+correctly so that it will give the correct times for the plot. You can check it 
+has by looking at `population.df$time` after you’ve added it in to the data 
+frame and make sure it looks right to you. We can call this new version
+**0302-test-SIS.r**.
 
-```{r stepsimplegrowth, exercise = TRUE, exercise.lines = 20}
-#' ### Function: step_simple_growth() 
-#' Run one step of a simple deterministic exponential growth model. 
-#'
-#' Arguments: 
-#' - current.population -- the population count now
-#' - growth.rate -- the growth rate 
-#'
-#' Returns:
-#' - the updated population count
-#'
-step_simple_growth <- function(current.population, growth.rate) {
-  # Calculate changes to population
-  new.additions <- # --- ? ---
-  # --- ? ---
-  next.population <- # --- ? ---
-  # Return updated population
-  next.population
-}
-```
+## Running the code
 
-```{r stepsimplegrowth-solution}
-step_simple_growth <- function(current.population, growth.rate) {
-  # Calculate changes to population
-  new.additions <- growth.rate * current.population
-  # Calculate population at next timestep
-  next.population <- current.population + new.additions
-  # Return updated population
-  next.population
-}
-```
+`timestep` does not need to be a whole number, and it can be less than 1. Start 
+running your programming with a `timestep` of 1, and then try reducing it to 0.1 
+and then compare your outputs. If they appear unchanged it means the first 
+timestep was small enough to produce an accurate output. Remember you can plot
+multiple graphs on top of each other to make it easier to directly compare 
+timesteps.
 
-```{r stepsimplegrowth-check}
-grade_code()
-```
+Once you’ve satisfied yourself that the simulation is currently accurate, find 
+out how much you can increase the timestep safely before the simulation becomes
+inaccurate. Running this code with a value of `timestep` of 3 or 5 means that we
+are stepping forward in chunks of time that are 3 or 5 times larger than our 
+default time step. Note you if you don’t use the parameters from E. coli
+transmission in cattle, the values of the timestep at which is all goes wrong 
+may be different, so we recommend sticking with those values.
 
-The `function()` command, like `for()`, has one line of code after it (comments 
-are ignored) that defines what the function does. Because nearly all functions 
-need multiple lines to define what they do, we nearly always use `{ ... }` 
-syntax (as with `for()`) to allow us to write multiple commands all as part of 
-the function definition. Remember that whatever appears last in the function 
-definition will be returned to script that calls it, in this case 
-`next.population`. 
+## Report
 
-To make sure that the function is only using the information given to it in its 
-arguments, we are going to use `findGlobals()` to check that it does not use any 
-external information (such information is called global variables). To do this 
-we load in the codetools library (you may have to install it first), and then 
-call the `findGlobals()` function giving it the name of our function, as 
-follows:
-
-```{r globals-setup}
-step_simple_growth <- function(current.population, growth.rate) {
-  current.population <- tail(population.vector, 1)
-  new.additions <- growth.rate * current.population
-  next.population <- current.population + new.additions
-  next.population
-}
-```
-
-```{r globals, exercise = TRUE}
-library(codetools) 
-findGlobals(step_simple_growth, merge=FALSE)
-```
-
-This will return some built in functionality of R which your function uses under 
-"functions", and then hopefully nothing under variables (it actually says 
-`character(0)`, which is code speak for "exit success"). 
-
-Note that the objects `new.additions` and `next.population` remain internal to 
-the function `step_simple_growth()` and have no effect on the main script. 
-Objects within a function exist seperately from those in the main script and 
-only exist for the length of time the function is run (see the example below). 
-We could call them `x` and `y` if we wanted to, it doesn't matter. What is 
-important, is the name that we assign to the 
-**output of the function in the main script**, which in this case is also
-`next.population`. This reuse of names is slightly confusing, but doesn't
-affect the running of the code. For clarity, however, and general readability 
-of the code we'll rename these objects later (don't worry about them right now).
-
-```{r inout, exercise = TRUE}
-# Simple function that adds 1 to an input
-my_function <- function(input) {
-  x <- input + 1
-  print(paste("inside x =", x))
-}
-
-# Test the function
-x <- 10
-my_function(x)
-print(x)
-```
-
-Having now defined the function, the code should proceed much as before but 
-rather than have a chunk of code inside the loop we can just assign the output 
-of the function `step_simple_growth()` to the `next.population` object
-(replacing the first three lines of code in the `for()` loop with one line of 
-code). Try it now and then run the code again, comparing the plotted outputs
-to check that your new code works exactly as the old version did (but structured 
-in a better style):
- 
-```{r nextstep-setup}
-step_simple_growth <- function(current.population, growth.rate) {
-  # Calculate changes to population
-  new.additions <- growth.rate * current.population
-  # Calculate population at next timestep
-  next.population <- current.population + new.additions
-  # Return updated population
-  next.population
-}
-```
-
-```{r nextstep, exercise = TRUE, exercise.lines = 42}
-#' Set up the simulation parameters
-#' --------------------------------
-#' First we set up the parameters for the simulation.
-
-# Set the growth rate
-growth.rate <- 0.015
-
-# Starting population size
-initial.count <- 7000000000
-
-# And setting times
-start.time <- 0
-end.time <- 100
-
-#' Run the simplest possible simulation
-#' ------------------------------------
-#' Then run it so that we can get the output we need
-
-# Set up the population starting size (at the first timestep)
-population.vector <- c(initial.count)
-
-# The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
-
-# Now we loop through the time itself (starting at the second timestep)
-for (new.time in timesteps) {
-  # --- ? ---
-  next.population <- # --- ? ---
-  # Add new element onto end of population vector
-  population.vector <- c(population.vector, next.population)
-}
-
-#' Plot the results
-#' ----------------
-#' And finally we output the results.
-
-# Now we can plot the timesteps against the population vector
-plot(append(start.time, timesteps), population.vector, type = "l")
-```
-
-Within the `for()` loop where the time gets updated the code should now contain 
-the line:
-
-```{r, eval = FALSE}
-next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
-                                      growth.rate = growth.rate)
-```
-
-`current.population` is now an argument of the `step_simple_growth()` function, 
-and so you set its value using `=` inside the function call instead of using 
-`<-` in the main script as you did in 1-1. `growth.rate` is both an
-argument of the function and an object in the main script. Note that we 
-always set arguments to functions with `argument = value`, and we strongly 
-recommend using `object <- value` to set variables in your code to make the
-distinction clear. 
-
-When you are happy with the code and its outputs there is another task. If you 
-look at the whole code, you will see that `growth.rate` is both the name of the
-argument in the function and the name of the variable in the script, and
-`next.population` is used in the function and in the main script. As we said 
-above, this does not affect the running of the code but can be difficult to 
-read and can result in confusion when debugging for example.
-
-Here's the latest version of the code to play with, complete with the 
-`step_simple_growth()` function:
-
-```{r laststep, exercise = TRUE, exercise.lines = 42}
-#' step_simple_growth function
-step_simple_growth <- function(current.population, growth.rate) {
-  # Calculate changes to population
-  new.additions <- growth.rate * current.population
-  # Calculate population at next timestep
-  next.population <- current.population + new.additions
-  # Return updated population
-  next.population
-}
-
-#' Set up the simulation parameters
-#' --------------------------------
-#' First we set up the parameters for the simulation.
-
-# Set the growth rate
-growth.rate <- 0.015
-
-# Starting population size
-initial.count <- 7000000000
-
-# And setting times
-start.time <- 0
-end.time <- 100
-
-#' Run the simplest possible simulation
-#' ------------------------------------
-#' Then run it so that we can get the output we need
-
-# Set up the population starting size (at the first timestep)
-population.vector <- c(initial.count)
-
-# The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
-
-# Now we loop through the time itself (starting at the second timestep)
-for (new.time in timesteps) {
-  # Calculate population at next timestep
-  next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
-                                      growth.rate = growth.rate)
-  # Add new element onto end of population vector
-  population.vector <- c(population.vector, next.population)
-}
-
-#' Plot the results
-#' ----------------
-#' And finally we output the results.
-
-# Now we can plot the timesteps against the population vector
-plot(append(start.time, timesteps), population.vector, type = "l")
-```
-
-Find all the instances of `growth.rate` and replace them with `rate1` in the 
-`step_simple_growth()` function **but not in the script that follows**, then
-run the code. What happens? You should get an error. It will tell you that you 
-have an unused argument, `growth.rate` when you call `step_simple_growth()`. 
-This is because when you call the function (on line 38), you set its 
-`growth.rate` argument to the main script’s value of `growth.rate`, but the 
-function now only has an argument called `rate1` (line 2). To fix this, we can 
-change the call to `step_simple_growth()` to say `rate1 = growth.rate` (on line 
-38). Now rerun the code and check it works.
-
-Now do the same with `next.population`, replacing it **just in the function** 
-with `my.value`, or something sensible, then run the code. What happens? You 
-should find that the model runs exactly as before this time. This is because 
-none of the names of objects being used in the function matter – even if their
-values are being returned to the main script. Object names and values are 
-thrown away when the function finishes. Only the objects in the main script are 
-retained. The only thing that matters is that object names are used consistently
-within the function, and when you call the function in the main script. 
-
-We need to use meaningful names to remind us what we are doing, but it can be 
-confusing and cause subtle errors if we use the same variable names in many 
-different places, even when they seem to refer to the same things. This is one 
-of the reasons why we use `findGlobals()` to check for global variables being 
-used in functions. If we never reused names in different bits of code we would 
-not have to check this. For the time being (and the rest of practical 1), make 
-sure that no argument names in the main script accidentally match names in 
-functions (it’s okay for variable names in different functions to match). You 
-can relax this requirement in the real world, but it is best to be over-cautious 
-for the time being.
-
-For this practical, we are working with the human population in the script, so 
-in the following exercises we'll change the `growth.rate` variable (in the main 
-script) to `human.annual.growth`, and change `next.population` (in the main 
-script) to `updated.human.population`. 
+Demonstrate the instabilities at high timesteps in a report, with some text 
+explaining when things break down and the simulation is no longer reliable, and 
+when, conversely, there is no advantage to reducing the timesteps further.

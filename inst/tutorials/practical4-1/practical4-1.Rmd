@@ -1,150 +1,118 @@
 ---
-title: "Reproducible Programming in R Practical 4-1"
+title: "Reproducible Programming in R Practical 1-1"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 4-1!"
+description: "Create a data package"
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
-
+ 
 knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
 ```
 
+
 ## Overview
 
-*In this practical we will run our first stochastic simulations, starting with the stochastic version of the population growth model. From now on, we will expect a brief report in some format on every practical, so we will not give explicit guidance in every case.*
+*In this session you will take some classic biodiversity data and turn it into an R package.*
 
 ## Background
 
-In the lecture, we discussed the fact that the deterministic models that we have
-been using so far so do not handle dynamics at the individual level well. To 
-capture individual-level behaviour we need to include an element of chance in
-the model. This new type of model, which includes a probabilistic element, is 
-called a stochastic model.
+When we think about biodiversity data, we generally think about the hypothesis
+we are testing, how we are going to collect the data, and how we need to analyse
+it to investigate that hypothesis. Little thought is usually given to how to 
+store the data. This is a mistake! Large amounts of hard work in the field can
+be wasted by mistakes in storage. After regular backups so you don’t physically
+lose your data (if you’re not doing this, then you should think about it very
+hard), the next important thing to consider is whether you are always using the
+most up-to-date, error-free copy of your dataset.
+
+If your data is stored in one or more csv files or excel spreadsheets, you need
+to read that file into R. For that you need to know where it is. If you only 
+have one copy of it on your computer, and you update that when you clean the 
+data or add new records, then that is a single point of failure. If you
+accidentally make incorrect edits or delete the file, then you are entirely 
+dependent on backups to recover from your mistakes.
+
+If, on the other hand, you create a new file every time you update the data, 
+then all of your R scripts that do analyses on the data now have to refer to the
+new file, or you will need to copy the new data file to the projects where you
+are doing the analysis. If you don’t do either of these everywhere you are 
+working on the data, one or more of your analyses may be using an out of date 
+version of the data, and silently give incorrect answers.
+
+Even if your behaviour is perfect, and you never make mistakes with your data,
+then it is usually necessary to do some processing to the data before carrying 
+out the analyses. This may be as simple as changing some of the column names in 
+your tables so they are easier to work with in R (no spaces, for instance), some
+cleaning of the data to remove missing data, or some significant processing to 
+turn records that are easy to collect into data that is easy to analyse. Such a
+script, just like the data, needs to be updated, and the code needs to be 
+present wherever you carry out an analysis. It therefore suffers from exactly 
+the same problems as the data itself.
+
+There is a simple(-ish!) solution though. You don’t need to carry around your 
+own copy of `ggplot()` or `lmer()` in every script you write, so why should you 
+have to do it with the data? There is one definitive version of `ggplot()` and 
+`lmer()` on your computer, and you just refer to them by loading the {ggplot2} 
+and {lme4} packages using the `library()` function. When these packages get 
+updated to fix bugs or extend functionality, you just do it once by installing
+(normally updating) the R package, and then all of your scripts use the new 
+version. So why not turn your data into an R package and do the same?
 
 ## Tasks
 
-To write a model to handle stochastic population dynamics we obviously have to 
-update the timestep function to handle the new dynamics. However, we also have 
-to understand whether anything else has changed in how the simulation works. In
-fact, it has. There is now the chance that the population will die out before 
-the end of the experiment, so we need to look for this happening – not least to 
-speed up the simulation.
+You need to download the Barro Colorado Forest Census Plot Data from the 
+Smithsonian’s repository at https://repository.si.edu/handle/10088/20925. 
+Download files 3 and 4, the full census data 
+(<span style="color: #de77ae;">ViewFullTable.zip</span>) and the taxonomic data 
+on all of the species present 
+(<span style="color: #de77ae;">ViewTax.txt</span>), and download 
+<span style="color: #de77ae;">generate-data.R</span> and other files from 
+Moodle. You’re now ready to start. Create a private repository on GitHub with a
+suitable name, and create a project based on that git repository. Store it 
+somewhere sensible on your computer.
 
-We’ll start by writing the structural code (in **0401-run-birth-death.r**). From
-Practicals 3-3 and 3-4 we have a `while()` loop which runs the simulation 
-(remember that we are back to the birth-death population dynamics from 2-5 
-though):
-
-```{r}
-while (latest.population$time < end.time) {
-  latest.population <- timestep_deterministic_SIR(
-    # -- some arguments --
-  ) 
-  population.df <- rbind(population.df, latest.population)
-}
-```
-
-The loop ends when the time runs out. Now, instead, there are two reasons why we
-might stop the simulation – the time may have run out, or the timestep code may
-identify that the dynamics are now complete. To achieve this, the timestep code 
-will have to return both the updated population and whether the simulation is
-over. We suggest doing something like this:
-
-```{r}
-while (keep.going) {
-  data <- timestep_stochastic_birth_death(
-    # -- some arguments --
-  ) 
-  latest.population <- data$updated.pop
-  population.df <- rbind(population.df, latest.population)
-  ## The experiment may end stochastically or the time may run out 
-  keep.going <- (!data$end.experiment) &&
-    (latest.population$time < end.time)
-}
-```
-
-Notice that at the start of the loop `keep.going` has not yet been defined, 
-which will cause an error, so you will need to start it off with an appropriate
-value. Now you will need to write the `timestep.stochastic.birth.death()` 
-function (in **0401-stochastic-birth-death.r**) to provide the right information 
-to the main loop.
-
-We already have a deterministic step function for single species population 
-dynamics from Practical 1- 5. Starting with this code, you need to make three 
-changes. First, we need to handle the effect of changing timesteps and update
-the code from practical 2-5 (or the code you produced for SIS and SIR models in
-Practicals 3-3 and 3-4) with something like this:
-
-Then we need to work out whether the simulation has ended and return both
-pieces of information – the updated population and simulation state, by 
-returning a list like this at the end of the function (since a function can only
-return one item, we will have to return a list with two elements):
-
-```{r}
-timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, timestep) {
-  effective.birth.rate <- birth.rate * timestep
-  # -- some code to determine the numbers of new births and deaths --
-  next.population <- data.frame(time = latest$time + timestep
-                                #, -- some arguments --
-  )
-  # -- some code to calculate whether the experiment is finished --
-  list(updated.pop = next.population, 
-       end.experiment = is.finished) 
-}
-```
-
-But we need to calculate whether the experiment is finished first – before the
-end of the function! In this case, the experiment will only end if the
-population completely dies out, so:
-
-```{r}
-is.finished <- the.number.of.individuals.left == 0
-```
-
-Finally, we need to make the simulation stochastic using `rbinom()`. Remember if 
-you want to draw once from the binomial distribution with `count` trials, and a
-probability of success of `prob`, then the number of successes is:
-
-```{r}
-new.events <- rbinom(1, count, prob)
-```
-
-So, the key is to use the `rbinom()` function to determine the numbers of new 
-births and deaths each time step. The number of births is drawn from a binomial
-distribution with size count, and probability `birth.rate * timestep`, and the
-number of deaths from the same with probability `death.rate * timestep`.
+We’ll go through the process of creating a package, processing the data, 
+inserting the data into the package, and building the package so that you can 
+use it during the class. Remember **under no circumstances** commit the raw BCI
+records to your repository – it’s far too big. I’ll show you how to ignore it so 
+that you don’t do this by mistake. Once you have a working package, you’ll need 
+to add documentation to remind you what the package does – see
+https://r-pkgs.org/description.html and https://r-pkgs.org/data.html for more
+information, and then you’ll be checking each other’s packages to make sure they
+work. You can add someone as a collaborator (so they can see your package) by 
+going to <span style="color: #de77ae;">Settings > Collaborators</span> from the
+repository web page.
 
 ## Running the code
 
-When you are happy that the code is working and makes sense, **run the code**
-several times without changing any parameters of initial conditions and look at
-the output. The stochasticity means that we see variable outputs. If you don’t
-it may be because your starting population is too high, try something much 
-smaller, say 7 instead of 7 billion! You could also increase birth and death 
-rates or the time you’re simulating over to increase visible variability.
+The critical test is that you can restart R, call `library(mypackage)` on your
+package (where `mypackage` is the name of the package you created, I’m going to 
+call it <span style="color: #de77ae;">BCI</span>), and then immediately access 
+the data that you created. If you are testing someone else’s you’ll need to 
+download it first by creating a new project based on the GitHub repository or by calling `devtools::install_github("username/packagename")`.
 
-Notice that (as before) we have repeated the piece of code doing the simulation
-and have made use of the `new.graph = FALSE` option to overlay a second plot on 
-the first.
+## Additional work
 
-If you haven’t already, try increasing the value of timestep. What happens? You
-are actually getting impossible numbers (`NA`s) because the probability of
-giving birth has got above 1. You can fix this by using the `stop()` command in
-`timestep_stochastic_birth_death()` to stop running code when the numbers you 
-put in are impossible:
+Finally, if you have time, select another biodiversity dataset – you could, for
+instance, take one from the BioTIME repository at 
+http://biotime.st-andrews.ac.uk/ – and create a new package yourself to show you 
+understood the process.
 
-```{r}
-if ((effective.birth.rate >= 1) || (effective.death.rate >= 1))
-  stop("Effective rate too high, timestep must be too big")
-```
+## Submission
 
-Rerun the code and check it stops when appropriate.
-
-## Report
-
-Produce a report shows the code working.
+Once the package(s) is/are working, you need to submit it/them as your 
+assignment for today. First you need to make sure you have pushed all of the 
+changes to GitHub, then add me, 
+<span style="color: #de77ae;">richardreeve</span>, as a collaborator on your
+repository on GitHub, and then submit the link to the GitHub web page for your
+repository as your exercise on GitHub. If you’d like to write a short script
+demonstrating it working, you can add an R file to the repository, you can put 
+this in an **inst** directory, not the existing **R** directory (which is where
+package functions are stored), or the package will very likely not build. Check 
+this by clicking <span style="color: #de77ae;">Install and Restart</span> before 
+you submit your package!

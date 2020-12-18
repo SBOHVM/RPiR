@@ -1,10 +1,10 @@
 ---
-title: "Reproducible Programming in R Practical 3-3"
+title: "Reproducible Programming in R Practical 4-3"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 3-3!"
+description: "Reproducible Programming in R Practical 4-3!"
 ---
 
 ```{r setup, include=FALSE}
@@ -16,74 +16,104 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we separate out the model from the simulation functionality more cleanly. In the process we make the previous set of code safer to use (and more elegant!).*
+*In this practical we develop and run our first stochastic version of the SIS model.*
 
 ## Background
 
-When we are programming we often make quick additions to code, as we did in the
-last practical but it is good practice, if we want to keep them, to make sure
-they are included in the code in a way that makes it clear what’s going on. We
-had to know how the SIS model works to know that we could get away with 
-multiplying the parameters with `timestep.` This use of a low-level detail of
-how the model runs in other code is risky – we may later change the model and 
-not realise this hack no longer works.
+We saw in the previous practicals the impact of including randomness into the
+exponential model with births and deaths. Having developed the programming 
+framework, it is now time to investigate the impact of randomness in the 
+simplest epidemiological model – the SIS model.
 
 ## Tasks
 
-In the previous practical we multiplied the transmission and recovery rates up
-(or down) to reflect changes in `timestep.` However, `transmission.rate` and
-`recovery.rate` were not really changing, and we want the code to reflect that
-rather than abusing it to do something it wasn’t intended to do. Instead add a
-new argument, `timestep`, into `step_deterministic_SIS()` – we could call it
-`timestep_deterministic_SIS()`. Rather than submit the product 
-`transmission.rate * timestep` as an argument to the simulation function, we can 
-now separately pass the real rate parameters and the `timestep` separately.
+In this practical we will write a stochastic version of the SIS model. You have been provided with `run_simulation()` in the ProgInR package, which allows some extra functionality over
+`run_simple()` to run simulations using the older deterministic models, and some other code you will need in later exercises. You need to write **0403-run-SIS.r** and **0403-stochastic-SIS.r**, adapting **0402-run-birth-death.r** and **0401-stochastic-birth-death.r** to handle the SIS model rather than exponential growth. Pay attention in particular to writing the function in **0403-stochastic-SIS.r**, where the most important changes need to be made:
 
-That **rescaling** is now done **within the function **
-`timestep_deterministic_SIS()` in **0303-deterministic-SIS.r**. This could, for
-instance, create two new variables, perhaps called `effective.transmission.rate` 
-and `effective.recovery.rate` (or something shorter!). These new variables are 
-just our original rates rescaled to match the new time scale. Now that we have a
-timestep in the step function, it makes sense to have the time in there too, and
-that can be updated inside the function. The data frame can have an extra
-column:
+The function will need a new name, perhaps `timestep_stochastic_SIS()`:
 
-```{r}
-population.df <- data.frame(time = start.time,
-                            susceptibles = initial.susceptibles,
-                            infecteds = initial.infecteds)
+```{r]}
+timestep_stochastic_SIS <- function(latest, transmission.rate,
+                                    # -- some code --
+                                    }
 ```
 
-And the `timestep_deterministic_SIS()` function can update the time along with 
-the number of susceptibles and infecteds. Here, it makes the code slightly more
-elegant but it might be critical if, for instance, we wanted to adjust the 
-timestep as we went along, which we will need to do later. Now we’re not making 
-the vector of timesteps in advance, we can use a `while()` loop to decide when 
-we’re finished. For instance:
+It proceeds much as before with the deterministic SIS model, calculating the 
+effective beta and sigma at this timestep, and then as with the stochastic birth 
+death model, you need to work out whether the individual rate of infection or 
+recovery per timestep is greater than 1, in which case it cannot be used as a
+probability. In this case, the actual individual infection rate is
+
+$$effective.transmission.rate \times \frac{I}{N}$$
+
+and the individual recovery rate is `effective.recovery.rate`.
+
+Now for the key step... you need to sample from the binomial distribution (as 
+described in the lecture) to determine the number of new infecteds and 
+susceptibles using `rbinom()` with the probability of "success" set to the
+individual rates detailed above. Then update the populations, and if there are
+no infecteds left, then the epidemic is over, so set `is.finished` to `TRUE.` 
 
 ```{r}
-latest.population <- population.df
-while (latest.population$time < end.time) {
-  latest.population <- timestep_deterministic_SIS(latest = latest.population,
-                                                  transmission.rate = ecoli.transmission, 
-                                                  recovery.rate = ecoli.recovery, 
-                                                  timestep = this.timestep)
-  population.df <- rbind(population.df, latest.population) 
+is.finished <- next.infecteds == 0
+```
+
+Then append the new data to the data frame as usual, and return a list with the
+updated population data frame and the variable that tell us whether we are 
+finished or not.
+
+```{r}
+list(updated.pop = next.population, end.experiment = is.finished)
+```
+
+## Running the code / Report
+
+When you are happy with the structure of the code, run it a few times with the 
+same parameter values and observe the variability. Try changing beta (which will
+change $R_0$) and the initial number of infecteds and see how the likelihood of
+early extinction changes. Notice that we can automate overlaying multiple 
+simulations on the same graph:
+
+```{r}
+## We want a total of 10 plots
+first.graph <- TRUE 
+for (loop in 1:10) {
+  final.populations <- run_simulation(timestep_stochastic_SIS,
+                                      initial.populations,
+                                      end.time,
+                                      transmission.rate = ecoli.trans, 
+                                      recovery.rate = ecoli.recov, 
+                                      timestep = working.timestep)
+  # First time, make a new plot, afterwards just draw lines
+  if (first.graph) {
+    plot_populations(final.populations,
+                     new.graph = TRUE, 
+                     col = c(susceptibles  ="green", infecteds = "red"))
+    first.graph <- FALSE 
+  } else {
+    plot_populations(final.populations,
+                     new.graph = FALSE,
+                     col = c(susceptibles = "green", infecteds = "red"))
+  }
 }
 ```
 
-`latest.population$time` is the time that we are currently at, which we extract
-from the data frame after each timestep.
+You could do all ten plots in a single loop by setting `new.graph` appropriately
+by starting with `TRUE` and them changing it to `FALSE` as I did in the slides,
+or changing it depending on what value `loop` has, for instance. Try changing 
+the total population size and see the impact on the observed variability. You 
+should also overlay the deterministic results from Practical 3.3. 
+`run_simulation()` will now work with this as well since it automatically 
+detects that it just returns a dataframe, and behaves appropriately:
 
-## Running the code
+```{r}
+final.populations <- run_simulation(timestep_deterministic_SIS, 
+                                    initial.populations,
+                                    end.time,
+                                    transmission.rate = ecoli.trans,
+                                    recovery.rate = ecoli.recov, 
+                                    timestep = working.timestep)
+```
 
-Run this code and check that it gives the same answers as in the previous 
-practical. Don’t forget to check that your function is using only arguments 
-passed to it by running `findGlobals()`.
-
-## Report
-
-Demonstrate that the code is the same in a report by running both
-`step_deterministic_SIS()` and `timestep_deterministic_SIS()` with a couple of
-different values of timestep (using `source()` to load in both functions from 
-their respective files).
+Write a report to demonstrate the variability in the results of the stochastic
+model.

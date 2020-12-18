@@ -1,10 +1,10 @@
 ---
-title: "Reproducible Programming in R Practical 2-3"
-output:
+title: "Reproducible Programming in R Practical 3-3"
+output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 2-3!"
+description: "Reproducible Programming in R Practical 3-3!"
 ---
 
 ```{r setup, include=FALSE}
@@ -15,99 +15,75 @@ set.seed(123)
 ```
 
 ## Overview
-*In this session you will make it easier to reuse your code by placing functions in separate files, so that they can be referred to directly without having to be copied and pasted from file to file – a potentially error-strewn pastime.*
+
+*In this practical we separate out the model from the simulation functionality more cleanly. In the process we make the previous set of code safer to use (and more elegant!).*
 
 ## Background
 
-Breaking down the program into separate files is an important habit to get into. 
-It makes the code less prone to error in the longer term and easier to debug 
-because by creating independent units we are creating generic pieces of code 
-that we can re-use over and over again in other programs. Not only is reusing 
-code by copying and pasting code from one file to another inherently dangerous 
-as you may accidentally copy the wrong piece of code, but if a mistake is 
-identified at a later date there may be several place where the mistake has been 
-copied to and you may not remember them all, causing avoidable mistakes further 
-down the line.
+When we are programming we often make quick additions to code, as we did in the
+last practical but it is good practice, if we want to keep them, to make sure
+they are included in the code in a way that makes it clear what’s going on. We
+had to know how the SIS model works to know that we could get away with 
+multiplying the parameters with `timestep.` This use of a low-level detail of
+how the model runs in other code is risky – we may later change the model and 
+not realise this hack no longer works.
 
 ## Tasks
 
-The task for this practical is hopefully very simple! We are to turn the single 
-program from the previous practical into two pieces of code by putting the 
-`step_simple_growth()` function into a separate file, and include that file from 
-the original file using the `source()` function. We have called the new file containing the function `0203-step-simple-growth.r`, so we will use the command:
+In the previous practical we multiplied the transmission and recovery rates up
+(or down) to reflect changes in `timestep.` However, `transmission.rate` and
+`recovery.rate` were not really changing, and we want the code to reflect that
+rather than abusing it to do something it wasn’t intended to do. Instead add a
+new argument, `timestep`, into `step_deterministic_SIS()` – we could call it
+`timestep_deterministic_SIS()`. Rather than submit the product 
+`transmission.rate * timestep` as an argument to the simulation function, we can 
+now separately pass the real rate parameters and the `timestep` separately.
+
+That **rescaling** is now done **within the function **
+`timestep_deterministic_SIS()` in **0303-deterministic-SIS.r**. This could, for
+instance, create two new variables, perhaps called `effective.transmission.rate` 
+and `effective.recovery.rate` (or something shorter!). These new variables are 
+just our original rates rescaled to match the new time scale. Now that we have a
+timestep in the step function, it makes sense to have the time in there too, and
+that can be updated inside the function. The data frame can have an extra
+column:
 
 ```{r}
-source("0203-step-simple-growth.r")
-``` 
+population.df <- data.frame(time = start.time,
+                            susceptibles = initial.susceptibles,
+                            infecteds = initial.infecteds)
+```
 
-which tells our new version of the 
-program, which we have called `0203-run-simple-growth.r`, that it needs to look 
-in `0203-step-simple-growth.r` for functions. Your code may differ slightly 
-depending on exactly what your files are called. Finish writing (and commenting) 
-these two new files. Note that the function documentation should be in the 
-function file now and not in the main script.
+And the `timestep_deterministic_SIS()` function can update the time along with 
+the number of susceptibles and infecteds. Here, it makes the code slightly more
+elegant but it might be critical if, for instance, we wanted to adjust the 
+timestep as we went along, which we will need to do later. Now we’re not making 
+the vector of timesteps in advance, we can use a `while()` loop to decide when 
+we’re finished. For instance:
+
+```{r}
+latest.population <- population.df
+while (latest.population$time < end.time) {
+  latest.population <- timestep_deterministic_SIS(latest = latest.population,
+                                                  transmission.rate = ecoli.transmission, 
+                                                  recovery.rate = ecoli.recovery, 
+                                                  timestep = this.timestep)
+  population.df <- rbind(population.df, latest.population) 
+}
+```
+
+`latest.population$time` is the time that we are currently at, which we extract
+from the data frame after each timestep.
 
 ## Running the code
 
-Now to run the code, we don’t even need to open the file 
-**0203-step-simple-growth.r** – we just run **0203-run-simple-growth.r** making 
-sure that we have specified **0203-step-simple-growth.r** as a source in it. Its 
-contents are safely packaged away unless we want to edit them. 
-**0203-run-simple- growth.r** and **0203-step-simple-growth.r** together do 
-**exactly** what **0202-growth-functional.r** did. Check that your code produces 
-the same results as the previous two programs.
-
-## A clean start
-
-Sometimes you can find that something you have done before in R can interfere 
-with what you are now doing. If you’ve written all of your code correctly, then 
-obviously(!) this should never happen, but you may anyway know that you can 
-clear what is held in R’s memory using `rm(list=ls())` or by clicking the brush 
-on the **Workspace** in **RStudio** (or <span style="color: #1697C0;">Session > Clear Workspace...</span> in the menus). All 
-of the variables and functions should have now disappeared (*e.g.* if you type 
-`human.annual.growth` in R it should tell you that the object is “not found”). 
-Generally, I want you to produce reports though, and it turns out that when you 
-generate a report, it automatically starts a new copy of R to generate it. It’s 
-a good idea to regularly make reports and look at them to check they are 
-formatting as you expect, so this is just another reason to do that – it’s as if 
-you did the test without actually wiping everything in R.
-
-Fundamentally, I’m not a big fan of `rm(list=ls())`, and certainly not in any of 
-your scripts (so 
-**don’t use it in anything you submit under any circumstances**), because it’s 
-generally a sign your code isn’t written well if it can be affected by something 
-before it, and in any event the workspace will be cleared when you generate the 
-report. However, if things go irretrievably wrong, I would suggest you use 
-<span style="color: #1697C0;">Session > Restart R</span> in the menus: it is far 
-more effective than clearing just the workspace as it resets everything, while 
-leaving **RStudio** itself unaffected. Remember that once you have done this you may 
-have to set the working directory to the correct folder if you’re not sensibly 
-using a project, and you will certainly have to start running your code again 
-completely from the beginning.
+Run this code and check that it gives the same answers as in the previous 
+practical. Don’t forget to check that your function is using only arguments 
+passed to it by running `findGlobals()`.
 
 ## Report
 
-As before, generate a report from the script file (hopefully you can work out 
-which one this is!) and check that it produces the same results as before. Note 
-again that the notebooks are always generated from a new, clean, version of R, 
-so this is a very important final check that all of your code is working 
-correctly – but only if you read it and check it looks right! The other check I 
-strongly encourage you to do is to check that your function does not use any 
-global variables by using `findGlobals()`.
-
-Secondly, generate a report for the function file itself. If you want to, you 
-can put the `findGlobals()` check into this function file, because now you are 
-running this check when you generate the report for that file, so it doesn’t 
-clutter up the main script itself, but this is only any good if you generate a 
-report from the function file! You can make it that the report will not generate 
-for that script unless you aren’t using global variables with the following code 
-snippets:
-
-```{r}
-#' Now check that function doesn't have any global variables.
-library(codetools)
-globals <- findGlobals(step_simple_growth, merge=FALSE)$variables 
-if (length(globals) != 0) {
-stop("Function step_simple_growth() may not use global variable(s): ", globals)
-}
-```
+Demonstrate that the code is the same in a report by running both
+`step_deterministic_SIS()` and `timestep_deterministic_SIS()` with a couple of
+different values of timestep (using `source()` to load in both functions from 
+their respective files).

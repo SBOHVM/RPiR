@@ -1,10 +1,10 @@
 ---
 title: "Reproducible Programming in R Practical 1-3"
-output: 
+output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Add functions and documentation to a data package"
+description: "Reproducible Programming in R Practical 1-3!"
 ---
 
 ```{r setup, include=FALSE}
@@ -14,80 +14,162 @@ knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
 ```
 
-
 ## Overview
-*In this session you will add some functions to your biodiversity data package to allow you to subsample from your data. The intention is just to see how we add functions to a package, and to provide you with an example of what the documentation for a function in an R package looks like. You will also add the documentation for the package as a whole.*
+*In this session you will make it easier to reuse your code by placing functions in separate files, so that they can be referred to directly without having to be copied and pasted from file to file – a potentially error-strewn pastime.*
 
 ## Background
 
-It’s rarely the case that you will have access to a fully sampled dataset like
-that at BCI. To pretend that your dataset has incomplete data, I have provided 
-you with two functions on Moodle that will subsample the data in different ways. 
-The first, `sample_by_species()`, will sample from the dataset as if you were
-recording only some of the species (chosen at random) and ignoring the others. 
-The second, `sample_by_subcommunities()`, will record the counts from only 
-some of the subcommunities (here quadrats) and ignore the others. There are 
-other ways of subsampling or recording data incompletely, and we will
-investigate this in the project. You can see some documentation on how to write
-help files for functions at https://r-pkgs.org/man.html#man-functions and an
-older version at http://r-pkgs.had.co.nz/man.html#man-functions – these pages 
-are very useful and you should take a look.
+Breaking down the program into separate files is an important habit to get into. 
+It makes the code less prone to error in the longer term and easier to debug 
+because by creating independent units we are creating generic pieces of code 
+that we can re-use over and over again in other programs. Not only is reusing 
+code by copying and pasting code from one file to another inherently dangerous 
+as you may accidentally copy the wrong piece of code, but if a mistake is 
+identified at a later date there may be several place where the mistake has been 
+copied to and you may not remember them all, causing avoidable mistakes further 
+down the line.
 
 ## Tasks
 
-You simply need to download the R files for these functions from Moodle and put
-them in the <span style="color: #de77ae;">R</span> folder of your package, and
-edit the documentation for each of these functions and the 
-<span style="color: #de77ae;">DESCRIPTION</span> file of your package so that 
-all dependencies are included. Then regenerate the documentation and reinstall 
-the package from the <span style="color: #de77ae;">Build</span> menu. Doing this 
-should allow you to access the help files for these functions 
-(`?sample_by_species` and `?sample_by_communities`) and run the example code (by 
-calling `example(sample_by_species)`, for instance). 
+We are to turn the single program from the previous practical into two pieces of 
+code by putting the `step_simple_growth()` function into a separate file, and 
+include that file from the original file using the `source()` function. We have
+called the new file containing the function 
+`0103-step-simple-growth-function.r`, so we will use the command:
 
-You should also create a description for the overall package, so that `?BCI` 
-returns a description, and you should put the same (or similar) text into the 
-<span style="color: #de77ae;">README.md</span> file for the package so that 
-people going to GitHub will see what the package that you have created does 
-without having to install it. Note that GitHub README pages use a special type 
-of markdown called Git Flavored Markdown; more information can be found here https://docs.github.com/en/free-pro-team@latest/github/writing-on-github with 
-more general documentation here 
-https://guides.github.com/features/mastering-markdown/. Note that with markdown
-you don’t need to start lines with `#'`.
+```{r, eval = FALSE}
+source("0103-step-simple-growth-function.r")
+``` 
 
-To do this, create a new file in the <span style="color: #de77ae;">R</span> 
-folder – I’m going to call it <span style="color: #de77ae;">BCI-package.R</span> 
-because the convention is {packagename}-package.R. Then describe your package (most easily lifted 
-from the <span style="color: #de77ae;">DESCRIPTION</span> file):
+which tells the main script (the R program), that it needs to look in 
+`0103-step-simple-growth-function.r` for functions. The function documentation 
+should be in the function file now and not in the main script, like this:
 
-```{r eval = FALSE}
-#' BCI data package 
-#'
-#' Package to hold the BCI data (or whatever) – maybe also mention something
-#' about these functions now, and put that in the DESCRIPTION too. And then
-#' put it in the README.md file. 
-#'
-#' @import magrittr 
-#'
-#' @name BCI-package
-#' @aliases BCI
-#' @docType package 
-#'
-NULL
+```{r functions, exercise = TRUE, exercise.cap = "0103-step-simple-growth-function.r"}
+#' step_simple_growth function
+step_simple_growth <- function(current.population, growth.rate) {
+  # Calculate changes to population
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Return updated population
+  next.population
+}
 ```
 
-There are a few things going on here that you should notice for making packages 
-in the future. The first is that you need to say what your package is called – 
-here I have given it two names `BCI-package` and an alias of just `BCI`, which 
-you do with the `@aliases` command. Secondly, the `NULL` at the end of the file
-is included when there is no object associated with this documentation, which is
-the case here, since this file contains the package documentation, as defined
-explicitly in the `@docType` tag (more info here –
-http://r-pkgs.had.co.nz/man.html#man-packages). Finally, if you are using any 
-packages in any of your functions, you may want to import them into your 
-package. This is done using `@import` – see more here –
-http://r-pkgs.had.co.nz/namespace.html. You can then put the same, or a similar,
-package description into the <span style="color: #de77ae;">README.md</span> 
-file. Once you have redocumented and reinstalled everything, and checked that it 
-is all working, commit and push all of the changes to GitHub and ask your 
-collaborator to check that this works for them as well.
+and the main script should look something like this:
+
+```{r main, exercise = TRUE, exercise.cap = "0103-run-simple-growth.r"}
+# Load the step_simple_growth() function into the global environment (my workspace)
+source("0103-step-simple-growth-function.r")
+
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation.
+
+# Set the growth rate
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+
+# And setting times
+start.time <- 0
+end.time <- 100
+
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+
+# Set up the population starting size (at the first timestep)
+population.vector <- c(initial.count)
+
+# The timesteps that the simulation will run through
+timesteps <- seq(from=start.time + 1, to=end.time)
+
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # Calculate population at next timestep
+  next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
+                                      growth.rate = growth.rate)
+  # Add new element onto end of population vector
+  population.vector <- c(population.vector, next.population)
+}
+
+#' Plot the results
+#' ----------------
+#' And finally we output the results.
+
+# Now we can plot the timesteps against the population vector
+plot(append(start.time, timesteps), population.vector, type = "l")
+```
+
+## Running the code
+
+Now to run the code, we don’t even need to open the file 
+<span style="color: #de77ae;">0103-step-simple-growth-function.r</span>, 
+we just run the main script,
+<span style="color: #de77ae;">0103-run-simple-growth.r</span> making sure that 
+we have specified 
+<span style="color: #de77ae;">0103-step-simple-growth-function.r</span> as a 
+source in it. Its contents (the `step_simple_growth()` function) are safely 
+packaged away unless we want to edit them. 
+<span style="color: #de77ae;">0103-run-simple-growth.r</span> and 
+<span style="color: #de77ae;">0103-step-simple-growth-function.r</span>
+together do **exactly** what 
+<span style="color: #de77ae;">0102-growth-functional.r</span> did. 
+
+## A clean start
+
+Sometimes you can find that something you have done before in R can interfere 
+with what you are now doing. If you’ve written all of your code correctly, then 
+obviously(!) this should never happen, but you may anyway know that you can 
+clear what is held in R’s memory using `rm(list=ls())` or by clicking the brush 
+on the **Workspace** in **RStudio** (or <span style="color: #1697C0;">Session > Clear Workspace...</span> in the menus). All 
+of the variables and functions should have now disappeared (*e.g.* if you type 
+`human.annual.growth` in R it should tell you that the object is “not found”). 
+Generally, I want you to produce reports though, and it turns out that when you 
+generate a report, it automatically starts a new copy of R to generate it. It’s 
+a good idea to regularly make reports and look at them to check they are 
+formatting as you expect, so this is just another reason to do that – it’s as if 
+you did the test without actually wiping everything in R.
+
+Fundamentally, I’m not a big fan of `rm(list=ls())`, and certainly not in any of 
+your scripts (so 
+**don’t use it in anything you submit under any circumstances**), because it’s 
+generally a sign your code isn’t written well if it can be affected by something 
+before it, and in any event the workspace will be cleared when you generate the 
+report. However, if things go irretrievably wrong, I would suggest you use 
+<span style="color: #1697C0;">Session > Restart R</span> in the menus: it is far 
+more effective than clearing just the workspace as it resets everything, while 
+leaving **RStudio** itself unaffected. Remember that once you have done this you may 
+have to set the working directory to the correct folder if you’re not sensibly 
+using a project, and you will certainly have to start running your code again 
+completely from the beginning.
+
+## Report
+
+As before, generate a report from the script file (hopefully you can work out 
+which one this is!) and check that it produces the same results as before. Note 
+again that the notebooks are always generated from a new, clean, version of R, 
+so this is a very important final check that all of your code is working 
+correctly – but only if you read it and check it looks right! The other check I 
+strongly encourage you to do is to check that your function does not use any 
+global variables by using `findGlobals()`.
+
+Secondly, generate a report for the function file itself. If you want to, you 
+can put the `findGlobals()` check into this function file, because now you are 
+running this check when you generate the report for that file, so it doesn’t 
+clutter up the main script itself, but this is only any good if you generate a 
+report from the function file! You can make it that the report will not generate 
+for that script unless you aren’t using global variables with the following code 
+snippets:
+
+```{r}
+#' Now check that function doesn't have any global variables.
+library(codetools)
+globals <- findGlobals(step_simple_growth, merge=FALSE)$variables 
+if (length(globals) != 0) {
+stop("Function step_simple_growth() may not use global variable(s): ", globals)
+}
+```
