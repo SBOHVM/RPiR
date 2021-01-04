@@ -223,13 +223,13 @@ my_function(x)
 print(x)
 ```
 
-Having now defined the function, the code should proceed much as before but 
-rather than have a chunk of code inside the loop we can just assign the output 
-of the function `step_simple_growth()` to the `next.population` object
-(replacing the first three lines of code in the `for()` loop with one line of 
-code). Try it now and then run the code again, comparing the plotted outputs
-to check that your new code works exactly as the old version did (but structured 
-in a better style):
+Having now defined the `step_simple_growth()` function, the code should proceed 
+much as before but rather than have a chunk of code inside the loop we can just
+assign the output of the function `step_simple_growth()` to the 
+`next.population` object (replacing the first three lines of code in the `for()` 
+loop with one line of code). Try it now and then run the code again, comparing 
+the plotted outputs to check that your new code works exactly as the old version 
+did (but structured in a better style):
 
 ```{r nextstep, exercise = TRUE, exercise.lines = 57}
 #' ### Function: step_simple_growth() 
@@ -360,13 +360,13 @@ next.population <- step_simple_growth(current.population = tail(population.vecto
                                       growth.rate = growth.rate)
 ```
 
-`current.population` is now an argument of the `step_simple_growth()` function, 
-and so you set its value using `=` inside the function call instead of using 
-`<-` in the main script as we did in Practical 1-1. `growth.rate` is both an
-argument of the function and an object in the main script. Note that we 
-always set arguments to functions with `argument = value`, and we strongly 
-recommend using `object <- value` to set variables in your code to make the
-distinction clear. 
+Note that we always set arguments to functions with `argument = value`, and we
+strongly recommend using `object <- value` to set variables in your main script 
+to make the distinction clear. For example, `current.population` is now 
+an argument of the `step_simple_growth()` function, and so you set its value 
+using `=` inside the function call instead of using `<-` in the main script as 
+we did on line 28 of <span style="color: #de77ae;">0101-growth-functional.r
+</span>. 
 
 When you are happy with the code and its outputs there is another task. If you 
 look at the whole code, you will see that `growth.rate` is both the name of the
@@ -375,10 +375,10 @@ argument in the function and the name of the variable in the script, and
 above, this does not affect the running of the code but can be difficult to 
 read and can result in confusion when debugging for example.
 
-Here's the latest version of the code to play with, complete with the 
+Here's the latest version of the code to play with (<span style="color: #de77ae;">0102-growth-functional.r</span>), complete with the 
 `step_simple_growth()` function:
 
-```{r laststep, exercise = TRUE, exercise.cap = "0202-growth-functional.r", exercise.lines = 58}
+```{r laststep, exercise = TRUE, exercise.cap = "0102-growth-functional.r", exercise.lines = 58}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
 #'
@@ -439,18 +439,18 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
-Find all the instances of `growth.rate` and replace them with `rate1` in the 
-`step_simple_growth()` function **but not in the script that follows**, then
+Find all the instances of `growth.rate` and replace them with `my_rate` in the 
+`step_simple_growth()` function (lines 11-18), then
 run the code. What happens? You should get an error. It will tell you that you 
 have an unused argument, `growth.rate` when you call `step_simple_growth()`. 
-This is because when you call the function (on line 47), you set its 
+This is because when you call the function (lines 47-48), you set its 
 `growth.rate` argument to the main script’s value of `growth.rate`, but the 
-function now only has an argument called `rate1` (line 11). To fix this, we can 
-change the call to `step_simple_growth()` to say `rate1 = growth.rate` (on line 
-48). Now rerun the code and check it works.
+function now only has an argument called `rate` (line 11). To fix this, we can 
+change the call to `step_simple_growth()` to say `my_rate = growth.rate` (line 
+48), remembering to . Now rerun the code and check it works.
 
 Now do the same with `next.population`, replacing it **just in the function** 
-with `my.value`, or something sensible, then run the code. What happens? You 
+with `my_population`, or something sensible, then run the code. What happens? You 
 should find that the model runs exactly as before this time. This is because 
 none of the names of objects being used in the function matter – even if their
 values are being returned to the main script. Object names and values are 
