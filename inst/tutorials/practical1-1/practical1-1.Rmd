@@ -9,6 +9,7 @@ description: "Write a report"
 
 ```{r setup, include=FALSE}
 library(learnr)
+gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
