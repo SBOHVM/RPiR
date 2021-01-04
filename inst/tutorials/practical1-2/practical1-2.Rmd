@@ -22,10 +22,11 @@ set.seed(123)
 
 ## Background
 
-When we look at our first program, there are several
-distinct parts to the code, despite its brevity. We first set the initial 
-conditions of the simulation, then we run the simulation itself, and finally we 
-plot the output.
+When we look at our first program (for convenience, 
+<span style="color: #de77ae;">0101-growth-functional.r</span> is printed below),
+there are several distinct parts to the code, despite its brevity. We first set 
+the initial conditions of the simulation, then we run the simulation itself, and
+finally we plot the output.
 
 ```{r plot, exercise=TRUE, exercise.cap = "0101-growth-functional.r", exercise.lines = 57}
 #' Set up the simulation parameters
@@ -180,14 +181,14 @@ This will return some built in functionality of R which your function uses under
 
 Note that the objects `new.additions` and `next.population` remain internal to 
 the function `step_simple_growth()` and have no effect on the main script. 
-Objects within a function exist seperately from those in the main script and 
-only exist for the length of time the function is run (see the example below). 
+**Objects within a function exist seperately from those in the main script and 
+only exist for the length of time the function is run** (see the example below). 
 We could call them `x` and `y` if we wanted to, it doesn't matter. What is 
 important, is the name that we assign to the 
-**output of the function in the main script**, which in this case is also
+output of the function in the main script, which in this case is also
 `next.population`. This reuse of names is slightly confusing, but doesn't
-affect the running of the code. For clarity, however, and general readability 
-of the code we'll rename these objects later (don't worry about them right now).
+affect the running of the code. For clarity, however, we'll rename these objects later (don't worry about them right now). Try playing with the following code 
+chunk and make sure you understand what is happening:
 
 ```{r inout, exercise = TRUE}
 # Simple function that adds 1 to an input
