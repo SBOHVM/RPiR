@@ -28,7 +28,7 @@ there are several distinct parts to the code, despite its brevity. We first set
 the initial conditions of the simulation, then we run the simulation itself, and
 finally we plot the output.
 
-```{r plot, exercise=TRUE, exercise.cap = "0101-growth-functional.r", exercise.lines = 57}
+```{r plot, exercise=TRUE, exercise.cap = "0101-growth-functional.r", exercise.lines = 42}
 #' Set up the simulation parameters
 #' --------------------------------
 #' First we set up the parameters for the simulation.
