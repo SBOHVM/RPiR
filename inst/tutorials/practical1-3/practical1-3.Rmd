@@ -25,7 +25,7 @@ because by creating independent units we are creating generic pieces of code
 that we can re-use over and over again in other programs. Not only is reusing 
 code by copying and pasting code from one file to another inherently dangerous 
 as you may accidentally copy the wrong piece of code, but if a mistake is 
-identified at a later date there may be several place where the mistake has been 
+identified at a later date there may be several places where the mistake has been 
 copied to and you may not remember them all, causing avoidable mistakes further 
 down the line.
 
