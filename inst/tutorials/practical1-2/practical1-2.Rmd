@@ -97,18 +97,21 @@ models, it is much easier to do it when the code is well structured.
 
 ## Tasks
 
-Look at the code from the last practical. The code in the for loop, that is to 
-say inside the curly brackets, describes the way that the population changes 
-from one point in time to the next. This (together with, perhaps, the starting 
-conditions) is what we would be changing if we wanted to explicitly introduce 
-birth and death into the model, or make it a model of disease spread rather than 
-population growth. The rest would remain pretty much the same.
+Look at <span style="color: #de77ae;">0101-growth-functional.r</span>. The code 
+in the for loop, that is to say inside the curly brackets, describes the way 
+that the population changes from one point in time to the next. This (together 
+with, perhaps, the starting conditions) is what we would be changing if we 
+wanted to explicitly introduce birth and death into the model, or make it a 
+model of disease spread rather than population growth. The rest would remain 
+pretty much the same.
 
 We want to take this code and put it into its own function at the beginning of 
 the program (we'll call it `step_simple_growth()`). It should take 
 the current population count from the vector `population.vector` and the value 
 of `growth.rate` as inputs (they are called arguments), update the population 
-size, and return it. This is the framework for such a function with comments:
+size, and return it. This is the framework for such a function with comments 
+(try to fill it in, using the for loop in 
+<span style="color: #de77ae;">0101-growth-functional.r</span> as a guide):
 
 ```{r stepsimplegrowth, exercise = TRUE, exercise.cap = "step_simple_growth()", exercise.lines = 20}
 #' ### Function: step_simple_growth() 
