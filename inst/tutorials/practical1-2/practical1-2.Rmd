@@ -163,7 +163,6 @@ follows:
 
 ```{r globals-setup}
 step_simple_growth <- function(current.population, growth.rate) {
-  current.population <- tail(population.vector, 1)
   new.additions <- growth.rate * current.population
   next.population <- current.population + new.additions
   next.population
