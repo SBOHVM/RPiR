@@ -273,7 +273,7 @@ end.time <- 100
 population.vector <- initial.count
 
 # The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
+timesteps <- seq(from = start.time + 1, to = end.time)
 
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
@@ -333,7 +333,7 @@ end.time <- 100
 population.vector <- initial.count
 
 # The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
+timesteps <- seq(from = start.time + 1, to = end.time)
 
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
@@ -420,7 +420,7 @@ end.time <- 100
 population.vector <- initial.count
 
 # The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
+timesteps <- seq(from = start.time + 1, to = end.time)
 
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
