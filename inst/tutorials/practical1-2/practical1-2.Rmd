@@ -184,19 +184,37 @@ This will return some built in functionality of R which your function uses under
 Note that the objects `new.additions` and `next.population` remain internal to 
 the function `step_simple_growth()` and have no effect on the main script. 
 **Objects within a function exist seperately from those in the main script and 
-only exist for the length of time the function is run** (see the example below). 
-We could call them `x` and `y` if we wanted to, it doesn't matter. What is 
-important, is the name that we assign to the 
-output of the function in the main script, which in this case is also
-`next.population`. This reuse of names is slightly confusing, but doesn't
-affect the running of the code. For clarity, however, we'll rename these objects later (don't worry about them right now). Try playing with the following code 
-chunk and make sure you understand what is happening:
+only exist for the length of time the function is run** (see `my_function()` 
+below). We could call them `x` and `y` if we wanted to, it doesn't matter. What 
+is important, is the name that we assign to the output of the function in the 
+main script, which in this case (as we shall shortly see) is also 
+`next.population`. This reuse of names is slightly confusing, but doesn't affect 
+the running of the code. For clarity, however, we'll rename these objects later
+(don't worry about them right now). 
 
-```{r inout, exercise = TRUE}
+Try playing with the following code chunk. Add a print statement inside
+`my_function()`, then add a print statement after calling `my_function()` 
+in the main script, and compare the value of `x`. Make sure you understand what 
+is happening.
+
+```{r inout, exercise = TRUE, exercise.cap = "my_function()", exercise.lines = 11}
 # Simple function that adds 1 to an input
 my_function <- function(input) {
   x <- input + 1
-  print(paste("inside x =", x))
+  x
+}
+
+# Test the function
+x <- 10
+my_function(x)
+```
+
+```{r inout-solution}
+# Simple function that adds 1 to an input
+my_function <- function(input) {
+  x <- input + 1
+  print(x)
+  x
 }
 
 # Test the function
