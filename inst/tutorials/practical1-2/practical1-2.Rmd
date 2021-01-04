@@ -290,6 +290,66 @@ for (new.time in timesteps) {
 # Now we can plot the timesteps against the population vector
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
+
+```{r nextstep-solution}
+#' ### Function: step_simple_growth() 
+#' Run one step of a simple deterministic exponential growth model. 
+#'
+#' Arguments: 
+#' - current.population -- the population count now
+#' - growth.rate -- the growth rate 
+#'
+#' Returns:
+#' - the updated population count
+#'
+step_simple_growth <- function(current.population, growth.rate) {
+  # Calculate changes to population
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Return updated population
+  next.population
+}
+
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation.
+
+# Set the growth rate
+growth.rate <- 0.015
+
+# Starting population size
+initial.count <- 7000000000
+
+# And setting times
+start.time <- 0
+end.time <- 100
+
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+
+# Set up the population starting size (at the first timestep)
+population.vector <- initial.count
+
+# The timesteps that the simulation will run through
+timesteps <- seq(from=start.time + 1, to=end.time)
+
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+   # Calculate population at next timestep
+  next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
+                                      growth.rate = growth.rate)
+  # Add new element onto end of population vector
+  population.vector <- c(population.vector, next.population)
+}
+
+#' Plot the results
+#' ----------------
+#' And finally we output the results.
+
+# Now we can plot the timesteps against the population vector
+plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
 Within the `for()` loop where the time gets updated the code should now contain 
