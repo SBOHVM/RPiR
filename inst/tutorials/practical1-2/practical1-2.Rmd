@@ -48,10 +48,10 @@ end.time <- 100
 #' Then run it so that we can get the output we need
 
 # Set up the population starting size (at the first timestep)
-population.vector <- c(initial.count)
+population.vector <- initial.count
 
 # The timesteps that the simulation will run through
-timesteps <- seq(from=start.time + 1, to=end.time)
+timesteps <- seq(from = start.time + 1, to = end.time)
 
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
@@ -62,7 +62,7 @@ for (new.time in timesteps) {
   # Calculate population at next timestep
   next.population <- current.population + new.additions
   # Add new element onto end of population vector
-  population.vector <- append(population.vector, next.population)
+  population.vector <- c(population.vector, next.population)
 }
 
 #' Plot the results
@@ -70,7 +70,7 @@ for (new.time in timesteps) {
 #' And finally we output the results.
 
 # Now we can plot the timesteps against the population vector
-plot(append(start.time, timesteps), population.vector, type = "l")
+plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
 Inside the simulation, we have the mechanics of iterating over the timesteps and keeping track of the results, and there is the implementation of the growth 
@@ -252,7 +252,7 @@ end.time <- 100
 #' Then run it so that we can get the output we need
 
 # Set up the population starting size (at the first timestep)
-population.vector <- c(initial.count)
+population.vector <- initial.count
 
 # The timesteps that the simulation will run through
 timesteps <- seq(from=start.time + 1, to=end.time)
@@ -270,7 +270,8 @@ for (new.time in timesteps) {
 #' And finally we output the results.
 
 # Now we can plot the timesteps against the population vector
-plot(append(start.time, timesteps), population.vector, type = "l")
+plot(c(start.time, timesteps), population.vector, type = "l")
+```
 ```
 
 Within the `for()` loop where the time gets updated the code should now contain 
@@ -338,7 +339,7 @@ end.time <- 100
 #' Then run it so that we can get the output we need
 
 # Set up the population starting size (at the first timestep)
-population.vector <- c(initial.count)
+population.vector <- initial.count
 
 # The timesteps that the simulation will run through
 timesteps <- seq(from=start.time + 1, to=end.time)
@@ -357,7 +358,7 @@ for (new.time in timesteps) {
 #' And finally we output the results.
 
 # Now we can plot the timesteps against the population vector
-plot(append(start.time, timesteps), population.vector, type = "l")
+plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
 Find all the instances of `growth.rate` and replace them with `rate1` in the 
