@@ -3,8 +3,8 @@
 
 To install this package:
 ```
-install.packages(c("remotes", "learnr"))
-library(remotes)
+install.packages(c("devtools", "learnr"))
+library(devtools)
 install_github("soniamitchell/progInR")
 ```
 
