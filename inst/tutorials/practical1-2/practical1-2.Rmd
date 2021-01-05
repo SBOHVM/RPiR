@@ -18,7 +18,7 @@ set.seed(123)
 
 ## Overview
 
-*In this session you will break the program 0201-growth-loop.r into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
+*In this session you will break the program 0101-growth-loop.r into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
 
 ## Background
 
@@ -126,9 +126,9 @@ size, and return it. This is the framework for such a function with comments
 #'
 step_simple_growth <- function(current.population, growth.rate) {
   # Calculate changes to population
-  new.additions <- # --- ? ---
-  # --- ? ---
-  next.population <- # --- ? ---
+  new.additions <- ___
+  # ___
+  next.population <- ___
   # Return updated population
   next.population
 }
@@ -146,7 +146,7 @@ step_simple_growth <- function(current.population, growth.rate) {
 ```
 
 ```{r stepsimplegrowth-check}
-grade_code()
+grade_this_code()
 ```
 
 The `function()` command, like `for()`, has one line of code after it (comments 
@@ -223,6 +223,10 @@ my_function(x)
 print(x)
 ```
 
+```{r inout-check}
+grade_this_code()
+```
+
 Having now defined the `step_simple_growth()` function, the code should proceed 
 much as before but rather than have a chunk of code inside the loop we can just
 assign the output of the function `step_simple_growth()` to the 
@@ -277,8 +281,8 @@ timesteps <- seq(from = start.time + 1, to = end.time)
 
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
-  # --- ? ---
-  next.population <- # --- ? ---
+  # ___
+  next.population <- ___
   # Add new element onto end of population vector
   population.vector <- c(population.vector, next.population)
 }
@@ -337,9 +341,9 @@ timesteps <- seq(from = start.time + 1, to = end.time)
 
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
-   # Calculate population at next timestep
+  # Calculate population at next timestep
   next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
-                                      growth.rate = growth.rate)
+                                        growth.rate = growth.rate)
   # Add new element onto end of population vector
   population.vector <- c(population.vector, next.population)
 }
@@ -426,7 +430,7 @@ timesteps <- seq(from = start.time + 1, to = end.time)
 for (new.time in timesteps) {
   # Calculate population at next timestep
   next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
-                                      growth.rate = growth.rate)
+                                        growth.rate = growth.rate)
   # Add new element onto end of population vector
   population.vector <- c(population.vector, next.population)
 }

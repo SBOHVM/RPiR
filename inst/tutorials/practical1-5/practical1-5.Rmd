@@ -1,16 +1,16 @@
 ---
-title: "Reproducible Programming in R Practical 2-5"
+title: "Reproducible Programming in R Practical 1-5"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 2-5!"
+description: "Reproducible Programming in R Practical 1-5!"
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
 gradethis::gradethis_setup()
- 
+
 knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
 ```
@@ -21,7 +21,11 @@ set.seed(123)
 
 ## Background
 
-There are many refinements to our code that we could make, and indeed we will work through several of them during the course, but our current framework is already sufficiently sophisticated to handle some much more complex population dynamics. We are therefore ready to start to thinking about our models rather than the mechanics of what we are doing.
+There are many refinements to our code that we could make, and indeed we will 
+work through several of them during the course, but our current framework is 
+already sufficiently sophisticated to handle some much more complex population
+dynamics. We are therefore ready to start to thinking about our models rather 
+than the mechanics of what we are doing.
 
 ## Tasks
 
@@ -29,13 +33,9 @@ In the modelling lecture we discussed a simple population growth model of the fo
 
 $$N(t+1) = N(t) + \lambda\; N(t)$$
 
-which we can state roughly in English as
+which we can state roughly in English as "*the next population size is the current size plus the new additions (lambda times the current size)*", and this can be rewritten in turn in R as:
 
-*the next population size is the current size plus the new additions (lambda times the current size)*
-
-and this can be rewritten in turn in R as
-
-```{r}
+```{r, eval = FALSE}
 next.count <- latest$count + lambda * latest$count
 ```
 
@@ -45,56 +45,177 @@ write this on multiple lines as we calculate the new additions separately and
 then add them in. Note that, for consistency, throughout these practicals our 
 code will refer to the data frame with the current latest population counts in 
 as `latest` as in Practical 2-4, and these are referred to in the equations such
-as those on this page as $N(t)$, etc. The updated values, referred to above as
-$N(t+1)$, appear as `next.something.or.other` in the function in R if they 
-have a name at all, and I have tended to call things
-`updated.something.or.other` in the main script just to be distinct. This is
-purely for consistency of style on my part, and obviously you can do as you 
-please so long as you choose something that makes sense in the context of the
-problem you are solving.
+as those on this page as $N(t)$. The updated values, referred to above as
+$N(t+1)$, appear as `next.something` in the functions if they 
+have a name at all, and `updated.something` in the main script just 
+to be distinct. 
 
 We now want to update the model to include both births and deaths, *i.e.*
 
 $$N(t+1) = N(t) + b\; N(t) – d\; N(t)$$
 which can be similarly translated as
-*the next population size is the current size plus the new births (b times the current size) minus the new deaths (d times the current size)*
-where $b$ represents the birth rate and d represents the death rate.
+"*the next population size is the current size plus the new births (b times the current size) minus the new deaths (d times the current size)*",
+where $b$ represents the birth rate and $d$ represents the death rate.
 
-We will now reuse **0204-plot-helper.r** while adapting the other files 
-appropriately. Take **0204-run-growth.r** and **0204-step-growth.r** from the 
-previous practical session and edit these programs to produce new versions (we
-have called them **0205-run-birth-death.r** and **0205-step-birth-death.r**, and 
-the function `step_deterministic_birth_death()`). Things to remember are:
+In this practical, we will reuse 
+<span style="color: #de77ae;">0104-plot-helper.r</span> while adapting 
+<span style="color: #de77ae;">0104-run-growth.r</span> and 
+<span style="color: #de77ae;">0104-step-growth.r</span> appropriately.
 
-* to give the parameters sensible and explanatory names in the program, not just `b` and `d`.
-* that there is now an additional parameter in the specification
-* that you need to pass the new parameter as an argument to any function that uses it
-* that you will still need **0204-plot-helper.r**
+For convenience, here's a slightly adapted version of
+<span style="color: #de77ae;">0104-step-growth.r</span>, which we've renamed as 
+<span style="color: #de77ae;">0105-step-birth-death.r</span>. Try to fill in the 
+blanks:
 
-## Running the code
+```{r stepbirthdeath, exercise = TRUE, exercise.cap = "0105-step-birth-death.r", exercise.lines = 20}
+#' ### Function: step_deterministic_birth_death() 
+#' Run one step of a simple deterministic exponential birth and death model. 
+#'
+#' Arguments: 
+#' - latest -- the population count now
+#' - birth.rate -- the birth rate 
+#' - death.rate -- the death rate 
+#'
+#' Returns:
+#' - the updated population count
+#'
+step_deterministic_birth_death <- function(latest, ___, ___) {
+  # Calculate changes to population
+  new.additions <- ___ * latest$count 
+  ___ <- ___ * latest$count 
+  # Calculate population at next timestep
+  next.count <- latest$count + new.additions - ___
+  # Create a data frame with the updated counts and return it
+  data.frame(count = next.count) 
+}
+```
 
-**Try running your new code** and compare the outputs as you vary the birth and death rates. You can plot a second (or third, etc.) result on top of a first with commands like:
+```{r stepbirthdeath-solution}
+#' ### Function: step_deterministic_birth_death() 
+#' Run one step of a simple deterministic exponential birth and death model. 
+#'
+#' Arguments: 
+#' - latest -- the population count now
+#' - birth.rate -- the birth rate 
+#' - death.rate -- the death rate 
+#'
+#' Returns:
+#' - the updated population count
+#'
+step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
+  # Calculate changes to population
+  new.additions <- birth.rate * latest$count 
+  new.subtractions <- death.rate * latest$count 
+  # Calculate population at next timestep
+  next.count <- latest$count + new.additions - new.subtractions
+  # Create a data frame with the updated counts and return it
+  data.frame(count = next.count) 
+}
+```
 
-```{r}
+```{r stepbirthdeath-check}
+grade_this_code()
+```
+
+and here's a copy of <span style="color: #de77ae;">0104-run-growth.r</span>, 
+which we've renamed as 
+<span style="color: #de77ae;">0105-run-birth-death.r</span>. Again,`source()`
+has been commented out as it won't work in the {learnr} environment. Instead, 
+the necessary files have been preloaded for you. Try to fill in the blanks and
+compare the outputs as you vary the birth and death rates:
+
+```{r rungrowth-setup}
+library(progInR)
+step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
+  new.additions <- birth.rate * latest$count 
+  new.subtractions <- death.rate * latest$count 
+  next.count <- latest$count + new.additions - new.subtractions
+  data.frame(count = next.count) 
+}
+```
+
+```{r rungrowth, exercise = TRUE, exercise.cap = "0105-run-birth-death.r", exercise.lines = 60}
+# Load the step_simple_growth() function into the global environment (my workspace)
+#source("0104-plot-helper.r") 
+#source(___)
+
+#' Set up the simulation parameters
+#' --------------------------------
+#' First we set up the parameters for the simulation.
+
+# Set the growth rate
+human.annual.growth <- 0.015
+
+# Set the death rate
+___ <- ___
+
+# Starting population size
+initial.count <- 7000000000
+
+# And setting times
+start.time <- 0
+end.time <- 100
+
+#' Run the simplest possible simulation
+#' ------------------------------------
+#' Then run it so that we can get the output we need
+
+# Set up the population starting size (at the first timestep)
+population.df <- data.frame(count = initial.count)
+
+# The timesteps that the simulation will run through
+timesteps <- seq(from = start.time + 1, to = end.time)
+
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # Calculate population at next timestep
+  updated.population <- ___(latest = tail(population.df, 1),
+                            ___ = human.annual.growth,
+                            ___ = human.annual.death) 
+  # Add new element onto end of population vector
+  population.df <- rbind(population.df, updated.population)
+}
+
+#' Plot the results
+#' ----------------
+#' And finally we output the results.
+
+# Now we can plot the timesteps against the population vector
+population.df$time <- c(start.time, timesteps)
+plot_populations(population.df)
+
+#' Set up a second population
+#' --------------------------
+
+
+#' Run the simulation
+#' ------------------
+
+
+#' Plot the results on the same plot
+#' ---------------------------------
+
+
+```
+
+You can plot a second (or third, *etc.*) result on top of a first with commands 
+like:
+
+```{r, eval = FALSE}
 plot_populations(population.b, new.graph = FALSE, col = "red")
 ```
 
-Remember that `col` sets the colour of the line in the plot – either use numbers 
-(1 is black, 2, 3, *etc.*) or names "red", "blue", *etc.*
+Remember that `col` sets the colour of the line in the plot – use names "red", "blue", *etc.*
 
-When do you get the same answer?
-
-You should find that you get the same output if the difference between the birth
-and death rate is equal to the net growth rate in the previous model. This may
-seem a little dull and obvious but things will get more interesting when we 
-consider stochastic models.
-
-## Report
-
-Edit your script, suitably commented, to show a few situations in which you get 
-the same population growth with different birth and death rates – read the
-documentation for `plot.populations()` to work out how to do this (or use some 
-other plot function), but you might, for instance, use its optional argument 
-`lty` for different data frames to get one to show up as a dashed line on top of
-another. In any event, generate a report from the script that shows this in a 
-readable way.
+```{r sameanswer, echo=FALSE}
+quiz(caption = "Quiz",
+     question("When do you get the same answer?",
+              answer("When the death rate is zero"),
+              answer("When the death rate is double the birth rate"),
+              answer("When the death rate is equal to the birth rate", 
+                     correct = TRUE),
+              answer("When the death rate plus the birth rate is zero"),
+              allow_retry = TRUE,
+     correct = "Correct! You should find that you get the same output if the difference between the birth and death rate is equal to the net growth rate in the previous model. This may seem a little dull and obvious but things will get more interesting when we consider stochastic models."
+     ))
+```

@@ -27,11 +27,16 @@ Suppose we want model the growth of a population in R. We will use the
 exponential growth model that we talked about in the lecture, and describe it 
 as a **difference equation**, so that we are updating the population in discrete 
 steps. In words, the behaviour of the model could be described as something 
-like: "The change in population size is the growth rate times the current 
-population size". Or, if we wanted to write this out more fully (though possibly 
-less elegantly!), we might say: "The population size at the next time point is 
-the current population size plus the growth rate times the current population 
-size."
+like: 
+
+> The change in population size is the growth rate times the current population 
+size 
+
+Or, if we wanted to write this out more fully (though possibly 
+less elegantly!), we might say: 
+
+> The population size at the next time point is the current population size plus 
+the growth rate times the current population size.
 
 We can also use mathematics to describe the behaviour more precisely. In this 
 case: 
@@ -122,8 +127,8 @@ for (i in days) {
 **Hint:** Move `print(N)` into the for loop. 
 </div>
 
-We will further develop your skills in writing and using **scripts** (and in the 
-next exercise we will learn how to write **functions**).
+We will further develop your skills in writing and using scripts (and in the 
+next exercise we will learn how to write functions).
 
 ## Tasks
 
@@ -170,7 +175,7 @@ to help you and others to understand your programs. Good commenting is a
 difficult but important programming skill. 
 
 Now we can continue entering the code. We used `lambda` when describing the model 
-mathematically but it is good practice to use give things **meaningful names** 
+mathematically but it is good practice to use **give things meaningful names** 
 in a computer program, so we are going to use the name `growth.rate` instead. We 
 have also switched to use the correct values for human demographic growth, 
 rather than the simple numbers we used earlier. 
@@ -182,9 +187,9 @@ growth.rate <- 0.015
 initial.count <- 7000000000
 ```
 
-Note that a dot is a valid part of an object name in R, though not in all 
-programming languages. But **don’t use** spaces or arithmetic symbols (*e.g.* 
-the minus sign). 
+> Note that a dot is a valid part of an object name in R -- though not in all 
+programming languages -- spaces and arithmetic symbols (*e.g.* the 
+minus sign) are not. 
 
 Now we should set the start and end times for the simulation:
 
@@ -227,7 +232,7 @@ end.time <- 100
 population.vector <- initial.count
 ```
 
-```{r printvector, exercise=TRUE}
+```{r printvector, exercise = TRUE}
 
 ```
 
@@ -239,6 +244,10 @@ print(population.vector)
 **Hint:** Use`print()` to print the contents of an object to the console. 
 </div>
 
+```{r printvector-check}
+grade_this_code()
+```
+
 Now we should specify the sequence of timesteps:
 
 ```{r}
@@ -246,7 +255,23 @@ Now we should specify the sequence of timesteps:
 timesteps <- seq(from = start.time + 1, to = end.time)
 ```
 
-and then we can start the main loop. The variable `new.time` will count the 
+and then we can start the main loop:
+
+```{r, eval = FALSE}
+# Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  # First extract the current population size
+  current.population <- tail(population.vector, 1)
+  # Calculate changes to population (births)
+  new.additions <- growth.rate * current.population
+  # Calculate population at next timestep
+  next.population <- current.population + new.additions
+  # Add new element onto end of population vector
+  population.vector <- c(population.vector, next.population)
+}
+```
+
+The variable `new.time` will count the 
 timesteps from `start.time + 1` to the `end.time`. Inside the loop (the bit 
 inside the curly brackets – remembering that curly brackets allow you to repeat
 multiple lines of commands in a `for()` loop instead of the just one). The first 
@@ -260,6 +285,10 @@ population to create the population at the next timestep, in `next.population`.
 Finally, we update the vector of population values by adding the latest value 
 onto the end of the vector, using the `c()` command. We then return to the start 
 of the loop until we have completed the timesteps.
+
+To check what is happening in the loop you could print the timestep, 
+the current population, and the number of new births. If you want to get 
+really fancy try combining these outputs with `paste()` or `paste0()`. 
 
 ```{r population, exercise = TRUE}
 # Now we loop through the time itself (starting at the second timestep)
@@ -281,10 +310,7 @@ for (new.time in timesteps) {
 `print(new.additions)` to print the number of new births. 
 </div>
 
-To check what is happening in the loop you could print the timestep, 
-the current population, and the number of new births. If you want to get 
-really fancy try combining these outputs with `paste()` or `paste0()`. Try and 
-answer the following questions.
+Try and answer the following questions:
 
 ```{r newbirths, echo=FALSE}
 quiz(caption = "Quiz",
@@ -306,10 +332,10 @@ quiz(caption = "Quiz",
 ```
 
 When we have completed the timesteps we exit the loop and plot our results. Here 
-we are plotting the values of the vector population against the values of 
+we will plot the values of `population.vector` against the values of 
 another vector of times. Note that these vectors need to be the same length, so 
 the command `c(start.time, timesteps)` is used to append the vector of 
-timesteps which started at 1 onto timepoint 0. 
+timesteps which started at 1 onto the initial timepoint, 0. 
 
 ```{r, eval=FALSE}
 # Now we can plot the timesteps against the population vector
@@ -374,7 +400,7 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
 The program generates a vector, `population.vector`, which you can treat as you 
-would any other piece of data in R. Try to run the following commands:
+would any other piece of data in R. Try the following:
 
 ```{r summary, exercise = TRUE, exercise.setup = "plot"}
 # Print a summary of population.vector
@@ -383,12 +409,16 @@ would any other piece of data in R. Try to run the following commands:
 
 ```{r summary-solution}
 # Print a summary of population.vector
-print(population.vector)
+summary(population.vector)
 ```
 
 <div id="summary-hint">
 **Hint:** Read `?summary`
 </div>
+
+```{r summary-check}
+grade_this_code()
+```
 
 ```{r head, exercise = TRUE, exercise.setup = "plot"}
 # Print the first 5 elements of population.vector
@@ -404,6 +434,10 @@ head(population.vector)
 **Hint:** Read `?head`. 
 </div>
 
+```{r head-check}
+grade_this_code()
+```
+
 ```{r head2, exercise = TRUE, exercise.setup = "plot"}
 # Print the first 10 elements of population.vector
 
@@ -418,6 +452,10 @@ head(population.vector, 10)
 **Hint:** Read `?head`. 
 </div>
 
+```{r head2-check}
+grade_this_code()
+```
+
 ```{r tail, exercise = TRUE, exercise.setup = "plot"}
 # Print the last element of population.vector
 
@@ -426,6 +464,10 @@ head(population.vector, 10)
 ```{r tail-solution}
 # Print the last element of population.vector
 summary(tail(population.vector, 1))
+```
+
+```{r tail-check}
+grade_this_code()
 ```
 
 Run the code for different initial conditions and different growth rates. Test 
