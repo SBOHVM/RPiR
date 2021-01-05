@@ -4,7 +4,9 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 1-2!"
+description: >
+  Students learn how to write a function and how to differentiate between `<-`
+  and `=` assignment operators.
 ---
 
 ```{r setup, include=FALSE}

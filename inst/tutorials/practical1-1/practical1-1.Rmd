@@ -4,7 +4,11 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Write a report"
+description: >
+  Students learn how to write a script and how to comment their code well. 
+  They learn how to use YAML header blocks and Roxygen2 style comments to 
+  compile a report from an R script, with code and text chunks. They learn 
+  about for() loops and how to use print() statements to check their code.
 ---
 
 ```{r setup, include=FALSE}

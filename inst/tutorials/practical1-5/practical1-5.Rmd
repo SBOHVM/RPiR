@@ -4,7 +4,8 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 1-5!"
+description: >
+  Students edit scripts to make a more complex model.
 ---
 
 ```{r setup, include=FALSE}

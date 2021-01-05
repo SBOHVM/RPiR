@@ -4,7 +4,10 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 1-3!"
+description: >
+  Students learn how to separate functions from the main script and source() 
+  them.
+  
 ---
 
 ```{r setup, include=FALSE}

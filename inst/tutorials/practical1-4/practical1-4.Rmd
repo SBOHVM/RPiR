@@ -4,7 +4,8 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 1-4!"
+description: >
+  Students expand on previous code.
 ---
 
 ```{r setup, include=FALSE}

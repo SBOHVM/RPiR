@@ -4,7 +4,10 @@ output:
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 1-6!"
+description: >
+  Students learn to write a report in RStudio, combining everything they have 
+  learned so far. They also learn how to empty the Global Environment and use 
+  stop() to catch errors.
 ---
 
 ```{r setup, include=FALSE}
