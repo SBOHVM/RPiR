@@ -1,5 +1,5 @@
 # progInR
-[![test-build](https://github.com/IBAHCM/progInR/workflows/.github/workflows/test-build.yaml/badge.svg)](https://github.com/IBAHCM/progInR/actions)
+[![test-build](https://github.com/IBAHCM/progInR/workflows/build/badge.svg?=1)](https://github.com/IBAHCM/progInR/actions)
 
 To install this package:
 ```
