@@ -84,10 +84,10 @@ plot_populations <- function(populations, new.graph=TRUE,
            ylim=ylim, xlab='time', ylab='population size',
            type='l', col=line.cols[index], lty=line.ltys[index], ...)
       if (with.legend) # Plot the legend if desired
-        legend("topright", legend=labels, lty=line.ltys, col=line.cols)
+        graphics::legend("topright", legend=labels, lty=line.ltys, col=line.cols)
       new.graph <- FALSE
     }
     else # Otherwise just draw the lines
-      lines(time, this.pop, col=line.cols[index], lty=line.ltys[index], ...)
+      graphics::lines(time, this.pop, col=line.cols[index], lty=line.ltys[index], ...)
   }
 }
