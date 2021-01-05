@@ -24,7 +24,6 @@ set.seed(123)
 
 *In this session you will run a simple program in R and then immortalise the results as an html report. It will run the difference equation model of exponential growth discussed in the lecture.*
 
-
 ## Introduction 
 
 Suppose we want model the growth of a population in R. We will use the 
@@ -101,9 +100,9 @@ quiz(caption = "Quiz",
 
 If we wanted to print out the population at every step rather than just at the 
 end, we would have to put the print statement in the loop as well as updating 
-`N`. How could we do this? Remember that `for()` will repeat only the next 
-instruction, but we can use curly brackets `{ ... }` to combine several lines 
-so that they all get repeated. Try it and see:
+`N`. How could we do this? Remember that `for()` **will repeat only the next** 
+**instruction, but we can use curly brackets** `{ ... }` **to combine several** 
+**lines so that they all get repeated**. Try it and see:
 
 ```{r printloop, exercise = TRUE}
 N <- 5
@@ -213,8 +212,8 @@ code that describe the simulation:
 ```
 
 Note again the use of `#'`. Since we’ve chosen to write this in R markdown,
-this will define a section in our report. Our simple model earlier only gave us 
-the final population size, but we want to be able to plot the population size 
+**this will define a section in our report**. Our simple model earlier only gave 
+us the final population size, but we want to be able to plot the population size 
 against time so we want to store each new population size as it is generated. 
 To do this we initialise an object called `population.vector` whose 
 entries will be the population size at successive times.
@@ -294,6 +293,15 @@ To check what is happening in the loop you could print the timestep,
 the current population, and the number of new births. If you want to get 
 really fancy try combining these outputs with `paste()` or `paste0()`. 
 
+```{r population-setup}
+growth.rate <- 0.015
+initial.count <- 7000000000
+start.time <- 0
+end.time <- 100
+population.vector <- initial.count
+timesteps <- seq(from = start.time + 1, to = end.time)
+```
+
 ```{r population, exercise = TRUE}
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
@@ -352,7 +360,9 @@ time. So that we can reference it later, we've named it
 <span style="color: #de77ae;">0101-growth-functional.r</span> (check the header 
 of the code block below). Try running the code now. Try to make sure you 
 understand how everything works by adding print statements or commenting out
-different sections if necessary. When running code in R we have the option of
+different sections if necessary. 
+
+> When running code in R we have the option of
 selecting the whole program or running selected parts. Doing the latter will 
 help you understand what the program is doing and find errors. When debugging 
 code, adding print statements or comment out lines might also help identify 
@@ -470,6 +480,10 @@ grade_this_code()
 summary(tail(population.vector, 1))
 ```
 
+<div id="tail-hint">
+**Hint:** Read `?tail`. 
+</div>
+
 ```{r tail-check}
 grade_this_code()
 ```
@@ -481,5 +495,5 @@ you agree with the doubling time we calculated theoretically of ~46 years.
 
 Finally, try copying the code into an *.R document in R Studio, saving it, and
 generating a report from it (<span style="color: #de77ae;">File</span> >
-<span style="color: #de77ae;">Compile Report...</span>). You'll generate your 
-own reports in Practical 2.
+<span style="color: #de77ae;">Compile Report...</span>). You'll start generating 
+your own reports in Practical 1-6.

@@ -99,6 +99,10 @@ step_simple_growth <- function(current.population, growth.rate) {
 }
 ```  
 
+<div id="step_deterministic_growth-hint">
+**Hint:** . 
+</div>
+
 ```{r step_deterministic_growth-solution}
 #' ### Function: step_deterministic_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
@@ -165,6 +169,13 @@ For convenience, here's a copy of <span style="color: #de77ae;">0103-run-simple-
 
 ```{r step_simple_growth-setup}
 library(progInR)
+
+step_simple_growth <- function(current.population, growth.rate) {
+  new.additions <- growth.rate * current.population
+  next.population <- current.population + new.additions
+  next.population
+}
+  
 step_deterministic_growth <- function(latest, growth.rate) {
   new.additions <- growth.rate * latest$count 
   next.count <- latest$count + new.additions
@@ -217,6 +228,10 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
+<div id="step_simple_growth-hint">
+**Hint:** . 
+</div>
+
 ```{r step_simple_growth-solution}
 # Load the step_simple_growth() function into the global environment (my workspace)
 #source("0104-plot-helper.r") 
@@ -262,6 +277,10 @@ for (new.time in timesteps) {
 # Now we can plot the timesteps against the population vector
 population.df$time <- c(start.time, timesteps)
 plot_populations(population.df)
+```
+
+```{r step_simple_growth-check}
+grade_this_code()
 ```
 
 At the beginning of the file, we should read in functions from the other two
@@ -334,7 +353,7 @@ Then you will call:
 plot_populations(population.df)
 ```
 
-## Running the code
+#### Additional tasks
 
 Again, the code should produce the same output as the previous three practicals, 
 but perhaps with a slightly prettier and clearer display. Try, for instance,
@@ -351,7 +370,11 @@ dash, dot, etc. – by using numbers (1 is solid, 2, 3, *etc.*). Note that
 `plot_populations()` also has a help file, which you can access by typing in 
 the R console:
 
-```{r}
+```{r plotpopulations-setup}
+library(progInR)
+```
+
+```{r plotpopulations, exercise = TRUE}
 ?plot_populations
 ```
 
@@ -362,17 +385,30 @@ Occassionally, you might come across a function that won't let you ask for help
 using the `?` syntax – `?for`, `?function` and a couple of others. In that case 
 you can try 
 
-```{r}
+```{r for, exercise = TRUE}
+?for
+```
+
+<div id="for-hint">
+**Hint:** Try using `help()`. 
+</div>
+
+```{r for-solution}
 help("for")
+```
+
+```{r for-check}
+grade_this_code()
 ```
 
 or go to the <span style="color: #de77ae;">Help</span> tab in RStudio and type 
 the name into the box next to the magnifying glass. 
 
 As far as the `plot_populations()` function is concerned, feel free to refer 
-back to this code later to understand better how it works
+back to this code later to understand better how it works. Like this (or by 
+finding the code on GitHub):
 
-```{r}
+```{r function, exercise = TRUE}
 plot_populations
 ```
 

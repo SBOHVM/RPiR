@@ -22,7 +22,7 @@ set.seed(123)
 
 *In this session you will break the program 0101-growth-loop.r into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
 
-## Background
+## Introduction
 
 When we look at our first program (for convenience, 
 <span style="color: #de77ae;">0101-growth-functional.r</span> is printed below),
@@ -89,9 +89,10 @@ instead of running on seemingly for ever!
 
 What we need to do is to introduce exactly the computing equivalent of 
 punctuation and sentence/paragraph structure into the code. We introduce this 
-partly by commenting the code well, which we have already started to do, but 
-mostly by separating out conceptually distinct parts of the code into separate 
-functions. This process will continue through the whole course as we identify 
+partly by **commenting the code** well, which we have already started to do, but 
+mostly by **separating out conceptually distinct parts of the code into** 
+**separate functions**. This process will continue through the whole course as 
+we identify 
 reusable pieces of code that we can get right once, and then (hopefully) never 
 have to worry about again. This often turns out to be more of an aspiration than 
 reality, but nonetheless, when we do want to improve specific parts of our 
@@ -108,14 +109,14 @@ model of disease spread rather than population growth. The rest would remain
 pretty much the same.
 
 We want to take this code and put it into its own function at the beginning of 
-the program (we'll call it `step_simple_growth()`). It should take 
+the program -- we'll call it `step_simple_growth()`. It should take 
 the current population count from the vector `population.vector` and the value 
-of `growth.rate` as inputs (they are called arguments), update the population 
+of `growth.rate` as **arguments** (function inputs), update the population 
 size, and return it. This is the framework for such a function with comments 
 (try to fill it in, using the for loop in 
 <span style="color: #de77ae;">0101-growth-functional.r</span> as a guide):
 
-```{r stepsimplegrowth, exercise = TRUE, exercise.cap = "step_simple_growth()", exercise.lines = 20}
+```{r stepsimplegrowth, exercise = TRUE, exercise.lines = 20}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
 #'
@@ -136,6 +137,10 @@ step_simple_growth <- function(current.population, growth.rate) {
 }
 ```
 
+<div id="stepsimplegrowth-hint">
+**Hint:** . 
+</div>
+
 ```{r stepsimplegrowth-solution}
 step_simple_growth <- function(current.population, growth.rate) {
   # Calculate changes to population
@@ -155,15 +160,15 @@ The `function()` command, like `for()`, has one line of code after it (comments
 are ignored) that defines what the function does. Because nearly all functions 
 need multiple lines to define what they do, we nearly always use `{ ... }` 
 syntax (as with `for()`) to allow us to write multiple commands all as part of 
-the function definition. Remember that whatever appears last in the function 
-definition will be returned to script that calls it, in this case 
+the function definition. Remember that **whatever appears last in the function** 
+**definition will be returned to script that calls it**, in this case 
 `next.population`. 
 
 To make sure that the function is only using the information given to it in its 
 arguments, we are going to use `findGlobals()` to check that it does not use any 
-external information (such information is called global variables). To do this 
-we load in the codetools library (you may have to install it first), and then 
-call the `findGlobals()` function giving it the name of our function, as 
+external information (known as **global variables**). To do 
+this we load in the codetools library (you may have to install it first), and 
+then call the `findGlobals()` function giving it the name of our function, as 
 follows:
 
 ```{r globals-setup}
@@ -199,7 +204,7 @@ Try playing with the following code chunk. Add a print statement inside
 in the main script, and compare the value of `x`. Make sure you understand what 
 is happening.
 
-```{r inout, exercise = TRUE, exercise.cap = "my_function()", exercise.lines = 11}
+```{r inout, exercise = TRUE, exercise.lines = 11}
 # Simple function that adds 1 to an input
 my_function <- function(input) {
   x <- input + 1
@@ -210,6 +215,10 @@ my_function <- function(input) {
 x <- 10
 my_function(x)
 ```
+
+<div id="inout-hint">
+**Hint:** . 
+</div>
 
 ```{r inout-solution}
 # Simple function that adds 1 to an input
@@ -297,6 +306,10 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
+<div id="nextstep-hint">
+**Hint:** . 
+</div>
+
 ```{r nextstep-solution}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
@@ -356,6 +369,10 @@ for (new.time in timesteps) {
 
 # Now we can plot the timesteps against the population vector
 plot(c(start.time, timesteps), population.vector, type = "l")
+```
+
+```{r nextstep-check}
+grade_this_code()
 ```
 
 Within the `for()` loop where the time gets updated the code should now contain 
@@ -469,7 +486,8 @@ confusing and cause subtle errors if we use the same variable names in many
 different places, even when they seem to refer to the same things. This is one 
 of the reasons why we use `findGlobals()` to check for global variables being 
 used in functions. If we never reused names in different bits of code we would 
-not have to check this. For the time being (and the rest of Practical 1), make 
+not have to check this. For the time being (and the rest of this practical 
+series), make 
 sure that no argument names in the main script accidentally match names in 
 functions (it’s okay for variable names in different functions to match). You 
 can relax this requirement in the real world, but it is best to be over-cautious 

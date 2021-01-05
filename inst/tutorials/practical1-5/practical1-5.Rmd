@@ -34,7 +34,12 @@ In the modelling lecture we discussed a simple population growth model of the fo
 
 $$N(t+1) = N(t) + \lambda\; N(t)$$
 
-which we can state roughly in English as "*the next population size is the current size plus the new additions (lambda times the current size)*", and this can be rewritten in turn in R as:
+which we can state roughly in English as 
+
+> "the next population size is the current size plus the new additions (lambda 
+times the current size)"
+
+and this can be rewritten in turn in R as:
 
 ```{r, eval = FALSE}
 next.count <- latest$count + lambda * latest$count
@@ -45,7 +50,7 @@ for `lambda` in our code as we want the code to read more like English. We also
 write this on multiple lines as we calculate the new additions separately and 
 then add them in. Note that, for consistency, throughout these practicals our 
 code will refer to the data frame with the current latest population counts in 
-as `latest` as in Practical 2-4, and these are referred to in the equations such
+as `latest` as in Practical 1-4, and these are referred to in the equations such
 as those on this page as $N(t)$. The updated values, referred to above as
 $N(t+1)$, appear as `next.something` in the functions if they 
 have a name at all, and `updated.something` in the main script just 
@@ -55,18 +60,19 @@ We now want to update the model to include both births and deaths, *i.e.*
 
 $$N(t+1) = N(t) + b\; N(t) – d\; N(t)$$
 which can be similarly translated as
-"*the next population size is the current size plus the new births (b times the current size) minus the new deaths (d times the current size)*",
+
+> "the next population size is the current size plus the new births (b times 
+the current size) minus the new deaths (d times the current size)"
+
 where $b$ represents the birth rate and $d$ represents the death rate.
 
 In this practical, we will reuse 
 <span style="color: #de77ae;">0104-plot-helper.r</span> while adapting 
 <span style="color: #de77ae;">0104-run-growth.r</span> and 
-<span style="color: #de77ae;">0104-step-growth.r</span> appropriately.
-
-For convenience, here's a slightly adapted version of
-<span style="color: #de77ae;">0104-step-growth.r</span>, which we've renamed as 
-<span style="color: #de77ae;">0105-step-birth-death.r</span>. Try to fill in the 
-blanks:
+<span style="color: #de77ae;">0104-step-growth.r</span> appropriately. For convenience, we've generated
+<span style="color: #de77ae;">0105-step-birth-death.r</span> (from 
+<span style="color: #de77ae;">0104-step-growth.r</span>) for you, with 
+blanks for you to fill in:
 
 ```{r stepbirthdeath, exercise = TRUE, exercise.cap = "0105-step-birth-death.r", exercise.lines = 20}
 #' ### Function: step_deterministic_birth_death() 
@@ -90,6 +96,10 @@ step_deterministic_birth_death <- function(latest, ___, ___) {
   data.frame(count = next.count) 
 }
 ```
+
+<div id="stepbirthdeath-hint">
+**Hint:** . 
+</div>
 
 ```{r stepbirthdeath-solution}
 #' ### Function: step_deterministic_birth_death() 
@@ -118,9 +128,10 @@ step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
 grade_this_code()
 ```
 
-and here's a copy of <span style="color: #de77ae;">0104-run-growth.r</span>, 
-which we've renamed as 
-<span style="color: #de77ae;">0105-run-birth-death.r</span>. Again,`source()`
+Likewise, we've generated 
+<span style="color: #de77ae;">0105-run-birth-death.r</span> (from
+<span style="color: #de77ae;">0104-run-growth.r</span>), with added blanks 
+for you to fill in. Again,`source()`
 has been commented out as it won't work in the {learnr} environment. Instead, 
 the necessary files have been preloaded for you. Try to fill in the blanks and
 compare the outputs as you vary the birth and death rates:

@@ -32,6 +32,56 @@ two-step functions we created and run both models in a new script that compares
 them. For this final part of practical 1, we're going to generate a report in 
 RStudio using everything we've learned so far.
 
+## A clean start
+
+Sometimes you can find that something you have done before in R can interfere 
+with what you are now doing -- though if you’ve written all of your code 
+correctly, then obviously(!) this should never happen. It is useful then
+to know that you can clear what is held in R’s memory using `rm(list=ls())`. 
+This will cause all of the variables and functions in your 
+**Global Environment** to disappear (*e.g.* if you type `human.annual.growth` 
+in the R console it should tell you that the object is "not found"). As a 
+fundamental rule however, you should **never hardcode** `rm(list=ls())` 
+**into any of your scripts**. It’s generally a sign your code isn’t written well 
+if it can be affected by something before it. Instead, you can clear your 
+workspace by clicking the brush in the 
+<span style="color: #de77ae;">Environment</span> tab in RStudio (or 
+<span style="color: #de77ae;">Session > Clear Workspace...</span> in the menus). 
+
+If things go irretrievably wrong, you can use 
+<span style="color: #de77ae;">Session > Restart R</span> in the menus: it is far 
+more effective than clearing just the workspace as it resets everything, while 
+leaving RStudio itself unaffected. Remember that once you have done this you may 
+have to set the working directory to the correct folder if you’re not sensibly 
+using a project, and you will certainly have to start running your code again 
+completely from the beginning.
+
+Note that, when you generate a report from the script file, they are always 
+generated from a new, clean, version of R. So this is a very important final 
+check that all of your code is working correctly – it’s as if 
+you did the test without actually wiping everything in R - but only if you 
+read it and check it looks right!
+
+The other check we strongly encourage you to do is to check that your function 
+does not use any global variables by using `findGlobals()`.
+
+You should also generate a report for any function files you create. If you want 
+to, you can put the `findGlobals()` check into this function file (which will
+run the check when you generate the report for that file) so it doesn’t 
+clutter up the main script itself. But this is only useful if you generate a 
+report from the function file! To solve this, you can make it so the report will 
+fail to generate for that script when global variables are used with the 
+following code snippets:
+
+```{r, eval = FALSE}
+# Now check that function doesn't have any global variables.
+library(codetools)
+globals <- findGlobals(step_simple_growth, merge = FALSE)$variables 
+if (length(globals) != 0) {
+  stop("Function step_simple_growth() may not use global variable(s): ", globals)
+}
+```
+
 ## Tasks
 
 Remember again that our first model of simple population growth model looks like
@@ -69,9 +119,7 @@ rate
 4. The simple growth model with the difference (between the rates in 1) as the 
 growth rate
 
-## Running the code
-
-Try running your code and you should find that the graphs are very likely on
+When you try to run your code you should find that the graphs are very likely on
 different scales. You can set the y-axis limits of the second graph to the same 
 as the first by reading off what they are on the first graph, and then plotting
 the second as follows:
