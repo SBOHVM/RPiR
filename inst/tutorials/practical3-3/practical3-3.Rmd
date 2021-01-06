@@ -5,7 +5,7 @@ output:
     theme: lumen
 runtime: shiny_prerendered
 description: >
-  Students
+  Students run a stochastic version of the SIS model.
 ---
 
 ```{r setup, include=FALSE}
