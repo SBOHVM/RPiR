@@ -5,7 +5,7 @@ output:
     theme: lumen
 runtime: shiny_prerendered
 description: >
-  Students
+  Students learn how to pass functions as arguments.
 ---
 
 ```{r setup, include=FALSE}
@@ -24,22 +24,24 @@ set.seed(123)
 When running stochastic simulations we often want to run multiple simulations
 and compare outputs easily. In this practical we will learn how to efficiently 
 plot multiple outputs on the same graph, and use a new set of functions 
-contained in the 
-<span style="color: #1697C0;">boydorr/ProgInR</span> package on GitHub.
+contained within the 
+<span style="color: #1697C0;">IBAHCM/ProgInR</span> package on GitHub.
 
 ## Tasks
 
-You have been provided with a new package on GitHub at https://github.com/boydorr/ProgInR. Take a look at this code online and read the
+You have been provided with a new package on GitHub at https://github.com/IBAHCM/ProgInR. Take a look at this code online and read the
 following explanation. Remember that in the previous practical the program 
 repeated a section of code to overlay another output on the graph:
 
-```{r}
+```{r, eval = FALSE}
 #' Section: And again!
 #' -------------------
 population.df <- data.frame(time = start.time,
                             count = initial.count) 
+
 latest.population <- population.df
 keep.going <- latest.population$time < end.time 
+
 while (keep.going) {
   data <- timestep_stochastic_birth_death(latest.population,
                                           human.annual.birth,
@@ -47,19 +49,21 @@ while (keep.going) {
                                           short.timestep)
   latest.population <- data$updated.pop
   population.df <- rbind(population.df, latest.population) 
-  keep.going <- (!data$end.experiment) &&
-    (latest.population$time < end.time)
+  keep.going <- (!data$end.experiment) && (latest.population$time < end.time)
 }
+
 plot_populations(population.df, new.graph = FALSE, lty = 2)
 ```
 
 It is bad practice to be copying and pasting identical code as we can easily
 introduce mistakes. So we should try to separate the simulation functionality 
-from the model more cleanly. Install the package using `devtools::install_github("boydorr/ProgInR")`. Then take a look at the new 
-function `run_simple()` online in 
-<span style="color: #1697C0;">R/run_simple.R</span> at https://github.com/boydorr/ProgInR/blob/master/R/run_simple.R:
+from the model more cleanly. Install the package using `devtools::install_github("IBAHCM/ProgInR")`. Then take a look at the new 
+function `run_simple()` online. Go to <span style="color: #1697C0;">https://github.com/IBAHCM/ProgInR</span>, open on the 
+<span style="color: #1697C0;">R</span> folder, and open the file called 
+<span style="color: #1697C0;">run_simple.R</span>. It should look something like
+this:
 
-```{r}
+```{r, eval = FALSE}
 #' @title Simplest code to run a simulation loop #'
 #' @description
 #' A generic function to run a simulation loop for a fixed period of time.
@@ -80,7 +84,7 @@ run_simple <- function(step_function,
                        end.time, 
                        ...) {
   # Check whether step_function uses global variables
-  if (length(findGlobals(step_function, merge=FALSE)$variables) > 0)
+  if (length(findGlobals(step_function, merge = FALSE)$variables) > 0)
     warning(paste("Function provided uses global variable(s):",
                   paste(findGlobals(step_function, merge = FALSE)$variables,
                         collapse = ", "))) 
@@ -90,8 +94,7 @@ run_simple <- function(step_function,
     data <- step_function(latest.df, ...)
     latest.df <- data$updated.pop
     population.df <- rbind(population.df, latest.df) 
-    keep.going <- (latest.df$time < end.time) &&
-      (!data$end.experiment)
+    keep.going <- (latest.df$time < end.time) && (!data$end.experiment)
   }
   row.names(population.df) <- NULL 
   population.df
@@ -101,11 +104,12 @@ run_simple <- function(step_function,
 The purpose of this new function is to separate out the simulation functionality 
 from the model, and to simplify and automate the running of multiple stochastic
 simulations. If you look closely you can see that the function `run_simple()` 
-does the job we described in the **And again!** section. It is set up in terms 
+does the job we described in the <span style="color: #de77ae;">And again!</span>
+section (at the top of this page). It is set up in terms 
 of the generically named `step_function()` – in the case of the current model we
 would be using `timestep_stochastic_birth_death()` when we call `run_simple()`:
 
-```{r}
+```{r, eval = FALSE}
 final.populations <- run_simple(timestep_stochastic_birth_death,
                                 initial.populations, 
                                 end.time,
@@ -114,23 +118,23 @@ final.populations <- run_simple(timestep_stochastic_birth_death,
                                 timestep = short.timestep)
 ```
 
-There are two things going on here that we haven’t seen before. The first is 
+There are two things going on here that we haven’t seen before: (1) We're 
 passing the step function as an argument to the `run_simple()` function. This 
 just happens like any other argument being passed, you pass in the function, it 
-gets assigned to the name `step_function` – remember that we can call it 
+gets assigned to the `step_function` argument – remember that we can call it 
 anything inside a function – and then `step_function` gets used just like
-`initial.pop` and all of the other arguments. The other is the argument `...`. 
+`initial.pop` and all of the other arguments. (2) the argument `...`. 
 This is a way of saying "and there will be other arguments I don’t want to (or 
 can’t) specify". You will find this in lots of R code (see `?plot` for example). 
-For us, the point is that each step function will need different parameters 
-passed to it, and we don’t know what they are in advance. Instead we just pass 
+For us, the point is that *each step function will need different parameters* 
+*passed to it, and we don’t know what they are in advance*. Instead we just pass 
 them through:
 
-```{r}
+```{r, eval = FALSE}
 data <- step_function(initial.pop, ...)
 ```
 
-Any arguments after the three fixed arguments to `run_simple()`
+**Any arguments after the three fixed arguments to** `run_simple()`
 **must be named** – they will be passed straight through to the step function 
 (via the `...`).
 
@@ -157,5 +161,6 @@ functionality.
 Run the code and observe the variability in outputs. What happens to the 
 variability as you increase the initial population size? You may want to adjust 
 the scale of the y-axis to see what happens at larger population sizes. To
-automate this, you can set the y-axis upper limit to $100 \times initial.count$ 
-by setting `ylim=c(0,100*initial.count)`. Demonstrate in a brief report.
+automate this, you can set the y-axis upper limit to $100 \times$ 
+`initial.count` 
+by setting `ylim = c(0, 100 * initial.count)`. Demonstrate in a brief report.
