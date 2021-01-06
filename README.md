@@ -5,13 +5,13 @@ To install this package:
 ```
 install.packages(c("devtools", "learnr"))
 library(devtools)
-install_github("soniamitchell/progInR")
+install_github("IBAHCM/RPiR")
 ```
 
 To run the practical:
 ```
 library(learnr)
-run_tutorial("practical2-1", package = "progInR")
+run_tutorial("practical1-1", package = "RPiR")
 ```
 
 If anything goes wrong and you want to reset a tutorial page, click on the Start Over link (look for the tiny grey text below the left menu).
