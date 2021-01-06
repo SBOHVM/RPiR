@@ -1,10 +1,11 @@
 ---
-title: "Reproducible Programming in R Practical 3-2"
+title: "Reproducible Programming in R Practical 2-2"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 3-2!"
+description: >
+  Students learn how changing the timestep affects the simulation.
 ---
 
 ```{r setup, include=FALSE}
@@ -30,17 +31,18 @@ infecting a second, the rate of infection approximately doubles. If we use large
 time steps we may miss this effect of changing transmission rates between one 
 time step and the next, whereas if we use very small timesteps, we will be
 accurate but many steps will contain no events, thus wasting computational time.
-In this practical we will see the size of the time step affects our model.
+In this practical we will see that the size of the time step affects our model.
 
 ## Tasks
 
-To change the model to handle timesteps, then we have to consider that by 
-default, in the previous programs we were using a timestep of 1. In this case of
-E. coli transmission in cattle from Practical 3-1 these are measured in weeks,
+To change the model to handle timesteps, we have to consider that by 
+default, in the previous programs we were using a timestep of 1. In this case -- 
+of *E. coli* transmission in cattle from Practical 2-1 -- these are measured in 
+weeks,
 which means that if our rates were given to us in units of weeks, then we are
 stepping forward one week at a time. If our rates were given to us per day 
 rather than per week we would be stepping forward day by day. If a rate is given 
-to us in weeks, we would scale it down accordingly to get the rate per day. Or,
+to us in weeks, we could scale it down accordingly to get the rate per day. Or,
 we could scale it up to get the rate per month. So to change our program to step
 forward on a different time scale, we scale the parameters. Our parameters (the
 transmission and recovery rates) will help us determine the number of 
@@ -48,7 +50,7 @@ transmissions and recoveries that occur in one unit of time. To simulate
 stepping forward in larger of smaller amounts of time we scale the parameters by
 the new time step.
 
-The task now is edit **0301-run-SIS.r** so that it is easy to alter the timestep
+The task now is edit <span style="color: #de77ae;">0201-run-SIS.r</span> so that it is easy to alter the timestep
 of the simulation – you can reuse `step_deterministic_SIS()`. All you need to do
 is to write a new script file which creates a new parameter, `timestep`, so that
 you can scale `transmission.rate` and `recovery.rate` to 
@@ -58,7 +60,7 @@ them to `step_deterministic_SIS()`. You also need to remember that the vector of
 correctly so that it will give the correct times for the plot. You can check it 
 has by looking at `population.df$time` after you’ve added it in to the data 
 frame and make sure it looks right to you. We can call this new version
-**0302-test-SIS.r**.
+<span style="color: #de77ae;">0202-test-SIS.r</span>.
 
 ## Running the code
 
@@ -70,10 +72,10 @@ multiple graphs on top of each other to make it easier to directly compare
 timesteps.
 
 Once you’ve satisfied yourself that the simulation is currently accurate, find 
-out how much you can increase the timestep safely before the simulation becomes
-inaccurate. Running this code with a value of `timestep` of 3 or 5 means that we
+out by how much you can increase the timestep safely before the simulation 
+becomes inaccurate. Running this code with a `timestep` of 3 or 5 means that we
 are stepping forward in chunks of time that are 3 or 5 times larger than our 
-default time step. Note you if you don’t use the parameters from E. coli
+default time step. Note that if you don’t use the parameters from *E. coli*
 transmission in cattle, the values of the timestep at which is all goes wrong 
 may be different, so we recommend sticking with those values.
 
