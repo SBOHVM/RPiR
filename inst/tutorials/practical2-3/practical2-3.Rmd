@@ -1,10 +1,12 @@
 ---
-title: "Reproducible Programming in R Practical 3-3"
+title: "Reproducible Programming in R Practical 2-3"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Reproducible Programming in R Practical 3-3!"
+description: >
+  Students improve their timestep function. They also learn how to use while() 
+  loops.
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +27,7 @@ last practical but it is good practice, if we want to keep them, to make sure
 they are included in the code in a way that makes it clear what’s going on. We
 had to know how the SIS model works to know that we could get away with 
 multiplying the parameters with `timestep.` This use of a low-level detail of
-how the model runs in other code is risky – we may later change the model and 
+how the model runs might be risky – we may later change the model and 
 not realise this hack no longer works.
 
 ## Tasks
@@ -37,18 +39,18 @@ rather than abusing it to do something it wasn’t intended to do. Instead add a
 new argument, `timestep`, into `step_deterministic_SIS()` – we could call it
 `timestep_deterministic_SIS()`. Rather than submit the product 
 `transmission.rate * timestep` as an argument to the simulation function, we can 
-now separately pass the real rate parameters and the `timestep` separately.
-
-That **rescaling** is now done **within the function **
-`timestep_deterministic_SIS()` in **0303-deterministic-SIS.r**. This could, for
+now separately pass the real rate parameters and the `timestep` separately. This **rescaling** is now done within the function
+`timestep_deterministic_SIS()` in <span style="color: #de77ae;">0203-deterministic-SIS.r</span>. We might, for
 instance, create two new variables, perhaps called `effective.transmission.rate` 
 and `effective.recovery.rate` (or something shorter!). These new variables are 
-just our original rates rescaled to match the new time scale. Now that we have a
+just our original rates rescaled to match the new time scale. 
+
+Now that we have a
 timestep in the step function, it makes sense to have the time in there too, and
 that can be updated inside the function. The data frame can have an extra
 column:
 
-```{r}
+```{r, eval = FALSE}
 population.df <- data.frame(time = start.time,
                             susceptibles = initial.susceptibles,
                             infecteds = initial.infecteds)
@@ -61,7 +63,7 @@ timestep as we went along, which we will need to do later. Now we’re not makin
 the vector of timesteps in advance, we can use a `while()` loop to decide when 
 we’re finished. For instance:
 
-```{r}
+```{r, eval = FALSE}
 latest.population <- population.df
 while (latest.population$time < end.time) {
   latest.population <- timestep_deterministic_SIS(latest = latest.population,
