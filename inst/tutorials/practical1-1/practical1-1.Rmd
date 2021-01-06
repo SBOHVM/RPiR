@@ -493,7 +493,14 @@ the code using the value of the human population growth rate we used in the
 lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that 
 you agree with the doubling time we calculated theoretically of ~46 years.
 
-Finally, try copying the code into an *.R document in R Studio, saving it, and
-generating a report from it (<span style="color: #de77ae;">File</span> >
-<span style="color: #de77ae;">Compile Report...</span>). You'll start generating 
-your own reports in Practical 1-6.
+Finally, try copying the code into a *.R document in R Studio, saving it, and
+generating a report from it. You can do this by clicking on 
+<span style="color: #de77ae;">File</span> >
+<span style="color: #de77ae;">Compile Report...</span>) or you
+can click on the little notebook icon:
+
+```{r echo = FALSE, fig.align = "center", out.width = "60%"}
+knitr::include_graphics('images/compile_report.png')
+```
+
+You'll start generating your own reports in Practical 1-6.
