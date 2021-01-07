@@ -47,8 +47,10 @@
 #' @import rdiversity
 #'
 #' @examples
+#' \dontrun{
 #' # To run a tutorial
 #' library(learnr)
 #' run_tutorial("practical1-1", package = "RPiR")
+#' }
 #'
 NULL

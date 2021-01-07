@@ -42,9 +42,11 @@ Please raise an issue if you find any problems;
 \url{https://github.com/IBAHCM/RPiR/issues}
 }
 \examples{
+\dontrun{
 # To run a tutorial
 library(learnr)
 run_tutorial("practical1-1", package = "RPiR")
+}
 
 }
 \author{
