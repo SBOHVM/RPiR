@@ -5,7 +5,7 @@ output:
     theme: lumen
 runtime: shiny_prerendered
 description: >
-  Students
+  Students adapt their code to write an SIR model.
 ---
 
 ```{r setup, include=FALSE}
