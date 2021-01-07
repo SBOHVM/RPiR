@@ -1,10 +1,11 @@
 ---
-title: "Reproducible Programming in R Practical 1-2"
+title: "Reproducible Programming in R Practical 4-2"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Write a package demo"
+description: >
+  Students learn how to write a package demo.
 ---
 
 ```{r setup, include=FALSE}
@@ -74,9 +75,12 @@ expected from the next observation, which is low if there are few species or one
 is dominant, but high when many are equally abundant. In all cases, the highest
 diversity is achieved when all species are equally abundant (and completely 
 distinct, when we are considering similarity). We therefore talk about the 
-"effective number of species" as the number of *completely distinct*, 
-*equally abundant species* that would give us the same value of diversity as the
-observed community. This acts as a reference to allow fair comparisons to be
+"effective number of species" as:
+
+>the number of completely distinct, equally abundant species that would give us 
+the same value of diversity as the observed community. 
+
+This acts as a reference to allow fair comparisons to be
 made. In the case of species richness, this is just the richness itself, but for
 instance in the case of Shannon entropy, the *effective numbers equivalent* is 
 in fact the exponential of the entropy. For diversity measures that work in 
@@ -96,28 +100,23 @@ selecting it in the top right of the RStudio window. Then make sure that all of
 the correct packages are installed to do the biodiversity analyses:
 
 ```{r eval = FALSE}
-install.packages(c("vegan", "tibble", "dplyr", "magrittr", "devtools"))
-devtools::install_github("boydorr/rdiversity")
+install.packages(c("vegan", "tibble", "dplyr", "magrittr", "devtools", "rdiversity"))
 ```
-
-Note the second of these commands. Since the {rdiversity} package has been 
-updated since the last version was submitted to CRAN, we can use 
-`install_github()` to install the latest development version from GitHub. 
 
 You will need to make sure that your package depends on all of these packages, 
 so that they are automatically installed with your package. To do this you 
 need to add them to the `Imports:` section of the 
 <span style="color: #de77ae;">DESCRIPTION</span> file. Any package that you use 
-in your demo script (*i.e.* you call `library(pkgname)` somewhere) should go 
-into the <span style="color: #de77ae;">DESCRIPTION</span> file.
+in your demo script (*i.e.* any package you call `library(pkgname)` on) should 
+go into the <span style="color: #de77ae;">DESCRIPTION</span> file.
 
-Now we're going to create a demo inside the package. First go to the 
-<span style="color: #de77ae;">Files</span> tab and create a new folder called
+Now we're going to create a **demo** inside the package. First go to the 
+<span style="color: #de77ae;">Files</span> tab and create a <span style="color: #de77ae;">New Folder</span> called
 <span style="color: #de77ae;">demo</span>. Then create an R script 
 in that folder, making sure the name of the script has **no spaces in it** (this 
 script will contain your demo). Then create a new text file also in that folder 
 called <span style="color: #de77ae;">00Index</span>, with **no file extension**
-(this file will contain a list of all demos in your package). Each demo you 
+(this file will contain a list of the demos in your package). Each demo you 
 create is entered into one line of this file with the demo name followed by a 
 one-line description. For example, the demo file 
 <span style="color: #de77ae;">diversity-of-BCI.R</span> would have a line like:
@@ -131,11 +130,11 @@ For more details on how to create a demo go here: https://r-pkgs.org/misc.html?q
 Now we're going to write the R script that will be the demo. Note that demos 
 should never contain any commands to install packages, the above code is not 
 part of the demo! The script will be measuring several kinds of alpha, 
-beta and gamma diversity, detailed below. But in order to do some work with 
+beta and gamma diversity, as detailed below. But in order to do some work with 
 measures of taxonomic diversity, the taxonomy will first need to match the 
 species abundance data from the BCI dataset, exactly. Here I’m assuming that you
-created the package `{BCI}`, and in it `bci_taxa` contains the taxonomy of 
-all BCI species and `bci_2010` contains the 2010 BCI census:
+created the package {BCI}, and in it `bci_taxa` contains the taxonomy of 
+all BCI species and `bci_2010` contains the 2010 BCI census.
 
 ```{r eval = FALSE}
 library(BCI)
@@ -166,7 +165,7 @@ plot(diversity ~ q, type = "l", data = results)
 To create a metacommunity that takes account of the similarity between species, 
 you need to input the similarity as a second argument to `metacommunity()`. 
 First use `tax2dist()` to create a distance matrix from a taxonomy, then use 
-`dist2sim()` to create a similarity matrix from the distance matrix. So:
+`dist2sim()` to create a similarity matrix from the distance matrix:
 
 ```{r eval = FALSE}
 taxSim <- tax2dist(taxonomy, c(GenusSpecies=0, Genus=1, Family=2, Other=3)) %>%
@@ -177,7 +176,7 @@ lines(diversity ~ q, col=2, data = results4tax)
 ```
 
 Finally, to create a metacommunity to analyse in {vegan}, you need to transpose 
-the axes of the abundance data matrix. So:
+the axes of the abundance data matrix:
 
 ```{r eval = FALSE}
 library(vegan)
@@ -187,13 +186,16 @@ abundances <- t(bci_2010)
 specnumber(abundances, groups = 1) 
 ```
 
-loads the dataset and then calculates the species richness of the whole
+This loads the dataset and then calculates the species richness of the whole
 metacommunity. **It’s important to always use the `abundances` object when using the {vegan} package, and always use the `bci_2010` object when using {rdiversity} – they need the data in opposite formats!**
 
 ## Tasks
 
-First, read the documentation and examples at 
-https://github.com/boydorr/rdiversity (click on the docs badge) and / or in R. 
+First, read the {rdiversity} package documentation and examples. You can find
+this by going to the GitHub repository (https://github.com/boydorr/rdiversity), 
+and clicking on the <span style="color: #1697C0;">docs: rdiversity</span> badge, 
+or by clicking the link to boydorr.github.io/rdiversity/.
+
 Then write a script to calculate and plot the gamma diversity and the normalised 
 alpha diversity for the 2010 BCI census, for a range of values of $q$, say 
 `qs = 0:5`; individuals of the same species have a taxonomic distance of zero 
@@ -275,7 +277,7 @@ You can also generate a report from the demo as follows:
 
 ```{r eval = FALSE}
 rmarkdown::render(system.file("demo/diversity-of-BCI.R", 
-                              package = "notmyBCI"),
+                              package = "mypartnersBCIpackage"),
                   output_dir = ".")
 ```
 

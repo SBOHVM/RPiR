@@ -1,10 +1,11 @@
 ---
-title: "Reproducible Programming in R Practical 1-1"
+title: "Reproducible Programming in R Practical 4-1"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
-description: "Create a data package"
+description: >
+  Students learn how to write a data package.
 ---
 
 ```{r setup, include=FALSE}
@@ -68,10 +69,10 @@ version. So why not turn your data into an R package and do the same?
 You need to download the Barro Colorado Forest Census Plot Data from the 
 Smithsonian’s repository at https://repository.si.edu/handle/10088/20925. 
 Download files 3 and 4, the full census data 
-(<span style="color: #de77ae;">ViewFullTable.zip</span>) and the taxonomic data 
+(<span style="color: #1697C0;">ViewFullTable.zip</span>) and the taxonomic data 
 on all of the species present 
-(<span style="color: #de77ae;">ViewTax.txt</span>), and download 
-<span style="color: #de77ae;">generate-data.R</span> and other files from 
+(<span style="color: #1697C0;">ViewTax.txt</span>), and download 
+<span style="color: #1697C0;">generate-data.R</span> and other files from 
 Moodle. You’re now ready to start. Create a private repository on GitHub with a
 suitable name, and create a project based on that git repository. Store it 
 somewhere sensible on your computer.
@@ -85,7 +86,7 @@ to add documentation to remind you what the package does – see
 https://r-pkgs.org/description.html and https://r-pkgs.org/data.html for more
 information, and then you’ll be checking each other’s packages to make sure they
 work. You can add someone as a collaborator (so they can see your package) by 
-going to <span style="color: #de77ae;">Settings > Collaborators</span> from the
+going to <span style="color: #1697C0;">Settings > Collaborators</span> from the
 repository web page.
 
 ## Running the code
@@ -108,11 +109,11 @@ understood the process.
 Once the package(s) is/are working, you need to submit it/them as your 
 assignment for today. First you need to make sure you have pushed all of the 
 changes to GitHub, then add me, 
-<span style="color: #de77ae;">richardreeve</span>, as a collaborator on your
+**richardreeve**, as a collaborator on your
 repository on GitHub, and then submit the link to the GitHub web page for your
 repository as your exercise on GitHub. If you’d like to write a short script
 demonstrating it working, you can add an R file to the repository, you can put 
-this in an **inst** directory, not the existing **R** directory (which is where
+this in an <span style="color: #de77ae;">inst</span> directory, not the existing <span style="color: #de77ae;">R</span> directory (which is where
 package functions are stored), or the package will very likely not build. Check 
 this by clicking <span style="color: #de77ae;">Install and Restart</span> before 
 you submit your package!
