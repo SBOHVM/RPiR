@@ -34,7 +34,7 @@ Click on the Start Over link (look for the tiny grey text below the left menu).
 
 Close the window, then click on the red STOP button in RStudio to end the process.
 
-## RPiR 
+## RPiR contents
 
 The following practicals are included in this package:
 
