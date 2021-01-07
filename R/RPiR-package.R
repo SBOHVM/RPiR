@@ -44,7 +44,6 @@
 #'
 #' @import graphics
 #' @import learnr
-#' @import rdiversity
 #'
 #' @examples
 #' \dontrun{
