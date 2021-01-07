@@ -46,7 +46,6 @@
 #' @docType package
 #'
 #' @import graphics
-#' @import learnr
 #'
 #' @examples
 #' \dontrun{

@@ -2,4 +2,3 @@
 
 export(plot_populations)
 import(graphics)
-import(learnr)
