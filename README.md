@@ -5,6 +5,7 @@
 To install this package:
 ```
 install.packages(c("devtools", "learnr"))
+devtools::install_github("rstudio-education/gradethis")
 devtools::install_github("IBAHCM/RPiR")
 ```
 
