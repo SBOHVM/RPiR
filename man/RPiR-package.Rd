@@ -11,9 +11,12 @@ in R course, developed by the Institute of Biodiversity, Animal Health, and
 Comparative Medicine at the University of Glasgow.
 }
 \details{
-To run a tutorial, you first need to load up the learnr package (see
-Examples). To reset a tutorial, click on the Start Over link (look for the
-tiny grey text below the left menu). The following tutorials are included in this package:
+To run a practical, you first need to load up the learnr package (see
+Examples). To reset a practical, click on the Start Over link (look for the
+tiny grey text below the left menu). To close a practical, close the window,
+then click on the red STOP button in RStudio to end the process.
+
+The following tutorials are included in this package:
 \itemize{
 \item 1-1 Exponential growth model; Writing scripts and commenting code
 \item 1-2 Exponential growth model; Writing functions
