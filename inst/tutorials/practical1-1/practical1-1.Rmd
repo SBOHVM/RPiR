@@ -70,7 +70,7 @@ print(N)
 ```
 
 Try to edit the code above and answer the following questions (hit Start Over to 
-reset the code block). 
+reset the code block before attempting each question). 
 
 ```{r N, echo=FALSE}
 quiz(caption = "Quiz",
