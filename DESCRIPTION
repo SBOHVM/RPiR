@@ -1,12 +1,11 @@
 Package: RPiR
 Type: Package
 Title: Reproducible Programming in R course
-Version: 0.14.0
+Version: 0.14.1
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
                   role = c("aut"), comment = c(ORCID = "0000-0003-2589-8091")))
-Maintainer: The package maintainer <yourself@somewhere.net>
 Description: Reproducible Programming in R course.
     IBAHCM, Glasgow University.
 License: GPL-3
