@@ -2,7 +2,8 @@
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/build/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
 [![License: GPL-3.0](https://img.shields.io/badge/licence-GPL--3-yellow)](https://opensource.org/licenses/GPL-3.0)
 
-**To install this package**:
+## Install this package
+
 ```
 install.packages("devtools")
 devtools::install_github("rstudio/learnr")
@@ -11,21 +12,31 @@ devtools::install_github("IBAHCM/RPiR")
 ```
 
 You might be asked to install libgit2, which you can do on a Mac from the terminal:
+
 ```
 brew install libgit2
 ```
 
-**To run a practical**, you first need to load up the learnr package:
+## Run a practical
+
+You first need to load up the learnr package
+
 ```
 library(learnr)
 run_tutorial("practical1-1", package = "RPiR")
 ```
 
-**To reset a practical**, click on the Start Over link (look for the tiny grey text below the left menu). 
+## Reset a practical
 
-**To close a practical**, close the window, then click on the red STOP button in RStudio to end the process.
+Click on the Start Over link (look for the tiny grey text below the left menu). 
 
-The following tutorials are included in this package:
+## Close a practical
+
+Close the window, then click on the red STOP button in RStudio to end the process.
+
+## RPiR 
+
+The following practicals are included in this package:
 
 * `practical1-1`: Exponential growth model; Writing scripts and commenting code
 * `practical1-2`: Exponential growth model; Writing functions
