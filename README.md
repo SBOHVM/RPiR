@@ -1,4 +1,4 @@
-# progInR
+# Reproducible Programming in R course
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/build/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
 
 To install this package:
