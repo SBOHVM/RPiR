@@ -1,11 +1,10 @@
-# progInR
+# Reproducible Programming in R course
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/build/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
 
 To install this package:
 ```
 install.packages(c("devtools", "learnr"))
-library(devtools)
-install_github("IBAHCM/RPiR")
+devtools::install_github("IBAHCM/RPiR")
 ```
 
 To run a practical, you first need to load up the learnr package:
