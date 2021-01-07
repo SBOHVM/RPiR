@@ -8,10 +8,10 @@ library(devtools)
 install_github("IBAHCM/RPiR")
 ```
 
-To run the practical:
+To run a practical:
 ```
 library(learnr)
 run_tutorial("practical1-1", package = "RPiR")
 ```
 
-If anything goes wrong and you want to reset a tutorial page, click on the Start Over link (look for the tiny grey text below the left menu).
+To reset a tutorial page, click on the Start Over link (look for the tiny grey text below the left menu).
