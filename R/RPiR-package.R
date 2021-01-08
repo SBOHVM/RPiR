@@ -1,6 +1,6 @@
 #' Reproducible Programming in R course -
 #'
-#' \code{RPiR} is a learnr implimentation of the Reproducible Programming
+#' \code{RPiR} is a learnr implementation of the Reproducible Programming
 #' in R course, developed by the Institute of Biodiversity, Animal Health, and
 #' Comparative Medicine at the University of Glasgow.
 #'
