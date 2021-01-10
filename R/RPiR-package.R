@@ -46,6 +46,8 @@
 #' @docType package
 #'
 #' @import graphics
+#' @import learnr
+#' @import gradethis
 #'
 #' @examples
 #' \dontrun{
