@@ -194,7 +194,7 @@ metacommunity. **It’s important to always use the `abundances` object when usi
 First, read the {rdiversity} package documentation and examples. You can find
 this by going to the GitHub repository (https://github.com/boydorr/rdiversity), 
 and clicking on the <span style="color: #1697C0;">docs: rdiversity</span> badge, 
-or by clicking the link to boydorr.github.io/rdiversity/.
+or by clicking the link to https://boydorr.github.io/rdiversity/.
 
 Then write a script to calculate and plot the gamma diversity and the normalised 
 alpha diversity for the 2010 BCI census, for a range of values of $q$, say 

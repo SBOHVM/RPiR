@@ -29,7 +29,7 @@ simplest epidemiological model – the SIS model.
 ## Tasks
 
 In this practical we will write a stochastic version of the SIS model. You have 
-been provided with `run_simulation()` in the ProgInR package, which allows some 
+been provided with `run_simulation()` in the RPiR package, which allows some 
 extra functionality over `run_simple()` to run simulations using the older
 deterministic models, and some other code you will need in later exercises. You 
 need to write <span style="color: #de77ae;">0303-run-SIS.r</span> and 

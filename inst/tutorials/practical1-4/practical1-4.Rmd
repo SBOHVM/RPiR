@@ -168,7 +168,7 @@ this case `updated.population`.
 For convenience, here's a copy of <span style="color: #de77ae;">0103-run-simple-growth.r</span> (renamed as <span style="color: #de77ae;">0104-run-growth.r</span>) for you to edit:
 
 ```{r step_simple_growth-setup}
-library(progInR)
+library(RPiR)
 
 step_simple_growth <- function(current.population, growth.rate) {
   new.additions <- growth.rate * current.population
@@ -371,7 +371,7 @@ dash, dot, etc. – by using numbers (1 is solid, 2, 3, *etc.*). Note that
 the R console:
 
 ```{r plotpopulations-setup}
-library(progInR)
+library(RPiR)
 ```
 
 ```{r plotpopulations, exercise = TRUE}
@@ -379,9 +379,9 @@ library(progInR)
 ```
 
 This documentation is available, since `plot_populations()` was installed as 
-part of {progInR}. When functions are loaded using `source()`, rather than being 
+part of {RPiR}. When functions are loaded using `source()`, rather than being 
 installed, then the only documentation is that in the file itself. 
-Occassionally, you might come across a function that won't let you ask for help 
+Occasionally, you might come across a function that won't let you ask for help 
 using the `?` syntax – `?for`, `?function` and a couple of others. In that case 
 you can try 
 

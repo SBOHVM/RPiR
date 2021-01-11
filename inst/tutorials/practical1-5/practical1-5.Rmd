@@ -137,7 +137,7 @@ the necessary files have been preloaded for you. Try to fill in the blanks and
 compare the outputs as you vary the birth and death rates:
 
 ```{r rungrowth-setup}
-library(progInR)
+library(RPiR)
 step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
   new.additions <- birth.rate * latest$count 
   new.subtractions <- death.rate * latest$count 

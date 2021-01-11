@@ -25,12 +25,13 @@ When running stochastic simulations we often want to run multiple simulations
 and compare outputs easily. In this practical we will learn how to efficiently 
 plot multiple outputs on the same graph, and use a new set of functions 
 contained within the 
-<span style="color: #1697C0;">IBAHCM/ProgInR</span> package on GitHub.
+<span style="color: #1697C0;">IBAHCM/RPiR</span> package on GitHub.
 
 ## Tasks
 
-You have been provided with a new package on GitHub at https://github.com/IBAHCM/ProgInR. Take a look at this code online and read the
-following explanation. Remember that in the previous practical the program 
+You can see the package on GitHub at https://github.com/IBAHCM/RPiR.
+Take a look at this code online and read the following explanation.
+Remember that in the previous practical the program 
 repeated a section of code to overlay another output on the graph:
 
 ```{r, eval = FALSE}
@@ -57,8 +58,8 @@ plot_populations(population.df, new.graph = FALSE, lty = 2)
 
 It is bad practice to be copying and pasting identical code as we can easily
 introduce mistakes. So we should try to separate the simulation functionality 
-from the model more cleanly. Install the package using `devtools::install_github("IBAHCM/ProgInR")`. Then take a look at the new 
-function `run_simple()` online. Go to <span style="color: #1697C0;">https://github.com/IBAHCM/ProgInR</span>, open on the 
+from the model more cleanly. Take a look at the new 
+function `run_simple()` online. Go to <span style="color: #1697C0;">https://github.com/IBAHCM/RPiR</span>, open on the 
 <span style="color: #1697C0;">R</span> folder, and open the file called 
 <span style="color: #1697C0;">run_simple.R</span>. It should look something like
 this:
@@ -140,7 +141,7 @@ data <- step_function(initial.pop, ...)
 
 Now rewrite <span style="color: #de77ae;">0301-run-birth-death.r</span> as <span style="color: #de77ae;">0302-run-birth-death.r</span> using
 `run_simple()` to replace the whole simulation loop in the earlier code 
-(remember to call `library(ProgInR)` at the top of the script, which means you 
+(remember to call `library(RPiR)` at the top of the script, which means you 
 no longer need to source the helper file). This should make the code in
 <span style="color: #de77ae;">0302-run-birth-death.r</span> more compact, and will also make it much less prone
 to error, as we’ve isolated 10 more lines of code that we never need to write 
