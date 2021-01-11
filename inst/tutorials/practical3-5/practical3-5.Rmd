@@ -1,12 +1,11 @@
 ---
-title: "Reproducible Programming in R Practical 3-5"
+title: "3-5"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
 description: >
-  Students compare the mean stochastic result with the deterministic result for 
-  the SIR model.
+  Students run a stochastic version of the SIR model.
 ---
 
 ```{r setup, include=FALSE}
@@ -18,62 +17,59 @@ set.seed(123)
 
 ## Overview
 
-*In this practical, we want to compare the mean stochastic result with the*
-*deterministic result for the SIR model.*
-
+*In this practical we start to run a stochastic version of the SIR model.*
 
 ## Background
 
-We know that the outbreak can die out by chance before it gets going in the 
-stochastic model, and it’s not clear that the deterministic model takes this 
-into account, so we want to directly compare the two and check. Also, since the
-stochastic model can finish before the end time of the simulation, we need a 
-small amendment to allow us to average across "incomplete" simulations.
+Having created our stochastic version of the SIS model in the previous practical
+we are now ready to extend this framework to the SIR model.
 
 ## Tasks
 
-Adapt the code from <span style="color: #de77ae;">0304-run-SIR.r</span> to make <span style="color: #de77ae;">0305-mean-SIR.r</span>. Try just 
-adding the stochastic simulations from 3-4 together by adding the 
-`final.populations` data frames together, and then dividing by the number of 
-runs. Unless you are lucky (in which case run it again!), you will probably find 
-the adding up fails because the data frames are different lengths. This is 
-because some (all) simulations finished early because the outbreak died out.
+Using the code from the previous practical 
+<span style="color: #de77ae;">0303-run-SIS.r</span> and
+<span style="color: #de77ae;">0303-stochastic-SIS.r</span>, create two new files 
+<span style="color: #de77ae;">0304-run-SIR.r</span> and
+<span style="color: #de77ae;">0304-stochastic-SIR.r</span> that will simulate
+the stochastic SIR model.
 
-Go to the <span style="color: #1697C0;">IBAHCM/RPiR</span> package on 
-github and look at the `cleanup_timesteps()` function (which actually calls 
-`cleanup_times()` – both functions are in 
-<span style="color: #1697C0;">R/cleanup.R</span>). This function takes a
-population data frame and tidies it up in various ways. For our purposes, we can
-use it to extend a data frame to the correct end time, by repeating the 
-population sizes when the outbreak finished over and over again until we have
-reached the correct end time. We just call it as follows:
+This should be relatively straightforward. To produce 
+<span style="color: #de77ae;">0304-run-SIR.r</span> you need to add a 
+"recovereds" population to the data frame, remembering to specify 
+initial values for this new population.
 
-```{r, eval = FALSE}
-final.populations <- cleanup_timesteps(final.populations,
-                                       timestep = this.timestep,
-                                       end.time = end.time)
-```
+To produce <span style="color: #de77ae;">0304-stochastic-SIR.r</span> requires 
+a small change to the update step
+to move the newly recovered individuals into the recovered class rather than 
+back into the susceptible class. Remember also to include the recovereds in the
+population size calculation.
 
-Once we have done this, we can calculate the averages by just adding the 
-populations from each stochastic run to each other and dividing by the number of
-runs. Plot this averaged stochastic result against the deterministic result as
-in Practical 3-4.
+To overlay the corresponding plot from the deterministic model you will also 
+need to use `run_simulation()` on the `timestep_deterministic_SIR()` function 
+from Practical 2-4, and then plot using `new.graph = FALSE`.
 
-## Running the code
+## Running the code / Report
 
-Try running the code with an $R_0$ of 2, and a variety of different numbers of initially infected animals. You should find that as we start with more initially
-infected animals, the chance of the outbreak not taking off drops, and the 
-stochastic model looks more and more like the deterministic model.
+Run the code for different values of beta, initial conditions, and the
+population size. Why do the plots of the stochastic simulation end before those
+of the deterministic simulation? What happens as you increase the population 
+size?
 
-## The Science
+Write a report demonstrating some of these effects.
 
-This is a real research result! Deterministic models are not capable of 
-detecting this possibility of **stochastic extinction**, and this is one of the 
-major advantages of stochastic models.
+Now try increasing the transmission rate to increase the value of $R_0$. Given 
+a default value for the recovery rate of 0.1 what would beta need to be to 
+simulate an outbreak with an $R_0$ of 15? What happens when you do this when the
+time step is 1? You should get an error message saying the time step is too
+large. You may still get a plot though! This is because R is plotting the 
+previous value of populations held in its memory. This is why it's important to 
+be aware of your workspace and clear your previous history when you're working 
+on a new project (don't use `rm(list=ls())` though!) 
 
-## Report
+> Remember that generating a report starts a new copy of R and so is a much 
+better check of whether the script can run on its own.
 
-Write a report demonstrating stochastic extinction. Show different results 
-for stochastic models and deterministic models for small initial outbreaks and 
-low values of $R_0$, but similar results for high $R_0$ / high initial numbers 
-of infecteds.
+Clear what is held in R’s workspace in RStudio. Now rerun with $R_0 = 15$ and 
+confirm that you don't get an output when the error message shows. Remember
+that clearing your workspace and trying again is often a very useful trick when
+you get unexpected results.

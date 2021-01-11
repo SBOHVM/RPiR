@@ -1,11 +1,11 @@
 ---
-title: "Reproducible Programming in R Practical 3-4"
+title: "3-4"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
 description: >
-  Students run a stochastic version of the SIR model.
+  Students run a stochastic version of the SIS model.
 ---
 
 ```{r setup, include=FALSE}
@@ -17,59 +17,109 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we start to run a stochastic version of the SIR model.*
+*In this practical we develop and run our first stochastic version of the SIS model.*
 
 ## Background
 
-Having created our stochastic version of the SIS model in the previous practical
-we are now ready to extend this framework to the SIR model.
+We saw in the previous practicals the impact of including randomness into the
+exponential model with births and deaths. Having developed the programming 
+framework, it is now time to investigate the impact of randomness in the 
+simplest epidemiological model – the SIS model.
 
 ## Tasks
 
-Using the code from the previous practical 
-<span style="color: #de77ae;">0303-run-SIS.r</span> and
-<span style="color: #de77ae;">0303-stochastic-SIS.r</span>, create two new files 
-<span style="color: #de77ae;">0304-run-SIR.r</span> and
-<span style="color: #de77ae;">0304-stochastic-SIR.r</span> that will simulate
-the stochastic SIR model.
+In this practical we will write a stochastic version of the SIS model. You have 
+been provided with `run_simulation()` in the RPiR package, which allows some 
+extra functionality over `run_simple()` to run simulations using the older
+deterministic models, and some other code you will need in later exercises. You 
+need to write <span style="color: #de77ae;">0303-run-SIS.r</span> and 
+<span style="color: #de77ae;">0303-stochastic-SIS.r</span>, adapting 
+<span style="color: #de77ae;">0302-run-birth-death.r</span> and 
+<span style="color: #de77ae;">0301-stochastic-birth-death.r</span> to handle the 
+SIS model rather than exponential growth. Pay attention in particular to writing 
+the function in <span style="color: #de77ae;">0303-stochastic-SIS.r</span>, 
+where the most important changes need to be made.
 
-This should be relatively straightforward. To produce 
-<span style="color: #de77ae;">0304-run-SIR.r</span> you need to add a 
-"recovereds" population to the data frame, remembering to specify 
-initial values for this new population.
+The function will need a new name, perhaps `timestep_stochastic_SIS()`:
 
-To produce <span style="color: #de77ae;">0304-stochastic-SIR.r</span> requires 
-a small change to the update step
-to move the newly recovered individuals into the recovered class rather than 
-back into the susceptible class. Remember also to include the recovereds in the
-population size calculation.
+```{r, eval = FALSE}
+timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, timestep) {
+                                    # -- some code --
+                                    }
+```
 
-To overlay the corresponding plot from the deterministic model you will also 
-need to use `run_simulation()` on the `timestep_deterministic_SIR()` function 
-from Practical 2-4, and then plot using `new.graph = FALSE`.
+It proceeds much as before with the deterministic SIS model, calculating the 
+effective beta and sigma at this timestep, and then as with the stochastic birth 
+death model, you need to work out whether the individual rate of infection or 
+recovery per timestep is greater than 1, in which case it cannot be used as a
+probability. In this case, the actual individual infection rate is 
+`effective.transmission.rate` $\times \frac{I}{N}$ and the individual recovery 
+rate is `effective.recovery.rate`.
+
+Now for the key step... you need to sample from the binomial distribution (as 
+described in the lecture) to determine the number of new infecteds and 
+susceptibles using `rbinom()` with the probability of "success" set to the
+individual rates detailed above. Then update the populations, and if there are
+no infecteds left, then the epidemic is over, so set `is.finished` to `TRUE.` 
+
+```{r, eval = FALSE}
+is.finished <- next.infecteds == 0
+```
+
+Then append the new data to the data frame as usual, and return a list with the
+updated population data frame and a variable that tells us whether we are 
+finished or not.
+
+```{r, eval = FALSE}
+list(updated.pop = next.population, end.experiment = is.finished)
+```
 
 ## Running the code / Report
 
-Run the code for different values of beta, initial conditions, and the
-population size. Why do the plots of the stochastic simulation end before those
-of the deterministic simulation? What happens as you increase the population 
-size?
+When you are happy with the structure of the code, run it a few times with the 
+same parameter values and observe the variability. Try changing beta (which will
+change $R_0$) and the initial number of infecteds and see how the likelihood of
+early extinction changes. Notice that we can automate overlaying multiple 
+simulations on the same graph:
 
-Write a report demonstrating some of these effects.
+```{r, eval = FALSE}
+# We want a total of 10 plots
+first.graph <- TRUE 
+for (loop in 1:10) {
+  final.populations <- run_simulation(timestep_stochastic_SIS,
+                                      initial.populations,
+                                      end.time,
+                                      transmission.rate = ecoli.trans, 
+                                      recovery.rate = ecoli.recov, 
+                                      timestep = working.timestep)
+  # First time, make a new plot, afterwards just draw lines
+  if (first.graph) {
+    plot_populations(final.populations,
+                     new.graph = TRUE, 
+                     col = c(susceptibles = "green", infecteds = "red"))
+    first.graph <- FALSE 
+  } else {
+    plot_populations(final.populations,
+                     new.graph = FALSE,
+                     col = c(susceptibles = "green", infecteds = "red"))
+  }
+}
+```
 
-Now try increasing the transmission rate to increase the value of $R_0$. Given 
-a default value for the recovery rate of 0.1 what would beta need to be to 
-simulate an outbreak with an $R_0$ of 15? What happens when you do this when the
-time step is 1? You should get an error message saying the time step is too
-large. You may still get a plot though! This is because R is plotting the 
-previous value of populations held in its memory. This is why it's important to 
-be aware of your workspace and clear your previous history when you're working 
-on a new project (don't use `rm(list=ls())` though!) 
+You could do all ten plots in a single loop by setting `new.graph` appropriately
+- by starting with `TRUE` and them changing it to `FALSE` as I did in the slides,
+or changing it depending on what value `loop` has, for instance. Try changing 
+the total population size and determine the impact on the observed variability. 
+You should also overlay the deterministic results from Practical 2-3. 
 
-> Remember that generating a report starts a new copy of R and so is a much 
-better check of whether the script can run on its own.
+```{r, eval = FALSE}
+final.populations <- run_simulation(timestep_deterministic_SIS, 
+                                    initial.populations,
+                                    end.time,
+                                    transmission.rate = ecoli.trans,
+                                    recovery.rate = ecoli.recov, 
+                                    timestep = working.timestep)
+```
 
-Clear what is held in R’s workspace in RStudio. Now rerun with $R_0 = 15$ and 
-confirm that you don't get an output when the error message shows. Remember
-that clearing your workspace and trying again is often a very useful trick when
-you get unexpected results.
+Write a report to demonstrate the variability in the results of the stochastic
+model.

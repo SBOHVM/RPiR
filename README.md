@@ -50,11 +50,12 @@ The following practicals are included in this package:
 * `practical2-3`: SIS model; Changing the timestep
 * `practical2-4`: SIS model; Using while() loops
 * `practical2-5`: SIR model; Adapting previous code
-* `practical3-1`: Stochastic population growth model; Using stop()
-* `practical3-2`: Stochastic births and deaths model; Passing functions as arguments
-* `practical3-3`: Stochastic SIS model
-* `practical3-4`: Stochastic SIR model
-* `practical3-5`: Compare the mean stochastic model to the deterministic SIR model
+* `practical3-1`: R packages
+* `practical3-2`: Stochastic population growth model; Using stop()
+* `practical3-3`: Stochastic births and deaths model; Passing functions as arguments
+* `practical3-4`: Stochastic SIS model
+* `practical3-5`: Stochastic SIR model
+* `practical3-6`: Compare the mean stochastic model to the deterministic SIR model
 * `practical4-1`: Biodiversity; Writing a data package
 * `practical4-2`: Biodiversity; Writing a package demo
 * `practical4-3`: Biodiversity; Adding package functions and documentation

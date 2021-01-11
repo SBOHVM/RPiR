@@ -1,11 +1,12 @@
 ---
-title: "Reproducible Programming in R Practical 3-2"
+title: "3-2"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
 description: >
-  Students learn how to pass functions as arguments.
+  Students run stochastic models. They also learn to use stop() to catch errors
+  in their functions.
 ---
 
 ```{r setup, include=FALSE}
@@ -17,151 +18,138 @@ set.seed(123)
 
 ## Overview
 
-*In this practical you will see how we can make the code for the stochastic birth-death model safer, simpler, and more reusable.*
+*In this practical we will run our first stochastic simulations, starting with the stochastic version of the population growth model. From now on, we will expect a brief report in some format on every practical, so we will not give explicit guidance in every case.*
 
 ## Background
 
-When running stochastic simulations we often want to run multiple simulations
-and compare outputs easily. In this practical we will learn how to efficiently 
-plot multiple outputs on the same graph, and use a new set of functions 
-contained within the 
-<span style="color: #1697C0;">IBAHCM/RPiR</span> package on GitHub.
+In the lecture, we discussed the fact that the **deterministic models** we have
+been using so far don't handle dynamics at the individual level well. To 
+capture individual-level behaviour we need to include an element of chance in
+the model. This new type of model, which includes a probabilistic element, is 
+called a **stochastic model**.
 
 ## Tasks
 
-You can see the package on GitHub at https://github.com/IBAHCM/RPiR.
-Take a look at this code online and read the following explanation.
-Remember that in the previous practical the program 
-repeated a section of code to overlay another output on the graph:
+To write a model to handle stochastic population dynamics we obviously have to 
+update the timestep function to handle the new dynamics. However, we also have 
+to understand whether anything else has changed in how the simulation works. In
+fact, something has. There is now the chance that the population will die out before 
+the end of the experiment, so we need to look for this happening – not least to 
+speed up the simulation.
+
+We’ll start by writing the structural code (in <span style="color: #de77ae;">0301-run-birth-death.r</span>). From
+Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation 
+(remember that we are back to the birth-death population dynamics from 1-5 
+though):
 
 ```{r, eval = FALSE}
-#' Section: And again!
-#' -------------------
-population.df <- data.frame(time = start.time,
-                            count = initial.count) 
+while (latest.population$time < end.time) {
+  latest.population <- timestep_deterministic_SIR(# -- some arguments -- ) 
+  population.df <- rbind(population.df, latest.population)
+}
+```
 
-latest.population <- population.df
-keep.going <- latest.population$time < end.time 
+The loop ends when the time runs out. Now, instead, there are two reasons why we
+might stop the simulation – the time may have run out, or the timestep code may
+identify that the dynamics are now complete. To achieve this, the timestep code 
+will have to return both the updated population and whether the simulation is
+over. We suggest doing something like this:
 
+```{r, eval = FALSE}
 while (keep.going) {
-  data <- timestep_stochastic_birth_death(latest.population,
-                                          human.annual.birth,
-                                          human.annual.death,
-                                          short.timestep)
+  data <- timestep_stochastic_birth_death(# -- some arguments -- ) 
   latest.population <- data$updated.pop
-  population.df <- rbind(population.df, latest.population) 
+  population.df <- rbind(population.df, latest.population)
+  # The experiment may end stochastically or the time may run out 
   keep.going <- (!data$end.experiment) && (latest.population$time < end.time)
 }
-
-plot_populations(population.df, new.graph = FALSE, lty = 2)
 ```
 
-It is bad practice to be copying and pasting identical code as we can easily
-introduce mistakes. So we should try to separate the simulation functionality 
-from the model more cleanly. Take a look at the new 
-function `run_simple()` online. Go to <span style="color: #1697C0;">https://github.com/IBAHCM/RPiR</span>, open on the 
-<span style="color: #1697C0;">R</span> folder, and open the file called 
-<span style="color: #1697C0;">run_simple.R</span>. It should look something like
-this:
+Notice that at the start of the loop `keep.going` has not yet been defined, 
+which will cause an error, so you will need to start it off with an appropriate
+value. 
+
+Now you will need to write the `timestep.stochastic.birth.death()` 
+function (in <span style="color: #de77ae;">0301-stochastic-birth-death.r</span>) 
+to provide the right information to the main loop. We already have a 
+deterministic step function for single species population 
+dynamics (Practical 1-5). Starting with this code, you need to make three 
+changes. First, we need to handle the effect of changing timesteps and update
+the code from Practical 1-5 (or the code you produced for SIS and SIR models in
+Practicals 2-3 and 2-4) with something like this:
 
 ```{r, eval = FALSE}
-#' @title Simplest code to run a simulation loop #'
-#' @description
-#' A generic function to run a simulation loop for a fixed period of time.
-#'
-#' @param step_function Function to run a timestep (step_function())
-#' which returns a list containing elements updated.pop} with the
-#' updated population and end.experiment which is TRUE if
-#' the experiment has ended (FALSE if not)
-#' @param initial.pop Initial population data frame with columns corresponding 
-#' to function requirements
-#' @param end.time End of time simulation
-#' @param ... (optional) any other arguments for step_function(), e.g. 
-#' parameters or timestep
-#'
-#' @return Data frame containing population history of simulation over time
-run_simple <- function(step_function, 
-                       initial.pop,
-                       end.time, 
-                       ...) {
-  # Check whether step_function uses global variables
-  if (length(findGlobals(step_function, merge = FALSE)$variables) > 0)
-    warning(paste("Function provided uses global variable(s):",
-                  paste(findGlobals(step_function, merge = FALSE)$variables,
-                        collapse = ", "))) 
-  population.df <- latest.df <- initial.pop 
-  keep.going <- (latest.df$time < end.time)
-  while (keep.going) {
-    data <- step_function(latest.df, ...)
-    latest.df <- data$updated.pop
-    population.df <- rbind(population.df, latest.df) 
-    keep.going <- (latest.df$time < end.time) && (!data$end.experiment)
-  }
-  row.names(population.df) <- NULL 
-  population.df
+timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, timestep) {
+effective.birth.rate <- birth.rate * timestep
+# -- some code to determine the numbers of new births and deaths -- 
+next.population <- data.frame(time = latest$time + timestep, # -- some code -- )
+# -- some code to calculate whether the experiment is finished --
+```
+
+Then we need to work out whether the simulation has ended and return both
+pieces of information – the updated population and simulation state, by 
+returning a list like this at the end of the function (since a function can only
+return one item, we will have to return a list with two elements):
+
+```{r, eval = FALSE}
+timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, timestep) {
+  effective.birth.rate <- birth.rate * timestep
+  # -- some code to determine the numbers of new births and deaths --
+  next.population <- data.frame(time = latest$time + timestep, # -- some arguments -- )
+  # -- some code to calculate whether the experiment is finished --
+  list(updated.pop = next.population, 
+       end.experiment = is.finished) 
 }
 ```
 
-The purpose of this new function is to separate out the simulation functionality 
-from the model, and to simplify and automate the running of multiple stochastic
-simulations. If you look closely you can see that the function `run_simple()` 
-does the job we described in the <span style="color: #de77ae;">And again!</span>
-section (at the top of this page). It is set up in terms 
-of the generically named `step_function()` – in the case of the current model we
-would be using `timestep_stochastic_birth_death()` when we call `run_simple()`:
+But we need to determine whether the experiment is finished first – before the
+end of the function! In this case, the experiment will only end if the
+population completely dies out, so:
 
 ```{r, eval = FALSE}
-final.populations <- run_simple(timestep_stochastic_birth_death,
-                                initial.populations, 
-                                end.time,
-                                birth.rate = human.annual.birth,
-                                death.rate = human.annual.death,
-                                timestep = short.timestep)
+is.finished <- the.number.of.individuals.left == 0
 ```
 
-There are two things going on here that we haven’t seen before: (1) We're 
-passing the step function as an argument to the `run_simple()` function. This 
-just happens like any other argument being passed, you pass in the function, it 
-gets assigned to the `step_function` argument – remember that we can call it 
-anything inside a function – and then `step_function` gets used just like
-`initial.pop` and all of the other arguments. (2) the argument `...`. 
-This is a way of saying "and there will be other arguments I don’t want to (or 
-can’t) specify". You will find this in lots of R code (see `?plot` for example). 
-For us, the point is that *each step function will need different parameters* 
-*passed to it, and we don’t know what they are in advance*. Instead we just pass 
-them through:
+Finally, we need to make the simulation stochastic using `rbinom()`. Remember, 
+if you want to draw once from the binomial distribution with `count` trials, and 
+a probability of success of `prob`, then the number of successes is:
 
 ```{r, eval = FALSE}
-data <- step_function(initial.pop, ...)
+new.events <- rbinom(1, count, prob)
 ```
 
-**Any arguments after the three fixed arguments to** `run_simple()`
-**must be named** – they will be passed straight through to the step function 
-(via the `...`).
+So, the key is to use the `rbinom()` function to determine the numbers of new 
+births and deaths each time step. The number of births is drawn from a binomial
+distribution with size `count` and probability `birth.rate * timestep`, and the
+number of deaths is drawn from the same distribution with probability 
+`death.rate * timestep`.
 
-Now rewrite <span style="color: #de77ae;">0301-run-birth-death.r</span> as <span style="color: #de77ae;">0302-run-birth-death.r</span> using
-`run_simple()` to replace the whole simulation loop in the earlier code 
-(remember to call `library(RPiR)` at the top of the script, which means you 
-no longer need to source the helper file). This should make the code in
-<span style="color: #de77ae;">0302-run-birth-death.r</span> more compact, and will also make it much less prone
-to error, as we’ve isolated 10 more lines of code that we never need to write 
-(or copy and paste) again. Note that there is a demo in the package that checks
-all of the functions provided for global variables for you, so you don’t have to
-remember – another optimisation to stop you forgetting to check.
+## Running the code
 
-If you encounter any problems, the same folder has a function `run_simulation()` 
-that does some additional checking and reporting if you set an additional 
-argument `debug = TRUE`, which may help you identify what’s going wrong. I’ve 
-mostly suggested using `run_simple() `here as it’s significantly easier to 
-follow what’s going on in the function, but in future exercises, it’s better to 
-use `run_simulation()` for everything as it has some other additional 
-functionality.
+When you are happy that the code is working and makes sense, run the code
+several times without changing any parameters of initial conditions and look at
+the output. The stochasticity means that we see variable outputs. If you don’t
+it may be because your starting population is too high. Try something much 
+smaller, say 7 instead of 7 billion! You could also increase birth and death 
+rates or the time you’re simulating over to increase visible variability.
 
-## Running the code / Report
+Notice that (as before) we have repeated the piece of code doing the simulation
+and have made use of the `new.graph = FALSE` option to overlay a second plot on 
+the first.
 
-Run the code and observe the variability in outputs. What happens to the 
-variability as you increase the initial population size? You may want to adjust 
-the scale of the y-axis to see what happens at larger population sizes. To
-automate this, you can set the y-axis upper limit to $100 \times$ 
-`initial.count` 
-by setting `ylim = c(0, 100 * initial.count)`. Demonstrate in a brief report.
+If you haven’t already, try increasing the value of timestep. What happens? You
+are actually getting impossible numbers (`NA`s) because the probability of
+giving birth has got above 1. You can fix this by using the `stop()` command in
+`timestep_stochastic_birth_death()` to stop running code when the numbers you 
+put in are impossible:
+
+```{r, eval = FALSE}
+if ((effective.birth.rate >= 1) || (effective.death.rate >= 1))
+  stop("Effective rate too high, timestep must be too big")
+```
+
+Rerun the code and check it stops when appropriate.
+
+## Report
+
+Produce a report shows the code working.

@@ -29,11 +29,12 @@ The following tutorials are included in this package:
 \item 2-3 SIS model; Changing the timestep
 \item 2-4 SIS model; Using while() loops
 \item 2-5 SIR model; Adapting previous code
-\item 3-1 Stochastic population growth model; Using stop()
-\item 3-2 Stochastic births and deaths model; Passing functions as arguments
-\item 3-3 Stochastic SIS model
-\item 3-4 Stochastic SIR model
-\item 3-5 Compare the mean stochastic model to the deterministic SIR model
+\item 3-1 R packages
+\item 3-2 Stochastic population growth model; Using stop()
+\item 3-3 Stochastic births and deaths model; Passing functions as arguments
+\item 3-4 Stochastic SIS model
+\item 3-5 Stochastic SIR model
+\item 3-6 Compare the mean stochastic model to the deterministic SIR model
 \item 4-1 Biodiversity; Writing a data package
 \item 4-2 Biodiversity; Writing a package demo
 \item 4-3 Biodiversity; Adding package functions and documentation
