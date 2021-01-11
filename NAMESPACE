@@ -3,4 +3,3 @@
 export(plot_populations)
 import(gradethis)
 import(graphics)
-import(learnr)
