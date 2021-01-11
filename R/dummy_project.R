@@ -12,6 +12,7 @@ dummy_project <- function() {
   # Create a new directory named "project0201" (will return a warning if
   # directory already exists)
   dir.create(path)
+  usethis::ui_done(paste("Creating", usethis::ui_path(path)))
 
   # Populate "project0201"
   files <- c("dummy_project/0105-run-birth-death.R",
@@ -20,6 +21,7 @@ dummy_project <- function() {
   for (i in files) {
     tmp <- system.file(i, package = "RPiR")
     file.copy(tmp, file.path(path, basename(tmp)))
+    usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
   }
 
   # Create an RStudio project named "project0201" and open it in a new instance

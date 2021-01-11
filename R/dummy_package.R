@@ -17,11 +17,13 @@ dummy_package <- function() {
   # Add demo
   tmp <- system.file("dummy_package/0105-run-birth-death.R", package = "RPiR")
   file.copy(tmp, file.path(path, "demo", basename(tmp)))
+  usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
 
   # Add function
   tmp <- system.file("dummy_package/step_birth_death.R", package = "RPiR")
   file.copy(tmp, file.path(path, "R", basename(tmp)))
+  usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
 
   devtools::document(path, quiet = TRUE)
-  usethis::ui_done("Documenting functions")
+  usethis::ui_done("Documenting package functions")
 }
