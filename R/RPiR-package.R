@@ -47,7 +47,6 @@
 #'
 #' @import graphics
 #' @import utils
-#' @import learnr
 #' @import gradethis
 #' @import codetools
 #' @import deSolve
