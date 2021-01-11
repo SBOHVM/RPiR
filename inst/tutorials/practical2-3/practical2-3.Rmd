@@ -1,12 +1,11 @@
 ---
-title: "Reproducible Programming in R Practical 2-3"
+title: "2-3: SIS model"
 output: 
   learnr::tutorial:
     theme: lumen
 runtime: shiny_prerendered
 description: >
-  Students improve their timestep function. They also learn how to use while() 
-  loops.
+  Students learn how changing the timestep affects the simulation.
 ---
 
 ```{r setup, include=FALSE}
@@ -18,74 +17,70 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we separate out the model from the simulation functionality more cleanly. In the process we make the previous set of code safer to use (and more elegant!).*
+*In this practical we will examine the effect of changing the time step on the model outputs. Remember that in the lecture we said that we increase the accuracy of simulations when we use small time steps, and we reduce the accuracy (but speed up the simulation) when we use large time steps.*
 
 ## Background
 
-When we are programming we often make quick additions to code, as we did in the
-last practical but it is good practice, if we want to keep them, to make sure
-they are included in the code in a way that makes it clear what’s going on. We
-had to know how the SIS model works to know that we could get away with 
-multiplying the parameters with `timestep.` This use of a low-level detail of
-how the model runs might be risky – we may later change the model and 
-not realise this hack no longer works.
+So far, we have written code to model difference equations, where events happen
+at fixed intervals. For some biological populations such as insects reproducing
+on an annual cycle this framework is very appropriate. However, in general we
+are interested in events that could happen at any point, and importantly once an
+event has happened it can affect the rate at which new events happen – for
+instance, when the first infected animal in a large population succeeds in 
+infecting a second, the rate of infection approximately doubles. If we use large
+time steps we may miss this effect of changing transmission rates between one 
+time step and the next, whereas if we use very small timesteps, we will be
+accurate but many steps will contain no events, thus wasting computational time.
+In this practical we will see that the size of the time step affects our model.
 
 ## Tasks
 
-In the previous practical we multiplied the transmission and recovery rates up
-(or down) to reflect changes in `timestep.` However, `transmission.rate` and
-`recovery.rate` were not really changing, and we want the code to reflect that
-rather than abusing it to do something it wasn’t intended to do. Instead add a
-new argument, `timestep`, into `step_deterministic_SIS()` – we could call it
-`timestep_deterministic_SIS()`. Rather than submit the product 
-`transmission.rate * timestep` as an argument to the simulation function, we can 
-now separately pass the real rate parameters and the `timestep` separately. This **rescaling** is now done within the function
-`timestep_deterministic_SIS()` in <span style="color: #de77ae;">0203-deterministic-SIS.r</span>. We might, for
-instance, create two new variables, perhaps called `effective.transmission.rate` 
-and `effective.recovery.rate` (or something shorter!). These new variables are 
-just our original rates rescaled to match the new time scale. 
+To change the model to handle timesteps, we have to consider that by 
+default, in the previous programs we were using a timestep of 1. In this case -- 
+of *E. coli* transmission in cattle from Practical 2-1 -- these are measured in 
+weeks,
+which means that if our rates were given to us in units of weeks, then we are
+stepping forward one week at a time. If our rates were given to us per day 
+rather than per week we would be stepping forward day by day. If a rate is given 
+to us in weeks, we could scale it down accordingly to get the rate per day. Or,
+we could scale it up to get the rate per month. So to change our program to step
+forward on a different time scale, we scale the parameters. Our parameters (the
+transmission and recovery rates) will help us determine the number of 
+transmissions and recoveries that occur in one unit of time. To simulate
+stepping forward in larger of smaller amounts of time we scale the parameters by
+the new time step.
 
-Now that we have a
-timestep in the step function, it makes sense to have the time in there too, and
-that can be updated inside the function. The data frame can have an extra
-column:
-
-```{r, eval = FALSE}
-population.df <- data.frame(time = start.time,
-                            susceptibles = initial.susceptibles,
-                            infecteds = initial.infecteds)
-```
-
-And the `timestep_deterministic_SIS()` function can update the time along with 
-the number of susceptibles and infecteds. Here, it makes the code slightly more
-elegant but it might be critical if, for instance, we wanted to adjust the 
-timestep as we went along, which we will need to do later. Now we’re not making 
-the vector of timesteps in advance, we can use a `while()` loop to decide when 
-we’re finished. For instance:
-
-```{r, eval = FALSE}
-latest.population <- population.df
-while (latest.population$time < end.time) {
-  latest.population <- timestep_deterministic_SIS(latest = latest.population,
-                                                  transmission.rate = ecoli.transmission, 
-                                                  recovery.rate = ecoli.recovery, 
-                                                  timestep = this.timestep)
-  population.df <- rbind(population.df, latest.population) 
-}
-```
-
-`latest.population$time` is the time that we are currently at, which we extract
-from the data frame after each timestep.
+The task now is edit <span style="color: #de77ae;">0201-run-SIS.r</span> so that it is easy to alter the timestep
+of the simulation – you can reuse `step_deterministic_SIS()`. All you need to do
+is to write a new script file which creates a new parameter, `timestep`, so that
+you can scale `transmission.rate` and `recovery.rate` to 
+`ecoli.transmission * timestep` and `ecoli.recovery * timestep` before passing 
+them to `step_deterministic_SIS()`. You also need to remember that the vector of
+`timesteps` to loop through is now also wrong. Make sure that you adjust it 
+correctly so that it will give the correct times for the plot. You can check it 
+has by looking at `population.df$time` after you’ve added it in to the data 
+frame and make sure it looks right to you. We can call this new version
+<span style="color: #de77ae;">0202-test-SIS.r</span>.
 
 ## Running the code
 
-Run this code and check that it gives the same answers as in the previous 
-practical. Don’t forget to check that your function is using only arguments 
-passed to it by running `findGlobals()`.
+`timestep` does not need to be a whole number, and it can be less than 1. Start 
+running your programming with a `timestep` of 1, and then try reducing it to 0.1 
+and then compare your outputs. If they appear unchanged it means the first 
+timestep was small enough to produce an accurate output. Remember you can plot
+multiple graphs on top of each other to make it easier to directly compare 
+timesteps.
+
+Once you’ve satisfied yourself that the simulation is currently accurate, find 
+out by how much you can increase the timestep safely before the simulation 
+becomes inaccurate. Running this code with a `timestep` of 3 or 5 means that we
+are stepping forward in chunks of time that are 3 or 5 times larger than our 
+default time step. Note that if you don’t use the parameters from *E. coli*
+transmission in cattle, the values of the timestep at which is all goes wrong 
+may be different, so we recommend sticking with those values.
 
 ## Report
 
-Demonstrate that the code is the same in a report by running both
-`step_deterministic_SIS()` and `timestep_deterministic_SIS()` with a couple of
-different values of timestep (using `source()` to load in both functions from 
-their respective files).
+Demonstrate the instabilities at high timesteps in a report, with some text 
+explaining when things break down and the simulation is no longer reliable, and 
+when, conversely, there is no advantage to reducing the timesteps further.
