@@ -46,7 +46,10 @@
 #' @docType package
 #'
 #' @import graphics
+#' @import utils
 #' @import gradethis
+#' @import codetools
+#' @import deSolve
 #'
 #' @examples
 #' \dontrun{
