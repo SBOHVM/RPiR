@@ -48,27 +48,25 @@
 #' plot_populations(short.results, new.graph=FALSE, lty=2)
 #'
 cleanup_times <- function(populations, are.events, timestep=1,
-                          end.time=max(populations$time),
-                          times=seq(from=min(populations$time),
-                                    to=end.time, by=timestep))
-{
+                          end.time = max(populations$time),
+                          times = seq(from = min(populations$time),
+                                    to = end.time, by = timestep)) {
   if (times[1] < min(populations$time))
     stop("Requested times start before beginning of input data frame")
   new.pops <- populations[FALSE,]
-  for (time in times)
-  {
+  for (time in times) {
     if (are.events) # If we are event-based, find last event
       next.pop <- utils::tail(populations[populations$time <= time,], 1)
     else # otherwise
-      if (any(populations$time > time))
-      { # if we are in the middle of a sequence, interpolate
+      if (any(populations$time > time)) {
+        # if we are in the middle of a sequence, interpolate
         before <- utils::tail(populations[populations$time <= time,], 1)
         after <- utils::head(populations[populations$time > time,], 1)
         next.pop <- (before * (after$time - time) +
                        after * (time - before$time)) /
           (after$time - before$time)
-      }
-    else # if we are at the end, use last step
+      } else
+        # if we are at the end, use last step
       next.pop <- utils::tail(populations, 1)
     next.pop$time <- time
     new.pops <- rbind(new.pops, next.pop)
@@ -79,14 +77,12 @@ cleanup_times <- function(populations, are.events, timestep=1,
 
 #' @rdname cleanup_times
 #' @export
-cleanup_events <- function(populations, ...)
-{
+cleanup_events <- function(populations, ...) {
   cleanup_times(populations, TRUE, ...)
 }
 
 #' @rdname cleanup_times
 #' @export
-cleanup_timesteps <- function(populations, ...)
-{
+cleanup_timesteps <- function(populations, ...) {
   cleanup_times(populations, FALSE, ...)
 }

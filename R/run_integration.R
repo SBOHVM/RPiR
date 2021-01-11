@@ -24,40 +24,37 @@
 #' @export
 #'
 run_integration <- function(deriv_function, populations, end.time,
-                            timestep=1, debug=FALSE, ...)
-{
-  if (length(codetools::findGlobals(deriv_function, merge=FALSE)$variables) > 0)
+                            timestep=1, debug=FALSE, ...) {
+  if (length(codetools::findGlobals(deriv_function, merge = FALSE)$variables) > 0)
     warning(paste("Function provided uses global variable(s):",
                   paste(codetools::findGlobals(deriv_function,
-                                               merge=FALSE)$variables,
-                        collapse=", ")))
-  if (debug)
-  {
+                                               merge = FALSE)$variables,
+                        collapse = ", ")))
+  if (debug) {
     cat(c("Population names being used: ",
-          paste(colnames(populations), collapse=", "),
+          paste(colnames(populations), collapse = ", "),
           "\n"))
     cat(c("Parameter names being used: ",
-          paste(names(c(...)), collapse=", "),
+          paste(names(c(...)), collapse = ", "),
           "\n"))
   }
   # Translate run.integration parameters into ones for ode()
   current.time <- utils::tail(populations$time, 1)
-  times <- seq(from=current.time, to=end.time, by=timestep)
+  times <- seq(from = current.time, to = end.time, by = timestep)
   initial.populations <- unlist(populations)
   initial.populations <- initial.populations[names(initial.populations) != "time"]
   params <- c(...)
 
-  if (debug)
-  {
+  if (debug) {
     cat("Derivatives returned from first run: ",
         paste(deriv_function(current.time, initial.populations, params)[[1]],
-              collapse=", "),
+              collapse = ", "),
         "\n")
   }
 
   # Now run ode, turn back into data frame, add times and return
   matrix.populations <- deSolve::ode(initial.populations, times,
-                            deriv_function, params)
+                                     deriv_function, params)
   final.populations <- as.data.frame(matrix.populations)
   final.populations$time <- times
   final.populations

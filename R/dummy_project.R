@@ -17,7 +17,7 @@ dummy_project <- function() {
   files <- c("dummy_project/0105-run-birth-death.R",
              "dummy_project/0105-step-birth-death.R")
 
-  for(i in files) {
+  for (i in files) {
     tmp <- system.file(i, package = "RPiR")
     file.copy(tmp, file.path(path, basename(tmp)))
   }

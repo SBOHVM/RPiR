@@ -32,18 +32,18 @@
 #' results <- run_simple(growth, df, 100, growth.rate=0.1)
 #' plot_populations(results)
 #'
-run_simple <- function(step_function, initial.pop, end.time, ...)
-{
+run_simple <- function(step_function, initial.pop, end.time, ...) {
   # Check whether step_function uses global variables
-  if (length(codetools::findGlobals(step_function, merge=FALSE)$variables) > 0)
+  if (length(codetools::findGlobals(step_function,
+                                    merge = FALSE)$variables) > 0)
     warning(paste("Function provided uses global variable(s):",
-                  paste(codetools::findGlobals(step_function, merge=FALSE)$variables,
-                        collapse=", ")))
+                  paste(codetools::findGlobals(step_function,
+                                               merge = FALSE)$variables,
+                        collapse = ", ")))
 
   population.df <- latest.df <- initial.pop
   keep.going <- (latest.df$time < end.time)
-  while (keep.going)
-  {
+  while (keep.going) {
     data <- step_function(latest.df, ...)
     latest.df <- data$updated.pop
     population.df <- rbind(population.df, latest.df)

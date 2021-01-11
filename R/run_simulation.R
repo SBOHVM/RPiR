@@ -35,42 +35,39 @@
 #' results <- run_simulation(growth, df, 100, growth.rate=0.1, debug=TRUE)
 #' plot_populations(results)
 #'
-run_simulation <- function(step_function, initial.pop, end.time, debug=FALSE, ...)
-{
+run_simulation <- function(step_function, initial.pop, end.time,
+                           debug=FALSE, ...) {
   # Check whether step_function uses global variables
-  if (length(codetools::findGlobals(step_function, merge=FALSE)$variables) > 0)
+  if (length(codetools::findGlobals(step_function, merge = FALSE)$variables) > 0)
     warning(paste("Function provided uses global variable(s):",
                   paste(codetools::findGlobals(step_function,
-                                               merge=FALSE)$variables,
-                        collapse=", ")))
+                                               merge = FALSE)$variables,
+                        collapse = ", ")))
 
   # Collect and report debugging information to identify sources of errors
   pop.names <- colnames(initial.pop)
-  if (debug)
-  {
+  if (debug) {
     cat(c("Population names being used: ",
-          paste(pop.names, collapse=", "), "\n"))
+          paste(pop.names, collapse = ", "), "\n"))
     if (nrow(initial.pop) != 1)
       warning("Input dataframe initial.pop has ", nrow(initial.pop), " rows")
     cat(c("Parameter names being used: ",
-          paste(names(c(...)), collapse=", "), "\n"))
+          paste(names(c(...)), collapse = ", "), "\n"))
   }
 
   keep.going <- (initial.pop$time < end.time)
-  if (debug && keep.going)
-  {
+  if (debug && keep.going) {
     data <- step_function(initial.pop, ...)
-    if (is.data.frame(data))
-    { # We have an experiment that doesn't end, or can't determine when it does
+    if (is.data.frame(data)) {
+      # We have an experiment that doesn't end, or can't determine when it does
       latest.df <- data
       cat("step_function() returns a data frame.\n")
     }
-    else # a list
-    { # We have an experiment that can determine when it ends
+    else {
+      # If a list, we have an experiment that can determine when it ends
       cat("step_function() returns a list.\n")
       list.names <- c("updated.pop", "end.experiment")
-      if (any(names(data) != list.names))
-      {
+      if (any(names(data) != list.names)) {
         cat("Names of elements in list: ",
             paste(names(data), collapse = ", "), "\n")
         if (any(sort(names(data)) != sort(list.names)))
@@ -84,12 +81,11 @@ run_simulation <- function(step_function, initial.pop, end.time, debug=FALSE, ..
     }
 
     cat("Population returned from first run: ",
-        paste(latest.df, collapse=", "), "\n")
+        paste(latest.df, collapse = ", "), "\n")
     ret.names <- colnames(latest.df)
-    if (any(ret.names != pop.names))
-    {
+    if (any(ret.names != pop.names)) {
       cat("Population names being used in output: ",
-          paste(ret.names, collapse=", "), "\n")
+          paste(ret.names, collapse = ", "), "\n")
       if (any(sort(ret.names) != sort(pop.names)))
         stop("Mismatch in input and output population dataframe column names")
       else
@@ -102,26 +98,23 @@ run_simulation <- function(step_function, initial.pop, end.time, debug=FALSE, ..
     population.df <- initial.pop
   }
 
-  while (keep.going)
-  {
+  while (keep.going) {
     data <- step_function(latest.df, ...)
-    if (is.data.frame(data))
-    { # We have an experiment that doesn't end, or can't determine when it does
+    if (is.data.frame(data)) {
+      # We have an experiment that doesn't end, or can't determine when it does
       latest.df <- data
       ended <- FALSE
     }
-    else # a list
-    { # We have an experiment that can determine when it ends
+    else { # If a list, we have an experiment that can determine when it ends
       latest.df <- data$updated.pop
       ended <- data$end.experiment
     }
 
-    if (debug)
-    {
+    if (debug) {
       if (nrow(latest.df) != 1)
         cat("Output dataframe has ", nrow(latest.df), " rows\n")
       if (any(is.na(latest.df)))
-        cat("Output dataframe has NAs: ", paste(latest.df, collapse=", "), "\n")
+        cat("Output dataframe has NAs: ", paste(latest.df, collapse = ", "), "\n")
     }
     population.df <- rbind(population.df, latest.df)
     keep.going <- (latest.df$time < end.time) && (!ended)

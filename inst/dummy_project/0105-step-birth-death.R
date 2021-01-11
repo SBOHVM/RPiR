@@ -14,8 +14,7 @@
 
 ## Returns:
 ##  - a data.frame containing the updated population
-step_deterministic_birth_death <- function(latest, birth.rate, death.rate)
-{
+step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
   ## Calculate population changes
   new.births <- birth.rate * latest$count
   new.deaths <- death.rate * latest$count
@@ -23,5 +22,5 @@ step_deterministic_birth_death <- function(latest, birth.rate, death.rate)
   next.count <- latest$count + new.births - new.deaths
 
   ## Return data frame containing next population count
-  data.frame(count=next.count)
+  data.frame(count = next.count)
 }

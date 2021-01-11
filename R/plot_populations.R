@@ -27,13 +27,11 @@
 #'                  die=exp(seq(10, 0, by = -0.1)))
 #' plot_populations(df, lty = 2, main = "A title")
 #'
-plot_populations <- function(populations, new.graph=TRUE,
-                             ylim=NA, lty=1, col=NA, with.legend=TRUE, ...)
-{
-  if (any(colnames(populations)=="time"))
-  {
+plot_populations <- function(populations, new.graph = TRUE, ylim = NA, lty = 1,
+                             col = NA, with.legend = TRUE, ...) {
+  if (any(colnames(populations) == "time")) {
     time <- populations$time
-    populations$time = NULL
+    populations$time <- NULL
   }
   else
     stop("No time available")
@@ -42,12 +40,10 @@ plot_populations <- function(populations, new.graph=TRUE,
   labels <- colnames(populations)
   if (is.na(col[1]))
     line.cols <- 1:length(labels)
-  else
-  {
+  else {
     if (all(labels(col) == 1:length(col)))
       line.cols <- rep(col, length.out = length(labels))
-    else
-    {
+    else {
       line.cols <- c()
       for (name in labels)
         line.cols <- c(line.cols, col[name])
@@ -57,12 +53,10 @@ plot_populations <- function(populations, new.graph=TRUE,
   # Sort out the line types for the populations
   if (is.na(lty[1]))
     line.ltys <- 1:length(labels)
-  else
-  {
-    if (all(labels(lty)==1:length(lty)))
+  else {
+    if (all(labels(lty) == 1:length(lty)))
       line.ltys <- rep(lty, length.out = length(labels))
-    else
-    {
+    else {
       line.ltys <- c()
       for (name in labels)
         line.ltys <- c(line.ltys, lty[name])
@@ -74,20 +68,21 @@ plot_populations <- function(populations, new.graph=TRUE,
     ylim <- c(0, max(rowSums(populations)))
 
   # And now plot the graphs
-  for (index in 1:length(labels))
-  {
+  for (index in 1:length(labels)) {
     label <- labels[index]
     this.pop <- populations[[label]]
-    if (new.graph)
-    { # When it's a new plot, do labels and legends, etc.
+    if (new.graph) {
+      # When it's a new plot, do labels and legends, etc.
       plot(time, this.pop,
-           ylim=ylim, xlab='time', ylab='population size',
-           type='l', col=line.cols[index], lty=line.ltys[index], ...)
+           ylim = ylim, xlab = "time", ylab = "population size",
+           type = "l", col = line.cols[index], lty = line.ltys[index], ...)
       if (with.legend) # Plot the legend if desired
-        graphics::legend("topright", legend=labels, lty=line.ltys, col=line.cols)
+        graphics::legend("topright", legend = labels, lty = line.ltys,
+                         col = line.cols)
       new.graph <- FALSE
     }
     else # Otherwise just draw the lines
-      graphics::lines(time, this.pop, col=line.cols[index], lty=line.ltys[index], ...)
+      graphics::lines(time, this.pop, col = line.cols[index],
+                      lty = line.ltys[index], ...)
   }
 }
