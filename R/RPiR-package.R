@@ -45,11 +45,12 @@
 #' @aliases RPiR
 #' @docType package
 #'
-#' @import graphics
-#' @import utils
-#' @import gradethis
 #' @import codetools
 #' @import deSolve
+#' @import gradethis
+#' @import graphics
+#' @import utils
+#' @import usethis
 #'
 #' @examples
 #' \dontrun{

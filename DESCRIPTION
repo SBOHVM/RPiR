@@ -1,7 +1,7 @@
 Package: RPiR
 Type: Package
 Title: Reproducible Programming in R course
-Version: 0.15.4
+Version: 0.16.0
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
@@ -11,11 +11,12 @@ Description: Reproducible Programming in R course at IBAHCM, University of Glasg
     functionality to help with the course.
 License: GPL-3
 Imports:
-    graphics,
-    utils,
-    gradethis,
     codetools,
-    deSolve
+    deSolve,
+    gradethis,
+    graphics,
+    usethis,
+    utils
 Remotes:
     rstudio-education/gradethis
 Encoding: UTF-8
