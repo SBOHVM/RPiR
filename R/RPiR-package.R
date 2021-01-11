@@ -49,7 +49,8 @@
 #'
 #' @import codetools
 #' @import deSolve
-#' @import gradethis
+#' @import devtools
+#' @rawNamespace import(gradethis, except = random_praise)
 #' @import graphics
 #' @import learnr
 #' @import utils

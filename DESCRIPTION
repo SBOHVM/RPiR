@@ -1,7 +1,7 @@
 Package: RPiR
 Type: Package
 Title: Reproducible Programming in R course
-Version: 0.18.1
+Version: 0.20.0
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
@@ -13,6 +13,7 @@ License: GPL-3
 Imports:
     codetools,
     deSolve,
+    devtools,
     gradethis,
     graphics,
     learnr,
