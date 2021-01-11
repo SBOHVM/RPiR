@@ -17,12 +17,14 @@ brew install libgit2
 
 ## Run a practical
 
-You first need to load up the learnr package
+You first need to load up the learnr package, then use `run_tutorial()` and select the practical you wish to run: 
 
 ```
 library(learnr)
 run_tutorial("practical1-1", package = "RPiR")
 ```
+
+From Practical exercise 1-6 onwards, we suggest that you open a separate instance of RStudio to run your code.
 
 ## Reset a practical
 
