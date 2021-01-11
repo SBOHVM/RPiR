@@ -50,6 +50,7 @@
 #' @import deSolve
 #' @import gradethis
 #' @import graphics
+#' @import learnr
 #' @import utils
 #' @import usethis
 #'

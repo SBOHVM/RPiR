@@ -24,10 +24,11 @@ The following tutorials are included in this package:
 \item 1-4 Exponential growth model; Generalising and structuring code
 \item 1-5 Births and deaths model; Generalising code
 \item 1-6 Births and deaths model; Writing reports in RStudio
-\item 2-1 SIS model; Adapting previous code
-\item 2-2 SIS model; Changing the timestep
-\item 2-3 SIS model; Using while() loops
-\item 2-4 SIR model; Adapting previous code
+\item 2-1 RStudio projects
+\item 2-2 SIS model; Adapting previous code
+\item 2-3 SIS model; Changing the timestep
+\item 2-4 SIS model; Using while() loops
+\item 2-5 SIR model; Adapting previous code
 \item 3-1 Stochastic population growth model; Using stop()
 \item 3-2 Stochastic births and deaths model; Passing functions as arguments
 \item 3-3 Stochastic SIS model
