@@ -1,7 +1,8 @@
 #' dummy_package
 #'
 #' This function will create an RStudio project called `package0301` and
-#' populate it with `0105-run-birth-death.R` and `0105-step-birth-death.R`.
+#' populate it with `0105-run-birth-death.R` (now `run-birth-death.R`), and
+#' `0105-step-birth-death.R` (now `step_deterministic_birth_death.R`).
 #'
 #' @export
 #'
@@ -17,12 +18,21 @@ dummy_package <- function() {
 
   # Add demo
   tmp <- system.file("dummy_package/0105-run-birth-death.R", package = "RPiR")
-  save_as <- gsub("01", "03", basename(tmp))
+  save_as <- gsub("0105-", "", basename(tmp))
   file.copy(tmp, file.path(path, "demo", save_as))
   usethis::ui_done(paste("Writing", usethis::ui_value(save_as)))
 
+  tmp <- "run-birth-death Simple birth-death difference equation model"
+  cat(tmp, file = file.path(path, "demo", "00Index"))
+  usethis::ui_done(paste("Writing", usethis::ui_value("00Index")))
+
   # Add function
   tmp <- system.file("dummy_package/step_birth_death.R", package = "RPiR")
+  file.copy(tmp, file.path(path, "R", "step_deterministic_birth_death.R"))
+  usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
+
+  # Add package file
+  tmp <- system.file("dummy_package/package0301-package.R", package = "RPiR")
   file.copy(tmp, file.path(path, "R", basename(tmp)))
   usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
 
