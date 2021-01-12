@@ -20,8 +20,9 @@ dummy_project <- function() {
 
   for (i in files) {
     tmp <- system.file(i, package = "RPiR")
-    file.copy(tmp, file.path(path, basename(tmp)))
-    usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
+    save_as <- gsub("01", "02", basename(tmp))
+    file.copy(tmp, file.path(path, save_as))
+    usethis::ui_done(paste("Writing", usethis::ui_value(save_as)))
   }
 
   # Create an RStudio project named "project0201" and open it in a new instance
