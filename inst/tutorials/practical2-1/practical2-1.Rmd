@@ -44,8 +44,8 @@ You should find that (1) your working directory is now
 <span style="color: #de77ae;">project0201</span>, (2) inside this directory
 are three files, and (3) an RStudio project has been set up, called 
 <span style="color: #de77ae;">project0201</span>. Of the three files, two 
-should be familiar to you. These are your script and step function from 
+should be familiar to you - the script and step function from 
 Practical 1-5. The third file, 
 <span style="color: #de77ae;">project0201.Rproj</span>, is an RStudio project
-file, which can be used as a shortcut for opening this project from your 
-filesystem.
+file, which is used to make this directory an RStudio project, and can be used 
+as a shortcut for opening this project from your filesystem.
