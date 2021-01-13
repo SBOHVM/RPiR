@@ -76,7 +76,7 @@ We'll start by working on the function, then go on to change the main script lat
 
 #### Changes needed to update 0103-step-simple-growth.r to 0104-step-growth.r
 
-For convenience, here's a copy of <span style="color: #de77ae;">0103-step-simple-growth.r</span> (renamed as <span style="color: #de77ae;">0104-step-growth.r</span>) for you to edit:
+We've generated <span style="color: #de77ae;">0104-step-growth.r</span> (from <span style="color: #de77ae;">0103-step-simple-growth.r</span>) for you to edit:
 
 ```{r step_deterministic_growth, exercise = TRUE, exercise.cap = "0104-step-growth.r", exercise.lines = 18}
 #' ### Function: step_simple_growth() 
@@ -165,7 +165,14 @@ this case `updated.population`.
 
 #### Changes needed to update 0103-run-simple-growth.r to 0104-run-growth.r
 
-For convenience, here's a copy of <span style="color: #de77ae;">0103-run-simple-growth.r</span> (renamed as <span style="color: #de77ae;">0104-run-growth.r</span>) for you to edit:
+For convenience, we've generated 
+<span style="color: #de77ae;">0104-run-growth.r</span> (from 
+<span style="color: #de77ae;">0103-run-simple-growth.r</span>) for you to edit. 
+Note that, as before, `source()`
+has been commented out as it won't work in the {learnr} environment. Instead, 
+<span style="color: #de77ae;">0103-step-simple-growth-function.r</span>,
+<span style="color: #de77ae;">0104-plot-helper.r</span> and 
+<span style="color: #de77ae;">0104-step-growth.r</span> have been preloaded for you:
 
 ```{r step_simple_growth-setup}
 library(RPiR)
