@@ -3,7 +3,6 @@
 ### File: 0105-run-birth-death.r
 
 #' Load in the functions that do the work
-library(ProgInR)
 source("0105-step-birth-death.r")
 
 #' Set up the simulation parameters
