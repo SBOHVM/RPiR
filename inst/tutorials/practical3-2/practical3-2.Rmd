@@ -37,10 +37,14 @@ fact, something has. There is now the chance that the population will die out be
 the end of the experiment, so we need to look for this happening – not least to 
 speed up the simulation.
 
-We’ll start by writing the structural code (in <span style="color: #de77ae;">0301-run-birth-death.r</span>). From
-Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation 
-(remember that we are back to the birth-death population dynamics from 1-5 
-though):
+We’ll start by writing the structural code in a new demo file, 
+<span style="color: #de77ae;">demo/stochastic-birth-death.r</span>, 
+remembering to add an entry in 
+<span style="color: #de77ae;">demo/00Index</span>. You can use the 
+<span style="color: #de77ae;">run-birth-death</span> demo (simulating 
+birth-death population dynamics from Practical 1-5) as a template. 
+
+From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation:
 
 ```{r, eval = FALSE}
 while (latest.population$time < end.time) {
