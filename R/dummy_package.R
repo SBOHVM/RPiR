@@ -22,7 +22,7 @@ dummy_package <- function() {
   file.copy(tmp, file.path(path, "demo", save_as))
   usethis::ui_done(paste("Writing", usethis::ui_value(save_as)))
 
-  tmp <- "run-birth-death Simple birth-death difference equation model"
+  tmp <- "run-birth-death   Simple birth-death difference equation model"
   cat(tmp, file = file.path(path, "demo", "00Index"))
   usethis::ui_done(paste("Writing", usethis::ui_value("00Index")))
 
