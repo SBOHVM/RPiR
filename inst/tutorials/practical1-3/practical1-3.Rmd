@@ -48,7 +48,9 @@ source("0103-step-simple-growth-function.r")
 
 to tell the main script (the R program) that it needs to look in 
 <span style="color: #de77ae;">0103-step-simple-growth-function.r</span> for
-code. The function documentation should be in the function file now and not 
+code. 
+
+The function documentation should be in the function file now and not 
 in the main script, like this:
 
 ```{r functions, exercise = TRUE, exercise.cap = "0103-step-simple-growth-function.r", exercise.lines = 18}
@@ -72,8 +74,8 @@ step_simple_growth <- function(current.population, growth.rate) {
 }
 ```
 
-and the main script (
-<span style="color: #de77ae;">0103-run-simple-growth.r</span>) should look 
+and the main script (<span style="color: #de77ae;">0103-run-simple-growth.r</span>) 
+should look 
 something like this:
 
 > Note that {learnr} doesn't create files, so `source` doesn't work here. To 
