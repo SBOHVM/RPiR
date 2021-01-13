@@ -22,7 +22,7 @@
 #' \item 2-3 SIS model; Changing the timestep
 #' \item 2-4 SIS model; Using while() loops
 #' \item 2-5 SIR model; Adapting previous code
-#' \item 3-1 R packages
+#' \item 3-1 Writing an R package
 #' \item 3-2 Stochastic population growth model; Using stop()
 #' \item 3-3 Stochastic births and deaths model; Passing functions as arguments
 #' \item 3-4 Stochastic SIS model
