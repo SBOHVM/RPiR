@@ -1,5 +1,5 @@
 ---
-title: "Reproducible Programming in R Practical 1-5"
+title: "1-5: Births and deaths model"
 output: 
   learnr::tutorial:
     theme: lumen

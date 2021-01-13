@@ -1,5 +1,5 @@
 ---
-title: "3-1: R packages"
+title: "3-1: Writing an R package"
 output: 
   learnr::tutorial:
     theme: lumen

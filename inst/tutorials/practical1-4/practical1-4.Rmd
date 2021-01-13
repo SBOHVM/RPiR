@@ -1,5 +1,5 @@
 ---
-title: "Reproducible Programming in R Practical 1-4"
+title: "1-4:Exponential growth model"
 output:
   learnr::tutorial:
     theme: lumen

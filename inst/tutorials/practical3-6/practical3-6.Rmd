@@ -1,5 +1,5 @@
 ---
-title: "3-6"
+title: "3-6: Compare the mean stochastic model to the deterministic SIR model"
 output: 
   learnr::tutorial:
     theme: lumen
