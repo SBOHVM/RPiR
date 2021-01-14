@@ -1,0 +1,91 @@
+---
+title: "2-4: SIS model"
+output: 
+  learnr::tutorial:
+    theme: lumen
+runtime: shiny_prerendered
+description: >
+  Students improve their timestep function. They also learn how to use while() 
+  loops.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+## Overview
+
+*In this practical we separate out the model from the simulation functionality more cleanly. In the process we make the previous set of code safer to use (and more elegant!).*
+
+## Background
+
+When we are programming we often make quick additions to code, as we did in the
+last practical but it is good practice, if we want to keep them, to make sure
+they are included in the code in a way that makes it clear what’s going on. We
+had to know how the SIS model works to know that we could get away with 
+multiplying the parameters with `timestep.` This use of a low-level detail of
+how the model runs might be risky – we may later change the model and 
+not realise this hack no longer works.
+
+## Tasks
+
+In the previous practical we multiplied the transmission and recovery rates up
+(or down) to reflect changes in `timestep.` However, `transmission.rate` and
+`recovery.rate` were not really changing, and we want the code to reflect that
+rather than abusing it to do something it wasn’t intended to do. Instead add a
+new argument, `timestep`, into `step_deterministic_SIS()` – we could call it
+`timestep_deterministic_SIS()`. Rather than submit the product 
+`transmission.rate * timestep` as an argument to the simulation function, we can 
+now separately pass the real rate parameters and the `timestep` separately. This **rescaling** is now done within the function
+`timestep_deterministic_SIS()` in <span style="color: #de77ae;">0203-deterministic-SIS.r</span>. We might, for
+instance, create two new variables, perhaps called `effective.transmission.rate` 
+and `effective.recovery.rate` (or something shorter!). These new variables are 
+just our original rates rescaled to match the new time scale. 
+
+Now that we have a
+timestep in the step function, it makes sense to have the time in there too, and
+that can be updated inside the function. The data frame can have an extra
+column:
+
+```{r, eval = FALSE}
+population.df <- data.frame(time = start.time,
+                            susceptibles = initial.susceptibles,
+                            infecteds = initial.infecteds)
+```
+
+And the `timestep_deterministic_SIS()` function can update the time along with 
+the number of susceptibles and infecteds. Here, it makes the code slightly more
+elegant but it might be critical if, for instance, we wanted to adjust the 
+timestep as we went along, which we will need to do later. Now we’re not making 
+the vector of timesteps in advance, we can use a `while()` loop to decide when 
+we’re finished. For instance:
+
+```{r, eval = FALSE}
+latest.population <- population.df
+while (latest.population$time < end.time) {
+  latest.population <- timestep_deterministic_SIS(latest = latest.population,
+                                                  transmission.rate = ecoli.transmission, 
+                                                  recovery.rate = ecoli.recovery, 
+                                                  timestep = this.timestep)
+  population.df <- rbind(population.df, latest.population) 
+}
+```
+
+`latest.population$time` is the time that we are currently at, which we extract
+from the data frame after each timestep.
+
+## Running the code
+
+Run this code and check that it gives the same answers as in the previous 
+practical. Don’t forget to check that your function is using only arguments 
+passed to it by running `findGlobals()`.
+
+## Report
+
+Demonstrate that the code is the same in a report by running both
+`step_deterministic_SIS()` and `timestep_deterministic_SIS()` with a couple of
+different values of timestep (using `source()` to load in both functions from 
+their respective files).
