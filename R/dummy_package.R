@@ -10,6 +10,10 @@
 #' @export
 #'
 dummy_package <- function(package_name) {
+
+  if (file.exists(package_name))
+    stop("This directory already exists.")
+
   # Create package structure
   package_dir <- usethis::create_package(package_name)
 

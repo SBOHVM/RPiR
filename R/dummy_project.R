@@ -9,6 +9,9 @@ dummy_project <- function() {
 
   path <- "project0201"
 
+  if (file.exists(path))
+    stop("This directory already exists.")
+
   # Create a new directory named "project0201" (will return a warning if
   # directory already exists)
   dir.create(path)
