@@ -24,7 +24,7 @@ The following tutorials are included in this package:
 \item 1-4 Exponential growth model; Generalising and structuring code
 \item 1-5 Births and deaths model; Generalising code
 \item 1-6 Births and deaths model; Writing reports in RStudio
-\item 2-1 RStudio projects
+\item 2-1 Creating an RStudio project
 \item 2-2 SIS model; Adapting previous code
 \item 2-3 SIS model; Changing the timestep
 \item 2-4 SIS model; Using while() loops

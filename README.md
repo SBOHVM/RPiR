@@ -45,7 +45,7 @@ The following practicals are included in this package:
 * `practical1-4`: Exponential growth model; Generalising and structuring code
 * `practical1-5`: Births and deaths model; Generalising code
 * `practical1-6`: Births and deaths model; Writing reports in RStudio
-* `practical2-1`: RStudio projects
+* `practical2-1`: Creating an RStudio project
 * `practical2-2`: SIS model; Adapting previous code
 * `practical2-3`: SIS model; Changing the timestep
 * `practical2-4`: SIS model; Using while() loops
