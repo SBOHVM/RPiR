@@ -23,6 +23,9 @@ set.seed(123)
 *In this session we will take the code for the models with just growth (1-4)* 
 *and with births and deaths (1-5) and make a clearer report comparing the two.*
 
+> Note that from here on out you probably want to have two versions of RStudio
+open at a time. One to run the {learnr} course (this will likely have a big red stop button preventing you from being able to run anything in the Console) and one to work in. 
+
 ## Background
 
 We are now going to demonstrate in a small way why it’s worth dividing up the
