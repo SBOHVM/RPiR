@@ -139,12 +139,12 @@ distribution with size `count` and probability `birth.rate * timestep`, and the
 number of deaths is drawn from the same distribution with probability 
 `death.rate * timestep`.
 
-To test your function works you can run `load_all()` from the {devtools} 
-package to load your package into your Global environment. 
-
-Once you're happy with your function, run `document()`, again from the {devtools} 
-package, to populate your package documentation files. Then run `install()`
-to install it.
+Remember that, to test your function works you can run `devtools::load_all()` to
+temporarily load your package into the Global environment. Then, once you're 
+happy with your function, run `devtools::document()` to generate
+<span style="color: #de77ae;">man/</span> files and edit the 
+<span style="color: #de77ae;">NAMESPACE</span>. Then run `devtools::install()`
+to permanently install it.
 
 ## Running the code
 
