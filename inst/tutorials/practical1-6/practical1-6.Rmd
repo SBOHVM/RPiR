@@ -55,9 +55,8 @@ If things go irretrievably wrong, you can use
 <span style="color: #de77ae;">Session > Restart R</span> in the menus: it is far 
 more effective than clearing just the workspace as it resets everything, while 
 leaving RStudio itself unaffected. Remember that once you have done this you may 
-have to set the working directory to the correct folder if you’re not sensibly 
-using a project, and you will certainly have to start running your code again 
-completely from the beginning.
+have to set the working directory to the correct folder, and you will certainly 
+have to start running your code again completely from the beginning.
 
 Note that, when you generate a report from the script file, they are always 
 generated from a new, clean, version of R. So this is a very important final 
