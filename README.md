@@ -7,7 +7,7 @@
 
 ```
 install.packages("devtools")
-devtools::install_github("IBAHCM/RPiR")
+devtools::install_github("IBAHCM/RPiR", build_vignettes = TRUE)
 ```
 
 You might be asked to install libgit2, which you can do on a Mac from the terminal:
