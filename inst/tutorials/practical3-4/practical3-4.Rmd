@@ -29,23 +29,25 @@ simplest epidemiological model – the SIS model.
 ## Tasks
 
 In this practical we will write a stochastic version of the SIS model. You have 
-been provided with `run_simulation()` in the RPiR package, which allows some 
+been provided with `run_simulation()` in the {RPiR} package, which allows some 
 extra functionality over `run_simple()` to run simulations using the older
-deterministic models, and some other code you will need in later exercises. You 
-need to write <span style="color: #de77ae;">0303-run-SIS.r</span> and 
-<span style="color: #de77ae;">0303-stochastic-SIS.r</span>, adapting 
-<span style="color: #de77ae;">0302-run-birth-death.r</span> and 
-<span style="color: #de77ae;">0301-stochastic-birth-death.r</span> to handle the 
-SIS model rather than exponential growth. Pay attention in particular to writing 
-the function in <span style="color: #de77ae;">0303-stochastic-SIS.r</span>, 
-where the most important changes need to be made.
+deterministic models. 
 
-The function will need a new name, perhaps `timestep_stochastic_SIS()`:
+You need to write a new demo, <span style="color: #de77ae;">d0304_run_SIS</span>, and 
+a new function, `timestep_stochastic_SIS()`, adapted from the
+<span style="color: #de77ae;">d0303_run_birth_death</span> demo and
+`timestep_stochastic_birth_death()` to handle the 
+SIS model rather than exponential growth. Pay attention in particular to writing 
+the function, where the most important changes need to be made.
+
+### R/timestep_stochastic_birth_death.R
+
+The function should be defined like this:
 
 ```{r, eval = FALSE}
 timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, timestep) {
-                                    # -- some code --
-                                    }
+  # -- some code --
+}
 ```
 
 It proceeds much as before with the deterministic SIS model, calculating the 
@@ -82,7 +84,57 @@ change $R_0$) and the initial number of infecteds and see how the likelihood of
 early extinction changes. Notice that we can automate overlaying multiple 
 simulations on the same graph:
 
-```{r, eval = FALSE}
+```{r tenloop-setup}
+library(RPiR)
+
+timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, timestep=1)
+{
+  ## Calculate total size of population, effective beta and sigma
+  pop.size <- latest$susceptibles + latest$infecteds
+  effective.transmission.rate <- transmission.rate * timestep
+  effective.recovery.rate <- recovery.rate * timestep
+  if ((effective.transmission.rate * latest$infecteds / pop.size >= 1) ||
+        (effective.recovery.rate >= 1))
+    stop("Effective rate too high, timestep must be too big")
+  
+  ## Calculate changes to populations
+  new.infecteds <- rbinom(1, latest$susceptibles,
+                          effective.transmission.rate * latest$infecteds / pop.size)
+  new.susceptibles <- rbinom(1, latest$infecteds, effective.recovery.rate) 
+  next.susceptibles <- latest$susceptibles + new.susceptibles - new.infecteds
+  next.infecteds <- latest$infecteds - new.susceptibles + new.infecteds
+  
+  ## Is the experiment over?
+  is.finished <- (next.infecteds == 0)
+  
+  ## Create new row of populations data frame and return list
+  next.population <- data.frame(time=latest$time + timestep,
+                                susceptibles=next.susceptibles,
+                                infecteds=next.infecteds)
+  list(updated.pop=next.population, end.experiment=is.finished)
+}
+
+# Set up initial populations
+pop.size <- 100
+initial.infecteds <- 2
+initial.susceptibles <- pop.size - initial.infecteds
+
+# Transmission and recovery rates
+ecoli.trans <- 0.3
+ecoli.recov <- 0.1
+
+# Simulation times
+start.time <- 0
+end.time <- 200
+this.timestep <- 1
+
+# And initial population sizes
+initial.populations <- data.frame(time=start.time,
+                                  susceptibles=initial.susceptibles,
+                                  infecteds=initial.infecteds)
+```
+
+```{r tenloop, exercise = TRUE}
 # We want a total of 10 plots
 first.graph <- TRUE 
 for (loop in 1:10) {
@@ -91,7 +143,7 @@ for (loop in 1:10) {
                                       end.time,
                                       transmission.rate = ecoli.trans, 
                                       recovery.rate = ecoli.recov, 
-                                      timestep = working.timestep)
+                                      timestep = this.timestep)
   # First time, make a new plot, afterwards just draw lines
   if (first.graph) {
     plot_populations(final.populations,
@@ -110,7 +162,10 @@ You could do all ten plots in a single loop by setting `new.graph` appropriately
 - by starting with `TRUE` and them changing it to `FALSE` as I did in the slides,
 or changing it depending on what value `loop` has, for instance. Try changing 
 the total population size and determine the impact on the observed variability. 
+
 You should also overlay the deterministic results from Practical 2-3. 
+`run_simulation()` will now work with this as well since it automatically 
+detects that it just returns a dataframe, and behaves appropriately:
 
 ```{r, eval = FALSE}
 final.populations <- run_simulation(timestep_deterministic_SIS, 
@@ -121,5 +176,4 @@ final.populations <- run_simulation(timestep_deterministic_SIS,
                                     timestep = working.timestep)
 ```
 
-Write a report to demonstrate the variability in the results of the stochastic
-model.
+Demonstrates the variability in the results of the stochastic model in your demo.

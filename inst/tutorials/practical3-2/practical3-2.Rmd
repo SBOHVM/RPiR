@@ -37,12 +37,15 @@ fact, something has. There is now the chance that the population will die out be
 the end of the experiment, so we need to look for this happening – not least to 
 speed up the simulation.
 
+### demo/d0302_stochastic_birth_death.R
+
 We’ll start by writing the structural code in a new demo file, 
-<span style="color: #de77ae;">demo/stochastic-birth-death.r</span>, 
+<span style="color: #de77ae;">demo/d0302_stochastic_birth_death.r</span>, 
 remembering to add an entry in 
 <span style="color: #de77ae;">demo/00Index</span>. You can use the 
-<span style="color: #de77ae;">run-birth-death</span> demo (simulating 
-birth-death population dynamics from Practical 1-5) as a template. 
+<span style="color: #de77ae;">d0301_run_birth_death</span> demo -- simulating 
+birth-death population dynamics from Practical 1-5 -- in {package0301} as a 
+template. 
 
 From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation:
 
@@ -73,14 +76,21 @@ Notice that at the start of the loop `keep.going` has not yet been defined,
 which will cause an error, so you will need to start it off with an appropriate
 value. 
 
-Now you will need to write the `timestep.stochastic.birth.death()` 
-function (in <span style="color: #de77ae;">0301-stochastic-birth-death.r</span>) 
-to provide the right information to the main loop. We already have a 
+Remember to call `library(RPiR)` at the top of the script to load
+`plot_populations()`, and `library(package0301)` to load `timestep_stochastic_birth_death()`, which means you 
+no longer need to source any helper files.
+
+### R/timestep_stochastic_birth_death.R
+
+Now you will need to write the `timestep_stochastic_birth_death()` 
+function to provide the right information to the main loop. We already have a 
 deterministic step function for single species population 
-dynamics (Practical 1-5). Starting with this code, you need to make three 
-changes. First, we need to handle the effect of changing timesteps and update
-the code from Practical 1-5 (or the code you produced for SIS and SIR models in
-Practicals 2-3 and 2-4) with something like this:
+dynamics (from Practical 1-5). We've written this function into {package0301} as
+`step_deterministic_birth_death()`. Starting with this code, you need to make three 
+changes. 
+
+First, we need to handle the effect of changing timesteps and update
+the code with something like this:
 
 ```{r, eval = FALSE}
 timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, timestep) {
@@ -88,6 +98,7 @@ effective.birth.rate <- birth.rate * timestep
 # -- some code to determine the numbers of new births and deaths -- 
 next.population <- data.frame(time = latest$time + timestep, # -- some code -- )
 # -- some code to calculate whether the experiment is finished --
+}
 ```
 
 Then we need to work out whether the simulation has ended and return both
@@ -128,11 +139,26 @@ distribution with size `count` and probability `birth.rate * timestep`, and the
 number of deaths is drawn from the same distribution with probability 
 `death.rate * timestep`.
 
+To test your function works you can run `load_all()` from the {devtools} 
+package to load your package into your Global environment. 
+
+Once you're happy with your function, run `document()`, again from the {devtools} 
+package, to populate your package documentation files. Then run `install()`
+to install it.
+
 ## Running the code
 
 When you are happy that the code is working and makes sense, run the code
 several times without changing any parameters of initial conditions and look at
-the output. The stochasticity means that we see variable outputs. If you don’t
+the output. Remember that you can run your code as a demo, 
+
+```{r eval = FALSE}
+demo("d0302_stochastic_birth_death", package = "package0301")
+```
+
+or by opening the file in RStudio and compiling a notebook. 
+
+The stochasticity means that we see variable outputs. If you don’t
 it may be because your starting population is too high. Try something much 
 smaller, say 7 instead of 7 billion! You could also increase birth and death 
 rates or the time you’re simulating over to increase visible variability.
@@ -153,7 +179,3 @@ if ((effective.birth.rate >= 1) || (effective.death.rate >= 1))
 ```
 
 Rerun the code and check it stops when appropriate.
-
-## Report
-
-Produce a report shows the code working.

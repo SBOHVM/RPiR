@@ -17,12 +17,11 @@ dummy_package <- function() {
   usethis::ui_done(paste("Creating", usethis::ui_path("demo")))
 
   # Add demo
-  tmp <- system.file("dummy_package/0105-run-birth-death.R", package = "RPiR")
-  save_as <- gsub("0105-", "", basename(tmp))
-  file.copy(tmp, file.path(path, "demo", save_as))
-  usethis::ui_done(paste("Writing", usethis::ui_value(save_as)))
+  tmp <- system.file("dummy_package/d0105-run-birth-death.R", package = "RPiR")
+  file.copy(tmp, file.path(path, "demo", "0301_run_birth_death.R"))
+  usethis::ui_done(paste("Writing", usethis::ui_value("0301_run_birth_death.R")))
 
-  tmp <- "run-birth-death   Simple birth-death difference equation model"
+  tmp <- "d0301_run_birth_death   Simple birth-death difference equation model"
   cat(tmp, file = file.path(path, "demo", "00Index"))
   usethis::ui_done(paste("Writing", usethis::ui_value("00Index")))
 

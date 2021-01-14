@@ -26,20 +26,23 @@ we are now ready to extend this framework to the SIR model.
 
 ## Tasks
 
-Using the code from the previous practical 
-<span style="color: #de77ae;">0303-run-SIS.r</span> and
-<span style="color: #de77ae;">0303-stochastic-SIS.r</span>, create two new files 
-<span style="color: #de77ae;">0304-run-SIR.r</span> and
-<span style="color: #de77ae;">0304-stochastic-SIR.r</span> that will simulate
+Using the code from the previous demo 
+<span style="color: #de77ae;">d0304_run_SIS</span> and
+`timestep_stochastic_SIS()` (from Practical 3-4), create two a new demo 
+<span style="color: #de77ae;">d0305_run_SIR</span> and a new function,
+`timestep_stochastic_SIR()` that will simulate
 the stochastic SIR model.
 
+### demo/d0305_run_SIR.R
+
 This should be relatively straightforward. To produce 
-<span style="color: #de77ae;">0304-run-SIR.r</span> you need to add a 
+<span style="color: #de77ae;">d0305_run_SIR</span> you need to add a 
 "recovereds" population to the data frame, remembering to specify 
 initial values for this new population.
 
-To produce <span style="color: #de77ae;">0304-stochastic-SIR.r</span> requires 
-a small change to the update step
+### R/timestep_stochastic_SIR.R
+
+To produce `timestep_stochastic_SIR()` requires a small change to the update step
 to move the newly recovered individuals into the recovered class rather than 
 back into the susceptible class. Remember also to include the recovereds in the
 population size calculation.
@@ -55,7 +58,7 @@ population size. Why do the plots of the stochastic simulation end before those
 of the deterministic simulation? What happens as you increase the population 
 size?
 
-Write a report demonstrating some of these effects.
+Illustrate some of these effects in your demo.
 
 Now try increasing the transmission rate to increase the value of $R_0$. Given 
 a default value for the recovery rate of 0.1 what would beta need to be to 

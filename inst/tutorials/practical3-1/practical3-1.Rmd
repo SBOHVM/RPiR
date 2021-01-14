@@ -54,7 +54,7 @@ from source, more info
 accessed by pressing the up key in the Console
 * <span style="color: #de77ae;">demo/</span>: contains R demo files, more info
 [here](https://r-pkgs.org/misc.html#demo) (which we've populated with 
-<span style="color: #de77ae;">run-birth-death.R</span>, the
+<span style="color: #de77ae;">d0301_run_birth_death.R</span>, the
 script from Practical 1-5)
 * <span style="color: #de77ae;">DESCRIPTION</span>: contains metadata about 
 your package, more info [here](https://r-pkgs.org/description.html)
@@ -94,10 +94,10 @@ you've already done that, you can just call `install()` directly.
 Try running the demo:
 
 ```{r eval = FALSE}
-demo(topic = "run-birth-death", package = "package0301")
+demo(topic = "d0301_run_birth_death", package = "package0301")
 ```
 
-As you can see in <span style="color: #de77ae;">demo/run-birth-death.R</span>, 
+As you can see in <span style="color: #de77ae;">demo/d0301_run_birth_death.R</span>, 
 this is just a standard script. Any script in 
 <span style="color: #de77ae;">demo</span> that has been installed as part of a 
 package can be run using `demo()`. Calling `demo(package = "package0301")` lists

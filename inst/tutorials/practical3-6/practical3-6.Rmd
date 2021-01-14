@@ -32,8 +32,9 @@ small amendment to allow us to average across "incomplete" simulations.
 
 ## Tasks
 
-Adapt the code from <span style="color: #de77ae;">0304-run-SIR.r</span> to make <span style="color: #de77ae;">0305-mean-SIR.r</span>. Try just 
-adding the stochastic simulations from 3-4 together by adding the 
+Adapt the code from <span style="color: #de77ae;">d0305_run_SIR</span> to make a 
+new demo, <span style="color: #de77ae;">0306_mean_SIR</span>. Try just 
+adding the stochastic simulations from 3-5 together by adding the 
 `final.populations` data frames together, and then dividing by the number of 
 runs. Unless you are lucky (in which case run it again!), you will probably find 
 the adding up fails because the data frames are different lengths. This is 
@@ -57,11 +58,12 @@ final.populations <- cleanup_timesteps(final.populations,
 Once we have done this, we can calculate the averages by just adding the 
 populations from each stochastic run to each other and dividing by the number of
 runs. Plot this averaged stochastic result against the deterministic result as
-in Practical 3-4.
+in Practical 3-5.
 
 ## Running the code
 
-Try running the code with an $R_0$ of 2, and a variety of different numbers of initially infected animals. You should find that as we start with more initially
+Try running the code with an $R_0$ of 2, and a variety of different numbers of 
+initially infected animals. You should find that as we start with more initially
 infected animals, the chance of the outbreak not taking off drops, and the 
 stochastic model looks more and more like the deterministic model.
 

@@ -1,9 +1,7 @@
-#' Simple birth-death difference equation model
+#' # Simple birth-death difference equation model
 
-### File: 0105-run-birth-death.r
-
-#' Load in the functions that do the work
-source("0105-step-birth-death.r")
+library(RPiR)
+library(package0301)
 
 #' Set up the simulation parameters
 
