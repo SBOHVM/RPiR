@@ -109,9 +109,8 @@ each demo alongside a description, on a single line. When adding a new entry,
 remember to put three spaces between the demo name and its description or you 
 won't see it in the demo list.
 
-When you add your own demos, you need to run (`devtools::load_all()` to 
-temporarily load or) `devtools::install()` to permanently install them as part 
-of your package.
+When you add your own demos, you need to run `devtools::install()` to 
+permanently install them as part of your package.
 
 ### Package documentation
 
@@ -129,9 +128,8 @@ the bottom of the help function and click on
 exported by this package. 
 
 Remember that any changes you make to the package documentation won't yet be 
-visible. You need to run (`devtools::load_all()` to 
-temporarily load or) `devtools::install()` to permanently install them as part 
-of your package.
+visible. You need to run `devtools::install()` to permanently install them as 
+part of your package.
 
 ### Function documentation
 
@@ -141,25 +139,28 @@ which gives you a simple example of how functions are documented.
 
 When you add your own function to a package, after having written the 
 {Roxygen2} comments, you should run `devtools::document()` to generate the 
-<span style="color: #de77ae;">man/</span> files and edit the <span style="color: #de77ae;">NAMESPACE</span>. You should then run (`devtools::load_all()` to 
-temporarily load or) `devtools::install()` to permanently install them as part 
+<span style="color: #de77ae;">man/</span> files and edit the 
+<span style="color: #de77ae;">NAMESPACE</span>. You should then run 
+`devtools::install()` to permanently install them as part 
 of your package.
 
 ### Package metadata
 
 Open the <span style="color: #de77ae;">DESCRIPTION</span> file. This file is 
-used to record package dependencies. We've added a dependency on {dplyr} so you
+used to record package dependencies. We've added a dependency on {RPiR} so you
 can see how to add one. Three things are required:
 
 * Add an entry in the <span style="color: #de77ae;">Imports</span> field of the
 DESCRIPTION file
 * Add an `@import` in the 
 <span style="color: #de77ae;">githubusername-package</span> file
-* Run `devtools::document()` to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)
+* Run `devtools::document()` to populate the 
+<span style="color: #de77ae;">NAMESPACE</span> file (which you should never 
+edit by hand)
 
-You should then run (`devtools::load_all()` to 
-temporarily load or) `devtools::install()` to permanently install them as part 
-of your package.
+In this particular case, {RPiR} is not available on CRAN, so we've had to 
+note its location in the 
+
 
 As well as recording dependencies, the 
 <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata
