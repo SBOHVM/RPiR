@@ -112,9 +112,12 @@ assignment for today. First you need to make sure you have pushed all of the
 changes to GitHub, then add me, 
 **richardreeve**, as a collaborator on your
 repository on GitHub, and then submit the link to the GitHub web page for your
-repository as your exercise on GitHub. If you’d like to write a short script
+repository as your exercise on GitHub. 
+
+If you’d like to write a short script
 demonstrating it working, you can add an R file to the repository, you can put 
-this in an <span style="color: #de77ae;">inst</span> directory, not the existing <span style="color: #de77ae;">R</span> directory (which is where
+this in an <span style="color: #de77ae;">inst</span> directory, not the existing 
+<span style="color: #de77ae;">R</span> directory (which is where
 package functions are stored), or the package will very likely not build. Check 
 this by clicking <span style="color: #de77ae;">Install and Restart</span> before 
 you submit your package!
