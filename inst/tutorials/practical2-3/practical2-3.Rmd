@@ -50,6 +50,7 @@ transmissions and recoveries that occur in one unit of time. To simulate
 stepping forward in larger of smaller amounts of time we scale the parameters by
 the new time step.
 
+As usual, create a new project for this practical. 
 The task now is edit <span style="color: #de77ae;">0201-run-SIS.r</span> so that it is easy to alter the timestep
 of the simulation – you can reuse `step_deterministic_SIS()`. All you need to do
 is to write a new script file which creates a new parameter, `timestep`, so that
