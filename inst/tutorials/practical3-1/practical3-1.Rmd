@@ -30,8 +30,9 @@ For more information, follow this [link](https://r-pkgs.org).
 We have written a function that will generate an R package for you to 
 look at. In the following example, we have set 
 <span style="color: #de77ae;">~/Desktop/git</span> as our working directory
-(this is where we keep all of our projects) and run `dummy_package()`, without 
-any arguments. 
+(this is where we keep all of our projects) and run 
+`dummy_package("githubusername")`, replacing `githubusername` with your actual 
+GitHub username. 
 
 A new instance of RStudio should open:
 
@@ -40,7 +41,7 @@ knitr::include_graphics('images/package.png')
 ```
 
 You should find that (1) your working directory is now 
-<span style="color: #de77ae;">package0301</span>, (2) inside this directory
+<span style="color: #de77ae;">githubusername</span>, (2) inside this directory
 are a number of files and directories:
 
 * <span style="color: #de77ae;">.gitignore</span>: contains regular
@@ -64,7 +65,7 @@ documentation when the package is built (don't edit these files), more info
 * <span style="color: #de77ae;">NAMESPACE</span>: contains the names of 
 imported and exported functions (don't edit this file), more info
 [here](https://r-pkgs.org/namespace.html#namespace)
-* <span style="color: #de77ae;">package0301.Rproj</span>: an RStudio project 
+* <span style="color: #de77ae;">githubusername.Rproj</span>: an RStudio project 
 file, which is used to make this directory an RStudio project, and can be used 
 as a shortcut for opening this project from your filesystem, more info 
 [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
@@ -75,11 +76,11 @@ step function from Practical 1-5)
 [here](https://r-pkgs.org/r.html#code-organising)
 
 and (3) an RStudio project has been set up, called 
-<span style="color: #de77ae;">package0301</span>. Feel free to explore these 
+<span style="color: #de77ae;">githubusername</span>. Feel free to explore these 
 files and make sure you have a good grasp of what they do.
 
 To install this package on your machine, make sure you're in the root directory 
-(in this case, <span style="color: #de77ae;">~Desktop/git/package0301/</span>) 
+(in this case, <span style="color: #de77ae;">~Desktop/git/githubusername/</span>) 
 and run:
 
 ```{r, eval = FALSE}
@@ -94,14 +95,14 @@ you've already done that, you can just call `install()` directly.
 Try running the demo:
 
 ```{r eval = FALSE}
-demo(topic = "d0301_run_birth_death", package = "package0301")
+demo(topic = "d0301_run_birth_death", package = "githubusername")
 ```
 
 As you can see in <span style="color: #de77ae;">demo/d0301_run_birth_death.R</span>, 
 this is just a standard script. Any script in the
 <span style="color: #de77ae;">demo</span> directory that has been installed as part of a 
-package can be run using `demo()`. Calling `demo(package = "package0301")` lists
-all of the demos installed as part of the {package0301} package. 
+package can be run using `demo()`. Calling `demo(package = "githubusername")` lists
+all of the demos installed as part of the {githubusername} package. 
 
 Note the <span style="color: #de77ae;">demo/00Index</span> file, which is lists 
 each demo alongside a description, on a single line. When adding a new entry, 
@@ -117,12 +118,12 @@ of your package.
 Look at the package documentation by using the `help()` function, or running:
 
 ```{r eval = FALSE}
-library(package0301) 
-?package0301
+library(githubusername) 
+?githubusername
 ```
 
 This documentation was generated from 
-<span style="color: #de77ae;">R/package0301-package</span>. If you scroll to 
+<span style="color: #de77ae;">R/githubusername-package</span>. If you scroll to 
 the bottom of the help function and click on 
 <span style="color: #de77ae;">Index</span> you'll get a list of functions 
 exported by this package. 
@@ -153,7 +154,7 @@ can see how to add one. Three things are required:
 * Add an entry in the <span style="color: #de77ae;">Imports</span> field of the
 DESCRIPTION file
 * Add an `@import` in the 
-<span style="color: #de77ae;">package0301-package</span> file
+<span style="color: #de77ae;">githubusername-package</span> file
 * Run `devtools::document()` to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)
 
 You should then run (`devtools::load_all()` to 

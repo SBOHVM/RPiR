@@ -4,12 +4,12 @@
 #' populate it with `0105-run-birth-death.R` (now `run-birth-death.R`), and
 #' `0105-step-birth-death.R` (now `step_deterministic_birth_death.R`).
 #'
+#' @param package_name a \code{string} corresponding to the name you want to
+#' give your package; this should be your GitHub user name.
+#'
 #' @export
 #'
-dummy_package <- function() {
-  # Package name
-  package_name <- "package0301"
-
+dummy_package <- function(package_name) {
   # Create package structure
   package_dir <- usethis::create_package(package_name)
 

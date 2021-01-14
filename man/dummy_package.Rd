@@ -4,7 +4,11 @@
 \alias{dummy_package}
 \title{dummy_package}
 \usage{
-dummy_package()
+dummy_package(package_name)
+}
+\arguments{
+\item{package_name}{a \code{string} corresponding to the name you want to
+give your package; this should be your GitHub user name.}
 }
 \description{
 This function will create an RStudio project called `package0301` and

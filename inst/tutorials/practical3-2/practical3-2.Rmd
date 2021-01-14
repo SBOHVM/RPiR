@@ -44,7 +44,7 @@ We’ll start by writing the structural code in a new demo file,
 remembering to add an entry in 
 <span style="color: #de77ae;">demo/00Index</span>. You can use the 
 <span style="color: #de77ae;">d0301_run_birth_death</span> demo -- simulating 
-birth-death population dynamics from Practical 1-5 -- in {package0301} as a 
+birth-death population dynamics from Practical 1-5 -- in {githubusername} as a 
 template. 
 
 From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation:
@@ -77,7 +77,7 @@ which will cause an error, so you will need to start it off with an appropriate
 value. 
 
 Remember to call `library(RPiR)` at the top of the script to load
-`plot_populations()`, and `library(package0301)` to load `timestep_stochastic_birth_death()`, which means you 
+`plot_populations()`, and `library(githubusername)` to load `timestep_stochastic_birth_death()`, which means you 
 no longer need to source any helper files.
 
 ### R/timestep_stochastic_birth_death.R
@@ -85,7 +85,7 @@ no longer need to source any helper files.
 Now you will need to write the `timestep_stochastic_birth_death()` 
 function to provide the right information to the main loop. We already have a 
 deterministic step function for single species population 
-dynamics (from Practical 1-5). We've written this function into {package0301} as
+dynamics (from Practical 1-5). We've written this function into {githubusername} as
 `step_deterministic_birth_death()`. Starting with this code, you need to make three 
 changes. 
 
@@ -153,7 +153,7 @@ several times without changing any parameters of initial conditions and look at
 the output. Remember that you can run your code as a demo, 
 
 ```{r eval = FALSE}
-demo("d0302_stochastic_birth_death", package = "package0301")
+demo("d0302_stochastic_birth_death", package = "githubusername")
 ```
 
 or by opening the file in RStudio and compiling a notebook. 
