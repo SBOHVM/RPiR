@@ -3,7 +3,7 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge)](https://www.codefactor.io/repository/github/IBAHCM/RPiR)
 [![License: GPL-3.0](https://img.shields.io/badge/licence-GPL--3-green)](https://opensource.org/licenses/GPL-3.0)
 
-## Install this package
+## Installation instructions
 
 ```
 install.packages("devtools")
@@ -16,7 +16,9 @@ You might be asked to install libgit2, which you can do on a Mac from the termin
 brew install libgit2
 ```
 
-## Run a practical
+## How to use this package
+
+#### Run a practical
 
 You first need to load up the learnr package, then use `run_tutorial()` and select the practical you wish to run: 
 
@@ -27,15 +29,15 @@ run_tutorial("practical1-1", package = "RPiR")
 
 From Practical exercise 1-6 onwards, we suggest that you open a separate instance of RStudio to run your code.
 
-## Reset a practical
+#### Reset a practical
 
 Click on the Start Over link (look for the tiny grey text below the left menu). 
 
-## Close a practical
+#### Close a practical
 
 Close the window, then click on the red STOP button in RStudio to end the process.
 
-## RPiR contents
+## Course contents
 
 The following practicals are included in this package:
 
