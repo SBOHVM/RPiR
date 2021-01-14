@@ -52,9 +52,7 @@ will call them `ecoli.transmission` and `ecoli.recovery` since this is the
 disease we are going to be modelling (it also avoids reusing the same variable
 names).
 
-First, create a new project for this practical series. In RStudio, click
-<span style="color: #de77ae;">File > New project > New Directory > Empty
-Project</span>, and then choose a location and a name for the project. Then 
+First, create a new project for this practical. Then 
 create a new R file, using <span style="color: #de77ae;">File > New > R
 Script</span>. You can adapt the code from Practical 1-5, creating 2 files – 
 <span style="color: #de77ae;">0201-run-SIS.r</span>

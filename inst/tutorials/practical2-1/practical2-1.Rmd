@@ -49,3 +49,20 @@ Practical 1-5. The third file,
 <span style="color: #de77ae;">project0201.Rproj</span>, is an RStudio project
 file, which is used to make this directory an RStudio project, and can be used 
 as a shortcut for opening this project from your filesystem.
+
+Now.. let's make a new RStudio project. In RStudio, click
+<span style="color: #de77ae;">File > New project > New Directory > Empty
+Project</span>, and then choose a location and a name for the project. You 
+should notice that (1) your working directory has changed, (2) inside of this 
+directory there is only one file, an Rproj file, and (3) an RStudio project has 
+been set up. If you click on the name of your new project in the top right
+corner of RStudio, you should see (4) a list of recently opened projects.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/new_project.png')
+```
+
+Click on <span style="color: #de77ae;">project0201</span> to reopen the original
+project and you should find that your working directory has changed back to 
+<span style="color: #de77ae;">project0201</span>, and all your files are there
+where you left them.
