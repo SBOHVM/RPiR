@@ -65,4 +65,5 @@ knitr::include_graphics('images/new_project.png')
 Click on <span style="color: #de77ae;">project0201</span> to reopen the original
 project and you should find that your working directory has changed back to 
 <span style="color: #de77ae;">project0201</span>, and all your files are there
-where you left them.
+where you left them. This is an easy way to organise your workflow and quickly
+switch between projects.
