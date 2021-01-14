@@ -134,7 +134,7 @@ new.events <- rbinom(1, count, prob)
 ```
 
 So, the key is to use the `rbinom()` function to determine the numbers of new 
-births and deaths each time step. The number of births is drawn from a binomial
+births and deaths in each time step. The number of births is drawn from a binomial
 distribution with size `count` and probability `birth.rate * timestep`, and the
 number of deaths is drawn from the same distribution with probability 
 `death.rate * timestep`.
