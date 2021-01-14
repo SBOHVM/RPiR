@@ -59,11 +59,11 @@ script from Practical 1-5)
 * <span style="color: #de77ae;">DESCRIPTION</span>: contains metadata about 
 your package, more info [here](https://r-pkgs.org/description.html)
 * <span style="color: #de77ae;">man/</span>: contains code used to generate 
-documentation when the package is built, more info 
-[here](https://r-pkgs.org/man.html#man-workflow); don't edit these files
+documentation when the package is built (don't edit these files), more info 
+[here](https://r-pkgs.org/man.html#man-workflow)
 * <span style="color: #de77ae;">NAMESPACE</span>: contains the names of 
-imported and exported functions, more info
-[here](https://r-pkgs.org/namespace.html#namespace); don't edit this file
+imported and exported functions (don't edit this file), more info
+[here](https://r-pkgs.org/namespace.html#namespace)
 * <span style="color: #de77ae;">package0301.Rproj</span>: an RStudio project 
 file, which is used to make this directory an RStudio project, and can be used 
 as a shortcut for opening this project from your filesystem, more info 
@@ -125,3 +125,8 @@ exported by this package.
 Look at the help file for `step_deterministic_birth_death.R()` and compare this
 to <span style="color: #de77ae;">R/step_deterministic_birth_death.R</span>, 
 which gives you a simple example of how functions are documented. 
+
+### Package metadata
+
+Open the <span style="color: #de77ae;">DESCRIPTION</span> file. This file is 
+used to record package dependencies. Though 
