@@ -70,9 +70,9 @@ file, which is used to make this directory an RStudio project, and can be used
 as a shortcut for opening this project from your filesystem, more info 
 [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
 * <span style="color: #de77ae;">R/</span>: contains code used to generate 
-functions when the package is built, more info (which we've populated with 
+functions when the package is built (which we've populated with 
 <span style="color: #de77ae;">step_deterministic_birth_death.R</span>, the
-step function from Practical 1-5)
+step function from Practical 1-5), more info
 [here](https://r-pkgs.org/r.html#code-organising)
 
 and (3) an RStudio project has been set up, called 
@@ -122,7 +122,7 @@ library(githubusername)
 ```
 
 This documentation was generated from 
-<span style="color: #de77ae;">R/githubusername-package</span>. Open this file
+<span style="color: #de77ae;">R/githubusername-package.R</span>. Open this file
 and compare its contents with the documentation generated in RStudio. 
 Go ahead and edit the `@author` field. This is your package now.
 
@@ -136,7 +136,7 @@ exported by this package.
 
 ### Function documentation
 
-Look at the help file for `step_deterministic_birth_death.R()` and compare this
+Look at the help file for `step_deterministic_birth_death()` and compare this
 to <span style="color: #de77ae;">R/step_deterministic_birth_death.R</span>, 
 which gives you a simple example of how functions are documented. 
 
@@ -167,15 +167,15 @@ note its location in the
 
 As well as recording dependencies, the 
 <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata
-such as the package <span style="color: #de77ae;">Title</span>, 
-<span style="color: #de77ae;">Authors@R</span>, and
-<span style="color: #de77ae;">Description</span>. Fill those in now.
+such as the package `Title`, 
+`Authors@R`, and
+`Description.` Fill those in now.
 
 Whenever you make a change to your package, you should try to get into the 
 habit of changing the version number. This is important because it allows
 you to keep track of which version of the code is being used for a 
-particular analysis. The format is usually `major.minor.patch`, see
-[here](https://semver.org) for more details. 
+particular analysis. The format is usually **major.minor.patch**, more info
+[here](https://semver.org). 
 
 After making edits to the <span style="color: #de77ae;">DESCRIPTION</span> 
 file, change the <span style="color: #de77ae;">Version</span> number to `0.1.0`.
