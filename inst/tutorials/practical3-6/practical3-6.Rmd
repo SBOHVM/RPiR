@@ -75,7 +75,7 @@ major advantages of stochastic models.
 
 ## Report
 
-Write a report demonstrating stochastic extinction. Show different results 
+Write a demo, showing stochastic extinction. Show different results 
 for stochastic models and deterministic models for small initial outbreaks and 
 low values of $R_0$, but similar results for high $R_0$ / high initial numbers 
 of infecteds.
