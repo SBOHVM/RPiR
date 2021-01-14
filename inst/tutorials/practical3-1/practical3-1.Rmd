@@ -122,14 +122,17 @@ library(githubusername)
 ```
 
 This documentation was generated from 
-<span style="color: #de77ae;">R/githubusername-package</span>. If you scroll to 
-the bottom of the help function and click on 
-<span style="color: #de77ae;">Index</span> you'll get a list of functions 
-exported by this package. 
+<span style="color: #de77ae;">R/githubusername-package</span>. Open this file
+and compare its contents with the documentation generated in RStudio. 
+Go ahead and edit the `@author` field. This is your package now.
 
 Remember that any changes you make to the package documentation won't yet be 
 visible. You need to run `devtools::install()` to permanently install them as 
 part of your package.
+
+Note that if you scroll to the bottom of the help function and click on 
+<span style="color: #de77ae;">Index</span> you'll get a list of functions 
+exported by this package. 
 
 ### Function documentation
 
@@ -171,7 +174,11 @@ such as the package <span style="color: #de77ae;">Title</span>,
 Whenever you make a change to your package, you should try to get into the 
 habit of changing the version number. This is important because it allows
 you to keep track of which version of the code is being used for a 
-particular analysis. The format is usually `major.minor.patch`, see [here](https://semver.org) for more details. 
+particular analysis. The format is usually `major.minor.patch`, see
+[here](https://semver.org) for more details. 
 
 After making edits to the <span style="color: #de77ae;">DESCRIPTION</span> 
 file, change the <span style="color: #de77ae;">Version</span> number to `0.1.0`.
+
+Then run `devtools::install()` to permanently install these changes as part of 
+your package.

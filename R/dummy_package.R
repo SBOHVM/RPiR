@@ -32,15 +32,41 @@ dummy_package <- function(package_name) {
   file.copy(tmp, file.path(package_name, "R", "step_deterministic_birth_death.R"))
   usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
 
-  # Write package file
-  tmp <- system.file("dummy_package/package0301-package.R", package = "RPiR")
-  file.copy(tmp, file.path(package_name, "R", basename(tmp)))
-  usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
+  # Write githubusername-package file
+  filename <- paste0(package_name, "-package.R")
+  filepath <- file.path(package_name, "R", filename)
+  cat(paste0("#' ", package_name), file = filepath)
+  tmp <- list("\n#'",
+              paste0("\n#' \\code{", package_name,
+                     "} is a dummy package containing a simple birth-death"),
+              "\n#' difference equation model.",
+              "\n#'",
+              "\n#' @author",
+              "\n#' Sonia Mitchell <sonia.mitchell@glasgow.ac.uk> (maintainer) \\cr",
+              "\n#' Richard Reeve <richard.reeve@glasgow.ac.uk>",
+              "\n#'",
+              paste0("\n#' @name ", package_name, "-package"),
+              paste0("\n#' @aliases ", package_name),
+              "\n#' @docType package",
+              "\n#'",
+              "\n#' @import RPiR",
+              "\n#'",
+              "\n#' @examples",
+              "\n#' \\dontrun{",
+              "\n#' # To run the demo",
+              paste0("\n#' demo(\"d0301_run_birth_death\", package = \"",
+                     package_name, "\")"),
+              "\n#' }",
+              "\n#'",
+              "\nNULL",
+              "\n")
+  lapply(tmp, function(x) cat(x, file = filepath, append = TRUE))
+  usethis::ui_done(paste("Writing", usethis::ui_value(filename)))
 
   # Add dependency on dplyr
   current_wd <- getwd()
   setwd(package_dir)
-  usethis::use_package("dplyr", "Imports")
+  usethis::use_dev_package("RPiR", "Imports", remote = "IBAHCM/RPiR")
   setwd(current_wd)
 
   # Document package
