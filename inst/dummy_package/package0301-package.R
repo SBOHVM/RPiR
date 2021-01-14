@@ -6,10 +6,12 @@
 #' @author
 #' Sonia Mitchell <sonia.mitchell@glasgow.ac.uk> (maintainer) \cr
 #' Richard Reeve <richard.reeve@glasgow.ac.uk>
-
+#'
 #' @name package0301-package
 #' @aliases package0301
 #' @docType package
+#'
+#' @import dplyr
 #'
 #' @examples
 #' \dontrun{

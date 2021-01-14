@@ -8,33 +8,42 @@
 #'
 dummy_package <- function() {
   # Package name
-  path <- "package0301"
+  package_name <- "package0301"
 
   # Create package structure
-  usethis::create_package(path)
+  package_dir <- usethis::create_package(package_name)
 
-  dir.create(file.path(path, "demo"))
+  # Create demo/ directory
+  dir.create(file.path(package_name, "demo"))
   usethis::ui_done(paste("Creating", usethis::ui_path("demo")))
 
-  # Add demo
-  tmp <- system.file("dummy_package/d0105-run-birth-death.R", package = "RPiR")
-  file.copy(tmp, file.path(path, "demo", "0301_run_birth_death.R"))
+  # Write demo
+  tmp <- system.file("dummy_package/0105-run-birth-death.R", package = "RPiR")
+  file.copy(tmp, file.path(package_name, "demo", "d0301_run_birth_death.R"))
   usethis::ui_done(paste("Writing", usethis::ui_value("0301_run_birth_death.R")))
 
+  # Write demo index file
   tmp <- "d0301_run_birth_death   Simple birth-death difference equation model"
-  cat(tmp, file = file.path(path, "demo", "00Index"))
+  cat(tmp, file = file.path(package_name, "demo", "00Index"))
   usethis::ui_done(paste("Writing", usethis::ui_value("00Index")))
 
-  # Add function
+  # Write function
   tmp <- system.file("dummy_package/step_birth_death.R", package = "RPiR")
-  file.copy(tmp, file.path(path, "R", "step_deterministic_birth_death.R"))
+  file.copy(tmp, file.path(package_name, "R", "step_deterministic_birth_death.R"))
   usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
 
-  # Add package file
+  # Write package file
   tmp <- system.file("dummy_package/package0301-package.R", package = "RPiR")
-  file.copy(tmp, file.path(path, "R", basename(tmp)))
+  file.copy(tmp, file.path(package_name, "R", basename(tmp)))
   usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
 
-  devtools::document(path, quiet = TRUE)
+  # Add dependency on dplyr
+  current_wd <- getwd()
+  setwd(package_dir)
+  usethis::use_package("dplyr", "Imports")
+  setwd(current_wd)
+
+  # Document package
+  devtools::document(package_name, quiet = TRUE)
   usethis::ui_done("Documenting package functions")
 }
