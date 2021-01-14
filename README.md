@@ -1,4 +1,5 @@
 # Reproducible Programming in R course
+[![](https://img.shields.io/badge/docs-RPIR-blue)](https://ibahcm.github.io/RPiR/)
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge)](https://www.codefactor.io/repository/github/IBAHCM/RPiR)
 [![License: GPL-3.0](https://img.shields.io/badge/licence-GPL--3-green)](https://opensource.org/licenses/GPL-3.0)
