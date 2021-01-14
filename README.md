@@ -18,7 +18,7 @@ brew install libgit2
 
 ## How to use this package
 
-#### Run a practical
+### Run a practical
 
 You first need to load up the learnr package, then use `run_tutorial()` and select the practical you wish to run: 
 
@@ -29,11 +29,11 @@ run_tutorial("practical1-1", package = "RPiR")
 
 From Practical exercise 1-6 onwards, we suggest that you open a separate instance of RStudio to run your code.
 
-#### Reset a practical
+### Reset a practical
 
 Click on the Start Over link (look for the tiny grey text below the left menu). 
 
-#### Close a practical
+### Close a practical
 
 Close the window, then click on the red STOP button in RStudio to end the process.
 
