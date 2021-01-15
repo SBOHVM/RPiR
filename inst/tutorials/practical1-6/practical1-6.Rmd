@@ -3,6 +3,8 @@ title: "Reproducible Programming in R Practical 1-6"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students learn to write a report in RStudio, combining everything they have 

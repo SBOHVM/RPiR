@@ -3,6 +3,8 @@ title: "2-2: SIS model"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students adapt code from the previous practical series to a new application.

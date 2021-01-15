@@ -3,6 +3,8 @@ title: "2-1: RStudio projects"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students learn how to set up RStudio projects.

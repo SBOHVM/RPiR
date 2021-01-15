@@ -3,11 +3,12 @@ title: "1-3:Exponential growth model"
 output:
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students learn how to separate functions from the main script and source() 
   them.
-  
 ---
 
 ```{r setup, include=FALSE}

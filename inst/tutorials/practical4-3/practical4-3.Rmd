@@ -3,6 +3,8 @@ title: "Reproducible Programming in R Practical 4-3"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students add functions and documentation to a data package.

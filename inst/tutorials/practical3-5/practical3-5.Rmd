@@ -3,6 +3,8 @@ title: "3-5: Stochastic SIR model"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students run a stochastic version of the SIR model.

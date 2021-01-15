@@ -3,6 +3,8 @@ title: "3-1: Writing an R package"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students learn how to create a package in R.

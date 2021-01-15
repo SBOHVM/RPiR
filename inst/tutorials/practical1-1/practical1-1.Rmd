@@ -3,6 +3,8 @@ title: "1-1: Exponential growth model"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students learn how to write a script and how to comment their code well. 

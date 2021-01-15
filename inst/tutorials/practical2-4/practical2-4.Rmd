@@ -3,6 +3,8 @@ title: "2-4: SIS model"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students improve their timestep function. They also learn how to use while() 
