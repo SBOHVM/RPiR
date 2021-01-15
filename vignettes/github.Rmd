@@ -49,52 +49,52 @@ your computer and GitHub. To do this we need to generate a certificate. Click on
 <span style="color: #de77ae;">Create RSA Key...</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-2.png')
+knitr::include_graphics('images/github/0-2.png')
 ```
 
 Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-3.png')
+knitr::include_graphics('images/github/0-3.png')
 ```
 
 It should look like this
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-4.png')
+knitr::include_graphics('images/github/0-4.png')
 ```
 
 Now you need to copy your public key and register it with GitHub, so click on 
 <span style="color: #de77ae;">View public key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-5.png')
+knitr::include_graphics('images/github/0-5.png')
 ```
 
 .. and copy the key to your clipboard
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-6.png')
+knitr::include_graphics('images/github/0-6.png')
 ```
 
 Then in GitHub, in your <span style="color: #de77ae;">Personal settings</span>, 
 open the <span style="color: #de77ae;">SSH and GPG keys</span> tab 
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-7.png')
+knitr::include_graphics('images/github/0-7.png')
 ```
 
 Create a <span style="color: #de77ae;">New SSH key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-8.png')
+knitr::include_graphics('images/github/0-8.png')
 ```
 
 Paste the public key that you copied from RStudio into the box and click
 <span style="color: #de77ae;">Add SSH key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/0-9.png')
+knitr::include_graphics('images/github/0-9.png')
 ```
 
 Now back in RStudio, tell Git your user name and email address (these are used 
@@ -128,7 +128,7 @@ set up a new GitHub repository (you should make a new repository for each
 project you're working on). To do this, click <span style="color: #de77ae;">New</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/1-1.png')
+knitr::include_graphics('images/github/1-1.png')
 ```
 
 Choose a short, descriptive name for your repository and 
@@ -137,7 +137,7 @@ Since this is a tutorial and not
 a real project, this repository has been named `test`.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/1-2.png')
+knitr::include_graphics('images/github/1-2.png')
 ```
 
 Congratulations! You have successfully created a new GitHub repository, 
@@ -146,7 +146,7 @@ containing a single `README.md` file. Remember this for later.
 Now **copy** the URL associated with your GitHub repository to your clipboard
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/1-3.png')
+knitr::include_graphics('images/github/1-3.png')
 ```
 
 ## Create a new RStudio project
@@ -154,21 +154,21 @@ knitr::include_graphics('github/1-3.png')
 In RStudio, click <span style="color: #de77ae;">File > New project...</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "20%"}
-knitr::include_graphics('github/2-1.png')
+knitr::include_graphics('images/github/2-1.png')
 ```
 
 Since we're integrating version control into this project workflow, click 
 <span style="color: #de77ae;">Version Control</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/2-2.png')
+knitr::include_graphics('images/github/2-2.png')
 ```
 
 Select the option to clone a project from a 
 <span style="color: #de77ae;">Git</span> repository
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/2-3.png')
+knitr::include_graphics('images/github/2-3.png')
 ```
 
 **Paste your Repository URL** into the first box, then click 
@@ -182,7 +182,7 @@ as this will cause problems). Now click
 <span style="color: #de77ae;">Create Project</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/2-4.png')
+knitr::include_graphics('images/github/2-4.png')
 ```
 
 Congratulations! You have successfully created a new RStudio project (now with
@@ -198,7 +198,7 @@ to <span style="color: #de77ae;">Connections</span>. This is
 important.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/2-5.png')
+knitr::include_graphics('images/github/2-5.png')
 ```
 
 ## Using Git in RStudio
@@ -229,7 +229,7 @@ Does this look familiar? (Compare the contents of this file to your
 repository on GitHub)
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/2-6.png')
+knitr::include_graphics('images/github/2-6.png')
 ```
 
 Usually a GitHub README (written in [GitHub Flavored Markdown](https://help.github.com/en/github/writing-on-github)) will describe the 
@@ -242,7 +242,7 @@ in your remote directory (on GitHub).
 Click <span style="color: #de77ae;">Commit</span> to upload these changes to GitHub.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/2-7.png')
+knitr::include_graphics('images/github/2-7.png')
 ```
 
 The <span style="color: #de77ae;">RStudio: Review Changes</span> window has 
@@ -255,33 +255,33 @@ screen, with deletions and insertions highlighted in red and green,
 respectively. Click <span style="color: #de77ae;">Commit</span> to continue.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/3-1.png')
+knitr::include_graphics('images/github/3-1.png')
 ```
 
 Congratulations! `README.md` is now staged, with 7 insertions and 1 deletion. 
 **Close** this window.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/3-2.png')
+knitr::include_graphics('images/github/3-2.png')
 ```
 
 Then <span style="color: #de77ae;">Push</span> all staged files (at the moment, just `README.md`) to GitHub.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/3-3.png')
+knitr::include_graphics('images/github/3-3.png')
 ```
 
 You'll need to enter your password..
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/3-4.png')
+knitr::include_graphics('images/github/3-4.png')
 ```
 
 Congratulations again! You've successfully pushed these changes to GitHub. 
 **Close** this window and the **Review Changes** window beneath it.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/3-5.png')
+knitr::include_graphics('images/github/3-5.png')
 ```
 
 Note that `README.md` is no longer listed in the 
@@ -289,13 +289,13 @@ Note that `README.md` is no longer listed in the
 local and remote versions are identical).
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/4-1.png')
+knitr::include_graphics('images/github/4-1.png')
 ```
 
 ... and the GitHub README is immediately updated. 
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('github/4-2.png')
+knitr::include_graphics('images/github/4-2.png')
 ```
 
 ## Final remarks
