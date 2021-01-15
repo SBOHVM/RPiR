@@ -23,10 +23,30 @@ reference:
       - '`RPiR-package`'
 navbar:
   type: inverse
-  right:
-    - text: "slides"
+  left:
+    - text: "lectures"
       icon: fa-question-circle-o
       menu:
-      -  text: one
-         href: articles/slides/one.html
+      -  text: RPiR1-1
+         href: lectures/RPiR1-1.html
+      -  text: RPiR1-2
+         href: lectures/RPiR1-2.html
+    - text: "practicals"
+      icon: fa-question-circle-o
+      menu:
+      -  text: RPiR1-1
+         href: practicals/practical1-1.html
+      -  text: RPiR1-2
+         href: practicals/practical1-2.html
 
+  right:
+    - text: "Installation"
+      icon: fa-question-circle-o
+      menu:
+      -  text: github
+         href: articles/pages/github.html
+      -  text: vscode
+         href: articles/pages/vscode_liveshare.html
+    - icon: fa-file-code-o
+      text: "Functions"
+      href: reference/index.html
