@@ -4,8 +4,7 @@ output:
   learnr::tutorial:
     theme: lumen
     includes:
-      in_header: "css/google-font.html"
-    css: "css/google-font.css"
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students run a stochastic version of the SIS model.
@@ -92,8 +91,8 @@ simulations on the same graph:
 ```{r tenloop-setup}
 library(RPiR)
 
-timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, timestep=1)
-{
+timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, 
+                                    timestep = 1) {
   ## Calculate total size of population, effective beta and sigma
   pop.size <- latest$susceptibles + latest$infecteds
   effective.transmission.rate <- transmission.rate * timestep
@@ -113,10 +112,10 @@ timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, ti
   is.finished <- (next.infecteds == 0)
   
   ## Create new row of populations data frame and return list
-  next.population <- data.frame(time=latest$time + timestep,
-                                susceptibles=next.susceptibles,
-                                infecteds=next.infecteds)
-  list(updated.pop=next.population, end.experiment=is.finished)
+  next.population <- data.frame(time = latest$time + timestep,
+                                susceptibles = next.susceptibles,
+                                infecteds = next.infecteds)
+  list(updated.pop = next.population, end.experiment = is.finished)
 }
 
 # Set up initial populations
@@ -134,12 +133,12 @@ end.time <- 200
 this.timestep <- 1
 
 # And initial population sizes
-initial.populations <- data.frame(time=start.time,
-                                  susceptibles=initial.susceptibles,
-                                  infecteds=initial.infecteds)
+initial.populations <- data.frame(time = start.time,
+                                  susceptibles = initial.susceptibles,
+                                  infecteds = initial.infecteds)
 ```
 
-```{r tenloop, exercise = TRUE}
+```{r tenloop, exercise = TRUE, exercise.lines = 21}
 # We want a total of 10 plots
 first.graph <- TRUE 
 for (loop in 1:10) {
