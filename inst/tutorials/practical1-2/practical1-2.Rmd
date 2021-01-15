@@ -3,10 +3,8 @@ title: "1-2: Exponential growth model"
 output:
   learnr::tutorial:
     theme: lumen
-    highlight: default
     includes:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
-  html_document: default
 runtime: shiny_prerendered
 description: >
   Students learn how to write a function and how to differentiate between `<-`
