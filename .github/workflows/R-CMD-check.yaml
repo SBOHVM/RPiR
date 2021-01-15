@@ -107,17 +107,17 @@ jobs:
           basename(html_files[i])), overwrite = TRUE)
         shell: Rscript {0}
 
-      # Move learnr practicals to docs
-      - name: Move learnr practicals to docs
+      # Move learnr tutorials to docs
+      - name: Move learnr tutorials to docs
         if: runner.os == 'Linux'
         run: |
           wd <- getwd()
-          all_files <- dir(file.path(wd, "inst", "practicals"), recursive = TRUE, full.names = TRUE)
+          all_files <- dir(file.path(wd, "inst", "tutorials"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
           html_files <- gsub("Rmd", "html", rmd_files)
           for (i in seq_len(length(html_files)))
-          file.copy(html_files[i], file.path(wd, "docs", "practicals",
+          file.copy(html_files[i], file.path(wd, "docs", "tutorials",
           basename(html_files[i])), overwrite = TRUE)
         shell: Rscript {0}
 

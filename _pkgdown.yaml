@@ -31,13 +31,13 @@ navbar:
          href: lectures/RPiR1-1.html
       -  text: RPiR1-2
          href: lectures/RPiR1-2.html
-    - text: "practicals"
+    - text: "tutorials"
       icon: fa-question-circle-o
       menu:
       -  text: RPiR1-1
-         href: practicals/practical1-1.html
+         href: tutorials/practical1-1.html
       -  text: RPiR1-2
-         href: practicals/practical1-2.html
+         href: tutorials/practical1-2.html
 
   right:
     - text: "Installation"
