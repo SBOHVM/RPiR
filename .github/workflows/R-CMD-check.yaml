@@ -88,6 +88,7 @@ jobs:
       - name: Build Docs
         if: runner.os == 'Linux'
         run: |
+          install.packages("rsconnect")
           install.packages("pkgdown")
           pkgdown::build_site()
         shell: Rscript {0}
