@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>vscode_liveshare • RPiR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -20,7 +20,7 @@
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.30.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.30.7</span>
       </span>
     </div>
 
@@ -57,12 +57,30 @@
       <a href="../articles/github.html">github</a>
     </li>
     <li>
+      <a href="../articles/slides/one.html">Habits</a>
+    </li>
+    <li>
       <a href="../articles/vscode_liveshare.html">vscode_liveshare</a>
     </li>
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-question-circle-o"></span>
+     
+    slides
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/slides/one.html">one</a>
+    </li>
+  </ul>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -102,7 +120,7 @@
 <h2 class="hasAnchor">
 <a href="#download-the-extension" class="anchor"></a>Download the extension</h2>
 <p>Now, open up VS Code and install the “Live Share” Microsoft extension from the VS Code marketplace.</p>
-<p><img src="vscode_liveshare/1_extension2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/vscode_liveshare/1_extension2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>While you’re there, if you’re intending to work in R, you may as well install:</p>
 <ul>
 <li>the “R” Yuki Ueda extension and</li>
@@ -113,11 +131,11 @@
 <h2 class="hasAnchor">
 <a href="#share-a-session" class="anchor"></a>Share a session</h2>
 <p>To create a new session, click on “Live Share” in the status bar (at the bottom of the VS Code window). The first time you do this, you’ll be prompted to sign in. Selecting “Sign in with GitHub” will open a link in your browser.</p>
-<p><img src="vscode_liveshare/2_signin2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/vscode_liveshare/2_signin2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>“Authorize VisualStudioLiveShare” and accept ALL OF THE THINGS…</p>
-<p><img src="vscode_liveshare/3_authorize2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/vscode_liveshare/3_authorize2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>You’ll know you’re logged when your name appears in the status bar to the left of the Live Share icon.</p>
-<p><img src="vscode_liveshare/4_bottom2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/vscode_liveshare/4_bottom2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>At this point an invite link should be copied to your clipboard, which you can share with your team mates.</p>
 <p>To create a new invite link, do any of the these things:</p>
 <ul>
@@ -125,9 +143,9 @@
 <li>Click on your name in the status bar and select “InviteOthers (Copy Link)”</li>
 <li>Click on the “Live Share” icon in the side bar to open a Live Share panel, and select “Share (Read/Write)”</li>
 </ul>
-<p><img src="vscode_liveshare/5_panel2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/vscode_liveshare/5_panel2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Once you’ve collaborated with someone they’ll be added to your contacts and if they’re online you can invite them directly by clicking on the “Invite Contact” icon next to their name.</p>
-<p><img src="vscode_liveshare/6_contacts2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/vscode_liveshare/6_contacts2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>To end the session, do one of the following:</p>
 <ul>
 <li>Click on your name in the status bar and “Stop Collaboration Session”</li>

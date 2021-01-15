@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>github • RPiR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -20,7 +20,7 @@
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.30.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.30.7</span>
       </span>
     </div>
 
@@ -57,12 +57,30 @@
       <a href="../articles/github.html">github</a>
     </li>
     <li>
+      <a href="../articles/slides/one.html">Habits</a>
+    </li>
+    <li>
       <a href="../articles/vscode_liveshare.html">vscode_liveshare</a>
     </li>
   </ul>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<ul class="nav navbar-nav navbar-right">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fas fa-question-circle-o"></span>
+     
+    slides
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../articles/slides/one.html">one</a>
+    </li>
+  </ul>
+</li>
+      </ul>
 </div>
 <!--/.nav-collapse -->
   </div>
@@ -107,21 +125,21 @@
 <p>In RStudio, open <span style="color: #de77ae;">RStudio &gt; Preferences</span> (or <span style="color: #de77ae;">Tools &gt; Global Options</span> if you’re using Windows). Go down to the <span style="color: #de77ae;">GIT/SVN</span> tab and ensure that <span style="color: #de77ae;">Enable version control interface for RStudio projects</span> is checked.</p>
 <p>While you’re here, make sure you have a <span style="color: #de77ae;">Git executable</span>. If this box is empty, you need to install Git. Go <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a> and scroll down to the <span style="color: #de77ae;">Installation</span> section, then <strong>restart RStudio</strong>.</p>
 <p>Now that we’re sure Git is installed, we’re going to set up encryption between your computer and GitHub. To do this we need to generate a certificate. Click on <span style="color: #de77ae;">Create RSA Key…</span></p>
-<p><img src="github/0-2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key</p>
-<p><img src="github/0-3.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-3.png" width="100%" style="display: block; margin: auto;"></p>
 <p>It should look like this</p>
-<p><img src="github/0-4.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-4.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now you need to copy your public key and register it with GitHub, so click on <span style="color: #de77ae;">View public key</span></p>
-<p><img src="github/0-5.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-5.png" width="100%" style="display: block; margin: auto;"></p>
 <p>.. and copy the key to your clipboard</p>
-<p><img src="github/0-6.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-6.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Then in GitHub, in your <span style="color: #de77ae;">Personal settings</span>, open the <span style="color: #de77ae;">SSH and GPG keys</span> tab</p>
-<p><img src="github/0-7.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-7.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Create a <span style="color: #de77ae;">New SSH key</span></p>
-<p><img src="github/0-8.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-8.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Paste the public key that you copied from RStudio into the box and click <span style="color: #de77ae;">Add SSH key</span></p>
-<p><img src="github/0-9.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/0-9.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now back in RStudio, tell Git your user name and email address (these are used to label each commit that you make to GitHub). <strong>Make sure the email address you</strong> <strong>enter here is the same as the one that you registered on GitHub</strong>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span>
@@ -139,27 +157,27 @@
 <h2 class="hasAnchor">
 <a href="#create-a-new-github-repository" class="anchor"></a>Create a new GitHub repository</h2>
 <p>It’s important that you use version control in your project workflow, so let’s set up a new GitHub repository (you should make a new repository for each project you’re working on). To do this, click <span style="color: #de77ae;">New</span></p>
-<p><img src="github/1-1.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/1-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Choose a short, descriptive name for your repository and <span style="color: #de77ae;">Initialize this repository with a README</span>. Since this is a tutorial and not a real project, this repository has been named <code>test</code>.</p>
-<p><img src="github/1-2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/1-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations! You have successfully created a new GitHub repository, containing a single <code>README.md</code> file. Remember this for later.</p>
 <p>Now <strong>copy</strong> the URL associated with your GitHub repository to your clipboard</p>
-<p><img src="github/1-3.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/1-3.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="create-a-new-rstudio-project" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-new-rstudio-project" class="anchor"></a>Create a new RStudio project</h2>
 <p>In RStudio, click <span style="color: #de77ae;">File &gt; New project…</span></p>
-<p><img src="github/2-1.png" width="20%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/2-1.png" width="20%" style="display: block; margin: auto;"></p>
 <p>Since we’re integrating version control into this project workflow, click <span style="color: #de77ae;">Version Control</span></p>
-<p><img src="github/2-2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/2-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Select the option to clone a project from a <span style="color: #de77ae;">Git</span> repository</p>
-<p><img src="github/2-3.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/2-3.png" width="100%" style="display: block; margin: auto;"></p>
 <p><strong>Paste your Repository URL</strong> into the first box, then click <span style="color: #de77ae;">Browse…</span> and navigate to the git folder on your desktop. If you don’t have a git folder on your desktop then make one, as it’s good practice to keep all of your projects together and well organised. RStudio will create a new subdirectory that will mirror the contents of your Git repository (so make sure you don’t already have a folder with the same name as the repository you created, as this will cause problems). Now click <span style="color: #de77ae;">Create Project</span></p>
-<p><img src="github/2-4.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/2-4.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations! You have successfully created a new RStudio project (now with added version control). In the example below, the RStudio project is called <code>test</code>. A new directory, <code>test</code>, has been created inside the git folder on your desktop (this is now your working directory). Inside this directory are three files, including a GitHub <code>README.md</code> file (imported from your GitHub repository), an RStudio project file (<code>test.Rproj</code>), and an invisible <code>.gitignore</code> file (created by RStudio).</p>
 <p>Note the appearance of a new <span style="color: #de77ae;">Git</span> tab next to <span style="color: #de77ae;">Connections</span>. This is important.</p>
-<p><img src="github/2-5.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/2-5.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="using-git-in-rstudio" class="section level2">
 <h2 class="hasAnchor">
@@ -172,24 +190,24 @@
 <li>“D” - Files that are no longer in your local directory (you want to commit these to GitHub)</li>
 </ul>
 <p>Open the <code>README.md</code> file by clicking on its filename in the <span style="color: #de77ae;">Files</span> tab. Does this look familiar? (Compare the contents of this file to your repository on GitHub)</p>
-<p><img src="github/2-6.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/2-6.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Usually a GitHub README (written in <a href="https://help.github.com/en/github/writing-on-github">GitHub Flavored Markdown</a>) will describe the contents of the GitHub repository or give an example of how to use the contents of said repository. Make some edits to <code>README.md</code> and <strong>save</strong> your file. Note that when we make edits to the README file, its <strong>Status</strong> changes to “M”. This means that the file in your local directory is no longer identical to the file in your remote directory (on GitHub).</p>
 <p>Click <span style="color: #de77ae;">Commit</span> to upload these changes to GitHub.</p>
-<p><img src="github/2-7.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/2-7.png" width="100%" style="display: block; margin: auto;"></p>
 <p>The <span style="color: #de77ae;">RStudio: Review Changes</span> window has opened. Click on the <span style="color: #de77ae;">Staged</span> checkbox next to <code>README.md</code> and enter a <span style="color: #de77ae;">Commit message</span>. Your message should describe the changes you’ve made to the file you’re uploading (in this case, an initial commit). These changes are shown in the lower half of the screen, with deletions and insertions highlighted in red and green, respectively. Click <span style="color: #de77ae;">Commit</span> to continue.</p>
-<p><img src="github/3-1.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/3-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations! <code>README.md</code> is now staged, with 7 insertions and 1 deletion. <strong>Close</strong> this window.</p>
-<p><img src="github/3-2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/3-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Then <span style="color: #de77ae;">Push</span> all staged files (at the moment, just <code>README.md</code>) to GitHub.</p>
-<p><img src="github/3-3.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/3-3.png" width="100%" style="display: block; margin: auto;"></p>
 <p>You’ll need to enter your password..</p>
-<p><img src="github/3-4.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/3-4.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations again! You’ve successfully pushed these changes to GitHub. <strong>Close</strong> this window and the <strong>Review Changes</strong> window beneath it.</p>
-<p><img src="github/3-5.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/3-5.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Note that <code>README.md</code> is no longer listed in the <span style="color: #de77ae;">Git</span> tab (because both the local and remote versions are identical).</p>
-<p><img src="github/4-1.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/4-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>… and the GitHub README is immediately updated.</p>
-<p><img src="github/4-2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/github/4-2.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="final-remarks" class="section level2">
 <h2 class="hasAnchor">

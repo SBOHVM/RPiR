@@ -3,6 +3,10 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   github: github.html
+  slides/one: one.html
   vscode_liveshare: vscode_liveshare.html
-last_built: 2021-01-15T16:32Z
+last_built: 2021-01-15T17:25Z
+urls:
+  reference: https://ibahcm.github.io/RPiR//reference
+  article: https://ibahcm.github.io/RPiR//articles
 
