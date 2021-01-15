@@ -112,6 +112,12 @@ jobs:
           }
         shell: Rscript {0}
 
+      - name: Setup keychain
+        if: runner.os == 'macOS'
+        env:
+          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+        uses: sinoru/actions-setup-keychain@v1.0
+
       - name: Add credentials in keychain
         if: runner.os == 'Linux'
         env:
