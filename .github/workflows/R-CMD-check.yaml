@@ -94,30 +94,30 @@ jobs:
 
       # Move ioslide lectures to docs
       - name: Move ioslide lectures to docs
-      if: runner.os == 'macOS'
-      run: |
-        install.packages("rmarkdown")
-        all_files <- dir("inst/lectures", recursive = TRUE, full.names = TRUE)
-        rmd_files <- all_files[grep(".Rmd", all_files)]
-        for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
-        html_files <- gsub("Rmd", "html", rmd_files)
-        for (i in seq_len(length(html_files)))
-        file.copy(html_files[i], file.path("docs", "lectures",
-        basename(html_files[i])), overwrite = TRUE)
-      shell: Rscript {0}
+        if: runner.os == 'macOS'
+        run: |
+          install.packages("rmarkdown")
+          all_files <- dir("inst/lectures", recursive = TRUE, full.names = TRUE)
+          rmd_files <- all_files[grep(".Rmd", all_files)]
+          for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
+          html_files <- gsub("Rmd", "html", rmd_files)
+          for (i in seq_len(length(html_files)))
+          file.copy(html_files[i], file.path("docs", "lectures",
+          basename(html_files[i])), overwrite = TRUE)
+        shell: Rscript {0}
 
       # Move learnr practicals to docs
       - name: Move learnr practicals to docs
-      if: runner.os == 'macOS'
-      run: |
-        all_files <- dir("inst/practicals", recursive = TRUE, full.names = TRUE)
-        rmd_files <- all_files[grep(".Rmd", all_files)]
-        for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
-        html_files <- gsub("Rmd", "html", rmd_files)
-        for (i in seq_len(length(html_files)))
-        file.copy(html_files[i], file.path("docs", "practicals",
-        basename(html_files[i])), overwrite = TRUE)
-      shell: Rscript {0}
+        if: runner.os == 'macOS'
+        run: |
+          all_files <- dir("inst/practicals", recursive = TRUE, full.names = TRUE)
+          rmd_files <- all_files[grep(".Rmd", all_files)]
+          for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
+          html_files <- gsub("Rmd", "html", rmd_files)
+          for (i in seq_len(length(html_files)))
+          file.copy(html_files[i], file.path("docs", "practicals",
+          basename(html_files[i])), overwrite = TRUE)
+        shell: Rscript {0}
 
       # Create a development branch and commit to it
       - name: Commit to development branch
