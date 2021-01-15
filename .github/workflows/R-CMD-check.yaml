@@ -86,7 +86,7 @@ jobs:
 
       # Build documentation with pkgdown
       - name: Build Docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'Linux'
         run: |
           install.packages("pkgdown")
           pkgdown::build_site()
@@ -94,34 +94,35 @@ jobs:
 
       # Move ioslide lectures to docs
       - name: Move ioslide lectures to docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'Linux'
         run: |
           install.packages("rmarkdown")
-          all_files <- dir("inst/lectures", recursive = TRUE, full.names = TRUE)
+          wd <- getwd()
+          all_files <- dir(file.path(wd, "inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
           html_files <- gsub("Rmd", "html", rmd_files)
           for (i in seq_len(length(html_files)))
-          file.copy(html_files[i], file.path("docs", "lectures",
+          file.copy(html_files[i], file.path(wd, "docs", "lectures",
           basename(html_files[i])), overwrite = TRUE)
         shell: Rscript {0}
 
       # Move learnr practicals to docs
       - name: Move learnr practicals to docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'Linux'
         run: |
-          all_files <- dir("inst/practicals", recursive = TRUE, full.names = TRUE)
+          all_files <- dir(file.path(wd, "inst", "practicals"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
           html_files <- gsub("Rmd", "html", rmd_files)
           for (i in seq_len(length(html_files)))
-          file.copy(html_files[i], file.path("docs", "practicals",
+          file.copy(html_files[i], file.path(wd, "docs", "practicals",
           basename(html_files[i])), overwrite = TRUE)
         shell: Rscript {0}
 
       # Create a build_docs branch and commit to it
       - name: Commit to build_docs branch
-        if: runner.os == 'macOS'
+        if: runner.os == 'Linux'
         run: |
           git checkout -b build_docs
           git add .
@@ -130,7 +131,7 @@ jobs:
 
       # Deploy the docs using JamesIves/github-pages-deploy-action
       - name: Deploy Docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'Linux'
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
