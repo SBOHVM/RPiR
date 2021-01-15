@@ -1,0 +1,32 @@
+title: RPiR
+url: https://ibahcm.github.io/RPiR/
+template:
+  params:
+    bootswatch: flatly
+reference:
+  - title: Exported Functions
+    desc: Functions used in Practical exercises
+    contents:
+      - '`plot_simple`'
+      - '`plot_populations`'
+      - '`dummy_project`'
+      - '`dummy_package`'
+      - '`run_simple`'
+      - '`run_simulation`'
+  - title: Helper functions
+    desc: ~
+    contents:
+      - '`run_integration`'
+      - '`cleanup_times`'
+      - '`cleanup_events`'
+      - '`cleanup_timesteps`'
+      - '`RPiR-package`'
+navbar:
+  type: inverse
+  right:
+    - text: "slides"
+      icon: fa-question-circle-o
+      menu:
+      -  text: one
+         href: articles/slides/one.html
+
