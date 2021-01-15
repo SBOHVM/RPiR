@@ -176,4 +176,6 @@ final.populations <- run_simulation(timestep_deterministic_SIS,
                                     timestep = working.timestep)
 ```
 
+<center>![plot](images/3-4.gif)</center>
+
 Demonstrates the variability in the results of the stochastic model in your demo.

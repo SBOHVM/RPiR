@@ -165,10 +165,14 @@ functionality.
 
 ## Running the code / Report
 
-Run the code and observe the variability in outputs. What happens to the 
+Run the code and observe the variability in outputs. 
+
+<center>![plot](images/3-3.gif)</center>
+
+What happens to the 
 variability as you increase the initial population size? You may want to adjust 
 the scale of the y-axis to see what happens at larger population sizes. To
 automate this, you can set the y-axis upper limit to $100 \times$ 
 `initial.count` 
-by setting `ylim = c(0, 100 * initial.count)`. Demonstrate these results in 
+by setting `ylim = c(0, 100 * initial.count)`. Report these results in 
 your demo.

@@ -162,6 +162,8 @@ it may be because your starting population is too high. Try something much
 smaller, say 7 instead of 7 billion! You could also increase birth and death 
 rates or the time you’re simulating over to increase visible variability.
 
+<center>![plot](images/3-2.gif)</center>
+
 Notice that (as before) we have repeated the piece of code doing the simulation
 and have made use of the `new.graph = FALSE` option to overlay a second plot on 
 the first.
