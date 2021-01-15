@@ -111,6 +111,7 @@ jobs:
       - name: Move learnr practicals to docs
         if: runner.os == 'Linux'
         run: |
+          wd <- getwd()
           all_files <- dir(file.path(wd, "inst", "practicals"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
