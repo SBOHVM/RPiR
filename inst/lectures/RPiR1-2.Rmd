@@ -1,0 +1,12 @@
+---
+title: "RPiR 1-2: fs"
+author: John Doe
+date: March 22, 2005
+output: 
+  ioslides_presentation: default
+  html_document: default
+---
+
+# aksjhd
+
+sdf
