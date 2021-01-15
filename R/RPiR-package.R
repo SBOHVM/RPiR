@@ -53,6 +53,7 @@
 #' @rawNamespace import(gradethis, except = random_praise)
 #' @import graphics
 #' @import learnr
+#' @import rmarkdown
 #' @import utils
 #' @import usethis
 #'

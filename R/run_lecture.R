@@ -1,5 +1,7 @@
 #' run_lecture
 #'
+#' @param name Name of the lecture
+#'
 #' @export
 #'
 run_lecture <- function(name) {

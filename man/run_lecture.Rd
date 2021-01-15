@@ -6,6 +6,9 @@
 \usage{
 run_lecture(name)
 }
+\arguments{
+\item{name}{Name of the lecture}
+}
 \description{
 run_lecture
 }
