@@ -33,13 +33,6 @@ Using the code from the previous demo
 `timestep_stochastic_SIR()` that will simulate
 the stochastic SIR model.
 
-### demo/d0305_run_SIR.R
-
-This should be relatively straightforward. To produce 
-<span style="color: #de77ae;">d0305_run_SIR</span> you need to add a 
-"recovereds" population to the data frame, remembering to specify 
-initial values for this new population.
-
 ### R/timestep_stochastic_SIR.R
 
 To produce `timestep_stochastic_SIR()` requires a small change to the update step
@@ -50,6 +43,27 @@ population size calculation.
 To overlay the corresponding plot from the deterministic model you will also 
 need to use `run_simulation()` on the `timestep_deterministic_SIR()` function 
 from Practical 2-4, and then plot using `new.graph = FALSE`.
+
+### demo/d0305_run_SIR.R
+
+This should be relatively straightforward. To produce 
+<span style="color: #de77ae;">d0305_run_SIR</span> you need to add a 
+"recovereds" population to the data frame, remembering to specify 
+initial values for this new population.
+
+Your outputs should look something like this:
+
+<center>![plot](images/3-5.gif)</center>
+
+This example was generated from these parameters:
+
+```{r, eval = FALSE}
+pop.size <- 100
+initial.infecteds <- 2
+initial.recovereds <- 0
+transmission.rate <- 0.2
+recovery.rate <- 0.1
+```
 
 ## Running the code / Report
 

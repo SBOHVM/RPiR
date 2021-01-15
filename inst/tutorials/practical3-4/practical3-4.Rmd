@@ -31,13 +31,7 @@ simplest epidemiological model – the SIS model.
 In this practical we will write a stochastic version of the SIS model. You have 
 been provided with `run_simulation()` in the {RPiR} package, which allows some 
 extra functionality over `run_simple()` to run simulations using the older
-deterministic models. 
-
-You need to write a new demo, <span style="color: #de77ae;">d0304_run_SIS</span>, and 
-a new function, `timestep_stochastic_SIS()`, adapted from the
-<span style="color: #de77ae;">d0303_run_birth_death</span> demo and
-`timestep_stochastic_birth_death()` to handle the 
-SIS model rather than exponential growth. Pay attention in particular to writing 
+deterministic models. Pay attention in particular to writing 
 the function, where the most important changes need to be made.
 
 ### R/timestep_stochastic_birth_death.R
@@ -75,6 +69,14 @@ finished or not.
 ```{r, eval = FALSE}
 list(updated.pop = next.population, end.experiment = is.finished)
 ```
+
+### demo/d0304_run_SIS.R
+
+You need to write a new demo, <span style="color: #de77ae;">d0304_run_SIS</span>, and 
+a new function, `timestep_stochastic_SIS()`, adapted from the
+<span style="color: #de77ae;">d0303_run_birth_death</span> demo and
+`timestep_stochastic_birth_death()` to handle the 
+SIS model rather than exponential growth. 
 
 ## Running the code / Report
 
@@ -160,8 +162,7 @@ for (loop in 1:10) {
 
 You could do all ten plots in a single loop by setting `new.graph` appropriately
 - by starting with `TRUE` and them changing it to `FALSE` as I did in the slides,
-or changing it depending on what value `loop` has, for instance. Try changing 
-the total population size and determine the impact on the observed variability. 
+or changing it depending on what value `loop` has, for instance.  
 
 You should also overlay the deterministic results from Practical 2-3. 
 `run_simulation()` will now work with this as well since it automatically 
@@ -176,6 +177,19 @@ final.populations <- run_simulation(timestep_deterministic_SIS,
                                     timestep = working.timestep)
 ```
 
+Here's an example of the kinds of outputs you might see:
+
 <center>![plot](images/3-4.gif)</center>
 
+This example was generated using:
+
+```{r, eval = FALSE}
+pop.size <- 100
+initial.infecteds <- 2
+transmission.rate <- 0.3
+recovery.rate <- 0.1
+```
+
+Try changing 
+the total population size and determine the impact on the observed variability.
 Demonstrates the variability in the results of the stochastic model in your demo.

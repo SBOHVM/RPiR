@@ -165,9 +165,18 @@ functionality.
 
 ## Running the code / Report
 
-Run the code and observe the variability in outputs. 
+Run the code and observe the variability in outputs. You should get something 
+like this:
 
 <center>![plot](images/3-3.gif)</center>
+
+especially if you used these parameters:
+
+```{r, eval = FALSE}
+this.birth.rate <- 0.06
+this.death.rate <- 0.02
+initial.count <- 1
+```
 
 What happens to the 
 variability as you increase the initial population size? You may want to adjust 

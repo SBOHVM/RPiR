@@ -149,20 +149,31 @@ to permanently install it.
 
 When you are happy that the code is working and makes sense, run the code
 several times without changing any parameters of initial conditions and look at
-the output. Remember that you can run your code as a demo, 
+the output. The stochasticity means that we see variable outputs. If you don’t
+it may be because your starting population is too high. Try something much 
+smaller, say 7 instead of 7 billion! 
+
+Remember that you can run your code as a demo, 
 
 ```{r eval = FALSE}
 demo("d0302_stochastic_birth_death", package = "githubusername")
 ```
 
-or by opening the file in RStudio and compiling a notebook. 
-
-The stochasticity means that we see variable outputs. If you don’t
-it may be because your starting population is too high. Try something much 
-smaller, say 7 instead of 7 billion! You could also increase birth and death 
-rates or the time you’re simulating over to increase visible variability.
+or by opening the file in RStudio and compiling a notebook. You should get plots 
+like these:
 
 <center>![plot](images/3-2.gif)</center>
+
+In this example we used these parameters:
+
+```{r, eval = FALSE}
+this.birth.rate <- 0.2
+this.death.rate <- 0.1
+initial.count <- 1
+```
+
+You could also increase birth and death 
+rates or the time you’re simulating over to increase visible variability.
 
 Notice that (as before) we have repeated the piece of code doing the simulation
 and have made use of the `new.graph = FALSE` option to overlay a second plot on 
