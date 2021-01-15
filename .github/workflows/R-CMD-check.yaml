@@ -34,7 +34,7 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2.3.1
         with:
           persist-credentials: false
 
@@ -115,6 +115,8 @@ jobs:
       # Create a build_docs branch and commit to it
       - name: Commit to build_docs branch
         if: runner.os == 'Linux'
+        env:
+          GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
         run: |
           git checkout -b build_docs
           git add .
