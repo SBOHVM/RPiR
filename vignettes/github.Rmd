@@ -32,29 +32,27 @@ knitr::opts_chunk$set(
 
 ## Setup Git on RStudio
 
-In RStudio, click on the 
-**RStudio** menu bar and go to **Preferences** (or **Tools** and **Global Options** if you're using Windows)
+In RStudio, open <span style="color: #de77ae;">RStudio > Preferences</span> 
+(or <span style="color: #de77ae;">Tools > Global Options</span> if you're using 
+Windows). Go down to the <span style="color: #de77ae;">GIT/SVN</span> tab and 
+ensure that <span style="color: #de77ae;">Enable version control interface 
+for RStudio projects</span> is checked. 
 
-```{r echo = FALSE, fig.align = "center", out.width = "20%"}
-knitr::include_graphics('github/0-1.png')
-```
-
-Go down to the **GIT/SVN** tab and ensure that 
-**Enable version control interface for RStudio projects** is checked. 
-
-While you're here, make sure you have a **Git executable**. If this box is empty, you need to install Git. Click on the [**Using Version Control with RStudio**](https://support.rstudio.com/hc/en-us/articles/200532077?version=1.2.1335&mode=desktop) link and scroll 
-down to the **Installation** section. This will take you to a site that 
-describes how to install Git on your machine. Now **restart** RStudio.
+While you're here, make sure you have a <span style="color: #de77ae;">Git 
+executable</span>. If this box is empty, you need to install Git. Go
+[here](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) and scroll 
+down to the <span style="color: #de77ae;">Installation</span> section, then 
+**restart RStudio**.
 
 Now that we're sure Git is installed, we're going to set up encryption between 
-our laptop and GitHub. To do this we need to generate a certificate. Click on 
-**Create RSA Key...**
+your computer and GitHub. To do this we need to generate a certificate. Click on 
+<span style="color: #de77ae;">Create RSA Key...</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/0-2.png')
 ```
 
-Now, click **Create** to generate your RSA key
+Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/0-3.png')
@@ -66,7 +64,8 @@ It should look like this
 knitr::include_graphics('github/0-4.png')
 ```
 
-Now you need to copy your public key and register it with GitHub, so click on **View public key**
+Now you need to copy your public key and register it with GitHub, so click on 
+<span style="color: #de77ae;">View public key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/0-5.png')
@@ -78,28 +77,29 @@ knitr::include_graphics('github/0-5.png')
 knitr::include_graphics('github/0-6.png')
 ```
 
-Then in GitHub, in your **Personal settings**, open the **SSH and GPG keys** tab 
+Then in GitHub, in your <span style="color: #de77ae;">Personal settings</span>, 
+open the <span style="color: #de77ae;">SSH and GPG keys</span> tab 
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/0-7.png')
 ```
 
-Create a **New SSH key**
+Create a <span style="color: #de77ae;">New SSH key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/0-8.png')
 ```
 
 Paste the public key that you copied from RStudio into the box and click
-**Add SSH key** 
+<span style="color: #de77ae;">Add SSH key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/0-9.png')
 ```
 
 Now back in RStudio, tell Git your user name and email address (these are used 
-to label each commit that you make to GitHub). Make sure the email address you 
-enter here is the same as the one that you registered on GitHub.
+to label each commit that you make to GitHub). **Make sure the email address you** 
+**enter here is the same as the one that you registered on GitHub**.
 
 ```{r, eval = FALSE}
 install.packages("usethis")
@@ -125,14 +125,15 @@ git config --global --list
 
 It's important that you use version control in your project workflow, so let's 
 set up a new GitHub repository (you should make a new repository for each
-project you're working on). To do this, click **New**
+project you're working on). To do this, click <span style="color: #de77ae;">New</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/1-1.png')
 ```
 
 Choose a short, descriptive name for your repository and 
-**Initialize this repository with a README**. Since this is a tutorial and not
+<span style="color: #de77ae;">Initialize this repository with a README</span>. 
+Since this is a tutorial and not
 a real project, this repository has been named `test`.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
@@ -150,31 +151,35 @@ knitr::include_graphics('github/1-3.png')
 
 ## Create a new RStudio project
 
-In RStudio, click **File** > **New project...**
+In RStudio, click <span style="color: #de77ae;">File > New project...</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "20%"}
 knitr::include_graphics('github/2-1.png')
 ```
 
-Since we're integrating version control into this project workflow, click **Version Control**
+Since we're integrating version control into this project workflow, click 
+<span style="color: #de77ae;">Version Control</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/2-2.png')
 ```
 
-Select the option to clone a project from a **Git** repository
+Select the option to clone a project from a 
+<span style="color: #de77ae;">Git</span> repository
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/2-3.png')
 ```
 
-**Paste** your **Repository URL** into the first box, then click **Browse...** 
+**Paste your Repository URL** into the first box, then click 
+<span style="color: #de77ae;">Browse...</span> 
 and navigate to the git folder on your desktop. If you don't have a git folder 
 on your desktop then make one, as it's good practice to keep all of your 
 projects together and well organised. RStudio will create a new subdirectory 
 that will mirror the contents of your Git repository (so make sure you 
 don't already have a folder with the same name as the repository you created, 
-as this will cause problems). Now click **Create Project**
+as this will cause problems). Now click 
+<span style="color: #de77ae;">Create Project</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/2-4.png')
@@ -188,7 +193,8 @@ files, including a GitHub `README.md` file (imported from your GitHub
 repository), an RStudio project file (`test.Rproj`), and an invisible 
 `.gitignore` file (created by RStudio). 
 
-Note the appearance of a new **Git** tab next to **Connections**. This is 
+Note the appearance of a new <span style="color: #de77ae;">Git</span> tab next 
+to <span style="color: #de77ae;">Connections</span>. This is 
 important.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
@@ -198,11 +204,14 @@ knitr::include_graphics('github/2-5.png')
 ## Using Git in RStudio
 
 Compare the contents of your working directory to the files listed in the
-**Git** tab. The **Git** tab is a useful tool that shows you how your remote
+<span style="color: #de77ae;">Git</span> tab. The 
+<span style="color: #de77ae;">Git</span> tab is a useful tool that shows you 
+how your remote
 directory (your GitHub repository) differs from your local directory 
 (in this case `~Desktop/Git/test`). Currently, the `README.md` file in your 
 local directory is identical to the one in your remote directory. That's why 
-you can't see it in the **Git** tab. Instead, `.gitignore` and `test.Rproj`
+you can't see it in the <span style="color: #de77ae;">Git</span> tab. Instead,
+`.gitignore` and `test.Rproj`
 are listed with yellow **Status** question marks. What do these icons mean?
 
 * "?" - Files or directories that don't currently exist in your git repository 
@@ -214,7 +223,8 @@ definately want to commit these)
 * "D" - Files that are no longer in your local directory (you want to
 commit these to GitHub)
 
-Open the `README.md` file by clicking on its filename in the **Files** tab. 
+Open the `README.md` file by clicking on its filename in the 
+<span style="color: #de77ae;">Files</span> tab. 
 Does this look familiar? (Compare the contents of this file to your
 repository on GitHub)
 
@@ -229,18 +239,20 @@ that when we make edits to the README file, its **Status** changes to "M". This
 means that the file in your local directory is no longer identical to the file 
 in your remote directory (on GitHub).
 
-Click **Commit** to upload these changes to GitHub.
+Click <span style="color: #de77ae;">Commit</span> to upload these changes to GitHub.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/2-7.png')
 ```
 
-The **RStudio: Review Changes** window has opened. Click on the **Staged** 
-checkbox next to `README.md` and enter a **Commit message**. Your message 
+The <span style="color: #de77ae;">RStudio: Review Changes</span> window has 
+opened. Click on the <span style="color: #de77ae;">Staged</span>
+checkbox next to `README.md` and enter a 
+<span style="color: #de77ae;">Commit message</span>. Your message 
 should describe the changes you've made to the file you're uploading (in this
 case, an initial commit). These changes are shown in the lower half of the 
 screen, with deletions and insertions highlighted in red and green, 
-respectively. Click **Commit** to continue.
+respectively. Click <span style="color: #de77ae;">Commit</span> to continue.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/3-1.png')
@@ -253,7 +265,7 @@ Congratulations! `README.md` is now staged, with 7 insertions and 1 deletion.
 knitr::include_graphics('github/3-2.png')
 ```
 
-Then **Push** all staged files (at the moment, just `README.md`) to GitHub.
+Then <span style="color: #de77ae;">Push</span> all staged files (at the moment, just `README.md`) to GitHub.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('github/3-3.png')
@@ -272,7 +284,8 @@ Congratulations again! You've successfully pushed these changes to GitHub.
 knitr::include_graphics('github/3-5.png')
 ```
 
-Note that `README.md` is no longer listed in the **Git** tab (because both the
+Note that `README.md` is no longer listed in the 
+<span style="color: #de77ae;">Git</span> tab (because both the
 local and remote versions are identical).
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
@@ -288,15 +301,16 @@ knitr::include_graphics('github/4-2.png')
 ## Final remarks
 
 RStudio offers integrated version control, which is useful for *daily tasks*
-such as pushing, pulling, and reviewing changes (click on **Diff** in the 
-**Git** tab). However, this is just the tip of the iceberg. If you have time, 
+such as pushing, pulling, and reviewing changes (click on 
+<span style="color: #de77ae;">Diff</span> in the 
+<span style="color: #de77ae;">Git</span> tab). However, this is just the tip of 
+the iceberg. If you have time, 
 why not take a look at the links below. Try the interactive tutorials in 
 "Learn Git Branching" by Peter Cottle and experiment in RStudio's **Terminal** 
 tab with your own repository.
 
 ## Useful resources
 
-* [Learn Git Branching, by Peter Cottle](https://learngitbranching.js.org)
 * [R packages - Git and GitHub, by Hadley Wickham](http://r-pkgs.had.co.nz/git.html)
 * [Pro Git, by Scott Chacon and Ben Straub ](https://git-scm.com/book/en/v2)
 * [git/github guide, by Karl Broman](https://kbroman.org/github_tutorial/)
