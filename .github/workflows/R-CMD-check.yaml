@@ -81,3 +81,61 @@ jobs:
         with:
           name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
+
+# Build and deploy DOCS -----------------------------------------------------
+
+      # Build documentation with pkgdown
+      - name: Build Docs
+        if: runner.os == 'macOS'
+        run: |
+          install.packages("pkgdown")
+          pkgdown::build_site()
+        shell: Rscript {0}
+
+      # Move ioslide lectures to docs
+      - name: Move ioslide lectures to docs
+      if: runner.os == 'macOS'
+      run: |
+        install.packages("rmarkdown")
+        all_files <- dir("inst/lectures", recursive = TRUE, full.names = TRUE)
+        rmd_files <- all_files[grep(".Rmd", all_files)]
+        for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
+        html_files <- gsub("Rmd", "html", rmd_files)
+        for (i in seq_len(length(html_files)))
+        file.copy(html_files[i], file.path("docs", "lectures",
+        basename(html_files[i])), overwrite = TRUE)
+      shell: Rscript {0}
+
+      # Move learnr practicals to docs
+      - name: Move learnr practicals to docs
+      if: runner.os == 'macOS'
+      run: |
+        all_files <- dir("inst/practicals", recursive = TRUE, full.names = TRUE)
+        rmd_files <- all_files[grep(".Rmd", all_files)]
+        for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
+        html_files <- gsub("Rmd", "html", rmd_files)
+        for (i in seq_len(length(html_files)))
+        file.copy(html_files[i], file.path("docs", "practicals",
+        basename(html_files[i])), overwrite = TRUE)
+      shell: Rscript {0}
+
+      # Create a development branch and commit to it
+      - name: Commit to development branch
+        if: runner.os == 'macOS'
+        run: |
+          git checkout -b build_docs
+          git add .
+          git commit -m '[skip ci]'
+        shell: bash
+
+      # Deploy the docs using JamesIves/github-pages-deploy-action
+      - name: Deploy Docs
+        if: runner.os == 'macOS'
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
+          BASE_BRANCH: build_docs
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: docs # The folder the action should deploy.
+          TARGET_FOLDER: docs
+          COMMIT_MESSAGE: 'build docs [skip ci]'
