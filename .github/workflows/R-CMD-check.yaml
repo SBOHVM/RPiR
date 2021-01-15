@@ -119,8 +119,8 @@ jobs:
           basename(html_files[i])), overwrite = TRUE)
         shell: Rscript {0}
 
-      # Create a development branch and commit to it
-      - name: Commit to development branch
+      # Create a build_docs branch and commit to it
+      - name: Commit to build_docs branch
         if: runner.os == 'macOS'
         run: |
           git checkout -b build_docs
