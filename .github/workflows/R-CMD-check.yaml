@@ -118,6 +118,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
         run: |
+          git config --global user.email "sonia.mitchell@glasgow.ac.uk"
+          git config --global user.name "soniamitchell"
           git checkout -b build_docs
           git add .
           git commit -m '[skip ci]'
