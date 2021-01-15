@@ -105,11 +105,12 @@ jobs:
           wd <- getwd()
           all_files <- dir(file.path(wd, "inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
-          for (i in seq_len(length(rmd_files))) rmarkdown::render(rmd_files[i])
-          html_files <- gsub("Rmd", "html", rmd_files)
-          for (i in seq_len(length(html_files)))
-          file.copy(html_files[i], file.path(wd, "docs", "lectures",
-          basename(html_files[i])), overwrite = TRUE)
+          for (i in seq_len(length(rmd_files))) {
+          out_file <- rmarkdown::render(rmd_files[i])
+          html_file <- gsub("Rmd", "html", rmd_files[i])
+          file.copy(out_file, file.path(wd, "docs", "lectures",
+          basename(html_file)), overwrite = TRUE)
+          }
         shell: Rscript {0}
 
       # Create a build_docs branch and commit to it
