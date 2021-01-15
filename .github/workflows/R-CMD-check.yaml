@@ -102,25 +102,31 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           install.packages("rmarkdown")
-          wd <- getwd()
-          all_files <- dir(file.path(wd, "inst", "lectures"), recursive = TRUE, full.names = TRUE)
+          all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           for (i in seq_len(length(rmd_files))) {
-          out_file <- rmarkdown::render(rmd_files[i])
+          out_file <- rmarkdown::render(rmd_files[i], output_format = "html_document")
           html_file <- gsub("Rmd", "html", rmd_files[i])
-          file.copy(out_file, file.path(wd, "docs", "lectures",
+          file.copy(out_file, file.path("docs", "lectures",
           basename(html_file)), overwrite = TRUE)
           }
         shell: Rscript {0}
 
-      # Create a build_docs branch and commit to it
-      - name: Commit to build_docs branch
+      - name: Add credentials in keychain
         if: runner.os == 'Linux'
         env:
           GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
         run: |
-          git config --global user.email "sonia.mitchell@glasgow.ac.uk"
-          git config --global user.name "soniamitchell"
+          echo "\
+          protocol=https
+          host=github.com
+          username=Personal Access Token
+          password=$GITHUB_TOKEN" | git credential-osxkeychain store
+
+      # Create a build_docs branch and commit to it
+      - name: Commit to build_docs branch
+        if: runner.os == 'Linux'
+        run: |
           git checkout -b build_docs
           git add .
           git commit -m '[skip ci]'
