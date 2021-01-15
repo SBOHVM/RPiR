@@ -3,6 +3,9 @@ title: "3-4: Stochastic SIS model"
 output: 
   learnr::tutorial:
     theme: lumen
+    includes:
+      in_header: "css/google-font.html"
+    css: "css/google-font.css"
 runtime: shiny_prerendered
 description: >
   Students run a stochastic version of the SIS model.
