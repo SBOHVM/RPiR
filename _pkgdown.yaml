@@ -2,7 +2,7 @@ title: RPiR
 url: https://ibahcm.github.io/RPiR/
 template:
   params:
-    bootswatch: cosmo
+    bootswatch: sandstone
 reference:
   - title: Lecture slides
     desc: View lecture slides in RStudio
@@ -29,7 +29,7 @@ reference:
 navbar:
   type: inverse
   left:
-    - text: "Lectures"
+    - text: "Lectures (slides)"
       icon: fas fa-chalkboard-teacher
       menu:
       -  text: RPiR1-1
@@ -38,6 +38,15 @@ navbar:
          href: lectures/RPiR1-2.html
       -  text: RPiR1-3
          href: lectures/RPiR1-3.html
+    - text: "Lectures (html)"
+      icon: fas fa-chalkboard-teacher
+      menu:
+      -  text: RPiR1-1
+         href: lectures_html/RPiR1-1.html
+      -  text: RPiR1-2
+         href: lectures_html/RPiR1-2.html
+      -  text: RPiR1-3
+         href: lectures_html/RPiR1-3.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions

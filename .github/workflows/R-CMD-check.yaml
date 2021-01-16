@@ -116,6 +116,25 @@ jobs:
           }
         shell: Rscript {0}
 
+      # Move ioslide html to docs
+      - name: Move ioslide lectures to docs
+        if: runner.os == 'macOS'
+        run: |
+          install.packages("rmarkdown")
+          all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
+          rmd_files <- all_files[grep(".Rmd", all_files)]
+          if (!file.exists(file.path("docs", "lectures")))
+          dir.create(file.path("docs", "lectures"))
+          for (i in seq_len(length(rmd_files))) {
+          html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
+          out_file <- rmarkdown::render(rmd_files[i],
+          output_format = "html_document")
+          html_file <- gsub("Rmd", "html", rmd_files[i])
+          file.copy(out_file, file.path("docs", "lectures_html",
+          basename(html_file)), overwrite = TRUE)
+          }
+        shell: Rscript {0}
+
       - name: Setup keychain
         if: runner.os == 'macOS'
         env:

@@ -28,7 +28,7 @@ learnr::run_tutorial("practical1-1", package = "RPiR")
 
 To view all available tutorials, run `learnr::available_tutorials("RPiR")`.
 
-From Practical exercise 1-6 onwards, we suggest that you open a separate 
+> From Practical exercise 1-6 onwards, we suggest that you open a separate 
 instance of RStudio to run your code.
 
 **To reset a practical**, click on the Start Over link (look for the tiny grey 
