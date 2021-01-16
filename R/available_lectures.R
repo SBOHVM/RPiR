@@ -1,10 +1,20 @@
 #' available_lectures
 #'
+#' @param package Package name, *i.e. * "RPiR"
+#'
 #' @export
 #'
-available_lectures <- function() {
-  tmp <- system.file(package = "RPiR")
+#' @examples
+#' \dontrun{
+#' available_lectures("RPiR")
+#' }
+#'
+available_lectures <- function(package) {
+  tmp <- system.file(package = package)
   tmp <- dir(file.path(tmp, "lectures"))
   tmp <- tmp[grep("Rmd", tmp)]
-  gsub(".Rmd", "", tmp[grep("RPiR", tmp)])
+  tmp <- gsub(".Rmd", "", tmp[grep("RPiR", tmp)])
+  cat("Available lectures:")
+  cat("\n* RPiR")
+  for(i in seq_len(length(tmp))) cat("\n  -", tmp[i])
 }
