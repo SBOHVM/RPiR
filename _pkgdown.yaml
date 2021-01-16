@@ -31,6 +31,8 @@ navbar:
          href: lectures/RPiR1-1.html
       -  text: RPiR1-2
          href: lectures/RPiR1-2.html
+      -  text: RPiR1-3
+         href: lectures/RPiR1-3.html
 
   right:
     - text: "Installation"
