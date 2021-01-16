@@ -39,7 +39,7 @@ in RStudio to end the process.
 
 ## Lectures
 
-To view all available letures, run `RPiR::available_lectures()`.
+To view all available letures, run `RPiR::available_lectures("RPiR")`.
 
 **To view lecture slides in RStudio**, run `RPiR::run_lecture("RPiR1-1")`.
 
