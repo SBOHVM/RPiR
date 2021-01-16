@@ -4,17 +4,8 @@
 \alias{available_lectures}
 \title{available_lectures}
 \usage{
-available_lectures(package)
-}
-\arguments{
-\item{package}{Package name, *i.e. * "RPiR"}
+available_lectures()
 }
 \description{
 available_lectures
-}
-\examples{
-\dontrun{
-available_lectures("RPiR")
-}
-
 }

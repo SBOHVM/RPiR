@@ -19,14 +19,9 @@ brew install libgit2
 
 ## Practicals
 
-**To run a practical**, you first need to load up the learnr package, then use
-`run_tutorial()` and select the practical you wish to run: 
+**To run a practical**, run `RPiR::run_practical("practical1-1")`, for example.
 
-```
-learnr::run_tutorial("practical1-1", package = "RPiR")
-```
-
-To view all available tutorials, run `learnr::available_tutorials("RPiR")`.
+To view all available tutorials, run `RPiR::available_tutorials()`.
 
 > From Practical exercise 1-6 onwards, we suggest that you open a separate 
 instance of RStudio to run your code.
@@ -41,7 +36,7 @@ in RStudio to end the process.
 
 **To view lecture slides** in RStudio, run `RPiR::run_lecture("RPiR1-1")`.
 
-To view all available letures, run `RPiR::available_lectures("RPiR")`.
+To view all available letures, run `RPiR::available_lectures()`.
 
 ## Course contents
 

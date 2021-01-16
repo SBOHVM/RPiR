@@ -7,8 +7,10 @@ reference:
   - title: Lecture slides
     desc: View lecture slides in RStudio
     contents:
+      - '`run_practical`'
+      - '`available_practicals`'
       - '`run_lecture`'
-      - '`available_lectures`'
+      - '`run_lectures`'
   - title: Helper functions
     desc: Functions used in Practical exercises
     contents:
