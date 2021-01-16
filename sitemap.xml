@@ -7,6 +7,9 @@
     <loc>https://ibahcm.github.io/RPiR//reference/RPiR-package.html</loc>
   </url>
   <url>
+    <loc>https://ibahcm.github.io/RPiR//reference/available_lectures.html</loc>
+  </url>
+  <url>
     <loc>https://ibahcm.github.io/RPiR//reference/cleanup_times.html</loc>
   </url>
   <url>
@@ -25,18 +28,21 @@
     <loc>https://ibahcm.github.io/RPiR//reference/run_integration.html</loc>
   </url>
   <url>
+    <loc>https://ibahcm.github.io/RPiR//reference/run_lecture.html</loc>
+  </url>
+  <url>
     <loc>https://ibahcm.github.io/RPiR//reference/run_simple.html</loc>
   </url>
   <url>
     <loc>https://ibahcm.github.io/RPiR//reference/run_simulation.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/github.html</loc>
+    <loc>https://ibahcm.github.io/RPiR//articles/faq.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/slides/one.html</loc>
+    <loc>https://ibahcm.github.io/RPiR//articles/pages/github.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/vscode_liveshare.html</loc>
+    <loc>https://ibahcm.github.io/RPiR//articles/pages/vscode_liveshare.html</loc>
   </url>
 </urlset>

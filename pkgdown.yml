@@ -2,10 +2,10 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
-  github: github.html
-  slides/one: one.html
-  vscode_liveshare: vscode_liveshare.html
-last_built: 2021-01-15T17:25Z
+  faq: faq.html
+  pages/github: github.html
+  pages/vscode_liveshare: vscode_liveshare.html
+last_built: 2021-01-16T02:04Z
 urls:
   reference: https://ibahcm.github.io/RPiR//reference
   article: https://ibahcm.github.io/RPiR//articles
