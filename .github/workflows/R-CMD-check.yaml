@@ -105,7 +105,9 @@ jobs:
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           for (i in seq_len(length(rmd_files))) {
-          out_file <- rmarkdown::render(rmd_files[i], output_format = "html_document")
+          html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
+          out_file <- rmarkdown::render(rmd_files[i],
+          output_format = "ioslides_presentation")
           html_file <- gsub("Rmd", "html", rmd_files[i])
           file.copy(out_file, file.path("docs", "lectures",
           basename(html_file)), overwrite = TRUE)
@@ -119,7 +121,7 @@ jobs:
         uses: sinoru/actions-setup-keychain@v1.0
 
       - name: Add credentials in keychain
-        if: runner.os == 'Linux'
+        if: runner.os == 'macOS'
         env:
           GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
         run: |
@@ -131,7 +133,7 @@ jobs:
 
       # Create a build_docs branch and commit to it
       - name: Commit to build_docs branch
-        if: runner.os == 'Linux'
+        if: runner.os == 'macOS'
         run: |
           git checkout -b build_docs
           git add .
@@ -140,7 +142,7 @@ jobs:
 
       # Deploy the docs using JamesIves/github-pages-deploy-action
       - name: Deploy Docs
-        if: runner.os == 'Linux'
+        if: runner.os == 'macOS'
         uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
           GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
