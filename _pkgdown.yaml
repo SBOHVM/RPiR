@@ -10,7 +10,7 @@ reference:
       - '`run_practical`'
       - '`available_practicals`'
       - '`run_lecture`'
-      - '`run_lectures`'
+      - '`available_lectures`'
   - title: Helper functions
     desc: Functions used in Practical exercises
     contents:
