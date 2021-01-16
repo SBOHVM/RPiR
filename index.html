@@ -112,6 +112,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/pages/install_RPiR.html">package</a>
+    </li>
+    <li>
       <a href="articles/pages/github.html">github</a>
     </li>
     <li>
@@ -135,30 +138,40 @@
 <div class="page-header"><h1 class="hasAnchor">
 <a href="#reproducible-programming-in-r-course" class="anchor"></a>Reproducible Programming in R course</h1></div>
 
-<div id="installation-instructions" class="section level2">
+<div id="course-preparation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation-instructions" class="anchor"></a>Installation instructions</h2>
-<pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")
-devtools::install_github("IBAHCM/RPiR")</a></code></pre>
-<p>You might be asked to install libgit2, which you can do on a Mac from the terminal:</p>
-<pre><code>brew install libgit2</code></pre>
+<a href="#course-preparation" class="anchor"></a>Course preparation</h2>
+<p>You’ll need to do a few things before we can start the course. These are detailed in the documentation for this package under the <code>Installation</code> dropdown men at <a href="https://ibahcm.github.io/RPiR"><img src="https://img.shields.io/badge/docs-RPIR-blue"></a>:</p>
+<ol>
+<li>First install the RPiR package - <a href="https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html">instructions here</a>.</li>
+<li>Then create a github account and connect it to RStudio - <a href="https://ibahcm.github.io/RPiR/articles/pages/github.html">instructions here</a>. This will also show you how to create a practice project on github. You’ll use this in the second practical series, but it’s worth trying out the instructions now to check that everything is working.</li>
+<li>Finally, install Microsoft VSCode (aka Visual Studio Code) and then Live Share - <a href="https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html">instructions here</a>. You will need your GitHub id from the previous step to do this.</li>
+</ol>
+</div>
+<div id="running-the-course" class="section level2">
+<h2 class="hasAnchor">
+<a href="#running-the-course" class="anchor"></a>Running the course</h2>
+<p>To start the course, load the <code>RPiR</code> package:</p>
+<pre><code><a href="https://rdrr.io/r/base/library.html">library(RPiR)</a></code></pre>
+<p>You can then see what lectures and practicals are available using:</p>
+<pre><code><a href="reference/available_lectures.html">available_lectures()
+available_practicals()</a></code></pre>
 </div>
 <div id="practicals" class="section level2">
 <h2 class="hasAnchor">
 <a href="#practicals" class="anchor"></a>Practicals</h2>
-<p><strong>To run a practical</strong>, run <code><a href="reference/run_practical.html">RPiR::run_practical("practical1-1")</a></code>, for example.</p>
-<p>To view all available tutorials, run <code><a href="reference/available_practicals.html">RPiR::available_practicals()</a></code>.</p>
+<p><strong>To run a practical</strong>, use the <code><a href="reference/run_practical.html">run_practical()</a></code> function in RStudio. For example, <code><a href="reference/run_practical.html">run_practical("practical1-1")</a></code> will run the first practical.</p>
 <blockquote>
-<p>From Practical exercise 1-6 onwards, we suggest that you open a separate instance of RStudio to run your code.</p>
+<p>When you run a practical, you will not be able to use the R console until you close it, so we suggest that you open a separate instance of RStudio to run any code, so one RStudio is dedicated to running practicals and lectures.</p>
 </blockquote>
-<p><strong>To reset a practical</strong>, click on the Start Over link (look for the tiny grey text below the left menu).</p>
-<p><strong>To close a practical</strong>, close the window, then click on the red STOP button in RStudio to end the process.</p>
+<p><strong>To reset a practical</strong> if you want to start again, click on the Start Over link (look for the tiny grey text below the left menu).</p>
+<p><strong>To close a practical</strong> when you have finished it, close the webpage in your web browser, then either hit <code>escape</code> or click on the red STOP button in RStudio to end the process.</p>
 </div>
 <div id="lectures" class="section level2">
 <h2 class="hasAnchor">
 <a href="#lectures" class="anchor"></a>Lectures</h2>
-<p><strong>To view lecture slides</strong> in RStudio, run <code><a href="reference/run_lecture.html">RPiR::run_lecture("RPiR1-1")</a></code>.</p>
-<p>To view all available letures, run <code><a href="reference/available_lectures.html">RPiR::available_lectures()</a></code>.</p>
+<p><strong>To view lecture slides</strong>, use the <code><a href="reference/run_lecture.html">run_lecture()</a></code> function in RStudio. For example, <code><a href="reference/run_lecture.html">run_lecture("RPiR1-1")</a></code> will show the first lecture slides.</p>
+<p>You can also see the lectures on the <a href="https://ibahcm.github.io/RPiR">GitHub website</a> using the lecture dropdown menus, either as slides (under <code>Lectures (slides)</code>) or as single continuous documents for later reference (under <code>Lectures (html)</code>).</p>
 </div>
 <div id="course-contents" class="section level2">
 <h2 class="hasAnchor">
@@ -228,10 +241,10 @@ devtools::install_github("IBAHCM/RPiR")</a></code></pre>
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://ibahcm.github.io/RPiR/"><img src="https://img.shields.io/badge/docs-RPIR-blue"></a></li>
+<li><a href="https://ibahcm.github.io/RPiR"><img src="https://img.shields.io/badge/docs-RPIR-blue"></a></li>
 <li><a href="https://github.com/IBAHCM/RPiR/actions"><img src="https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1" alt="test-build"></a></li>
 <li><a href="https://www.codefactor.io/repository/github/IBAHCM/RPiR"><img src="https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge" alt="CodeFactor"></a></li>
-<li><a href="https://opensource.org/licenses/GPL-3.0"><img src="https://img.shields.io/badge/licence-GPL--3-green" alt="License: GPL-3.0"></a></li>
+<li><a href="https://opensource.org/licenses/GPL-3.0"><img src="https://img.shields.io/badge/licence-GPL--3" alt="License: GPL-3.0"></a></li>
 </ul>
 </div>
 </div>
