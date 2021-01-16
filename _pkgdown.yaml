@@ -2,9 +2,14 @@ title: RPiR
 url: https://ibahcm.github.io/RPiR/
 template:
   params:
-    bootswatch: flatly
+    bootswatch: cosmo
 reference:
-  - title: Exported Functions
+  - title: Lecture slides
+    desc: View lecture slides in RStudio
+    contents:
+      - '`run_lecture`'
+      - '`available_lectures`'
+  - title: Helper functions
     desc: Functions used in Practical exercises
     contents:
       - '`plot_simple`'
@@ -13,7 +18,7 @@ reference:
       - '`dummy_package`'
       - '`run_simple`'
       - '`run_simulation`'
-  - title: Helper functions
+  - title: Misc functions
     desc: ~
     contents:
       - '`run_integration`'
@@ -25,7 +30,7 @@ navbar:
   type: inverse
   left:
     - text: "Lectures"
-      icon: fa-question-circle-o
+      icon: fas fa-chalkboard-teacher
       menu:
       -  text: RPiR1-1
          href: lectures/RPiR1-1.html
@@ -33,15 +38,21 @@ navbar:
          href: lectures/RPiR1-2.html
       -  text: RPiR1-3
          href: lectures/RPiR1-3.html
+    - icon: far fa-comments
+      text: "Discussion"
+      href: https://github.com/IBAHCM/RPiR/discussions
+    - icon: fab fa-github
+      text: "GitHub"
+      href: https://github.com/IBAHCM/RPiR/
+    - icon: far fa-file-code
+      text: "Functions"
+      href: reference/index.html
 
   right:
     - text: "Installation"
-      icon: fa-question-circle-o
+      icon: far fa-file
       menu:
       -  text: github
          href: articles/pages/github.html
       -  text: vscode
          href: articles/pages/vscode_liveshare.html
-    - icon: fa-file-code-o
-      text: "Functions"
-      href: reference/index.html
