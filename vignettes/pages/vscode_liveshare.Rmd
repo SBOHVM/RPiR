@@ -36,10 +36,10 @@ setup and tools.
 
 ## Before you begin
 
-We're assuming you already have 
-[Visual Studio Code](https://code.visualstudio.com) installed  (Note: this is
-not the same as the Visual Studio IDE) on your machine.. and that you already 
-have an account on [GitHub](https://github.com).
+First, [download and install](https://code.visualstudio.com) Visual Studio
+Code / VSCode (Note: this is not the same as the Visual Studio IDE, if you
+happen to have that installed). You also need to already have an account
+on [GitHub][github].
 
 ## Download the extension
 
@@ -107,4 +107,6 @@ To end the session, do one of the following:
 
 More info 
 [here](https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode).
+
+[github]: https://ibahcm.github.io/RPiR/articles/pages/github.html
 

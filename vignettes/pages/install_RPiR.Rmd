@@ -25,14 +25,19 @@ First you need to install the *Reproducible Programming in R* (RPiR) package.
 
 ## Instructions
 
-```
-install.packages("devtools")
-devtools::install_github("IBAHCM/RPiR")
+First, make sure that the `devtools` package is installed by
+calling `library(devtools)`. If that doesn't work, then install it, and then
+install `RPiR` itself:
+
+```{r, eval = FALSE}
+install.packages("devtools") # If need be
+library(devtools)
+install_github("IBAHCM/RPiR")
 ```
 
 If this has worked, you should be able to load the `RPiR` package by typing:
 
-```
+```{r, eval = FALSE}
 library(RPiR)
 ```
 
