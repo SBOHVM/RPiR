@@ -21,7 +21,7 @@ brew install libgit2
 
 **To run a practical**, run `RPiR::run_practical("practical1-1")`, for example.
 
-To view all available tutorials, run `RPiR::available_tutorials()`.
+To view all available tutorials, run `RPiR::available_practicals()`.
 
 > From Practical exercise 1-6 onwards, we suggest that you open a separate 
 instance of RStudio to run your code.
