@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Run a simulation loop — run_simulation • RPiR</title>
+<title>available_practicals — available_practicals • RPiR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Run a simulation loop — run_simulation" />
-<meta property="og:description" content="A generic function to run a simulation loop for a fixed period of time." />
+<meta property="og:title" content="available_practicals — available_practicals" />
+<meta property="og:description" content="available_practicals" />
 
 
 
@@ -171,73 +171,19 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Run a simulation loop</h1>
+    <h1>available_practicals</h1>
     
-    <div class="hidden name"><code>run_simulation.Rd</code></div>
+    <div class="hidden name"><code>available_practicals.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>A generic function to run a simulation loop for a fixed period of time.</p>
+    <p>available_practicals</p>
     </div>
 
-    <pre class="usage"><span class='fu'>run_simulation</span><span class='op'>(</span><span class='va'>step_function</span>, <span class='va'>initial.pop</span>, <span class='va'>end.time</span>, debug <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>available_practicals</span><span class='op'>(</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>step_function</th>
-      <td><p>Function to run a timestep (<code>step_function()</code>)
-which returns a list containing elements <code>updated.pop</code> with the
-updated population and <code>end.experiment</code> which is TRUE if the
-experiment has ended (FALSE if not), OR which just returns a data frame
-with the updated population</p></td>
-    </tr>
-    <tr>
-      <th>initial.pop</th>
-      <td><p>Initial population data frame with columns corresponding
-to function requirements</p></td>
-    </tr>
-    <tr>
-      <th>end.time</th>
-      <td><p>End time of simulation</p></td>
-    </tr>
-    <tr>
-      <th>debug</th>
-      <td><p>(optionally) do you want to print out a limited amount of
-debugging information about your code? - default FALSE</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>(optionally) any other arguments for <code>step_function()</code>,
-e.g. parameters or timestep</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Data frame containing population history of simulation over time</p>
-
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>growth</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>latest.df</span>, <span class='va'>growth.rate</span><span class='op'>)</span> <span class='op'>{</span>
-<span class='va'>current.count</span> <span class='op'>&lt;-</span> <span class='va'>latest.df</span><span class='op'>$</span><span class='va'>count</span>
-<span class='va'>growth.num</span> <span class='op'>&lt;-</span> <span class='va'>current.count</span> <span class='op'>*</span> <span class='va'>growth.rate</span>
-<span class='va'>next.count</span> <span class='op'>&lt;-</span> <span class='va'>current.count</span> <span class='op'>+</span> <span class='va'>growth.num</span>
-<span class='va'>next.time</span> <span class='op'>&lt;-</span> <span class='va'>latest.df</span><span class='op'>$</span><span class='va'>time</span> <span class='op'>+</span> <span class='fl'>1</span>
-<span class='va'>new.df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>time<span class='op'>=</span><span class='va'>next.time</span>, count<span class='op'>=</span><span class='va'>next.count</span><span class='op'>)</span>
-<span class='va'>finished</span> <span class='op'>&lt;-</span> <span class='va'>next.count</span> <span class='op'>==</span> <span class='fl'>0</span>
-<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>updated.pop<span class='op'>=</span><span class='va'>new.df</span>, end.experiment<span class='op'>=</span><span class='va'>finished</span><span class='op'>)</span>
-<span class='op'>}</span>
-<span class='va'>df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>time<span class='op'>=</span><span class='fl'>0</span>, count<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span>
-<span class='va'>results</span> <span class='op'>&lt;-</span> <span class='fu'>run_simulation</span><span class='op'>(</span><span class='va'>growth</span>, <span class='va'>df</span>, <span class='fl'>100</span>, growth.rate<span class='op'>=</span><span class='fl'>0.1</span>, debug<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; Population names being used:  time, count 
-#&gt; Parameter names being used:  growth.rate 
-#&gt; step_function() returns a list.
-#&gt; end.experiment returned from first run:  FALSE 
-#&gt; Population returned from first run:  1, 1.1 </div><div class='input'><span class='fu'><a href='plot_populations.html'>plot_populations</a></span><span class='op'>(</span><span class='va'>results</span><span class='op'>)</span>
-</div><div class='img'><img src='run_simulation-1.png' alt='' width='700' height='433' /></div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
