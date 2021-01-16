@@ -145,11 +145,10 @@ jobs:
       # Deploy the docs using JamesIves/github-pages-deploy-action
       - name: Deploy Docs
         if: runner.os == 'macOS'
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+        uses: JamesIves/github-pages-deploy-action@3.6.2
         with:
-          GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: build_docs
-          BRANCH: master # The branch the action should deploy to.
+          BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: docs # The folder the action should deploy.
-          TARGET_FOLDER: docs
           COMMIT_MESSAGE: 'build docs [skip ci]'
