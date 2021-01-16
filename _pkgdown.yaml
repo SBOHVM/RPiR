@@ -7,10 +7,13 @@ reference:
   - title: Lecture slides
     desc: View lecture slides in RStudio
     contents:
-      - '`run_practical`'
-      - '`available_practicals`'
-      - '`run_lecture`'
       - '`available_lectures`'
+      - '`run_lecture`'
+  - title: Practicals
+    desc: Run practicals
+    contents:
+      - '`available_practicals`'
+      - '`run_practical`'
   - title: Helper functions
     desc: Functions used in Practical exercises
     contents:
@@ -20,13 +23,13 @@ reference:
       - '`dummy_package`'
       - '`run_simple`'
       - '`run_simulation`'
+      - '`cleanup_times`'
+      - '`cleanup_events`'
+      - '`cleanup_timesteps`'
   - title: Misc functions
     desc: ~
     contents:
       - '`run_integration`'
-      - '`cleanup_times`'
-      - '`cleanup_events`'
-      - '`cleanup_timesteps`'
       - '`RPiR-package`'
 navbar:
   type: inverse
@@ -63,6 +66,8 @@ navbar:
     - text: "Installation"
       icon: far fa-file
       menu:
+      -  text: package
+         href: articles/pages/install_RPiR.html
       -  text: github
          href: articles/pages/github.html
       -  text: vscode

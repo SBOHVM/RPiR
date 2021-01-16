@@ -1,0 +1,54 @@
+---
+title: "Install RPiR"
+author: "Richard Reeve"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+  toc: true
+  toc_depth: 2
+  vignette: >
+    %\VignetteIndexEntry{install_RPiR}
+    %\VignetteEngine{knitr::knitr}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Installation
+
+First you need to install the *Reproducible Programming in R* (RPiR) package.
+
+## Instructions
+
+```
+install.packages("devtools")
+devtools::install_github("IBAHCM/RPiR")
+```
+
+If this has worked, you should be able to load the `RPiR` package by typing:
+
+```
+library(RPiR)
+```
+
+## Potential problems
+
+If this didn't work, you have probably got an installation issue. You can scroll
+up through the pages of installation details, but if you are on a Mac, it's very
+likely you got an error because you need to have `libgit2` installed. If so,
+then you probably also need to install Homebrew - follow the instructions on
+https://brew.sh to do this. Once Homebrew is installed, you can
+install `libgit2` using Homebrew by opening the Terminal app and then typing:
+
+```
+brew install libgit2
+```
+
+The same may happen on Linux, and you will need to use the distribution's
+package manager to install either `libgit2-dev` or `libgit2-devel`, depending
+on whether you are on Debian/Ubuntu or Fedora/CentOS/RHEL, respectively.
