@@ -8,7 +8,7 @@
 
 ```
 install.packages("devtools")
-devtools::install_github("IBAHCM/RPiR", build_vignettes = TRUE)
+devtools::install_github("IBAHCM/RPiR")
 ```
 
 You might be asked to install libgit2, which you can do on a Mac from the terminal:
@@ -17,26 +17,31 @@ You might be asked to install libgit2, which you can do on a Mac from the termin
 brew install libgit2
 ```
 
-## How to use this package
+## Practicals
 
-### Run a practical
-
-You first need to load up the learnr package, then use `run_tutorial()` and select the practical you wish to run: 
+**To run a practical**, you first need to load up the learnr package, then use
+`run_tutorial()` and select the practical you wish to run: 
 
 ```
-library(learnr)
-run_tutorial("practical1-1", package = "RPiR")
+learnr::run_tutorial("practical1-1", package = "RPiR")
 ```
 
-From Practical exercise 1-6 onwards, we suggest that you open a separate instance of RStudio to run your code.
+To view all available tutorials, run `learnr::available_tutorials("RPiR")`.
 
-### Reset a practical
+From Practical exercise 1-6 onwards, we suggest that you open a separate 
+instance of RStudio to run your code.
 
-Click on the Start Over link (look for the tiny grey text below the left menu). 
+**To reset a practical**, click on the Start Over link (look for the tiny grey 
+text below the left menu). 
 
-### Close a practical
+**To close a practical**, close the window, then click on the red STOP button 
+in RStudio to end the process.
 
-Close the window, then click on the red STOP button in RStudio to end the process.
+## Lectures
+
+To view all available letures, run `RPiR::available_lectures()`.
+
+**To view lecture slides in RStudio**, run `RPiR::run_lecture("RPiR1-1")`.
 
 ## Course contents
 
