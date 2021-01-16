@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Reproducible Programming in R • RPiR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/flatly/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.35.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.35.1</span>
       </span>
     </div>
 
@@ -41,7 +41,7 @@
       <ul class="nav navbar-nav">
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-question-circle-o"></span>
+    <span class="fas fa-chalkboard-teacher"></span>
      
     Lectures
      
@@ -59,11 +59,32 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="https://github.com/IBAHCM/RPiR/discussions">
+    <span class="far fa-comments"></span>
+     
+    Discussion
+  </a>
+</li>
+<li>
+  <a href="https://github.com/IBAHCM/RPiR/">
+    <span class="fab fa-github"></span>
+     
+    GitHub
+  </a>
+</li>
+<li>
+  <a href="reference/index.html">
+    <span class="far fa-file-code"></span>
+     
+    Functions
+  </a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-question-circle-o"></span>
+    <span class="far fa-file"></span>
      
     Installation
      
@@ -77,13 +98,6 @@
       <a href="articles/pages/vscode_liveshare.html">vscode</a>
     </li>
   </ul>
-</li>
-<li>
-  <a href="reference/index.html">
-    <span class="fas fa-file-code-o"></span>
-     
-    Functions
-  </a>
 </li>
       </ul>
 </div>
@@ -105,31 +119,25 @@
 <h2 class="hasAnchor">
 <a href="#installation-instructions" class="anchor"></a>Installation instructions</h2>
 <pre><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages("devtools")
-devtools::install_github("IBAHCM/RPiR", build_vignettes = TRUE)</a></code></pre>
+devtools::install_github("IBAHCM/RPiR")</a></code></pre>
 <p>You might be asked to install libgit2, which you can do on a Mac from the terminal:</p>
 <pre><code>brew install libgit2</code></pre>
 </div>
-<div id="how-to-use-this-package" class="section level2">
+<div id="practicals" class="section level2">
 <h2 class="hasAnchor">
-<a href="#how-to-use-this-package" class="anchor"></a>How to use this package</h2>
-<div id="run-a-practical" class="section level3">
-<h3 class="hasAnchor">
-<a href="#run-a-practical" class="anchor"></a>Run a practical</h3>
-<p>You first need to load up the learnr package, then use <code>run_tutorial()</code> and select the practical you wish to run:</p>
-<pre><code><a href="https://rstudio.github.io/learnr/">library(learnr)
-run_tutorial("practical1-1", package = "RPiR")</a></code></pre>
+<a href="#practicals" class="anchor"></a>Practicals</h2>
+<p><strong>To run a practical</strong>, you first need to load up the learnr package, then use <code>run_tutorial()</code> and select the practical you wish to run:</p>
+<pre><code><a href="https://rdrr.io/pkg/learnr/man/run_tutorial.html">learnr::run_tutorial("practical1-1", package = "RPiR")</a></code></pre>
+<p>To view all available tutorials, run <code><a href="https://rdrr.io/pkg/learnr/man/available_tutorials.html">learnr::available_tutorials("RPiR")</a></code>.</p>
 <p>From Practical exercise 1-6 onwards, we suggest that you open a separate instance of RStudio to run your code.</p>
+<p><strong>To reset a practical</strong>, click on the Start Over link (look for the tiny grey text below the left menu).</p>
+<p><strong>To close a practical</strong>, close the window, then click on the red STOP button in RStudio to end the process.</p>
 </div>
-<div id="reset-a-practical" class="section level3">
-<h3 class="hasAnchor">
-<a href="#reset-a-practical" class="anchor"></a>Reset a practical</h3>
-<p>Click on the Start Over link (look for the tiny grey text below the left menu).</p>
-</div>
-<div id="close-a-practical" class="section level3">
-<h3 class="hasAnchor">
-<a href="#close-a-practical" class="anchor"></a>Close a practical</h3>
-<p>Close the window, then click on the red STOP button in RStudio to end the process.</p>
-</div>
+<div id="lectures" class="section level2">
+<h2 class="hasAnchor">
+<a href="#lectures" class="anchor"></a>Lectures</h2>
+<p>To view all available letures, run <code><a href="reference/available_lectures.html">RPiR::available_lectures()</a></code>.</p>
+<p><strong>To view lecture slides in RStudio</strong>, run <code><a href="reference/run_lecture.html">RPiR::run_lecture("RPiR1-1")</a></code>.</p>
 </div>
 <div id="course-contents" class="section level2">
 <h2 class="hasAnchor">
