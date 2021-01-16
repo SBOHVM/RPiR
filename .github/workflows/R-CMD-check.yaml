@@ -104,6 +104,8 @@ jobs:
           install.packages("rmarkdown")
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
+          if (!file.exists(file.path("docs", "lectures")))
+          dir.create(file.path("docs", "lectures"))
           for (i in seq_len(length(rmd_files))) {
           html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
           out_file <- rmarkdown::render(rmd_files[i],
