@@ -154,17 +154,21 @@
 <a href="#prerequisites" class="anchor"></a>Prerequisites</h2>
 <ol style="list-style-type: decimal">
 <li>
-<strong>First</strong>, create a GitHub account with your academic email address</li>
+<strong>First</strong>, create a GitHub account - go to <a href="https://github.com/" class="uri">https://github.com/</a> and sign up with your university email address</li>
 <li>Verify your account</li>
 <li>Go to <a href="https://education.github.com" class="uri">https://education.github.com</a>, click <strong>Students</strong> or <strong>Get benefits for students</strong>, and follow the instructions</li>
 </ol>
+<p>If you already have a GitHub account, then try registering it as an education account using the same link. We <em>think</em> that it won’t be critical for this course that you are registered with the education pack, so if you can’t, we’ll leave it for now. <em>Please do remember though in case anything crops up later.</em></p>
 </div>
-<div id="setup-git-on-rstudio" class="section level2">
+<div id="set-git-up-with-rstudio" class="section level2">
 <h2 class="hasAnchor">
-<a href="#setup-git-on-rstudio" class="anchor"></a>Setup Git on RStudio</h2>
+<a href="#set-git-up-with-rstudio" class="anchor"></a>Set Git up with RStudio</h2>
 <p>In RStudio, open <span style="color: #de77ae;">RStudio &gt; Preferences</span> (or <span style="color: #de77ae;">Tools &gt; Global Options</span> if you’re using Windows). Go down to the <span style="color: #de77ae;">GIT/SVN</span> tab and ensure that <span style="color: #de77ae;">Enable version control interface for RStudio projects</span> is checked.</p>
-<p>While you’re here, make sure you have a <span style="color: #de77ae;">Git executable</span>. If this box is empty, you need to install Git. Go <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a> and scroll down to the <span style="color: #de77ae;">Installation</span> section, then <strong>restart RStudio</strong>.</p>
-<p>Now that we’re sure Git is installed, we’re going to set up encryption between your computer and GitHub. To do this we need to generate a certificate. Click on <span style="color: #de77ae;">Create RSA Key…</span></p>
+<p>While you’re here, make sure you have a <span style="color: #de77ae;">git executable</span>. If this box is empty, you need to install <code>git</code>. Go <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a> and scroll down to the <span style="color: #de77ae;">Installation</span> section, then <strong>restart RStudio</strong>.</p>
+<blockquote>
+<p>Note that having git installed <em>is different</em> from installing <code>libgit2</code> when you installed the <code>RPiR</code> package earlier, so you may have to install git here, even if you fixed the problems earlier!</p>
+</blockquote>
+<p>Now that we’re sure <code>git</code> is installed, we’re going to set up encryption between your computer and GitHub. To do this we need to generate a certificate. Click on <span style="color: #de77ae;">Create RSA Key…</span></p>
 <p><img src="images/github/0-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key</p>
 <p><img src="images/github/0-3.png" width="100%" style="display: block; margin: auto;"></p>
@@ -180,9 +184,9 @@
 <p><img src="images/github/0-8.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Paste the public key that you copied from RStudio into the box and click <span style="color: #de77ae;">Add SSH key</span></p>
 <p><img src="images/github/0-9.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Now back in RStudio, tell Git your user name and email address (these are used to label each commit that you make to GitHub). <strong>Make sure the email address you</strong> <strong>enter here is the same as the one that you registered on GitHub</strong>.</p>
+<p>Now back in RStudio, tell git your user name and email address (these are used to label each commit that you make to GitHub). <strong>Make sure the email address you</strong> <strong>enter here is the same as the one that you registered on GitHub</strong>. First, make sure that the <code>usethis</code> package is installed by calling <code><a href="https://usethis.r-lib.org">library(usethis)</a></code>. If that doesn’t work, then install it, and then configure git using it:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span> <span class="co"># If need be</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span>
 
 <span class="fu"><a href="https://usethis.r-lib.org/reference/use_git_config.html">use_git_config</a></span><span class="op">(</span>
