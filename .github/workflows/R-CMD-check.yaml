@@ -90,7 +90,7 @@ jobs:
 
       # Build documentation with pkgdown
       - name: Build Docs
-        if: runner.os == 'Linux'
+        if: runner.os == 'macOS'
         run: |
           install.packages("rsconnect")
           install.packages("pkgdown")
@@ -99,7 +99,7 @@ jobs:
 
       # Move ioslide lectures to docs
       - name: Move ioslide lectures to docs
-        if: runner.os == 'Linux'
+        if: runner.os == 'macOS'
         run: |
           install.packages("rmarkdown")
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
