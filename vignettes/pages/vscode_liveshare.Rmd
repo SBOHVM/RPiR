@@ -1,7 +1,6 @@
 ---
-title: "vscode_liveshare"
+title: "Visual Studio Code and Live Share"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
-author: "Sonia Mitchell"
 output:
   rmarkdown::html_vignette:
   toc: true
@@ -19,32 +18,41 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Live Share in Visual Studio Code
+# Visual Studio Code
 
-*Collaboration made easy*
+Visual Studio Code (aka VS Code) is an IDE (Integrated Development Environment)
+just like RStudio, but designed by Microsoft for multiple languages, not just R.
+As such, it's much more advanced that RStudio, but not as well tailored to
+working in R. We recommend using RStudio for most of your work, but it may be
+useful occasionally to switch to VS Code, particularly if you want to work
+together with someone on a single piece of code. You can learn more about using
+VS Code [here](https://code.visualstudio.com/learn).
 
-The Visual Studio Code (VS Code) Live Share extension provides a great way to 
-collaborate on code whilst working from home. Assuming read/write access is 
-enabled, you and your team mates can edit code, highlight sections of it, save
-it, and run it in real-time.
+## Installing VS Code
 
-Just bear in mind that when code is run, it is run locally, which means you 
-won't have access to any objects that aren't in your own environment or
-datasets that aren't on your own machine. On the plus side, you don't have to
-go into the office and you can access code remotely using your own personalised
-setup and tools.
+First, [download and install](https://code.visualstudio.com) Visual Studio
+Code (Note: this is not the same as the Visual Studio IDE, if you
+happen to have that installed).
 
-## Before you begin
+# Live Share
 
-We're assuming you already have 
-[Visual Studio Code](https://code.visualstudio.com) installed  (Note: this is
-not the same as the Visual Studio IDE) on your machine.. and that you already 
-have an account on [GitHub](https://github.com).
+The VS Code Live Share extension provides a great way to collaborate on code
+whilst working from home. Assuming read/write access is enabled, you and your
+team mates can edit the same exact code, highlight sections of it, save it, and
+run it in real-time.
 
-## Download the extension
+Just bear in mind that when you edit and run the code, it really happens on
+whoever's machine set up the share, which means you won't have access to any
+objects that aren't in their own environment or datasets that aren't on their
+machine, and collaborators working with you will have get the files separately
+later. On the plus side, you don't have to go into the office and you can
+access code remotely using your own personalised setup and tools.
 
-Now, open up VS Code and install the "Live Share" Microsoft extension from the 
-VS Code marketplace.
+## Install the extension
+
+Open up VS Code and install the "Live Share" Microsoft extension from the 
+VS Code marketplace. Exactly what this will look like depends on your platform,
+but this is on a Mac.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/vscode_liveshare/1_extension2.png')
@@ -54,6 +62,8 @@ While you're there, if you're intending to work in R, you may as well install:
 
 * the "R" Yuki Ueda extension and 
 * the "R LSP Client" REditorSupport extension.
+
+You need to already have an account on [GitHub][github] to use Live Share.
 
 ## Share a session
 
@@ -107,4 +117,6 @@ To end the session, do one of the following:
 
 More info 
 [here](https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode).
+
+[github]: https://ibahcm.github.io/RPiR/articles/pages/github.html
 

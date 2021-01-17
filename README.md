@@ -1,42 +1,62 @@
 # Reproducible Programming in R course
-[![](https://img.shields.io/badge/docs-RPIR-blue)](https://ibahcm.github.io/RPiR/)
+[![](https://img.shields.io/badge/docs-RPIR-blue)][docs]
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge)](https://www.codefactor.io/repository/github/IBAHCM/RPiR)
-[![License: GPL-3.0](https://img.shields.io/badge/licence-GPL--3-green)](https://opensource.org/licenses/GPL-3.0)
+[![License: GPL-3.0](https://img.shields.io/badge/licence-GPL--3)](https://opensource.org/licenses/GPL-3.0)
 
-## Installation instructions
+## Course preparation
+
+You'll need to do a few things before we can start the course. These are
+detailed under the `Installation` dropdown
+menu [in the documentation for this package][docs]. Specifically:
+
+1. First [install the RPiR package][package].
+2. Then [create a github account and connect it to RStudio][github]. This will
+   also show you how to create a practice project on github. You'll use this in
+   the second practical series, but it's worth trying out the instructions now
+   to check that everything is working.
+3. Finally, [install Visual Studio Code and then Live Share][vscode].
+   You will need your GitHub id from the previous step to set this up.
+
+## Running the course
+
+To start the course, load the `RPiR` package:
 
 ```
-install.packages("devtools")
-devtools::install_github("IBAHCM/RPiR")
+library(RPiR)
 ```
 
-You might be asked to install libgit2, which you can do on a Mac from the terminal:
+You can then see what lectures and practicals are available using:
 
 ```
-brew install libgit2
+available_lectures()
+available_practicals()
 ```
 
 ## Practicals
 
-**To run a practical**, run `RPiR::run_practical("practical1-1")`, for example.
+**To run a practical**, use the `run_practical()` function in RStudio. For
+example, `run_practical("practical1-1")` will run the first practical.
 
-To view all available tutorials, run `RPiR::available_practicals()`.
+> When you run a practical, you will not be able to use the R console until you
+  close it, so we suggest that you open a separate instance of RStudio to run
+  any code, so one RStudio is dedicated to running practicals and lectures.
 
-> From Practical exercise 1-6 onwards, we suggest that you open a separate 
-instance of RStudio to run your code.
+**To reset a practical** if you want to start again, click on the Start Over
+link (look for the tiny grey  text below the left menu). 
 
-**To reset a practical**, click on the Start Over link (look for the tiny grey 
-text below the left menu). 
-
-**To close a practical**, close the window, then click on the red STOP button 
+**To close a practical** when you have finished it, close the webpage in your
+web browser, then either hit `escape` or click on the red STOP button 
 in RStudio to end the process.
 
 ## Lectures
 
-**To view lecture slides** in RStudio, run `RPiR::run_lecture("RPiR1-1")`.
+**To view lecture slides**, use the `run_lecture()` function in RStudio. For
+example, `run_lecture("RPiR1-1")` will show the first lecture slides.
 
-To view all available letures, run `RPiR::available_lectures()`.
+You can also see the lectures on the [GitHub website][docs] using the lecture
+dropdown menus, either as slides (under `Lectures (slides)`) or as single
+continuous documents for later reference (under `Lectures (html)`).
 
 ## Course contents
 
@@ -62,3 +82,8 @@ The following practicals are included in this package:
 * `practical4-1`: Biodiversity; Writing a data package
 * `practical4-2`: Biodiversity; Writing a package demo
 * `practical4-3`: Biodiversity; Adding package functions and documentation
+
+[docs]: https://ibahcm.github.io/RPiR
+[package]: https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html
+[github]: https://ibahcm.github.io/RPiR/articles/pages/github.html
+[vscode]: https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html
