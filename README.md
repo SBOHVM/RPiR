@@ -7,18 +7,16 @@
 ## Course preparation
 
 You'll need to do a few things before we can start the course. These are
-detailed in the documentation for this package under the `Installation`
-dropdown men at [![](https://img.shields.io/badge/docs-RPIR-blue)][docs]:
+detailed under the `Installation` dropdown
+menu [in the documentation for this package][docs]. Specifically:
 
-1. First install the RPiR package - [instructions here][package].
-2. Then create a github account and connect it to
-   RStudio - [instructions here][github]. This will also show you how to create
-   a practice project on github. You'll use this in the second practical series,
-   but it's worth trying out the instructions now to check that everything is
-   working.
-3. Finally, install Microsoft VSCode (aka Visual Studio Code) and then Live
-   Share - [instructions here][vscode]. You will need your GitHub id from the
-   previous step to do this.
+1. First [install the RPiR package][package].
+2. Then [create a github account and connect it to RStudio][github]. This will
+   also show you how to create a practice project on github. You'll use this in
+   the second practical series, but it's worth trying out the instructions now
+   to check that everything is working.
+3. Finally, [install Visual Studio Code and then Live Share][vscode].
+   You will need your GitHub id from the previous step to set this up.
 
 ## Running the course
 
