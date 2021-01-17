@@ -1,7 +1,6 @@
 ---
-title: "vscode_liveshare"
+title: "Visual Studio Code and Live Share"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
-author: "Sonia Mitchell"
 output:
   rmarkdown::html_vignette:
   toc: true
@@ -19,13 +18,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Before you begin
-
-First, [download and install](https://code.visualstudio.com) Visual Studio
-Code (Note: this is not the same as the Visual Studio IDE, if you
-happen to have that installed). You also need to already have an account
-on [GitHub][github].
-
 # Visual Studio Code and Live Share
 
 ## Visual Studio Code
@@ -37,6 +29,12 @@ working in R. We recommend using RStudio for most of your work, but it may be
 useful occasionally to switch to VS Code, particularly if you want to work
 together with someone on a single piece of code. You can learn more about using
 VS Code [here](https://code.visualstudio.com/learn).
+
+### Installing VS Code
+
+First, [download and install](https://code.visualstudio.com) Visual Studio
+Code (Note: this is not the same as the Visual Studio IDE, if you
+happen to have that installed).
 
 ## Live Share
 
@@ -52,7 +50,7 @@ machine, and collaborators working with you will have get the files separately
 later. On the plus side, you don't have to go into the office and you can
 access code remotely using your own personalised setup and tools.
 
-## Download the extension
+### Install the extension
 
 Open up VS Code and install the "Live Share" Microsoft extension from the 
 VS Code marketplace. Exactly what this will look like depends on your platform,
@@ -67,7 +65,9 @@ While you're there, if you're intending to work in R, you may as well install:
 * the "R" Yuki Ueda extension and 
 * the "R LSP Client" REditorSupport extension.
 
-## Share a session
+You need to already have an account on [GitHub][github] to use Live Share.
+
+### Share a session
 
 To create a new session, click on "Live Share" in the status bar (at the
 bottom of the VS Code window). The first time you do this, you'll be prompted 

@@ -1,6 +1,5 @@
 ---
 title: "Install RPiR"
-author: "Richard Reeve"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
@@ -21,7 +20,8 @@ knitr::opts_chunk$set(
 
 # Installation
 
-First you need to install the *Reproducible Programming in R* (RPiR) package.
+You need to install this *Reproducible Programming in R* (RPiR) package to carry
+out the exercises for this course.
 
 ## Instructions
 

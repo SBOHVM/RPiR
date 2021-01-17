@@ -1,7 +1,6 @@
 ---
-title: "github"
+title: "Connecting RStudio to GitHub"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
-author: "Sonia Mitchell"
 output:
   rmarkdown::html_vignette:
   toc: true
