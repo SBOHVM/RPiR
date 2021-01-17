@@ -136,7 +136,7 @@
       <h1 data-toc-skip>vscode_liveshare</h1>
                         <h4 class="author">Sonia Mitchell</h4>
             
-            <h4 class="date">January 16 2021</h4>
+            <h4 class="date">January 17 2021</h4>
       
       
       <div class="hidden name"><code>vscode_liveshare.Rmd</code></div>
@@ -145,21 +145,29 @@
 
     
     
-<div id="live-share-in-visual-studio-code" class="section level1">
+<div id="before-you-begin" class="section level1">
 <h1 class="hasAnchor">
-<a href="#live-share-in-visual-studio-code" class="anchor"></a>Live Share in Visual Studio Code</h1>
-<p><em>Collaboration made easy</em></p>
-<p>The Visual Studio Code (VS Code) Live Share extension provides a great way to collaborate on code whilst working from home. Assuming read/write access is enabled, you and your team mates can edit code, highlight sections of it, save it, and run it in real-time.</p>
-<p>Just bear in mind that when code is run, it is run locally, which means you won’t have access to any objects that aren’t in your own environment or datasets that aren’t on your own machine. On the plus side, you don’t have to go into the office and you can access code remotely using your own personalised setup and tools.</p>
-<div id="before-you-begin" class="section level2">
+<a href="#before-you-begin" class="anchor"></a>Before you begin</h1>
+<p>First, <a href="https://code.visualstudio.com">download and install</a> Visual Studio Code (Note: this is not the same as the Visual Studio IDE, if you happen to have that installed). You also need to already have an account on <a href="https://ibahcm.github.io/RPiR/articles/pages/github.html">GitHub</a>.</p>
+</div>
+<div id="visual-studio-code-and-live-share" class="section level1">
+<h1 class="hasAnchor">
+<a href="#visual-studio-code-and-live-share" class="anchor"></a>Visual Studio Code and Live Share</h1>
+<div id="visual-studio-code" class="section level2">
 <h2 class="hasAnchor">
-<a href="#before-you-begin" class="anchor"></a>Before you begin</h2>
-<p>First, <a href="https://code.visualstudio.com">download and install</a> Visual Studio Code / VSCode (Note: this is not the same as the Visual Studio IDE, if you happen to have that installed). You also need to already have an account on <a href="https://ibahcm.github.io/RPiR/articles/pages/github.html">GitHub</a>.</p>
+<a href="#visual-studio-code" class="anchor"></a>Visual Studio Code</h2>
+<p>Visual Studio Code (aka VS Code) is an IDE (Integrated Development Environment) just like RStudio, but designed by Microsoft for multiple languages, not just R. As such, it’s much more advanced that RStudio, but not as well tailored to working in R. We recommend using RStudio for most of your work, but it may be useful occasionally to switch to VS Code, particularly if you want to work together with someone on a single piece of code. You can learn more about using VS Code <a href="https://code.visualstudio.com/learn">here</a>.</p>
+</div>
+<div id="live-share" class="section level2">
+<h2 class="hasAnchor">
+<a href="#live-share" class="anchor"></a>Live Share</h2>
+<p>The VS Code Live Share extension provides a great way to collaborate on code whilst working from home. Assuming read/write access is enabled, you and your team mates can edit the same exact code, highlight sections of it, save it, and run it in real-time.</p>
+<p>Just bear in mind that when you edit and run the code, it really happens on whoever’s machine set up the share, which means you won’t have access to any objects that aren’t in their own environment or datasets that aren’t on their machine, and collaborators working with you will have get the files separately later. On the plus side, you don’t have to go into the office and you can access code remotely using your own personalised setup and tools.</p>
 </div>
 <div id="download-the-extension" class="section level2">
 <h2 class="hasAnchor">
 <a href="#download-the-extension" class="anchor"></a>Download the extension</h2>
-<p>Now, open up VS Code and install the “Live Share” Microsoft extension from the VS Code marketplace.</p>
+<p>Open up VS Code and install the “Live Share” Microsoft extension from the VS Code marketplace. Exactly what this will look like depends on your platform, but this is on a Mac.</p>
 <p><img src="images/vscode_liveshare/1_extension2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>While you’re there, if you’re intending to work in R, you may as well install:</p>
 <ul>
