@@ -24,18 +24,34 @@ knitr::opts_chunk$set(
 
 ## Prerequisites
 
-1. **First**, create a GitHub account - go to https://github.com/ and sign up
+1. Create a GitHub account - go to https://github.com/ and sign up
    with your university email address
 2. Verify your account
-3. Go to https://education.github.com, click **Students** or 
+3. Go to https://education.github.com, click **Students** and/or 
 **Get benefits for students**, and follow the instructions
+
+### Possible problems
 
 If you already have a GitHub account, then try registering it as an education
 account using the same link. We *think* that it won't be critical for this
 course that you are registered with the education pack, so if you can't, we'll
 leave it for now. *Please do remember though in case anything crops up later.*
+However, you will receive emails for the course on the email address you are
+registered with here, so if you already have an account be aware of this. You
+can change the email address GitHub uses on your profile if you need to.
 
-## Set Git up with RStudio
+## Ask to be added to the IBAHCM GitHub organisation
+
+Go to the Discussion section of the [RPiR](https://github.com/IBAHCM/RPiR)
+repository on GitHub, and create a new discussion (category *Registration*)^[The
+direct link is [here](https://github.com/IBAHCM/RPiR/discussions/new) if you
+can't find it.]. Simply ask to be added to the organisation. Once we've added
+you, we'll respond and you should accept the invitation and acknowledge that you
+have successfully joined. This discussion section on the R package is where we
+will hold discussions and answer questions during the course, so you may want to
+bookmark it.
+
+## Meanwhile, set git and GitHub up with RStudio
 
 In RStudio, open <span style="color: #de77ae;">RStudio > Preferences</span> 
 (or <span style="color: #de77ae;">Tools > Global Options</span> if you're using 
@@ -212,7 +228,7 @@ important.
 knitr::include_graphics('images/github/2-5.png')
 ```
 
-## Using Git in RStudio
+## Using git in RStudio
 
 Compare the contents of your working directory to the files listed in the
 <span style="color: #de77ae;">Git</span> tab. The 
