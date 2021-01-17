@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 Visual Studio Code (aka VS Code) is an IDE (Integrated Development Environment)
 just like RStudio, but designed by Microsoft for multiple languages, not just R.
-As such, it's much more advanced that RStudio, but not as well tailored to
+As such, it's much more advanced than RStudio, but not as well tailored to
 working in R. We recommend using RStudio for most of your work, but it may be
 useful occasionally to switch to VS Code, particularly if you want to work
 together with someone on a single piece of code. You can learn more about using
