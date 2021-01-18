@@ -135,7 +135,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Connecting RStudio to GitHub</h1>
             
-            <h4 class="date">January 17 2021</h4>
+            <h4 class="date">January 18 2021</h4>
       
       
       <div class="hidden name"><code>github.Rmd</code></div>
@@ -152,16 +152,24 @@
 <h2 class="hasAnchor">
 <a href="#prerequisites" class="anchor"></a>Prerequisites</h2>
 <ol style="list-style-type: decimal">
-<li>
-<strong>First</strong>, create a GitHub account - go to <a href="https://github.com/" class="uri">https://github.com/</a> and sign up with your university email address</li>
+<li>Create a GitHub account - go to <a href="https://github.com/" class="uri">https://github.com/</a> and sign up with your university email address</li>
 <li>Verify your account</li>
-<li>Go to <a href="https://education.github.com" class="uri">https://education.github.com</a>, click <strong>Students</strong> or <strong>Get benefits for students</strong>, and follow the instructions</li>
+<li>Go to <a href="https://education.github.com" class="uri">https://education.github.com</a>, click <strong>Students</strong> and/or <strong>Get benefits for students</strong>, and follow the instructions</li>
 </ol>
-<p>If you already have a GitHub account, then try registering it as an education account using the same link. We <em>think</em> that it won’t be critical for this course that you are registered with the education pack, so if you can’t, we’ll leave it for now. <em>Please do remember though in case anything crops up later.</em></p>
+<div id="possible-problems" class="section level3">
+<h3 class="hasAnchor">
+<a href="#possible-problems" class="anchor"></a>Possible problems</h3>
+<p>If you already have a GitHub account, then try registering it as an education account using the same link. We <em>think</em> that it won’t be critical for this course that you are registered with the education pack, so if you can’t, we’ll leave it for now. <em>Please do remember though in case anything crops up later.</em> However, you will receive emails for the course on the email address you are registered with here, so if you already have an account be aware of this. You can change the email address GitHub uses on your profile if you need to.</p>
 </div>
-<div id="set-git-up-with-rstudio" class="section level2">
+</div>
+<div id="ask-to-be-added-to-the-ibahcm-github-organisation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#set-git-up-with-rstudio" class="anchor"></a>Set Git up with RStudio</h2>
+<a href="#ask-to-be-added-to-the-ibahcm-github-organisation" class="anchor"></a>Ask to be added to the IBAHCM GitHub organisation</h2>
+<p>Go to the Discussion section of the <a href="https://github.com/IBAHCM/RPiR">RPiR</a> repository on GitHub, and create a new discussion (category <em>Registration</em>)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Simply ask to be added to the organisation. Once we’ve added you, we’ll respond and you should accept the invitation and acknowledge that you have successfully joined. This discussion section on the R package is where we will hold discussions and answer questions during the course, so you may want to bookmark it.</p>
+</div>
+<div id="meanwhile-set-git-and-github-up-with-rstudio" class="section level2">
+<h2 class="hasAnchor">
+<a href="#meanwhile-set-git-and-github-up-with-rstudio" class="anchor"></a>Meanwhile, set git and GitHub up with RStudio</h2>
 <p>In RStudio, open <span style="color: #de77ae;">RStudio &gt; Preferences</span> (or <span style="color: #de77ae;">Tools &gt; Global Options</span> if you’re using Windows). Go down to the <span style="color: #de77ae;">GIT/SVN</span> tab and ensure that <span style="color: #de77ae;">Enable version control interface for RStudio projects</span> is checked.</p>
 <p>While you’re here, make sure you have a <span style="color: #de77ae;">git executable</span>. If this box is empty, you need to install <code>git</code>. Go <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a> and scroll down to the <span style="color: #de77ae;">Installation</span> section, then <strong>restart RStudio</strong>.</p>
 <blockquote>
@@ -224,7 +232,7 @@
 </div>
 <div id="using-git-in-rstudio" class="section level2">
 <h2 class="hasAnchor">
-<a href="#using-git-in-rstudio" class="anchor"></a>Using Git in RStudio</h2>
+<a href="#using-git-in-rstudio" class="anchor"></a>Using git in RStudio</h2>
 <p>Compare the contents of your working directory to the files listed in the <span style="color: #de77ae;">Git</span> tab. The <span style="color: #de77ae;">Git</span> tab is a useful tool that shows you how your remote directory (your GitHub repository) differs from your local directory (in this case <code>~Desktop/Git/test</code>). Currently, the <code>README.md</code> file in your local directory is identical to the one in your remote directory. That’s why you can’t see it in the <span style="color: #de77ae;">Git</span> tab. Instead, <code>.gitignore</code> and <code>test.Rproj</code> are listed with yellow <strong>Status</strong> question marks. What do these icons mean?</p>
 <ul>
 <li>“?” - Files or directories that don’t currently exist in your git repository (you either want to commit these or add them to <code>.gitignore</code>)</li>
@@ -269,6 +277,12 @@
 <li><a href="https://rogerdudler.github.io/git-guide/">git - the simple guide, by Roger Dudler</a></li>
 </ul>
 </div>
+</div>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn1"><p>The direct link is <a href="https://github.com/IBAHCM/RPiR/discussions/new">here</a> if you can’t find it.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
   </div>
 
