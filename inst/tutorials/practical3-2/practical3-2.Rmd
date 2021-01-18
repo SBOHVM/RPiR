@@ -4,7 +4,7 @@ output:
   learnr::tutorial:
     theme: lumen
     includes:
-      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+      in_header: !eval.expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students run stochastic models. They also learn to use stop() to catch errors
