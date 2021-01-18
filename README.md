@@ -11,7 +11,7 @@ detailed under the `Installation` dropdown
 menu [in the documentation for this package][docs]. Specifically:
 
 1. First [install the RPiR package][package].
-2. Then [create a github account and connect it to RStudio][github]. This will
+2. Then [create an account on GitHub and connect it to RStudio][github]. This will
    also show you how to create a practice project on github. You'll use this in
    the second practical series, but it's worth trying out the instructions now
    to check that everything is working.
