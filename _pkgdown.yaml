@@ -2,7 +2,7 @@ title: RPiR
 url: https://ibahcm.github.io/RPiR/
 template:
   params:
-    bootswatch: sandstone
+    bootswatch: lumen
 reference:
   - title: Lecture slides
     desc: View lecture slides in RStudio
