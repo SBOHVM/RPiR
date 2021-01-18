@@ -52,7 +52,7 @@ in RStudio to end the process.
 ## Lectures
 
 **To view lecture slides**, use the `run_lecture()` function in RStudio. For
-example, `run_lecture("RPiR1-1")` will show the first lecture slides.
+example, `run_lecture("RPiR1")` will show the first lecture slides.
 
 You can also see the lectures on the [GitHub website][docs] using the lecture
 dropdown menus, either as slides (under `Lectures (slides)`) or as single

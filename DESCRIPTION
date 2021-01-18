@@ -1,7 +1,7 @@
 Package: RPiR
 Type: Package
 Title: Reproducible Programming in R
-Version: 0.36.2
+Version: 0.37.0
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
