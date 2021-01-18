@@ -1,5 +1,5 @@
 ---
-title: "RPiR 1-1: Introduction"
+title: "RPiR 1: Introduction"
 date: January 18th 2021
 output: 
   ioslides_presentation: default

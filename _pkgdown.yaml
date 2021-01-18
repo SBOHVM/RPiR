@@ -37,21 +37,13 @@ navbar:
     - text: "Lectures (slides)"
       icon: fas fa-chalkboard-teacher
       menu:
-      -  text: RPiR1-1
-         href: lectures/RPiR1-1.html
-      -  text: RPiR1-2
-         href: lectures/RPiR1-2.html
-      -  text: RPiR1-3
-         href: lectures/RPiR1-3.html
+      -  text: RPiR1
+         href: lectures/RPiR1.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
-      -  text: RPiR1-1
-         href: lectures_html/RPiR1-1.html
-      -  text: RPiR1-2
-         href: lectures_html/RPiR1-2.html
-      -  text: RPiR1-3
-         href: lectures_html/RPiR1-3.html
+      -  text: RPiR1
+         href: lectures_html/RPiR1.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions
