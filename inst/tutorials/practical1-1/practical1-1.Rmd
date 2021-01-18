@@ -4,7 +4,7 @@ output:
   learnr::tutorial:
     theme: lumen
     includes:
-      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+      in_header: !eval.expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
   Students learn how to write a script and how to comment their code well. 
@@ -15,6 +15,7 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
 gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
@@ -24,7 +25,9 @@ set.seed(123)
 
 ## Overview
 
-*In this session you will run a simple program in R and then immortalise the results as an html report. It will run the difference equation model of exponential growth discussed in the lecture.*
+In this session you will run a simple program in R within a {learnr} tutorial.
+It will run the difference equation model of exponential growth discussed in
+the lecture. Then you'll create an R project and create a report from the code.
 
 ## Introduction 
 
@@ -60,7 +63,7 @@ loop to repeatedly update the population (20 times in this case), and print out
 the final answer. If you run this code, it should give you a final population 
 size of 33.6375.
 
-```{r forloop, exercise=TRUE}
+```{r forloop, exercise.cap = "Exercise 1", exercise=TRUE}
 N <- 5
 lambda <- 0.1
 days <- seq(from = 1, to = 20)
@@ -76,21 +79,21 @@ reset the code block before attempting each question).
 
 ```{r N, echo=FALSE}
 quiz(caption = "Quiz",
-     question("What initial population size results in a final population size of 53.82?",
+     question("1a. What initial population size results in a final population size of 53.82?",
               answer("3"),
               answer("5"),
               answer("8", correct = TRUE),
               answer("10"),
               allow_retry = TRUE
      ),
-     question("How many days does it take for the population size to grow to 8.05255?",
+     question("1b. How many days does it take for the population size to grow to 8.05255 *(remember to click the 'start over' button on the Exercise 1 code block first)*?",
               answer("2"),
               answer("5", correct = TRUE),
               answer("12"),
               answer("16"),
               allow_retry = TRUE
      ),
-     question("What growth rate results in a final population size of 5555.676",
+     question("1c. What growth rate results in a final population size of 5555.676 *(remember to click the 'start over' button on the Exercise 1 code block first)*?",
               answer("0.16"),
               answer("0.3"),
               answer("0.399"),
@@ -102,9 +105,9 @@ quiz(caption = "Quiz",
 
 If we wanted to print out the population at every step rather than just at the 
 end, we would have to put the print statement in the loop as well as updating 
-`N`. How could we do this? Remember that `for()` **will repeat only the next** 
-**instruction, but we can use curly brackets** `{ ... }` **to combine several** 
-**lines so that they all get repeated**. Try it and see:
+`N`. How could we do this? Remember that `for()` **will repeat all of the**
+**lines inside the curly brackets** `{ ... }` **that follow it in every loop**.
+Try it and see:
 
 ```{r printloop, exercise = TRUE}
 N <- 5
@@ -132,6 +135,52 @@ for (i in days) {
 **Hint:** Move `print(N)` into the for loop. 
 </div>
 
+```{r printloop-check}
+grade_this_code()
+```
+
+We've been working through these exercises with variable names that are hard to
+remember, and this makes the code harder to follow. Here, just go through the
+code below and change them for more sensible names. There are lots of options,
+but for this example you must change them as follows:
+
+- `N` -> `population.count`
+- `lambda` -> `growth.rate`
+- `a` -> `first.day`
+- `e` -> `last.day`
+- `i` -> `day`
+
+Hopefully once you've changed them you can see that the code is at least a bit
+easier to read!
+
+```{r changenames, exercise.cap = "Exercise 2", exercise = TRUE}
+N <- 5
+lambda <- 0.1
+a <- 1
+e <- 20
+days <- seq(from = a, to = e)
+
+for (i in days) {
+  N <- N + lambda * N
+}
+```
+
+```{r changenames-solution}
+population.count <- 5
+growth.rate <- 0.1
+first.day <- 1
+last.day <- 20
+days <- seq(from = first.day, to = last.day)
+
+for (day in days) {
+  population.count <- population.count + growth.rate * population.count
+}
+```
+
+```{r changenames-check}
+grade_this_code()
+```
+
 We will further develop your skills in writing and using scripts (and in the 
 next exercise we will learn how to write functions).
 
@@ -148,11 +197,11 @@ First, some initial documentation. You can put in as little or as much as you
 like, but we recommend something to describe the aim of the script, and then 
 some details on exactly what is going on. 
 
-```{r}
+```{r init, exercise = TRUE, exercise.cap = "R Markdown header"}
 #' ---
 #' title: "Simple growth difference equation model"
-#' author: "Richard Reeve"
-#' date: "9th January 2018"
+#' author: "My Full Name"
+#' date: '`r format(Sys.Date(), "%B %d %Y")`'
 #' output: html_document
 #' ---
 
@@ -170,20 +219,20 @@ The text at the top, bordered by `#' ---` is a yaml header, which
 generates an **R markdown report** header in a special format. If you were 
 writing this script in RStudio, you could generate a report from the
 <span style="color: #de77ae;">File</span> menu by selecting
-<span style="color: #de77ae;">Compile Report...</span>. An html document should 
-pop up in a viewer after a couple of seconds, and a new file should appear in 
-the directory you were working in. The lines below the yaml header, beginning 
-with `#'` generate text chunks in such a report. 
+<span style="color: #de77ae;">Compile Report...</span> (we'll do this later).
+An html document would pop up in a viewer after a couple of seconds, and a new
+file should appear in the directory you were working in. The lines below the
+yaml header, beginning with `#'` generate text chunks in such a report. 
 
-The text after a `#` symbol are comments. These are ignored by R, but are there 
-to help you and others to understand your programs. Good commenting is a 
-difficult but important programming skill. 
+The text after a `#` symbol are normal R comments. These are ignored by R, but
+are there  to help you and others to understand your programs. Good commenting
+is a difficult but important programming skill. 
 
 Now we can continue entering the code. We used `lambda` when describing the model 
-mathematically but it is good practice to use **give things meaningful names** 
-in a computer program, so we are going to use the name `growth.rate` instead. We 
-have also switched to use the correct values for human demographic growth, 
-rather than the simple numbers we used earlier. 
+mathematically but as we said in the previous section, it is good practice to
+**give things meaningful names** in a computer program, so we are going to use
+the name `growth.rate` instead. We have also switched to use the correct values
+for human demographic growth, rather than the simple numbers we used earlier. 
 
 ```{r}
 growth.rate <- 0.015
@@ -225,9 +274,9 @@ entries will be the population size at successive times.
 population.vector <- initial.count
 ```
 
-At this point, it's a good idea to view the population size to check the code 
-is working correctly. You should see that `population.vector` has a length of 1 
-and a value of 7e+09.
+At this point, you could `print()` the initial population size to
+check the code is working correctly. You should see that `population.vector`
+has a value of 7e+09.
 
 ```{r printvector-setup}
 growth.rate <- 0.015
@@ -237,7 +286,7 @@ end.time <- 100
 population.vector <- initial.count
 ```
 
-```{r printvector, exercise = TRUE}
+```{r printvector, exercise.cap = "Exercise 3", exercise = TRUE}
 
 ```
 
@@ -253,7 +302,8 @@ print(population.vector)
 grade_this_code()
 ```
 
-Now we should specify the sequence of timesteps:
+Now we should specify the sequence of timesteps. Note that there are 10
+days if you go from day 0 to day 10, so the first timestep is time 1, not 0:
 
 ```{r}
 # The timesteps that the simulation will run through
@@ -282,7 +332,7 @@ inside the curly brackets – remembering that curly brackets allow you to repea
 multiple lines of commands in a `for()` loop instead of the just one). The first 
 step on each run through the loop is to extract the `current.population` size 
 from our `population.vector` using the `tail()` command. By default
-`tail(population)` would give the last 5 values in the vector, but by specifying 
+`tail(population)` would give the last 6 values in the vector, but by specifying 
 a value of 1, we are asking it to return only the last value in the vector. The
 command `head()` does the same thing with the first values of a vector. Then we
 calculate the births, in `new.additions`. Then we add the births to the existing
@@ -304,7 +354,7 @@ population.vector <- initial.count
 timesteps <- seq(from = start.time + 1, to = end.time)
 ```
 
-```{r population, exercise = TRUE}
+```{r population, exercise.cap = "Exercise 4", exercise = TRUE}
 # Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
   # First extract the current population size
@@ -328,14 +378,14 @@ Try and answer the following questions:
 
 ```{r newbirths, echo=FALSE}
 quiz(caption = "Quiz",
-     question("How many new births are there in time step 3?",
+     question("4a. How many new births are there in time step 3?",
               answer("108173625", correct = TRUE),
               answer("106575000"),
               answer("109796229.375"),
               answer("1.05e+08"),
               allow_retry = TRUE
      ),
-     question("In which time step do new births exceed 120,000,000?",
+     question("4b. In which time step do new births first exceed 120,000,000?",
               answer("11"),
               answer("8"),
               answer("10", correct = TRUE),
@@ -359,7 +409,7 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 Now we have a complete program, which should show the growth of the human 
 population from 7 billion and generate a plot showing how population varies with
 time. So that we can reference it later, we've named it 
-<span style="color: #de77ae;">0101-growth-functional.r</span> (check the header 
+<span style="color: #de77ae;">0101-growth-loop.R</span> (check the header 
 of the code block below). Try running the code now. Try to make sure you 
 understand how everything works by adding print statements or commenting out
 different sections if necessary. 
@@ -370,7 +420,7 @@ help you understand what the program is doing and find errors. When debugging
 code, adding print statements or comment out lines might also help identify 
 problems. Remember this the next time you get an error.
 
-```{r plot, exercise = TRUE, exercise.cap = "0101-growth-functional.r", exercise.lines = 42}
+```{r plot, exercise = TRUE, exercise.cap = "0101-growth-loop.R", exercise.lines = 42}
 #' Set up the simulation parameters
 #' --------------------------------
 #' First we set up the parameters for the simulation.
@@ -418,8 +468,8 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 The program generates a vector, `population.vector`, which you can treat as you 
 would any other piece of data in R. Try the following:
 
-```{r summary, exercise = TRUE, exercise.setup = "plot"}
-# Print a summary of population.vector
+```{r summary, exercise.cap = "Exercise 5", exercise = TRUE, exercise.setup = "plot"}
+# Output a summary of population.vector
 
 ```
 
@@ -436,14 +486,9 @@ summary(population.vector)
 grade_this_code()
 ```
 
-```{r head, exercise = TRUE, exercise.setup = "plot"}
-# Print the first 5 elements of population.vector
+```{r head, exercise.cap = "Exercise 6", exercise = TRUE, exercise.setup = "plot"}
+# Output the first 6 elements of population.vector
 
-```
-
-```{r head-solution}
-# Print the first 5 elements of population.vector
-head(population.vector)
 ```
 
 <div id="head-hint">
@@ -451,35 +496,21 @@ head(population.vector)
 </div>
 
 ```{r head-check}
-grade_this_code()
+grade_result(pass_if(~identical(.result, head(population.vector))))
 ```
 
-```{r head2, exercise = TRUE, exercise.setup = "plot"}
-# Print the first 10 elements of population.vector
+```{r head2, exercise.cap = "Exercise 7", exercise = TRUE, exercise.setup = "plot"}
+# Output the first 10 elements of population.vector
 
 ```
-
-```{r head2-solution}
-# Print the first 10 elements of population.vector
-head(population.vector, 10)
-```
-
-<div id="head2-hint">
-**Hint:** Read `?head`. 
-</div>
 
 ```{r head2-check}
-grade_this_code()
+grade_result(pass_if(~identical(.result, head(population.vector, 10))))
 ```
 
-```{r tail, exercise = TRUE, exercise.setup = "plot"}
+```{r tail, exercise.cap = "Exercise 8", exercise = TRUE, exercise.setup = "plot"}
 # Print the last element of population.vector
 
-```
-
-```{r tail-solution}
-# Print the last element of population.vector
-summary(tail(population.vector, 1))
 ```
 
 <div id="tail-hint">
@@ -487,7 +518,7 @@ summary(tail(population.vector, 1))
 </div>
 
 ```{r tail-check}
-grade_this_code()
+grade_result(pass_if(~identical(.result, tail(population.vector, 1))))
 ```
 
 Run the code for different initial conditions and different growth rates. Test 
@@ -495,9 +526,21 @@ the code using the value of the human population growth rate we used in the
 lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that 
 you agree with the doubling time we calculated theoretically of ~46 years.
 
-Finally, try copying the code into a *.R document in R Studio, saving it, and
-generating a report from it. You can do this by clicking on 
-<span style="color: #de77ae;">File</span> >
+Finally, create a new project in RStudio - you can do this by selecting
+<span style="color: #de77ae;">File</span> > <span style="color: #de77ae;">New
+Project...</span>, and then choose <span style="color: #de77ae;">New
+Directory</span> > <span style="color: #de77ae;">New Project</span> and then a
+name and a location on your computer to save it in, and tick
+<span style="color: #de77ae;">Open in new session</span> because your current
+session is used up by this practical. From now on all of the coding you do will
+happen in this (or another) new RStudio session. Keep the current one just for
+running the practicals.
+
+In the new session, create a new R file, and copy the code in
+the <span style="color: #de77ae;">R Markdown header</span>
+and <span style="color: #de77ae;">0101-growth-loop.R</span> code sections
+into it (ignoring duplicates), save it, and generate a report from it.
+You can do this by clicking on <span style="color: #de77ae;">File</span> >
 <span style="color: #de77ae;">Compile Report...</span>) or you
 can click on the little notebook icon:
 
@@ -505,4 +548,4 @@ can click on the little notebook icon:
 knitr::include_graphics('images/compile_report.png')
 ```
 
-You'll start generating your own reports in Practical 1-6.
+You'll start generating your own reports in the second practical series.

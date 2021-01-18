@@ -1,5 +1,5 @@
 ---
-title: "faq"
+title: "Frequently Asked Questions"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 author: "Sonia Mitchell"
 output:
