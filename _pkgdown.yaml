@@ -46,6 +46,8 @@ navbar:
       menu:
       -  text: RPiR1
          href: lectures_html/RPiR1.html
+      -  text: RPiR3b
+         href: lectures_html/RPiR3b.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions
