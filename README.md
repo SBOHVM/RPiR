@@ -10,11 +10,11 @@ You'll need to do a few things before we can start the course. These are
 detailed under the `Installation` dropdown
 menu [in the documentation for this package][docs]. Specifically:
 
-1. First [install the RPiR package][package].
-2. Then [create an account on GitHub and connect it to RStudio][github]. This will
+1. First [create an account on GitHub and connect it to RStudio][github]. This will
    also show you how to create a practice project on github. You'll use this in
    the second practical series, but it's worth trying out the instructions now
    to check that everything is working.
+2. Then [install the RPiR package][package].
 3. Finally, [install Visual Studio Code and then Live Share][vscode].
    You will need your GitHub id from the previous step to set this up.
 
