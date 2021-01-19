@@ -78,6 +78,16 @@ Quite often restarting R
 problem. Just remember that once you've restarted R, you'll need to call 
 `library(devtools)` again to load it back into RStudio.
 
+Also, if you find you're stuck in a loop (perhaps after installing `fansi`), 
+and R is asking if you'd like to restart over and over again (because the 
+package is already loaded):
+
+```{r echo = FALSE, fig.align = "center", out.width = "40%"}
+knitr::include_graphics('images/restart.png')
+```
+
+then just say no to restarting it the second time. 
+
 ### non-zero exit status
 
 ```
@@ -93,7 +103,7 @@ non-zero is a failed install), in this case `rlang`:
 install.packages("rlang")
 ```
 
-Assuming this worked, re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
 ### Windows
 
@@ -119,7 +129,7 @@ in this case the `rlang` package:
 install.packages("rlang")
 ```
 
-Assuming this worked, re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
 #### cannot remove prior installation...
 
@@ -135,7 +145,7 @@ reinstalling whatever package Windows couldn't remove, in this case `rlang`:
 install.packages("rlang")
 ```
 
-Assuming this worked, re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
 #### Try removing ‘C:\.../00LOCK’
 
@@ -146,14 +156,14 @@ Try removing ‘C:\Users\User\Documents\R\win-library\3.6/00LOCK’
 ```
 
 For this one, you need to find the <span style="color: #de77ae;">00LOCK</span> 
-file and delete it. Then try installing whatever package  was being unpacked, 
+file and delete it. Then try installing whatever package was being unpacked, 
 in this case `rlang`:
 
 ```{r, eval = FALSE}
 install.packages("rlang")
 ```
 
-Assuming this worked, re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
 ### Mac / Linux
 
