@@ -12,6 +12,7 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
 gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
@@ -52,17 +53,17 @@ later programs) that takes in a data frame containing the current population
 count and the `growth.rate` parameter and outputs a data frame containing the 
 updated count. Rewrite the code throughout so that it uses a data frame instead 
 of a vector – we have called these files 
-<span style="color: #de77ae;">0104-run-growth.r</span> and 
-<span style="color: #de77ae;">0104-step-growth.r</span>. Remember to 
+<span style="color: #de77ae;">0104-run-growth.R</span> and 
+<span style="color: #de77ae;">0104-step-growth.R</span>. Remember to 
 use `data.frame()` to create a data frame and `rbind()` to append one onto 
 another. 
 
 So that we don’t need to worry about how to plot the outputs, we have provided a 
-function called `plot_populations()` in <span style="color: #de77ae;">0104-plot-helper.r</span> which will take a 
+function called `plot_populations()` in <span style="color: #de77ae;">0104-plot-helper.R</span> which will take a 
 data frame with any number of population columns and a single corresponding 
 `time` column and plot them together in different colours with a legend 
 indicating which line corresponds to which population. The file 
-<span style="color: #de77ae;">0104-plot-helper.r</span> contains the function, so you will need to `source()` 
+<span style="color: #de77ae;">0104-plot-helper.R</span> contains the function, so you will need to `source()` 
 this file in your code. In order to use it you will need to add a column called 
 `time` into your data frame with the times in it and then call:
 
@@ -70,17 +71,17 @@ this file in your code. In order to use it you will need to add a column called
 plot_populations(population.df)
 ```
 
-We will therefore be breaking the code into three sections <span style="color: #de77ae;">0104-run-growth.r</span>, 
-<span style="color: #de77ae;">0104-step-growth.r</span> and <span style="color: #de77ae;">0104-plot-helper.r</span> which handle the mechanics, 
+We will therefore be breaking the code into three sections <span style="color: #de77ae;">0104-run-growth.R</span>, 
+<span style="color: #de77ae;">0104-step-growth.R</span> and <span style="color: #de77ae;">0104-plot-helper.R</span> which handle the mechanics, 
 the model and the display respectively. 
 
 We'll start by working on the function, then go on to change the main script later.
 
 #### Changes needed to update 0103-step-simple-growth.r to 0104-step-growth.r
 
-We've generated <span style="color: #de77ae;">0104-step-growth.r</span> (from <span style="color: #de77ae;">0103-step-simple-growth.r</span>) for you to edit:
+We've generated <span style="color: #de77ae;">0104-step-growth.R</span> (from <span style="color: #de77ae;">0103-step-simple-growth.R</span>) for you to edit:
 
-```{r step_deterministic_growth, exercise = TRUE, exercise.cap = "0104-step-growth.r", exercise.lines = 18}
+```{r step_deterministic_growth, exercise = TRUE, exercise.cap = "0104-step-growth.R", exercise.lines = 18}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
 #'
@@ -102,7 +103,7 @@ step_simple_growth <- function(current.population, growth.rate) {
 ```  
 
 <div id="step_deterministic_growth-hint">
-**Hint:** . 
+**Hint:** See the text below for details of how to do this. 
 </div>
 
 ```{r step_deterministic_growth-solution}
@@ -130,7 +131,7 @@ step_deterministic_growth <- function(latest, growth.rate) {
 grade_this_code()
 ```
 
-<span style="color: #de77ae;">0104-step-growth.r</span> should contain the 
+<span style="color: #de77ae;">0104-step-growth.R</span> should contain the 
 function doing the work in the simulation, `step_deterministic_growth()`, but 
 with a few improvements to work in terms of a data frame rather than just a 
 vector. So the first thing to do is change the name of the function.
@@ -168,13 +169,13 @@ this case `updated.population`.
 #### Changes needed to update 0103-run-simple-growth.r to 0104-run-growth.r
 
 For convenience, we've generated 
-<span style="color: #de77ae;">0104-run-growth.r</span> (from 
-<span style="color: #de77ae;">0103-run-simple-growth.r</span>) for you to edit. 
+<span style="color: #de77ae;">0104-run-growth.R</span> (from 
+<span style="color: #de77ae;">0103-run-simple-growth.R</span>) for you to edit. 
 Note that, as before, `source()`
 has been commented out as it won't work in the {learnr} environment. Instead, 
-<span style="color: #de77ae;">0103-step-simple-growth-function.r</span>,
-<span style="color: #de77ae;">0104-plot-helper.r</span> and 
-<span style="color: #de77ae;">0104-step-growth.r</span> have been preloaded for you:
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>,
+<span style="color: #de77ae;">0104-plot-helper.R</span> and 
+<span style="color: #de77ae;">0104-step-growth.R</span> have been preloaded for you:
 
 ```{r step_simple_growth-setup}
 library(RPiR)
@@ -192,9 +193,9 @@ step_deterministic_growth <- function(latest, growth.rate) {
 }
 ```
 
-```{r step_simple_growth, exercise = TRUE, exercise.cap = "0104-run-growth.r", exercise.lines = 42}
+```{r step_simple_growth, exercise = TRUE, exercise.cap = "0104-run-growth.R", exercise.lines = 42}
 # Load the step_simple_growth() function into the global environment (my workspace)
-#source("0103-step-simple-growth-function.r")
+#source("0103-step-simple-growth-function.R")
 
 #' Set up the simulation parameters
 #' --------------------------------
@@ -237,14 +238,10 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
-<div id="step_simple_growth-hint">
-**Hint:** . 
-</div>
-
 ```{r step_simple_growth-solution}
 # Load the step_simple_growth() function into the global environment (my workspace)
-#source("0104-plot-helper.r") 
-#source("0104-step-growth.r")
+#source("0104-plot-helper.R") 
+#source("0104-step-growth.R")
 
 #' Set up the simulation parameters
 #' --------------------------------
@@ -298,12 +295,12 @@ than RStudio we can comment these lines out, since the necessary files have been
 preloaded for you):
 
 ```{r, eval = FALSE}
-source("0104-plot-helper.r") 
-source("0104-step-growth.r")
+source("0104-plot-helper.R") 
+source("0104-step-growth.R")
 ```
 
-The second, and biggest change throughout <span style="color: #de77ae;">0104-run-growth.r</span> (and 
-<span style="color: #de77ae;">0104-step-growth.r</span>) is that the population is now defined in terms of a data 
+The second, and biggest change throughout <span style="color: #de77ae;">0104-run-growth.R</span> (and 
+<span style="color: #de77ae;">0104-step-growth.R</span>) is that the population is now defined in terms of a data 
 frame rather than as a vector. So setting it up will happen like this:
 
 ```{r, eval = FALSE}
@@ -338,15 +335,15 @@ in it when we write it below. You will get a clearer idea of how the data frames
 work once we start on the epidemiological models with multiple populations, so 
 don’t worry if it isn’t currently clear.
 
-At the end of your new <span style="color: #de77ae;">0104-run-growth.r</span> file, rather than use R’s basic 
-plot command plot as we did previously, we have now created a function `plot_populations()`, which is defined inside <span style="color: #de77ae;">0104-plot-helper.r</span>. The job of 
+At the end of your new <span style="color: #de77ae;">0104-run-growth.R</span> file, rather than use R’s basic 
+plot command plot as we did previously, we have now created a function `plot_populations()`, which is defined inside <span style="color: #de77ae;">0104-plot-helper.R</span>. The job of 
 this function is to take a data frame with any number of population columns and 
 a single corresponding `time` column and plot them together in different colours 
 with a legend indicating which line corresponds to which population. It will
 allow us to ignore the plotting details for the moment.
 
 In order to use it you will first need to delete the current `plot()` command at 
-the end of your new file (if you copied it in), and instead add a column onto 
+the end of your new file, and instead add a column onto 
 your data frame with the times in and use `plot_populations()` on this updated 
 data frame. As the `timesteps` vector is missing the start time of the 
 simulation, the column you need to add to the data frame is actually
