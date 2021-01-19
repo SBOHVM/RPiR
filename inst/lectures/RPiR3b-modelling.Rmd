@@ -1,11 +1,7 @@
 ---
-title: "3b - Epidemiology: Introduction to Modelling"
-author: Louise Matthews
-date: January 19, 2021
+title: "Introduction to Modelling"
 output: ioslides_presentation
 ---
-
-# An introduction to models
 
 ## Models come in many types... {.flexbox .vcenter}
 
@@ -99,7 +95,7 @@ output: ioslides_presentation
 
 - Define the value of the population at time $t=0$
 
-  $$\begin{eqnarray} N(t = 0) &=& N_0 \\ &=& 7 000 000  \end{eqnarray}$$
+  $$\begin{eqnarray} N(t = 0) &=& N_0 \\ &=& 7\ 000\ 000\ 000  \end{eqnarray}$$
 
 ## Parameters 
 
@@ -111,14 +107,14 @@ output: ioslides_presentation
 
 - Incrementing the human population in 1 year time steps
 
-  $$N(t + 1) = \lambda * N(t) + N(t)$$
+  $$N(t + 1) = \lambda \times N(t) + N(t)$$
 - where $\lambda = 0.015$
 
 ## Changing the time step 
 
 - Incrementing the human population in 1 month time steps
 
-  $$N(t + 1) = (\lambda / 12) * N(t) + N(t)$$
+  $$N(t + 1) = (\lambda / 12) \times N(t) + N(t)$$
 
 - where $\lambda = 0.015$
 
@@ -126,25 +122,25 @@ output: ioslides_presentation
 
 - Incrementing the human population in 1 year time steps
 
-  $$N(t + 1) = \lambda * N(t) + N(t)$$
+  $$N(t + 1) = \lambda \times N(t) + N(t)$$
 
 - where $\lambda = 0.015$
 
 ## How long until population doubles?
 
-$$N(t + 1) = \lambda * N(t) + N(t)$$
+$$N(t + 1) = \lambda \times N(t) + N(t)$$
 
-$$ \mathit{i.e.\quad} N(t + 1) = (\lambda + 1) * N(t)$$
-
-## How long until population doubles?
-
-$$\begin{eqnarray} N(t + 2) &=& (\lambda + 1) * N(t + 1) \\
-&=& (\lambda + 1)*(\lambda + 1) * N(t) \\
-&=& (\lambda + 1)^2 * N(t) \end{eqnarray}$$
+$$ \mathit{i.e.\quad} N(t + 1) = (\lambda + 1) \times N(t)$$
 
 ## How long until population doubles?
 
-$$N(t + n) = (\lambda + 1)^n * N(t)$$
+$$\begin{eqnarray} N(t + 2) &=& (\lambda + 1) \times N(t + 1) \\
+&=& (\lambda + 1)\times(\lambda + 1) \times N(t) \\
+&=& (\lambda + 1)^2 \times N(t) \end{eqnarray}$$
+
+## How long until population doubles?
+
+$$N(t + n) = (\lambda + 1)^n \times N(t)$$
 
 So, the number of years ($n$) taken to double is the $n$ that satisfies
 
@@ -153,9 +149,9 @@ $$(\lambda + 1)^n = 2$$
 ## Solving the equation
 
 $$\begin{eqnarray} (\lambda + 1)^n &=& 2 \\ 
-\ln((\lambda + 1)^n) &=& \ln(2) \\
-n * \ln(\lambda + 1) &=& \ln(2) \\
-n &=& \ln(2) / \ln(\lambda + 1) \\
+\log((\lambda + 1)^n) &=& \log(2) \\
+n \times \log(\lambda + 1) &=& \log(2) \\
+n &=& \log(2) / \log(\lambda + 1) \\
 n &=& 46.6
 \end{eqnarray}$$
 
@@ -172,26 +168,26 @@ n &=& 46.6
 
 - Difference equation models
   - Describe updating of population in chunks of time
-  - *e.g.* $N(t + 1) = \lambda * N(t) + N(t)$
+  - *e.g.* $N(t + 1) = \lambda \times N(t) + N(t)$
 
 ## Model types
 
 - Difference equation models
   - Describe updating of population in chunks of time
-  - *e.g.* $N(t + 1) = \lambda * N(t) + N(t)$
+  - *e.g.* $N(t + 1) = \lambda \times N(t) + N(t)$
 - Differential equation models
   - Describe continuous updating of population
-  - *e.g.* $\frac{dN}{dt} = \lambda * N$
+  - *e.g.* $\frac{dN}{dt} = \lambda \times N$
   - where $\frac{dN}{dt}$ is the rate of change of $N$
 
 ## Model types
 
 - Difference equation models
   - Describe updating of population in chunks of time
-  - *e.g.* $N(t + 1) = \lambda * N(t) + N(t)$
+  - *e.g.* $N(t + 1) = \lambda \times N(t) + N(t)$
 - Differential equation models
   - Describe continuous updating of population
-  - *e.g.* $\frac{dN}{dt} = \lambda * N$
+  - *e.g.* $\frac{dN}{dt} = \lambda \times N$
   - where $\frac{dN}{dt}$ is the rate of change of $N$
 - Difference equations 
   - Good approximations to continuous models when time chunks are small
