@@ -39,6 +39,8 @@ navbar:
       menu:
       -  text: RPiR1
          href: lectures/RPiR1.html
+      -  text: RPiR3b
+         href: lectures/RPiR3b.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
