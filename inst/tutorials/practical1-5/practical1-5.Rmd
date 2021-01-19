@@ -12,6 +12,7 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
 gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
@@ -34,7 +35,7 @@ than the mechanics of what we are doing.
 
 In the modelling lecture we discussed a simple population growth model of the form
 
-$$N(t+1) = N(t) + \lambda\; N(t)$$
+$$N(t+1) = N(t) + \lambda \times N(t)$$
 
 which we can state roughly in English as 
 
@@ -48,7 +49,7 @@ next.count <- latest$count + lambda * latest$count
 ```
 
 This use of greek letters is fine for mathematicians, but we use `growth.rate` 
-for `lambda` in our code as we want the code to read more like English. We also 
+for `lambda` in our code as we want the code to read more like English. We will also 
 write this on multiple lines as we calculate the new additions separately and 
 then add them in. Note that, for consistency, throughout these practicals our 
 code will refer to the data frame with the current latest population counts in 
@@ -60,7 +61,7 @@ to be distinct.
 
 We now want to update the model to include both births and deaths, *i.e.*
 
-$$N(t+1) = N(t) + b\; N(t) – d\; N(t)$$
+$$N(t+1) = N(t) + b \times N(t) – d \times N(t)$$
 which can be similarly translated as
 
 > "the next population size is the current size plus the new births (b times 
@@ -69,14 +70,14 @@ the current size) minus the new deaths (d times the current size)"
 where $b$ represents the birth rate and $d$ represents the death rate.
 
 In this practical, we will reuse 
-<span style="color: #de77ae;">0104-plot-helper.r</span> while adapting 
-<span style="color: #de77ae;">0104-run-growth.r</span> and 
-<span style="color: #de77ae;">0104-step-growth.r</span> appropriately. For convenience, we've generated
-<span style="color: #de77ae;">0105-step-birth-death.r</span> (from 
-<span style="color: #de77ae;">0104-step-growth.r</span>) for you, with 
+<span style="color: #de77ae;">0104-plot-helper.R</span> while adapting 
+<span style="color: #de77ae;">0104-run-growth.R</span> and 
+<span style="color: #de77ae;">0104-step-growth.R</span> appropriately. For convenience, we've generated
+<span style="color: #de77ae;">0105-step-birth-death.R</span> (from 
+<span style="color: #de77ae;">0104-step-growth.R</span>) for you, with 
 blanks for you to fill in:
 
-```{r stepbirthdeath, exercise = TRUE, exercise.cap = "0105-step-birth-death.r", exercise.lines = 20}
+```{r stepbirthdeath, exercise = TRUE, exercise.cap = "0105-step-birth-death.R", exercise.lines = 20}
 #' ### Function: step_deterministic_birth_death() 
 #' Run one step of a simple deterministic exponential birth and death model. 
 #'
@@ -90,7 +91,7 @@ blanks for you to fill in:
 #'
 step_deterministic_birth_death <- function(latest, ___, ___) {
   # Calculate changes to population
-  new.additions <- ___ * latest$count 
+  new.births <- ___ * latest$count 
   ___ <- ___ * latest$count 
   # Calculate population at next timestep
   next.count <- latest$count + new.additions - ___
@@ -100,7 +101,8 @@ step_deterministic_birth_death <- function(latest, ___, ___) {
 ```
 
 <div id="stepbirthdeath-hint">
-**Hint:** . 
+**Hint:** Note that we give the names of the arguments to the function in the
+comments at the top.
 </div>
 
 ```{r stepbirthdeath-solution}
@@ -117,10 +119,10 @@ step_deterministic_birth_death <- function(latest, ___, ___) {
 #'
 step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
   # Calculate changes to population
-  new.additions <- birth.rate * latest$count 
-  new.subtractions <- death.rate * latest$count 
+  new.births <- birth.rate * latest$count 
+  new.deaths <- death.rate * latest$count 
   # Calculate population at next timestep
-  next.count <- latest$count + new.additions - new.subtractions
+  next.count <- latest$count + new.births - new.deaths
   # Create a data frame with the updated counts and return it
   data.frame(count = next.count) 
 }
@@ -131,8 +133,8 @@ grade_this_code()
 ```
 
 Likewise, we've generated 
-<span style="color: #de77ae;">0105-run-birth-death.r</span> (from
-<span style="color: #de77ae;">0104-run-growth.r</span>), with added blanks 
+<span style="color: #de77ae;">0105-run-birth-death.R</span> (from
+<span style="color: #de77ae;">0104-run-growth.R</span>), with added blanks 
 for you to fill in. Again,`source()`
 has been commented out as it won't work in the {learnr} environment. Instead, 
 the necessary files have been preloaded for you. Try to fill in the blanks and
@@ -141,16 +143,19 @@ compare the outputs as you vary the birth and death rates:
 ```{r rungrowth-setup}
 library(RPiR)
 step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
-  new.additions <- birth.rate * latest$count 
-  new.subtractions <- death.rate * latest$count 
-  next.count <- latest$count + new.additions - new.subtractions
+  # Calculate changes to population
+  new.births <- birth.rate * latest$count 
+  new.deaths <- death.rate * latest$count 
+  # Calculate population at next timestep
+  next.count <- latest$count + new.births - new.deaths
+  # Create a data frame with the updated counts and return it
   data.frame(count = next.count) 
 }
 ```
 
-```{r rungrowth, exercise = TRUE, exercise.cap = "0105-run-birth-death.r", exercise.lines = 60}
+```{r rungrowth, exercise = TRUE, exercise.cap = "0105-run-birth-death.R", exercise.lines = 60}
 # Load the step_simple_growth() function into the global environment (my workspace)
-#source("0104-plot-helper.r") 
+#source("0104-plot-helper.R") 
 #source(___)
 
 #' Set up the simulation parameters
@@ -200,15 +205,15 @@ plot_populations(population.df)
 
 #' Set up a second population
 #' --------------------------
-
+___
 
 #' Run the simulation
 #' ------------------
-
+___
 
 #' Plot the results on the same plot
 #' ---------------------------------
-
+___
 
 ```
 
@@ -219,17 +224,28 @@ like:
 plot_populations(population.b, new.graph = FALSE, col = "red")
 ```
 
-Remember that `col` sets the colour of the line in the plot – use names "red", "blue", *etc.*
+However, if you want to do that, you should put the plot commands together,
+because the `#'` comment closes the current plot and you can't then draw on
+top of it. Remember that `col` sets the colour of the line in the plot –
+use names "red", "blue", *etc.*
 
 ```{r sameanswer, echo=FALSE}
 quiz(caption = "Quiz",
-     question("When do you get the same answer?",
+     question("When do you get the same answer in two different examples?",
+              answer("When the death rate is minus the birth rate"),
               answer("When the death rate is zero"),
-              answer("When the death rate is double the birth rate"),
-              answer("When the death rate is equal to the birth rate", 
+              answer("When the difference between the death rate and the birth rate is the same", 
                      correct = TRUE),
               answer("When the death rate plus the birth rate is zero"),
               allow_retry = TRUE,
-     correct = "Correct! You should find that you get the same output if the difference between the birth and death rate is equal to the net growth rate in the previous model. This may seem a little dull and obvious but things will get more interesting when we consider stochastic models."
-     ))
+     correct = "Correct! You should find that you get the same output if the difference between the birth and death rate is equal to the net growth rate in the previous model."),
+     question("When do you get the same answer with the birth death model as the growth model?",
+              answer("When the birth rate is zero"),
+              answer("When the birth rate minus the death rate is equal to the growth rate", 
+                     correct = TRUE),
+              answer("When the death rate is double the birth rate"),
+              answer("When the death rate is equal to the birth rate"),
+              allow_retry = TRUE,
+     correct = "Correct! You should find that you get the same output if the difference between the birth and death rate is equal to the net growth rate in the previous model.")
+     )
 ```
