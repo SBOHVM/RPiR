@@ -1,0 +1,306 @@
+---
+title: "Building Epidemiological Models"
+output: ioslides_presentation
+---
+
+## Basic reproduction number, $R_0$
+
+- This is a key concept in epidemiology and is defined as:
+
+  > "the average number of secondary cases arising from an infected individual 
+introduced into a fully susceptible population"
+
+# Basic reproduction number $R_0 > 1$
+
+## $R_0 > 1$
+
+<center>![](RPiR3b/a.png){ width=80% }</center>
+
+## $R_0 > 1$
+
+<center>![](RPiR3b/1.png){ width=80% }</center>
+  
+## $R_0 > 1$
+
+<center>![](RPiR3b/2.png){ width=80% }</center>
+
+## $R_0 > 1$
+
+<center>![](RPiR3b/3.png){ width=80% }</center>
+
+## $R_0 > 1$
+
+<center>![](RPiR3b/4.png){ width=80% }</center>
+
+## $R_0 > 1$
+
+<center>![](RPiR3b/5.png){ width=80% }</center>
+
+# Basic reproduction number $R_0 < 1$
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/a.png){ width=80% }</center>
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/b.png){ width=80% }</center>
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/c.png){ width=80% }</center>
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/d.png){ width=80% }</center>
+
+## Outbreak behaviour depends on $R_0$
+
+- If $R_0 > 1$ we expect an outbreak to take off
+- If $R_0 < 1$ if we expect a just a few cases with no sustained outbreak
+
+## Epidemic dynamics
+
+<center>![](RPiR3b/graph.png){ width=60% }</center>
+
+## Model structure {.flexbox .vcenter .smaller}
+
+<div class="columns-2">
+
+- Determined by the biology of the infection
+  - do infected individuals die?
+  - do infected individuals recover?
+  - are recovered individuals immune?
+  - are there latently infected individuals?
+
+<center>![](RPiR3b/structure.png){ width=100% }</center>
+
+</div>
+
+## SIR process {.flexbox .vcenter}
+
+<center>![](RPiR3b/process.png){ width=80% }</center>
+
+## Terminology
+
+- $S(t)$, $S_t$ or $S$ is the number of susceptibles
+
+- $I(t)$, $I_t$ or $I$ is the number of infecteds
+
+- $R(t)$, $R_t$ or $R$ is the number of recovereds
+
+- $N$ is the total population size
+  - *i.e.* $N = S + I + R$
+
+## Modelling transmission
+
+- Total rate at which new infections currently arise in the population
+
+$$\beta I \frac{S}{N}$$
+
+- $\beta$ is the transmission rate
+- $I$ is the current number of infected individuals
+- $\frac{S}{N}$ is the proportion of population that is still susceptible
+
+## Modelling recovery
+
+- Total rate at which individuals are recovering
+
+$$\sigma I$$
+
+- $\sigma$ is the recovery rate  
+- $I$ is the current number of infected individuals 
+
+## SIR model in difference equation form
+
+$$S_{t+1} = S_t - \beta I_t (\frac{S_t}{N})$$
+
+## SIR model in difference equation form
+
+$$S_{t+1} = S_t - \beta I_t (\frac{S_t}{N})$$
+
+$$I_{t+1} = I_t + \beta I_t (\frac{S_t}{N}) - \sigma I_t$$
+
+## SIR model in difference equation form
+
+$$S_{t+1} = S_t - \beta I_t (\frac{S_t}{N})$$
+
+$$I_{t+1} = I_t + \beta I_t (\frac{S_t}{N}) - \sigma I_t$$
+
+$$R_{t+1} = R_t + \sigma I_t$$
+
+## SIS process
+
+<center>![](RPiR3b/sis.png){ width=80% }</center>
+
+## SIS model in difference equation form
+
+$$S_{t+1} = S_t – \beta I_t \frac{S_t}{N} + \sigma I_t$$
+
+$$I_{t+1} = I_t + \beta I_t \frac{S_t}{N} – \sigma I_t$$
+
+## Confusing notation...
+
+$$\beta \times I \times (\frac{S}{N})$$
+
+is the same as…
+
+$$\beta I(\frac{S}{N})$$
+
+is the same as
+
+$$\frac{\beta I S}{N}$$
+
+## Basic reproduction number, $R_0$
+
+- This is a key concept in epidemiology and is defined as:
+
+  > "the average number of secondary cases arising from an infected individual 
+introduced into a fully susceptible population"
+
+## Calculating $R_0$
+
+$$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
+& \textrm{(arising from 1 infected in a fully} \\
+& \textrm{susceptible population)} \times \\
+& \textrm{number of days infectious} \end{align}$$
+
+## Calculating $R_0$
+
+$$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
+& \textrm{(arising from 1 infected in a fully} \\
+& \textrm{susceptible population)} \times \\
+& \textrm{number of days infectious} \\
+= {} & \beta \times \textrm{number days infectious} \end{align}$$
+
+## Note on rates and duration
+
+- We convert between a rate and a duration using the reciprocal
+  - $\textrm{duration} = \frac{1}{\textrm{rate}}$
+  - $\textrm{rate} = \frac{1}{\textrm{duration}}$
+- Examples:
+  - Recovery rate = 0.1 per day
+  - Infectious period = $\frac{1}{0.1}$ = 10 days
+
+  - Infectious period = 3 weeks
+  - Recovery rate = $\frac{1}{3}$ per week
+
+## Calculating $R_0$
+
+$$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
+& \textrm{(arising from 1 infected in a fully} \\
+& \textrm{susceptible population)} \times \\
+& \textrm{number of days infectious} \\
+= {} & \beta \times \textrm{number days infectious} \end{align}$$
+
+## Calculating $R_0$
+
+$$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
+& \textrm{(arising from 1 infected in a fully} \\
+& \textrm{susceptible population)} \times \\
+& \textrm{number of days infectious} \\
+= {} & \beta \times \textrm{number days infectious} \\
+= {} & \beta \times \frac{1}{\textrm{recovery rate}} \end{align}$$
+
+## Calculating $R_0$
+
+$$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
+& \textrm{(arising from 1 infected in a fully} \\
+& \textrm{susceptible population)} \times \\
+& \textrm{number of days infectious} \\
+= {} & \beta \times \textrm{number days infectious} \\
+= {} & \beta \times \frac{1}{\textrm{recovery rate}} \\
+= {} & \beta \times \frac{1}{\sigma} \\
+= {} & \frac{\beta}{\sigma}
+ \end{align}$$
+
+## Epidemic dynamics for $R_0 = 2$
+
+<center>![](RPiR3b/one.png){ width=60% }</center>
+
+## Epidemic dynamics for $R_0 = 2$
+
+<center>![](RPiR3b/two.png){ width=60% }</center>
+
+## Epidemic dynamics for $R_0 = 2$
+
+<center>![](RPiR3b/three.png){ width=60% }</center>
+
+## Epidemic dynamics for $R_0 = 2$
+
+<center>![](RPiR3b/four.png){ width=60% }</center>
+
+## Epidemic dynamics for $R_0 = 2$
+
+<center>![](RPiR3b/five.png){ width=60% }</center>
+
+## Epidemic dynamics for $R_0 = 2$
+
+<center>![](RPiR3b/six.png){ width=60% }</center>
+
+## Epidemic dynamics for $R_0 = 2$
+
+<center>![](RPiR3b/seven.png){ width=60% }</center>
+  
+## Key features of dynamics
+
+- Infection burns itself out
+- Not all individuals become infected
+
+## Key features of dynamics
+
+- Infection burns itself out
+- Not all individuals become infected
+
+- Chain of transmission eventually halts due to insufficient susceptibles, 
+not a complete lack of susceptibles
+
+# Basic reproduction number $R_0 < 1$
+
+# Basic reproduction number $R_0 < 1$
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/a.png){ width=80% }</center>
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/b.png){ width=80% }</center>
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/c.png){ width=80% }</center>
+
+## $R_0 < 1$
+
+<center>![](RPiR3b/d.png){ width=80% }</center>
+
+## Dynamics for $R_0 = 0.5$
+
+<center>![](RPiR3b/diminishing.png){ width=60% }</center>
+
+## SIS process
+
+<center>![](RPiR3b/sis.png){ width=80% }</center>
+
+## SIS model in difference equation form
+
+$$S_{t+1} = S_t – \beta I_t \frac{S_t}{N} + \sigma I_t$$
+
+$$I_{t+1} = I_t + \beta I_t \frac{S_t}{N} – \sigma I_t$$
+
+## SIS simulation for $R_0 = 3$
+
+<center>![](RPiR3b/sis_graph.png){ width=60% }</center>
+
+## SIS simulation for $R_0 = 3$
+
+<center>![](RPiR3b/sis_graph2.png){ width=60% }</center>
+
+## Practicals
+
+- Programming in R Practical:
+  - Extending your programming skills
+  - Building simple disease dynamics models in R
+
+
