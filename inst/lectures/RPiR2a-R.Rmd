@@ -78,7 +78,7 @@ vec > 2
 ```
 
 ```{R}
-vec <- seq(from=1, to=3)
+vec <- seq(from = 1, to = 3)
 subs <- c(T, F, T)
 vec[subs]
 ```
@@ -86,13 +86,13 @@ vec[subs]
 ## How do we subset data frames?
 
 ```{R}
-df <- data.frame(val=c(1, 2, 3),
-                 other=c("a", "b", "a"))
+df <- data.frame(val = c(1, 2, 3),
+                 other = c("a", "b", "a"))
 df$other
 ```
 
 ```{R}
-df[df$other == "b",]
+df[df$other == "b", ]
 ```
 
 ```{R}
@@ -114,13 +114,13 @@ mtcars %>% filter(mpg > 20) %>% filter(carb >= 4)
 ## How do we plot?
 
 ```{R}
-plot(c(1,2,3), c(1,2,1))
-lines(c(1,2,3), c(2,1,2))
+plot(c(1, 2, 3), c(1, 2, 1))
+lines(c(1, 2, 3), c(2, 1, 2))
 ```
 
 ## How do we plot? {.smaller}
 
-Again, there are much more sophisticated ways, as you know... e.g.
+Again, there are much more sophisticated ways, as you know... *e.g.*
 ```{R, message = FALSE}
 library(ggplot2)
 mtcars %>% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
@@ -130,7 +130,7 @@ mtcars %>% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
 
 ```{R, eval = FALSE}
 pdf("out.pdf")
-plot(c(1,2,3), c(1,2,1), type = "l")
+plot(c(1, 2, 3), c(1, 2, 1), type = "l")
 dev.off()
 ```
 
