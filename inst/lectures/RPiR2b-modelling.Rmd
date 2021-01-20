@@ -197,8 +197,3 @@ n &=& 46.6
 - Programming in R Practical:
   - Learn some programming skills
   - Build simple population dynamics models in R
-
-
-
-
-
