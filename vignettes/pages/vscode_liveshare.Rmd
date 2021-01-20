@@ -60,7 +60,7 @@ knitr::include_graphics('images/vscode_liveshare/1_extension2.png')
 
 While you're there, if you're intending to work in R, you may as well install:
 
-* the "R" Yuki Ueda extension and 
+* the "R" Extension Pack and 
 * the "R LSP Client" REditorSupport extension.
 
 You need to already have an account on [GitHub][github] to use Live Share.
