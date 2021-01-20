@@ -199,9 +199,13 @@ Learn how to:
 > - Generate documented results
 > - Read and understand other people's code
 
-## Remember... {.flexbox .vcenter}
+## Remember... {.flexbox .vcenter .smaller}
 
 <center>![](RPiR2a/xkcd.png){ width=100% }</center>
+<p>
+"I honestly didn't think you could even USE emoji in variable names. Or that there were so many different crying ones."
+
+https://imgs.xkcd.com/comics/code_quality.png
 
 ## What are you going to do?
 
@@ -215,6 +219,8 @@ Learn how to:
 > - Packages (libraries) will allow you to solve many problems easily, but we are
     focusing on problems they don’t help with!
 
-## Have fun! {.flexbox .vcenter}
+## Have fun! {.flexbox .vcenter .smaller}
 
 <center>![](RPiR2a/phdcomics.gif){ width=100% }</center>
+<p>
+http://phdcomics.com/comics/archive.php?comicid=946
