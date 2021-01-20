@@ -1,5 +1,5 @@
 ---
-title: "1-4:Exponential growth model"
+title: "Practical 1-4: Using data frames"
 output:
   learnr::tutorial:
     theme: lumen
@@ -59,25 +59,25 @@ use `data.frame()` to create a data frame and `rbind()` to append one onto
 another. 
 
 So that we don’t need to worry about how to plot the outputs, we have provided a 
-function called `plot_populations()` in <span style="color: #de77ae;">0104-plot-helper.R</span> which will take a 
+function called `plot_populations()` in the `RPiR` package which will take a 
 data frame with any number of population columns and a single corresponding 
 `time` column and plot them together in different colours with a legend 
-indicating which line corresponds to which population. The file 
-<span style="color: #de77ae;">0104-plot-helper.R</span> contains the function, so you will need to `source()` 
-this file in your code. In order to use it you will need to add a column called 
-`time` into your data frame with the times in it and then call:
+indicating which line corresponds to which population. The RPiR package contains
+the function, so you will need to call `library(RPiR)` to load it. In order to
+use it you will need to add a column called  `time` into your data frame with
+the times in it and then call:
 
 ```{r, eval = FALSE}
 plot_populations(population.df)
 ```
 
 We will therefore be breaking the code into three sections <span style="color: #de77ae;">0104-run-growth.R</span>, 
-<span style="color: #de77ae;">0104-step-growth.R</span> and <span style="color: #de77ae;">0104-plot-helper.R</span> which handle the mechanics, 
-the model and the display respectively. 
+<span style="color: #de77ae;">0104-step-growth.R</span> and the RPiR package
+which handle the mechanics, the model and the display respectively. 
 
 We'll start by working on the function, then go on to change the main script later.
 
-#### Changes needed to update 0103-step-simple-growth.r to 0104-step-growth.r
+#### Changes needed to update 0103-step-simple-growth.R to 0104-step-growth.R
 
 We've generated <span style="color: #de77ae;">0104-step-growth.R</span> (from <span style="color: #de77ae;">0103-step-simple-growth.R</span>) for you to edit:
 
@@ -166,16 +166,16 @@ data.frame(count = next.count)
 which will be assigned to whatever variable in the main script we choose, in 
 this case `updated.population`.
 
-#### Changes needed to update 0103-run-simple-growth.r to 0104-run-growth.r
+#### Changes needed to update 0103-run-simple-growth.R to 0104-run-growth.R
 
 For convenience, we've generated 
 <span style="color: #de77ae;">0104-run-growth.R</span> (from 
 <span style="color: #de77ae;">0103-run-simple-growth.R</span>) for you to edit. 
 Note that, as before, `source()`
 has been commented out as it won't work in the {learnr} environment. Instead, 
-<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>,
-<span style="color: #de77ae;">0104-plot-helper.R</span> and 
-<span style="color: #de77ae;">0104-step-growth.R</span> have been preloaded for you:
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span> and 
+<span style="color: #de77ae;">0104-step-growth.R</span> have been preloaded for
+you:
 
 ```{r step_simple_growth-setup}
 library(RPiR)
@@ -193,9 +193,10 @@ step_deterministic_growth <- function(latest, growth.rate) {
 }
 ```
 
-```{r step_simple_growth, exercise = TRUE, exercise.cap = "0104-run-growth.R", exercise.lines = 42}
+```{r step_simple_growth, exercise = TRUE, exercise.cap = "0104-run-growth.R", exercise.lines = 44}
 # Load the step_simple_growth() function into the global environment (my workspace)
-#source("0103-step-simple-growth-function.R")
+# Note this next line would be needed if you were running this in RStudio
+# source("0103-step-simple-growth-function.R")
 
 #' Set up the simulation parameters
 #' --------------------------------
@@ -239,9 +240,10 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
 ```{r step_simple_growth-solution}
+library(RPiR)
 # Load the step_simple_growth() function into the global environment (my workspace)
-#source("0104-plot-helper.R") 
-#source("0104-step-growth.R")
+# Note this next line would be needed if you were running this in RStudio
+# source("0104-step-growth.R")
 
 #' Set up the simulation parameters
 #' --------------------------------
@@ -289,19 +291,26 @@ plot_populations(population.df)
 grade_this_code()
 ```
 
-At the beginning of the file, we should read in functions from the other two
-files (though since we're working in the {learnr} environment rather 
-than RStudio we can comment these lines out, since the necessary files have been 
-preloaded for you):
+At the beginning of the file, we should load the `RPiR` package, because we're going to 
+be using the `plot_populations()` function that it provides, so add that in first:
 
 ```{r, eval = FALSE}
-source("0104-plot-helper.R") 
+library(RPiR)
+```
+
+Then read in function from the new file (though since we're working in
+the {learnr} environment rather than RStudio you should comment this line out,
+since the file has been preloaded for you):
+
+```{r, eval = FALSE}
 source("0104-step-growth.R")
 ```
 
-The second, and biggest change throughout <span style="color: #de77ae;">0104-run-growth.R</span> (and 
-<span style="color: #de77ae;">0104-step-growth.R</span>) is that the population is now defined in terms of a data 
-frame rather than as a vector. So setting it up will happen like this:
+With that done, the biggest change throughout
+<span style="color: #de77ae;">0104-run-growth.R</span> (and 
+<span style="color: #de77ae;">0104-step-growth.R</span>) is that the population
+is now defined in terms of a data frame rather than as a vector. So setting it
+up will happen like this:
 
 ```{r, eval = FALSE}
 population.df <- data.frame(count = initial.count)
@@ -335,8 +344,10 @@ in it when we write it below. You will get a clearer idea of how the data frames
 work once we start on the epidemiological models with multiple populations, so 
 don’t worry if it isn’t currently clear.
 
-At the end of your new <span style="color: #de77ae;">0104-run-growth.R</span> file, rather than use R’s basic 
-plot command plot as we did previously, we have now created a function `plot_populations()`, which is defined inside <span style="color: #de77ae;">0104-plot-helper.R</span>. The job of 
+At the end of your new <span style="color: #de77ae;">0104-run-growth.R</span> file,
+rather than use R’s basic plot command plot as we did previously, we have now
+used a function `plot_populations()`, which is defined
+inside the `RPiR` library. The job of 
 this function is to take a data frame with any number of population columns and 
 a single corresponding `time` column and plot them together in different colours 
 with a legend indicating which line corresponds to which population. It will
@@ -373,8 +384,8 @@ plot_populations(population.df, new.graph = FALSE, col = "red")
 The extra argument `col` sets the colour of the line in the plot – "red", 
 "blue", etc.; or you could use `lty` to set the type of line – solid, 
 dash, dot, etc. – by using numbers (1 is solid, 2, 3, *etc.*). Note that
-`plot_populations()` also has a help file, which you can access by typing in 
-the R console:
+`plot_populations()` also has a help file, which you can access by typing
+`?plot_populations`:
 
 ```{r plotpopulations-setup}
 library(RPiR)
@@ -389,21 +400,22 @@ part of {RPiR}. When functions are loaded using `source()`, rather than being
 installed, then the only documentation is that in the file itself. 
 Occasionally, you might come across a function that won't let you ask for help 
 using the `?` syntax – `?for`, `?function` and a couple of others. In that case 
-you can try 
+you can use the `help()` function instead.
 
-```{r for, exercise = TRUE}
-?for
+```{r function_help, exercise = TRUE}
+# Access the help for the "function" command
+
 ```
 
-<div id="for-hint">
-**Hint:** Try using `help()`. 
+<div id="function_help-hint">
+**Hint:** Try using `help("___")`. 
 </div>
 
-```{r for-solution}
-help("for")
+```{r function_help-solution}
+help("function")
 ```
 
-```{r for-check}
+```{r function_help-check}
 grade_this_code()
 ```
 
@@ -411,14 +423,17 @@ or go to the <span style="color: #de77ae;">Help</span> tab in RStudio and type
 the name into the box next to the magnifying glass. 
 
 As far as the `plot_populations()` function is concerned, feel free to refer 
-back to this code later to understand better how it works. Like this (or by 
-finding the code on GitHub):
+back to this code later to understand better how it works by finding the code on
+GitHub. Or you can just run the name of the function on its own at an R prompt.
+We made a simpler (but less powerful) version of the plot
+function - `plot_simple()` - that you may find easier to read:
 
-```{r function, exercise = TRUE}
-plot_populations
+```{r plot_simple, exercise = TRUE}
+library(RPiR)
+plot_simple
 ```
 
-Some of the helper functions we provide later in the course are fairly 
+Many of the helper functions in the course are fairly 
 sophisticated and you will probably have to take on trust for the time being.
 We will be providing these functions as we go along to allow you to focus on the
 models being developed – you are welcome to use them yourselves later, but if 

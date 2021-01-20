@@ -1,5 +1,5 @@
 ---
-title: "1-1: Exponential growth model"
+title: "Practical 1-1: Exponential growth model"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -548,4 +548,6 @@ can click on the little notebook icon:
 knitr::include_graphics('images/compile_report.png')
 ```
 
-You'll start generating your own reports in the second practical series.
+You'll start generating your own reports in practical 1-6, but you won't need to
+submit any till the second practical series. There is more detail on projects in
+practical 2-1.

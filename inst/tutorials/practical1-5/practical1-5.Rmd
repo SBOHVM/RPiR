@@ -1,5 +1,5 @@
 ---
-title: "1-5: Births and deaths model"
+title: "Practical 1-5: Birth / death model"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -69,8 +69,7 @@ the current size) minus the new deaths (d times the current size)"
 
 where $b$ represents the birth rate and $d$ represents the death rate.
 
-In this practical, we will reuse 
-<span style="color: #de77ae;">0104-plot-helper.R</span> while adapting 
+In this practical, we will reuse the `RPiR` package while adapting 
 <span style="color: #de77ae;">0104-run-growth.R</span> and 
 <span style="color: #de77ae;">0104-step-growth.R</span> appropriately. For convenience, we've generated
 <span style="color: #de77ae;">0105-step-birth-death.R</span> (from 
@@ -154,9 +153,10 @@ step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
 ```
 
 ```{r rungrowth, exercise = TRUE, exercise.cap = "0105-run-birth-death.R", exercise.lines = 60}
+library(RPiR)
 # Load the step_simple_growth() function into the global environment (my workspace)
-#source("0104-plot-helper.R") 
-#source(___)
+# Note this next line would be needed if you were running this in RStudio
+# source(___)
 
 #' Set up the simulation parameters
 #' --------------------------------

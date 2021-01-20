@@ -1,5 +1,5 @@
 ---
-title: "1-2: Exponential growth model"
+title: "Practical 1-2: Functional model"
 output:
   learnr::tutorial:
     theme: lumen
