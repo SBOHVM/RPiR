@@ -8,39 +8,11 @@ output: ioslides_presentation
 ## What do you want to do?
 
 > - Access data
-> - Analyse it
 > - Build models
+> - Test hypotheses
 > - Run analyses
 > - Report the results
-> - Share the techniques with others
-
-## What are you going to do?
-
-Learn how to:
-
->   - Write code
->   - Write documentation
->     - So you can come back and understand it later
->   - Identify and isolate reusable code
->     - So you don’t have to write it again later
->   - Generate documented results
->   - Read and understand other people's code
-
-## What are you going to do?
-
-> - Read and write well-documented and well-structured code
-> - Use this to generate clear and well-documented results/reports
-
-## How are you going to do it?
-
-> - Problems will be structured around population dynamics, epidemiology and biodiversity
-> - They will start off easy and ramp up
-> - Packages (libraries) will allow you to solve many problems easily, but we are
-    focusing on problems they don’t help with!
-
-## So how do you learn to program? {.vcenter}
-
-<center>![](RPiR2a/how.png){ width=80% }</center>
+> - Share the results and the techniques with others
 
 # What's different about R?
 
@@ -76,7 +48,7 @@ Learn how to:
 ?levels
 ```
 
-## What are data frames?
+## What are data frames? {.smaller}
 
 - Tables (as from a spreadsheet)
   - One or more rows of data
@@ -84,6 +56,10 @@ Learn how to:
 - Fundamental data structure for most modelling functions
 
 ```{R}
+head(mtcars)
+```
+
+```{R, eval = FALSE}
 ?data.frame
 ?read.csv
 ?read.table
@@ -137,16 +113,9 @@ mtcars %>% filter(mpg > 20) %>% filter(carb >= 4)
 
 ## How do we plot?
 
-```{R, eval = FALSE}
+```{R}
 plot(c(1,2,3), c(1,2,1))
 lines(c(1,2,3), c(2,1,2))
-```
-
-```{R, eval = FALSE}
-?plot
-?lines
-?points
-?par
 ```
 
 ## How do we plot? {.smaller}
@@ -164,8 +133,6 @@ pdf("out.pdf")
 plot(c(1,2,3), c(1,2,1), type=’l’)
 dev.off()
 ```
-
-## How do we save to disk?
 
 ```{R, eval = FALSE}
 ?pdf
@@ -195,11 +162,39 @@ update.packages()
 
 occasionally.
 
+## So how do you learn to program?
+
+<center>![](RPiR2a/how.png){ width=80% }</center>
+
 ## What do you want to do?
 
 - Access data
-- Analyse it
 - Build models
+- Test hypotheses
 - Run analyses
 - Report the results
-- Share the techniques with others
+- Share the results and the techniques with others
+
+## What are you going to do?
+
+Learn how to:
+
+>   - Write code
+>   - Write documentation
+>     - So you can come back and understand it later
+>   - Identify and isolate reusable code
+>     - So you don’t have to write it again later
+>   - Generate documented results
+>   - Read and understand other people's code
+
+## What are you going to do?
+
+> - Read and write well-documented and well-structured code
+> - Use this to generate clear and well-documented results/reports
+
+## How are you going to do it?
+
+> - Problems will be structured around population dynamics, epidemiology and biodiversity
+> - They will start off easy and ramp up
+> - Packages (libraries) will allow you to solve many problems easily, but we are
+    focusing on problems they don’t help with!
