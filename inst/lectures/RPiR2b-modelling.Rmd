@@ -5,7 +5,7 @@ output: ioslides_presentation
 
 ## Models come in many types... {.flexbox .vcenter}
 
-<center>![](RPiR3b/models.png){ width=100% }</center>
+<center>![](RPiR2b/models.png){ width=100% }</center>
 
 ## The purpose of a model... {.flexbox .vcenter}
 
@@ -14,13 +14,13 @@ output: ioslides_presentation
   - A model captures the essence of an object or process
   - A model should be appropriate for the specific task or questions 
 
-  <center>![](RPiR3b/weather.png){ width=60% }</center>
+  <center>![](RPiR2b/weather.png){ width=60% }</center>
 
 </div>
 
 ## The purpose of a model... {.flexbox .vcenter}
 
-<center>![](RPiR3b/einstein.png){ width=70% }</center>
+<center>![](RPiR2b/einstein.png){ width=70% }</center>
 <p>
 > "A model should be as simple as possible but no simpler..." 
 
@@ -42,17 +42,17 @@ output: ioslides_presentation
   - Explore control options
   - Make predictions
   
-  ![](RPiR3b/map.png){ width=80% }
+  ![](RPiR2b/map.png){ width=80% }
 
 </div>
 
 ## Implementing a model... {.flexbox .vcenter}
 
-<center>![](RPiR3b/what.png){ width=60% }</center>
+<center>![](RPiR2b/what.png){ width=60% }</center>
 
 ## Implementing a model... {.flexbox .vcenter}
 
-<center>![](RPiR3b/what2.png){ width=60% }</center>
+<center>![](RPiR2b/what2.png){ width=60% }</center>
 
 # Simple population dynamics
 
@@ -60,29 +60,29 @@ output: ioslides_presentation
 
 - Rate of increase (or decrease) is proportional to current population size
 
-<center>![](RPiR3b/parents.png){ width=60% }</center>
+<center>![](RPiR2b/parents.png){ width=60% }</center>
 
 ## Exponential growth or decline 
 
 - Rate of increase (or decrease) is proportional to current population size
 
-<center>![](RPiR3b/babies.png){ width=60% }</center>
+<center>![](RPiR2b/babies.png){ width=60% }</center>
 
 ## Exponential growth or decline 
 
 - Rate of increase (or decrease) is proportional to current population size
 
-<center>![](RPiR3b/babies2.png){ width=60% }</center>
+<center>![](RPiR2b/babies2.png){ width=60% }</center>
 
 ## Exponential growth or decline 
 
 - Rate of increase (or decrease) is proportional to current population size
 
-<center>![](RPiR3b/babies3.png){ width=60% }</center>
+<center>![](RPiR2b/babies3.png){ width=60% }</center>
 
 ## Hamster population explosion {.flexbox .vcenter}
 
-<center>![](RPiR3b/graph.png){ width=80% }</center>
+<center>![](RPiR2b/graph.png){ width=80% }</center>
 
 ## Human population growth
 
@@ -162,7 +162,7 @@ n &=& 46.6
 
 ## Fixed doubling time
 
-<center>![](RPiR3b/doubling2.png){ width=80% }</center>
+<center>![](RPiR2b/doubling2.png){ width=80% }</center>
 
 ## Model types
 
