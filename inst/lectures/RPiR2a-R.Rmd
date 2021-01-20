@@ -130,7 +130,7 @@ mtcars %>% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
 
 ```{R, eval = FALSE}
 pdf("out.pdf")
-plot(c(1,2,3), c(1,2,1), type=’l’)
+plot(c(1,2,3), c(1,2,1), type = "l")
 dev.off()
 ```
 
