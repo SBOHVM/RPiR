@@ -56,6 +56,9 @@
 #' @import rmarkdown
 #' @import utils
 #' @import usethis
+#' @import dplyr
+#' @import datasets
+#' @import ggplot2
 #'
 #' @examples
 #' \dontrun{

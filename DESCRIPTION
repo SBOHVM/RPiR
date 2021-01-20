@@ -19,7 +19,10 @@ Imports:
     learnr,
     rmarkdown,
     usethis,
-    utils
+    utils,
+    dplyr,
+    datasets,
+    ggplot2
 Remotes:
     rstudio/learnr,
     rstudio-education/gradethis

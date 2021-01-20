@@ -1,0 +1,205 @@
+---
+title: "Reproducible Programming in R"
+output: ioslides_presentation
+---
+
+# Reproducible Programming
+
+## What do you want to do?
+
+> - Access data
+> - Analyse it
+> - Build models
+> - Run analyses
+> - Report the results
+> - Share the techniques with others
+
+## What are you going to do?
+
+Learn how to:
+
+>   - Write code
+>   - Write documentation
+>     - So you can come back and understand it later
+>   - Identify and isolate reusable code
+>     - So you don’t have to write it again later
+>   - Generate documented results
+>   - Read and understand other people's code
+
+## What are you going to do?
+
+> - Read and write well-documented and well-structured code
+> - Use this to generate clear and well-documented results/reports
+
+## How are you going to do it?
+
+> - Problems will be structured around population dynamics, epidemiology and biodiversity
+> - They will start off easy and ramp up
+> - Packages (libraries) will allow you to solve many problems easily, but we are
+    focusing on problems they don’t help with!
+
+## So how do you learn to program? {.vcenter}
+
+<center>![](RPiR2a/how.png){ width=80% }</center>
+
+# What's different about R?
+
+## What's different about R? {.build}
+
+- Formulae and factors
+- Data frames
+- Subsetting data
+- Plotting data and generating reports and saving them to disk
+- Massive database of user-supplied packages
+- Specialised Integrated Development Environment (IDE)
+  - RStudio
+- Trivial to create your own packages
+  - Integration with GitHub
+
+## What are formulae?
+
+- Formulae!
+- Compact symbolic form for storing formulae for model building
+```{R}
+?formula
+```
+
+## What are factors?
+
+- Vectors
+  - but for data in a fixed number of categories, possibly ordered
+- Compact form for storing categorical data for model building
+
+```{R}
+?factor
+?ordered
+?levels
+```
+
+## What are data frames?
+
+- Tables (as from a spreadsheet)
+  - One or more rows of data
+  - Named columns of fixed type
+- Fundamental data structure for most modelling functions
+
+```{R}
+?data.frame
+?read.csv
+?read.table
+```
+
+## How do we subset vectors?
+
+```{R}
+vec <- c(1, 2, 3)
+vec[vec > 2]
+```
+
+```{R}
+vec <- 1:3
+vec > 2
+```
+
+```{R}
+vec <- seq(from=1, to=3)
+subs <- c(T, F, T)
+vec[subs]
+```
+
+## How do we subset data frames?
+
+```{R}
+df <- data.frame(val=c(1, 2, 3),
+                 other=c("a", "b", "a"))
+df$other
+```
+
+```{R}
+df[df$other == "b",]
+```
+
+```{R}
+subset(df, val == 1)
+```
+
+## How do we subset data frames?
+
+But these things are constantly evolving:
+```{R, message = FALSE}
+library(dplyr)
+df %>% filter(other == "b")
+```
+
+```{R}
+mtcars %>% filter(mpg > 20) %>% filter(carb >= 4)
+```
+
+## How do we plot?
+
+```{R, eval = FALSE}
+plot(c(1,2,3), c(1,2,1))
+lines(c(1,2,3), c(2,1,2))
+```
+
+```{R, eval = FALSE}
+?plot
+?lines
+?points
+?par
+```
+
+## How do we plot? {.smaller}
+
+Again, there are much more sophisticated ways, as you know... e.g.
+```{R, message = FALSE}
+library(ggplot2)
+mtcars %>% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
+```
+
+## How do we save to disk?
+
+```{R, eval = FALSE}
+pdf("out.pdf")
+plot(c(1,2,3), c(1,2,1), type=’l’)
+dev.off()
+```
+
+## How do we save to disk?
+
+```{R, eval = FALSE}
+?pdf
+?png
+?Devices
+```
+
+## How do we use packages?
+
+Install it first:
+
+```{R, eval = FALSE}
+install.packages(c("tibble"))
+```
+
+or from RStudio menus, and then use it:
+
+```{R, eval = FALSE}
+library(tibble)
+```
+
+not forgetting:
+
+```{R, eval = FALSE}
+update.packages()
+```
+
+occasionally.
+
+## What do you want to do?
+
+- Access data
+- Analyse it
+- Build models
+- Run analyses
+- Report the results
+- Share the techniques with others
