@@ -1,0 +1,134 @@
+---
+title: "Accelerated development"
+output: ioslides_presentation
+---
+
+# Accelerated development
+
+## Imperative { .smaller }
+
+```{R, eval = FALSE}
+library(lme4)
+
+d <- read.csv("my.file.csv")
+#...
+#...
+o1 <- lmer(d$d1 ~ d$d2 + (1|d$d3))
+#...
+#...
+plot(d$d2, d$d1)
+```
+
+## Named { .smaller }
+
+```{R, eval = FALSE}
+library(lme4)
+
+my.data <- read.csv("my.file.csv")
+#...
+#...
+res <- lmer(response ~ explanatory + (1 | random), data = my.data)
+#...
+#...
+plot(my.data$explanatory, my.data$response)
+```
+
+## Commented { .smaller }
+
+```{R, eval = FALSE}
+library(lme4)
+
+my.data <- read.csv("my.file.csv")
+# Some light processing to get data into correct format
+#...
+#...
+# Now the analyses – a linear mixed effect model
+res <- lmer(response ~ explanatory + (1 | random), data = my.data)
+# Checking the model is a good one
+#...
+#...
+# Phew, it is, so plot the best explanatory and response variables!
+plot(my.data$explanatory, my.data$response)
+
+```
+
+## Structured { .smaller }
+
+```{R, eval = FALSE}
+library(lme4)
+
+### <b>
+# Function to load in data from file and process
+read_data <- function(filename) {
+  data <- read.csv(filename)
+  # Some light processing to get into correct format
+  #...
+  data
+}
+### </b>
+
+my.data <- read_data("my.file.csv")
+# Now the analyses – a linear mixed effect model
+res <- lmer(response ~ explanatory + (1 | random), data = my.data)
+# Checking the model is a good one
+#...
+#...
+# Phew, it is, so plot the best explanatory and response variables!
+plot(my.data$explanatory, my.data$response)
+```
+
+## More structured { .smaller }
+
+<div class="columns-2">
+helper.R
+```{R, eval = FALSE}
+# All of the helper functions for our 
+# experiments
+library(lme4)
+
+### <b>
+# Load in data from file and process
+read_data <- function(filename) {
+  data <- read.csv(filename)
+  # Some light processing to get into 
+  # correct format
+  #...
+  data
+}
+### </b>
+
+### <b>
+# Check model is a good one
+check_model <- function(model.out) {
+  is.good.model <- #...
+  #...
+  is.good.model
+}
+### </b>
+```
+
+
+script.R
+```{R, eval = FALSE}
+# Load in our generic helper functions
+source("helper.R")
+
+# Load in the data and process it 
+my.data <- read_data("my.file.csv")
+
+# Analyses – linear mixed effect model
+res <- lmer(response ~ explanatory + 
+              (1 | random), 
+            data = my.data)
+
+# Check model
+if (!check_model(res))
+  stop("Model is rubbish, give up now!")
+
+# Plot the best explanatory and
+# response variables
+plot(my.data$explanatory, 
+     my.data$response)
+```
+</div>
+
