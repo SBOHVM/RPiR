@@ -144,7 +144,6 @@ dev.off()
 
 Again, using ggplot2...
 ```{R, eval = FALSE}
-library(ggplot2)
 g <- mtcars %>% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
 ggsave("out.pdf", g)
 ```
