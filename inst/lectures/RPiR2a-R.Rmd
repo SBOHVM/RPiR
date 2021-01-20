@@ -140,6 +140,19 @@ dev.off()
 ?Devices
 ```
 
+## How do we save to disk? 
+
+Again, using ggplot2...
+```{R, eval = FALSE}
+library(ggplot2)
+g <- mtcars %>% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
+ggsave("out.pdf", g)
+```
+
+```{R, eval = FALSE}
+?ggsave
+```
+
 ## How do we use packages?
 
 Install it first:
