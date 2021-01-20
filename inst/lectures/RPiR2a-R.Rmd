@@ -199,6 +199,10 @@ Learn how to:
 > - Generate documented results
 > - Read and understand other people's code
 
+## Remember... {.flexbox .vcenter}
+
+<center>![](RPiR2a/xkcd.png){ width=100% }</center>
+
 ## What are you going to do?
 
 > - Read and write well-documented and well-structured code
@@ -210,3 +214,7 @@ Learn how to:
 > - They will start off easy and ramp up
 > - Packages (libraries) will allow you to solve many problems easily, but we are
     focusing on problems they don’t help with!
+
+## Have fun! {.flexbox .vcenter}
+
+<center>![](RPiR2a/phdcomics.gif){ width=100% }</center>
