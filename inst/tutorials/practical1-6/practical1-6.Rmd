@@ -1,5 +1,5 @@
 ---
-title: "Reproducible Programming in R Practical 1-6"
+title: "Practical 1-6: Writing a report in RStudio"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -14,6 +14,7 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
 gradethis::gradethis_setup()
  
 knitr::opts_chunk$set(error = TRUE)
@@ -25,8 +26,14 @@ set.seed(123)
 *In this session we will take the code for the models with just growth (1-4)* 
 *and with births and deaths (1-5) and make a clearer report comparing the two.*
 
-> Note that from here on out you probably want to have two versions of RStudio
-open at a time. One to run the {learnr} course (this will likely have a big red stop button preventing you from being able to run anything in the Console) and one to work in. 
+> Note that from here on out you need to have two versions of RStudio
+open at a time. One to run the {learnr} course (this will likely have a big red
+stop button preventing you from being able to run anything in the Console) and
+one to do your work in. If you don't still have it open, you should be able to
+open the new project that you created in Practical 1-1
+using <span style="color: #de77ae;">File > Open Project in New Session...</span>
+in RStudio or follow the instructions in 1-1 to create another new project if
+you want to do that.
 
 ## Background
 
@@ -47,14 +54,15 @@ This will cause all of the variables and functions in your
 **Global Environment** to disappear (*e.g.* if you type `human.annual.growth` 
 in the R console it should tell you that the object is "not found"). As a 
 fundamental rule however, you should **never hardcode** `rm(list=ls())` 
-**into any of your scripts**. It’s generally a sign your code isn’t written well 
-if it can be affected by something before it. Instead, you can clear your 
-workspace by clicking the brush in the 
-<span style="color: #de77ae;">Environment</span> tab in RStudio (or 
+**into any of your scripts**, and in fact you should just not use it.
+It’s generally a sign your code isn’t written well if it can be affected by
+something before it. Instead, you can clear your workspace by clicking the brush
+in the <span style="color: #de77ae;">Environment</span> tab in RStudio (or 
 <span style="color: #de77ae;">Session > Clear Workspace...</span> in the menus). 
 
-If things go irretrievably wrong, you can use 
-<span style="color: #de77ae;">Session > Restart R</span> in the menus: it is far 
+However, generally it's easier to Restart R. This is much safer and more final.
+You can do it in RStudio via <span style="color: #de77ae;">Session > Restart R</span>
+in the menus: it is far 
 more effective than clearing just the workspace as it resets everything, while 
 leaving RStudio itself unaffected. Remember that once you have done this you may 
 have to set the working directory to the correct folder, and you will certainly 
@@ -63,8 +71,8 @@ have to start running your code again completely from the beginning.
 Note that, when you generate a report from the script file, they are always 
 generated from a new, clean, version of R. So this is a very important final 
 check that all of your code is working correctly – it’s as if 
-you did the test without actually wiping everything in R - but only if you 
-read it and check it looks right!
+you did restart R without actually wiping everything in your current R console -
+but only if you read it and check it looks right!
 
 The other check we strongly encourage you to do is to check that your function 
 does not use any global variables by using `findGlobals()`.
@@ -91,11 +99,11 @@ if (length(globals) != 0) {
 Remember again that our first model of simple population growth model looks like
 this:
 
-$$N(t+1) = N(t) + \lambda\; N(t)$$
+$$N(t+1) = N(t) + \lambda \times N(t)$$
 
 The birth and death model is slightly more complex:
 
-$$ N(t+1) = N(t)+ b\; N(t) – d\; N(t)$$
+$$ N(t+1) = N(t) + b \times N(t) – d \times N(t)$$
 
 Remember that <span style="color: #de77ae;">0104-step-growth.r</span> has the
 `step_deterministic_growth()` function and 

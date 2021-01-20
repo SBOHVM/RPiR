@@ -1,5 +1,5 @@
 ---
-title: "1-3:Exponential growth model"
+title: "Practical 1-3: Multiple files"
 output:
   learnr::tutorial:
     theme: lumen
@@ -13,6 +13,7 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
 gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
@@ -20,7 +21,9 @@ set.seed(123)
 ```
 
 ## Overview
-*In this session you will make it easier to reuse your code by placing functions in separate files, so that they can be referred to directly without having to be copied and pasted from file to file – a potentially error-strewn pastime.*
+*In this session you will make it easier to reuse your code by placing functions
+in separate files, so that they can be referred to directly without having to be
+copied and pasted from file to file – a potentially error-strewn pastime.*
 
 ## Background
 
@@ -40,21 +43,21 @@ We can turn the single program from the previous practical into two pieces of
 code by putting the `step_simple_growth()` function into a separate file, and 
 reading that file in the original script using the `source()` function. We have
 called the new file containing the function 
-<span style="color: #de77ae;">0103-step-simple-growth-function.r</span>, so we 
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>, so we 
 will use the command:
 
 ```{r, eval = FALSE}
-source("0103-step-simple-growth-function.r")
+source("0103-step-simple-growth-function.R")
 ``` 
 
 to tell the main script (the R program) that it needs to look in 
-<span style="color: #de77ae;">0103-step-simple-growth-function.r</span> for
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span> for
 code. 
 
 The function documentation should be in the function file now and not 
 in the main script, like this:
 
-```{r functions, exercise = TRUE, exercise.cap = "0103-step-simple-growth-function.r", exercise.lines = 18}
+```{r functions, exercise = TRUE, exercise.cap = "0103-step-simple-growth-function.R", exercise.lines = 20}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
 #'
@@ -73,15 +76,17 @@ step_simple_growth <- function(current.population, growth.rate) {
   # Return updated population
   next.population
 }
+
+## Note, running a script with just a function in will not output anything
 ```
 
-and the main script (<span style="color: #de77ae;">0103-run-simple-growth.r</span>) 
+and the main script (<span style="color: #de77ae;">0103-run-simple-growth.R</span>) 
 should look 
 something like this:
 
 > Note that {learnr} doesn't create files, so `source` doesn't work here. To 
 avoid an error, we commented out line 2, and instead preloaded
-<span style="color: #de77ae;">0103-step-simple-growth-function.r</span> into the
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span> into the
 following code block)
 
 ```{r main-setup}
@@ -92,9 +97,10 @@ step_simple_growth <- function(current.population, growth.rate) {
 }
 ```
 
-```{r main, exercise = TRUE, exercise.cap = "0103-run-simple-growth.r", exercise.lines = 42}
+```{r main, exercise = TRUE, exercise.cap = "0103-run-simple-growth.R", exercise.lines = 42}
 # Load the step_simple_growth() function into the global environment (my workspace)
-#source("0103-step-simple-growth-function.r")
+# Note this next line would be needed if you were running this in RStudio
+# source("0103-step-simple-growth-function.R")
 
 #' Set up the simulation parameters
 #' --------------------------------
@@ -138,14 +144,14 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
 When we run the code, we don’t even need to open the file 
-<span style="color: #de77ae;">0103-step-simple-growth-function.r</span>, 
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>, 
 we just run the main script
-(<span style="color: #de77ae;">0103-run-simple-growth.r</span>) making sure that 
+(<span style="color: #de77ae;">0103-run-simple-growth.R</span>) making sure that 
 we have specified 
-<span style="color: #de77ae;">0103-step-simple-growth-function.r</span> as a 
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span> as a 
 `source()` in it. Its contents (the `step_simple_growth()` function) are safely 
 packaged away unless we want to edit them. 
-<span style="color: #de77ae;">0103-run-simple-growth.r</span> and 
-<span style="color: #de77ae;">0103-step-simple-growth-function.r</span>
+<span style="color: #de77ae;">0103-run-simple-growth.R</span> and 
+<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>
 together do **exactly** what 
-<span style="color: #de77ae;">0102-growth-functional.r</span> did. 
+<span style="color: #de77ae;">0102-growth-functional.R</span> did. 

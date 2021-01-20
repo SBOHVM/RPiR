@@ -37,17 +37,21 @@ navbar:
     - text: "Lectures (slides)"
       icon: fas fa-chalkboard-teacher
       menu:
-      -  text: RPiR1
-         href: lectures/RPiR1.html
-      -  text: RPiR3b
-         href: lectures/RPiR3b.html
+      -  text: RPiR1-intro
+         href: lectures/RPiR1-intro.html
+      -  text: RPiR2a-R
+         href: lectures/RPiR2a-R.html
+      -  text: RPiR2b-modelling
+         href: lectures/RPiR2b-modelling.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
-      -  text: RPiR1
-         href: lectures_html/RPiR1.html
-      -  text: RPiR3b
-         href: lectures_html/RPiR3b.html
+      -  text: RPiR1-intro
+         href: lectures_html/RPiR1-intro.html
+      -  text: RPiR2a-R
+         href: lectures_html/RPiR2a-R.html
+      -  text: RPiR2b-modelling
+         href: lectures_html/RPiR2b-modelling.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions
@@ -62,9 +66,9 @@ navbar:
     - text: "Installation"
       icon: far fa-file
       menu:
-      -  text: package
-         href: articles/pages/install_RPiR.html
       -  text: github
          href: articles/pages/github.html
+      -  text: package
+         href: articles/pages/install_RPiR.html
       -  text: vscode
          href: articles/pages/vscode_liveshare.html

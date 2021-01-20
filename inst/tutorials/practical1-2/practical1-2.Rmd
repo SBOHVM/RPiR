@@ -1,5 +1,5 @@
 ---
-title: "1-2: Exponential growth model"
+title: "Practical 1-2: Functional model"
 output:
   learnr::tutorial:
     theme: lumen
@@ -13,6 +13,7 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
 gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(error = TRUE)
@@ -22,17 +23,17 @@ set.seed(123)
 
 ## Overview
 
-*In this session you will break the program 0101-growth-loop.r into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
+*In this session you will break the program 0101-growth-loop.R into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
 
 ## Introduction
 
 When we look at our first program (for convenience, 
-<span style="color: #de77ae;">0101-growth-functional.r</span> is printed below),
+<span style="color: #de77ae;">0101-growth-loop.R</span> is printed below),
 there are several distinct parts to the code, despite its brevity. We first set 
 the initial conditions of the simulation, then we run the simulation itself, and
 finally we plot the output.
 
-```{r plot, exercise=TRUE, exercise.cap = "0101-growth-functional.r", exercise.lines = 42}
+```{r plot, exercise=TRUE, exercise.cap = "0101-growth-loop.R", exercise.lines = 42}
 #' Set up the simulation parameters
 #' --------------------------------
 #' First we set up the parameters for the simulation.
@@ -102,7 +103,7 @@ models, it is much easier to do it when the code is well structured.
 
 ## Tasks
 
-Look at <span style="color: #de77ae;">0101-growth-functional.r</span>. The code 
+Look at <span style="color: #de77ae;">0101-growth-functional.R</span>. The code 
 in the for loop, that is to say inside the curly brackets, describes the way 
 that the population changes from one point in time to the next. This (together 
 with, perhaps, the starting conditions) is what we would be changing if we 
@@ -116,7 +117,7 @@ the current population count from the vector `population.vector` and the value
 of `growth.rate` as **arguments** (function inputs), update the population 
 size, and return it. This is the framework for such a function with comments 
 (try to fill it in, using the for loop in 
-<span style="color: #de77ae;">0101-growth-functional.r</span> as a guide):
+<span style="color: #de77ae;">0101-growth-loop.R</span> as a guide):
 
 ```{r stepsimplegrowth, exercise = TRUE, exercise.lines = 20}
 #' ### Function: step_simple_growth() 
@@ -138,10 +139,6 @@ step_simple_growth <- function(current.population, growth.rate) {
   next.population
 }
 ```
-
-<div id="stepsimplegrowth-hint">
-**Hint:** . 
-</div>
 
 ```{r stepsimplegrowth-solution}
 step_simple_growth <- function(current.population, growth.rate) {
@@ -206,7 +203,7 @@ Try playing with the following code chunk. Add a print statement inside
 in the main script, and compare the value of `x`. Make sure you understand what 
 is happening.
 
-```{r inout, exercise = TRUE, exercise.lines = 11}
+```{r inout, exercise = TRUE, exercise.lines = 17}
 # Simple function that adds 1 to an input
 my_function <- function(input) {
   x <- input + 1
@@ -214,15 +211,19 @@ my_function <- function(input) {
 }
 
 # Test the function
-x <- 10
+val <- 10
+my_function(val)
+my_function(val * 2)
+
+x <- 1
 my_function(x)
+my_function((x + 1) * 2)
+
+new.value <- 3
+my_function(input = new.value)
 ```
 
-<div id="inout-hint">
-**Hint:** . 
-</div>
-
-```{r inout-solution}
+```{r inout-hint}
 # Simple function that adds 1 to an input
 my_function <- function(input) {
   x <- input + 1
@@ -234,10 +235,6 @@ my_function <- function(input) {
 x <- 10
 my_function(x)
 print(x)
-```
-
-```{r inout-check}
-grade_this_code()
 ```
 
 Having now defined the `step_simple_growth()` function, the code should proceed 
@@ -308,10 +305,6 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
-<div id="nextstep-hint">
-**Hint:** . 
-</div>
-
 ```{r nextstep-solution}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
@@ -377,10 +370,11 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 grade_this_code()
 ```
 
-Within the `for()` loop where the time gets updated the code should now contain 
-the line:
+```{r nextstep-hint}
 
-```{r, eval = FALSE}
+Within the `for()` loop where the time gets updated the code should be edited
+to contain the line and an appropriate comment:
+
 next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
                                       growth.rate = growth.rate)
 ```
@@ -400,10 +394,10 @@ argument in the function and the name of the variable in the script, and
 above, this does not affect the running of the code but can be difficult to 
 read and can result in confusion when debugging for example.
 
-Here's the latest version of the code to play with (<span style="color: #de77ae;">0102-growth-functional.r</span>), complete with the 
+Here's the latest version of the code to play with (<span style="color: #de77ae;">0102-growth-functional.R</span>), complete with the 
 `step_simple_growth()` function:
 
-```{r laststep, exercise = TRUE, exercise.cap = "0102-growth-functional.r", exercise.lines = 58}
+```{r laststep, exercise = TRUE, exercise.cap = "0102-growth-functional.R", exercise.lines = 58}
 #' ### Function: step_simple_growth() 
 #' Run one step of a simple deterministic exponential growth model. 
 #'
@@ -464,18 +458,18 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
-Find all the instances of `growth.rate` and replace them with `my_rate` in the 
+Find all the instances of `growth.rate` and replace them with `my.rate` in the 
 `step_simple_growth()` function (lines 11-18), then
 run the code. What happens? You should get an error. It will tell you that you 
 have an unused argument, `growth.rate` when you call `step_simple_growth()`. 
 This is because when you call the function (lines 47-48), you set its 
 `growth.rate` argument to the main script’s value of `growth.rate`, but the 
-function now only has an argument called `rate` (line 11). To fix this, we can 
-change the call to `step_simple_growth()` to say `my_rate = growth.rate` (line 
+function now only has an argument called `my.rate` (line 11). To fix this, we can 
+change the call to `step_simple_growth()` to say `my.rate = growth.rate` (line 
 48), remembering to . Now rerun the code and check it works.
 
 Now do the same with `next.population`, replacing it **just in the function** 
-with `my_population`, or something sensible, then run the code. What happens? You 
+with `my.population`, or something sensible, then run the code. What happens? You 
 should find that the model runs exactly as before this time. This is because 
 none of the names of objects being used in the function matter – even if their
 values are being returned to the main script. Object names and values are 
