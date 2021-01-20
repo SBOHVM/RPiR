@@ -192,13 +192,13 @@ occasionally.
 
 Learn how to:
 
->   - Write code
->   - Write documentation
->     - So you can come back and understand it later
->   - Identify and isolate reusable code
->     - So you don’t have to write it again later
->   - Generate documented results
->   - Read and understand other people's code
+> - Write code
+> - Write documentation
+>   - So you can come back and understand it later
+> - Identify and isolate reusable code
+>   - So you don’t have to write it again later
+> - Generate documented results
+> - Read and understand other people's code
 
 ## What are you going to do?
 
