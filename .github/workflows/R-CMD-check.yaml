@@ -127,7 +127,7 @@ jobs:
           for (i in seq_len(length(rmd_files))) {
           html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
           out_file <- rmarkdown::render(rmd_files[i],
-          output_format = "html_document")
+          html_document(pandoc_args = "--self-contained"))
           html_file <- gsub("Rmd", "html", rmd_files[i])
           file.copy(out_file, file.path("docs", "lectures_html",
           basename(html_file)), overwrite = TRUE)
