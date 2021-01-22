@@ -148,6 +148,8 @@ following (this will only work on a Mac):
 git config --global --list
 ```
 
+## Add a PAT
+
 Now in RStudio, run:
 
 ```{r, eval = FALSE}
