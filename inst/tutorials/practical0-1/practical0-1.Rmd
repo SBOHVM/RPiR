@@ -372,7 +372,6 @@ add_one <- function(number)
 # Initialise the value
 current.value <- 0
 
-# This should be a loop!
 current.value <- add_one(current.value)
 current.value <- add_one(current.value)
 current.value <- add_one(current.value)
@@ -395,8 +394,9 @@ Now look at this next piece of code:
 
 ```{r with_loop, exercise.cap = "Exercise 5", exercise=TRUE}
 # A function to add one to a number
-add_one <- function(number)
+add_one <- function(number) {
   number + 1
+}
 
 # Initialise the value
 current.value <- 0
