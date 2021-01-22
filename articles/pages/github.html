@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.41.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.41.2</span>
       </span>
     </div>
 
@@ -208,7 +208,23 @@
   user.email <span class="op">=</span> <span class="st">"insert_email_address_here"</span>
 <span class="op">)</span></code></pre></div>
 <p>RStudio will now remember your details, so don’t worry about having to enter them again in the future. You should, however, check that your username and email address was entered correctly! So from the terminal tab, input the following (this will only work on a Mac):</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>git config <span class="op">--</span>global <span class="op">--</span>list</span></code></pre></div>
+<pre><code>git config --global --list</code></pre>
+<p>Now in RStudio, run:</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/github-token.html">create_github_token</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This will open a GitHub page in your browser, like this:</p>
+<p><img src="images/github/git.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Scroll down to the bottom of this page and click on the green <span style="color: #de77ae;">Generate Token</span> button.</p>
+<p>Your screen should now look something like this:</p>
+<p><img src="images/github/pat.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Copy the alphanumeric string (in the green box) by clicking on the tiny, blue clipboard.</p>
+<p>Now back in RStudio, run:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This will open up a new file in a new tab in RStudio called <span style="color: #de77ae;">.Renviron</span>. Inside this file, on a new line, type the following, replacing <code>put_string_here</code> with the alphanumeric string you copied earlier:</p>
+<pre><code>GITHUB_PAT="put_string_here"</code></pre>
+<p>Now save this file (don’t run it) and close it.</p>
+<p>Now restart RStudio and you’re done.</p>
 </div>
 <div id="create-a-new-github-repository" class="section level2">
 <h2 class="hasAnchor">
