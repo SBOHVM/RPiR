@@ -120,7 +120,6 @@ jobs:
       - name: Move ioslide lectures to docs
         if: runner.os == 'macOS'
         run: |
-          install.packages("rmarkdown")
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           if (!file.exists(file.path("docs", "lectures_html")))
@@ -139,7 +138,6 @@ jobs:
       - name: Move learnr tutorials to docs
         if: runner.os == 'macOS'
         run: |
-          install.packages("rmarkdown")
           all_files <- dir(file.path("inst", "tutorials"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           if (!file.exists(file.path("docs", "tutorials_html")))
