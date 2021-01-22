@@ -144,9 +144,51 @@ them again in the future. You should, however, check that your username and
 email address was entered correctly! So from the terminal tab, input the 
 following (this will only work on a Mac):
 
-```{r, eval = FALSE}
+```
 git config --global --list
 ```
+
+Now in RStudio, run:
+
+```{r, eval = FALSE}
+usethis::create_github_token()
+```
+
+This will open a GitHub page in your browser, like this:
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/github/git.png')
+```
+
+Scroll down to the bottom of this page and click on the green
+<span style="color: #de77ae;">Generate Token</span> button. 
+
+Your screen should now look something like this:
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/github/pat.png')
+```
+
+Copy the alphanumeric string (in the green box) by clicking on the tiny, blue
+clipboard. 
+
+Now back in RStudio, run:
+
+```{r, eval = FALSE}
+usethis::edit_r_environ()
+```
+
+This will open up a new file in a new tab in RStudio called 
+<span style="color: #de77ae;">.Renviron</span>. Inside this file, on a new line, 
+type the following, replacing `put_string_here` with the alphanumeric string 
+you copied earlier:
+
+```
+GITHUB_PAT="put_string_here"
+```
+Now save this file (don't run it) and close it. 
+
+Now restart RStudio and you're done.
 
 ## Create a new GitHub repository
 
