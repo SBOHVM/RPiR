@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>3-2: Stochastic population growth model</title>
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="fluid-row" id="section-header">
+
+
+
+<h1 class="title toc-ignore">3-2: Stochastic population growth model</h1>
+
+</div>
+
+
+<div id="section-overview" class="section level2">
+<h2>Overview</h2>
+<p><em>In this practical we will run our first stochastic simulations, starting with the stochastic version of the population growth model. From now on, we will expect a brief report in some format on every practical, so we will not give explicit guidance in every case.</em></p>
+</div>
+<div id="section-background" class="section level2">
+<h2>Background</h2>
+<p>In the lecture, we discussed the fact that the <strong>deterministic models</strong> we have been using so far don’t handle dynamics at the individual level well. To capture individual-level behaviour we need to include an element of chance in the model. This new type of model, which includes a probabilistic element, is called a <strong>stochastic model</strong>.</p>
+</div>
+<div id="section-tasks" class="section level2">
+<h2>Tasks</h2>
+<p>To write a model to handle stochastic population dynamics we obviously have to update the timestep function to handle the new dynamics. However, we also have to understand whether anything else has changed in how the simulation works. In fact, something has. There is now the chance that the population will die out before the end of the experiment, so we need to look for this happening – not least to speed up the simulation.</p>
+<div id="section-demod0302_stochastic_birth_death.r" class="section level3">
+<h3>demo/d0302_stochastic_birth_death.R</h3>
+<p>We’ll start by writing the structural code in a new demo file, <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.r</span>, remembering to add an entry in <span style="color: #de77ae;">demo/00Index</span>. You can use the <span style="color: #de77ae;">d0301_run_birth_death</span> demo – simulating birth-death population dynamics from Practical 1-5 – in {githubusername} as a template.</p>
+<p>From Practicals 2-3 and 2-4 we have a <code>while()</code> loop which runs the simulation:</p>
+<pre class="r"><code>while (latest.population$time &lt; end.time) {
+  latest.population &lt;- timestep_deterministic_SIR(# -- some arguments -- ) 
+  population.df &lt;- rbind(population.df, latest.population)
+}</code></pre>
+<p>The loop ends when the time runs out. Now, instead, there are two reasons why we might stop the simulation – the time may have run out, or the timestep code may identify that the dynamics are now complete. To achieve this, the timestep code will have to return both the updated population and whether the simulation is over. We suggest doing something like this:</p>
+<pre class="r"><code>while (keep.going) {
+  data &lt;- timestep_stochastic_birth_death(# -- some arguments -- ) 
+  latest.population &lt;- data$updated.pop
+  population.df &lt;- rbind(population.df, latest.population)
+  # The experiment may end stochastically or the time may run out 
+  keep.going &lt;- (!data$end.experiment) &amp;&amp; (latest.population$time &lt; end.time)
+}</code></pre>
+<p>Notice that at the start of the loop <code>keep.going</code> has not yet been defined, which will cause an error, so you will need to start it off with an appropriate value.</p>
+<p>Remember to call <code>library(RPiR)</code> at the top of the script to load <code>plot_populations()</code>, and <code>library(githubusername)</code> to load <code>timestep_stochastic_birth_death()</code>, which means you no longer need to source any helper files.</p>
+</div>
+<div id="section-rtimestep_stochastic_birth_death.r" class="section level3">
+<h3>R/timestep_stochastic_birth_death.R</h3>
+<p>Now you will need to write the <code>timestep_stochastic_birth_death()</code> function to provide the right information to the main loop. We already have a deterministic step function for single species population dynamics (from Practical 1-5). We’ve written this function into {githubusername} as <code>step_deterministic_birth_death()</code>. Starting with this code, you need to make three changes.</p>
+<p>First, we need to handle the effect of changing timesteps and update the code with something like this:</p>
+<pre class="r"><code>timestep_stochastic_birth_death &lt;- function(latest, birth.rate, death.rate, timestep) {
+effective.birth.rate &lt;- birth.rate * timestep
+# -- some code to determine the numbers of new births and deaths -- 
+next.population &lt;- data.frame(time = latest$time + timestep, # -- some code -- )
+# -- some code to calculate whether the experiment is finished --
+}</code></pre>
+<p>Then we need to work out whether the simulation has ended and return both pieces of information – the updated population and simulation state, by returning a list like this at the end of the function (since a function can only return one item, we will have to return a list with two elements):</p>
+<pre class="r"><code>timestep_stochastic_birth_death &lt;- function(latest, birth.rate, death.rate, timestep) {
+  effective.birth.rate &lt;- birth.rate * timestep
+  # -- some code to determine the numbers of new births and deaths --
+  next.population &lt;- data.frame(time = latest$time + timestep, # -- some arguments -- )
+  # -- some code to calculate whether the experiment is finished --
+  list(updated.pop = next.population, 
+       end.experiment = is.finished) 
+}</code></pre>
+<p>But we need to determine whether the experiment is finished first – before the end of the function! In this case, the experiment will only end if the population completely dies out, so:</p>
+<pre class="r"><code>is.finished &lt;- the.number.of.individuals.left == 0</code></pre>
+<p>Finally, we need to make the simulation stochastic using <code>rbinom()</code>. Remember, if you want to draw once from the binomial distribution with <code>count</code> trials, and a probability of success of <code>prob</code>, then the number of successes is:</p>
+<pre class="r"><code>new.events &lt;- rbinom(1, count, prob)</code></pre>
+<p>So, the key is to use the <code>rbinom()</code> function to determine the numbers of new births and deaths in each time step. The number of births is drawn from a binomial distribution with size <code>count</code> and probability <code>birth.rate * timestep</code>, and the number of deaths is drawn from the same distribution with probability <code>death.rate * timestep</code>.</p>
+<p>Once you’re happy with your function, run <code>devtools::document()</code> to generate <span style="color: #de77ae;">man/</span> files and edit the <span style="color: #de77ae;">NAMESPACE</span>. Then run <code>devtools::install()</code> to permanently install it.</p>
+</div>
+</div>
+<div id="section-running-the-code" class="section level2">
+<h2>Running the code</h2>
+<p>When you are happy that the code is working and makes sense, run the code several times without changing any parameters of initial conditions and look at the output. The stochasticity means that we see variable outputs. If you don’t it may be because your starting population is too high. Try something much smaller, say 7 instead of 7 billion!</p>
+<p>Remember that you can run your code as a demo,</p>
+<pre class="r"><code>demo(&quot;d0302_stochastic_birth_death&quot;, package = &quot;githubusername&quot;)</code></pre>
+<p>or by opening the file in RStudio and compiling a notebook. You should get plots like these:</p>
+<center>
+<img src="images/3-2.gif" title="fig:" alt="plot" />
+</center>
+<p>In this example we used these parameters:</p>
+<pre class="r"><code>this.birth.rate &lt;- 0.2
+this.death.rate &lt;- 0.1
+initial.count &lt;- 1</code></pre>
+<p>You could also increase birth and death rates or the time you’re simulating over to increase visible variability.</p>
+<p>Notice that (as before) we have repeated the piece of code doing the simulation and have made use of the <code>new.graph = FALSE</code> option to overlay a second plot on the first.</p>
+<p>If you haven’t already, try increasing the value of timestep. What happens? You are actually getting impossible numbers (<code>NA</code>s) because the probability of giving birth has got above 1. You can fix this by using the <code>stop()</code> command in <code>timestep_stochastic_birth_death()</code> to stop running code when the numbers you put in are impossible:</p>
+<pre class="r"><code>if ((effective.birth.rate &gt;= 1) || (effective.death.rate &gt;= 1))
+  stop(&quot;Effective rate too high, timestep must be too big&quot;)</code></pre>
+Rerun the code and check it stops when appropriate. 
+<script type="application/shiny-prerendered" data-context="server-start">
+library(learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+</script>
+ <!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="dependencies">
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.11.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/jquery"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["1.11.3"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/jquery"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.6"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.6"]}]}]}
+</script>
+<!--/html_preserve-->
+<!--html_preserve-->
+<script type="application/shiny-prerendered" data-context="execution_dependencies">
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44]}},"value":[{"type":"character","attributes":{},"value":["backports","base","checkmate","codetools","compiler","curl","datasets","digest","ellipsis","evaluate","fastmap","gradethis","graphics","grDevices","highr","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","MASS","methods","mime","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","shiny","stats","stringi","stringr","tools","utils","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.2.1","4.0.3","2.0.0","0.2-16","4.0.3","4.3","4.0.3","0.6.27","0.3.1","0.14","1.0.1","0.2.0.9001","4.0.3","4.0.3","0.8","0.5.1.9000","1.5.3","1.5.5","1.7.2","1.30","1.1.0.1","0.10.1.9007","0.2.0","2.0.1","1.1","7.3-53","4.0.3","0.9","1.1.1","2.5.0","1.0.6","0.4.10","2.6","2.0.2","1.5.0","4.0.3","1.5.3","1.4.0","4.0.3","4.0.3","2.4.0","0.20","1.8-4","2.2.1"]}]}]}
+</script>
+<!--/html_preserve-->
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("section-TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
