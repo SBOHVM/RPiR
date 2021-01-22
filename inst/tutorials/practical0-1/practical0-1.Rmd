@@ -84,26 +84,36 @@ function_name <- function(argument) {
 }
 ```
 
-Above, we just have dummy code, and it doesn't work. We can write a couple of
-very simple functions though that really do something (not very exciting!):
+Above, we just have dummy code, and it doesn't work. Note that the *function
+body*, the code that gets run when you use the function is wrapped in curly
+brackets `{ ... }` - this makes it possible for the computer to know what is
+supposed to be in the function and what isn't.
+
+Now we can write a couple of very simple functions though that really do
+something (not very exciting!):
 
 ```{r simple, exercise.cap = "Example 1", exercise=TRUE}
-add_one <- function(number)
+add_one <- function(number) {
   number + 1
+}
 
 add_one(10)
 ```
 
 Try running the code block by clicking on *RUN CODE*. Can you see what it does
-yet? Feel free to change the `10` to make sure it works. And change what the
-function does - when you do, change the name though, so it makes sense... it's
-really important for your functions to have good names so it's easy to tell
-if you're using them right.
+yet? Feel free to change the argument from `10` to a different value to make
+sure it works as expected. And change what the function does if you like -
+when you do, change the name though, so it makes sense... it's really important
+for your functions to have good names so it's easy to tell if you're using them
+right. Note that because `add_one(10)` is after you close the curly bracket,
+it's not in the function, it's in your main script.
 
 The last (and indeed only) line of code in this function is what is returned by
-the function, here just the number plus one. Normally we need to do something
-more complex, so from now on all of our functions will use curly brackets -
-`{ ... }` - to allow us to write multiple lines in the function:
+the function, here just the number plus one. **It's critical that the
+last line of your function has the value you want to return in it.** Normally we
+need to do something more complex in our function - here we make a calculation
+and then return it on the last line (possibly the second most simple thing we
+could do):
 
 ```{r multiple, exercise.cap = "Example 2", exercise=TRUE}
 add_one <- function(number) {
