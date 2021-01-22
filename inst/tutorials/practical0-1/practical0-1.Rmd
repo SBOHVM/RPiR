@@ -228,6 +228,13 @@ grade_this_code()
 Rename the function and variables in *Exercise 2* so that it satisfies my
 naming rules.
 
+*There is much more on how to style your code to make it more consistent
+[here](http://adv-r.had.co.nz/Style.html). Hadley recommends never using dots,
+so using underscores to separate words in functions and variables. If you want
+to do that it's fine. Don't use dots in function names though. He has lots of
+other suggestions about how to write clear code - do have a look at it and try
+to follow it if you have time.*
+
 ### Not reusing names
 
 In *Exercise 1*, we showed that variables used in functions don't affect what
