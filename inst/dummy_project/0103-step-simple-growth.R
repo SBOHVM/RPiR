@@ -17,8 +17,7 @@
 #' #### Returns:
 #'
 #' - the updated population count
-step_simple_growth <- function(current.population, growth.rate)
-{
+step_simple_growth <- function(current.population, growth.rate) {
   # Calculate changes to population
   new.additions <- growth.rate * current.population
 
@@ -31,8 +30,7 @@ step_simple_growth <- function(current.population, growth.rate)
 
 #' Now check that step_simple_growth() doesn't have any global variables.
 library(codetools)
-if (length(findGlobals(step_simple_growth, merge=FALSE)$variables) != 0)
-{
+if (length(findGlobals(step_simple_growth, merge = FALSE)$variables) != 0) {
   stop("Function step_simple_growth() may not use global variable(s): ",
-       findGlobals(step_simple_growth, merge=FALSE)$variables)
+       findGlobals(step_simple_growth, merge = FALSE)$variables)
 }
