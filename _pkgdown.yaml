@@ -98,11 +98,16 @@ navbar:
       href: reference/index.html
 
   right:
+    - text: "How to"
+      icon: far fa-file
+      menu:
+      -  text: github
+         href: articles/pages/use_github.html
     - text: "Installation"
       icon: far fa-file
       menu:
       -  text: github
-         href: articles/pages/github.html
+         href: articles/pages/install_github.html
       -  text: package
          href: articles/pages/install_RPiR.html
       -  text: vscode
