@@ -13,6 +13,9 @@
     <loc>https://ibahcm.github.io/RPiR//reference/available_practicals.html</loc>
   </url>
   <url>
+    <loc>https://ibahcm.github.io/RPiR//reference/clean_cached_exercises.html</loc>
+  </url>
+  <url>
     <loc>https://ibahcm.github.io/RPiR//reference/cleanup_times.html</loc>
   </url>
   <url>
@@ -46,13 +49,10 @@
     <loc>https://ibahcm.github.io/RPiR//articles/faq.html</loc>
   </url>
   <url>
+    <loc>https://ibahcm.github.io/RPiR//articles/pages/github.html</loc>
+  </url>
+  <url>
     <loc>https://ibahcm.github.io/RPiR//articles/pages/install_RPiR.html</loc>
-  </url>
-  <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/install_github.html</loc>
-  </url>
-  <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/use_github.html</loc>
   </url>
   <url>
     <loc>https://ibahcm.github.io/RPiR//articles/pages/vscode_liveshare.html</loc>
