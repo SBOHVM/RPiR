@@ -106,13 +106,11 @@ jobs:
           rmd_files <- all_files[grep(".Rmd", all_files)]
           if (!file.exists(file.path("docs", "lectures")))
           dir.create(file.path("docs", "lectures"), recursive = TRUE)
+
           for (i in seq_len(length(rmd_files))) {
-          html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
-          out_file <- rmarkdown::render(rmd_files[i],
-          output_format = "ioslides_presentation")
-          html_file <- gsub("Rmd", "html", rmd_files[i])
-          file.copy(out_file, file.path("docs", "lectures",
-          basename(html_file)), overwrite = TRUE)
+          rmarkdown::render(rmd_files[i],
+          output_format = "html_document",
+          output_dir = file.path("docs", "lectures"), clean = TRUE)
           }
         shell: Rscript {0}
 
@@ -124,13 +122,11 @@ jobs:
           rmd_files <- all_files[grep(".Rmd", all_files)]
           if (!file.exists(file.path("docs", "lectures_html")))
           dir.create(file.path("docs", "lectures_html"), recursive = TRUE)
+
           for (i in seq_len(length(rmd_files))) {
-          html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
-          out_file <- rmarkdown::render(rmd_files[i],
-          output_format = "html_document")
-          html_file <- gsub("Rmd", "html", rmd_files[i])
-          file.copy(out_file, file.path("docs", "lectures_html",
-          basename(html_file)), overwrite = TRUE)
+          rmarkdown::render(rmd_files[i],
+          output_format = "html_document",
+          output_dir = file.path("docs", "lectures_html"), clean = TRUE)
           }
         shell: Rscript {0}
 
@@ -144,13 +140,11 @@ jobs:
           rmd_files <- rmd_files[!grepl("1-", rmd_files)]
           if (!file.exists(file.path("docs", "tutorials_html")))
           dir.create(file.path("docs", "tutorials_html"), recursive = TRUE)
+
           for (i in seq_len(length(rmd_files))) {
-          html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
-          out_file <- rmarkdown::render(rmd_files[i],
-          rmarkdown::html_document(pandoc_args = "--self-contained"))
-          html_file <- gsub("Rmd", "html", rmd_files[i])
-          file.copy(out_file, file.path("docs", "tutorials_html",
-          basename(html_file)), overwrite = TRUE)
+          rmarkdown::render(rmd_files[i],
+          output_format = rmarkdown::html_document(pandoc_args = "--self-contained"),
+          output_dir = file.path("docs", "tutorials_html"), clean = TRUE)
           }
         shell: Rscript {0}
 
