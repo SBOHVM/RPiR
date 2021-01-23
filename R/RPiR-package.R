@@ -61,6 +61,7 @@
 #' @import rmarkdown
 #' @import usethis
 #' @import utils
+#' @import rlang
 #'
 #' @examples
 #' \dontrun{
