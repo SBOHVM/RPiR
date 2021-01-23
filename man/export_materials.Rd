@@ -6,6 +6,11 @@
 \usage{
 export_materials(materials, type = "exercises")
 }
+\arguments{
+\item{materials}{materials}
+
+\item{type}{content type}
+}
 \description{
 export_materials
 }

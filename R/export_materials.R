@@ -1,5 +1,7 @@
 #' export_materials
 #'
+#' @param materials materials
+#' @param type content type
 #'
 export_materials <- function(materials, type = "exercises") {
   if (type == "exercises") {
