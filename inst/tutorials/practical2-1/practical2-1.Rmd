@@ -12,10 +12,8 @@ description: >
 
 ```{r setup, include=FALSE}
 library(learnr)
-
+ 
 knitr::opts_chunk$set(error = TRUE)
-options(knitr.kable.NA = '')
-
 set.seed(123)
 ```
 
