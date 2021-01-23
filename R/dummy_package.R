@@ -1,6 +1,6 @@
 #' dummy_package
 #'
-#' This function will create an RStudio project called `package0301` and
+#' This function will create an RStudio project and
 #' populate it with `0105-run-birth-death.R` (now `run-birth-death.R`), and
 #' `0105-step-birth-death.R` (now `step_deterministic_birth_death.R`).
 #'

@@ -24,9 +24,8 @@ dummy_project <- function(project_name) {
   files <- dir(files, full.names = TRUE)
 
   for (i in files) {
-    filename <- gsub("01", "02", basename(files[i]))
-    file.copy(files[i], file.path(project_name, filename))
-    usethis::ui_done(paste("Writing", usethis::ui_value(filename)))
+    file.copy(files[i], file.path(project_name, basename(files[i])))
+    usethis::ui_done(paste("Writing", usethis::ui_value(basename(files[i]))))
   }
 
   # Create an RStudio project, project_name, and open it in a new instance
