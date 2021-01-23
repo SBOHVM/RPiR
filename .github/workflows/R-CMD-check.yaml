@@ -105,7 +105,7 @@ jobs:
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           if (!file.exists(file.path("docs", "lectures")))
-          dir.create(file.path("docs", "lectures"))
+          dir.create(file.path("docs", "lectures"), recursive = TRUE)
           for (i in seq_len(length(rmd_files))) {
           html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
           out_file <- rmarkdown::render(rmd_files[i],
@@ -123,7 +123,7 @@ jobs:
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           if (!file.exists(file.path("docs", "lectures_html")))
-          dir.create(file.path("docs", "lectures_html"))
+          dir.create(file.path("docs", "lectures_html"), recursive = TRUE)
           for (i in seq_len(length(rmd_files))) {
           html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
           out_file <- rmarkdown::render(rmd_files[i],
@@ -141,7 +141,7 @@ jobs:
           all_files <- dir(file.path("inst", "tutorials"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
           if (!file.exists(file.path("docs", "tutorials_html")))
-          dir.create(file.path("docs", "tutorials_html"))
+          dir.create(file.path("docs", "tutorials_html"), recursive = TRUE)
           for (i in seq_len(length(rmd_files))) {
           html_file <- basename(gsub("Rmd", "html", rmd_files[i]))
           out_file <- rmarkdown::render(rmd_files[i],
