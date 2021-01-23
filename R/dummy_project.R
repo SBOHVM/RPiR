@@ -23,9 +23,10 @@ dummy_project <- function(project_name) {
   files <- system.file("dummy_project", package = "RPiR")
   files <- dir(files, full.names = TRUE)
 
-  for (i in files) {
-    file.copy(files[i], file.path(project_name, basename(files[i])))
-    usethis::ui_done(paste("Writing", usethis::ui_value(basename(files[i]))))
+  for (i in seq_len(length(files))) {
+    filename <- basename(files[i])
+    file.copy(files[i], file.path(project_name, filename))
+    usethis::ui_done(paste("Writing", usethis::ui_value(filename)))
   }
 
   # Create an RStudio project, project_name, and open it in a new instance
