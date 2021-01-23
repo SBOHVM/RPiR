@@ -36,9 +36,7 @@ any arguments.
 
 A new instance of RStudio should open:
 
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/project.png')
-```
+![](images/project.png){ width=100% }
 
 You should find that (1) your working directory is now 
 <span style="color: #de77ae;">project0201</span>, (2) inside this directory
@@ -58,9 +56,7 @@ directory there is only one file, an Rproj file, and (3) an RStudio project has
 been set up. If you click on the name of your new project in the top right
 corner of RStudio, you should see (4) a list of recently opened projects.
 
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/new_project.png')
-```
+![](images/new_project.png){ width=100% }
 
 Click on <span style="color: #de77ae;">project0201</span> to reopen the original
 project and you should find that your working directory has changed back to 
