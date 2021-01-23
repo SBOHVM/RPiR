@@ -3,7 +3,7 @@
 ### File: 0105-run-birth-death.r
 
 #' Load in the functions that do the work
-library(ProgInR)
+library(RPiR)
 source("0105-step-birth-death.r")
 
 #' Set up the simulation parameters
@@ -29,9 +29,11 @@ timesteps <- seq(from = start.time + 1, to = end.time)
 
 ## Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
-  updated.population <- step_deterministic_birth_death(latest = tail(population.df, 1),
-                                                       birth.rate = birth.rate,
-                                                       death.rate = death.rate)
+  updated.population <-
+    step_deterministic_birth_death(latest = tail(population.df, 1),
+                                   birth.rate = birth.rate,
+                                   death.rate = death.rate
+    )
   population.df <- rbind(population.df, updated.population)
 }
 

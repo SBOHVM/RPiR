@@ -4,9 +4,14 @@
 \alias{dummy_project}
 \title{dummy_project}
 \usage{
-dummy_project()
+dummy_project(project_name)
+}
+\arguments{
+\item{project_name}{a \code{string} corresponding to the name you want to
+give your project; this should be your GitHub user name, followed by the
+practical number, *e.g.* maryjane_0201}
 }
 \description{
-This function will create an RStudio project called `project0201` and
-populate it with `0105-run-birth-death.R` and `0105-step-birth-death.R`.
+This function will create an RStudio project and
+populate it with scripts from practical series 1.
 }
