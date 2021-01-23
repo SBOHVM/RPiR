@@ -1,0 +1,100 @@
+---
+title: "Reproducible Programming in R Practical 4-3"
+output: 
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Students add functions and documentation to a data package.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+
+## Overview
+*In this session you will add some functions to your biodiversity data package* 
+*to allow you to subsample from your data. The intention is just to see how we* 
+*add functions to a package, and to provide you with an example of what the*
+*documentation for a function in an R package looks like. You will also add the*
+*documentation for the package as a whole.*
+
+## Background
+
+It’s rarely the case that you will have access to a fully sampled dataset like
+that at BCI. To pretend that your dataset has incomplete data, I have provided 
+you with two functions on Moodle that will subsample the data in different ways. 
+The first, `sample_by_species()`, will sample from the dataset as if you were
+recording only some of the species (chosen at random) and ignoring the others. 
+The second, `sample_by_subcommunities()`, will record the counts from only 
+some of the subcommunities (here quadrats) and ignore the others. There are 
+other ways of subsampling or recording data incompletely, and we will
+investigate this in the project. You can see some documentation on how to write
+help files for functions at https://r-pkgs.org/man.html#man-functions and an
+older version at http://r-pkgs.had.co.nz/man.html#man-functions – these pages 
+are very useful and you should take a look.
+
+## Tasks
+
+You simply need to download the R files for these functions from Moodle and put
+them in the <span style="color: #de77ae;">R</span> folder of your package, and
+edit the documentation for each of these functions and the 
+<span style="color: #de77ae;">DESCRIPTION</span> file of your package so that 
+all dependencies are included. Then regenerate the documentation and reinstall 
+the package from the <span style="color: #de77ae;">Build</span> menu. Doing this 
+should allow you to access the help files for these functions 
+(`?sample_by_species` and `?sample_by_communities`) and run the example code (by 
+calling `example(sample_by_species)`, for instance). 
+
+You should also create a description for the overall package, so that `?BCI` 
+returns a description, and you should put the same (or similar) text into the 
+<span style="color: #de77ae;">README.md</span> file for the package so that 
+people going to GitHub will see what the package that you have created does 
+without having to install it. Note that GitHub README pages use a special type 
+of markdown called Git Flavored Markdown; more information can be found here https://docs.github.com/en/free-pro-team@latest/github/writing-on-github with 
+more general documentation here 
+https://guides.github.com/features/mastering-markdown/. Note that with markdown
+you don’t need to start lines with `#'`.
+
+To do this, create a new file in the <span style="color: #de77ae;">R</span> 
+folder – I’m going to call it <span style="color: #de77ae;">BCI-package.R</span> 
+because the convention is {packagename}-package.R. Then describe your package (most easily lifted 
+from the <span style="color: #de77ae;">DESCRIPTION</span> file):
+
+```{r eval = FALSE}
+#' BCI data package 
+#'
+#' Package to hold the BCI data (or whatever) – maybe also mention something
+#' about these functions now, and put that in the DESCRIPTION too. And then
+#' put it in the README.md file. 
+#'
+#' @import magrittr 
+#'
+#' @name BCI-package
+#' @aliases BCI
+#' @docType package 
+#'
+NULL
+```
+
+There are a few things going on here that you should notice for making packages 
+in the future. The first is that you need to say what your package is called – 
+here I have given it two names `BCI-package` and an alias of just `BCI`, which 
+you do with the `@aliases` command. Secondly, the `NULL` at the end of the file
+is included when there is no object associated with this documentation, which is
+the case here, since this file contains the package documentation, as defined
+explicitly in the `@docType` tag (more info here –
+http://r-pkgs.had.co.nz/man.html#man-packages). Finally, if you are using any 
+packages in any of your functions, you may want to import them into your 
+package. This is done using `@import` – see more here –
+http://r-pkgs.had.co.nz/namespace.html. You can then put the same, or a similar,
+package description into the <span style="color: #de77ae;">README.md</span> 
+file. Once you have redocumented and reinstalled everything, and checked that it 
+is all working, commit and push all of the changes to GitHub and ask your 
+collaborator to check that this works for them as well.

@@ -1,0 +1,189 @@
+---
+title: "3-3: Stochastic births and deaths model"
+output: 
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Students learn how to pass functions as arguments.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+## Overview
+
+*In this practical you will see how we can make the code for the stochastic birth-death model safer, simpler, and more reusable.*
+
+## Background
+
+When running stochastic simulations we often want to run multiple simulations
+and compare outputs easily. In this practical we will learn how to efficiently 
+plot multiple outputs on the same graph, and use a new set of functions 
+contained within the 
+<span style="color: #1697C0;">IBAHCM/RPiR</span> package on GitHub.
+
+## Tasks
+
+You can look at the code used to generate this package on GitHub at https://github.com/IBAHCM/RPiR.
+Take a look at this code online and read the following explanation.
+
+Remember that in the previous practical the program 
+repeated a section of code to overlay another output on the graph:
+
+```{r, eval = FALSE}
+#' Section: And again!
+#' -------------------
+population.df <- data.frame(time = start.time,
+                            count = initial.count) 
+
+latest.population <- population.df
+keep.going <- latest.population$time < end.time 
+
+while (keep.going) {
+  data <- timestep_stochastic_birth_death(latest.population,
+                                          human.annual.birth,
+                                          human.annual.death,
+                                          short.timestep)
+  latest.population <- data$updated.pop
+  population.df <- rbind(population.df, latest.population) 
+  keep.going <- (!data$end.experiment) && (latest.population$time < end.time)
+}
+
+plot_populations(population.df, new.graph = FALSE, lty = 2)
+```
+
+**It is bad practice to be copying and pasting identical code** as we can easily
+introduce mistakes. So we should try to separate the simulation functionality 
+from the model more cleanly. Take a look at the new 
+function `run_simple()` online. Go to <span style="color: #1697C0;">https://github.com/IBAHCM/RPiR</span>, open on the 
+<span style="color: #1697C0;">R</span> folder, and find the file called 
+<span style="color: #1697C0;">run_simple.R</span>. It should look something like
+this:
+
+```{r, eval = FALSE}
+#' @title Simplest code to run a simulation loop #'
+#' @description
+#' A generic function to run a simulation loop for a fixed period of time.
+#'
+#' @param step_function Function to run a timestep (step_function())
+#' which returns a list containing elements updated.pop} with the
+#' updated population and end.experiment which is TRUE if
+#' the experiment has ended (FALSE if not)
+#' @param initial.pop Initial population data frame with columns corresponding 
+#' to function requirements
+#' @param end.time End of time simulation
+#' @param ... (optional) any other arguments for step_function(), e.g. 
+#' parameters or timestep
+#'
+#' @return Data frame containing population history of simulation over time
+run_simple <- function(step_function, 
+                       initial.pop,
+                       end.time, 
+                       ...) {
+  # Check whether step_function uses global variables
+  if (length(findGlobals(step_function, merge = FALSE)$variables) > 0)
+    warning(paste("Function provided uses global variable(s):",
+                  paste(findGlobals(step_function, merge = FALSE)$variables,
+                        collapse = ", "))) 
+  population.df <- latest.df <- initial.pop 
+  keep.going <- (latest.df$time < end.time)
+  while (keep.going) {
+    data <- step_function(latest.df, ...)
+    latest.df <- data$updated.pop
+    population.df <- rbind(population.df, latest.df) 
+    keep.going <- (latest.df$time < end.time) && (!data$end.experiment)
+  }
+  row.names(population.df) <- NULL 
+  population.df
+}
+```
+
+The purpose of this new function is to separate out the simulation functionality 
+from the model, and to simplify and automate the running of multiple stochastic
+simulations. If you look closely you can see that the function `run_simple()` 
+does the job we described in the <span style="color: #de77ae;">And again!</span>
+section (at the top of this page). It is set up in terms 
+of the generically named `step_function()` – in the case of the current model we
+would be using `timestep_stochastic_birth_death()` when we call `run_simple()`:
+
+```{r, eval = FALSE}
+final.populations <- run_simple(timestep_stochastic_birth_death,
+                                initial.populations, 
+                                end.time,
+                                birth.rate = human.annual.birth,
+                                death.rate = human.annual.death,
+                                timestep = short.timestep)
+```
+
+There are two things going on here that we haven’t seen before: (1) We're 
+passing the step function as an argument to the `run_simple()` function. This 
+just happens like any other argument being passed, you pass in the function, it 
+gets assigned to the `step_function` argument – remember that we can call it 
+anything inside a function – and then `step_function` gets used just like
+`initial.pop` and all of the other arguments. (2) the argument `...`. 
+This is a way of saying "and there will be other arguments I don’t want to (or 
+can’t) specify". You will find this in lots of R code (see `?plot` for example). 
+For us, the point is that *each step function will need different parameters* 
+*passed to it, and we don’t know what they are in advance*. Instead we just pass 
+them through:
+
+```{r, eval = FALSE}
+data <- step_function(initial.pop, ...)
+```
+
+**Any arguments after the three fixed arguments to** `run_simple()`
+**must be named** – they will be passed straight through to the step function 
+(via the `...`).
+
+### demo/d0303_run_birth_death.R
+
+Now write a new demo called 
+<span style="color: #de77ae;">d0303_run_birth_death</span> using
+`run_simple()` to replace the whole simulation loop in the earlier code. 
+This should make the code in
+<span style="color: #de77ae;">d0302_stochastic_birth_death</span> more compact, and 
+will also make it much less prone
+to error, as we’ve isolated 10 more lines of code that we never need to write 
+(or copy and paste) again. 
+
+Note that there is a demo in {RPiR} that checks
+all of the functions provided for global variables for you, so you don’t have to
+remember – another optimisation to stop you forgetting to check.
+
+If you encounter any problems, {RPiR} has a function, `run_simulation()`, 
+that does some additional checking and reporting if you set an additional 
+argument `debug = TRUE`, which may help you identify what’s going wrong. We’ve 
+mostly suggested using `run_simple()` here as it’s significantly easier to 
+follow what’s going on in the function, but in future exercises, it’s better to 
+use `run_simulation()` for everything as it has some other additional 
+functionality.
+
+## Running the code / Report
+
+Run the code and observe the variability in outputs. You should get something 
+like this:
+
+<center>![plot](images/3-3.gif)</center>
+
+especially if you used these parameters:
+
+```{r, eval = FALSE}
+this.birth.rate <- 0.06
+this.death.rate <- 0.02
+initial.count <- 1
+```
+
+What happens to the 
+variability as you increase the initial population size? You may want to adjust 
+the scale of the y-axis to see what happens at larger population sizes. To
+automate this, you can set the y-axis upper limit to $100 \times$ 
+`initial.count` 
+by setting `ylim = c(0, 100 * initial.count)`. Report these results in 
+your demo.

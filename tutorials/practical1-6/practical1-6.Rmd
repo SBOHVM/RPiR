@@ -1,0 +1,156 @@
+---
+title: "Practical 1-6: Writing a report in RStudio"
+output: 
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Students learn to write a report in RStudio, combining everything they have 
+  learned so far. They also learn how to empty the Global Environment and use 
+  stop() to catch errors.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
+gradethis::gradethis_setup()
+ 
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+## Overview
+
+*In this session we will take the code for the models with just growth (1-4)* 
+*and with births and deaths (1-5) and make a clearer report comparing the two.*
+
+> Note that from here on out you need to have two versions of RStudio
+open at a time. One to run the {learnr} course (this will likely have a big red
+stop button preventing you from being able to run anything in the Console) and
+one to do your work in. If you don't still have it open, you should be able to
+open the new project that you created in Practical 1-1
+using <span style="color: #de77ae;">File > Open Project in New Session...</span>
+in RStudio or follow the instructions in 1-1 to create another new project if
+you want to do that.
+
+## Background
+
+We are now going to demonstrate in a small way why it’s worth dividing up the
+code into separate functions, and indeed separate files. Previously we wrote a
+simple growth model, and a model of birth and death. We’re now going to use the
+two-step functions we created and run both models in a new script that compares 
+them. For this final part of practical 1, we're going to generate a report in 
+RStudio using everything we've learned so far.
+
+## A clean start
+
+Sometimes you can find that something you have done before in R can interfere 
+with what you are now doing -- though if you’ve written all of your code 
+correctly, then obviously(!) this should never happen. It is useful then
+to know that you can clear what is held in R’s memory using `rm(list=ls())`. 
+This will cause all of the variables and functions in your 
+**Global Environment** to disappear (*e.g.* if you type `human.annual.growth` 
+in the R console it should tell you that the object is "not found"). As a 
+fundamental rule however, you should **never hardcode** `rm(list=ls())` 
+**into any of your scripts**, and in fact you should just not use it.
+It’s generally a sign your code isn’t written well if it can be affected by
+something before it. Instead, you can clear your workspace by clicking the brush
+in the <span style="color: #de77ae;">Environment</span> tab in RStudio (or 
+<span style="color: #de77ae;">Session > Clear Workspace...</span> in the menus). 
+
+However, generally it's easier to Restart R. This is much safer and more final.
+You can do it in RStudio via <span style="color: #de77ae;">Session > Restart R</span>
+in the menus: it is far 
+more effective than clearing just the workspace as it resets everything, while 
+leaving RStudio itself unaffected. Remember that once you have done this you may 
+have to set the working directory to the correct folder, and you will certainly 
+have to start running your code again completely from the beginning.
+
+Note that, when you generate a report from the script file, they are always 
+generated from a new, clean, version of R. So this is a very important final 
+check that all of your code is working correctly – it’s as if 
+you did restart R without actually wiping everything in your current R console -
+but only if you read it and check it looks right!
+
+The other check we strongly encourage you to do is to check that your function 
+does not use any global variables by using `findGlobals()`.
+
+You should also generate a report for any function files you create. If you want 
+to, you can put the `findGlobals()` check into this function file (which will
+run the check when you generate the report for that file) so it doesn’t 
+clutter up the main script itself. But this is only useful if you generate a 
+report from the function file! To solve this, you can make it so the report will 
+fail to generate for that script when global variables are used with the 
+following code snippets:
+
+```{r, eval = FALSE}
+# Now check that function doesn't have any global variables.
+library(codetools)
+globals <- findGlobals(step_simple_growth, merge = FALSE)$variables 
+if (length(globals) != 0) {
+  stop("Function step_simple_growth() may not use global variable(s): ", globals)
+}
+```
+
+## Tasks
+
+Remember again that our first model of simple population growth model looks like
+this:
+
+$$N(t+1) = N(t) + \lambda \times N(t)$$
+
+The birth and death model is slightly more complex:
+
+$$ N(t+1) = N(t) + b \times N(t) – d \times N(t)$$
+
+Remember that <span style="color: #de77ae;">0104-step-growth.r</span> has the
+`step_deterministic_growth()` function and 
+<span style="color: #de77ae;">0105-step-birth-death.r</span> has the 
+`step_deterministic_birth_death()` function, so we need to `source()` both of
+these files (as well as 
+<span style="color: #de77ae;">0104-plot-helper.r</span>).
+
+Now open RStudio. For this practical, we're going to generate a report called 
+<span style="color: #de77ae;">0106-final-report.r</span>. We want to compare the
+models, so write some code that first runs a simulation with one model and plots 
+it, and then with the other model and plots that as well. Remember that you can 
+plot a second (or third, etc.) result on top of a first with commands like:
+
+```{r, eval = FALSE}
+plot_populations(population.b, new.graph = FALSE, col = "red")
+```
+
+You should try running:
+
+1. The birth-death model with a single given birth and death rate
+2. The simple growth model with the birth rate as the growth rate
+3. The simple growth model with minus the death rate as the (negative) growth
+rate
+4. The simple growth model with the difference (between the rates in 1) as the 
+growth rate
+
+When you try to run your code you should find that the graphs are very likely on
+different scales. You can set the y-axis limits of the second graph to the same 
+as the first by reading off what they are on the first graph, and then plotting
+the second as follows:
+
+```{r, eval = FALSE}
+plot_populations(population.df, ylim = c(0, 20000000000))
+```
+
+Once you’ve done this it should be easier to compare the two (by eye at least).
+
+## Report
+
+For this report, we want something substantially clearer and better laid out, 
+showing something that demonstrates the relationship between the growth and the
+birth-death models, noting for instance that the crude global birth and death 
+rates are around 23 per 1000 population and 8 per 1000 respectively. You can see
+an example of most of the possible formatting options in 
+<span style="color: #de77ae;">0100-example-notebook.r</span>. Use an 
+understanding of what you want to describe –
+and formatting from the example file or elsewhere – to break up your script so 
+that your code and the results and figures are interspersed with a reasonable
+explanation of what is going on.
