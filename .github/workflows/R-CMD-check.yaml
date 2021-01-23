@@ -140,6 +140,8 @@ jobs:
         run: |
           all_files <- dir(file.path("inst", "tutorials"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
+          rmd_files <- rmd_files[!grepl("0-", rmd_files)]
+          rmd_files <- rmd_files[!grepl("1-", rmd_files)]
           if (!file.exists(file.path("docs", "tutorials_html")))
           dir.create(file.path("docs", "tutorials_html"), recursive = TRUE)
           for (i in seq_len(length(rmd_files))) {
