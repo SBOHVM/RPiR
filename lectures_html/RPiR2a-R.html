@@ -508,7 +508,7 @@ mtcars %&gt;% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()</code></pre>
 </div>
 <div id="how-do-we-save-to-disk" class="section level2">
 <h2>How do we save to disk?</h2>
-<pre class="r"><code>pdf(&quot;out.pdf&quot;)
+<pre class="r"><code>png(&quot;out.png&quot;)
 plot(c(1, 2, 3), c(1, 2, 1), type = &quot;l&quot;)
 dev.off()</code></pre>
 <pre class="r"><code>?pdf
@@ -519,7 +519,7 @@ dev.off()</code></pre>
 <h2>How do we save to disk?</h2>
 <p>Again, using ggplot2…</p>
 <pre class="r"><code>g &lt;- mtcars %&gt;% ggplot(aes(wt, mpg)) + geom_point() + geom_smooth()
-ggsave(&quot;out.pdf&quot;, g)</code></pre>
+ggsave(&quot;out.png&quot;, g)</code></pre>
 <pre class="r"><code>?ggsave</code></pre>
 </div>
 <div id="how-do-we-use-packages" class="section level2">
