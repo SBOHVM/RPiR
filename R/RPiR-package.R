@@ -11,6 +11,7 @@
 #'
 #' The following tutorials are included in this package:
 #' \itemize{
+#' \item 0-1: Introduction to for loops and functions
 #' \item 1-1 Exponential growth model; Writing scripts and commenting code
 #' \item 1-2 Exponential growth model; Writing functions
 #' \item 1-3 Exponential growth model; Sourcing code
@@ -48,23 +49,23 @@
 #' @docType package
 #'
 #' @import codetools
+#' @import datasets
 #' @import deSolve
 #' @import devtools
+#' @import dplyr
+#' @import ggplot2
 #' @rawNamespace import(gradethis, except = random_praise)
 #' @import graphics
+#' @import knitr
 #' @import learnr
 #' @import rmarkdown
-#' @import utils
 #' @import usethis
-#' @import dplyr
-#' @import datasets
-#' @import ggplot2
+#' @import utils
 #'
 #' @examples
 #' \dontrun{
 #' # To run a tutorial
-#' library(learnr)
-#' run_tutorial("practical1-1", package = "RPiR")
+#' RPiR::run_practical("practical1-1")
 #' }
 #'
 NULL

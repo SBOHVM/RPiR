@@ -62,6 +62,7 @@ continuous documents for later reference (under `Lectures (html)`).
 
 The following practicals are included in this package:
 
+* `practical0-1`: Introduction to for loops and functions
 * `practical1-1`: Exponential growth model; Writing scripts and commenting code
 * `practical1-2`: Exponential growth model; Writing functions
 * `practical1-3`: Exponential growth model; Sourcing code
