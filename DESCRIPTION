@@ -9,7 +9,7 @@ Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
 Description: Reproducible Programming in R course at IBAHCM, University of Glasgow.
     This package provides learnr exercises for the course as well as basic
     functionality to help with the course.
-License: GPL-3
+License: GPL (>= 3) | file LICENSE
 Imports:
     codetools,
     datasets,
@@ -23,7 +23,8 @@ Imports:
     learnr,
     rmarkdown,
     usethis,
-    utils
+    utils,
+    rlang
 Remotes:
     rstudio/learnr,
     rstudio-education/gradethis
