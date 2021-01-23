@@ -32,8 +32,7 @@ for (new.time in timesteps) {
   updated.population <-
     step_deterministic_birth_death(latest = tail(population.df, 1),
                                    birth.rate = birth.rate,
-                                   death.rate = death.rate
-    )
+                                   death.rate = death.rate)
   population.df <- rbind(population.df, updated.population)
 }
 

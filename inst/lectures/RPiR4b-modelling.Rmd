@@ -302,5 +302,3 @@ $$I_{t+1} = I_t + \beta I_t \frac{S_t}{N} – \sigma I_t$$
 - Programming in R Practical:
   - Extending your programming skills
   - Building simple disease dynamics models in R
-
-
