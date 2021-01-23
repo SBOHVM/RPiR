@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.42.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.42.10</span>
       </span>
     </div>
 
@@ -163,13 +163,27 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="far fa-file"></span>
      
+    How to
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../../articles/pages/use_github.html">github</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="far fa-file"></span>
+     
     Installation
      
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../../articles/pages/github.html">github</a>
+      <a href="../../articles/pages/install_github.html">github</a>
     </li>
     <li>
       <a href="../../articles/pages/install_RPiR.html">package</a>
@@ -189,7 +203,7 @@
 
       
 
-      </header><script src="github_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><script src="use_github_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Connecting RStudio to GitHub</h1>
@@ -197,7 +211,7 @@
             <h4 class="date">January 23 2021</h4>
       
       
-      <div class="hidden name"><code>github.Rmd</code></div>
+      <div class="hidden name"><code>use_github.Rmd</code></div>
 
     </div>
 
@@ -207,88 +221,16 @@
 <h1 class="hasAnchor">
 <a href="#github" class="anchor"></a>GitHub</h1>
 <p><em>for RStudio</em></p>
-<div id="prerequisites" class="section level2">
-<h2 class="hasAnchor">
-<a href="#prerequisites" class="anchor"></a>Prerequisites</h2>
-<ol style="list-style-type: decimal">
-<li>Create a GitHub account - go to <a href="https://github.com/" class="uri">https://github.com/</a> and sign up with your university email address</li>
-<li>Verify your account</li>
-<li>Go to <a href="https://education.github.com" class="uri">https://education.github.com</a>, click <strong>Students</strong> and/or <strong>Get benefits for students</strong>, and follow the instructions</li>
-</ol>
-<div id="possible-problems" class="section level3">
-<h3 class="hasAnchor">
-<a href="#possible-problems" class="anchor"></a>Possible problems</h3>
-<p>If you already have a GitHub account, then try registering it as an education account using the same link. We <em>think</em> that it won’t be critical for this course that you are registered with the education pack, so if you can’t, we’ll leave it for now. <em>Please do remember though in case anything crops up later.</em> However, you will receive emails for the course on the email address you are registered with here, so if you already have an account be aware of this. You can change the email address GitHub uses on your profile if you need to.</p>
-</div>
-</div>
-<div id="ask-to-be-added-to-the-ibahcm-github-organisation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ask-to-be-added-to-the-ibahcm-github-organisation" class="anchor"></a>Ask to be added to the IBAHCM GitHub organisation</h2>
-<p>Go to the Discussion section of the <a href="https://github.com/IBAHCM/RPiR">RPiR</a> repository on GitHub, and create a new discussion (category <em>Registration</em>)<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>. Simply ask to be added to the organisation. Once we’ve added you, we’ll respond and you should accept the invitation and acknowledge that you have successfully joined. This discussion section on the R package is where we will hold discussions and answer questions during the course, so you may want to bookmark it.</p>
-</div>
-<div id="meanwhile-set-git-and-github-up-with-rstudio" class="section level2">
-<h2 class="hasAnchor">
-<a href="#meanwhile-set-git-and-github-up-with-rstudio" class="anchor"></a>Meanwhile, set git and GitHub up with RStudio</h2>
-<p>In RStudio, open <span style="color: #de77ae;">RStudio &gt; Preferences</span> (or <span style="color: #de77ae;">Tools &gt; Global Options</span> if you’re using Windows). Go down to the <span style="color: #de77ae;">GIT/SVN</span> tab and ensure that <span style="color: #de77ae;">Enable version control interface for RStudio projects</span> is checked.</p>
-<p>While you’re here, make sure you have a <span style="color: #de77ae;">git executable</span>. If this box is empty, you need to install <code>git</code>. Go <a href="https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN">here</a> and scroll down to the <span style="color: #de77ae;">Installation</span> section, then <strong>restart RStudio</strong>.</p>
-<blockquote>
-<p>Note that having git installed <em>is different</em> from installing <code>libgit2</code> when you installed the <code>RPiR</code> package earlier, so you may have to install git here, even if you fixed the problems earlier!</p>
-</blockquote>
-<p>Now that we’re sure <code>git</code> is installed, we’re going to set up encryption between your computer and GitHub. To do this we need to generate a certificate. Click on <span style="color: #de77ae;">Create RSA Key…</span></p>
-<p><img src="images/github/0-2.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key</p>
-<p><img src="images/github/0-3.png" width="100%" style="display: block; margin: auto;"></p>
-<p>It should look like this</p>
-<p><img src="images/github/0-4.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Now you need to copy your public key and register it with GitHub, so click on <span style="color: #de77ae;">View public key</span></p>
-<p><img src="images/github/0-5.png" width="100%" style="display: block; margin: auto;"></p>
-<p>.. and copy the key to your clipboard</p>
-<p><img src="images/github/0-6.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Then in GitHub, in your <span style="color: #de77ae;">Personal settings</span>, open the <span style="color: #de77ae;">SSH and GPG keys</span> tab</p>
-<p><img src="images/github/0-7.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Create a <span style="color: #de77ae;">New SSH key</span></p>
-<p><img src="images/github/0-8.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Paste the public key that you copied from RStudio into the box and click <span style="color: #de77ae;">Add SSH key</span></p>
-<p><img src="images/github/0-9.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Now back in RStudio, tell git your user name and email address (these are used to label each commit that you make to GitHub). <strong>Make sure the email address you</strong> <strong>enter here is the same as the one that you registered on GitHub</strong>. First, make sure that the <code>usethis</code> package is installed by calling <code><a href="https://usethis.r-lib.org">library(usethis)</a></code>. If that doesn’t work, then install it, and then configure git using it:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span> <span class="co"># If need be</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://usethis.r-lib.org">usethis</a></span><span class="op">)</span>
-
-<span class="fu"><a href="https://usethis.r-lib.org/reference/use_git_config.html">use_git_config</a></span><span class="op">(</span>
-  scope <span class="op">=</span> <span class="st">"user"</span>,
-  user.name <span class="op">=</span> <span class="st">"insert_github_username_here"</span>,
-  user.email <span class="op">=</span> <span class="st">"insert_email_address_here"</span>
-<span class="op">)</span></code></pre></div>
-<p>RStudio will now remember your details, so don’t worry about having to enter them again in the future. You should, however, check that your username and email address was entered correctly! So from the terminal tab, input the following (this will only work on a Mac):</p>
-<pre><code>git config --global --list</code></pre>
-</div>
-<div id="add-a-pat" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-a-pat" class="anchor"></a>Add a PAT</h2>
-<p>Now in RStudio, run:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/github-token.html">create_github_token</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This will open a GitHub page in your browser, like this:</p>
-<p><img src="images/github/git.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Scroll down to the bottom of this page and click on the green <span style="color: #de77ae;">Generate Token</span> button.</p>
-<p>Your screen should now look something like this:</p>
-<p><img src="images/github/pat.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Copy the alphanumeric string (in the green box) by clicking on the tiny, blue clipboard.</p>
-<p>Now back in RStudio, run:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This will open up a new file in a new tab in RStudio called <span style="color: #de77ae;">.Renviron</span>. Inside this file, on a new line, type the following, replacing <code>put_string_here</code> with the alphanumeric string you copied earlier:</p>
-<pre><code>GITHUB_PAT="put_string_here"</code></pre>
-<p>Now save this file (don’t run it) and close it.</p>
-<p>Now restart RStudio and you’re done.</p>
-</div>
 <div id="create-a-new-github-repository" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-new-github-repository" class="anchor"></a>Create a new GitHub repository</h2>
 <p>It’s important that you use version control in your project workflow, so let’s set up a new GitHub repository (you should make a new repository for each project you’re working on). To do this, click <span style="color: #de77ae;">New</span></p>
 <p><img src="images/github/1-1.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Choose a short, descriptive name for your repository and <span style="color: #de77ae;">Initialize this repository with a README</span>. Since this is a tutorial and not a real project, this repository has been named <code>test</code>.</p>
+<p>Choose a short, descriptive name for your repository and <span style="color: #de77ae;">Initialize this repository with a README</span>.</p>
+<blockquote>
+<p>When writing a package, it is good practice for the name of your repository to match the name of your package. So bear in mind that the name of a package “should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html">ref</a>). Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">package</a> names include a dot.</p>
+</blockquote>
+<p>Since this is a tutorial and not a real project, this repository has been named <code>test</code>.</p>
 <p><img src="images/github/1-2.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations! You have successfully created a new GitHub repository, containing a single <code>README.md</code> file. Remember this for later.</p>
 <p>Now <strong>copy</strong> the URL associated with your GitHub repository to your clipboard</p>
@@ -344,24 +286,16 @@
 <a href="#final-remarks" class="anchor"></a>Final remarks</h2>
 <p>RStudio offers integrated version control, which is useful for <em>daily tasks</em> such as pushing, pulling, and reviewing changes (click on <span style="color: #de77ae;">Diff</span> in the <span style="color: #de77ae;">Git</span> tab). However, this is just the tip of the iceberg. If you have time, why not take a look at the links below. Try the interactive tutorials in “Learn Git Branching” by Peter Cottle and experiment in RStudio’s <strong>Terminal</strong> tab with your own repository.</p>
 </div>
-<div id="useful-resources" class="section level2">
+<div id="additional-resources" class="section level2">
 <h2 class="hasAnchor">
-<a href="#useful-resources" class="anchor"></a>Useful resources</h2>
+<a href="#additional-resources" class="anchor"></a>Additional resources</h2>
 <ul>
 <li><a href="http://r-pkgs.had.co.nz/git.html">R packages - Git and GitHub, by Hadley Wickham</a></li>
 <li><a href="https://git-scm.com/book/en/v2">Pro Git, by Scott Chacon and Ben Straub</a></li>
 <li><a href="https://kbroman.org/github_tutorial/">git/github guide, by Karl Broman</a></li>
-<li><a href="https://www.gitkraken.com/learn-git">Learn Git with GitKraken</a></li>
-<li><a href="https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/">Learn the Basics of Git in Under 10 Minutes, by Gowtham Venkatesan</a></li>
 <li><a href="https://rogerdudler.github.io/git-guide/">git - the simple guide, by Roger Dudler</a></li>
 </ul>
 </div>
-</div>
-<div class="footnotes">
-<hr>
-<ol>
-<li id="fn1"><p>The direct link is <a href="https://github.com/IBAHCM/RPiR/discussions/new">here</a> if you can’t find it.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-</ol>
 </div>
   </div>
 
