@@ -181,7 +181,7 @@ jobs:
       # Deploy the docs using JamesIves/github-pages-deploy-action
       - name: Deploy Docs
         if: runner.os == 'macOS'
-        uses: JamesIves/github-pages-deploy-action@3.6.2
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: build_docs
