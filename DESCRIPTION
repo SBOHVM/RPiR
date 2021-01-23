@@ -12,23 +12,22 @@ Description: Reproducible Programming in R course at IBAHCM, University of Glasg
 License: GPL-3
 Imports:
     codetools,
+    datasets,
     deSolve,
     devtools,
+    dplyr,
+    ggplot2,
     gradethis,
     graphics,
+    knitr,
     learnr,
     rmarkdown,
     usethis,
-    utils,
-    dplyr,
-    datasets,
-    ggplot2
+    utils
 Remotes:
     rstudio/learnr,
     rstudio-education/gradethis
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.1.1
-Suggests: 
-    knitr
 VignetteBuilder: knitr

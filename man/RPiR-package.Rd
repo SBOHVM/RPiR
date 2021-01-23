@@ -18,6 +18,7 @@ then click on the red STOP button in RStudio to end the process.
 
 The following tutorials are included in this package:
 \itemize{
+\item 0-1: Introduction to for loops and functions
 \item 1-1 Exponential growth model; Writing scripts and commenting code
 \item 1-2 Exponential growth model; Writing functions
 \item 1-3 Exponential growth model; Sourcing code
@@ -49,8 +50,7 @@ Please raise an issue if you find any problems;
 \examples{
 \dontrun{
 # To run a tutorial
-library(learnr)
-run_tutorial("practical1-1", package = "RPiR")
+RPiR::run_practical("practical1-1")
 }
 
 }
