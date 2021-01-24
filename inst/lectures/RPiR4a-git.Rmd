@@ -1,0 +1,142 @@
+---
+title: "GitHub and RStudio projects"
+output: ioslides_presentation
+---
+  
+# GitHub 
+
+# My journey...
+
+## 2014
+
+<center>![](RPiR4a/1.png){ width=80% }</center>
+
+## 2015
+
+<center>![](RPiR4a/2.png){ width=80% }</center>
+
+## 2016
+
+<center>![](RPiR4a/3.png){ width=80% }</center>
+
+## 2017
+
+<center>![](RPiR4a/4.png){ width=80% }</center>
+
+## 2018 November Viva
+
+<center>![](RPiR4a/5.png){ width=80% }</center>
+
+## 2019 
+
+<center>![](RPiR4a/6.png){ width=80% }</center>
+
+## 2020 Covid-19
+
+<center>![](RPiR4a/7.png){ width=80% }</center>
+
+## 2021
+
+<center>![](RPiR4a/8.png){ width=80% }</center>
+
+# Why did it take so long?
+
+## Umm... 
+
+<div class="columns-2">
+
+- **Git is scary?**
+  - It's a foreign language! branch, head, origin, blame, diff, fork?
+  - Git is for command line experts?
+  - What if I break the repo? and merge conflicts...
+- **Why is git useful?**
+  - Time travel?
+- **I'm too busy?**
+  - I've got stuff to do!
+
+<center>![](RPiR4a/git.png){ width=80% }</center>
+
+</div>
+
+# Why should you use git / GitHub?
+
+## 1. Centralized cloud storage of your code 
+
+<center>![](RPiR4a/fire.png){ width=90% }</center>
+
+## 2. Version control system 
+
+<center>![](RPiR4a/phd.png){ width=50% }</center>
+
+## 2. Version control system 
+
+- Keep track of important versions
+- Always have a working version
+
+## 3. A single point of truth
+
+- Latest version of code
+- Previous versions of code (with changes)
+- Data
+- Project description
+- Installation instructions
+- Science / notes
+- Discussion / ideas
+- To do list / tasks
+
+## 4. Reproducible research
+
+- Makes your code / data available as a single project
+- Makes your code / data citable
+- Track changes 
+- Track what went wrong
+
+## 4. Collaboration {.flexbox .vcenter}
+
+<center>![](RPiR4a/team.png){ width=90% }</center>
+
+## 5. Collaboration
+
+Makes it easier to:
+
+- collaborate 
+- share your code
+- improve your code
+
+Makes your project / data / code:
+
+- easier to find
+- easier to install
+
+## 6. You might need to learn it eventually anyway
+
+- Software developer
+- Research software engineer
+- Data science 
+
+## And more?
+
+- Automatically test your code
+- Build websites
+- ...
+
+## Let's go back to 2014...
+
+<center>![](RPiR4a/1.png){ width=80% }</center>
+
+# GitHub demo
+
+# RStudio projects 
+
+## Why use RStudio projects?
+
+- Helps keep you organised!!!
+- When you open a project
+  - a new R session is loaded
+  - the working directory is set to the project directory
+  - ~~.RData is loaded~~
+  - .Rhistory is loaded
+  - previous tabs are left open
+  - other RStudio settings are loaded
+
+# Questions?
