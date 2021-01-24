@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to set up RStudio projects.
+  Students learn how to set up GitHub and RStudio projects.
 ---
 
 ```{r setup, include=FALSE}
@@ -19,47 +19,147 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we will look at RStudio projects as a means to organise* 
-*your workflow.*
+*In this practical we will look at GitHub and RStudio projects as a means to 
+organise your workflow.*
 
-## Background
+## GitHub
 
-For more information, follow this [link](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects).
+First you'll need to create a repository in the IBAHCM organisation on GitHub.
+You'll find instructions on how to do this here. Note that you'll need to do 
+this throughout this practical series, which is why we've kept these 
+instructions separate.
 
-## Tasks
+After you've done that, back in RStudio.. load the `RPiR` package and run the
+`practical_series_one()` 
+function. This will populate your working directory -- and therefore your 
+RStudio project -- with the scripts and functions from Practical series 1. 
+Remember that the question mark in the 
+<span style="color: #de77ae;">Status</span> column of the 
+<span style="color: #de77ae;">Git</span> tab means that these are not currently 
+in your GitHub repository.
 
-We have written a function that will generate an RStudio project for you to 
-look at. In the following example, we have set 
-<span style="color: #de77ae;">~/Desktop/git</span> as our working directory
-(this is where we keep all of our projects) and run `dummy_project()`, without 
-any arguments. 
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/a.png')
+```
 
-A new instance of RStudio should open:
+So let's push them up to GitHub! Check the boxes next to all of the files, the
+scripts, the functions, and invisible `.gitignore` file and even the RStudio
+project file. Then click <span style="color: #de77ae;">Commit</span>.
 
-![](images/project.png){ width=100% }
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/b.png')
+```
 
-You should find that (1) your working directory is now 
-<span style="color: #de77ae;">project0201</span>, (2) inside this directory
-are three files, and (3) an RStudio project has been set up, called 
-<span style="color: #de77ae;">project0201</span>. Of the three files, two 
-should be familiar to you - the script and step function from 
-Practical 1-5. The third file, 
-<span style="color: #de77ae;">project0201.Rproj</span>, is an RStudio project
-file, which is used to make this directory an RStudio project, and can be used 
-as a shortcut for opening this project from your filesystem.
+Write a suitably descriptive message and 
+<span style="color: #de77ae;">Commit</span> the files.
 
-Now.. let's make a new RStudio project. In RStudio, click
-<span style="color: #de77ae;">File > New project > New Directory > Empty
-Project</span>, and then choose a location and a name for the project. You 
-should notice that (1) your working directory has changed, (2) inside of this 
-directory there is only one file, an Rproj file, and (3) an RStudio project has 
-been set up. If you click on the name of your new project in the top right
-corner of RStudio, you should see (4) a list of recently opened projects.
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/c.png')
+```
 
-![](images/new_project.png){ width=100% }
+Alot has happened this time.. 11 files changed and 513 insertions.
 
-Click on <span style="color: #de77ae;">project0201</span> to reopen the original
-project and you should find that your working directory has changed back to 
-<span style="color: #de77ae;">project0201</span>, and all your files are there
-where you left them. This is an easy way to organise your workflow and quickly
-switch between projects.
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/d.png')
+```
+
+Now go to your GitHub repository. Are the files there? What did we forget to 
+do? Don't forget that pressing <span style="color: #de77ae;">Commit</span> 
+isn't enough. When you commit your files, you're packaging them up ready to go. 
+You still have to <span style="color: #de77ae;">Push</span> them to GitHub. Do
+that now and make sure they appear in your repository.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/e.png')
+```
+
+## Sharing is caring
+
+Now we're going to try and share our work. To make it a little more interesting,
+edit your `README.md` file. Write a sentence or two about yourself and what you
+hope to get out of this course. Commit your changes and push them to GitHub.
+Then look at your GitHub repository and make sure you can see your changes. 
+
+To share your work, since you created a private (rather than a public) 
+repository, you need to give people permission to see it. So, click on 
+<span style="color: #de77ae;">Settings</span>, 
+<span style="color: #de77ae;">Manage access</span>, then 
+<span style="color: #de77ae;">Invite teams or people</span>.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/f.png')
+```
+
+Find the `IBAHCM/rpir` team (that's you guys).
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/g.png')
+```
+
+Make sure <span style="color: #de77ae;">Read</span> access is selected and
+<span style="color: #de77ae;">Add IBAHCM/rpir to this repository</span>.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/h.png')
+```
+
+It should look like this:
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/i.png')
+```
+
+Now, exchange repository names with your group (everyone in your breakout room).
+You should have access if you're part of the `IBAHCM/rpir` team. Now go find 
+them. Either search through the `IBAHCM` organisation, or go directly to their 
+URL. For example, if I want to find `louisematthews`, I'd go here
+[https://github.com/IBAHCM/louisematthews_0201](https://github.com/IBAHCM/louisematthews_0201). Remember to take a look at their GitHub readme, you might learn 
+something new!
+
+Just like before, we're going to clone this repository by clicking on the green
+<span style="color: #de77ae;">Code</span> button and copying the URL 
+associated with this repository.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/j.png')
+```
+
+Then, as we did before, go back to RStudio. Go to the 
+<span style="color: #de77ae;">File</span> menu and create a 
+<span style="color: #de77ae;">New Project...</span>, with 
+<span style="color: #de77ae;">Version Control</span>, using 
+<span style="color: #de77ae;">Git</span>. The project should open 
+automatically.
+
+Try generating a report from one of the files.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/k.png')
+```
+
+Hopefully you should generate a report without any problems. Whether you do or 
+not, go back to your collaborators GitHub repository and add an issue. Do this 
+by clicking on the <span style="color: #de77ae;">Issues</span> tab and adding a
+<span style="color: #de77ae;">New Issue</span>.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/l.png')
+```
+
+In the issue you should describe whether or not you were successful, perhaps 
+also including a nice encouraging message!
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/m.png')
+```
+
+If you click on the <span style="color: #de77ae;">Issues</span> tab again, 
+you'll see a list of issues.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/n.png')
+```
+
+Now wait a bit for everyone to add their issues to your repository. Once they've
+finished, go see what they've written. If any issues need addressed, go ahead and 
+address them.

@@ -184,21 +184,46 @@ summary {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this practical we will look at RStudio projects as a means to organise</em> <em>your workflow.</em></p>
+<p><em>In this practical we will look at GitHub and RStudio projects as a means to organise your workflow.</em></p>
 </div>
-<div id="section-background" class="section level2">
-<h2>Background</h2>
-<p>For more information, follow this <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">link</a>.</p>
+<div id="section-github" class="section level2">
+<h2>GitHub</h2>
+<p>First you’ll need to create a repository in the IBAHCM organisation on GitHub. You’ll find instructions on how to do this here. Note that you’ll need to do this throughout this practical series, which is why we’ve kept these instructions separate.</p>
+<p>After you’ve done that, back in RStudio.. load the <code>RPiR</code> package and run the <code>practical_series_one()</code> function. This will populate your working directory – and therefore your RStudio project – with the scripts and functions from Practical series 1. Remember that the question mark in the <span style="color: #de77ae;">Status</span> column of the <span style="color: #de77ae;">Git</span> tab means that these are not currently in your GitHub repository.</p>
+<p><img src="images/a.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>So let’s push them up to GitHub! Check the boxes next to all of the files, the scripts, the functions, and invisible <code>.gitignore</code> file and even the RStudio project file. Then click <span style="color: #de77ae;">Commit</span>.</p>
+<p><img src="images/b.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Write a suitably descriptive message and <span style="color: #de77ae;">Commit</span> the files.</p>
+<p><img src="images/c.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Alot has happened this time.. 11 files changed and 513 insertions.</p>
+<p><img src="images/d.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Now go to your GitHub repository. Are the files there? What did we forget to do? Don’t forget that pressing <span style="color: #de77ae;">Commit</span> isn’t enough. When you commit your files, you’re packaging them up ready to go. You still have to <span style="color: #de77ae;">Push</span> them to GitHub. Do that now and make sure they appear in your repository.</p>
+<p><img src="images/e.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
-<div id="section-tasks" class="section level2">
-<h2>Tasks</h2>
-<p>We have written a function that will generate an RStudio project for you to look at. In the following example, we have set <span style="color: #de77ae;">~/Desktop/git</span> as our working directory (this is where we keep all of our projects) and run <code>dummy_project()</code>, without any arguments.</p>
-<p>A new instance of RStudio should open:</p>
-<p><img src="images/project.png" style="width:100.0%" /></p>
-<p>You should find that (1) your working directory is now <span style="color: #de77ae;">project0201</span>, (2) inside this directory are three files, and (3) an RStudio project has been set up, called <span style="color: #de77ae;">project0201</span>. Of the three files, two should be familiar to you - the script and step function from Practical 1-5. The third file, <span style="color: #de77ae;">project0201.Rproj</span>, is an RStudio project file, which is used to make this directory an RStudio project, and can be used as a shortcut for opening this project from your filesystem.</p>
-<p>Now.. let’s make a new RStudio project. In RStudio, click <span style="color: #de77ae;">File &gt; New project &gt; New Directory &gt; Empty Project</span>, and then choose a location and a name for the project. You should notice that (1) your working directory has changed, (2) inside of this directory there is only one file, an Rproj file, and (3) an RStudio project has been set up. If you click on the name of your new project in the top right corner of RStudio, you should see (4) a list of recently opened projects.</p>
-<p><img src="images/new_project.png" style="width:100.0%" /></p>
-Click on <span style="color: #de77ae;">project0201</span> to reopen the original project and you should find that your working directory has changed back to <span style="color: #de77ae;">project0201</span>, and all your files are there where you left them. This is an easy way to organise your workflow and quickly switch between projects. 
+<div id="section-sharing-is-caring" class="section level2">
+<h2>Sharing is caring</h2>
+<p>Now we’re going to try and share our work. To make it a little more interesting, edit your <code>README.md</code> file. Write a sentence or two about yourself and what you hope to get out of this course. Commit your changes and push them to GitHub. Then look at your GitHub repository and make sure you can see your changes.</p>
+<p>To share your work, since you created a private (rather than a public) repository, you need to give people permission to see it. So, click on <span style="color: #de77ae;">Settings</span>, <span style="color: #de77ae;">Manage access</span>, then <span style="color: #de77ae;">Invite teams or people</span>.</p>
+<p><img src="images/f.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Find the <code>IBAHCM/rpir</code> team (that’s you guys).</p>
+<p><img src="images/g.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Make sure <span style="color: #de77ae;">Read</span> access is selected and <span style="color: #de77ae;">Add IBAHCM/rpir to this repository</span>.</p>
+<p><img src="images/h.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>It should look like this:</p>
+<p><img src="images/i.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Now, exchange repository names with your group (everyone in your breakout room). You should have access if you’re part of the <code>IBAHCM/rpir</code> team. Now go find them. Either search through the <code>IBAHCM</code> organisation, or go directly to their URL. For example, if I want to find <code>louisematthews</code>, I’d go here <a href="https://github.com/IBAHCM/louisematthews_0201">https://github.com/IBAHCM/louisematthews_0201</a>. Remember to take a look at their GitHub readme, you might learn something new!</p>
+<p>Just like before, we’re going to clone this repository by clicking on the green <span style="color: #de77ae;">Code</span> button and copying the URL associated with this repository.</p>
+<p><img src="images/j.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Then, as we did before, go back to RStudio. Go to the <span style="color: #de77ae;">File</span> menu and create a <span style="color: #de77ae;">New Project…</span>, with <span style="color: #de77ae;">Version Control</span>, using <span style="color: #de77ae;">Git</span>. The project should open automatically.</p>
+<p>Try generating a report from one of the files.</p>
+<p><img src="images/k.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Hopefully you should generate a report without any problems. Whether you do or not, go back to your collaborators GitHub repository and add an issue. Do this by clicking on the <span style="color: #de77ae;">Issues</span> tab and adding a <span style="color: #de77ae;">New Issue</span>.</p>
+<p><img src="images/l.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>In the issue you should describe whether or not you were successful, perhaps also including a nice encouraging message!</p>
+<p><img src="images/m.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>If you click on the <span style="color: #de77ae;">Issues</span> tab again, you’ll see a list of issues.</p>
+<p><img src="images/n.png" width="100%" style="display: block; margin: auto;" /></p>
+Now wait a bit for everyone to add their issues to your repository. Once they’ve finished, go see what they’ve written. If any issues need addressed, go ahead and address them. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
  
