@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.48.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.49.0</span>
       </span>
     </div>
 
@@ -208,7 +208,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Version control with GitHub and RStudio</h1>
             
-            <h4 class="date">January 23 2021</h4>
+            <h4 class="date">January 24 2021</h4>
       
       
       <div class="hidden name"><code>use_github.Rmd</code></div>
@@ -224,7 +224,7 @@
 <div id="create-a-new-github-repository" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-new-github-repository" class="anchor"></a>Create a new GitHub repository</h2>
-<p>It’s important that you use version control in your project workflow, so let’s <strong>set up a new GitHub repository</strong> (you should make a new repository for each project you’re working on). To do this, go to the <a href="http://www.github.com/IBAHCM">IBAHCM</a> organisation on GitHub, then click on click <span style="color: #de77ae;">New</span>:</p>
+<p>It’s important that you use version control in your project workflow, so let’s <strong>set up a new GitHub repository</strong> (you should make a new repository for each project you’re working on). To do this, go to the <a href="http://www.github.com/IBAHCM">IBAHCM</a> organisation on GitHub, then click on click <span style="color: #de77ae;">New</span>.</p>
 <p><img src="use_github/01.png" width="100%" style="display: block; margin: auto;"></p>
 <p>You should always choose a short, descriptive name for your repository. But in this case, to make it easier for us to identify you, please name your repository <code>githubusername_0201</code> (where 0201 corresponds to the first part of Practical series 2). Make sure you’re creating a <span style="color: #de77ae;">Private</span> repository, check the box to <span style="color: #de77ae;">Initialize this repository with a README</span>, then select <span style="color: #de77ae;">Create repository</span>.</p>
 <p><img src="use_github/02.png" width="100%" style="display: block; margin: auto;"></p>
@@ -239,9 +239,9 @@
 <div id="create-a-new-rstudio-project" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-new-rstudio-project" class="anchor"></a>Create a new RStudio project</h2>
-<p>In RStudio, click <span style="color: #de77ae;">File &gt; New project…</span>, then since we’re integrating version control into this project workflow, you should select <span style="color: #de77ae;">Version Control</span>:</p>
+<p>In RStudio, click <span style="color: #de77ae;">File &gt; New project…</span>, then since we’re integrating version control into this project workflow, you should select <span style="color: #de77ae;">Version Control</span>.</p>
 <p><img src="use_github/05.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Select the option to clone a project from a <span style="color: #de77ae;">Git</span> repository:</p>
+<p>Select the option to clone a project from a <span style="color: #de77ae;">Git</span> repository.</p>
 <p><img src="use_github/06.png" width="100%" style="display: block; margin: auto;"></p>
 <p><strong>Paste your Repository URL</strong> into the first box, then click <span style="color: #de77ae;">Browse…</span> and navigate to the git folder on your desktop. If you don’t have a git folder on your desktop then make one, as it’s good practice to keep all of your projects together and well organised. RStudio will create a new subdirectory that will mirror the contents of your Git repository (so make sure you don’t already have a folder with the same name as the repository you created, as this will cause problems). Now click <span style="color: #de77ae;">Create Project</span> and enter your GitHub username and password if you’re asked.</p>
 <p><img src="use_github/07.png" width="100%" style="display: block; margin: auto;"></p>
@@ -271,6 +271,34 @@
 <p><img src="use_github/13.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations again! You’ve successfully pushed these changes to GitHub. Go take a look at your GitHub repository and you’ll see that the GitHub README has been updated.</p>
 <p><img src="use_github/14.png" width="100%" style="display: block; margin: auto;"></p>
+</div>
+<div id="tasks" class="section level2">
+<h2 class="hasAnchor">
+<a href="#tasks" class="anchor"></a>Tasks</h2>
+<p>Back in RStudio.. load the <code>RPiR</code> package and run the <code><a href="../../reference/practical_series_one.html">practical_series_one()</a></code> function. This will populate your working directory – and therefore your RStudio project – with the scripts and functions from Practical series 1. Remember that the question mark in the <span style="color: #de77ae;">Status</span> column of the <span style="color: #de77ae;">Git</span> tab means that these are not currently in your GitHub repository.</p>
+<p><img src="use_github/a.png" width="100%" style="display: block; margin: auto;"></p>
+<p>So let’s push them up to GitHub! Check the boxes next to all of the files, the scripts, the functions, and invisible <code>.gitignore</code> file and even the RStudio project file. Then click <span style="color: #de77ae;">Commit</span>.</p>
+<p><img src="use_github/b.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Write a suitably descriptive message and <span style="color: #de77ae;">Commit</span> the files.</p>
+<p><img src="use_github/c.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Alot has happened this time.. 11 files changed and 513 insertions.</p>
+<p><img src="use_github/d.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Now go to your GitHub repository. Are the files there? What did we forget to do? Don’t forget that pressing <span style="color: #de77ae;">Commit</span> isn’t enough. When you commit your files, you’re packaging them up ready to go. You still have to <span style="color: #de77ae;">Push</span> them to GitHub. Do that now and make sure they appear in your repository.</p>
+<p><img src="use_github/e.png" width="100%" style="display: block; margin: auto;"></p>
+</div>
+<div id="sharing-is-caring" class="section level2">
+<h2 class="hasAnchor">
+<a href="#sharing-is-caring" class="anchor"></a>Sharing is caring</h2>
+<p>Now we’re going to try and share our work. To make it a little more interesting, edit your <code>README.md</code> file. Write a sentence or two about yourself and what you hope to get out of this course. Commit your changes and push them to GitHub. Then look at your GitHub repository and make sure you can see your changes.</p>
+<p>To share your work, since you created a private (rather than a public) repository, you need to give people permission to see it. So, click on <span style="color: #de77ae;">Settings</span>, <span style="color: #de77ae;">Manage access</span>, then <span style="color: #de77ae;">Invite teams or people</span>.</p>
+<p><img src="use_github/f.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Find the <code>IBAHCM/rpir</code> team (that’s you guys).</p>
+<p><img src="use_github/g.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Make sure <span style="color: #de77ae;">Read</span> access is selected and <span style="color: #de77ae;">Add IBAHCM/rpir to this repository</span>.</p>
+<p><img src="use_github/h.png" width="100%" style="display: block; margin: auto;"></p>
+<p>It should look like this:</p>
+<p><img src="use_github/i.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Now, exchange repository names with your group (everyone in your breakout room). You should have access if you’re part of the <code>IBAHCM/rpir</code> team.</p>
 </div>
 <div id="final-remarks" class="section level2">
 <h2 class="hasAnchor">
