@@ -6,6 +6,8 @@
 #' @export
 #'
 practical_series_one <- function() {
+  if (is.null(rstudioapi::getActiveProject()))
+    stop("You are not in an active RStudio project, please create one first")
 
   files <- system.file("dummy_project", package = "RPiR")
   files <- dir(files, full.names = TRUE)
@@ -14,5 +16,4 @@ practical_series_one <- function() {
     file.copy(files[i], ".")
     usethis::ui_done(paste("Writing", usethis::ui_value(basename(files[i]))))
   }
-
 }

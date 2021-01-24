@@ -58,10 +58,11 @@
 #' @import graphics
 #' @import knitr
 #' @import learnr
+#' @import rlang
 #' @import rmarkdown
+#' @import rstudioapi
 #' @import usethis
 #' @import utils
-#' @import rlang
 #'
 #' @examples
 #' \dontrun{

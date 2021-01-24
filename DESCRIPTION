@@ -21,10 +21,11 @@ Imports:
     graphics,
     knitr,
     learnr,
+    rlang,
     rmarkdown,
+    rstudioapi,
     usethis,
-    utils,
-    rlang
+    utils
 Remotes:
     rstudio/learnr,
     rstudio-education/gradethis
