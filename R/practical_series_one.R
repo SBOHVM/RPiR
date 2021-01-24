@@ -7,7 +7,6 @@
 #'
 practical_series_one <- function() {
 
-  # Populate project_name
   files <- system.file("dummy_project", package = "RPiR")
   files <- dir(files, full.names = TRUE)
 

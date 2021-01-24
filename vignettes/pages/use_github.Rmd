@@ -28,7 +28,7 @@ It's important that you use version control in your project workflow, so let's
 **set up a new GitHub repository** (you should make a new repository for each
 project you're working on). To do this, go to the 
 [IBAHCM](http://www.github.com/IBAHCM) organisation on GitHub, then click on 
-click <span style="color: #de77ae;">New</span>:
+click <span style="color: #de77ae;">New</span>.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('use_github/01.png')
@@ -75,14 +75,14 @@ knitr::include_graphics('use_github/04.png')
 
 In RStudio, click <span style="color: #de77ae;">File > New project...</span>, 
 then since we're integrating version control into this project workflow, you 
-should select <span style="color: #de77ae;">Version Control</span>:
+should select <span style="color: #de77ae;">Version Control</span>.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('use_github/05.png')
 ```
 
 Select the option to clone a project from a 
-<span style="color: #de77ae;">Git</span> repository:
+<span style="color: #de77ae;">Git</span> repository.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('use_github/06.png')
@@ -201,6 +201,90 @@ has been updated.
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('use_github/14.png')
 ```
+
+## Tasks
+
+Back in RStudio.. load the `RPiR` package and run the `practical_series_one()` 
+function. This will populate your working directory -- and therefore your 
+RStudio project -- with the scripts and functions from Practical series 1. 
+Remember that the question mark in the 
+<span style="color: #de77ae;">Status</span> column of the 
+<span style="color: #de77ae;">Git</span> tab means that these are not currently 
+in your GitHub repository.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/a.png')
+```
+
+So let's push them up to GitHub! Check the boxes next to all of the files, the
+scripts, the functions, and invisible `.gitignore` file and even the RStudio
+project file. Then click <span style="color: #de77ae;">Commit</span>.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/b.png')
+```
+
+Write a suitably descriptive message and 
+<span style="color: #de77ae;">Commit</span> the files.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/c.png')
+```
+
+Alot has happened this time.. 11 files changed and 513 insertions.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/d.png')
+```
+
+Now go to your GitHub repository. Are the files there? What did we forget to 
+do? Don't forget that pressing <span style="color: #de77ae;">Commit</span> 
+isn't enough. When you commit your files, you're packaging them up ready to go. 
+You still have to <span style="color: #de77ae;">Push</span> them to GitHub. Do
+that now and make sure they appear in your repository.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/e.png')
+```
+
+## Sharing is caring
+
+Now we're going to try and share our work. To make it a little more interesting,
+edit your `README.md` file. Write a sentence or two about yourself and what you
+hope to get out of this course. Commit your changes and push them to GitHub.
+Then look at your GitHub repository and make sure you can see your changes. 
+
+To share your work, since you created a private (rather than a public) 
+repository, you need to give people permission to see it. So, click on 
+<span style="color: #de77ae;">Settings</span>, 
+<span style="color: #de77ae;">Manage access</span>, then 
+<span style="color: #de77ae;">Invite teams or people</span>.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/f.png')
+```
+
+Find the `IBAHCM/rpir` team (that's you guys).
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/g.png')
+```
+
+Make sure <span style="color: #de77ae;">Read</span> access is selected and
+<span style="color: #de77ae;">Add IBAHCM/rpir to this repository</span>.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/h.png')
+```
+
+It should look like this:
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('use_github/i.png')
+```
+
+Now, exchange repository names with your group (everyone in your breakout room).
+You should have access if you're part of the `IBAHCM/rpir` team. 
 
 ## Final remarks
 
