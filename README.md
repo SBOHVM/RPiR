@@ -33,26 +33,46 @@ available_lectures()
 available_practicals()
 ```
 
+In RStudio, you can also open **Preferences...**, choose **Pane Layout**, and
+tick the box for **Tutorial** and click **OK**. Once you have done this, you
+should find you have a **Tutorial** pane in RStudio, you can then browse all of
+the practicals that you have installed there.
+
 ## Practicals
 
-**To run a practical**, use the `run_practical()` function in RStudio. For
-example, `run_practical("practical1-1")` will run the first practical.
+**To run a practical**, you can click *Start Tutorial* from the **Tutorial** tab
+in RStudio. You can then run the practical inside that RStudio pane, or click
+the *Show in new window* icon in the top left to open it in a larger separate
+window (you can open multiple practicals simultaneously like this).
 
-> When you run a practical, you will not be able to use the R console until you
-  close it, so we suggest that you open a separate instance of RStudio to run
-  any code, so one RStudio is dedicated to running practicals and lectures.
+Alternatively, you can use the `run_practical()` function in the *Console* pane.
+For example, `run_practical("practical0-1")` will run the first practical.
+
+> When you run a practical like this, you will not be able to use the R console
+  until you close it, so we suggest that you open a separate instance of RStudio
+  to run any code, so one RStudio is dedicated to running practicals and
+  lectures.
 
 **To reset a practical** if you want to start again, click on the Start Over
-link (look for the tiny grey  text below the left menu). 
+link (look for the tiny grey text below the left menu). 
 
-**To close a practical** when you have finished it, close the webpage in your
-web browser, then either hit `escape` or click on the red STOP button 
-in RStudio to end the process.
+**To close a practical if you opened it from the Tutorial pane** when you have
+finished it, click on the red STOP button in the **Tutorial** pane or close the
+separate window. Clicking instead on the *Home* icon will return to the
+practical list, but you can resume the practical from where you left off by
+restarting it.
+
+**To close a practical if you opened it from the Console pane** when you have
+finished it, close the webpage in your web browser, then either hit `escape` or
+click on the red STOP button in the RStudio **Console** to end the process.
+
+You can also browse non-interactive versions of the practicals on the GitHub
+website (under `Practicals (html)`).
 
 ## Lectures
 
 **To view lecture slides**, use the `run_lecture()` function in RStudio. For
-example, `run_lecture("RPiR1")` will show the first lecture slides.
+example, `run_lecture("RPiR1-intro")` will show the first lecture slides.
 
 You can also see the lectures on the [GitHub website][docs] using the lecture
 dropdown menus, either as slides (under `Lectures (slides)`) or as single
