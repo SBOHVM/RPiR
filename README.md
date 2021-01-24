@@ -40,13 +40,12 @@ the practicals that you have installed there.
 
 ## Practicals
 
-**To run a practical**, you can click *Start Tutorial* from the **Tutorial** tab
-in RStudio. You can then run the practical inside that RStudio pane, or click
-the *Show in new window* icon in the top left to open it in a larger separate
-window (you can open multiple practicals simultaneously like this).
-
-Alternatively, you can use the `run_practical()` function in the *Console* pane.
-For example, `run_practical("practical0-1")` will run the first practical.
+**To run a practical**, you can click *Start Tutorial* from the **Tutorial**
+pane in RStudio. You can then run the practical inside that RStudio pane, or
+click the *Show in new window* icon in the top left to open it in a larger
+separate window (you can open multiple practicals simultaneously like this).
+Alternatively, you can use the `run_practical()` function in the **Console**
+pane. For example, `run_practical("practical0-1")` will run the first practical.
 
 > When you run a practical like this, you will not be able to use the R console
   until you close it, so we suggest that you open a separate instance of RStudio
@@ -54,7 +53,8 @@ For example, `run_practical("practical0-1")` will run the first practical.
   lectures.
 
 **To reset a practical** if you want to start again, click on the Start Over
-link (look for the tiny grey text below the left menu). 
+link (look for the tiny grey text below the left menu), which appears if you
+are not running this inside the Tutorial pane.
 
 **To close a practical if you opened it from the Tutorial pane** when you have
 finished it, click on the red STOP button in the **Tutorial** pane or close the
@@ -65,6 +65,10 @@ restarting it.
 **To close a practical if you opened it from the Console pane** when you have
 finished it, close the webpage in your web browser, then either hit `escape` or
 click on the red STOP button in the RStudio **Console** to end the process.
+
+**If you are having problems with the practicals running correctly**, try
+running `RPiR:::clean_cached_exercises()` in the **Console** pane to force the
+practicals to be rebuilt.
 
 You can also browse non-interactive versions of the practicals on the GitHub
 website (under `Practicals (html)`).
