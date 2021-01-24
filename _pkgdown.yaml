@@ -100,8 +100,6 @@ navbar:
     - icon: far fa-file-code
       text: "Functions"
       href: reference/index.html
-
-  right:
     - text: "How to"
       icon: far fa-file
       menu:
