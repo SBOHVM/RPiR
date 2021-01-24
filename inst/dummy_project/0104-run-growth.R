@@ -1,7 +1,7 @@
 #' ---
 #' title: "Simple growth difference equation script"
 #' author: "Richard Reeve"
-#' date: "9th Jan 2018"
+#' date: '`r format(Sys.Date(), "%B %d %Y")`'
 #' output: html_document
 #' ---
 

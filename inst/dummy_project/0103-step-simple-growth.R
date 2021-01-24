@@ -1,11 +1,11 @@
 #' ---
 #' title: "Simple growth difference equation model"
 #' author: "Richard Reeve"
-#' date: "9th Jan 2018"
+#' date: '`r format(Sys.Date(), "%B %d %Y")`'
 #' output: html_document
 #' ---
 
-#' ### Function: step.simple.growth()
+#' ### Function: step_simple_growth()
 
 #' Run one step of a simple deterministic exponential growth model.
 #'

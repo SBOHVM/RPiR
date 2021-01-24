@@ -1,9 +1,10 @@
 #' ---
-#' author: Richard Reeve
-#' title: Comparing a simple growth model with a birth-death model
+#' title: "Comparing a simple growth model with a birth-death model"
+#' author: "Richard Reeve"
+#' date: '`r format(Sys.Date(), "%B %d %Y")`'
+#' output: html_document
 #' ---
 #'
-#' ## File: 0106-report.r
 
 #'
 #' Load in the functions that do the work
@@ -38,8 +39,7 @@ for (new.time in timesteps) {
   updated.population <-
     step_deterministic_birth_death(latest = tail(population.df1, 1),
                                    birth.rate = birth.rate,
-                                   death.rate = death.rate
-    )
+                                   death.rate = death.rate)
   population.df1 <- rbind(population.df1, updated.population)
 }
 population.df1$time <- c(start.time, timesteps)

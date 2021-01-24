@@ -1,6 +1,9 @@
-#' Simple birth-death difference equation model
-
-### File: 0105-run-birth-death.r
+#' ---
+#' title: "Simple birth-death difference equation model"
+#' author: "Richard Reeve"
+#' date: '`r format(Sys.Date(), "%B %d %Y")`'
+#' output: html_document
+#' ---
 
 #' Load in the functions that do the work
 library(RPiR)
