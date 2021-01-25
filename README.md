@@ -110,5 +110,5 @@ The following practicals are included in this package:
 
 [docs]: https://ibahcm.github.io/RPiR
 [package]: https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html
-[github]: https://ibahcm.github.io/RPiR/articles/pages/github.html
+[github]: https://ibahcm.github.io/RPiR/articles/pages/install_github.html
 [vscode]: https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html
