@@ -8,19 +8,21 @@
 #'
 #' First define the function that does the work.
 #'
-#' ### Function: step_simple_growth()
-
-#' Run one step of a simple deterministic exponential growth model.
-#'
-#' #### Arguments:
-#'
-#' - current.population -- the population count now
-#' - growth.rate -- the growth rate
-#'
-#' #### Returns:
-#'
-#' - the updated population count
 step_simple_growth <- function(current.population, growth.rate) {
+  #' A simple deterministic exponential growth model
+  #'
+  #' Run one step of a simple deterministic exponential growth model
+  #'
+  #' Arguments:
+  #'
+  #' - current.population -- the population count now
+  #'
+  #' - growth.rate -- the growth rate
+  #'
+  #' Returns:
+  #'
+  #' - the updated population count
+
   # Calculate changes to population
   new.additions <- growth.rate * current.population
 
