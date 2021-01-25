@@ -118,6 +118,7 @@ Makes your project / data / code:
 
 - Automatically test your code
 - Build websites
+- Improve your code / learn new skills
 - ...
 
 ## Let's go back to 2014...
