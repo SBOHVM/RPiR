@@ -1,5 +1,7 @@
 #' available_practicals
 #'
+#' @param verbose Add the description text if TRUE (default FALSE)
+#'
 #' @export
 #'
 available_practicals <- function(verbose = FALSE) {

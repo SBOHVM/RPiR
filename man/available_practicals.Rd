@@ -6,6 +6,9 @@
 \usage{
 available_practicals(verbose = FALSE)
 }
+\arguments{
+\item{verbose}{Add the description text if TRUE (default FALSE)}
+}
 \description{
 available_practicals
 }
