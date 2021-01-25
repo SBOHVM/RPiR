@@ -96,7 +96,7 @@ introduced into a fully susceptible population"
 
 - Total rate at which new infections currently arise in the population
 
-$$\beta I \frac{S}{N}$$
+$$\beta \times I \times \frac{S}{N}$$
 
 - $\beta$ is the transmission rate
 - $I$ is the current number of infected individuals
@@ -106,28 +106,28 @@ $$\beta I \frac{S}{N}$$
 
 - Total rate at which individuals are recovering
 
-$$\sigma I$$
+$$\sigma \times I$$
 
 - $\sigma$ is the recovery rate  
 - $I$ is the current number of infected individuals 
 
 ## SIR model in difference equation form
 
-$$S_{t+1} = S_t - \beta I_t (\frac{S_t}{N})$$
+$$S_{t+1} = S_t - \beta \times I_t \times (\frac{S_t}{N})$$
 
 ## SIR model in difference equation form
 
-$$S_{t+1} = S_t - \beta I_t (\frac{S_t}{N})$$
+$$S_{t+1} = S_t - \beta \times I_t \times (\frac{S_t}{N})$$
 
-$$I_{t+1} = I_t + \beta I_t (\frac{S_t}{N}) - \sigma I_t$$
+$$I_{t+1} = I_t + \beta \times I_t \times (\frac{S_t}{N}) - \sigma \times I_t$$
 
 ## SIR model in difference equation form
 
-$$S_{t+1} = S_t - \beta I_t (\frac{S_t}{N})$$
+$$S_{t+1} = S_t - \beta \times I_t \times (\frac{S_t}{N})$$
 
-$$I_{t+1} = I_t + \beta I_t (\frac{S_t}{N}) - \sigma I_t$$
+$$I_{t+1} = I_t + \beta \times I_t \times (\frac{S_t}{N}) - \sigma \times I_t$$
 
-$$R_{t+1} = R_t + \sigma I_t$$
+$$R_{t+1} = R_t + \sigma \times I_t$$
 
 ## SIS process
 
@@ -135,9 +135,9 @@ $$R_{t+1} = R_t + \sigma I_t$$
 
 ## SIS model in difference equation form
 
-$$S_{t+1} = S_t – \beta I_t \frac{S_t}{N} + \sigma I_t$$
+$$S_{t+1} = S_t – \beta \times I_t \times \frac{S_t}{N} + \sigma \times I_t$$
 
-$$I_{t+1} = I_t + \beta I_t \frac{S_t}{N} – \sigma I_t$$
+$$I_{t+1} = I_t + \beta \times I_t \times \frac{S_t}{N} – \sigma \times I_t$$
 
 ## Confusing notation...
 
@@ -161,17 +161,17 @@ introduced into a fully susceptible population"
 ## Calculating $R_0$
 
 $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
-& \textrm{(arising from 1 infected in a fully} \\
-& \textrm{susceptible population)} \times \\
+& \textrm{arising from 1 infected in a fully} \\
+& \textrm{susceptible population}\; \times \\
 & \textrm{number of days infectious} \end{align}$$
 
 ## Calculating $R_0$
 
 $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
-& \textrm{(arising from 1 infected in a fully} \\
-& \textrm{susceptible population)} \times \\
+& \textrm{arising from 1 infected in a fully} \\
+& \textrm{susceptible population}\; \times \\
 & \textrm{number of days infectious} \\
-= {} & \beta \times \textrm{number days infectious} \end{align}$$
+= {} & \beta \times \textrm{number of days infectious} \end{align}$$
 
 ## Note on rates and duration
 
@@ -188,57 +188,68 @@ $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
 ## Calculating $R_0$
 
 $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
-& \textrm{(arising from 1 infected in a fully} \\
-& \textrm{susceptible population)} \times \\
+& \textrm{arising from 1 infected in a fully} \\
+& \textrm{susceptible population}\; \times \\
 & \textrm{number of days infectious} \\
-= {} & \beta \times \textrm{number days infectious} \end{align}$$
+= {} & \beta \times \textrm{number of days infectious} \end{align}$$
 
 ## Calculating $R_0$
 
 $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
-& \textrm{(arising from 1 infected in a fully} \\
-& \textrm{susceptible population)} \times \\
+& \textrm{arising from 1 infected in a fully} \\
+& \textrm{susceptible population}\; \times \\
 & \textrm{number of days infectious} \\
-= {} & \beta \times \textrm{number days infectious} \\
+= {} & \beta \times \textrm{number of days infectious} \\
 = {} & \beta \times \frac{1}{\textrm{recovery rate}} \end{align}$$
 
 ## Calculating $R_0$
 
 $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
-& \textrm{(arising from 1 infected in a fully} \\
-& \textrm{susceptible population)} \times \\
+& \textrm{arising from 1 infected in a fully} \\
+& \textrm{susceptible population}\; \times \\
 & \textrm{number of days infectious} \\
-= {} & \beta \times \textrm{number days infectious} \\
+= {} & \beta \times \textrm{number of days infectious} \\
 = {} & \beta \times \frac{1}{\textrm{recovery rate}} \\
-= {} & \beta \times \frac{1}{\sigma} \\
-= {} & \frac{\beta}{\sigma}
+= {} & \beta \times \frac{1}{\sigma} = \frac{\beta}{\sigma}
  \end{align}$$
 
-## Epidemic dynamics for $R_0 = 2$
+## Calculating $R_0$
+
+$$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
+& \textrm{arising from 1 infected in a fully} \\
+& \textrm{susceptible population}\; \times \\
+& \textrm{number of days infectious} \\
+= {} & \beta \times \textrm{number of days infectious} \\
+= {} & \beta \times \frac{1}{\textrm{recovery rate}} \\
+= {} & \beta \times \frac{1}{\sigma} = \frac{\beta}{\sigma} \\
+= {} & \frac{transmission.rate}{recovery.rate}
+ \end{align}$$
+
+## Epidemic dynamics for SIR, $R_0 = 2$
 
 <center>![](RPiR4b/one.png){ width=60% }</center>
 
-## Epidemic dynamics for $R_0 = 2$
+## Epidemic dynamics for SIR, $R_0 = 2$
 
 <center>![](RPiR4b/two.png){ width=60% }</center>
 
-## Epidemic dynamics for $R_0 = 2$
+## Epidemic dynamics for SIR, $R_0 = 2$
 
 <center>![](RPiR4b/three.png){ width=60% }</center>
 
-## Epidemic dynamics for $R_0 = 2$
+## Epidemic dynamics for SIR, $R_0 = 2$
 
 <center>![](RPiR4b/four.png){ width=60% }</center>
 
-## Epidemic dynamics for $R_0 = 2$
+## Epidemic dynamics for SIR, $R_0 = 2$
 
 <center>![](RPiR4b/five.png){ width=60% }</center>
 
-## Epidemic dynamics for $R_0 = 2$
+## Epidemic dynamics for SIR, $R_0 = 2$
 
 <center>![](RPiR4b/six.png){ width=60% }</center>
 
-## Epidemic dynamics for $R_0 = 2$
+## Epidemic dynamics for SIR, $R_0 = 2$
 
 <center>![](RPiR4b/seven.png){ width=60% }</center>
   
@@ -254,8 +265,6 @@ $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
 
 - Chain of transmission eventually halts due to insufficient susceptibles, 
 not a complete lack of susceptibles
-
-# Basic reproduction number $R_0 < 1$
 
 # Basic reproduction number $R_0 < 1$
 
@@ -285,9 +294,9 @@ not a complete lack of susceptibles
 
 ## SIS model in difference equation form
 
-$$S_{t+1} = S_t – \beta I_t \frac{S_t}{N} + \sigma I_t$$
+$$S_{t+1} = S_t – \beta \times I_t \times \frac{S_t}{N} + \sigma \times I_t$$
 
-$$I_{t+1} = I_t + \beta I_t \frac{S_t}{N} – \sigma I_t$$
+$$I_{t+1} = I_t + \beta \times I_t \times \frac{S_t}{N} – \sigma \times I_t$$
 
 ## SIS simulation for $R_0 = 3$
 
