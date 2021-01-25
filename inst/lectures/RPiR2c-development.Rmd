@@ -60,6 +60,8 @@ library(lme4)
 ### <b>
 # Function to load in data from file and process
 read_data <- function(filename) {
+  #' Load in data from file and process
+  
   data <- read.csv(filename)
   # Some light processing to get into correct format
   #...
@@ -87,8 +89,9 @@ helper.R
 library(lme4)
 
 ### <b>
-# Load in data from file and process
 read_data <- function(filename) {
+  #' Load in data from file and process
+  
   data <- read.csv(filename)
   # Some light processing to get into 
   # correct format
@@ -98,8 +101,9 @@ read_data <- function(filename) {
 ### </b>
 
 ### <b>
-# Check model is a good one
 check_model <- function(model.out) {
+  #' Check model is a good one
+  
   is.good.model <- #...
   #...
   is.good.model
