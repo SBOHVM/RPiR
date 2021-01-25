@@ -69,10 +69,8 @@ that you used for the last practical, putting the repository in
 the [IBAHCM](https://github.com/IBAHCM) organisation again, as before. Call this
 project `githubusername_series02` (obviously use your real GitHub username!).
 You'll use this project for all of the remaining exercises in this practical
-series. Add the people you are working with to your repository on GitHub in
-**Settings** - give them all read access. You could give everyone access as you
-did in practical 2-1, but if everyone does that you will end up with an enormous
-number of messages going back and forth about new repos, so it's best not to.
+series. Add the rpir team (actually *IBAHCM/RPiR*) to your repository on GitHub
+in **Settings** - give the team read access.
 
 ### Coding
 
