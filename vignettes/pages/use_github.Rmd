@@ -37,9 +37,9 @@ knitr::include_graphics('use_github/01.png')
 
 You should always choose a short, descriptive name for your repository. But in
 this case, to make it easier for us to identify you, please name your repository
-`githubusername_0201` (where 0201 corresponds to the first part of Practical 
-series 2). Make sure you're creating a 
-<span style="color: #de77ae;">Private</span> repository, check the box to
+`githubusername_0201` (where githubusername is your username on GitHub, and 0201
+corresponds to the first part of Practical series 2). Make sure you're creating
+a <span style="color: #de77ae;">Private</span> repository, check the box to
 <span style="color: #de77ae;">Initialize this repository with a README</span>,
 then select <span style="color: #de77ae;">Create repository</span>. 
 
@@ -126,20 +126,21 @@ Compare the contents of your working directory to the files listed in the
 <span style="color: #de77ae;">Git</span> tab is a useful tool that shows you 
 how your remote
 directory (your GitHub repository) differs from your local directory 
-(in this case `~Desktop/Git/test`). Currently, the `README.md` file in your 
-local directory is identical to the one in your remote directory. That's why 
-you can't see it in the <span style="color: #de77ae;">Git</span> tab. Instead,
-`.gitignore` and `test.Rproj` are listed with yellow question marks in the 
-<span style="color: #de77ae;">Status</span> column. What do these icons mean?
+(in this case `~/Desktop/Git/soniamitchell_0201`). Currently, the `README.md`
+file in your local directory is identical to the one in your remote directory.
+That's why you can't see it in the <span style="color: #de77ae;">Git</span> tab.
+Instead, `.gitignore` and `soniamitchell_0201.Rproj` are listed with yellow
+question marks in the <span style="color: #de77ae;">Status</span> column. What
+do these icons mean?
 
 * "?" - Files or directories that don't currently exist in your git repository 
-(you either want to commit these or add them to `.gitignore`)
+  (you either want to commit these or add them to `.gitignore`)
 * "A" - Files that have been staged and are ready to commit (you're in the 
-process of committing these)
+  process of committing these)
 * "M" - Files that are modified versions of those in the repository (you 
-definately want to commit these)
+  definately want to commit these)
 * "D" - Files that are no longer in your local directory (you've likely deleted
-these and want to commit their absence to GitHub)
+  these and want to commit their absence to GitHub)
 
 Open the `README.md` file by clicking on its filename in the 
 <span style="color: #de77ae;">Files</span> tab. 
@@ -208,8 +209,7 @@ RStudio offers integrated version control, which is useful for **daily tasks**
 such as pushing, pulling, and reviewing changes (click on 
 <span style="color: #de77ae;">Diff</span> in the 
 <span style="color: #de77ae;">Git</span> tab). However, this is just the tip of 
-the iceberg. If you have time, 
-why not take a look at the links below.
+the iceberg. If you have time, why not take a look at the links below.
 
 ## Additional resources
 
