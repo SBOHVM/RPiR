@@ -118,5 +118,5 @@ To end the session, do one of the following:
 More info 
 [here](https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode).
 
-[github]: https://ibahcm.github.io/RPiR/articles/pages/github.html
+[github]: https://ibahcm.github.io/RPiR/articles/pages/install_github.html
 
