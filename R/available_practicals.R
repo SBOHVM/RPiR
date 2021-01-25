@@ -2,7 +2,7 @@
 #'
 #' @export
 #'
-available_practicals <- function() {
+available_practicals <- function(verbose = FALSE) {
   path <- system.file("tutorials", package = "RPiR")
   if (rlang::is_empty(path) || path == "")
     stop("RPiR package does not contain a tutorials folder")
@@ -16,8 +16,9 @@ available_practicals <- function() {
       name <- gsub("(.*)[\\/](.*)\\.Rmd", "\\2", practical)
       front_matter <- rmarkdown::yaml_front_matter(file.path(path, practical))
       cat(paste0("\"", name, "\" - ", front_matter$title), "\n")
-      cat(strsplit(front_matter$description, split = " +")[[1]], "\n",
-          fill = 70, labels = "  ")
+      if (verbose)
+        cat(strsplit(front_matter$description, split = " +")[[1]], "\n",
+            fill = 70, labels = "  ")
     }
   }
 }

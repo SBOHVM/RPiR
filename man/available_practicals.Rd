@@ -4,7 +4,7 @@
 \alias{available_practicals}
 \title{available_practicals}
 \usage{
-available_practicals()
+available_practicals(verbose = FALSE)
 }
 \description{
 available_practicals
