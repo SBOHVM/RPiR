@@ -24,7 +24,7 @@
 #' @export
 #'
 run_integration <- function(deriv_function, populations, end.time,
-                            timestep=1, debug=FALSE, ...) {
+                            timestep = 1, debug = FALSE, ...) {
   if (length(codetools::findGlobals(deriv_function, merge = FALSE)$variables) > 0)
     warning(paste("Function provided uses global variable(s):",
                   paste(codetools::findGlobals(deriv_function,
