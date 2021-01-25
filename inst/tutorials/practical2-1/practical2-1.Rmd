@@ -1,5 +1,5 @@
 ---
-title: "2-1: RStudio projects"
+title: "Practical 2-1: RStudio projects"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to set up GitHub and RStudio projects.
+  Students learn how to create a GitHub repository and an RStudio project.
 ---
 
 ```{r setup, include=FALSE}
@@ -25,15 +25,15 @@ organise your workflow.*
 ## GitHub
 
 First you'll need to create a repository in the IBAHCM organisation on GitHub.
-You'll find instructions on how to do this here. Note that you'll need to do 
-this throughout this practical series, which is why we've kept these 
-instructions separate.
+You'll find instructions on how to do this
+[here](https://ibahcm.github.io/RPiR/articles/pages/use_github.html). Note that
+you'll need to do this throughout this practical series, which is why we've
+kept these instructions separate.
 
-After you've done that, back in RStudio.. load the `RPiR` package and run the
-`practical_series_one()` 
-function. This will populate your working directory -- and therefore your 
-RStudio project -- with the scripts and functions from Practical series 1. 
-Remember that the question mark in the 
+After you've done that, back in RStudio, load the `RPiR` package and run the
+`practical_series_one()` function. This will populate your working directory --
+and therefore your RStudio project -- with the scripts and functions from
+Practical series 1. Remember that the question mark in the 
 <span style="color: #de77ae;">Status</span> column of the 
 <span style="color: #de77ae;">Git</span> tab means that these are not currently 
 in your GitHub repository.
@@ -57,7 +57,7 @@ Write a suitably descriptive message and
 knitr::include_graphics('images/c.png')
 ```
 
-Alot has happened this time.. 11 files changed and 513 insertions.
+Alot has happened this time. 11 files changed and 513 insertions.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/d.png')
@@ -113,8 +113,8 @@ Now, exchange repository names with your group (everyone in your breakout room).
 You should have access if you're part of the `IBAHCM/rpir` team. Now go find 
 them. Either search through the `IBAHCM` organisation, or go directly to their 
 URL. For example, if I want to find `louisematthews`, I'd go here
-[https://github.com/IBAHCM/louisematthews_0201](https://github.com/IBAHCM/louisematthews_0201). Remember to take a look at their GitHub readme, you might learn 
-something new!
+https://github.com/IBAHCM/louisematthews_0201. Remember to take a look at their
+GitHub readme, you might learn something new!
 
 Just like before, we're going to clone this repository by clicking on the green
 <span style="color: #de77ae;">Code</span> button and copying the URL 

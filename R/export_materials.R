@@ -5,9 +5,11 @@
 #'
 export_materials <- function(materials, type = "exercises") {
   if (type == "exercises") {
-    materials[grepl("[01].?-", materials)]
+    c(materials[grepl("0.?-", materials)],
+      materials[grepl("1.?-[12345]", materials)],
+      materials[grepl("2.?-[12]", materials)])
   } else if (type == "lectures") {
-    materials[grepl("[123].?-", materials)]
+    materials[grepl("[1234].?-", materials)]
   } else {
     stop(paste("Unknown material type:", type))
   }

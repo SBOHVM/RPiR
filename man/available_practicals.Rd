@@ -4,7 +4,10 @@
 \alias{available_practicals}
 \title{available_practicals}
 \usage{
-available_practicals()
+available_practicals(verbose = FALSE)
+}
+\arguments{
+\item{verbose}{Add the description text if TRUE (default FALSE)}
 }
 \description{
 available_practicals
