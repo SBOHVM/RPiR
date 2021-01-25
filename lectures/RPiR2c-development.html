@@ -3233,6 +3233,8 @@ plot(my.data$explanatory, my.data$response)</pre>
 
 <b># Function to load in data from file and process
 read_data &lt;- function(filename) {
+  #&#39; Load in data from file and process
+  
   data &lt;- read.csv(filename)
   # Some light processing to get into correct format
   #...
@@ -3257,8 +3259,9 @@ plot(my.data$explanatory, my.data$response)</pre>
 # experiments
 library(lme4)
 
-<b># Load in data from file and process
-read_data &lt;- function(filename) {
+<b>read_data &lt;- function(filename) {
+  #&#39; Load in data from file and process
+  
   data &lt;- read.csv(filename)
   # Some light processing to get into 
   # correct format
@@ -3266,8 +3269,9 @@ read_data &lt;- function(filename) {
   data
 }
 </b>
-<b># Check model is a good one
-check_model &lt;- function(model.out) {
+<b>check_model &lt;- function(model.out) {
+  #&#39; Check model is a good one
+  
   is.good.model &lt;- #...
   #...
   is.good.model
