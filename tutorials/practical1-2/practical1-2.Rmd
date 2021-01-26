@@ -371,9 +371,8 @@ grade_this_code()
 ```
 
 ```{r nextstep-hint}
-
-Within the `for()` loop where the time gets updated the code should be edited
-to contain the line and an appropriate comment:
+# Within the `for()` loop where the time gets updated the code should be edited
+# to contain the line and an appropriate comment:
 
 next.population <- step_simple_growth(current.population = tail(population.vector, 1), 
                                       growth.rate = growth.rate)

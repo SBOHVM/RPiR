@@ -284,8 +284,8 @@ step_simple_growth &lt;- function(current.population, growth.rate) {
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7feb2de78258&gt;
-## &lt;environment: 0x7feb2d678800&gt;</code></pre>
+## &lt;bytecode: 0x7fa8eab512c8&gt;
+## &lt;environment: 0x7fa8eba88e78&gt;</code></pre>
 <p>The <code>function()</code> command, like <code>for()</code>, has one line of code after it (comments are ignored) that defines what the function does. Because nearly all functions need multiple lines to define what they do, we nearly always use <code>{ ... }</code> syntax (as with <code>for()</code>) to allow us to write multiple commands all as part of the function definition. Remember that <strong>whatever appears last in the function</strong> <strong>definition will be returned to script that calls it</strong>, in this case <code>next.population</code>.</p>
 <p>To make sure that the function is only using the information given to it in its arguments, we are going to use <code>findGlobals()</code> to check that it does not use any external information (known as <strong>global variables</strong>). To do this we load in the codetools library (you may have to install it first), and then call the <code>findGlobals()</code> function giving it the name of our function, as follows:</p>
 <pre class="r"><code>step_simple_growth &lt;- function(current.population, growth.rate) {
@@ -473,18 +473,13 @@ plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7feb2de78258&gt;
-## &lt;environment: 0x7feb2bc2db78&gt;</code></pre>
-<pre class="r"><code>
-Within the `for()` loop where the time gets updated the code should be edited
-to contain the line and an appropriate comment:
+## &lt;bytecode: 0x7fa8eab512c8&gt;
+## &lt;environment: 0x7fa8eb125588&gt;</code></pre>
+<pre class="r"><code># Within the `for()` loop where the time gets updated the code should be edited
+# to contain the line and an appropriate comment:
 
 next.population &lt;- step_simple_growth(current.population = tail(population.vector, 1), 
                                       growth.rate = growth.rate)</code></pre>
-<pre><code>## Error: &lt;text&gt;:2:8: unexpected symbol
-## 1: 
-## 2: Within the
-##           ^</code></pre>
 <p>Note that we always set arguments to functions with <code>argument = value</code>, and we strongly recommend using <code>object &lt;- value</code> to set variables in your main script to make the distinction clear. For example, <code>current.population</code> is now an argument of the <code>step_simple_growth()</code> function, and so you set its value using <code>=</code> inside the function call instead of using <code>&lt;-</code> in the main script as we did on line 28 of <span style="color: #de77ae;">0101-growth-functional.r </span>.</p>
 <p>When you are happy with the code and its outputs there is another task. If you look at the whole code, you will see that <code>growth.rate</code> is both the name of the argument in the function and the name of the variable in the script, and <code>next.population</code> is used in the function and in the main script. As we said above, this does not affect the running of the code but can be difficult to read and can result in confusion when debugging for example.</p>
 <p>Here’s the latest version of the code to play with (<span style="color: #de77ae;">0102-growth-functional.R</span>), complete with the <code>step_simple_growth()</code> function:</p>
