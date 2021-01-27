@@ -93,7 +93,7 @@ step_deterministic_birth_death <- function(latest, ___, ___) {
   new.births <- ___ * latest$count 
   ___ <- ___ * latest$count 
   # Calculate population at next timestep
-  next.count <- latest$count + new.additions - ___
+  next.count <- latest$count + new.births - ___
   # Create a data frame with the updated counts and return it
   data.frame(count = next.count) 
 }
@@ -162,8 +162,8 @@ library(RPiR)
 #' --------------------------------
 #' First we set up the parameters for the simulation.
 
-# Set the growth rate
-human.annual.growth <- 0.015
+# Set the birth rate
+human.annual.birth <- 0.015
 
 # Set the death rate
 ___ <- ___
@@ -189,7 +189,7 @@ timesteps <- seq(from = start.time + 1, to = end.time)
 for (new.time in timesteps) {
   # Calculate population at next timestep
   updated.population <- ___(latest = tail(population.df, 1),
-                            ___ = human.annual.growth,
+                            ___ = human.annual.birth,
                             ___ = human.annual.death) 
   # Add new element onto end of population vector
   population.df <- rbind(population.df, updated.population)

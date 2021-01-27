@@ -4,7 +4,10 @@
 \alias{practical_series_one}
 \title{practical_series_one}
 \usage{
-practical_series_one()
+practical_series_one(force = FALSE)
+}
+\arguments{
+\item{force}{- overwrite existing files if TRUE (default FALSE)}
 }
 \description{
 This function will populate the current working directory with scripts and

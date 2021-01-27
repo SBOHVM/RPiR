@@ -49,6 +49,10 @@ navbar:
          href: lectures/RPiR4a-git.html
       -  text: RPiR4b-modelling
          href: lectures/RPiR4b-modelling.html
+      -  text: RPiR5a-reporting
+         href: lectures/RPiR5a-reporting.html
+      -  text: RPiR5b-R
+         href: lectures/RPiR5b-R.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -63,7 +67,11 @@ navbar:
       -  text: RPiR4a-git
          href: lectures_html/RPiR4a-git.html
       -  text: RPiR4b-modelling
-         href: lectures_tml/RPiR4b-modelling.html
+         href: lectures_html/RPiR4b-modelling.html
+      -  text: RPiR5a-reporting
+         href: lectures_html/RPiR5a-reporting.html
+      -  text: RPiR5b-R
+         href: lectures_html/RPiR5b-R.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -71,6 +79,12 @@ navbar:
          href: tutorials/practical2-1/practical2-1.html
       -  text: Practical2-2
          href: tutorials/practical2-2/practical2-2.html
+      -  text: Practical2-3
+         href: tutorials/practical2-3/practical2-3.html
+      -  text: Practical2-4
+         href: tutorials/practical2-4/practical2-4.html
+      -  text: Practical2-5
+         href: tutorials/practical2-5/practical2-5.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions

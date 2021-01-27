@@ -1,0 +1,153 @@
+---
+title: "Writing Reports"
+output: ioslides_presentation
+---
+
+# Generating reports from R
+
+## What are you going to do?
+
+- Read and write well-documented and well-structured code
+- Use this to generate clear and well-documented results/reports
+
+## What are you going to do?
+
+- Read and write well-documented and well-structured code
+- <b>Use this to generate clear and well-documented results/reports</b>
+
+## Header information
+
+```{R}
+#' ---
+#' title: "Comparing a simple growth model with a birth-death model"
+#' author: "Richard Reeve"
+### <b>
+#' date: '`r format(Sys.Date(), "%B %d %Y")`'
+### </b>
+#' output: html_document
+#' ---
+#'
+```
+
+## Mixed text and code
+
+```{R, eval = FALSE}
+### <b>
+#'
+#' Load in the functions that do the work
+### </b>
+library(RPiR)
+source("0104-step-growth.R")
+source("0105-step-birth-death.R")
+```
+
+```{R, echo = FALSE}
+#'
+#' Load in the functions that do the work
+library(RPiR)
+source(system.file("dummy_project/0104-step-growth.R", package = "RPiR"))
+source(system.file("dummy_project/0105-step-birth-death.R", package = "RPiR"))
+```
+
+## Formatted text -- lists and maths
+```{R}
+#' We are going to compare two population dynamics models:
+#'
+#' 1. A simple growth model
+### <b>
+#'    $$N(t + 1) = \lambda \times N(t) + N(t)$$
+### </b>
+#' 2. A birth death model
+### <b>
+#'    $$N(t + 1) = b \times N(t) - d \times N(t) + N(t)$$
+### </b>
+#'
+```
+(note the blank #' line before the numbered list)
+
+## Descriptive text vs code comments
+
+```{R}
+#' First we set up the simulation parameters for every experiment.
+
+### <b>
+## Set the birth and death rates
+### </b>
+birth.rate <- 0.2
+death.rate <- 0.1
+
+### <b>
+## Starting population size
+### </b>
+initial.count <- 1
+```
+
+## Formatted text -- headers
+```{R, echo = FALSE}
+## And setting times
+start.time <- 0
+end.time <- 100
+
+## the timesteps that the simulation will run through
+timesteps <- seq(from = start.time + 1, to = end.time)
+```
+
+```{R}
+### <b>
+#'
+#' ## Run the full $birth, death$ simulation
+### </b>
+
+## Set up the population starting size (at the first timestep)
+population.df1 <- data.frame(count = initial.count)
+```
+(note the blank #' line again before the section header)
+
+## Plotting and chunk options
+
+```{R, echo = FALSE}
+## Set up the population starting size (at the first timestep)
+population.df1 <- data.frame(count = initial.count)
+
+## Now we loop through the time itself (starting at the second timestep)
+for (new.time in timesteps) {
+  updated.population <-
+    step_deterministic_birth_death(latest = tail(population.df1, 1),
+                                   birth.rate = birth.rate,
+                                   death.rate = death.rate)
+  population.df1 <- rbind(population.df1, updated.population)
+}
+population.df1$time <- c(start.time, timesteps)
+```
+
+```{R, fig.width=4, fig.height=4, fig.align="center", fig.cap="Fig. 1: Birth-death model", .smaller}
+#+ initial, fig.width=5, fig.height=5, fig.align="center", fig.cap="Fig. 1: Birth-death model"
+plot_populations(population.df1)
+```
+
+## More chunk options for output {.smaller}
+
+You can make it obvious what the R output is by default:
+```{R}
+a <- 5 + 3
+a
+```
+
+Or you can remove the (slightly odd) comments on output:
+```{R, comment = ""}
+#+ comment=""
+b <- 4 + 4
+b
+```
+
+Or you can run code directly inside your text by using:
+```{r}
+#' What is b - a? `r b - a`.
+```
+
+What is b - a? `r b - a`.
+
+## Further details
+
+See at https://rmarkdown.rstudio.com/docs/articles/rmarkdown.html#cheatsheets or
+on Moodle for a cheatsheet and reference document with further options.

@@ -19,7 +19,10 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we will examine the effect of changing the time step on the model outputs. Remember that in the lecture we said that we increase the accuracy of simulations when we use small time steps, and we reduce the accuracy (but speed up the simulation) when we use large time steps.*
+*In this practical we will examine the effect of changing the time step on the
+model outputs. Remember that in the lecture we said that we increase the
+accuracy of simulations when we use small time steps, and we reduce the
+accuracy (but speed up the simulation) when we use large time steps.*
 
 ## Background
 
@@ -39,10 +42,9 @@ In this practical we will see that the size of the time step affects our model.
 
 To change the model to handle timesteps, we have to consider that by 
 default, in the previous programs we were using a timestep of 1. In this case -- 
-of *E. coli* transmission in cattle from Practical 2-1 -- these are measured in 
-weeks,
-which means that if our rates were given to us in units of weeks, then we are
-stepping forward one week at a time. If our rates were given to us per day 
+of *E. coli* transmission in cattle from Practical 2-2 -- these are measured in 
+weeks, which means that if our rates were given to us in units of weeks, then we
+are stepping forward one week at a time. If our rates were given to us per day 
 rather than per week we would be stepping forward day by day. If a rate is given 
 to us in weeks, we could scale it down accordingly to get the rate per day. Or,
 we could scale it up to get the rate per month. So to change our program to step
@@ -52,18 +54,18 @@ transmissions and recoveries that occur in one unit of time. To simulate
 stepping forward in larger of smaller amounts of time we scale the parameters by
 the new time step.
 
-As usual, create a new project for this practical. 
-The task now is edit <span style="color: #de77ae;">0201-run-SIS.r</span> so that it is easy to alter the timestep
-of the simulation – you can reuse `step_deterministic_SIS()`. All you need to do
-is to write a new script file which creates a new parameter, `timestep`, so that
-you can scale `transmission.rate` and `recovery.rate` to 
-`ecoli.transmission * timestep` and `ecoli.recovery * timestep` before passing 
-them to `step_deterministic_SIS()`. You also need to remember that the vector of
-`timesteps` to loop through is now also wrong. Make sure that you adjust it 
-correctly so that it will give the correct times for the plot. You can check it 
-has by looking at `population.df$time` after you’ve added it in to the data 
-frame and make sure it looks right to you. We can call this new version
-<span style="color: #de77ae;">0202-test-SIS.r</span>.
+The task now is edit <span style="color: #de77ae;">0202-run-SIS.R</span> so that
+it is easy to alter the timestep of the simulation – you can reuse
+`step_deterministic_SIS()`. All you need to do is to write a new script file
+which creates a new parameter, `timestep`, so that you can scale
+`transmission.rate` and `recovery.rate` to  `ecoli.transmission * timestep` and
+`ecoli.recovery * timestep` before passing  them to `step_deterministic_SIS()`.
+You also need to remember that the vector of `timesteps` to loop through is now
+also wrong. Make sure that you adjust it correctly so that it will give the
+correct times for the plot. You can check it has by looking at
+`population.df$time` after you’ve added it in to the data frame and make sure it
+looks right to you. We can call this new version <span style="color: #de77ae;">
+0203-test-SIS.R</span>.
 
 ## Running the code
 
@@ -87,3 +89,40 @@ may be different, so we recommend sticking with those values.
 Demonstrate the instabilities at high timesteps in a report, with some text 
 explaining when things break down and the simulation is no longer reliable, and 
 when, conversely, there is no advantage to reducing the timesteps further.
+
+## GitHub
+
+As with the other exercises, we want you to get a couple of other people to
+check your code and make sure it works for them, and we want you to check other
+people's code too.
+
+### Getting help with your code
+
+Once you're happy with your code, commit your changes using the Git pane in
+RStudio (it's best just to commit the R files for now - not, for instance, any
+html files that were created by generating reports). Don't forget then to push
+the changes to GitHub and check on the website that it contains your new code.
+Notify the partners we have allocated you that you have something for them to
+check. You can do this on Zoom, but please also create an issue in your
+repository asking for their review - you can contact them by tagging them in
+the message with `@theirusername`, and they should receive an email and a
+[notification on the website](https://github.com/notifications). They can then
+respond to this issue, telling you if they had any problems running your version
+of the practical.
+
+### Checking other people's code
+
+Likewise, when you hear from someone else that a repo is available to check,
+then if it's a project you have already downloaded, you should open that
+project in RStudio, go to the Git pane, and click on the **Pull** button to
+get the updates they have pushed to GitHub (there should be a subtle message
+saying that updates are available near the button). If you're checking a new
+person's work, or a new project, refer to the instructions in Practical 2-2.
+Once you've checked that the new code has downloaded, you can then run their
+code and make sure it works. If it does not, just respond in the Issue that they
+opened on GitHub explaining what went wrong (it might help to also do
+this in person on Zoom if they are there). If it works, then you also need
+to respond saying so.
+
+Interacting like this through GitHub to help each other will count as most of
+your engagement marks for the course.

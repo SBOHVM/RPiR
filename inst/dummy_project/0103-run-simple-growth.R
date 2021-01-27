@@ -6,7 +6,7 @@
 #' ---
 
 #' First load in the function that does the population update
-source("0103-step-simple-growth.r")
+source("0103-step-simple-growth.R")
 
 #' ### Now set up the simulation parameters
 #' First we set up the parameters for the simulation.
