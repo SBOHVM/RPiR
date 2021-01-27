@@ -1,5 +1,5 @@
 ---
-title: "Reports"
+title: "Writing Reports"
 output: ioslides_presentation
 ---
 
@@ -32,7 +32,8 @@ output: ioslides_presentation
 ## Mixed text and code
 
 ```{R, echo=FALSE, results="hide"}
-#devtools::install()
+if (!rlang::is_installed("RPiR"))
+  devtools::install()
 ```
 
 ```{R, eval = FALSE}
