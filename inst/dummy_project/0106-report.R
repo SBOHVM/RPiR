@@ -12,6 +12,14 @@ library(RPiR)
 source("0104-step-growth.r")
 source("0105-step-birth-death.r")
 
+#' We are going to compare two population dynamics models:
+#'
+#' 1. A simple growth model
+#'    $$N(t + 1) = \lambda \times N(t) + N(t)$$
+#' 2. A birth death model
+#'    $$N(t + 1) = b \times N(t) - d \times N(t) + N(t)$$
+#'
+
 #' First we set up the simulation parameters for every experiment.
 
 ## Set the birth and death rates
@@ -44,6 +52,7 @@ for (new.time in timesteps) {
 }
 population.df1$time <- c(start.time, timesteps)
 
+#+ initial, fig.width=5, fig.height=5, fig.align="center", fig.cap="Fig. 1: Birth-death model"
 plot_populations(population.df1)
 
 #'
@@ -61,6 +70,7 @@ for (new.time in timesteps) {
 }
 population.df$time <- c(start.time, timesteps)
 
+#+ birth, fig.width=5, fig.height=5, fig.align="center", fig.cap="Fig. 2: Birth only model"
 plot_populations(population.df1, with.legend = FALSE)
 plot_populations(population.df, new.graph = FALSE, col = 2)
 legend("topleft", legend = c("birth, death", "growth = birth"),
@@ -84,6 +94,7 @@ for (new.time in timesteps) {
 population.df$time <- c(start.time, timesteps)
 
 
+#+ death, fig.width=5, fig.height=5, fig.align="center", fig.cap="Fig. 3: Death only model"
 plot_populations(population.df1, with.legend = FALSE)
 plot_populations(population.df, new.graph = FALSE, col = 2)
 legend("topleft", legend = c("birth, death", "growth = -death"),
@@ -105,6 +116,7 @@ for (new.time in timesteps) {
 }
 population.df$time <- c(start.time, timesteps)
 
+#+ birth-death, fig.width=5, fig.height=5, fig.align="center", fig.cap="Fig. 4: Birth minus death model"
 plot_populations(population.df1, with.legend = FALSE)
 plot_populations(population.df, new.graph = FALSE, col = 2, lty = 2)
 legend("topleft", legend=c("birth, death", "growth = birth - death"),
