@@ -31,6 +31,9 @@ output: ioslides_presentation
 
 ## Mixed text and code
 
+```{R, echo=FALSE, results="hide"}
+devtools::install()
+```
 ```{R, eval = FALSE}
 ### <b>
 #'
