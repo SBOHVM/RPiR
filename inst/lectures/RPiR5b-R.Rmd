@@ -1,0 +1,368 @@
+---
+title: "More Programming in R"
+output: ioslides_presentation
+---
+
+# Some useful things...
+
+## Important functionality {.smaller}
+
+-   Loading files using `source(...)`
+-   Vectors, `c()`, `seq()`, `head()` and `tail()`
+-   for loops:
+
+```{R, eval=FALSE}
+    for (...) { ... }
+```
+
+-   functions:
+
+```{R, eval=FALSE}
+    my_fun <- function() { ... }
+```
+
+-   if statements
+
+```{R, eval=FALSE}
+    if (...) { ... } else { ... }
+```
+
+-   Using curly brackets `{ ... }`
+-   (joining) data frames
+
+```{R, eval=FALSE}
+    data.frame(...)
+    rbind(df1, df2)
+```
+
+## Loading files
+
+```{R, eval=FALSE}
+    source("0105-step-birth-death.R")
+    step_deterministic_birth_death
+```
+
+```{R, echo=FALSE, comment=""}
+    source(system.file("dummy_project/0105-step-birth-death.R", package = "RPiR"))
+    step_deterministic_birth_death
+```
+
+## Vectors
+
+```{R, comment=""}
+c("Hello", "Goodbye")
+```
+
+```{R, comment=""}
+words <- c("Welcome", "Farewell")
+words[2]
+```
+
+## `seq()`
+
+```{R, comment=""}
+seq(2, 4)
+```
+
+```{R, comment=""}
+wholes <- seq(from = 3, to = 6)
+wholes
+```
+
+```{R, comment=""}
+halves <- seq(from = 3, to = 7, by = 0.5)
+halves
+```
+
+## `head()` and `tail()`
+
+```{R, comment=""}
+head(halves)
+```
+
+```{R, comment=""}
+tail(halves, 1)
+```
+
+## `for (...)` loops
+
+```{R, eval=FALSE}
+for (item in vector) {
+  do something, probably to item
+}
+```
+
+Remember, `whole` was `seq(from = 3, to = 6)`:
+
+```{R, comment=""}
+for (whole in wholes) {
+  print(whole)
+}
+```
+
+## `for (...)` loops
+
+```{R, comment=""}
+halves <- seq(from = 0, to = 1, by = 0.5)
+total <- 0
+for (half in halves){
+  print(half)
+  total <- total + half
+}
+total
+```
+
+## Functions
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  first + second
+}
+add_up(3, 5)
+```
+
+## Functions
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  result <- first + second
+}
+add_up(3, 5)
+```
+
+## Functions
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  result <- first + second
+  result
+}
+add_up(3, 5)
+```
+
+## Functions
+
+```{R, comment=""}
+### <b>
+add_up <- function(first, second) {
+### </b>
+  result <- first + second
+### <b>
+  second - first
+}
+add_up(3, 5) ### </b>
+```
+
+## Functions
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  # Calculate the result
+  result <- first + second
+  # And return it
+### <b>
+  result
+### </b>
+}
+add_up(3, 5)
+```
+
+## Functions
+
+We want to calculate: $$(first + second) \times (first + second)$$
+
+```{R, comment=""}
+add_and_square <- function(first, second) {
+  # Calculate the result
+  added <- first + second
+  squared <- added * added
+  # And return it
+  squared
+}
+add_and_square(3, 5)
+```
+
+## Functions
+
+Doing it all in one go increases the risk of mistakes:
+
+```{R, comment=""}
+add_and_square <- function(first, second) {
+  (first + second) * first + second
+}
+add_and_square(3, 5)
+```
+
+## `if (...) {...}` statements
+
+If statements allow us to do different things depending on what has gone before in the code.
+
+## `if (...) {...}` statements
+
+```{R, comment=""}
+if (add_and_square(3, 5) == 64) {
+  print("Maths still works")
+}
+```
+
+## `if (...) {...} else {...}`
+
+```{R, comment=""}
+if (add_and_square(3, 5) == 64) {
+  print("Maths still works")
+} else {
+  warning("We have a problem")
+  print(add_and_square(3, 5))
+}
+```
+
+## `if (...) {...} else {...}`
+
+```{R, comment=""}
+add_and_square <- function(first, second) {
+  # Calculate the result
+  added <- first + second
+  squared <- added * added
+  # And return it
+  squared
+}
+```
+
+## `if (...) {...} else {...}`
+
+```{R, comment=""}
+if (add_and_square(3, 5) == 64) {
+  usethis::ui_done("Maths still works")
+} else {
+  usethis::ui_oops("We have a problem")
+}
+```
+
+## Using curly brackets `{ ... }`
+
+Curly brackets allow us to do lots of things all in one go. You've seen them in for loops, if statements, function definitions. They turn multiple R statements into one block, like a code block in RMarkdown but in regular R. Make sure you don't forget them.
+
+## Using curly brackets `{ ... }`
+
+```{R, echo=FALSE}
+added <- 0
+```
+
+```{R, comment=""}
+add_and_square <- function(first, second)
+  added <- first + second
+  squared <- added * added
+  squared
+
+add_and_square(3, 5)
+```
+
+## Using curly brackets `{ ... }`
+
+```{R, comment=""}
+added <- 0
+add_and_square <- function(first, second)
+  added <- first + second
+
+squared <- added * added
+squared
+
+add_and_square(3, 5)
+```
+
+## Using curly brackets `{ ... }`
+
+```{R, comment=""}
+added <- 0
+add_and_square <- function(first, second) {
+  added <- first + second
+}
+squared <- added * added
+squared
+
+add_and_square(3, 5)
+```
+
+## Using curly brackets `{ ... }`
+
+```{R, comment=""}
+added <- 0
+add_and_square <- function(first, second) {
+  added <- first + second
+  squared <- added * added
+  squared
+}
+add_and_square(3, 5)
+```
+
+## Using curly brackets `{ ... }`
+
+Notice that they actually interfere with RMarkdown
+
+```{R}
+#' ## Adding a header here works!
+added <- 0
+add_and_square <- function(first, second) {
+  #' ## Adding a header here doesn't work :(
+  added <- first + second
+  squared <- added * added
+  squared
+}
+```
+
+## (joining) data frames {.smaller}
+
+```{R, comment=""}
+first <- head(airquality)
+first
+```
+
+```{R, comment=""}
+class(first)
+```
+
+```{R, comment=""}
+last <- tail(airquality, 1)
+last
+```
+
+## (joining) data frames {.smaller}
+
+```{R, comment=""}
+full <- rbind(first, last)
+full
+```
+
+```{R, comment=""}
+nrow(full)
+```
+
+## Final comments
+
+```{R, eval=FALSE}
+rm(list=ls())
+```
+This clears the environment, but so does generating a report, and `rm()` can
+accidentally delete useful things if it’s used in the wrong place. If you have
+to, you can clear the environment manually using *Session->Clear Workspace*, the
+brush in the Environment tab, or even better use *Session->Restart R* to restart
+everything. Next:
+```{R, eval=FALSE}
+setwd("c/d") # and more importantly
+setwd("c:\a\b\c\d")
+```
+This will set the working directory to a fixed place, which is very annoying
+if you ever move your code. Much better to use a Project, so please don't put
+this into your code anywhere.
+
+## Final comments
+
+And finally:
+```{R, eval=FALSE}
+install.packages("tibble")
+devtools::install_github("IBAHCM/RPiR")
+```
+This should be done before you run your code (and later we'll show you how
+t make sure it is done as your code is downloaded), but your scripts should
+not try to install packages themselves. It's enough that loading the library
+will fail if the code is run. It's obvious what to do next if that happens.

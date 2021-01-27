@@ -51,6 +51,8 @@ navbar:
          href: lectures/RPiR4b-modelling.html
       -  text: RPiR5a-reporting
          href: lectures/RPiR5a-reporting.html
+      -  text: RPiR5b-R
+         href: lectures/RPiR5b-R.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -68,6 +70,8 @@ navbar:
          href: lectures_html/RPiR4b-modelling.html
       -  text: RPiR5a-reporting
          href: lectures_html/RPiR5a-reporting.html
+      -  text: RPiR5b-R
+         href: lectures_html/RPiR5b-R.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
