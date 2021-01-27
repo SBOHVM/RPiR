@@ -49,6 +49,8 @@ navbar:
          href: lectures/RPiR4a-git.html
       -  text: RPiR4b-modelling
          href: lectures/RPiR4b-modelling.html
+      -  text: RPiR5a-reporting
+         href: lectures/RPiR5a-reporting.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -64,6 +66,8 @@ navbar:
          href: lectures_html/RPiR4a-git.html
       -  text: RPiR4b-modelling
          href: lectures_html/RPiR4b-modelling.html
+      -  text: RPiR5a-reporting
+         href: lectures_html/RPiR5a-reporting.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
