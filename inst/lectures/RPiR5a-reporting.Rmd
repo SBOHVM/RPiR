@@ -31,11 +31,6 @@ output: ioslides_presentation
 
 ## Mixed text and code
 
-```{R, echo=FALSE, results="hide"}
-if (!rlang::is_installed("RPiR"))
-  devtools::install()
-```
-
 ```{R, eval = FALSE}
 ### <b>
 #'
