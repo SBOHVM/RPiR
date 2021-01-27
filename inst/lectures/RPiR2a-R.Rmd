@@ -228,5 +228,5 @@ http://phdcomics.com/comics/archive.php?comicid=946
 ## Starting with...
 
 > - Practical 0.1 ("practical0-1") on functions and loops
-> - Practical 1.1 - 1.6 ("practical1-x") on population dynamics
+> - Practical 1.1 - 1.5 ("practical1-x") on population dynamics
 
