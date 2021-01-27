@@ -7,7 +7,7 @@
 
 #' Load in the functions that do the work
 library(RPiR)
-source("0105-step-birth-death.r")
+source("0105-step-birth-death.R")
 
 #' Set up the simulation parameters
 

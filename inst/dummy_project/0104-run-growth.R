@@ -7,7 +7,7 @@
 
 #' First load in the functions that do the work
 library(RPiR)
-source("0104-step-growth.r")
+source("0104-step-growth.R")
 
 #' Set up the simulation parameters
 

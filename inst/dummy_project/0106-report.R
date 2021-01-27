@@ -9,8 +9,8 @@
 #'
 #' Load in the functions that do the work
 library(RPiR)
-source("0104-step-growth.r")
-source("0105-step-birth-death.r")
+source("0104-step-growth.R")
+source("0105-step-birth-death.R")
 
 #' We are going to compare two population dynamics models:
 #'
