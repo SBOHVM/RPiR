@@ -291,8 +291,8 @@ for (i in days) {
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7fe17fcaa0c0&gt;
-## &lt;environment: 0x7fe17fcaed70&gt;</code></pre>
+## &lt;bytecode: 0x7fad7fab8f60&gt;
+## &lt;environment: 0x7fad7fabbc10&gt;</code></pre>
 <p>We’ve been working through these exercises with variable names that are hard to remember, and this makes the code harder to follow. Here, just go through the code below and change them for more sensible names. There are lots of options, but for this example you must change them as follows:</p>
 <ul>
 <li><code>N</code> -&gt; <code>population.count</code></li>
@@ -335,8 +335,8 @@ for (day in days) {
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7fe17fcaa0c0&gt;
-## &lt;environment: 0x7fe1800739e8&gt;</code></pre>
+## &lt;bytecode: 0x7fad7fab8f60&gt;
+## &lt;environment: 0x7fad804f9a88&gt;</code></pre>
 <p>We will further develop your skills in writing and using scripts (and in the next exercise we will learn how to write functions).</p>
 </div>
 <div id="section-tasks" class="section level2">
@@ -405,8 +405,8 @@ population.vector &lt;- initial.count</code></pre>
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7fe17fcaa0c0&gt;
-## &lt;environment: 0x7fe17f219240&gt;</code></pre>
+## &lt;bytecode: 0x7fad7fab8f60&gt;
+## &lt;environment: 0x7fad7f2db340&gt;</code></pre>
 <p>Now we should specify the sequence of timesteps. Note that there are 10 days if you go from day 0 to day 10, so the first timestep is time 1, not 0:</p>
 <pre class="r"><code># The timesteps that the simulation will run through
 timesteps &lt;- seq(from = start.time + 1, to = end.time)</code></pre>
@@ -536,8 +536,8 @@ summary(population.vector)</code></pre>
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7fe17fcaa0c0&gt;
-## &lt;environment: 0x7fe1793d86b0&gt;</code></pre>
+## &lt;bytecode: 0x7fad7fab8f60&gt;
+## &lt;environment: 0x7fad7aaf4b20&gt;</code></pre>
 <pre class="r"><code># Output the first 6 elements of population.vector</code></pre>
 <div id="section-head-hint">
 <p><strong>Hint:</strong> Read <code>?head</code>.</p>
@@ -563,8 +563,8 @@ summary(population.vector)</code></pre>
 ##     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
 ##         .message = final_grade$message, .correct = correct, .incorrect = incorrect))
 ## }
-## &lt;bytecode: 0x7fe17cb25ee8&gt;
-## &lt;environment: 0x7fe17cb0f1e8&gt;</code></pre>
+## &lt;bytecode: 0x7fad7e6be590&gt;
+## &lt;environment: 0x7fad7e6bfbf0&gt;</code></pre>
 <pre class="r"><code># Output the first 10 elements of population.vector</code></pre>
 <pre class="r"><code>grade_result(pass_if(~identical(.result, head(population.vector, 10))))</code></pre>
 <pre><code>## function (check_env) 
@@ -587,8 +587,8 @@ summary(population.vector)</code></pre>
 ##     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
 ##         .message = final_grade$message, .correct = correct, .incorrect = incorrect))
 ## }
-## &lt;bytecode: 0x7fe17cb25ee8&gt;
-## &lt;environment: 0x7fe17cecd410&gt;</code></pre>
+## &lt;bytecode: 0x7fad7e6be590&gt;
+## &lt;environment: 0x7fad79fae4f8&gt;</code></pre>
 <pre class="r"><code># Print the last element of population.vector</code></pre>
 <div id="section-tail-hint">
 <p><strong>Hint:</strong> Read <code>?tail</code>.</p>
@@ -614,8 +614,8 @@ summary(population.vector)</code></pre>
 ##     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
 ##         .message = final_grade$message, .correct = correct, .incorrect = incorrect))
 ## }
-## &lt;bytecode: 0x7fe17cb25ee8&gt;
-## &lt;environment: 0x7fe17f3d3aa8&gt;</code></pre>
+## &lt;bytecode: 0x7fad7e6be590&gt;
+## &lt;environment: 0x7fad7ce420c0&gt;</code></pre>
 <p>Run the code for different initial conditions and different growth rates. Test the code using the value of the human population growth rate we used in the lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that you agree with the doubling time we calculated theoretically of ~46 years.</p>
 <p>Finally, create a new project in RStudio - you can do this by selecting <span style="color: #de77ae;">File</span> &gt; <span style="color: #de77ae;">New Project…</span>, and then choose <span style="color: #de77ae;">New Directory</span> &gt; <span style="color: #de77ae;">New Project</span> and then a name and a location on your computer to save it in, and tick <span style="color: #de77ae;">Open in new session</span> because your current session is used up by this practical. From now on all of the coding you do will happen in this (or another) new RStudio session. Keep the current one just for running the practicals.</p>
 <p>In the new session, create a new R file, and copy the code in the <span style="color: #de77ae;">R Markdown header</span> and <span style="color: #de77ae;">0101-growth-loop.R</span> code sections into it (ignoring duplicates), save it, and generate a report from it. You can do this by clicking on <span style="color: #de77ae;">File</span> &gt; <span style="color: #de77ae;">Compile Report…</span>) or you can click on the little notebook icon:</p>
