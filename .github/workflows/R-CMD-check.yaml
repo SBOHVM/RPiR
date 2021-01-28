@@ -110,6 +110,8 @@ jobs:
           for (i in seq_len(length(rmd_files))) {
           rmarkdown::render(rmd_files[i],
           output_dir = file.path("docs", "lectures"), 
+          # Set the parent environment to be on the top of the search path,
+          # so that all attached methods can be found
           envir = new.env(parent = globalenv()), clean = TRUE)
           }
         shell: Rscript {0}
