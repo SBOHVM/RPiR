@@ -1,6 +1,8 @@
 ---
 title: "Writing Reports"
-output: ioslides_presentation
+output: 
+  ioslides_presentation:
+    selfcontained: false
 ---
 
 # Generating reports from R
