@@ -1,4 +1,6 @@
-pkgdown_yaml <- yaml::read_yaml("_pkgdown.yaml")
+
+root <- system.file(package = "RPiR")
+pkgdown_yaml <- yaml::read_yaml(file.path(root, "_pkgdown.yaml"))
 left <- pkgdown_yaml$navbar$left
 right <- pkgdown_yaml$navbar$right
 
