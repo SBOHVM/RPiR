@@ -18,6 +18,6 @@ practical_series_one <- function(force = FALSE) {
     if (file.copy(files[i], ".", overwrite = force))
       usethis::ui_done(paste("Writing", usethis::ui_value(basename(files[i]))))
     else
-      usethis::ui_oops(paste("Writing", usethis::ui_value(basename(files[i]))))
+      usethis::ui_oops(paste("Failed to write", usethis::ui_value(basename(files[i]))))
   }
 }
