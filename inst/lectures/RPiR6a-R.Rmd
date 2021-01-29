@@ -58,3 +58,13 @@ while (number <= max.number) {
   number <- number + increment
 }
 ```
+
+## Credits
+
+Slide images: Jenny Bryan, https://github.com/jennybc/debugging
+
+Death certificate (modified): Public Domain, https://commons.wikimedia.org/w/index.php?curid=214170    
+
+Autopsy painting by Rembrandt: https://www.mauritshuis.nl/en/explore/the-collection/artworks/the-anatomy-lesson-of-dr-nicolaes-tulp-146/detailgegevens/ Public Domain, https://commons.wikimedia.org/w/index.php?curid=64281722  
+
+The Night King: https://cnet4.cbsistatic.com/img/vugy5MvUVBvwcJf0JvKIBd1RwJE=/1200x675/2019/04/22/2b2fee8d-111a-4d19-ae83-4e61899cfd47/1nightking.jpg (probably copyright HBO)  
