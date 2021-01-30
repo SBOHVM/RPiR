@@ -256,8 +256,8 @@ step_deterministic_growth &lt;- function(latest, growth.rate) {
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7fb4ca030ef0&gt;
-## &lt;environment: 0x7fb4cb18feb0&gt;</code></pre>
+## &lt;bytecode: 0x7fbc0c2bf450&gt;
+## &lt;environment: 0x7fbc08f630f0&gt;</code></pre>
 <p><span style="color: #de77ae;">0104-step-growth.R</span> should contain the function doing the work in the simulation, <code>step_deterministic_growth()</code>, but with a few improvements to work in terms of a data frame rather than just a vector. So the first thing to do is change the name of the function.</p>
 <p>Next, we’ll rename the argument <code>current.population</code> to <code>latest</code>, being suitably generic to work in all future models even if they are not about population dynamics.</p>
 <p>We are now allowing the populations that are handled within this function to potentially contain several columns corresponding to different sets of individuals. Thus, <code>latest</code> is a data frame that contains a single row containing the latest population size for each of the component populations – in this case just the one, <code>count</code>. Therefore, to perform the update step we need to extract the actual population we are interested in. For this we use the <code>$</code> expression:</p>
@@ -388,8 +388,8 @@ plot_populations(population.df)</code></pre>
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7fb4ca030ef0&gt;
-## &lt;environment: 0x7fb4c86f3048&gt;</code></pre>
+## &lt;bytecode: 0x7fbc0c2bf450&gt;
+## &lt;environment: 0x7fbc0c438e08&gt;</code></pre>
 <p>At the beginning of the file, we should load the <code>RPiR</code> package, because we’re going to be using the <code>plot_populations()</code> function that it provides, so add that in first:</p>
 <pre class="r"><code>library(RPiR)</code></pre>
 <p>Then read in function from the new file (though since we’re working in the {learnr} environment rather than RStudio you should comment this line out, since the file has been preloaded for you):</p>
@@ -436,8 +436,8 @@ population.df &lt;- rbind(population.df, updated.population)</code></pre>
 ##         }
 ##     })(check_env)
 ## }
-## &lt;bytecode: 0x7fb4ca030ef0&gt;
-## &lt;environment: 0x7fb4c9db1088&gt;</code></pre>
+## &lt;bytecode: 0x7fbc0c2bf450&gt;
+## &lt;environment: 0x7fbc0a439d88&gt;</code></pre>
 <p>or go to the <span style="color: #de77ae;">Help</span> tab in RStudio and type the name into the box next to the magnifying glass.</p>
 <p>As far as the <code>plot_populations()</code> function is concerned, feel free to refer back to this code later to understand better how it works by finding the code on GitHub. Or you can just run the name of the function on its own at an R prompt. We made a simpler (but less powerful) version of the plot function - <code>plot_simple()</code> - that you may find easier to read:</p>
 <pre class="r"><code>library(RPiR)
@@ -471,7 +471,7 @@ plot_simple</code></pre>
 ##             lty = lty[index])
 ##     }
 ## }
-## &lt;bytecode: 0x7fb4ca112f70&gt;
+## &lt;bytecode: 0x7fbc0d0dd2f0&gt;
 ## &lt;environment: namespace:RPiR&gt;</code></pre>
 Many of the helper functions in the course are fairly sophisticated and you will probably have to take on trust for the time being. We will be providing these functions as we go along to allow you to focus on the models being developed – you are welcome to use them yourselves later, but if you use them for real you should spend some time satisfying yourself that they really do what you want. 
 <script type="application/shiny-prerendered" data-context="server-start">
@@ -489,7 +489,7 @@ set.seed(123)
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","cachem","callr","checkmate","cli","codetools","colorspace","compiler","crayon","curl","datasets","desc","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","highr","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","scales","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyselect","tools","usethis","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.2.1","4.0.3","1.0.1","3.5.1","2.0.0","2.2.0","0.2-16","2.0-0","4.0.3","1.3.4","4.3","4.0.3","1.2.0","1.28","2.3.2","0.6.27","1.0.3","0.3.1","0.14","0.4.2","1.1.0","1.5.0","0.1.0","3.3.3","1.4.2","0.2.0.9001","4.0.3","4.0.3","4.0.3","0.3.0","0.8","0.5.1.9000","1.5.3","1.5.5","1.7.2","1.31","1.1.0.1","0.10.1.9007","0.2.0","2.0.1","1.1","2.0.0","4.0.3","0.9","0.5.0","1.4.7","1.2.0","2.0.3","1.1.0","1.1.1","3.4.5","1.1.1","1.5.0","0.3.4","2.5.0","1.0.6","2.2.0","0.4.10","2.6","0.53.0","2.0.2","0.13","1.1.1","1.1.1","1.6.0","4.0.3","1.5.3","1.4.0","3.0.1","3.0.6","1.1.0","4.0.3","2.0.0","4.0.3","0.3.6","2.4.1","0.20","1.8-4","2.2.1"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","cachem","callr","checkmate","cli","codetools","colorspace","compiler","crayon","curl","datasets","desc","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","highr","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","scales","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyselect","tools","usethis","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.2.1","4.0.3","1.0.1","3.5.1","2.0.0","2.2.0","0.2-16","2.0-0","4.0.3","1.4.0","4.3","4.0.3","1.2.0","1.28","2.3.2","0.6.27","1.0.3","0.3.1","0.14","0.4.2","1.1.0","1.5.0","0.1.0","3.3.3","1.4.2","0.2.0.9001","4.0.3","4.0.3","4.0.3","0.3.0","0.8","0.5.1.9000","1.5.3","1.5.5","1.7.2","1.31","1.1.0.1","0.10.1.9007","0.2.0","2.0.1","1.1","2.0.0","4.0.3","0.9","0.5.0","1.4.7","1.2.0","2.0.3","1.1.0","1.1.1","3.4.5","1.1.1","1.5.0","0.3.4","2.5.0","1.0.6","2.2.0","0.4.10","2.6","0.53.0","2.0.2","0.13","1.1.1","1.1.1","1.6.0","4.0.3","1.5.3","1.4.0","3.0.1","3.0.6","1.1.0","4.0.3","2.0.0","4.0.3","0.3.6","2.4.1","0.20","1.8-4","2.2.1"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
