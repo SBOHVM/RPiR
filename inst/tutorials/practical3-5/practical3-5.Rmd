@@ -1,5 +1,5 @@
 ---
-title: "3-5: Stochastic SIR model"
+title: "Practical 3-5: Stochastic SIR model"
 output: 
   learnr::tutorial:
     theme: lumen

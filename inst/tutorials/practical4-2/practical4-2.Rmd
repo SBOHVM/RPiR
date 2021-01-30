@@ -1,5 +1,5 @@
 ---
-title: "Reproducible Programming in R Practical 4-2"
+title: "Practical 4-2"
 output: 
   learnr::tutorial:
     theme: lumen
