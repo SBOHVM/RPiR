@@ -1,5 +1,5 @@
 ---
-title: "Practical 0-1: Functions and loops"
+title: "Practical A-1: Functions and loops"
 output:
   learnr::tutorial:
     theme: lumen
