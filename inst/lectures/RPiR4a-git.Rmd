@@ -9,35 +9,35 @@ output: ioslides_presentation
 
 ## 2014
 
-<center>![](RPiR4a/1.png){ width=80% }</center>
+<center>![](images/RPiR4a-1.png){ width=80% }</center>
 
 ## 2015
 
-<center>![](RPiR4a/2.png){ width=80% }</center>
+<center>![](images/RPiR4a-2.png){ width=80% }</center>
 
 ## 2016
 
-<center>![](RPiR4a/3.png){ width=80% }</center>
+<center>![](images/RPiR4a-3.png){ width=80% }</center>
 
 ## 2017
 
-<center>![](RPiR4a/4.png){ width=80% }</center>
+<center>![](images/RPiR4a-4.png){ width=80% }</center>
 
 ## 2018 November Viva
 
-<center>![](RPiR4a/5.png){ width=80% }</center>
+<center>![](images/RPiR4a-5.png){ width=80% }</center>
 
 ## 2019 
 
-<center>![](RPiR4a/6.png){ width=80% }</center>
+<center>![](images/RPiR4a-6.png){ width=80% }</center>
 
 ## 2020 Covid-19
 
-<center>![](RPiR4a/7.png){ width=80% }</center>
+<center>![](images/RPiR4a-7.png){ width=80% }</center>
 
 ## 2021
 
-<center>![](RPiR4a/8.png){ width=80% }</center>
+<center>![](images/RPiR4a-8.png){ width=80% }</center>
 
 # Why did it take so long?
 
@@ -54,7 +54,7 @@ output: ioslides_presentation
 - **I'm too busy?**
   - I've got stuff to do!
 
-<center>![](RPiR4a/git.png){ width=80% }</center>
+<center>![](images/RPiR4a-git.png){ width=80% }</center>
 
 </div>
 
@@ -62,11 +62,11 @@ output: ioslides_presentation
 
 ## 1. Centralized cloud storage of your code 
 
-<center>![](RPiR4a/fire.png){ width=90% }</center>
+<center>![](images/RPiR4a-fire.png){ width=90% }</center>
 
 ## 2. Version control system 
 
-<center>![](RPiR4a/phd.png){ width=50% }</center>
+<center>![](images/RPiR4a-phd.png){ width=50% }</center>
 
 ## 2. Version control system 
 
@@ -93,7 +93,7 @@ output: ioslides_presentation
 
 ## 4. Collaboration {.flexbox .vcenter}
 
-<center>![](RPiR4a/team.png){ width=90% }</center>
+<center>![](images/RPiR4a-team.png){ width=90% }</center>
 
 ## 5. Collaboration
 
@@ -123,7 +123,7 @@ Makes your project / data / code:
 
 ## Let's go back to 2014...
 
-<center>![](RPiR4a/1.png){ width=80% }</center>
+<center>![](images/RPiR4a-1.png){ width=80% }</center>
 
 # GitHub demo
 

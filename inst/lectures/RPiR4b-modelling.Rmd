@@ -14,45 +14,45 @@ introduced into a fully susceptible population"
 
 ## $R_0 > 1$
 
-<center>![](RPiR4b/a.png){ width=80% }</center>
+<center>![](images/RPiR4b-a.png){ width=80% }</center>
 
 ## $R_0 > 1$
 
-<center>![](RPiR4b/1.png){ width=80% }</center>
+<center>![](images/RPiR4b-1.png){ width=80% }</center>
   
 ## $R_0 > 1$
 
-<center>![](RPiR4b/2.png){ width=80% }</center>
+<center>![](images/RPiR4b-2.png){ width=80% }</center>
 
 ## $R_0 > 1$
 
-<center>![](RPiR4b/3.png){ width=80% }</center>
+<center>![](images/RPiR4b-3.png){ width=80% }</center>
 
 ## $R_0 > 1$
 
-<center>![](RPiR4b/4.png){ width=80% }</center>
+<center>![](images/RPiR4b-4.png){ width=80% }</center>
 
 ## $R_0 > 1$
 
-<center>![](RPiR4b/5.png){ width=80% }</center>
+<center>![](images/RPiR4b-5.png){ width=80% }</center>
 
 # Basic reproduction number $R_0 < 1$
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/a.png){ width=80% }</center>
+<center>![](images/RPiR4b-a.png){ width=80% }</center>
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/b.png){ width=80% }</center>
+<center>![](images/RPiR4b-b.png){ width=80% }</center>
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/c.png){ width=80% }</center>
+<center>![](images/RPiR4b-c.png){ width=80% }</center>
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/d.png){ width=80% }</center>
+<center>![](images/RPiR4b-d.png){ width=80% }</center>
 
 ## Outbreak behaviour depends on $R_0$
 
@@ -61,7 +61,7 @@ introduced into a fully susceptible population"
 
 ## Epidemic dynamics
 
-<center>![](RPiR4b/graph.png){ width=60% }</center>
+<center>![](images/RPiR4b-graph.png){ width=60% }</center>
 
 ## Model structure {.flexbox .vcenter .smaller}
 
@@ -73,13 +73,13 @@ introduced into a fully susceptible population"
   - are recovered individuals immune?
   - are there latently infected individuals?
 
-<center>![](RPiR4b/structure.png){ width=100% }</center>
+<center>![](images/RPiR4b-structure.png){ width=100% }</center>
 
 </div>
 
 ## SIR process {.flexbox .vcenter}
 
-<center>![](RPiR4b/process.png){ width=80% }</center>
+<center>![](images/RPiR4b-process.png){ width=80% }</center>
 
 ## Terminology
 
@@ -131,7 +131,7 @@ $$R_{t+1} = R_t + \sigma \times I_t$$
 
 ## SIS process
 
-<center>![](RPiR4b/sis.png){ width=80% }</center>
+<center>![](images/RPiR4b-sis.png){ width=80% }</center>
 
 ## SIS model in difference equation form
 
@@ -227,31 +227,31 @@ $$\begin{align} R_0 = {} & \textrm{number of new infections per day} \\
 
 ## Epidemic dynamics for SIR, $R_0 = 2$
 
-<center>![](RPiR4b/one.png){ width=60% }</center>
+<center>![](images/RPiR4b-one.png){ width=60% }</center>
 
 ## Epidemic dynamics for SIR, $R_0 = 2$
 
-<center>![](RPiR4b/two.png){ width=60% }</center>
+<center>![](images/RPiR4b-two.png){ width=60% }</center>
 
 ## Epidemic dynamics for SIR, $R_0 = 2$
 
-<center>![](RPiR4b/three.png){ width=60% }</center>
+<center>![](images/RPiR4b-three.png){ width=60% }</center>
 
 ## Epidemic dynamics for SIR, $R_0 = 2$
 
-<center>![](RPiR4b/four.png){ width=60% }</center>
+<center>![](images/RPiR4b-four.png){ width=60% }</center>
 
 ## Epidemic dynamics for SIR, $R_0 = 2$
 
-<center>![](RPiR4b/five.png){ width=60% }</center>
+<center>![](images/RPiR4b-five.png){ width=60% }</center>
 
 ## Epidemic dynamics for SIR, $R_0 = 2$
 
-<center>![](RPiR4b/six.png){ width=60% }</center>
+<center>![](images/RPiR4b-six.png){ width=60% }</center>
 
 ## Epidemic dynamics for SIR, $R_0 = 2$
 
-<center>![](RPiR4b/seven.png){ width=60% }</center>
+<center>![](images/RPiR4b-seven.png){ width=60% }</center>
   
 ## Key features of dynamics
 
@@ -270,27 +270,27 @@ not a complete lack of susceptibles
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/a.png){ width=80% }</center>
+<center>![](images/RPiR4b-a.png){ width=80% }</center>
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/b.png){ width=80% }</center>
+<center>![](images/RPiR4b-b.png){ width=80% }</center>
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/c.png){ width=80% }</center>
+<center>![](images/RPiR4b-c.png){ width=80% }</center>
 
 ## $R_0 < 1$
 
-<center>![](RPiR4b/d.png){ width=80% }</center>
+<center>![](images/RPiR4b-d.png){ width=80% }</center>
 
 ## Dynamics for $R_0 = 0.5$
 
-<center>![](RPiR4b/diminishing.png){ width=60% }</center>
+<center>![](images/RPiR4b-diminishing.png){ width=60% }</center>
 
 ## SIS process
 
-<center>![](RPiR4b/sis.png){ width=80% }</center>
+<center>![](images/RPiR4b-sis.png){ width=80% }</center>
 
 ## SIS model in difference equation form
 
@@ -300,11 +300,11 @@ $$I_{t+1} = I_t + \beta \times I_t \times \frac{S_t}{N} – \sigma \times I_t$$
 
 ## SIS simulation for $R_0 = 3$
 
-<center>![](RPiR4b/sis_graph.png){ width=60% }</center>
+<center>![](images/RPiR4b-sis_graph.png){ width=60% }</center>
 
 ## SIS simulation for $R_0 = 3$
 
-<center>![](RPiR4b/sis_graph2.png){ width=60% }</center>
+<center>![](images/RPiR4b-sis_graph2.png){ width=60% }</center>
 
 ## Practicals
 

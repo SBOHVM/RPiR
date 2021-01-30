@@ -176,7 +176,7 @@ occasionally.
 
 ## So how do you learn to program?
 
-<center>![](RPiR2a/how.png){ width=80% }</center>
+<center>![](images/RPiR2a-how.png){ width=80% }</center>
 
 ## What do you want to do?
 
@@ -201,7 +201,7 @@ Learn how to:
 
 ## Remember... {.flexbox .vcenter .smaller}
 
-<center>![](RPiR2a/xkcd.png){ width=100% }</center>
+<center>![](images/RPiR2a-xkcd.png){ width=100% }</center>
 <p>
 "I honestly didn't think you could even USE emoji in variable names. Or that there were so many different crying ones."
 
@@ -221,7 +221,7 @@ https://imgs.xkcd.com/comics/code_quality.png
 
 ## Have fun! {.flexbox .vcenter .smaller}
 
-<center>![](RPiR2a/phdcomics.gif){ width=100% }</center>
+<center>![](images/RPiR2a-phdcomics.gif){ width=100% }</center>
 <p>
 http://phdcomics.com/comics/archive.php?comicid=946
 

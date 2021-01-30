@@ -19,21 +19,21 @@ output: ioslides_presentation
 
 Restart early, restart often... and don't restore data.
 
-<center>![](RPiR6a/restart.png){ width=100% }</center>
+<center>![](images/RPiR6a-restart.png){ width=100% }</center>
 
 ## Errors
 
-<center>![](RPiR6a/error.png){ width=100% }</center>
+<center>![](images/RPiR6a-error.png){ width=100% }</center>
 
 ## Errors
 
-<center>![](RPiR6a/error-read.png){ width=100% }</center>
+<center>![](images/RPiR6a-error-read.png){ width=100% }</center>
 
 ## Debugging
 
 There are lots of debugging options in R
 
-<center>![](RPiR6a/debug.png){ width=100% }</center>
+<center>![](images/RPiR6a-debug.png){ width=100% }</center>
 
 ## `for (...)` loops - recap
 
