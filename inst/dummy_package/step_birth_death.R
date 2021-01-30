@@ -1,6 +1,6 @@
 #' step_deterministic_birth_death
 #'
-#' Run one step of a simple determinstic exponential birth-death model
+#' Run one step of a simple deterministic exponential birth-death model
 #'
 #' @param latest a data.frame containing the latest population count
 #' (column is 'count')
