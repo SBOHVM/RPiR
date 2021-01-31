@@ -6,7 +6,7 @@ output:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{install_RPiR}
+    %\VignetteIndexEntry{Install RPiR}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -83,7 +83,7 @@ and R is asking if you'd like to restart over and over again (because the
 package is already loaded):
 
 ```{r echo = FALSE, fig.align = "center", out.width = "40%"}
-knitr::include_graphics('images/restart.png')
+knitr::include_graphics('images/install-RPiR-restart.png')
 ```
 
 then just say no to restarting it the second time. 

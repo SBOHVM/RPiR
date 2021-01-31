@@ -6,7 +6,7 @@ output:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{github}
+    %\VignetteIndexEntry{Connecting RStudio to GitHub}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -74,52 +74,52 @@ your computer and GitHub. To do this we need to generate a certificate. Click on
 <span style="color: #de77ae;">Create RSA Key...</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-2.png')
+knitr::include_graphics('images/install-github-02.png')
 ```
 
 Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-3.png')
+knitr::include_graphics('images/install-github-03.png')
 ```
 
 It should look like this
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-4.png')
+knitr::include_graphics('images/install-github-04.png')
 ```
 
 Now you need to copy your public key and register it with GitHub, so click on 
 <span style="color: #de77ae;">View public key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-5.png')
+knitr::include_graphics('images/install-github-05.png')
 ```
 
 .. and copy the key to your clipboard
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-6.png')
+knitr::include_graphics('images/install-github-06.png')
 ```
 
 Then in GitHub, in your <span style="color: #de77ae;">Personal settings</span>, 
 open the <span style="color: #de77ae;">SSH and GPG keys</span> tab 
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-7.png')
+knitr::include_graphics('images/install-github-07.png')
 ```
 
 Create a <span style="color: #de77ae;">New SSH key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-8.png')
+knitr::include_graphics('images/install-github-08.png')
 ```
 
 Paste the public key that you copied from RStudio into the box and click
 <span style="color: #de77ae;">Add SSH key</span>
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/0-9.png')
+knitr::include_graphics('images/install-github-09.png')
 ```
 
 Now back in RStudio, tell git your user name and email address (these are used 
@@ -159,7 +159,7 @@ usethis::create_github_token()
 This will open a GitHub page in your browser, like this:
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/git.png')
+knitr::include_graphics('images/install-github-git.png')
 ```
 
 Scroll down to the bottom of this page and click on the green
@@ -168,7 +168,7 @@ Scroll down to the bottom of this page and click on the green
 Your screen should now look something like this:
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/github/pat.png')
+knitr::include_graphics('images/install-github-pat.png')
 ```
 
 Copy the alphanumeric string (in the green box) by clicking on the tiny, blue

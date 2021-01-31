@@ -6,7 +6,7 @@ output:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{github}
+    %\VignetteIndexEntry{Version control with GitHub and RStudio}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -31,7 +31,7 @@ project you're working on). To do this, go to the
 click <span style="color: #de77ae;">New</span>.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/01.png')
+knitr::include_graphics('images/use-github-01.png')
 ```
 
 
@@ -44,7 +44,7 @@ a <span style="color: #de77ae;">Private</span> repository, check the box to
 then select <span style="color: #de77ae;">Create repository</span>. 
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/02.png')
+knitr::include_graphics('images/use-github-02.png')
 ```
 
 > Note that in Practical series 3 you'll be writing a package... and when doing 
@@ -61,14 +61,14 @@ name of a repository is perfectly fine. Your GitHub repo should now contain a
 single `README.md` file look a bit like this:
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/03.png')
+knitr::include_graphics('images/use-github-03.png')
 ```
 
 Now click on the green <span style="color: #de77ae;">Code</span> button and 
 **copy the URL** associated with your GitHub repository to your clipboard
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/04.png')
+knitr::include_graphics('images/use-github-04.png')
 ```
 
 ## Create a new RStudio project
@@ -78,14 +78,14 @@ then since we're integrating version control into this project workflow, you
 should select <span style="color: #de77ae;">Version Control</span>.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/05.png')
+knitr::include_graphics('images/use-github-05.png')
 ```
 
 Select the option to clone a project from a 
 <span style="color: #de77ae;">Git</span> repository.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/06.png')
+knitr::include_graphics('images/use-github-06.png')
 ```
 
 **Paste your Repository URL** into the first box, then click 
@@ -100,7 +100,7 @@ as this will cause problems). Now click
 username and password if you're asked.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/07.png')
+knitr::include_graphics('images/use-github-07.png')
 ```
 
 Congratulations! You have successfully created a new RStudio project (now with
@@ -116,7 +116,7 @@ to <span style="color: #de77ae;">Connections</span>. This is
 important.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/08.png')
+knitr::include_graphics('images/use-github-08.png')
 ```
 
 ## Using git in RStudio
@@ -148,7 +148,7 @@ Does this look familiar? (Compare the contents of this file to your
 repository on GitHub)
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/09.png')
+knitr::include_graphics('images/use-github-09.png')
 ```
 
 Usually a GitHub README (written in [GitHub Flavored Markdown](https://help.github.com/en/github/writing-on-github)) will describe the 
@@ -161,7 +161,7 @@ in your remote directory (on GitHub). Check the box next to the file you want
 to commit (`README.md`), then click <span style="color: #de77ae;">Commit</span>.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/10.png')
+knitr::include_graphics('images/use-github-10.png')
 ```
 
 The <span style="color: #de77ae;">RStudio: Review Changes</span> window has 
@@ -174,14 +174,14 @@ respectively. Click <span style="color: #de77ae;">Commit</span> to stage your
 changes (preparing to upload to GitHub).
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/11.png')
+knitr::include_graphics('images/use-github-11.png')
 ```
 
 Congratulations! `README.md` is now staged, with 5 insertions. 
 **Close** the <span style="color: #de77ae;">RStudio: Review Changes</span> window.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/12.png')
+knitr::include_graphics('images/use-github-12.png')
 ```
 
 Notice that `README.md` has disappeared from the 
@@ -192,7 +192,7 @@ all staged files (at the moment, just `README.md`) to GitHub. Enter your
 password if you're asked for it.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/13.png')
+knitr::include_graphics('images/use-github-13.png')
 ```
 
 Congratulations again! You've successfully pushed these changes to GitHub. Go
@@ -200,7 +200,7 @@ take a look at your GitHub repository and you'll see that the GitHub README
 has been updated. 
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('use_github/14.png')
+knitr::include_graphics('images/use-github-14.png')
 ```
 
 ## Final remarks
