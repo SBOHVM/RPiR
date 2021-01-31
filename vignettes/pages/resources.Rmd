@@ -1,0 +1,153 @@
+---
+title: "Useful Resources"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+output:
+  rmarkdown::html_vignette:
+  toc: true
+  toc_depth: 2
+  vignette: >
+    %\VignetteIndexEntry{Useful Resources}
+    %\VignetteEngine{knitr::knitr}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Reference materials
+
+## British Ecological Society
+
+The [British Ecological Society (BES)][BES] is the oldest ecological society in
+the world, and one of the largest. It publishes [several excellent
+journals][BES-journals], including [Methods in Ecology and Evolution][BES-MEE],
+which publishes many software packages.
+
+The society also provides many several [guides on better science][BES-guides].
+As part of the course, **we require you to read the following guides**:
+
+- [Reproducible Code][BES-code]
+- [Data Management][BES-data]
+
+## Hadley Wickham
+
+[Hadley Wickham][hadley-wickham] is the Chief Scientist for RStudio. He created
+the original `ggplot` library for his PhD. These days his
+[data analysis packages][tidyverse-packages] are collectively known as the
+[tidyverse][tidyverse], the most famous of which are probably [ggplot2][ggplot2]
+and [dplyr][dplyr]. He has written three very useful books on data analysis and
+software development in R:
+
+- [R for Data Science (R4DS)][R4DS]
+  * [Solutions to the exercises][R4DS-solutions]
+- Advanced R
+  - [1st edition][advanced-r] (I find this easier to navigate)
+    * [Solutions to the exercises][advanced-r-solutions]
+  - [2nd edition][advanced-r2] (this is obviously updated)
+    * [Solutions to the exercises][advanced-r2-solutions]
+- [R Packages][r-packages]
+
+We recommend all of these books as reference material, and will point to
+specific chapters at time, but the books themselves are probably too long for
+you to read in their entirety. Nonetheless keep them for future reference, as
+they contain an enormous amount of knowledge about R in a (relatively!) compact
+form.
+
+## Assorted other materials
+
+### Understanding, avoiding and fixing errors in your code
+
+As part of the course, **we require you to watch [this
+keynote][rstudioconf2020-jb]** from RStudio::Conf 2020 by [Jenny
+Bryan][jenny-bryan] of RStudio. It is an excellent keynote on errors in R and
+how to identify and fix them.
+
+### Reproducible (and generally good) coding practices
+
+There are many materials on reproducible research, including the BES guide
+mentioned above. For background, we recommend watching [this short
+clip][ted-repro] by Matt Anticole for TED-Ed. **We require you to read** [this
+article on sharing code][nature-repro] and [this guide on good coding
+practices][dataist-coding]. None of this was written specifically for R
+programmers, but there are useful tips for everyone (and some specific to R).
+
+### R cheatsheets
+
+RStudio and other contributors provide a variety of [cheatsheets][rstudio-cheat]
+that summarise functionality of a variety of different topics in R, including
+markdown in reports, on RStudio itself, and everything from Base R to package
+development to parallel computing in R. **The main cheatsheets are available
+directly from RStudio under *Help -> Cheatsheets*.**
+
+### R Markdown
+
+R Markdown allows you to produce reports from your R code or, as RStudio put it,
+to *"turn your analyses into high quality documents, reports, presentations and
+dashboards."* As well as the cheatsheet and reference guide above, there are a
+variety of resources for R Markdown:
+
+- RStudio's [R Markdown website][rmd-web], including:
+  * [Pandoc's markdown website][pandoc-rmd], which describes the non-R parts of
+    the format
+- [R Markdown: The Definitive Guide][rmd-book] - an e-book by Yihui Xie, J. J.
+  Allaire and Garrett Grolemund
+  
+These are great resources, and can help you to produce everything from the
+simple reports you will be generating on this course, the lectures we are giving
+and this website with the course documentation, to complex interactive [Shiny
+apps][rstudio-shiny]. Like Hadley Wickham's books, they are probably references
+you will refer to later more than during the course, but they are completely
+comprehensive if you want to look anything up.
+
+### R Coder
+
+The [Learn R section][rcoder-learnr] of this website provides explanations for a
+lot of common techniques that you use during this course in the *Programming*
+section. If you are confused by our expalanations, you may find this useful.
+
+[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
+
+[hadley-wickham]: https://rstudio.com/speakers/hadley-wickham
+[tidyverse]: https://www.tidyverse.org
+[tidyverse-packages]: https://www.tidyverse.org/packages
+[ggplot2]: https://ggplot2.tidyverse.org
+[dplyr]: https://dplyr.tidyverse.org
+[R4DS]: https://r4ds.had.co.nz
+[R4DS-iteration]: https://r4ds.had.co.nz/iteration.html
+[R4DS-for]: https://r4ds.had.co.nz/iteration.html#for-loops
+[R4DS-while]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
+[R4DS-solutions]: https://jrnold.github.io/r4ds-exercise-solutions
+[advanced-r]: http://adv-r.had.co.nz
+[advanced-r-solutions]: https://advanced-r-solutions-ed1.netlify.app
+[advanced-r2]: https://adv-r.hadley.nz
+[advanced-r2-solutions]: http://advanced-r-solutions.rbind.io
+[r-packages]: https://r-pkgs.org
+
+[BES]: https://www.britishecologicalsociety.org
+[BES-journals]: https://www.britishecologicalsociety.org/publications/journals
+[BES-MEE]: https://www.britishecologicalsociety.org/publications/journals/methods-in-ecology-and-evolution
+[BES-guides]: https://www.britishecologicalsociety.org/publications/guides-to
+[BES-code]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf
+[BES-data]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Data-Management-2019.pdf
+
+[jenny-bryan]: https://rstudio.com/speakers/jenny-bryan
+[rstudioconf2020-jb]: https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable
+[rstudioconf2017-jb]: https://rstudio.com/resources/rstudioconf-2017/happy-git-and-gihub-for-the-user-tutorial
+
+[rstudio-cheat]: https://rstudio.com/resources/cheatsheets
+[rstudio-rmd]: https://rmarkdown.rstudio.com
+[rmd-book]: https://bookdown.org/yihui/rmarkdown
+[pandoc-rmd]: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html
+[rstudio-shiny]: https://shiny.rstudio.com
+
+[nature-repro]: https://www.nature.com/articles/nn.4550
+[dataist-coding]: https://thedataist.com/ten-good-coding-practices-for-data-scientists
+[ted-repro]: https://ed.ted.com/lessons/is-there-a-reproducibility-crisis-in-science-matt-anticole
+
+[rcoder-learnr]: https://r-coder.com/learn-r
+[rcoder-for]: https://r-coder.com/for-loop-r
+[rcoder-while]: https://r-coder.com/while-loop-r

@@ -95,9 +95,13 @@ navbar:
     - icon: fab fa-github
       text: "GitHub"
       href: https://github.com/IBAHCM/RPiR/
-    - icon: far fa-file-code
-      text: "Functions"
-      href: reference/index.html
+    - text: "Reference"
+      icon: far fa-file-code
+      menu:
+      -  text: "Package functions"
+         href: reference/index.html
+      -  text: "Useful resources"
+         href: articles/pages/resources.html
     - text: "How to"
       icon: far fa-file
       menu:
