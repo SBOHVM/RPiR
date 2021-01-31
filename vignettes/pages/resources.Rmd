@@ -62,9 +62,19 @@ form.
 ### Understanding, avoiding and fixing errors in your code
 
 As part of the course, **we require you to watch [this
-keynote][rstudioconf2020-jb]** from RStudio::Conf 2020 by [Jenny
+keynote][rstudioconf2020-jb]** from rstudio::conf 2020 by [Jenny
 Bryan][jenny-bryan] of RStudio. It is an excellent keynote on errors in R and
 how to identify and fix them.
+
+### Git and GitHub in R and RStudio
+
+Git is a very complex tool -- it is used to manage the development of the whole
+Linux kernel! -- so we cover only the most basic aspects of it. As well as the
+above, Jenny (with others) has written an excellent resource for using git and
+GitHub in R -- [Happy Git and GitHub for the useR][happy-git], which has much
+more detail than our abbreviated materials, and is a good reference if you are
+confused or want to do something complicated. She also gave [a talk on this
+topic][rstudioconf2017-jb] at rstudio::conf 2017.
 
 ### Reproducible (and generally good) coding practices
 
@@ -103,39 +113,105 @@ apps][shiny-rstudio]. Like Hadley Wickham's books, they are probably references
 you will refer to later more than during the course, but they are completely
 comprehensive if you want to look anything up.
 
+Particularly useful for you here are the instructions in *Happy Git and GitHub
+for the useR* for [changing R Markdown into R scripts][rmd-to-r] of the kind you
+will be generating in these exercises.
+
 ### R Coder
 
 The [Learn R section][rcoder-learnr] of this website provides explanations for a
 lot of common techniques that you use during this course in the *Programming*
 section. If you are confused by our expalanations, you may find this useful.
 
-[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
-
 # Specific techniques
 
 ## Loops
 
-### `for` loops
+### `for (...)` loops
 
-We introduced `for (...)` loops in [Lecture 5b][lecture-5b] and practical
-`practicalA-1`, and they are then used starting in practical `practical1-1`.
+`for` loops allow us to repeat something *for* a fixed number of times (*e.g.*
+once per element of a vector, once per row of a data frame, *etc.*). They are
+called as:
+
+```{R}
+greetings <- c("Hello", "Goodbye")
+for (word in greetings) {
+  # body
+}
+```
+
+and in each run through the loop, the variable, here `word`, is updated with
+the next element (here, in the vector `greetings`). We introduced them in week 1
+and again in [Lecture 5b][lecture-5b] on Wednesday 27th and practical
+`practicalA-1`. They are then used starting in practical `practical1-1`.
+
 There is a section in R4DS (within a more general chapter on
-[*Iteration*][R4DS-iteration]) that covers [`for` loops][for-R4DS] For loops
+[*Iteration*][R4DS-iteration]) that covers [`for` loops][for-R4DS]. For loops
 are also covered by R Coder [here][for-rcoder].
 
-### `while` loops
+### `while (...)` loops
 
-We introduced `while (...)` loops in [Lecture 5b][lecture-5b] and
-`practicalA-2`, and used them from practical `practical2-4`. There is a section
-in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration]) that
-covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
+`while` loops allows us to repeat something *while* a condition is still `TRUE`.
+They are particularly useful when you don't know in advance exactly how many
+times something will be done, but can be used in any situation. Unlike `for`
+loops you need to update everything manually each time around:
+
+
+```{R, eval=FALSE}
+test <- some_test()
+while (test) {
+  # Do something
+  test <- update(something)
+}
+```
+
+`test` is checked each time around, and as long as `test` continues to be
+`TRUE`, the code block inside the curly brackets `{ ... }` is run. Be careful
+that if you don't update `test` inside that block, then it will continue for
+ever! However, if (when!) `test` is finally `FALSE`, the loop ends and R
+continue to the next piece of code.
+
+We introduced them on Wednesday 27th in [Lecture 5b][lecture-5b]
+and in `practicalA-2`, and used them from practical `practical2-4`. There is a
+section in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration])
+that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [here][while-rcoder].
 
 ## Flow control
 
-### Testing for equality and difference
+### Comparisons -- testing for equality and difference
 
+These tests are essential for `while` loops, and other forms of flow control
+such as `if` statements. They allow us to test whether something is true, and
+change what lines of code are run depending on the outcome. There are the
+basic tests:
 
+- `a == b`: is `a` equal to `b`? (`TRUE` if this is true, `FALSE` if this is false)
+- `a > b`: is `a` greater than `b`?
+- `a < b`: is `a` less than `b`?
+- `a >= b`: is `a` greater than or equal to `b`?
+- `a <= b`: is `a` less than or equal to `b`?
+- `a != b`: is `a` different from `b`?
+
+There are then three basic ways of changing or combining the above:
+
+- `(a < b) || (c == d)`: is **either ** `a` less than `b` **or** `c` equal to `d`?
+- `(a < b) && (c == d)`: is **both** `a` less than `b` **and** `c` equal to `d`?
+- `!((a < b) && (c == d))`: is the above **not** `TRUE`? `TRUE` if the above was
+  `FALSE` and vice versa 
+
+Remember to use lots of brackets to ensure you are combining things in the right
+order. These tests are used in `while` loops above to determine whether to
+continue through the loop again, and in `if` statements below, to determine what
+to do next.
+
+We introduced these concepts on Friday 29th, and again in [Lecture
+7a][lecture-7a] on Monday 1st and practical `practicalA-2`. Comparisons are also
+covered [in passing][operators-R4DS] in R4DS, and by R Coder in a bit more
+depth [here][operators-rcoder].
+
+[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
+[lecture-7a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html
 
 [hadley-wickham]: https://rstudio.com/speakers/hadley-wickham
 [tidyverse]: https://www.tidyverse.org
@@ -146,6 +222,7 @@ covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [R4DS-iteration]: https://r4ds.had.co.nz/iteration.html
 [for-R4DS]: https://r4ds.had.co.nz/iteration.html#for-loops
 [while-R4DS]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
+[operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
 [R4DS-solutions]: https://jrnold.github.io/r4ds-exercise-solutions
 [advanced-r]: http://adv-r.had.co.nz
 [advanced-r-solutions]: https://advanced-r-solutions-ed1.netlify.app
@@ -161,6 +238,8 @@ covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [BES-data]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Data-Management-2019.pdf
 
 [jenny-bryan]: https://rstudio.com/speakers/jenny-bryan
+[happy-git]: https://happygitwithr.com
+[rmd-to-r]: https://happygitwithr.com/r-test-drive.html
 [rstudioconf2020-jb]: https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable
 [rstudioconf2017-jb]: https://rstudio.com/resources/rstudioconf-2017/happy-git-and-gihub-for-the-user-tutorial
 
@@ -177,3 +256,4 @@ covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [rcoder-learnr]: https://r-coder.com/learn-r
 [for-rcoder]: https://r-coder.com/for-loop-r
 [while-rcoder]: https://r-coder.com/while-loop-r
+[operators-rcoder]: https://r-coder.com/operators-r
