@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.55.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.56.0</span>
       </span>
     </div>
 
@@ -227,29 +227,29 @@
 <h2 class="hasAnchor">
 <a href="#create-a-new-github-repository" class="anchor"></a>Create a new GitHub repository</h2>
 <p>It’s important that you use version control in your project workflow, so let’s <strong>set up a new GitHub repository</strong> (you should make a new repository for each project you’re working on). To do this, go to the <a href="http://www.github.com/IBAHCM">IBAHCM</a> organisation on GitHub, then click on click <span style="color: #de77ae;">New</span>.</p>
-<p><img src="images/use-github-01.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/01.png" width="100%" style="display: block; margin: auto;"></p>
 <p>You should always choose a short, descriptive name for your repository. But in this case, to make it easier for us to identify you, please name your repository <code>githubusername_0201</code> (where githubusername is your username on GitHub, and 0201 corresponds to the first part of Practical series 2). Make sure you’re creating a <span style="color: #de77ae;">Private</span> repository, check the box to <span style="color: #de77ae;">Initialize this repository with a README</span>, then select <span style="color: #de77ae;">Create repository</span>.</p>
-<p><img src="images/use-github-02.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/02.png" width="100%" style="display: block; margin: auto;"></p>
 <blockquote>
 <p>Note that in Practical series 3 you’ll be writing a package… and when doing so it’s good practice for the name of your repository to match the name of your package. It’s important to be aware that the name of a package “should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html">ref</a>). Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">package</a> names include a dot.</p>
 </blockquote>
 <p>Since we’re not working with packages just yet, including an underscore in the name of a repository is perfectly fine. Your GitHub repo should now contain a single <code>README.md</code> file look a bit like this:</p>
-<p><img src="images/use-github-03.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/03.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now click on the green <span style="color: #de77ae;">Code</span> button and <strong>copy the URL</strong> associated with your GitHub repository to your clipboard</p>
-<p><img src="images/use-github-04.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/04.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="create-a-new-rstudio-project" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create-a-new-rstudio-project" class="anchor"></a>Create a new RStudio project</h2>
 <p>In RStudio, click <span style="color: #de77ae;">File &gt; New project…</span>, then since we’re integrating version control into this project workflow, you should select <span style="color: #de77ae;">Version Control</span>.</p>
-<p><img src="images/use-github-05.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/05.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Select the option to clone a project from a <span style="color: #de77ae;">Git</span> repository.</p>
-<p><img src="images/use-github-06.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/06.png" width="100%" style="display: block; margin: auto;"></p>
 <p><strong>Paste your Repository URL</strong> into the first box, then click <span style="color: #de77ae;">Browse…</span> and navigate to the git folder on your desktop. If you don’t have a git folder on your desktop then make one, as it’s good practice to keep all of your projects together and well organised. RStudio will create a new subdirectory that will mirror the contents of your Git repository (so make sure you don’t already have a folder with the same name as the repository you created, as this will cause problems). Now click <span style="color: #de77ae;">Create Project</span> and enter your GitHub username and password if you’re asked.</p>
-<p><img src="images/use-github-07.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/07.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations! You have successfully created a new RStudio project (now with added version control). In the example below, (1) the RStudio project is called <code>soniamitchell_0201</code>, (2) a new directory, <code>soniamitchell_0201</code>, has been created, which is now your working directory, and inside this directory are (3) three files, including a GitHub <code>README.md</code> file (imported from your GitHub repository), an RStudio project file (<code>soniamitchell_0201.Rproj</code>), and an invisible <code>.gitignore</code> file (created by RStudio).</p>
 <p>Note the appearance of a new <span style="color: #de77ae;">Git</span> tab next to <span style="color: #de77ae;">Connections</span>. This is important.</p>
-<p><img src="images/use-github-08.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/08.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="using-git-in-rstudio" class="section level2">
 <h2 class="hasAnchor">
@@ -262,17 +262,17 @@
 <li>“D” - Files that are no longer in your local directory (you’ve likely deleted these and want to commit their absence to GitHub)</li>
 </ul>
 <p>Open the <code>README.md</code> file by clicking on its filename in the <span style="color: #de77ae;">Files</span> tab. Does this look familiar? (Compare the contents of this file to your repository on GitHub)</p>
-<p><img src="images/use-github-09.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/09.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Usually a GitHub README (written in <a href="https://help.github.com/en/github/writing-on-github">GitHub Flavored Markdown</a>) will describe the contents of the GitHub repository or give an example of how to use the contents of said repository. Make some edits to <code>README.md</code> and <strong>save your file</strong>. Note that when we make edits to the README file, its <span style="color: #de77ae;">Status</span> changes to “M”. This means that the file in your local directory is no longer identical to the file in your remote directory (on GitHub). Check the box next to the file you want to commit (<code>README.md</code>), then click <span style="color: #de77ae;">Commit</span>.</p>
-<p><img src="images/use-github-10.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/10.png" width="100%" style="display: block; margin: auto;"></p>
 <p>The <span style="color: #de77ae;">RStudio: Review Changes</span> window has opened. Make sure the checkbox is ticked next to <code>README.md</code> and enter a <span style="color: #de77ae;">Commit message</span>. Your message should describe the changes you’ve made to the file you’re uploading. These changes are shown in the lower half of the screen, with deletions and insertions highlighted in red and green, respectively. Click <span style="color: #de77ae;">Commit</span> to stage your changes (preparing to upload to GitHub).</p>
-<p><img src="images/use-github-11.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/11.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations! <code>README.md</code> is now staged, with 5 insertions. <strong>Close</strong> the <span style="color: #de77ae;">RStudio: Review Changes</span> window.</p>
-<p><img src="images/use-github-12.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/12.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Notice that <code>README.md</code> has disappeared from the <span style="color: #de77ae;">Git</span> tab? That’s because it’s packaged up (staged) and ready to be shipped out (pushed) to GitHub. Click on the green <span style="color: #de77ae;">Push</span> arrow, to push all staged files (at the moment, just <code>README.md</code>) to GitHub. Enter your password if you’re asked for it.</p>
-<p><img src="images/use-github-13.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/13.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Congratulations again! You’ve successfully pushed these changes to GitHub. Go take a look at your GitHub repository and you’ll see that the GitHub README has been updated.</p>
-<p><img src="images/use-github-14.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="use_github/14.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="final-remarks" class="section level2">
 <h2 class="hasAnchor">
