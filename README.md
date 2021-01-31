@@ -9,20 +9,20 @@
 
 You'll need to do a few things before we can start the course. First you need to
 check you have up-to-date versions of R and RStudio. This means that R should be
-at least version 4. You can see this by typing:
+at least version 4. You can check by typing this in R:
 
 ```{R}
 version$major >= 4
 ```
 
-in R. If this is `FALSE`, download and install a new version from
-https://www.r-project.org. Then install these packages:
+If this is `FALSE`, download and install a new version from
+https://www.r-project.org. Next install these packages:
 
 ```{R}
 install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))
 ```
 
-And check whether RStudio is up to date:
+Then check whether RStudio is up to date:
 
 ```{R}
 # Load the rstudioapi library and check RStudio version
