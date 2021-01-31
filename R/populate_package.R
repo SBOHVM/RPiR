@@ -10,19 +10,19 @@ populate_package <- function() {
   if (is.null(project_name))
     stop("You are not in an active RStudio project, please create one first")
   package_name <- basename(project_name)
-  
+
   # Remove R/hello.R
   unlink("R/hello.R")
   unlink("man/hello.Rd")
   unlink("NAMESPACE")
-  
+
   # Create demo/ directory
   dir.create("demo")
   usethis::ui_done(paste("Creating", usethis::ui_path("demo")))
-  
+
   # Write demo
   filepath <- file.path("demo", "d0105_run_birth_death.R")
-  cat("#' # Simple birth-death difference equation model", 
+  cat("#' # Simple birth-death difference equation model",
       file = filepath)
   tmp <- list("\n",
               "\nlibrary(RPiR)",
@@ -50,9 +50,9 @@ populate_package <- function() {
               "\n## Now we loop through the time itself (starting at the second timestep)",
               "\nfor (new.time in timesteps) {",
               "\n  updated.population <-",
-              "\n    step_birth_death(latest = tail(population.df, 1),",
-              "\n                     birth.rate = birth.rate,",
-              "\n                     death.rate = death.rate)",
+              "\n    step_deterministic_birth_death(latest = tail(population.df, 1),",
+              "\n                                   birth.rate = birth.rate,",
+              "\n                                   death.rate = death.rate)",
               "\n  population.df <- rbind(population.df, updated.population)",
               "\n}",
               "\n",
@@ -103,7 +103,7 @@ populate_package <- function() {
               "\n")
   lapply(tmp, function(x) cat(x, file = filepath, append = TRUE))
   usethis::ui_done(paste("Writing", usethis::ui_value(filename)))
-  
+
   # Add dependencies
   usethis::use_dev_package("RPiR", "Imports", remote = "IBAHCM/RPiR")
 

@@ -1,6 +1,6 @@
-#' step_birth_death
+#' step_deterministic_birth_death
 #'
-#' Run one step of a simple exponential birth-death model
+#' Run one step of a simple deterministic exponential birth-death model
 #'
 #' @param latest a data.frame containing the latest population count
 #' (column is 'count')
@@ -10,7 +10,7 @@
 #' @return Returns a data.frame containing the updated population
 #' @export
 #'
-step_birth_death <- function(latest, birth.rate, death.rate) {
+step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
   # Calculate population changes
   new.births <- birth.rate * latest$count
   new.deaths <- death.rate * latest$count
