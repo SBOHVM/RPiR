@@ -116,8 +116,8 @@ knitr::include_graphics('images/8.png')
 ```
 
 Now we're going to do a few things to customise your package. To fast forward
-through these steps run `populate_package()`. Now push all of the changes to 
-GitHub.
+through these steps run `RPiR::populate_package()`. Now push all of the changes 
+to GitHub.
 
 ## Package structure
 
