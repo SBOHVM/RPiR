@@ -1,5 +1,5 @@
 ---
-title: "Practical 3-2: Stochastic population growth model"
+title: "3-2: Stochastic population growth model"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -35,7 +35,8 @@ called a **stochastic model**.
 To write a model to handle stochastic population dynamics we obviously have to 
 update the timestep function to handle the new dynamics. However, we also have 
 to understand whether anything else has changed in how the simulation works. In
-fact, something has. There is now the chance that the population will die out before 
+fact, something has. There is now the chance that the population will die out
+before 
 the end of the experiment, so we need to look for this happening – not least to 
 speed up the simulation.
 
@@ -88,8 +89,8 @@ Now you will need to write the `timestep_stochastic_birth_death()`
 function to provide the right information to the main loop. We already have a 
 deterministic step function for single species population 
 dynamics (from Practical 1-5). We've written this function into {githubusername} as
-`step_deterministic_birth_death()`. Starting with this code, you need to make three 
-changes. 
+`step_deterministic_birth_death()`. Starting with this code, you need to make 
+three changes. 
 
 First, we need to handle the effect of changing timesteps and update
 the code with something like this:
