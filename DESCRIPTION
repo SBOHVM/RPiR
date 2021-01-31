@@ -1,7 +1,7 @@
 Package: RPiR
 Type: Package
 Title: Reproducible Programming in R
-Version: 0.55.0
+Version: 0.56.0
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
@@ -12,6 +12,7 @@ Description: Reproducible Programming in R course at IBAHCM, University of Glasg
 License: GPL (>= 3) | file LICENSE
 Imports:
     codetools,
+    cowplot,
     datasets,
     deSolve,
     devtools,
@@ -22,9 +23,13 @@ Imports:
     graphics,
     knitr,
     learnr,
+    magrittr,
     rlang,
     rmarkdown,
+    roxygen2,
     rstudioapi,
+    testthat,
+    tibble,
     usethis,
     utils
 Suggests:
