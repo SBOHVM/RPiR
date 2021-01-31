@@ -19,26 +19,33 @@ in R. If this is `FALSE`, download and install a new version from
 https://www.r-project.org. Then install these packages:
 
 ```{R}
-install.packages(c('devtools', 'rdiversity', 'vegan', 'iNEXT', 'magrittr',
-                   'roxygen2', 'testthat', 'knitr', 'tibble', 'cowplot',
-                   'rstudioapi'))
+install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))
 ```
 
 And check whether RStudio is up to date:
 
 ```{R}
+# Load the rstudioapi library and check RStudio version
 library(rstudioapi)
 isAvailable("1.4")
-```
 
-If not, download and install the latest version of [RStudio Desktop][rstudio]
+# or just
+rstudioapi::isAvailable("1.4")
+```
+**NB `rstudioapi::xxx()` means *"find the `xxx()` function in the `rstudioapi` package"*.**
+
+If `FALSE`, download and install the latest version of [RStudio Desktop][rstudio]
 and check this has worked by running the above again.
 
 Next, check you are now ready to build R packages:
 
 ```{R}
+# Load the devtools library and check whether compilers are installed
 library(devtools)
 has_devel()
+
+# or just
+devtools::has_devel()
 ```
 
 If this is `FALSE` or errors, then you will need to follow instructions given
