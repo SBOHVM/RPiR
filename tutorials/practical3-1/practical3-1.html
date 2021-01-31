@@ -233,7 +233,7 @@ summary {
 <li><span style="color: #de77ae;">DESCRIPTION</span>: contains metadata about your package, more info <a href="https://r-pkgs.org/description.html">here</a></li>
 <li><span style="color: #de77ae;">man/</span>: contains code used to generate documentation when the package is built (don’t edit these files, this process will be automated), more info <a href="https://r-pkgs.org/man.html#man-workflow">here</a></li>
 <li><span style="color: #de77ae;">NAMESPACE</span>: contains the names of imported and exported functions (don’t edit this file either), more info <a href="https://r-pkgs.org/namespace.html#namespace">here</a></li>
-<li><span style="color: #de77ae;">R/</span>: contains code used to generate functions when the package is built (which we’ve populated with <span style="color: #de77ae;">step_birth_death.R</span>, the step function from Practical 1-5), more info <a href="https://r-pkgs.org/r.html#code-organising">here</a></li>
+<li><span style="color: #de77ae;">R/</span>: contains code used to generate functions when the package is built (which we’ve populated with <span style="color: #de77ae;">step_deterministic_birth_death.R</span>, the step function from Practical 1-5), more info <a href="https://r-pkgs.org/r.html#code-organising">here</a></li>
 <li><span style="color: #de77ae;">README.md</span>: contains markdown used to generate your GitHub repository readme page, more info <a href="https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes">here</a></li>
 <li><span style="color: #de77ae;">githubusername.Rproj</span>: an RStudio project file, which is used to make this directory an RStudio project, and can be used as a shortcut for opening this project from your filesystem, more info <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">here</a></li>
 </ul>
@@ -281,11 +281,11 @@ summary {
 <p>Now that you have some familiarity with the package structure, it’s time to start adding your own files. During the course of this practical series, you’ll be adding new functions and new demos to this package. What we’re going to do now is add the files you need to start Practical 3-2.</p>
 <div id="section-add-a-function" class="section level3">
 <h3>1. Add a function</h3>
-<p>Navigate back to the root of your package, then into the <span style="color: #de77ae;">R</span> directory, and open the <span style="color: #de77ae;">step_birth_death.R</span> file in a new tab.</p>
+<p>Navigate back to the root of your package, then into the <span style="color: #de77ae;">R</span> directory, and open the <span style="color: #de77ae;">step_deterministic_birth_death.R</span> file in a new tab.</p>
 <p>The function itself should be recognizable, but the documentation is written using <code>roxygen2</code> comments and tags. More info <a href="https://r-pkgs.org/man.html#man-workflow">here</a>.</p>
-<pre><code>#&#39; step_birth_death
+<pre><code>#&#39; step_deterministic_birth_death
 #&#39;
-#&#39; Run one step of a simple exponential birth-death model
+#&#39; Run one step of a simple deterministic exponential birth-death model
 #&#39;
 #&#39; @param latest a data.frame containing the latest population count
 #&#39; (column is &#39;count&#39;)
@@ -295,14 +295,14 @@ summary {
 #&#39; @return Returns a data.frame containing the updated population
 #&#39; @export
 #&#39;</code></pre>
-<p>The first line is the name of your function and will generate the <span style="color: #de77ae;">title</span> when you run <code>?step_birth_death</code>. The next bit (seperated by a blank line) is the <span style="color: #de77ae;">Description</span>. To add descriptions for arguments, you need to use the <code>@param</code> tag, which uses the format <code>@param argument description</code>. The <code>@return</code> tag is used to populate the <span style="color: #de77ae;">Value</span> section of the documentation, and describes the output of your function. The <code>@export</code> tag tells R that you want this function to be exportable by your package. That means, you want people to be able to call it, as opposed to it being an internal function they never see. I like to add blank lines between some of the tags and between the documentation and the function itself, because I think it makes it easier to read, but it’s not necessary.</p>
-<p>So, for Practical 3-2 you’ll need to add a function called <span style="color: #de77ae;">timestep_stochastic_birth_death</span> with appropriate documentation. Copy the <span style="color: #de77ae;">step_birth_death</span> function for the time being, renamed of course. You’ll be using this as a starting point in Practical 3-2.</p>
+<p>The first line is the name of your function and will generate the <span style="color: #de77ae;">title</span> when you run <code>?step_deterministic_birth_death</code>. The next bit (seperated by a blank line) is the <span style="color: #de77ae;">Description</span>. To add descriptions for arguments, you need to use the <code>@param</code> tag, which uses the format <code>@param argument description</code>. The <code>@return</code> tag is used to populate the <span style="color: #de77ae;">Value</span> section of the documentation, and describes the output of your function. The <code>@export</code> tag tells R that you want this function to be exportable by your package. That means, you want people to be able to call it, as opposed to it being an internal function they never see. I like to add blank lines between some of the tags and between the documentation and the function itself, because I think it makes it easier to read, but it’s not necessary.</p>
+<p>So, for Practical 3-2 you’ll need to add a function called <span style="color: #de77ae;">timestep_stochastic_birth_death</span> with appropriate documentation. Copy the <span style="color: #de77ae;">step_deterministic_birth_death</span> function for the time being, renamed of course. You’ll be using this as a starting point in Practical 3-2.</p>
 </div>
 <div id="section-add-a-demo" class="section level3">
 <h3>2. Add a demo</h3>
 <p>Use the <span style="color: #de77ae;">Files</span> tab to navigate to the <span style="color: #de77ae;">demo</span> directory. This is where the demos live. Open the <span style="color: #de77ae;">00Index</span> and <span style="color: #de77ae;">d0105_run_birth_death.R</span> files as new tabs.</p>
 <p>You can see that <span style="color: #de77ae;">d0105_run_birth_death.R</span> is a standard R file, similar to those you produced in practical series 2. So, all we need to do to prepare for Practical 3-2 is create a new R script called <span style="color: #de77ae;">d0302_stochastic_birth_death.R</span> and save it in the <span style="color: #de77ae;">demo</span> directory. Copy the contents of <span style="color: #de77ae;">d0105_run_birth_death.R</span> into your new demo. You’ll be using this as a starting point in Practical 3-2.</p>
-<p>On line 30, edit the function call so that you’re calling <code>timestep_stochastic_birth_death</code> rather than <code>step_birth_death()</code>.</p>
+<p>On line 30, edit the function call so that you’re calling <code>timestep_stochastic_birth_death</code> rather than <code>step_deterministic_birth_death()</code>.</p>
 <p>So that your package recognizes it as a demo, you need to add a new entry, on a new line in the <span style="color: #de77ae;">00Index</span> file.</p>
 </div>
 <div id="section-rebuild-your-package" class="section level3">

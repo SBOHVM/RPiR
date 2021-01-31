@@ -166,7 +166,7 @@ imported and exported functions (don't edit this file either), more info
 [here](https://r-pkgs.org/namespace.html#namespace)
 * <span style="color: #de77ae;">R/</span>: contains code used to generate 
 functions when the package is built (which we've populated with 
-<span style="color: #de77ae;">step_birth_death.R</span>, the step function from
+<span style="color: #de77ae;">step_deterministic_birth_death.R</span>, the step function from
 Practical 1-5), more info [here](https://r-pkgs.org/r.html#code-organising)
 * <span style="color: #de77ae;">README.md</span>: contains markdown used to 
 generate your GitHub repository readme page, more info 
@@ -284,15 +284,15 @@ now is add the files you need to start Practical 3-2.
 
 Navigate back to the root of your package, then into the 
 <span style="color: #de77ae;">R</span> directory, and open the 
-<span style="color: #de77ae;">step_birth_death.R</span> file in a new tab. 
+<span style="color: #de77ae;">step_deterministic_birth_death.R</span> file in a new tab. 
 
 The function itself should be recognizable, but the documentation is written
 using `roxygen2` comments and tags. More info [here](https://r-pkgs.org/man.html#man-workflow).
 
 ```
-#' step_birth_death
+#' step_deterministic_birth_death
 #'
-#' Run one step of a simple exponential birth-death model
+#' Run one step of a simple deterministic exponential birth-death model
 #'
 #' @param latest a data.frame containing the latest population count
 #' (column is 'count')
@@ -306,7 +306,7 @@ using `roxygen2` comments and tags. More info [here](https://r-pkgs.org/man.html
 
 The first line is the name of your function and will generate the 
 <span style="color: #de77ae;">title</span> when 
-you run `?step_birth_death`. The next bit (seperated by a blank line) is the 
+you run `?step_deterministic_birth_death`. The next bit (seperated by a blank line) is the 
 <span style="color: #de77ae;">Description</span>. To add descriptions for 
 arguments, you need to use the `@param` tag, which uses the format
 `@param argument description`. The `@return` tag is used to populate the 
@@ -321,7 +321,7 @@ not necessary.
 So, for Practical 3-2 you'll need to add a function called 
 <span style="color: #de77ae;">timestep_stochastic_birth_death</span> 
 with appropriate documentation. Copy the 
-<span style="color: #de77ae;">step_birth_death</span> function for the time 
+<span style="color: #de77ae;">step_deterministic_birth_death</span> function for the time 
 being, renamed of course. You'll be using this as a starting point in 
 Practical 3-2.
 
@@ -342,7 +342,7 @@ of <span style="color: #de77ae;">d0105_run_birth_death.R</span> into your new
 demo. You'll be using this as a starting point in Practical 3-2.
 
 On line 30, edit the function call so that you're calling 
-`timestep_stochastic_birth_death` rather than `step_birth_death()`.
+`timestep_stochastic_birth_death` rather than `step_deterministic_birth_death()`.
 
 So that your package recognizes it as a demo, you need to add a new entry, on 
 a new line in the <span style="color: #de77ae;">00Index</span> file.
