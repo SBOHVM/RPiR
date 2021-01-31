@@ -226,11 +226,11 @@
 <div id="course-preparation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#course-preparation" class="anchor"></a>Course preparation</h2>
-<p>You’ll need to do a few things before we can start the course. First you need to check you have up-to-date versions of R and RStudio. This means that R should be at least version 4. You can see this by typing:</p>
+<p>You’ll need to do a few things before we can start the course. First you need to check you have up-to-date versions of R and RStudio. This means that R should be at least version 4. You can check by typing this in R:</p>
 <pre class="{r}"><code>version$major &gt;= 4</code></pre>
-<p>in R. If this is <code>FALSE</code>, download and install a new version from <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>. Then install these packages:</p>
+<p>If this is <code>FALSE</code>, download and install a new version from <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>. Next install these packages:</p>
 <pre class="{r}"><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))</a></code></pre>
-<p>And check whether RStudio is up to date:</p>
+<p>Then check whether RStudio is up to date:</p>
 <pre class="{r}"><code><a href="https://github.com/rstudio/rstudioapi"># Load the rstudioapi library and check RStudio version
 library(rstudioapi)
 isAvailable("1.4")
