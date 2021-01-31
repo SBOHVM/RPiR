@@ -279,7 +279,12 @@
 <div id="understanding-avoiding-and-fixing-errors-in-your-code" class="section level3">
 <h3 class="hasAnchor">
 <a href="#understanding-avoiding-and-fixing-errors-in-your-code" class="anchor"></a>Understanding, avoiding and fixing errors in your code</h3>
-<p>As part of the course, <strong>we require you to watch <a href="https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable">this keynote</a></strong> from RStudio::Conf 2020 by <a href="https://rstudio.com/speakers/jenny-bryan">Jenny Bryan</a> of RStudio. It is an excellent keynote on errors in R and how to identify and fix them.</p>
+<p>As part of the course, <strong>we require you to watch <a href="https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable">this keynote</a></strong> from rstudio::conf 2020 by <a href="https://rstudio.com/speakers/jenny-bryan">Jenny Bryan</a> of RStudio. It is an excellent keynote on errors in R and how to identify and fix them.</p>
+</div>
+<div id="git-and-github-in-r-and-rstudio" class="section level3">
+<h3 class="hasAnchor">
+<a href="#git-and-github-in-r-and-rstudio" class="anchor"></a>Git and GitHub in R and RStudio</h3>
+<p>Git is a very complex tool – it is used to manage the development of the whole Linux kernel! – so we cover only the most basic aspects of it. As well as the above, Jenny (with others) has written an excellent resource for using git and GitHub in R – <a href="https://happygitwithr.com">Happy Git and GitHub for the useR</a>, which has much more detail than our abbreviated materials, and is a good reference if you are confused or want to do something complicated. She also gave <a href="https://rstudio.com/resources/rstudioconf-2017/happy-git-and-gihub-for-the-user-tutorial">a talk on this topic</a> at rstudio::conf 2017.</p>
 </div>
 <div id="reproducible-and-generally-good-coding-practices" class="section level3">
 <h3 class="hasAnchor">
@@ -306,6 +311,7 @@
 <a href="https://bookdown.org/yihui/rmarkdown">R Markdown: The Definitive Guide</a> - an e-book by Yihui Xie, J. J. Allaire and Garrett Grolemund</li>
 </ul>
 <p>These are great resources, and can help you to produce everything from the simple reports you will be generating on this course, the lectures we are giving and this website with the course documentation, to complex interactive <a href="https://shiny.rstudio.com">Shiny apps</a>. Like Hadley Wickham’s books, they are probably references you will refer to later more than during the course, but they are completely comprehensive if you want to look anything up.</p>
+<p>Particularly useful for you here are the instructions in <em>Happy Git and GitHub for the useR</em> for <a href="https://happygitwithr.com/r-test-drive.html">changing R Markdown into R scripts</a> of the kind you will be generating in these exercises.</p>
 </div>
 <div id="r-coder" class="section level3">
 <h3 class="hasAnchor">
@@ -320,23 +326,64 @@
 <div id="loops" class="section level2">
 <h2 class="hasAnchor">
 <a href="#loops" class="anchor"></a>Loops</h2>
-<div id="for-loops" class="section level3">
+<div id="for-----loops" class="section level3">
 <h3 class="hasAnchor">
-<a href="#for-loops" class="anchor"></a><code>for</code> loops</h3>
-<p>We introduced <code>for (...)</code> loops in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html">Lecture 5b</a> and practical <code>practicalA-1</code>, and they are then used starting in practical <code>practical1-1</code>. There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#for-loops"><code>for</code> loops</a> For loops are also covered by R Coder <a href="https://r-coder.com/for-loop-r">here</a>.</p>
+<a href="#for-----loops" class="anchor"></a><code>for (...)</code> loops</h3>
+<p><code>for</code> loops allow us to repeat something <em>for</em> a fixed number of times (<em>e.g.</em> once per element of a vector, once per row of a data frame, <em>etc.</em>). They are called as:</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">greetings</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Hello"</span>, <span class="st">"Goodbye"</span><span class="op">)</span>
+<span class="kw">for</span> <span class="op">(</span><span class="va">word</span> <span class="kw">in</span> <span class="va">greetings</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># body</span>
+<span class="op">}</span></code></pre></div>
+<p>and in each run through the loop, the variable, here <code>word</code>, is updated with the next element (here, in the vector <code>greetings</code>). We introduced them in week 1 and again in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html">Lecture 5b</a> on Wednesday 27th and practical <code>practicalA-1</code>. They are then used starting in practical <code>practical1-1</code>.</p>
+<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#for-loops"><code>for</code> loops</a>. For loops are also covered by R Coder <a href="https://r-coder.com/for-loop-r">here</a>.</p>
 </div>
-<div id="while-loops" class="section level3">
+<div id="while-----loops" class="section level3">
 <h3 class="hasAnchor">
-<a href="#while-loops" class="anchor"></a><code>while</code> loops</h3>
-<p>We introduced <code>while (...)</code> loops in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html">Lecture 5b</a> and <code>practicalA-2</code>, and used them from practical <code>practical2-4</code>. There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r">here</a>.</p>
+<a href="#while-----loops" class="anchor"></a><code>while (...)</code> loops</h3>
+<p><code>while</code> loops allows us to repeat something <em>while</em> a condition is still <code>TRUE</code>. They are particularly useful when you don’t know in advance exactly how many times something will be done, but can be used in any situation. Unlike <code>for</code> loops you need to update everything manually each time around:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu">some_test</span><span class="op">(</span><span class="op">)</span>
+<span class="kw">while</span> <span class="op">(</span><span class="va">test</span><span class="op">)</span> <span class="op">{</span>
+  <span class="co"># Do something</span>
+  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html">update</a></span><span class="op">(</span><span class="va">something</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
+<p><code>test</code> is checked each time around, and as long as <code>test</code> continues to be <code>TRUE</code>, the code block inside the curly brackets <code>{ ... }</code> is run. Be careful that if you don’t update <code>test</code> inside that block, then it will continue for ever! However, if (when!) <code>test</code> is finally <code>FALSE</code>, the loop ends and R continue to the next piece of code.</p>
+<p>We introduced them on Wednesday 27th in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html">Lecture 5b</a> and in <code>practicalA-2</code>, and used them from practical <code>practical2-4</code>. There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r">here</a>.</p>
 </div>
 </div>
 <div id="flow-control" class="section level2">
 <h2 class="hasAnchor">
 <a href="#flow-control" class="anchor"></a>Flow control</h2>
-<div id="testing-for-equality-and-difference" class="section level3">
+<div id="comparisons-testing-for-equality-and-difference" class="section level3">
 <h3 class="hasAnchor">
-<a href="#testing-for-equality-and-difference" class="anchor"></a>Testing for equality and difference</h3>
+<a href="#comparisons-testing-for-equality-and-difference" class="anchor"></a>Comparisons – testing for equality and difference</h3>
+<p>These tests are essential for <code>while</code> loops, and other forms of flow control such as <code>if</code> statements. They allow us to test whether something is true, and change what lines of code are run depending on the outcome. There are the basic tests:</p>
+<ul>
+<li>
+<code>a == b</code>: is <code>a</code> equal to <code>b</code>? (<code>TRUE</code> if this is true, <code>FALSE</code> if this is false)</li>
+<li>
+<code>a &gt; b</code>: is <code>a</code> greater than <code>b</code>?</li>
+<li>
+<code>a &lt; b</code>: is <code>a</code> less than <code>b</code>?</li>
+<li>
+<code>a &gt;= b</code>: is <code>a</code> greater than or equal to <code>b</code>?</li>
+<li>
+<code>a &lt;= b</code>: is <code>a</code> less than or equal to <code>b</code>?</li>
+<li>
+<code>a != b</code>: is <code>a</code> different from <code>b</code>?</li>
+</ul>
+<p>There are then three basic ways of changing or combining the above:</p>
+<ul>
+<li>
+<code>(a &lt; b) || (c == d)</code>: is <strong>either </strong> <code>a</code> less than <code>b</code> <strong>or</strong> <code>c</code> equal to <code>d</code>?</li>
+<li>
+<code>(a &lt; b) &amp;&amp; (c == d)</code>: is <strong>both</strong> <code>a</code> less than <code>b</code> <strong>and</strong> <code>c</code> equal to <code>d</code>?</li>
+<li>
+<code>!((a &lt; b) &amp;&amp; (c == d))</code>: is the above <strong>not</strong> <code>TRUE</code>? <code>TRUE</code> if the above was <code>FALSE</code> and vice versa</li>
+</ul>
+<p>Remember to use lots of brackets to ensure you are combining things in the right order. These tests are used in <code>while</code> loops above to determine whether to continue through the loop again, and in <code>if</code> statements below, to determine what to do next.</p>
+<p>We introduced these concepts on Friday 29th, and again in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html">Lecture 7a</a> on Monday 1st and practical <code>practicalA-2</code>. Comparisons are also covered <a href="https://r4ds.had.co.nz/transform.html?q=compa#comparisons">in passing</a> in R4DS, and by R Coder in a bit more depth <a href="https://r-coder.com/operators-r">here</a>.</p>
 </div>
 </div>
 </div>
