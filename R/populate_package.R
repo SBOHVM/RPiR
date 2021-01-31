@@ -62,17 +62,17 @@ populate_package <- function() {
               "\n")
   lapply(tmp, function(x) cat(x, file = filepath, append = TRUE))
   usethis::ui_done(paste("Writing", usethis::ui_value("d0105_run_birth_death.R")))
-  
+
   # Write demo index file
-  tmp <- "d0105_run_birth_death   Simple birth-death difference equation model"
+  tmp <- "d0105_run_birth_death   Simple birth-death difference equation model\n"
   cat(tmp, file = file.path("demo", "00Index"))
   usethis::ui_done(paste("Writing", usethis::ui_value("00Index")))
-  
+
   # Write function
   tmp <- system.file("dummy_package/step_birth_death.R", package = "RPiR")
   file.copy(tmp, file.path("R", "step_birth_death.R"))
   usethis::ui_done(paste("Writing", usethis::ui_value(basename(tmp))))
-  
+
   # Write githubusername-package file
   filename <- paste0(package_name, "-package.R")
   filepath <- file.path("R", filename)
