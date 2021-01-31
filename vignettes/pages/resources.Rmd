@@ -30,7 +30,7 @@ which publishes many software packages.
 The society also provides many several [guides on better science][BES-guides].
 As part of the course, **we require you to read the following guides**:
 
-- [Reproducible Code][BES-code]
+- [Reproducible Code][BES-repro]
 - [Data Management][BES-data]
 
 ## Hadley Wickham
@@ -90,8 +90,8 @@ to *"turn your analyses into high quality documents, reports, presentations and
 dashboards."* As well as the cheatsheet and reference guide above, there are a
 variety of resources for R Markdown:
 
-- RStudio's [R Markdown website][rmd-web], including:
-  * [Pandoc's markdown website][pandoc-rmd], which describes the non-R parts of
+- RStudio's [R Markdown website][rmd-rstudio], including:
+  * [Pandoc's markdown website][rmd-pandoc], which describes the non-R parts of
     the format
 - [R Markdown: The Definitive Guide][rmd-book] - an e-book by Yihui Xie, J. J.
   Allaire and Garrett Grolemund
@@ -99,7 +99,7 @@ variety of resources for R Markdown:
 These are great resources, and can help you to produce everything from the
 simple reports you will be generating on this course, the lectures we are giving
 and this website with the course documentation, to complex interactive [Shiny
-apps][rstudio-shiny]. Like Hadley Wickham's books, they are probably references
+apps][shiny-rstudio]. Like Hadley Wickham's books, they are probably references
 you will refer to later more than during the course, but they are completely
 comprehensive if you want to look anything up.
 
@@ -115,13 +115,27 @@ section. If you are confused by our expalanations, you may find this useful.
 
 ## Loops
 
+### `for` loops
+
 We introduced `for (...)` loops in [Lecture 5b][lecture-5b] and practical
-`practicalA-1`, and they are then used starting in practical `practical1-1`. We
-introduced `while (...)` loops in [Lecture 5b][lecture-5b], and used them from
-practical `practical2-4`. There are sections in R4DS (within a chapter
-on [*Iteration*][R4DS-iteration] in general) that cover [`for`][R4DS-for]
-and [`while`][R4DS-while] loops. For loops are covered by R Coder
-[here][rcoder-for], and while loops are covered [here][rcoder-while].
+`practicalA-1`, and they are then used starting in practical `practical1-1`.
+There is a section in R4DS (within a more general chapter on
+[*Iteration*][R4DS-iteration]) that covers [`for` loops][for-R4DS] For loops
+are also covered by R Coder [here][for-rcoder].
+
+### `while` loops
+
+We introduced `while (...)` loops in [Lecture 5b][lecture-5b] and
+`practicalA-2`, and used them from practical `practical2-4`. There is a section
+in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration]) that
+covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
+[here][while-rcoder].
+
+## Flow control
+
+### Testing for equality and difference
+
+
 
 [hadley-wickham]: https://rstudio.com/speakers/hadley-wickham
 [tidyverse]: https://www.tidyverse.org
@@ -130,8 +144,8 @@ and [`while`][R4DS-while] loops. For loops are covered by R Coder
 [dplyr]: https://dplyr.tidyverse.org
 [R4DS]: https://r4ds.had.co.nz
 [R4DS-iteration]: https://r4ds.had.co.nz/iteration.html
-[R4DS-for]: https://r4ds.had.co.nz/iteration.html#for-loops
-[R4DS-while]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
+[for-R4DS]: https://r4ds.had.co.nz/iteration.html#for-loops
+[while-R4DS]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
 [R4DS-solutions]: https://jrnold.github.io/r4ds-exercise-solutions
 [advanced-r]: http://adv-r.had.co.nz
 [advanced-r-solutions]: https://advanced-r-solutions-ed1.netlify.app
@@ -143,7 +157,7 @@ and [`while`][R4DS-while] loops. For loops are covered by R Coder
 [BES-journals]: https://www.britishecologicalsociety.org/publications/journals
 [BES-MEE]: https://www.britishecologicalsociety.org/publications/journals/methods-in-ecology-and-evolution
 [BES-guides]: https://www.britishecologicalsociety.org/publications/guides-to
-[BES-code]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf
+[BES-repro]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf
 [BES-data]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Data-Management-2019.pdf
 
 [jenny-bryan]: https://rstudio.com/speakers/jenny-bryan
@@ -151,15 +165,15 @@ and [`while`][R4DS-while] loops. For loops are covered by R Coder
 [rstudioconf2017-jb]: https://rstudio.com/resources/rstudioconf-2017/happy-git-and-gihub-for-the-user-tutorial
 
 [rstudio-cheat]: https://rstudio.com/resources/cheatsheets
-[rstudio-rmd]: https://rmarkdown.rstudio.com
+[rmd-rstudio]: https://rmarkdown.rstudio.com
 [rmd-book]: https://bookdown.org/yihui/rmarkdown
-[pandoc-rmd]: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html
-[rstudio-shiny]: https://shiny.rstudio.com
+[rmd-pandoc]: https://rmarkdown.rstudio.com/authoring_pandoc_markdown.html
+[shiny-rstudio]: https://shiny.rstudio.com
 
 [nature-repro]: https://www.nature.com/articles/nn.4550
 [dataist-coding]: https://thedataist.com/ten-good-coding-practices-for-data-scientists
 [ted-repro]: https://ed.ted.com/lessons/is-there-a-reproducibility-crisis-in-science-matt-anticole
 
 [rcoder-learnr]: https://r-coder.com/learn-r
-[rcoder-for]: https://r-coder.com/for-loop-r
-[rcoder-while]: https://r-coder.com/while-loop-r
+[for-rcoder]: https://r-coder.com/for-loop-r
+[while-rcoder]: https://r-coder.com/while-loop-r
