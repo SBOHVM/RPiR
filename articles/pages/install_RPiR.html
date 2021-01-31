@@ -153,12 +153,22 @@
     GitHub
   </a>
 </li>
-<li>
-  <a href="../../reference/index.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="far fa-file-code"></span>
      
-    Functions
+    Reference
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../../reference/index.html">Package functions</a>
+    </li>
+    <li>
+      <a href="../../articles/pages/resources.html">Useful resources</a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -255,7 +265,7 @@ Which would you like to update?
 <p>If this didn’t work, you have probably got an installation issue. The installation details should be printed in your RStudio Console and can help you troubleshoot the error.</p>
 <p>Quite often restarting R (<span style="color: #de77ae;">Session &gt; Restart R</span>) can solve your problem. Just remember that once you’ve restarted R, you’ll need to call <code><a href="https://devtools.r-lib.org/">library(devtools)</a></code> again to load it back into RStudio.</p>
 <p>Also, if you find you’re stuck in a loop (perhaps after installing <code>fansi</code>), and R is asking if you’d like to restart over and over again (because the package is already loaded):</p>
-<p><img src="images/restart.png" width="40%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-RPiR-restart.png" width="40%" style="display: block; margin: auto;"></p>
 <p>then just say no to restarting it the second time.</p>
 <div id="non-zero-exit-status" class="section level3">
 <h3 class="hasAnchor">

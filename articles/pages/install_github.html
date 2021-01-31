@@ -153,12 +153,22 @@
     GitHub
   </a>
 </li>
-<li>
-  <a href="../../reference/index.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="far fa-file-code"></span>
      
-    Functions
+    Reference
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="../../reference/index.html">Package functions</a>
+    </li>
+    <li>
+      <a href="../../articles/pages/resources.html">Useful resources</a>
+    </li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -251,21 +261,21 @@
 <p>Note that having git installed <em>is different</em> from installing <code>libgit2</code> when you installed the <code>RPiR</code> package earlier, so you may have to install git here, even if you fixed the problems earlier!</p>
 </blockquote>
 <p>Now that we’re sure <code>git</code> is installed, we’re going to set up encryption between your computer and GitHub. To do this we need to generate a certificate. Click on <span style="color: #de77ae;">Create RSA Key…</span></p>
-<p><img src="images/github/0-2.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-02.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key</p>
-<p><img src="images/github/0-3.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-03.png" width="100%" style="display: block; margin: auto;"></p>
 <p>It should look like this</p>
-<p><img src="images/github/0-4.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-04.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now you need to copy your public key and register it with GitHub, so click on <span style="color: #de77ae;">View public key</span></p>
-<p><img src="images/github/0-5.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-05.png" width="100%" style="display: block; margin: auto;"></p>
 <p>.. and copy the key to your clipboard</p>
-<p><img src="images/github/0-6.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-06.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Then in GitHub, in your <span style="color: #de77ae;">Personal settings</span>, open the <span style="color: #de77ae;">SSH and GPG keys</span> tab</p>
-<p><img src="images/github/0-7.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-07.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Create a <span style="color: #de77ae;">New SSH key</span></p>
-<p><img src="images/github/0-8.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-08.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Paste the public key that you copied from RStudio into the box and click <span style="color: #de77ae;">Add SSH key</span></p>
-<p><img src="images/github/0-9.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-09.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now back in RStudio, tell git your user name and email address (these are used to label each commit that you make to GitHub). <strong>Make sure the email address you</strong> <strong>enter here is the same as the one that you registered on GitHub</strong>. First, make sure that the <code>usethis</code> package is installed by calling <code><a href="https://usethis.r-lib.org">library(usethis)</a></code>. If that doesn’t work, then install it, and then configure git using it:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"usethis"</span><span class="op">)</span> <span class="co"># If need be</span>
@@ -286,10 +296,10 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/github-token.html">create_github_token</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>This will open a GitHub page in your browser, like this:</p>
-<p><img src="images/github/git.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-git.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Scroll down to the bottom of this page and click on the green <span style="color: #de77ae;">Generate Token</span> button.</p>
 <p>Your screen should now look something like this:</p>
-<p><img src="images/github/pat.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="images/install-github-pat.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Copy the alphanumeric string (in the green box) by clicking on the tiny, blue clipboard.</p>
 <p>Now back in RStudio, run:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">

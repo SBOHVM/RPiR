@@ -5,9 +5,10 @@ articles:
   faq: faq.html
   pages/install_RPiR: install_RPiR.html
   pages/install_github: install_github.html
+  pages/resources: resources.html
   pages/use_github: use_github.html
   pages/vscode_liveshare: vscode_liveshare.html
-last_built: 2021-01-31T19:34Z
+last_built: 2021-01-31T21:06Z
 urls:
   reference: https://ibahcm.github.io/RPiR//reference
   article: https://ibahcm.github.io/RPiR//articles
