@@ -111,6 +111,18 @@ section. If you are confused by our expalanations, you may find this useful.
 
 [lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
 
+# Specific techniques
+
+## Loops
+
+We introduced `for (...)` loops in [Lecture 5b][lecture-5b] and practical
+`practicalA-1`, and they are then used starting in practical `practical1-1`. We
+introduced `while (...)` loops in [Lecture 5b][lecture-5b], and used them from
+practical `practical2-4`. There are sections in R4DS (within a chapter
+on [*Iteration*][R4DS-iteration] in general) that cover [`for`][R4DS-for]
+and [`while`][R4DS-while] loops. For loops are covered by R Coder
+[here][rcoder-for], and while loops are covered [here][rcoder-while].
+
 [hadley-wickham]: https://rstudio.com/speakers/hadley-wickham
 [tidyverse]: https://www.tidyverse.org
 [tidyverse-packages]: https://www.tidyverse.org/packages
