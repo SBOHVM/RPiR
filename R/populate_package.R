@@ -106,6 +106,7 @@ populate_package <- function() {
 
   # Add dependencies
   usethis::use_dev_package("RPiR", "Imports", remote = "IBAHCM/RPiR")
+  usethis::use_package("dplyr", "Imports", min_version = NULL)
 
   # Document package
   devtools::document(quiet = TRUE)
