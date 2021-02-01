@@ -256,7 +256,7 @@
 <li><p>You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).</p></li>
 </ol>
 </blockquote>
-<p>Functions allow us to wrap up a common task into a single line of code, irrespective of how complex and long the code chunk is, and to describe it with words of your choosing irrespective of how inscrutable the R is that is being run. Functions also leave you with only a single place that needs to be checked for correctness, rather than all of the places that you have pasted copies of your original chunk of code into.</p>
+<p>Functions allow us to wrap up a common task into a single line of code, irrespective of how complex and long the code chunk is, making our scripts cleaner and easier to read. They allow us to describe what the code is doing (by assigning a name to the function), making our scripts easier to understand. Finally, writing custom functions rather than duplicating code means that there is only a single place that needs to be checked for correctness, rather than having to remember all of the places your duplicated (likely copied and pasted) code exists.</p>
 <p>Functions are really easy to write:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">add_up</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">first</span>, <span class="va">second</span><span class="op">)</span> <span class="op">{</span>
@@ -266,7 +266,7 @@
 <span class="co"># Add call the function to add 3 to 5!</span>
 <span class="fu">add_up</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="co">#&gt; [1] 8</span></code></pre></div>
-<p>The critical thing to know is that your code should take its just arguments, here the variables <code>first</code> and <code>second</code>, and do some things to them to calculate some result. That result is just whatever the last line of code is that is run. If you are writing a simple function, this will be the final line before the close curly bracket (<code>}</code>), here <code>squared</code>.</p>
+<p>The critical thing to know is that a function takes its arguments (here the variables <code>first</code> and <code>second</code>) and does something to them to calculate some result. The result that is output by the function is the last line of code is that is run. If you are writing a simple function, this will be the final line before the close curly bracket (<code>}</code>), here <code>squared</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">add_and_square</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">first</span>, <span class="va">second</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># Calculate the result</span>
@@ -279,8 +279,8 @@
 <span class="co"># And call the function to add 3 to 5 and square it!</span>
 <span class="fu">add_and_square</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span>
 <span class="co">#&gt; [1] 64</span></code></pre></div>
-<p>We introduced functions in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR2c-development.html">Lecture 2c</a> on Wednesday 20th and Practical <code>practicalA-1</code>and then again in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html">Lecture 5b</a> on Wednesday 27th. They were used starting in Practical <code>practical1-2</code>.</p>
-<p>Functions are covered in R4DS <a href="https://r4ds.had.co.nz/functions.html">here</a>, and R Coder covers them in some depth <a href="https://r-coder.com/function-r">here</a>. Advanced R covers functions in enormous detail starting <a href="https://adv-r.hadley.nz/fp.html">here</a> with an introduction to functional programming, and continuing for several chapters.</p>
+<p>We introduced functions in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR2c-development.html">Lecture 2c</a> and Practical <code>practicalA-1</code>and then again in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html">Lecture 5b</a>. They were used starting in Practical <code>practical1-2</code>.</p>
+<p>Functions are covered in R4DS <a href="https://r4ds.had.co.nz/functions.html">here</a> and R Coder covers them in some depth <a href="https://r-coder.com/function-r">here</a>. Advanced R covers functions in enormous detail starting <a href="https://adv-r.hadley.nz/fp.html">here</a> with an introduction to functional programming, and continuing for several chapters.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
