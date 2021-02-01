@@ -62,5 +62,5 @@ single `README.md` file look a bit like this:
 knitr::include_graphics('images/use-github-03.png')
 ```
 
-If you want to learn more about creating projects in RStudio, click
-[here](https://ibahcm.github.io/RPiR/articles/pages/projects.html).
+If you want to learn more about creating projects (and using GitHub) in RStudio,
+click [here](https://ibahcm.github.io/RPiR/articles/pages/rstudio.html).
