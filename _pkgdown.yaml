@@ -121,10 +121,8 @@ navbar:
       menu:
       -  text: "Create a repository on GitHub"
          href: articles/pages/github.html
-      -  text: "Create a project in RStudio"
-         href: articles/pages/projects.html
-      -  text: "Use GitHub in RStudio"
-         href: articles/pages/rstudio_git.html
+      -  text: "RStudio projects and GitHub"
+         href: articles/pages/rstudio.html
     - text: "Installation"
       icon: far fa-file
       menu:
