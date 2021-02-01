@@ -119,7 +119,7 @@ will be generating in these exercises.
 
 The [Learn R section][rcoder-learnr] of this website provides explanations for a
 lot of common techniques that you use during this course in the *Programming*
-section. If you are confused by our expalanations, you may find this useful.
+section. If you are confused by our explanations, you may find this useful.
 
 ## R coding style
 
