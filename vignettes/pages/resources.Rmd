@@ -325,11 +325,70 @@ control that are well beyond the scope of this course.
 
 ## Functions
 
+Just as loops allow you to repeat the same code chunk again and again in one
+place, functions allow you to repeat the same task multiple times, but
+potentially in multiple places on different data. If you have a complex piece
+of code that does a single discrete thing, then you may want to wrap it up
+into a function so that you can refer to it by a simple name and keep the
+script that calls it clear and easy to read.
+
+To quote from [the introduction to R4DS on functions][functions-R4DS]:
+
+> One of the best ways to improve your reach as a data scientist is to write functions. Functions allow you to automate common tasks in a more powerful and general way than copy-and-pasting. Writing a function has three big advantages over using copy-and-paste:
+>
+> 1. You can give a function an evocative name that makes your code easier to understand.
+>
+> 2. As requirements change, you only need to update code in one place, instead of many.
+>
+> 3. You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).
+
+Functions allow us to wrap up a common task into a single line of code,
+irrespective of how complex and long the code chunk is, and to describe it
+with words of your choosing irrespective of how inscrutable the R is that is
+being run. Functions also leave you with only a single place that needs to be
+checked for correctness, rather than all of the places that you have pasted
+copies of your original chunk of code into.
+
+Functions are really easy to write:
+
+```{R}
+add_up <- function(first, second) {
+  first + second
+}
+
+# Add call the function to add 3 to 5!
+add_up(3, 5)
+```
+
+The critical thing to know is that your code should take its just arguments,
+here the variables `first` and `second`, and do some things to them to calculate
+some result. That result is just whatever the last line of code is that is run.
+If you are writing a simple function, this will be the final line before the
+close curly bracket (`}`), here `squared`.
+
+```{R}
+add_and_square <- function(first, second) {
+  # Calculate the result
+  added <- first + second
+  squared <- added * added
+  # And return it
+  squared
+}
+
+# And call the function to add 3 to 5 and square it!
+add_and_square(3, 5)
+```
+
+We introduced functions in [Lecture 2c][lecture-2c] on Wednesday 20th and
+Practical `practicalA-1`and then again in [Lecture 5b][lecture-5b] on Wednesday
+27th. They were used starting in Practical `practical1-2`.
+
 Functions are covered in R4DS [here][functions-R4DS], and R Coder covers
 them in some depth [here][functions-rcoder]. Advanced R covers functions in
 enormous detail starting [here][functions-advanced-r] with an introduction to
 functional programming, and continuing for several chapters.
 
+[lecture-2c]: https://ibahcm.github.io/RPiR/lectures_html/RPiR2c-development.html
 [lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
 [lecture-7a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html
 
@@ -365,6 +424,7 @@ functional programming, and continuing for several chapters.
 [jenny-bryan]: https://rstudio.com/speakers/jenny-bryan
 [happy-git]: https://happygitwithr.com
 [rmd-to-r]: https://happygitwithr.com/r-test-drive.html
+
 [rstudioconf2020-jb]: https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable
 [rstudioconf2017-jb]: https://rstudio.com/resources/rstudioconf-2017/happy-git-and-gihub-for-the-user-tutorial
 
