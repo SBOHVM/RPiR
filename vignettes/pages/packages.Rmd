@@ -158,7 +158,7 @@ the documentation files in the
 `?my_plot` to look at it.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/packages/14.png')
+knitr::include_graphics('images/packages/13.png')
 ```
 
 The first line is the title.
