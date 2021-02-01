@@ -20,18 +20,17 @@ knitr::opts_chunk$set(
 
 This guide assumes you have a GitHub repository all set up. If you need help
 doing that, there's another guide 
-[here](https://ibahcm.github.io/RPiR/articles/pages/use_github.html) that will take you through it. 
+[here](https://ibahcm.github.io/RPiR/articles/pages/github.html) that will take you through it. 
 
-Now click on the green <span style="color: #de77ae;">Code</span> button and 
+Once you're all set up, click on the green 
+<span style="color: #de77ae;">Code</span> button and 
 **copy the URL** associated with your GitHub repository to your clipboard
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/use-github-04.png')
 ```
 
-## Create a new RStudio project
-
-In RStudio, click <span style="color: #de77ae;">File > New project...</span>, 
+Then in RStudio, click <span style="color: #de77ae;">File > New project...</span>, 
 then since we're integrating version control into this project workflow, you 
 should select <span style="color: #de77ae;">Version Control</span>.
 
@@ -76,3 +75,6 @@ important.
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/use-github-08.png')
 ```
+
+If you want to learn more about using GitHub in RStudio, click
+[here](https://ibahcm.github.io/RPiR/articles/pages/rstudio_git.html).

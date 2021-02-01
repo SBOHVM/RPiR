@@ -62,9 +62,5 @@ single `README.md` file look a bit like this:
 knitr::include_graphics('images/use-github-03.png')
 ```
 
-## Additional resources
-
-* [R packages - Git and GitHub, by Hadley Wickham](http://r-pkgs.had.co.nz/git.html)
-* [Pro Git, by Scott Chacon and Ben Straub ](https://git-scm.com/book/en/v2)
-* [git/github guide, by Karl Broman](https://kbroman.org/github_tutorial/)
-* [git - the simple guide, by Roger Dudler](https://rogerdudler.github.io/git-guide/)
+If you want to learn more about creating projects in RStudio, click
+[here](https://ibahcm.github.io/RPiR/articles/pages/projects.html).
