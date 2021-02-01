@@ -52,10 +52,10 @@ software development in R:
 - [R Packages][r-packages]
 
 We recommend all of these books as reference material, and will point to
-specific chapters at time, but the books themselves are probably too long for
-you to read in their entirety. Nonetheless keep them for future reference, as
-they contain an enormous amount of knowledge about R in a (relatively!) compact
-form.
+specific chapters at different times, but the books themselves are probably too
+long for you to read in their entirety. Nonetheless keep them for future
+reference, as they contain an enormous amount of knowledge about R in a
+(relatively!) compact form.
 
 ## Assorted other materials
 
@@ -122,6 +122,18 @@ will be generating in these exercises.
 The [Learn R section][rcoder-learnr] of this website provides explanations for a
 lot of common techniques that you use during this course in the *Programming*
 section. If you are confused by our expalanations, you may find this useful.
+
+### R coding style
+
+Version 1 of Advanced R provides [a style guide][style-advanced-r]. In version
+2, this has been replaced by the [tidyverse][tidyverse] [style
+guide][style-tidyverse]. Google have [an adaptation of this][style-google].
+We do not ask (or even recommend) that you follow any of them, but they are well
+thought through, and you may decide you like one of them.
+
+We only ask that your style is consistent, that you use meaningful names for
+functions and variables, and that you **never** use dots (`.`) in function names
+or use `rm(...)` or install any packages in the code you submit for assessment.
 
 # Specific techniques
 
@@ -300,6 +312,7 @@ If statements are too simple a concept for R4DS, but are covered by R Coder
 [hadley-wickham]: https://rstudio.com/speakers/hadley-wickham
 [tidyverse]: https://www.tidyverse.org
 [tidyverse-packages]: https://www.tidyverse.org/packages
+[style-tidyverse]: https://style.tidyverse.org
 [ggplot2]: https://ggplot2.tidyverse.org
 [dplyr]: https://dplyr.tidyverse.org
 [R4DS]: https://r4ds.had.co.nz
@@ -310,6 +323,7 @@ If statements are too simple a concept for R4DS, but are covered by R Coder
 [R4DS-solutions]: https://jrnold.github.io/r4ds-exercise-solutions
 [advanced-r]: http://adv-r.had.co.nz
 [advanced-r-solutions]: https://advanced-r-solutions-ed1.netlify.app
+[style-advanced-r]: http://adv-r.had.co.nz/Style.html
 [advanced-r2]: https://adv-r.hadley.nz
 [advanced-r2-solutions]: http://advanced-r-solutions.rbind.io
 [r-packages]: https://r-pkgs.org
@@ -342,3 +356,5 @@ If statements are too simple a concept for R4DS, but are covered by R Coder
 [while-rcoder]: https://r-coder.com/while-loop-r
 [operators-rcoder]: https://r-coder.com/operators-r
 [if-rcoder]: https://r-coder.com/if-else-r
+
+[style-google]: https://google.github.io/styleguide/Rguide.html
