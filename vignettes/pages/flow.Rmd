@@ -44,8 +44,7 @@ order. These tests are used in `while` loops above to determine whether to
 continue through the loop again, and in `if` statements below, to determine what
 to do next.
 
-We introduced these concepts on Friday 29th, and again in [Lecture
-7a][lecture-7a] on Monday 1st and Practical `practicalA-2`. Comparisons are also
+We introduced these concepts on Friday 29th. Comparisons are also
 covered [in passing][operators-R4DS] in R4DS, and by R Coder in a bit more
 depth [here][operators-rcoder].
 
@@ -133,8 +132,6 @@ R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
 consider them too simple, but ironically they have [a chapter in Advanced
 R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
 control that are well beyond the scope of this course.
-
-[lecture-7a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html
 
 [operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
 [if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html

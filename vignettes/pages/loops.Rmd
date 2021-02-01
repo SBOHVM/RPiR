@@ -79,7 +79,7 @@ ever! However, if (when!) `test` is finally `FALSE`, the loop ends and R
 continue to the next piece of code.
 
 We introduced them on Wednesday 27th in [Lecture 5b][lecture-5b]
-and in `practicalA-2`, and used them from Practical `practical2-4`. There is a
+and used them from Practical `practical2-4`. There is a
 section in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration])
 that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [here][while-rcoder].
