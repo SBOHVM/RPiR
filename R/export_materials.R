@@ -5,7 +5,7 @@
 #'
 export_materials <- function(materials, type = "exercises") {
   if (type == "exercises") {
-    c(materials[grepl("0.?-", materials)],
+    c(materials[grepl("A.?-", materials)],
       materials[grepl("1.?-[12345]", materials)],
       materials[grepl("2.?-", materials)])
   } else if (type == "lectures") {
