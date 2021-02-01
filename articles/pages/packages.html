@@ -289,12 +289,27 @@
 <div id="functions-and-documentation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#functions-and-documentation" class="anchor"></a>Functions and documentation</h2>
-<p>Now I’m going to add a new function (you can add any function you like). Make sure the name of your function is the same as the file you’re writing in and save it in the <span style="color: #de77ae;">R</span> directory.</p>
-<p>Note the documentation above the function. If you’re not sure how to write it, keep reading.</p>
+<p>Now I’m going to add a new function (you can add any function you like). Make sure the name of your function is the same as the file you’re writing in and save it in the <span style="color: #de77ae;">R</span> directory. I’ve also added some documentation above the function (details describing how to write this are below).</p>
+<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> in the package root to automatically generate the documentation files in the <span style="color: #de77ae;">man</span> directory. After which you can run <code>?my_plot</code> to look at it.</p>
 <p><img src="images/packages/13.png" width="100%" style="display: block; margin: auto;"></p>
-<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> in the package root to generate the documentation. After which you can run <code>?my_plot</code> to look at it.</p>
-<p>I’ll explain what it all means now.</p>
-<p><img src="images/packages/14.png" width="100%" style="display: block; margin: auto;"></p>
+<p>The first line is the title.</p>
+<pre><code>#' my_plot</code></pre>
+<p>The next section (separated by a blank line) is the <strong>Description</strong>. The description can continue onto multiple lines so long as you don’t start writing paragraphs with blank lines between them. This is true for all of the following examples.</p>
+<pre><code>#' A very simple plotting function</code></pre>
+<p><strong>Usage</strong> is generated automatically from the function itself.</p>
+<p>After that everything has been labeled with a tag, so order doesn’t really matter, but the <code>@param</code> tag is used to document the <strong>Arguments</strong>. Note the format here is <code>@param argument description</code>.</p>
+<pre><code>#' @param data \code{data.frame} containing data
+#' @param x column containing x-axis data
+#' @param y column containing y-axis data
+#' @param title \code{string} containing plot title</code></pre>
+<p>The <code>@return</code> tag is used to document the output of the function in the <strong>Value</strong> section.</p>
+<pre><code>#' @return Returns a \code{ggplot} object</code></pre>
+<p>The <code>@export</code> tag is used to identify this function as being exported by your package. That is, a function intended to be usable and not internal (a function that cannot be called, but is used internally by other functions).</p>
+<pre><code>#' @export</code></pre>
+<p>Finally, the <code>@examples</code> tag is used to document the <strong>Examples</strong> section. Note that here, you can use blank lines if you want.</p>
+<pre><code>#' @examples
+#' data &lt;- data.frame(R = 1:5, fun = c(1:5)^2)
+#' my_plot(data, R, fun, "Plot showing how fun increases with R")</code></pre>
 </div>
   </div>
 
