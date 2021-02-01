@@ -33,7 +33,7 @@ As part of the course, **we require you to read the following guides**:
 
 # Hadley Wickham
 
-[Hadley Wickham][hadley-wickham] is the Chief Scientist for RStudio. He created
+[Hadley Wickham][hadley-wickham] is the Chief Scientist at RStudio. He created
 the original `ggplot` library for his PhD. These days his
 [data analysis packages][tidyverse-packages] are collectively known as the
 [tidyverse][tidyverse], the most famous of which are probably [ggplot2][ggplot2]
@@ -88,14 +88,14 @@ programmers, but there are useful tips for everyone (and some specific to R).
 RStudio and other contributors provide a variety of [cheatsheets][rstudio-cheat]
 that summarise functionality of a variety of different topics in R, including
 markdown in reports, on RStudio itself, and everything from Base R to package
-development to parallel computing in R. **The main cheatsheets are available
-directly from RStudio under *Help -> Cheatsheets*.**
+development to parallel computing in R. **The main cheatsheets can be found
+in RStudio under** <span style="color: #de77ae;">Help > Cheatsheets</span>.
 
 ## R Markdown
 
-R Markdown allows you to produce reports from your R code or, as RStudio put it,
+R Markdown allows you to generate reports from your R code or, as RStudio puts it,
 to *"turn your analyses into high quality documents, reports, presentations and
-dashboards."* As well as the cheatsheet and reference guide above, there are a
+dashboards."* As well as the cheatsheets and reference guide above, there are a
 variety of resources for R Markdown:
 
 - RStudio's [R Markdown website][rmd-rstudio], including:
@@ -105,8 +105,8 @@ variety of resources for R Markdown:
   Allaire and Garrett Grolemund
   
 These are great resources, and can help you to produce everything from the
-simple reports you will be generating on this course, the lectures we are giving
-and this website with the course documentation, to complex interactive [Shiny
+simple reports you will be generating on this course, to the lectures slides 
+and website we use to run this course, to complex interactive [Shiny
 apps][shiny-rstudio]. Like Hadley Wickham's books, they are probably references
 you will refer to later more than during the course, but they are completely
 comprehensive if you want to look anything up.

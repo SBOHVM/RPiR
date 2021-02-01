@@ -36,11 +36,13 @@ To quote from [the introduction to R4DS on functions][functions-R4DS]:
 > 3. You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).
 
 Functions allow us to wrap up a common task into a single line of code,
-irrespective of how complex and long the code chunk is, and to describe it
-with words of your choosing irrespective of how inscrutable the R is that is
-being run. Functions also leave you with only a single place that needs to be
-checked for correctness, rather than all of the places that you have pasted
-copies of your original chunk of code into.
+irrespective of how complex and long the code chunk is, making our scripts 
+cleaner and easier to read. They allow us to describe what the code is doing 
+(by assigning a name to the function), making our scripts easier to understand. 
+Finally, writing custom functions rather than duplicating code means that there 
+is only a single place that needs to be checked for correctness, rather than 
+having to remember all of the places your duplicated (likely copied and pasted) 
+code exists.
 
 Functions are really easy to write:
 
@@ -53,9 +55,10 @@ add_up <- function(first, second) {
 add_up(3, 5)
 ```
 
-The critical thing to know is that your code should take its just arguments,
-here the variables `first` and `second`, and do some things to them to calculate
-some result. That result is just whatever the last line of code is that is run.
+The critical thing to know is that a function takes its arguments
+(here the variables `first` and `second`) and does something to them to calculate
+some result. The result that is output by the function is the last 
+line of code is that is run.
 If you are writing a simple function, this will be the final line before the
 close curly bracket (`}`), here `squared`.
 
@@ -72,11 +75,11 @@ add_and_square <- function(first, second) {
 add_and_square(3, 5)
 ```
 
-We introduced functions in [Lecture 2c][lecture-2c] on Wednesday 20th and
-Practical `practicalA-1`and then again in [Lecture 5b][lecture-5b] on Wednesday
-27th. They were used starting in Practical `practical1-2`.
+We introduced functions in [Lecture 2c][lecture-2c] and
+Practical `practicalA-1`and then again in [Lecture 5b][lecture-5b]. 
+They were used starting in Practical `practical1-2`.
 
-Functions are covered in R4DS [here][functions-R4DS], and R Coder covers
+Functions are covered in R4DS [here][functions-R4DS] and R Coder covers
 them in some depth [here][functions-rcoder]. Advanced R covers functions in
 enormous detail starting [here][functions-advanced-r2] with an introduction to
 functional programming, and continuing for several chapters.
