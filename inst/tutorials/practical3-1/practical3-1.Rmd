@@ -238,20 +238,54 @@ of your package.
 
 ### Package metadata
 
-Open the <span style="color: #de77ae;">DESCRIPTION</span> file. This file is 
-used to record package dependencies. We've added a dependency on `RPiR` so you
-can see how to add one. Three things are required:
+Open the <span style="color: #de77ae;">DESCRIPTION</span> file. It should look
+something like this:
 
-* Add an entry in the `Imports` field of the 
-<span style="color: #de77ae;">DESCRIPTION</span> file
-* Add an `@import` in the 
-<span style="color: #de77ae;">githubusername-package</span> file
-* Run `devtools::document()` to populate the 
-<span style="color: #de77ae;">NAMESPACE</span> file (which you should never 
-edit by hand)
+```
+Package: soniamitchellSeries03
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/IBAHCM/soniamitchellSeries03
+BugReports: https://github.com/IBAHCM/soniamitchellSeries03/issues
+Imports: 
+    RPiR (>= 0.56.0),
+    dplyr
+Remotes: 
+    IBAHCM/RPiR
+RoxygenNote: 7.1.1
+```
+
+This file is 
+used to record package dependencies (that is, packages that your package needs
+to work). We've added a dependency on `dplyr` so you can see how to add one. 
+Three things are required:
+
+1. Add an entry in the `Imports` field of the 
+   <span style="color: #de77ae;">DESCRIPTION</span> file, *e.g.*
+   ```
+   Imports: 
+     dplyr
+   ```
+2. Add an `@import` in the 
+   <span style="color: #de77ae;">githubusername-package.R</span> file (located in 
+   the <span style="color: #de77ae;">R</span> directory), like this:
+   ```
+   #' @import dplyr
+   ```
+3. Run `devtools::document()` to populate the 
+   <span style="color: #de77ae;">NAMESPACE</span> file (which you should never 
+   edit by hand)
 
 In this particular case, the `RPiR` package is not available on CRAN, so we've
-had to note its location in the `Remotes` field.
+had to note its location in the `Remotes` field as well as the `Imports` field.
 
 As well as recording dependencies, the 
 <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata
