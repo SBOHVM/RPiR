@@ -10,7 +10,7 @@
 #' first of which is a vector of the derivatives of the population at pop_vec,
 #' and the second is an empty vector.
 #'
-#' @param deriv_function Dunction to calculate derivative
+#' @param deriv_function Function to calculate derivative
 #' @param populations Data frame with columns corresponding to function
 #'   requirements
 #' @param end.time End time of simulation
