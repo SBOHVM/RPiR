@@ -1,0 +1,78 @@
+---
+title: "Create a project in RStudio"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+output:
+  rmarkdown::html_vignette:
+  toc: true
+  toc_depth: 2
+  vignette: >
+    %\VignetteIndexEntry{Version control with GitHub and RStudio}
+    %\VignetteEngine{knitr::knitr}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This guide assumes you have a GitHub repository all set up. If you need help
+doing that, there's another guide 
+[here](https://ibahcm.github.io/RPiR/articles/pages/use_github.html) that will take you through it. 
+
+Now click on the green <span style="color: #de77ae;">Code</span> button and 
+**copy the URL** associated with your GitHub repository to your clipboard
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/use-github-04.png')
+```
+
+## Create a new RStudio project
+
+In RStudio, click <span style="color: #de77ae;">File > New project...</span>, 
+then since we're integrating version control into this project workflow, you 
+should select <span style="color: #de77ae;">Version Control</span>.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/use-github-05.png')
+```
+
+Select the option to clone a project from a 
+<span style="color: #de77ae;">Git</span> repository.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/use-github-06.png')
+```
+
+**Paste your Repository URL** into the first box, then click 
+<span style="color: #de77ae;">Browse...</span> 
+and navigate to the git folder on your desktop. If you don't have a git folder 
+on your desktop then make one, as it's good practice to keep all of your 
+projects together and well organised. RStudio will create a new subdirectory 
+that will mirror the contents of your Git repository (so make sure you 
+don't already have a folder with the same name as the repository you created, 
+as this will cause problems). Now click 
+<span style="color: #de77ae;">Create Project</span> and enter your GitHub 
+username and password if you're asked.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/use-github-07.png')
+```
+
+Congratulations! You have successfully created a new RStudio project (now with
+added version control). In the example below, (1) the RStudio project is called 
+`soniamitchell_0201`, (2) a new directory, `soniamitchell_0201`, has been 
+created, which is now your working directory, and inside this directory are (3) 
+three files, including a GitHub `README.md` file (imported from your GitHub 
+repository), an RStudio project file (`soniamitchell_0201.Rproj`), and an 
+invisible `.gitignore` file (created by RStudio). 
+
+Note the appearance of a new <span style="color: #de77ae;">Git</span> tab next 
+to <span style="color: #de77ae;">Connections</span>. This is 
+important.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/use-github-08.png')
+```
