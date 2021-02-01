@@ -39,14 +39,14 @@ There are then three basic ways of changing or combining the above:
 - `!((a < b) && (c == d))`: is the above **not** `TRUE`? `TRUE` if the above was
   `FALSE` and vice versa 
 
-Remember to use lots of brackets to ensure you are combining things in the right
-order. These tests can be used in the `while` loops above to determine whether to
-continue through the next iteration of the loop, and in the `if` statements below, 
-to determine what to do next.
+Remember to use (lots of!) brackets to ensure you are combining things in the
+right order. These tests can be used in the `while` loops above to determine
+whether to continue through the next iteration of the loop, and in the `if`
+statements below, to determine what to do next.
 
-Comparisons are also
-covered [in passing][operators-R4DS] in R4DS, and by R Coder in a bit more
-depth [here][operators-rcoder].
+We introduced these concepts in [Lecture 7a][lecture-7a].
+Comparisons are also [covered in passing][operators-R4DS] in
+R4DS, and by R Coder in a bit more depth [here][operators-rcoder].
 
 # `if (something)` and `if (something) { ... } else { ... }` statements
 
@@ -126,10 +126,14 @@ the next (and every subsequent) time it runs, `first.graph` is already `FALSE`
 so the code block following the `else` statement is run, and a plot is
 superimposed on the existing graphics window.
 
+We introduced these concepts in [Lecture 5b][lecture-5b].
 R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
 consider them too simple, but ironically they have [a chapter in Advanced
 R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
 control that are well beyond the scope of this course.
+
+[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
+[lecture-7a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html
 
 [operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
 [if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html

@@ -24,13 +24,13 @@ plot(d$d2, d$d1)
 ```{R, eval = FALSE}
 library(lme4)
 
-my.data <- read.csv("my.file.csv")
+flu.data <- read.csv("my.file.csv")
 #...
 #...
-res <- lmer(response ~ explanatory + (1 | random), data = my.data)
+res <- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 #...
 #...
-plot(my.data$explanatory, my.data$response)
+plot(antigenic.distance ~ num.mutation, data = flu.data)
 ```
 
 ## Commented { .smaller }
@@ -38,17 +38,17 @@ plot(my.data$explanatory, my.data$response)
 ```{R, eval = FALSE}
 library(lme4)
 
-my.data <- read.csv("my.file.csv")
+flu.data <- read.csv("my.file.csv")
 # Some light processing to get data into correct format
 #...
 #...
 # Now the analyses – a linear mixed effect model
-res <- lmer(response ~ explanatory + (1 | random), data = my.data)
+res <- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 # Checking the model is a good one
 #...
 #...
 # Phew, it is, so plot the best explanatory and response variables!
-plot(my.data$explanatory, my.data$response)
+plot(antigenic.distance ~ num.mutation, data = flu.data)
 
 ```
 
@@ -59,7 +59,7 @@ library(lme4)
 
 ### <b>
 # Function to load in data from file and process
-read_data <- function(filename) {
+read_flu_data <- function(filename) {
   #' Load in data from file and process
   
   data <- read.csv(filename)
@@ -69,14 +69,14 @@ read_data <- function(filename) {
 }
 ### </b>
 
-my.data <- read_data("my.file.csv")
+flu.data <- read_flu_data("my.file.csv")
 # Now the analyses – a linear mixed effect model
-res <- lmer(response ~ explanatory + (1 | random), data = my.data)
+res <- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 # Checking the model is a good one
 #...
 #...
 # Phew, it is, so plot the best explanatory and response variables!
-plot(my.data$explanatory, my.data$response)
+plot(antigenic.distance ~ num.mutation, data = flu.data)
 ```
 
 ## More structured { .smaller }
@@ -89,7 +89,7 @@ helper.R
 library(lme4)
 
 ### <b>
-read_data <- function(filename) {
+read_flu_data <- function(filename) {
   #' Load in data from file and process
   
   data <- read.csv(filename)
@@ -101,7 +101,7 @@ read_data <- function(filename) {
 ### </b>
 
 ### <b>
-check_model <- function(model.out) {
+check_flu_model <- function(model.out) {
   #' Check model is a good one
   
   is.good.model <- #...
@@ -118,21 +118,20 @@ script.R
 source("helper.R")
 
 # Load in the data and process it 
-my.data <- read_data("my.file.csv")
+my.data <- read_flu_data("my.file.csv")
 
 # Analyses – linear mixed effect model
-res <- lmer(response ~ explanatory + 
-              (1 | random), 
-            data = my.data)
+res <- lmer(antigenic.distance ~ num.mutation +
+              (1 | date), data = flu.data)
+
 
 # Check model
-if (!check_model(res))
+if (!check_flu_model(res))
   stop("Model is rubbish, give up now!")
 
 # Plot the best explanatory and
 # response variables
-plot(my.data$explanatory, 
-     my.data$response)
+plot(antigenic.distance ~ num.mutation,
+     data = flu.data)
 ```
 </div>
-

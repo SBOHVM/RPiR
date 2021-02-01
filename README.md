@@ -149,7 +149,7 @@ The following core practicals are included in this package:
    * `practical2-4`: SIS model; Using while() loops
    * `practical2-5`: SIR model; Adapting previous code
 
-As well as the following supplementary appendices:
+As well as the following additional practicals:
 
 * `practicalA-1`: Introduction to for loops and functions
 * `practicalA-2`: Tests and more loops

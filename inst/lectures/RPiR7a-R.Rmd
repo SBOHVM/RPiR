@@ -1,0 +1,391 @@
+---
+title: "More Programming in R"
+output: ioslides_presentation
+---
+
+# Loops, functions and flow control {.smaller}
+
+## Useful commands
+
+-   for loops:
+
+```{R, eval=FALSE}
+    for (...) { ... }
+```
+
+-   while loops:
+
+```{R, eval=FALSE}
+    while (...) { ... }
+```
+
+-   functions:
+
+```{R, eval=FALSE}
+    my_fun <- function() { ... }
+```
+
+-   if statements
+
+```{R, eval=FALSE}
+    if (...) { ... } else { ... }
+```
+
+## `for (...)` loops
+
+Runs a block of code *for* a fixed number of times:
+
+```{R, eval=FALSE}
+for (item in vector) {
+  # Do something, probably to item
+}
+```
+
+Remember code blocks are the code within a set of curly brackets -- `{ ... }` --
+or a single line of code if there are no brackets.
+
+## `for (...)` loops
+
+Runs a block of code  *for* a fixed number of times:
+
+```{R, comment=""}
+whole.numbers <- seq(from = 3, to = 6)
+for (num in whole.numbers) {
+  print(num^2)
+}
+```
+
+Here, we print out four numbers -- the squares of the numbers in the
+`whole.numbers` vector -- because that's how long the vector is.
+
+## `for (...)` loops
+
+Runs a block of code *for* a fixed number of times:
+
+```{R, comment=""}
+halves <- seq(from = 1, to = 2, by = 0.5); total <- 0
+for (half in halves) {
+  total <- total + half
+  cat("Adding", half, "gives us", total, "\n")
+}
+total
+```
+
+This updates `total` with the running total and prints it out.
+
+## `while (...)` loops {.smaller}
+
+This runs a block of code *while* a condition is true:
+
+```{R, eval=FALSE}
+while (condition.is.TRUE) {
+  # Do something that will (or may) update condition
+}
+```
+
+## `while (...)` loops {.smaller}
+
+This runs a block of code *while* a condition is true:
+
+```{R, comment=""}
+half <- 1; increment <- 0.5; total <- 0
+while (half <= 2) {
+  total <- total + half
+  cat("Adding", half, "gives us", total, "\n")
+  half <- half + increment
+}
+total
+```
+
+We can produce the same result as a `for` loop with a bit of work.
+
+## `while (...)` loops {.smaller}
+
+This runs a block of code *while* a condition is true:
+
+```{R, comment=""}
+half <- 1; increment <- 0.5; total <- 0
+while (total < 10) {
+  total <- total + half
+  cat("Adding", half, "gives us", total, "\n")
+  half <- half + increment
+}
+half
+```
+
+But we can have more complex stopping conditions -- has the total got to 10,
+for instance... but why is `half` 3.5?
+
+## `while (...)` loops {.smaller}
+
+This runs a block of code *while* a condition is true:
+
+```{R, comment=""}
+half <- 0.5; increment <- 0.5; total <- 0
+while (total < 10) {
+  half <- half + increment
+  total <- total + half
+  cat("Adding", half, "gives us", total, "\n")
+}
+half
+```
+
+But we do have to be careful how we write the code block in the loop.
+
+## Functions
+
+Functions carry out a single fixed task (or *function*!) for you using the
+arguments provided:
+
+```{R, eval=FALSE}
+# Define the function:
+function_name <- function(first, second) {
+  # Do something to first and second to produce result
+  ...
+  # Return result
+  result
+}
+
+# Then in your script, call the function:
+function_name(first = 1, second = 2)
+```
+
+Here the function is called `function_name()`, and the arguments are `first` and
+`second`.
+
+## Functions
+
+Functions carry out a single fixed task for you using the arguments provided:
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  first + second
+}
+add_up(3, 5)
+add_up(first = 3, second = 5)
+```
+
+Here this simple function just adds together its two arguments.
+
+## Functions
+
+Functions carry out a single fixed task for you using the arguments provided:
+
+```{R, comment=""}
+subtract <- function(value, from) {
+  from - value
+}
+subtract(3, 5)
+subtract(from = 3, value = 5)
+```
+
+Note that if you name the arguments, then the order doesn't matter!
+
+## Functions
+
+Functions carry out a single fixed task for you using the arguments provided:
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  result <- first + second
+}
+add_up(3, 5)
+```
+
+The last line of code run is what is returned by the function...
+
+## Functions
+
+Functions carry out a single fixed task for you using the arguments provided:
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  result <- first + second
+  result
+}
+add_up(3, 5)
+```
+
+The last line of code run is what is returned by the function...
+
+## Functions
+
+Functions carry out a single fixed task for you using the arguments provided:
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  result <- first + second
+  result
+  cat("The answer is", result, "\n")
+}
+result <- add_up(3, 5)
+result
+```
+
+So you need to be careful what is on that last line!
+
+## Functions
+
+Functions carry out a single fixed task for you using the arguments provided:
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  result <- first + second
+  return(result)
+}
+add_up(3, 5)
+```
+
+You can explicitly tell the function to end and return a value.
+
+## Functions
+
+Functions carry out a single fixed task for you using the arguments provided:
+
+```{R, comment=""}
+add_up <- function(first, second) {
+  result <- first + second
+  return(result)
+  cat("The answer is", result, "\n")
+}
+result <- add_up(3, 5)
+result
+```
+
+If you include a `return()` statement the function will end there.
+
+## Functions
+
+We recommend calculating partial results inside functions whenever it is
+sensible to make your code easier to read. Imagine we want to calculate:
+$$(first + second) \times (first + second)$$
+
+```{R, comment=""}
+add_and_square <- function(first, second) {
+  # Calculate the result
+  added <- first + second
+  squared <- added * added
+  # And return it
+  squared
+}
+add_and_square(3, 5)
+```
+
+## Functions
+
+Doing it all in one go increases the risk of mistakes:
+
+```{R, comment=""}
+add_and_square <- function(first, second) {
+  (first + second) * first + second
+}
+add_and_square(3, 5)
+```
+
+## Comparisons -- testing for equality and difference
+
+Essential for `while` loops and `if` statements. They allow us to test whether
+something is true, and change what lines of code are run depending on the
+outcome. There are the basic tests:
+
+- `a == b`: is `a` equal to `b`? (`TRUE` if this is true, `FALSE` if this is false)
+- `a > b`: is `a` greater than `b`?
+- `a < b`: is `a` less than `b`?
+- `a >= b`: is `a` greater than or equal to `b`?
+- `a <= b`: is `a` less than or equal to `b`?
+- `a != b`: is `a` different from `b`?
+
+## Comparisons -- testing for equality and difference
+
+Essential for `while` loops and `if` statements. They allow us to test whether
+something is true, and change what lines of code are run depending on the
+outcome. There are the basic tests:
+
+- `a == b`: is `a` equal to `b`? (`TRUE` if this is true, `FALSE` if this is false)
+- `a > b`: is `a` greater than `b`?
+- `a < b`: is `a` less than `b`?
+- `a >= b`: is `a` greater than or equal to `b`?
+- `a <= b`: is `a` less than or equal to `b`?
+- `a != b`: is `a` different from `b`?
+
+## Comparisons -- testing for equality and difference
+
+There are then three basic ways of changing or combining the above:
+
+- `(a < b) || (c == d)`: is **either ** `a` less than `b` **or** `c` equal to `d`?
+- `(a < b) && (c == d)`: is **both** `a` less than `b` **and** `c` equal to `d`?
+- `!((a < b) && (c == d))`: is the above **not** `TRUE`? `TRUE` if the above was
+  `FALSE` and vice versa 
+
+Remember to use brackets to ensure you are combining things in the right
+order. They can be used in the `while` loops above to determine whether to
+continue through the next iteration of the loop, and in the `if` statements
+below to determine what to do next.
+
+## `if (...) {...}` statements
+
+If statements allow us to do different things depending on what has gone before
+in the code.
+
+## `if (...) {...}` statements
+
+If statements allow us to do different things depending on what has gone before
+in the code:
+
+```{R}
+library(codetools)
+library(RPiR)
+
+if (length(findGlobals(add_and_square, merge = FALSE)$variables) != 0) {
+  stop("Function add_and_square() may not use global variable(s): ",
+       findGlobals(add_and_square, merge = FALSE)$variables)
+}
+```
+
+Here we test if `add_and_square()` has any global variables.
+
+## `if (...) {...}` statements
+
+```{R, comment=""}
+if (add_and_square(3, 5) == 64) {
+  print("Maths still works")
+}
+```
+
+## `if (...) {...} else {...}`
+
+```{R, comment=""}
+if (add_and_square(3, 5) == 64) {
+  print("Maths still works")
+} else {
+  warning("We have a problem")
+  print(add_and_square(3, 5))
+}
+```
+
+## `if (...) {...} else {...}`
+
+```{R, comment=""}
+add_and_square <- function(first, second) {
+  # Calculate the result
+  added <- first + second
+  squared <- added * added
+  # And return it
+  squared
+}
+```
+
+## `if (...) {...} else {...}`
+
+```{R, comment=""}
+if (add_and_square(3, 5) == 64) {
+  cat("Maths still works\n")
+} else {
+  cat("We have a problem\n")
+}
+```
+
+## Conclusions
+
+See **Reference** section of package website for more details and links to other
+resources.
