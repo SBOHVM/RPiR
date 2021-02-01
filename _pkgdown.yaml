@@ -98,10 +98,10 @@ navbar:
     - text: "Reference"
       icon: far fa-file-code
       menu:
-      -  text: "Package functions"
+      -  text: "RPiR functions"
          href: reference/index.html
-      -  text: "Useful resources"
-         href: articles/pages/resources.html
+      -  text: "Reference materials"
+         href: articles/pages/reference.html
     - text: "How to"
       icon: far fa-file
       menu:
