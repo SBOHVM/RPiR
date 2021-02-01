@@ -68,11 +68,11 @@ that follows is run. Whereas:
 if (2 >= 5) {
   print("At least 5.")
 } else {
-  print("Less than or equal to 5.")
+  print("Less than 5.")
 }
 ```
 
-This prints `"Less than or equal to 5."` because the test was false, so R
+This prints `"Less than 5."` because the test was false, so R
 continues to the code block after the `else` statement. If there is no `else`
 statement, then no code is run, so:
 
