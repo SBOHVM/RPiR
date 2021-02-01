@@ -98,14 +98,24 @@ navbar:
     - text: "Reference"
       icon: far fa-file-code
       menu:
-      -  text: "RPiR functions"
+      -  text: "RPiR function reference"
          href: reference/index.html
       -  text: "Reference materials"
          href: articles/pages/reference.html
+      -  text: "Specific techniques"
+         menu:
+         -  text: "Loops -- for / while"
+            href: articles/pages/loops.html
+         -  text: "Flow control -- if / else"
+            href: articles/pages/flow.html
+         -  text: "Functions"
+            href: articles/pages/functions.html
+         -  text: "R Packages"
+            href: articles/pages/packages.html
     - text: "How to"
       icon: far fa-file
       menu:
-      -  text: github
+      -  text: "Create an R project through GitHub"
          href: articles/pages/use_github.html
     - text: "Installation"
       icon: far fa-file
