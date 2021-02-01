@@ -144,7 +144,27 @@ only possible if we use `devtools::document()` to create a new file.
 knitr::include_graphics('images/packages/11.png')
 ```
 
-Push all of this to GitHub.
+## Functions and documentation
+
+Now I'm going to add a new function (you can add any function you like). Make sure 
+the name of your function is the same as the file you're writing in and save it
+in the <span style="color: #de77ae;">R</span> directory. 
+
+Note the documentation above the function. If you're not sure how to write it, 
+keep reading.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/packages/13.png')
+```
+
+We can run `devtools::document()` in the package root to generate the 
+documentation. After which you can run `?my_plot` to look at it.
+
+I'll explain what it all means now.
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/packages/14.png')
+```
 
 
 
