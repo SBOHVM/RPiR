@@ -388,6 +388,14 @@ them in some depth [here][functions-rcoder]. Advanced R covers functions in
 enormous detail starting [here][functions-advanced-r] with an introduction to
 functional programming, and continuing for several chapters.
 
+## R Packages
+
+We'll talk more about these later, but for the time being here are some talks
+from rstudio::global 2021 that was on last month.
+
+- [Make a package - Make some friends][rstudioglobal2021-package]
+- [You're Already Ready: Zen and the Art of R Package Development][rstudioglobal2021-repro-pkg]
+
 [lecture-2c]: https://ibahcm.github.io/RPiR/lectures_html/RPiR2c-development.html
 [lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
 [lecture-7a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html
@@ -427,6 +435,8 @@ functional programming, and continuing for several chapters.
 
 [rstudioconf2020-jb]: https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable
 [rstudioconf2017-jb]: https://rstudio.com/resources/rstudioconf-2017/happy-git-and-gihub-for-the-user-tutorial
+[rstudioglobal2021-package]: https://rstudio.com/resources/rstudioglobal-2021/make-a-package-make-some-friends
+[rstudioglobal2021-repro-pkg]: https://rstudio.com/resources/rstudioglobal-2021/youre-already-ready-zen-and-the-art-of-r-package-development
 
 [rstudio-cheat]: https://rstudio.com/resources/cheatsheets
 [rmd-rstudio]: https://rmarkdown.rstudio.com
