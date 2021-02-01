@@ -259,13 +259,36 @@ summary {
 </div>
 <div id="section-package-metadata" class="section level3">
 <h3>Package metadata</h3>
-<p>Open the <span style="color: #de77ae;">DESCRIPTION</span> file. This file is used to record package dependencies. We’ve added a dependency on <code>RPiR</code> so you can see how to add one. Three things are required:</p>
-<ul>
-<li>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file</li>
-<li>Add an <code>@import</code> in the <span style="color: #de77ae;">githubusername-package</span> file</li>
-<li>Run <code>devtools::document()</code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)</li>
-</ul>
-<p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field.</p>
+<p>Open the <span style="color: #de77ae;">DESCRIPTION</span> file. It should look something like this:</p>
+<pre><code>Package: soniamitchellSeries03
+Type: Package
+Title: What the Package Does (Title Case)
+Version: 0.1.0
+Author: Who wrote it
+Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+URL: https://github.com/IBAHCM/soniamitchellSeries03
+BugReports: https://github.com/IBAHCM/soniamitchellSeries03/issues
+Imports: 
+    RPiR (&gt;= 0.56.0),
+    dplyr
+Remotes: 
+    IBAHCM/RPiR
+RoxygenNote: 7.1.1</code></pre>
+<p>This file is used to record package dependencies (that is, packages that your package needs to work). We’ve added a dependency on <code>dplyr</code> so you can see how to add one. Three things are required:</p>
+<ol style="list-style-type: decimal">
+<li><p>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file, <em>e.g.</em></p>
+<pre><code>Imports: 
+  dplyr</code></pre></li>
+<li><p>Add an <code>@import</code> in the <span style="color: #de77ae;">githubusername-package.R</span> file (located in the <span style="color: #de77ae;">R</span> directory), like this:</p>
+<pre><code>#&#39; @import dplyr</code></pre></li>
+<li><p>Run <code>devtools::document()</code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)</p></li>
+</ol>
+<p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field as well as the <code>Imports</code> field.</p>
 <p>As well as recording dependencies, the <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata such as the package <code>Title</code>, <code>Authors@R</code>, and <code>Description</code>. Fill those in now.</p>
 <p>Whenever you make a change to your package, you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used for a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>.</p>
 <p>After making edits to the <span style="color: #de77ae;">DESCRIPTION</span> file, change the <span style="color: #de77ae;">Version</span> number to <code>0.1.0</code>.</p>
