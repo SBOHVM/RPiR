@@ -139,10 +139,26 @@ or use `rm(...)` or install any packages in the code you submit for assessment.
 
 ## Loops
 
+Loops allow you to repeat the same thing again and again. If you are doing
+something more than two or three times, you should try to find a loop to use
+that will avoid you having to copy and paste the same code over and over again,
+with the associated risks not only of mistyping or not copying correctly, but
+also of confusing by filling your R scripts with nearly identical chunks of
+code. There are fundamentally two kinds of loop:
+
+- one where you know exactly how many times the loop will run, for instance
+  because you are carrying something out once for each element of a vector or
+  row or column of a data frame; and
+- one where you do not, because some part of your calculation in each step of
+  the loop will determine whether to continue or to stop.
+
 ### `for (...)` loops
 
 `for` loops allow us to repeat something *for* a fixed number of times (*e.g.*
-once per element of a vector, once per row of a data frame, *etc.*). They are
+once per element of a vector, once per row of a data frame, *etc.*). 
+
+
+They are
 called as:
 
 ```{R}
@@ -154,8 +170,8 @@ for (word in greetings) {
 
 and in each run through the loop, the variable, here `word`, is updated with
 the next element (here, in the vector `greetings`). We introduced them in week 1
-and again in [Lecture 5b][lecture-5b] on Wednesday 27th and practical
-`practicalA-1`. They are then used starting in practical `practical1-1`.
+and again in [Lecture 5b][lecture-5b] on Wednesday 27th and Practical
+`practicalA-1`. They were then used starting in Practical `practical1-1`.
 
 There is a section in R4DS (within a more general chapter on
 [*Iteration*][R4DS-iteration]) that covers [`for` loops][for-R4DS]. For loops
@@ -184,7 +200,7 @@ ever! However, if (when!) `test` is finally `FALSE`, the loop ends and R
 continue to the next piece of code.
 
 We introduced them on Wednesday 27th in [Lecture 5b][lecture-5b]
-and in `practicalA-2`, and used them from practical `practical2-4`. There is a
+and in `practicalA-2`, and used them from Practical `practical2-4`. There is a
 section in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration])
 that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [here][while-rcoder].
@@ -308,6 +324,13 @@ consider them too simple, but ironically they have [a chapter in Advanced
 R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
 control that are well beyond the scope of this course.
 
+## Functions
+
+Functions are covered in R4DS [here][functions-R4DS], and R Coder covers
+them in some depth [here][functions-rcoder]. Advanced R covers functions in
+enormous detail starting [here][functions-advanced-r] with an introduction to
+functional programming, and continuing for several chapters.
+
 [lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
 [lecture-7a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html
 
@@ -322,6 +345,7 @@ control that are well beyond the scope of this course.
 [for-R4DS]: https://r4ds.had.co.nz/iteration.html#for-loops
 [while-R4DS]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
 [operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
+[functions-R4DS]: https://r4ds.had.co.nz/functions.html
 [R4DS-solutions]: https://jrnold.github.io/r4ds-exercise-solutions
 [advanced-r]: http://adv-r.had.co.nz
 [advanced-r-solutions]: https://advanced-r-solutions-ed1.netlify.app
@@ -329,6 +353,7 @@ control that are well beyond the scope of this course.
 [advanced-r2]: https://adv-r.hadley.nz
 [advanced-r2-solutions]: http://advanced-r-solutions.rbind.io
 [if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html
+[functions-advanced-r2]: https://adv-r.hadley.nz/fp.html
 [r-packages]: https://r-pkgs.org
 
 [BES]: https://www.britishecologicalsociety.org
@@ -359,5 +384,6 @@ control that are well beyond the scope of this course.
 [while-rcoder]: https://r-coder.com/while-loop-r
 [operators-rcoder]: https://r-coder.com/operators-r
 [if-rcoder]: https://r-coder.com/if-else-r
+[functions-rcoder]: https://r-coder.com/function-r
 
 [style-google]: https://google.github.io/styleguide/Rguide.html
