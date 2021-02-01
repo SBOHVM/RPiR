@@ -286,12 +286,23 @@
 <p><img src="images/packages/10.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Now run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> from the package root. You’ll notice, in the <span style="color: #de77ae;">Git</span> tab, <span style="color: #de77ae;">NAMESPACE</span> has changed from deleted to modified. This is because <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> created a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new file.</p>
 <p><img src="images/packages/11.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Push all of this to GitHub.</p>
+<div id="functions-and-documentation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#functions-and-documentation" class="anchor"></a>Functions and documentation</h2>
+<p>Now I’m going to add a new function (you can add any function you like). Make sure the name of your function is the same as the file you’re writing in and save it in the <span style="color: #de77ae;">R</span> directory.</p>
+<p>Note the documentation above the function. If you’re not sure how to write it, keep reading.</p>
+<p><img src="images/packages/13.png" width="100%" style="display: block; margin: auto;"></p>
+<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> in the package root to generate the documentation. After which you can run <code>?my_plot</code> to look at it.</p>
+<p>I’ll explain what it all means now.</p>
+<p><img src="images/packages/14.png" width="100%" style="display: block; margin: auto;"></p>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
