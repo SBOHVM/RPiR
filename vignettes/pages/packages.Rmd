@@ -1,0 +1,28 @@
+---
+title: "R Packages"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+output:
+  rmarkdown::html_vignette:
+  toc: true
+  toc_depth: 2
+  vignette: >
+    %\VignetteIndexEntry{R Packages}
+    %\VignetteEngine{knitr::knitr}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+We'll talk more about these later, but for the time being here are some talks
+from rstudio::global 2021 that was on last month.
+
+- [Make a package - Make some friends][rstudioglobal2021-package]
+- [You're Already Ready: Zen and the Art of R Package Development][rstudioglobal2021-repro-pkg]
+
+[rstudioglobal2021-package]: https://rstudio.com/resources/rstudioglobal-2021/make-a-package-make-some-friends
+[rstudioglobal2021-repro-pkg]: https://rstudio.com/resources/rstudioglobal-2021/youre-already-ready-zen-and-the-art-of-r-package-development

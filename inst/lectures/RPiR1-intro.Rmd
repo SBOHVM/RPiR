@@ -46,12 +46,14 @@ sonia.mitchell@glasgow.ac.uk if you want to contact us directly.
 
 ## Get everything installed
 
-First, go to https://moodle.gla.ac.uk/course/view.php?id=23343 and follow the
-instructions there to make sure you have an up-to-date version of R and RStudio.
+All of the course preparation instructions are in the course's documentation at
+https://ibahcm.github.io/RPiR under **Course preparation**. The same page is
+also duplicated on the package's GitHub page at https://github.com/IBAHCM/RPiR:
 
-The last part of the installation instructions is to go to the GitHub site at
-https://github.com/IBAHCM/RPiR and install the course itself from the
-instructions there.
+- First follow the instructions there to make sure you have an up-to-date version
+of R and RStudio.
+- Then follow the links following on from there to pages that tell you how to
+install the course itself and create the necessary accounts.
 
 ## Read the other materials
 

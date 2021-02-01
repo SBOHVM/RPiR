@@ -6,7 +6,7 @@ output:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{vscode_liveshare}
+    %\VignetteIndexEntry{Visual Studio Code and Live Share}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -55,7 +55,7 @@ VS Code marketplace. Exactly what this will look like depends on your platform,
 but this is on a Mac.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/vscode_liveshare/1_extension2.png')
+knitr::include_graphics('images/vscode-1-extension-arrow.png')
 ```
 
 While you're there, if you're intending to work in R, you may as well install:
@@ -72,20 +72,20 @@ bottom of the VS Code window). The first time you do this, you'll be prompted
 to sign in. Selecting "Sign in with GitHub" will open a link in your browser.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/vscode_liveshare/2_signin2.png')
+knitr::include_graphics('images/vscode-2-signin-arrow.png')
 ```
 
 "Authorize VisualStudioLiveShare" and accept ALL OF THE THINGS...
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/vscode_liveshare/3_authorize2.png')
+knitr::include_graphics('images/vscode-3-authorize-arrow.png')
 ```
 
 You'll know you're logged when your name appears in the status bar to the left
 of the Live Share icon.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/vscode_liveshare/4_bottom2.png')
+knitr::include_graphics('images/vscode-4-bottom-arrow.png')
 ```
 
 At this point an invite link should be copied to your clipboard, which you can
@@ -99,7 +99,7 @@ To create a new invite link, do any of the these things:
 and select "Share (Read/Write)"
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/vscode_liveshare/5_panel2.png')
+knitr::include_graphics('images/vscode-5-panel-arrow.png')
 ```
 
 Once you've collaborated with someone they'll be added to your contacts and if
@@ -107,7 +107,7 @@ they're online you can invite them directly by clicking on the "Invite Contact"
 icon next to their name.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/vscode_liveshare/6_contacts2.png')
+knitr::include_graphics('images/vscode-6-contacts-arrow.png')
 ```
 
 To end the session, do one of the following:

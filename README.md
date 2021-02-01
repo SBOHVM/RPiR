@@ -1,4 +1,5 @@
 # Reproducible Programming in R course
+
 [![](https://img.shields.io/badge/docs-RPIR-blue)][docs]
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
 [![CodeFactor](https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge)](https://www.codefactor.io/repository/github/IBAHCM/RPiR)
@@ -6,9 +7,53 @@
 
 ## Course preparation
 
-You'll need to do a few things before we can start the course. These are
-detailed under the `Installation` dropdown
-menu [in the documentation for this package][docs]. Specifically:
+You'll need to do a few things before we can start the course. First you need to
+check you have up-to-date versions of R and RStudio. This means that R should be
+at least version 4. You can check by typing this in R:
+
+```{R}
+version$major >= 4
+```
+
+If this is `FALSE`, download and install a new version from
+https://www.r-project.org. Next install these packages:
+
+```{R}
+install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))
+```
+
+Then check whether RStudio is up to date:
+
+```{R}
+# Load the rstudioapi library and check RStudio version
+library(rstudioapi)
+isAvailable("1.4")
+
+# or just
+rstudioapi::isAvailable("1.4")
+```
+**NB `rstudioapi::xxx()` means *"find the `xxx()` function in the `rstudioapi` package"*.**
+
+If `FALSE`, download and install the latest version of [RStudio Desktop][rstudio]
+and check this has worked by running the above again.
+
+Next, check you are now ready to build R packages:
+
+```{R}
+# Load the devtools library and check whether compilers are installed
+library(devtools)
+has_devel()
+
+# or just
+devtools::has_devel()
+```
+
+If this is `FALSE` or errors, then you will need to follow instructions given
+by the function or ask for help until this works.
+
+Once all of the above works, you're ready to start, so follow the details under
+the `Installation` dropdown menu [in the documentation for this package][docs].
+Specifically:
 
 1. First [create an account on GitHub and connect it to RStudio][github]. This will
    also show you how to create a practice project on github. You'll use this in
@@ -22,13 +67,13 @@ menu [in the documentation for this package][docs]. Specifically:
 
 To start the course, load the `RPiR` package:
 
-```
+```{R}
 library(RPiR)
 ```
 
 You can then see what lectures and practicals are available using:
 
-```
+```{R}
 available_lectures()
 available_practicals()
 ```
@@ -40,16 +85,17 @@ the practicals that you have installed there.
 
 ## Practicals
 
-**To run a practical**, you can click *Start Tutorial* from the **Tutorial**
-pane in RStudio. You can then run the practical inside that RStudio pane, or
+**To run a practical**, you can click *Start Tutorial* from the **Tutorial
+pane** in RStudio. You can then run the practical inside that RStudio pane, or
 click the *Show in new window* icon in the top left to open it in a larger
 separate window (you can open multiple practicals simultaneously like this).
-Alternatively, you can use the `run_practical()` function in the **Console**
-pane. For example, `run_practical("practical0-1")` will run the first practical.
+Alternatively, you can use the `run_practical()` function in the **Console
+pane**. For example, `run_practical("practical1-1")` will run the first
+practical of practical series 1.
 
-> When you run a practical like this, you will not be able to use the R console
-  until you close it, so we suggest that you open a separate instance of RStudio
-  to run any code, so one RStudio is dedicated to running practicals and
+> If you decide to run a practical like this, you will not be able to use the R
+  console until you close it, so we suggest that you open a separate instance of
+  RStudio to run any code, so one RStudio is dedicated to running practicals and
   lectures.
 
 **To reset a practical** if you want to start again, click on the Start Over
@@ -70,8 +116,8 @@ click on the red STOP button in the RStudio **Console** to end the process.
 running `RPiR:::clean_cached_exercises()` in the **Console** pane to force the
 practicals to be rebuilt.
 
-You can also browse non-interactive versions of the practicals on the GitHub
-website (under `Practicals (html)`).
+You can also browse the non-interactive practicals on the GitHub website
+(under `Practicals (html)`).
 
 ## Lectures
 
@@ -84,30 +130,39 @@ continuous documents for later reference (under `Lectures (html)`).
 
 ## Course contents
 
-The following practicals are included in this package:
+The following core practicals are included in this package:
 
-* `practical0-1`: Introduction to for loops and functions
-* `practical1-1`: Exponential growth model; Writing scripts and commenting code
-* `practical1-2`: Exponential growth model; Writing functions
-* `practical1-3`: Exponential growth model; Sourcing code
-* `practical1-4`: Exponential growth model; Generalising and structuring code
-* `practical1-5`: Births and deaths model; Generalising code
-* `practical1-6`: Births and deaths model; Writing reports in RStudio
-* `practical2-1`: Creating an RStudio project
-* `practical2-2`: SIS model; Adapting previous code
-* `practical2-3`: SIS model; Changing the timestep
-* `practical2-4`: SIS model; Using while() loops
-* `practical2-5`: SIR model; Adapting previous code
-* `practical3-1`: Writing an R package
-* `practical3-2`: Stochastic population growth model; Using stop()
-* `practical3-3`: Stochastic births and deaths model; Passing functions as arguments
-* `practical3-4`: Stochastic SIS model
-* `practical3-5`: Stochastic SIR model
-* `practical3-6`: Compare the mean stochastic model to the deterministic SIR model
-* `practical4-1`: Biodiversity; Writing a data package
-* `practical4-2`: Biodiversity; Writing a package demo
-* `practical4-3`: Biodiversity; Adding package functions and documentation
+1. Practical series 1:
 
+   * `practical1-1`: Exponential growth model; Writing scripts and commenting code
+   * `practical1-2`: Exponential growth model; Writing functions
+   * `practical1-3`: Exponential growth model; Sourcing code
+   * `practical1-4`: Exponential growth model; Generalising and structuring code
+   * `practical1-5`: Births and deaths model; Generalising code
+   * `practical1-6`: Births and deaths model; Writing reports in RStudio
+
+2. Practical series 2:
+
+   * `practical2-1`: Creating an RStudio project
+   * `practical2-2`: SIS model; Adapting previous code
+   * `practical2-3`: SIS model; Changing the timestep
+   * `practical2-4`: SIS model; Using while() loops
+   * `practical2-5`: SIR model; Adapting previous code
+
+As well as the following supplementary appendices:
+
+* `practicalA-1`: Introduction to for loops and functions
+* `practicalA-2`: Tests and more loops
+
+**NB** In Practical 1-6, we refer to the example notebook
+`0200-example-notebook.R`. This can be found on Moodle, but it is also inside
+the package at the location returned by the following command if you prefer:
+
+```{R}
+system.file("dummy_notebook/0200-example-notebook.R", package="RPiR")
+```
+
+[rstudio]: https://rstudio.com/products/rstudio
 [docs]: https://ibahcm.github.io/RPiR
 [package]: https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html
 [github]: https://ibahcm.github.io/RPiR/articles/pages/install_github.html
