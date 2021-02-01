@@ -60,7 +60,7 @@ are also covered by R Coder [here][for-rcoder].
 `while` loops allows us to repeat something *while* a condition is still `TRUE`.
 They are particularly useful when you don't know in advance exactly how many
 times something will be done, but can be used in any situation. Unlike `for`
-loops you need to update everything manually each time around:
+loops though, you need to update everything manually each time around:
 
 
 ```{R, eval=FALSE}
@@ -73,18 +73,19 @@ while (test) {
 
 `test` is checked at the beginning of each iteration, and as long as `test` 
 continues to be
-`TRUE`, the code block inside the curly brackets `{ ... }` is run. Be careful!
-If you don't update `test` inside the curly brackets, your loop will continue 
+`TRUE`, the code block inside the curly brackets `{ ... }` is run. Be careful...
+if you don't update `test` inside the curly brackets, your loop will continue 
 forever! However, if (when!) `test` is finally `FALSE`, the loop will end and R
-will continue on to the next piece of code.
+will continue on to the next line of code after the loop.
 
-We introduced them in [Lecture 5b][lecture-5b]
+We introduced them in [Lecture 6a][lecture-6a],
 and used them from Practical `practical2-4` onwards. There is a
 section in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration])
 that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [here][while-rcoder].
 
 [lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
+[lecture-6a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR6a-R.html
 
 [R4DS-iteration]: https://r4ds.had.co.nz/iteration.html
 [for-R4DS]: https://r4ds.had.co.nz/iteration.html#for-loops

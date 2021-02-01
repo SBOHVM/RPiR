@@ -55,6 +55,8 @@ navbar:
          href: lectures/RPiR5b-R.html
       -  text: RPiR6a-R
          href: lectures/RPiR6a-R.html
+      -  text: RPiR7a-R
+         href: lectures/RPiR7a-R.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -76,6 +78,8 @@ navbar:
          href: lectures_html/RPiR5b-R.html
       -  text: RPiR6a-R
          href: lectures_html/RPiR6a-R.html
+      -  text: RPiR7a-R
+         href: lectures_html/RPiR7a-R.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -106,7 +110,7 @@ navbar:
          menu:
          -  text: "Loops -- for / while"
             href: articles/pages/loops.html
-         -  text: "Flow control -- if / else"
+         -  text: "Flow control -- if / else and comparisons"
             href: articles/pages/flow.html
          -  text: "Functions"
             href: articles/pages/functions.html
