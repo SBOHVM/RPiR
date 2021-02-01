@@ -1,5 +1,5 @@
 ---
-title: "Practical 3-1: Writing an R package"
+title: "3-1: Writing an R package"
 output: 
   learnr::tutorial:
     theme: lumen

@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 3-2: Stochastic population growth model</title>
+<title>3-2: Stochastic population growth model</title>
 
 
 <style type="text/css">
@@ -177,7 +177,7 @@ summary {
 
 
 
-<h1 class="title toc-ignore">Practical 3-2: Stochastic population growth model</h1>
+<h1 class="title toc-ignore">3-2: Stochastic population growth model</h1>
 
 </div>
 
@@ -195,7 +195,7 @@ summary {
 <p>To write a model to handle stochastic population dynamics we obviously have to update the timestep function to handle the new dynamics. However, we also have to understand whether anything else has changed in how the simulation works. In fact, something has. There is now the chance that the population will die out before the end of the experiment, so we need to look for this happening – not least to speed up the simulation.</p>
 <div id="section-demod0302_stochastic_birth_death.r" class="section level3">
 <h3>demo/d0302_stochastic_birth_death.R</h3>
-<p>We’ll start by writing the structural code in a new demo file, <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.r</span>, remembering to add an entry in <span style="color: #de77ae;">demo/00Index</span>. You can use the <span style="color: #de77ae;">d0301_run_birth_death</span> demo – simulating birth-death population dynamics from Practical 1-5 – in {githubusername} as a template.</p>
+<p>We’ll start by writing the structural code in a new demo file. In Practical 3-1 we created this file and named it <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo is a copy of the <span style="color: #de77ae;">d0105_run_birth_death</span> demo, which is a good starting point. In this Practical you will edit this code.</p>
 <p>From Practicals 2-3 and 2-4 we have a <code>while()</code> loop which runs the simulation:</p>
 <pre class="r"><code>while (latest.population$time &lt; end.time) {
   latest.population &lt;- timestep_deterministic_SIR(# -- some arguments -- ) 
@@ -210,11 +210,11 @@ summary {
   keep.going &lt;- (!data$end.experiment) &amp;&amp; (latest.population$time &lt; end.time)
 }</code></pre>
 <p>Notice that at the start of the loop <code>keep.going</code> has not yet been defined, which will cause an error, so you will need to start it off with an appropriate value.</p>
-<p>Remember to call <code>library(RPiR)</code> at the top of the script to load <code>plot_populations()</code>, and <code>library(githubusername)</code> to load <code>timestep_stochastic_birth_death()</code>, which means you no longer need to source any helper files.</p>
+<p>Remember to call <code>library(RPiR)</code> at the top of the script to load <code>plot_populations()</code>, and <code>library(githubusernameSeries03)</code> to load <code>timestep_stochastic_birth_death()</code>, which means you no longer need to source any helper files.</p>
 </div>
 <div id="section-rtimestep_stochastic_birth_death.r" class="section level3">
 <h3>R/timestep_stochastic_birth_death.R</h3>
-<p>Now you will need to write the <code>timestep_stochastic_birth_death()</code> function to provide the right information to the main loop. We already have a deterministic step function for single species population dynamics (from Practical 1-5). We’ve written this function into {githubusername} as <code>step_deterministic_birth_death()</code>. Starting with this code, you need to make three changes.</p>
+<p>Now you will need to write the <code>timestep_stochastic_birth_death()</code> function to provide the right information to the main loop. We created this file in Practical 3-1, but the function itself contains the deterministic step function for single species population dynamics, <code>step_deterministic_birth_death()</code> (from Practical 1-5). This is a useful starting point. Starting with this code, you need to make three changes.</p>
 <p>First, we need to handle the effect of changing timesteps and update the code with something like this:</p>
 <pre class="r"><code>timestep_stochastic_birth_death &lt;- function(latest, birth.rate, death.rate, timestep) {
 effective.birth.rate &lt;- birth.rate * timestep
