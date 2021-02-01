@@ -114,14 +114,15 @@ check. You can do this on Zoom, but please also create an issue in your
 repository asking for their review - you can contact them by tagging them in
 the message with `@theirusername`, and they should receive an email and a
 [notification on the website](https://github.com/notifications). They can then
-respond to this issue, telling you if they had any problems running your version
-of the practical.
+respond to this issue, telling you whether they had any problems running your 
+version of the practical.
 
 ### Checking other people's code
 
 Likewise, when you hear from someone else that a repo is available to check,
 then if it's a project you have already downloaded, you should open that
-project in RStudio, go to the Git pane, and click on the **Pull** button to
+project in RStudio, go to the Git pane, and click on the 
+<span style="color: #de77ae;">Pull</span> button to
 get the updates they have pushed to GitHub (there should be a subtle message
 saying that updates are available near the button). If you're checking a new
 person's work, or a new project, refer to the instructions in Practical 2-2.
