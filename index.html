@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.56.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.57.0</span>
       </span>
     </div>
 
@@ -155,12 +155,39 @@
     GitHub
   </a>
 </li>
-<li>
-  <a href="reference/index.html">
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
     <span class="far fa-file-code"></span>
      
-    Functions
+    Reference
+     
+    <span class="caret"></span>
   </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="reference/index.html">RPiR function reference</a>
+    </li>
+    <li>
+      <a href="articles/pages/reference.html">Reference materials</a>
+    </li>
+    <li class="dropdown-submenu">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Specific techniques</a>
+      <ul class="dropdown-menu" role="menu">
+<li>
+          <a href="articles/pages/loops.html">Loops -- for / while</a>
+        </li>
+        <li>
+          <a href="articles/pages/flow.html">Flow control -- if / else</a>
+        </li>
+        <li>
+          <a href="articles/pages/functions.html">Functions</a>
+        </li>
+        <li>
+          <a href="articles/pages/packages.html">R Packages</a>
+        </li>
+      </ul>
+</li>
+  </ul>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -172,7 +199,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/pages/use_github.html">github</a>
+      <a href="articles/pages/use_github.html">Create an R project through GitHub</a>
     </li>
   </ul>
 </li>
@@ -216,7 +243,28 @@
 <div id="course-preparation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#course-preparation" class="anchor"></a>Course preparation</h2>
-<p>You’ll need to do a few things before we can start the course. These are detailed under the <code>Installation</code> dropdown menu <a href="https://ibahcm.github.io/RPiR">in the documentation for this package</a>. Specifically:</p>
+<p>You’ll need to do a few things before we can start the course. First you need to check you have up-to-date versions of R and RStudio. This means that R should be at least version 4. You can check by typing this in R:</p>
+<pre class="{r}"><code>version$major &gt;= 4</code></pre>
+<p>If this is <code>FALSE</code>, download and install a new version from <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>. Next install these packages:</p>
+<pre class="{r}"><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))</a></code></pre>
+<p>Then check whether RStudio is up to date:</p>
+<pre class="{r}"><code><a href="https://github.com/rstudio/rstudioapi"># Load the rstudioapi library and check RStudio version
+library(rstudioapi)
+isAvailable("1.4")
+
+# or just
+rstudioapi::isAvailable("1.4")</a></code></pre>
+<p><strong>NB <code>rstudioapi::xxx()</code> means <em>“find the <code>xxx()</code> function in the <code>rstudioapi</code> package”</em>.</strong></p>
+<p>If <code>FALSE</code>, download and install the latest version of <a href="https://rstudio.com/products/rstudio">RStudio Desktop</a> and check this has worked by running the above again.</p>
+<p>Next, check you are now ready to build R packages:</p>
+<pre class="{r}"><code><a href="https://devtools.r-lib.org/"># Load the devtools library and check whether compilers are installed
+library(devtools)
+has_devel()
+
+# or just
+devtools::has_devel()</a></code></pre>
+<p>If this is <code>FALSE</code> or errors, then you will need to follow instructions given by the function or ask for help until this works.</p>
+<p>Once all of the above works, you’re ready to start, so follow the details under the <code>Installation</code> dropdown menu <a href="https://ibahcm.github.io/RPiR">in the documentation for this package</a>. Specifically:</p>
 <ol>
 <li>First <a href="https://ibahcm.github.io/RPiR/articles/pages/install_github.html">create an account on GitHub and connect it to RStudio</a>. This will also show you how to create a practice project on github. You’ll use this in the second practical series, but it’s worth trying out the instructions now to check that everything is working.</li>
 <li>Then <a href="https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html">install the RPiR package</a>.</li>
@@ -227,24 +275,24 @@
 <h2 class="hasAnchor">
 <a href="#running-the-course" class="anchor"></a>Running the course</h2>
 <p>To start the course, load the <code>RPiR</code> package:</p>
-<pre><code><a href="https://rdrr.io/r/base/library.html">library(RPiR)</a></code></pre>
+<pre class="{r}"><code><a href="https://rdrr.io/r/base/library.html">library(RPiR)</a></code></pre>
 <p>You can then see what lectures and practicals are available using:</p>
-<pre><code><a href="reference/available_lectures.html">available_lectures()
+<pre class="{r}"><code><a href="reference/available_lectures.html">available_lectures()
 available_practicals()</a></code></pre>
 <p>In RStudio, you can also open <strong>Preferences…</strong>, choose <strong>Pane Layout</strong>, and tick the box for <strong>Tutorial</strong> and click <strong>OK</strong>. Once you have done this, you should find you have a <strong>Tutorial</strong> pane in RStudio, you can then browse all of the practicals that you have installed there.</p>
 </div>
 <div id="practicals" class="section level2">
 <h2 class="hasAnchor">
 <a href="#practicals" class="anchor"></a>Practicals</h2>
-<p><strong>To run a practical</strong>, you can click <em>Start Tutorial</em> from the <strong>Tutorial</strong> pane in RStudio. You can then run the practical inside that RStudio pane, or click the <em>Show in new window</em> icon in the top left to open it in a larger separate window (you can open multiple practicals simultaneously like this). Alternatively, you can use the <code><a href="reference/run_practical.html">run_practical()</a></code> function in the <strong>Console</strong> pane. For example, <code><a href="reference/run_practical.html">run_practical("practical0-1")</a></code> will run the first practical.</p>
+<p><strong>To run a practical</strong>, you can click <em>Start Tutorial</em> from the <strong>Tutorial pane</strong> in RStudio. You can then run the practical inside that RStudio pane, or click the <em>Show in new window</em> icon in the top left to open it in a larger separate window (you can open multiple practicals simultaneously like this). Alternatively, you can use the <code><a href="reference/run_practical.html">run_practical()</a></code> function in the <strong>Console pane</strong>. For example, <code><a href="reference/run_practical.html">run_practical("practical1-1")</a></code> will run the first practical of practical series 1.</p>
 <blockquote>
-<p>When you run a practical like this, you will not be able to use the R console until you close it, so we suggest that you open a separate instance of RStudio to run any code, so one RStudio is dedicated to running practicals and lectures.</p>
+<p>If you decide to run a practical like this, you will not be able to use the R console until you close it, so we suggest that you open a separate instance of RStudio to run any code, so one RStudio is dedicated to running practicals and lectures.</p>
 </blockquote>
 <p><strong>To reset a practical</strong> if you want to start again, click on the Start Over link (look for the tiny grey text below the left menu), which appears if you are not running this inside the Tutorial pane.</p>
 <p><strong>To close a practical if you opened it from the Tutorial pane</strong> when you have finished it, click on the red STOP button in the <strong>Tutorial</strong> pane or close the separate window. Clicking instead on the <em>Home</em> icon will return to the practical list, but you can resume the practical from where you left off by restarting it.</p>
 <p><strong>To close a practical if you opened it from the Console pane</strong> when you have finished it, close the webpage in your web browser, then either hit <code>escape</code> or click on the red STOP button in the RStudio <strong>Console</strong> to end the process.</p>
 <p><strong>If you are having problems with the practicals running correctly</strong>, try running <code>RPiR:::clean_cached_exercises()</code> in the <strong>Console</strong> pane to force the practicals to be rebuilt.</p>
-<p>You can also browse non-interactive versions of the practicals on the GitHub website (under <code>Practicals (html)</code>).</p>
+<p>You can also browse the non-interactive practicals on the GitHub website (under <code>Practicals (html)</code>).</p>
 </div>
 <div id="lectures" class="section level2">
 <h2 class="hasAnchor">
@@ -255,10 +303,11 @@ available_practicals()</a></code></pre>
 <div id="course-contents" class="section level2">
 <h2 class="hasAnchor">
 <a href="#course-contents" class="anchor"></a>Course contents</h2>
-<p>The following practicals are included in this package:</p>
-<ul>
+<p>The following core practicals are included in this package:</p>
+<ol>
 <li>
-<code>practical0-1</code>: Introduction to for loops and functions</li>
+<p>Practical series 1:</p>
+<ul>
 <li>
 <code>practical1-1</code>: Exponential growth model; Writing scripts and commenting code</li>
 <li>
@@ -271,6 +320,11 @@ available_practicals()</a></code></pre>
 <code>practical1-5</code>: Births and deaths model; Generalising code</li>
 <li>
 <code>practical1-6</code>: Births and deaths model; Writing reports in RStudio</li>
+</ul>
+</li>
+<li>
+<p>Practical series 2:</p>
+<ul>
 <li>
 <code>practical2-1</code>: Creating an RStudio project</li>
 <li>
@@ -281,25 +335,18 @@ available_practicals()</a></code></pre>
 <code>practical2-4</code>: SIS model; Using while() loops</li>
 <li>
 <code>practical2-5</code>: SIR model; Adapting previous code</li>
-<li>
-<code>practical3-1</code>: Writing an R package</li>
-<li>
-<code>practical3-2</code>: Stochastic population growth model; Using stop()</li>
-<li>
-<code>practical3-3</code>: Stochastic births and deaths model; Passing functions as arguments</li>
-<li>
-<code>practical3-4</code>: Stochastic SIS model</li>
-<li>
-<code>practical3-5</code>: Stochastic SIR model</li>
-<li>
-<code>practical3-6</code>: Compare the mean stochastic model to the deterministic SIR model</li>
-<li>
-<code>practical4-1</code>: Biodiversity; Writing a data package</li>
-<li>
-<code>practical4-2</code>: Biodiversity; Writing a package demo</li>
-<li>
-<code>practical4-3</code>: Biodiversity; Adding package functions and documentation</li>
 </ul>
+</li>
+</ol>
+<p>As well as the following supplementary appendices:</p>
+<ul>
+<li>
+<code>practicalA-1</code>: Introduction to for loops and functions</li>
+<li>
+<code>practicalA-2</code>: Tests and more loops</li>
+</ul>
+<p><strong>NB</strong> In Practical 1-6, we refer to the example notebook <code>0200-example-notebook.R</code>. This can be found on Moodle, but it is also inside the package at the location returned by the following command if you prefer:</p>
+<pre class="{r}"><code><a href="https://rdrr.io/r/base/system.file.html">system.file("dummy_notebook/0200-example-notebook.R", package="RPiR")</a></code></pre>
 </div>
 </div>
   </div>

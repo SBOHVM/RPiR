@@ -1,5 +1,5 @@
 ---
-title: "2-3: SIS model"
+title: "Practical 2-3: SIS model"
 output: 
   learnr::tutorial:
     theme: lumen
