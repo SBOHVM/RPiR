@@ -36,19 +36,15 @@ To write a model to handle stochastic population dynamics we obviously have to
 update the timestep function to handle the new dynamics. However, we also have 
 to understand whether anything else has changed in how the simulation works. In
 fact, something has. There is now the chance that the population will die out
-before 
-the end of the experiment, so we need to look for this happening – not least to 
-speed up the simulation.
+before the end of the experiment, so we need to look for this happening – not 
+least to speed up the simulation.
 
 ### demo/d0302_stochastic_birth_death.R
 
-We’ll start by writing the structural code in a new demo file, 
-<span style="color: #de77ae;">demo/d0302_stochastic_birth_death.r</span>, 
-remembering to add an entry in 
-<span style="color: #de77ae;">demo/00Index</span>. You can use the 
-<span style="color: #de77ae;">d0301_run_birth_death</span> demo -- simulating 
-birth-death population dynamics from Practical 1-5 -- in {githubusername} as a 
-template. 
+We’ll start by writing the structural code in a new demo file. In Practical 3-1
+we created this file and named it <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo
+is a copy of the <span style="color: #de77ae;">d0105_run_birth_death</span> 
+demo, which is a good starting point. In this Practical you will edit this code.
 
 From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation:
 
@@ -80,17 +76,17 @@ which will cause an error, so you will need to start it off with an appropriate
 value. 
 
 Remember to call `library(RPiR)` at the top of the script to load
-`plot_populations()`, and `library(githubusername)` to load `timestep_stochastic_birth_death()`, which means you 
+`plot_populations()`, and `library(githubusernameSeries03)` to load `timestep_stochastic_birth_death()`, which means you 
 no longer need to source any helper files.
 
 ### R/timestep_stochastic_birth_death.R
 
 Now you will need to write the `timestep_stochastic_birth_death()` 
-function to provide the right information to the main loop. We already have a 
-deterministic step function for single species population 
-dynamics (from Practical 1-5). We've written this function into {githubusername} as
-`step_deterministic_birth_death()`. Starting with this code, you need to make 
-three changes. 
+function to provide the right information to the main loop. We created this 
+file in Practical 3-1, but the function itself contains the deterministic step 
+function for single species population dynamics,
+`step_deterministic_birth_death()` (from Practical 1-5). This is a useful 
+starting point. Starting with this code, you need to make three changes. 
 
 First, we need to handle the effect of changing timesteps and update
 the code with something like this:

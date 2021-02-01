@@ -19,13 +19,13 @@ reference:
     contents:
       - '`plot_simple`'
       - '`plot_populations`'
-      - '`dummy_project`'
-      - '`dummy_package`'
       - '`run_simple`'
       - '`run_simulation`'
       - '`cleanup_times`'
       - '`cleanup_events`'
       - '`cleanup_timesteps`'
+      - '`practical_series_one`'
+      - '`populate_package`'
   - title: Misc functions
     desc: ~
     contents:

@@ -31,7 +31,7 @@ simplest epidemiological model – the SIS model.
 ## Tasks
 
 In this practical we will write a stochastic version of the SIS model. You have 
-been provided with `run_simulation()` in the {RPiR} package, which allows some 
+been provided with `run_simulation()` in the `RPiR` package, which allows some 
 extra functionality over `run_simple()` to run simulations using the older
 deterministic models. Pay attention in particular to writing 
 the function, where the most important changes need to be made.
@@ -77,8 +77,8 @@ list(updated.pop = next.population, end.experiment = is.finished)
 You need to write a new demo, <span style="color: #de77ae;">d0304_run_SIS</span>, and 
 a new function, `timestep_stochastic_SIS()`, adapted from the
 <span style="color: #de77ae;">d0303_run_birth_death</span> demo and
-`timestep_stochastic_birth_death()` to handle the 
-SIS model rather than exponential growth. 
+`timestep_stochastic_birth_death()` to handle the SIS model rather than 
+exponential growth. 
 
 ## Running the code / Report
 
