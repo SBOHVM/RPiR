@@ -303,8 +303,10 @@ the next (and every subsequent) time it runs, `first.graph` is already `FALSE`
 so the code block following the `else` statement is run, and a plot is
 superimposed on the existing graphics window.
 
-If statements are too simple a concept for R4DS, but are covered by R Coder
-[here][if-rcoder].
+R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
+consider them too simple, but ironically they have [a chapter in Advanced
+R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
+control that are well beyond the scope of this course.
 
 [lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
 [lecture-7a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR7a-R.html
@@ -326,6 +328,7 @@ If statements are too simple a concept for R4DS, but are covered by R Coder
 [style-advanced-r]: http://adv-r.had.co.nz/Style.html
 [advanced-r2]: https://adv-r.hadley.nz
 [advanced-r2-solutions]: http://advanced-r-solutions.rbind.io
+[if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html
 [r-packages]: https://r-pkgs.org
 
 [BES]: https://www.britishecologicalsociety.org
