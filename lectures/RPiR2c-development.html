@@ -3187,7 +3187,7 @@ slide:not(.current) .plotly.html-widget{
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>Accelerated development</h2></hgroup><article  id="accelerated-development">
 
-</article></slide><slide class=""><hgroup><h2>Imperative</h2></hgroup><article  class="smaller" id="imperative">
+</article></slide><slide class=""><hgroup><h2>Imperative</h2></hgroup><article  id="imperative" class="smaller">
 
 <pre class = 'prettyprint lang-r'>library(lme4)
 
@@ -3199,40 +3199,40 @@ o1 &lt;- lmer(d$d1 ~ d$d2 + (1|d$d3))
 #...
 plot(d$d2, d$d1)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Named</h2></hgroup><article  class="smaller" id="named">
+</article></slide><slide class=""><hgroup><h2>Named</h2></hgroup><article  id="named" class="smaller">
 
 <pre class = 'prettyprint lang-r'>library(lme4)
 
-my.data &lt;- read.csv(&quot;my.file.csv&quot;)
+flu.data &lt;- read.csv(&quot;my.file.csv&quot;)
 #...
 #...
-res &lt;- lmer(response ~ explanatory + (1 | random), data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 #...
 #...
-plot(my.data$explanatory, my.data$response)</pre>
+plot(antigenic.distance ~ num.mutation, data = flu.data)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Commented</h2></hgroup><article  class="smaller" id="commented">
+</article></slide><slide class=""><hgroup><h2>Commented</h2></hgroup><article  id="commented" class="smaller">
 
 <pre class = 'prettyprint lang-r'>library(lme4)
 
-my.data &lt;- read.csv(&quot;my.file.csv&quot;)
+flu.data &lt;- read.csv(&quot;my.file.csv&quot;)
 # Some light processing to get data into correct format
 #...
 #...
 # Now the analyses – a linear mixed effect model
-res &lt;- lmer(response ~ explanatory + (1 | random), data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 # Checking the model is a good one
 #...
 #...
 # Phew, it is, so plot the best explanatory and response variables!
-plot(my.data$explanatory, my.data$response)</pre>
+plot(antigenic.distance ~ num.mutation, data = flu.data)</pre>
 
-</article></slide><slide class=""><hgroup><h2>Structured</h2></hgroup><article  class="smaller" id="structured">
+</article></slide><slide class=""><hgroup><h2>Structured</h2></hgroup><article  id="structured" class="smaller">
 
 <pre class = 'prettyprint lang-r'>library(lme4)
 
 <b># Function to load in data from file and process
-read_data &lt;- function(filename) {
+read_flu_data &lt;- function(filename) {
   #&#39; Load in data from file and process
   
   data &lt;- read.csv(filename)
@@ -3241,16 +3241,16 @@ read_data &lt;- function(filename) {
   data
 }
 </b>
-my.data &lt;- read_data(&quot;my.file.csv&quot;)
+flu.data &lt;- read_flu_data(&quot;my.file.csv&quot;)
 # Now the analyses – a linear mixed effect model
-res &lt;- lmer(response ~ explanatory + (1 | random), data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 # Checking the model is a good one
 #...
 #...
 # Phew, it is, so plot the best explanatory and response variables!
-plot(my.data$explanatory, my.data$response)</pre>
+plot(antigenic.distance ~ num.mutation, data = flu.data)</pre>
 
-</article></slide><slide class=""><hgroup><h2>More structured</h2></hgroup><article  class="smaller" id="more-structured">
+</article></slide><slide class=""><hgroup><h2>More structured</h2></hgroup><article  id="more-structured" class="smaller">
 
 <div class="columns-2">
 <p>helper.R</p>
@@ -3259,7 +3259,7 @@ plot(my.data$explanatory, my.data$response)</pre>
 # experiments
 library(lme4)
 
-<b>read_data &lt;- function(filename) {
+<b>read_flu_data &lt;- function(filename) {
   #&#39; Load in data from file and process
   
   data &lt;- read.csv(filename)
@@ -3269,7 +3269,7 @@ library(lme4)
   data
 }
 </b>
-<b>check_model &lt;- function(model.out) {
+<b>check_flu_model &lt;- function(model.out) {
   #&#39; Check model is a good one
   
   is.good.model &lt;- #...
@@ -3284,21 +3284,21 @@ library(lme4)
 source(&quot;helper.R&quot;)
 
 # Load in the data and process it 
-my.data &lt;- read_data(&quot;my.file.csv&quot;)
+my.data &lt;- read_flu_data(&quot;my.file.csv&quot;)
 
 # Analyses – linear mixed effect model
-res &lt;- lmer(response ~ explanatory + 
-              (1 | random), 
-            data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation +
+              (1 | date), data = flu.data)
+
 
 # Check model
-if (!check_model(res))
+if (!check_flu_model(res))
   stop(&quot;Model is rubbish, give up now!&quot;)
 
 # Plot the best explanatory and
 # response variables
-plot(my.data$explanatory, 
-     my.data$response)</pre></div></article></slide>
+plot(antigenic.distance ~ num.mutation,
+     data = flu.data)</pre></div></article></slide>
 
 
   <slide class="backdrop"></slide>

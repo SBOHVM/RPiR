@@ -394,29 +394,29 @@ plot(d$d2, d$d1)</code></pre>
 <h2>Named</h2>
 <pre class="r"><code>library(lme4)
 
-my.data &lt;- read.csv(&quot;my.file.csv&quot;)
+flu.data &lt;- read.csv(&quot;my.file.csv&quot;)
 #...
 #...
-res &lt;- lmer(response ~ explanatory + (1 | random), data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 #...
 #...
-plot(my.data$explanatory, my.data$response)</code></pre>
+plot(antigenic.distance ~ num.mutation, data = flu.data)</code></pre>
 </div>
 <div id="commented" class="section level2 smaller">
 <h2>Commented</h2>
 <pre class="r"><code>library(lme4)
 
-my.data &lt;- read.csv(&quot;my.file.csv&quot;)
+flu.data &lt;- read.csv(&quot;my.file.csv&quot;)
 # Some light processing to get data into correct format
 #...
 #...
 # Now the analyses – a linear mixed effect model
-res &lt;- lmer(response ~ explanatory + (1 | random), data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 # Checking the model is a good one
 #...
 #...
 # Phew, it is, so plot the best explanatory and response variables!
-plot(my.data$explanatory, my.data$response)</code></pre>
+plot(antigenic.distance ~ num.mutation, data = flu.data)</code></pre>
 </div>
 <div id="structured" class="section level2 smaller">
 <h2>Structured</h2>
@@ -424,7 +424,7 @@ plot(my.data$explanatory, my.data$response)</code></pre>
 
 ### &lt;b&gt;
 # Function to load in data from file and process
-read_data &lt;- function(filename) {
+read_flu_data &lt;- function(filename) {
   #&#39; Load in data from file and process
   
   data &lt;- read.csv(filename)
@@ -434,14 +434,14 @@ read_data &lt;- function(filename) {
 }
 ### &lt;/b&gt;
 
-my.data &lt;- read_data(&quot;my.file.csv&quot;)
+flu.data &lt;- read_flu_data(&quot;my.file.csv&quot;)
 # Now the analyses – a linear mixed effect model
-res &lt;- lmer(response ~ explanatory + (1 | random), data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation + (1 | date), data = flu.data)
 # Checking the model is a good one
 #...
 #...
 # Phew, it is, so plot the best explanatory and response variables!
-plot(my.data$explanatory, my.data$response)</code></pre>
+plot(antigenic.distance ~ num.mutation, data = flu.data)</code></pre>
 </div>
 <div id="more-structured" class="section level2 smaller">
 <h2>More structured</h2>
@@ -452,7 +452,7 @@ plot(my.data$explanatory, my.data$response)</code></pre>
 library(lme4)
 
 ### &lt;b&gt;
-read_data &lt;- function(filename) {
+read_flu_data &lt;- function(filename) {
   #&#39; Load in data from file and process
   
   data &lt;- read.csv(filename)
@@ -464,7 +464,7 @@ read_data &lt;- function(filename) {
 ### &lt;/b&gt;
 
 ### &lt;b&gt;
-check_model &lt;- function(model.out) {
+check_flu_model &lt;- function(model.out) {
   #&#39; Check model is a good one
   
   is.good.model &lt;- #...
@@ -477,21 +477,21 @@ check_model &lt;- function(model.out) {
 source(&quot;helper.R&quot;)
 
 # Load in the data and process it 
-my.data &lt;- read_data(&quot;my.file.csv&quot;)
+my.data &lt;- read_flu_data(&quot;my.file.csv&quot;)
 
 # Analyses – linear mixed effect model
-res &lt;- lmer(response ~ explanatory + 
-              (1 | random), 
-            data = my.data)
+res &lt;- lmer(antigenic.distance ~ num.mutation +
+              (1 | date), data = flu.data)
+
 
 # Check model
-if (!check_model(res))
+if (!check_flu_model(res))
   stop(&quot;Model is rubbish, give up now!&quot;)
 
 # Plot the best explanatory and
 # response variables
-plot(my.data$explanatory, 
-     my.data$response)</code></pre>
+plot(antigenic.distance ~ num.mutation,
+     data = flu.data)</code></pre>
 </div>
 </div>
 </div>

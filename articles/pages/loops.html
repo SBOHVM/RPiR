@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.57.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.58.0</span>
       </span>
     </div>
 
@@ -73,6 +73,9 @@
     <li>
       <a href="../../lectures/RPiR6a-R.html">RPiR6a-R</a>
     </li>
+    <li>
+      <a href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -110,6 +113,9 @@
     </li>
     <li>
       <a href="../../lectures_html/RPiR6a-R.html">RPiR6a-R</a>
+    </li>
+    <li>
+      <a href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
     </li>
   </ul>
 </li>
@@ -175,7 +181,7 @@
           <a href="../../articles/pages/loops.html">Loops -- for / while</a>
         </li>
         <li>
-          <a href="../../articles/pages/flow.html">Flow control -- if / else</a>
+          <a href="../../articles/pages/flow.html">Flow control -- if / else and comparisons</a>
         </li>
         <li>
           <a href="../../articles/pages/functions.html">Functions</a>
@@ -267,15 +273,15 @@
 <div id="while-----loops" class="section level1">
 <h1 class="hasAnchor">
 <a href="#while-----loops" class="anchor"></a><code>while (...)</code> loops</h1>
-<p><code>while</code> loops allows us to repeat something <em>while</em> a condition is still <code>TRUE</code>. They are particularly useful when you don’t know in advance exactly how many times something will be done, but can be used in any situation. Unlike <code>for</code> loops you need to update everything manually each time around:</p>
+<p><code>while</code> loops allows us to repeat something <em>while</em> a condition is still <code>TRUE</code>. They are particularly useful when you don’t know in advance exactly how many times something will be done, but can be used in any situation. Unlike <code>for</code> loops though, you need to update everything manually each time around:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu">some_test</span><span class="op">(</span><span class="op">)</span>
 <span class="kw">while</span> <span class="op">(</span><span class="va">test</span><span class="op">)</span> <span class="op">{</span>
   <span class="co"># Do something</span>
   <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html">update</a></span><span class="op">(</span><span class="va">something</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
-<p><code>test</code> is checked at the beginning of each iteration, and as long as <code>test</code> continues to be <code>TRUE</code>, the code block inside the curly brackets <code>{ ... }</code> is run. Be careful! If you don’t update <code>test</code> inside the curly brackets, your loop will continue forever! However, if (when!) <code>test</code> is finally <code>FALSE</code>, the loop will end and R will continue on to the next piece of code.</p>
-<p>We introduced them in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html">Lecture 5b</a> and used them from Practical <code>practical2-4</code> onwards. There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r">here</a>.</p>
+<p><code>test</code> is checked at the beginning of each iteration, and as long as <code>test</code> continues to be <code>TRUE</code>, the code block inside the curly brackets <code>{ ... }</code> is run. Be careful… if you don’t update <code>test</code> inside the curly brackets, your loop will continue forever! However, if (when!) <code>test</code> is finally <code>FALSE</code>, the loop will end and R will continue on to the next line of code after the loop.</p>
+<p>We introduced them in <a href="https://ibahcm.github.io/RPiR/lectures_html/RPiR6a-R.html">Lecture 6a</a>, and used them from Practical <code>practical2-4</code> onwards. There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r">here</a>.</p>
 </div>
   </div>
 
