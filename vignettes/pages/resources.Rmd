@@ -234,7 +234,7 @@ continue through the loop again, and in `if` statements below, to determine what
 to do next.
 
 We introduced these concepts on Friday 29th, and again in [Lecture
-7a][lecture-7a] on Monday 1st and practical `practicalA-2`. Comparisons are also
+7a][lecture-7a] on Monday 1st and Practical `practicalA-2`. Comparisons are also
 covered [in passing][operators-R4DS] in R4DS, and by R Coder in a bit more
 depth [here][operators-rcoder].
 
@@ -251,8 +251,8 @@ if (2 > 1) {
 }
 ```
 
-prints `[1] "Maths works!"` because the test is `TRUE`, so the code block that
-follows is run. Whereas:
+This prints `[1] "Maths works!"` because the test is `TRUE`, so the code block
+that follows is run. Whereas:
 
 ```{R}
 if (2 >= 5) {
@@ -262,7 +262,7 @@ if (2 >= 5) {
 }
 ```
 
-prints `[1] "Less than or equal to 5."` because the test was false, so R
+This prints `[1] "Less than or equal to 5."` because the test was false, so R
 continues to the code block after the `else` statement. If there is no `else`
 statement, then no code is run, so:
 
@@ -299,16 +299,15 @@ The second example we provide of using an `if` statement to control code
 execution is in Practical `practical3-4`:
 
 ```{R, eval = FALSE}
-  if (first.graph) {
-    plot_populations(final.populations,
-                     new.graph = TRUE, 
-                     col = c(susceptibles = "green", infecteds = "red"))
-    first.graph <- FALSE 
-  } else {
-    plot_populations(final.populations,
-                     new.graph = FALSE,
-                     col = c(susceptibles = "green", infecteds = "red"))
-  }
+if (first.graph) {
+  plot_populations(final.populations,
+                   new.graph = TRUE, 
+                   col = c(susceptibles = "green", infecteds = "red"))
+  first.graph <- FALSE 
+} else {
+  plot_populations(final.populations,
+                   new.graph = FALSE,
+                   col = c(susceptibles = "green", infecteds = "red"))
 }
 ```
 
