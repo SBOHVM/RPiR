@@ -67,6 +67,9 @@
     <loc>https://ibahcm.github.io/RPiR//articles/pages/functions.html</loc>
   </url>
   <url>
+    <loc>https://ibahcm.github.io/RPiR//articles/pages/github.html</loc>
+  </url>
+  <url>
     <loc>https://ibahcm.github.io/RPiR//articles/pages/install_RPiR.html</loc>
   </url>
   <url>
@@ -82,7 +85,7 @@
     <loc>https://ibahcm.github.io/RPiR//articles/pages/reference.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/use_github.html</loc>
+    <loc>https://ibahcm.github.io/RPiR//articles/pages/rstudio.html</loc>
   </url>
   <url>
     <loc>https://ibahcm.github.io/RPiR//articles/pages/vscode_liveshare.html</loc>
