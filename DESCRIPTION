@@ -17,6 +17,7 @@ Imports:
     deSolve,
     devtools,
     docstring,
+    dplyr,
     ggplot2,
     gradethis,
     graphics,
