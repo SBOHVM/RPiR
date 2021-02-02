@@ -332,7 +332,11 @@ three spaces, followed by a simple description. Also note the empty line at
 the end of the file.
 
 Now we're going to add a demo, which is a standard R file (in this case 
-including a little R markdown).
+including a little R markdown). 
+
+> The important thing to note here is that you no longer need to `source()`
+files, since any functions you need to use can be installed as part of the 
+package.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/packages/15.png')
