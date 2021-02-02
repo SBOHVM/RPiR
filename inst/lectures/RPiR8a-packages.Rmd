@@ -1,0 +1,32 @@
+---
+title: "Writing packages in R"
+output: ioslides_presentation
+---
+
+# Why???
+
+## To help people write better code
+
+<center>![](images/RPiR8a-hex.png){ width=80% }</center>
+
+## To share your methods
+
+<center>![](images/RPiR8a-eqn.png){ width=80% }</center>
+
+## To share your code
+
+<center>![](images/RPiR8a-share.png){ width=60% }</center>
+
+## To keep your code organised
+
+<center>![](images/RPiR8a-org.png){ width=60% }</center>
+
+## To keep your code consistent {.flexbox .vcenter}
+
+<center>![](images/RPiR8a-con.png){ width=80% }</center>
+
+# How???
+
+## {.flexbox .vcenter}
+
+<center>![](images/RPiR8a-how.png){ width=80% }</center>
