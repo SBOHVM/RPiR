@@ -123,6 +123,8 @@ navbar:
          href: articles/pages/github.html
       -  text: "RStudio projects and GitHub"
          href: articles/pages/rstudio.html
+      -  text: "R Packages"
+         href: articles/pages/packages_guide.html
     - text: "Installation"
       icon: far fa-file
       menu:
