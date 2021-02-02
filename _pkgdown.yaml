@@ -114,8 +114,6 @@ navbar:
             href: articles/pages/flow.html
          -  text: "Functions"
             href: articles/pages/functions.html
-         -  text: "R Packages"
-            href: articles/pages/packages.html
     - text: "Guides"
       icon: far fa-file
       menu:
