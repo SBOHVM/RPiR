@@ -3,6 +3,16 @@ title: "Writing packages in R"
 output: ioslides_presentation
 ---
 
+# What???
+
+## What is a package? {.flexbox .vcenter}
+
+`install.packages()`
+
+`devtools::install_github()`
+
+`devtools::install()`
+
 # Why???
 
 ## To help people write better code
@@ -30,3 +40,23 @@ output: ioslides_presentation
 ## {.flexbox .vcenter}
 
 <center>![](images/RPiR8a-how.png){ width=80% }</center>
+
+# What you're going to do
+
+## Practical 3-1 {.smaller}
+
+- Create a package 
+  - Get familiar with its structure
+- Functions
+  - Write a function (in the R folder)
+  - Write documentation for it
+- Demos
+  - Write a demo script (in the demo folder) 
+  - Edit the demo contents file (00Index)
+  - Test the demo (using `demo()`)
+- Description
+  - Edit the DESCRIPTION file
+  - Update the package version number 
+- Collaborate
+  - Push to GitHub
+  - Test your room-mates packages
