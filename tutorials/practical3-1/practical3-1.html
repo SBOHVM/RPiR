@@ -288,6 +288,7 @@ RoxygenNote: 7.1.1</code></pre>
 <li><p>Run <code>devtools::document()</code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)</p></li>
 </ol>
 <p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field as well as the <code>Imports</code> field.</p>
+<p>If we were using functions from the <code>RPiR</code> package in our <code>githubusernameSeries03</code> functions, we’d also have to make it explicit within the function where the dependencies are. See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for details.</p>
 <p>As well as recording dependencies, the <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata such as the package <code>Title</code>, <code>Authors@R</code>, and <code>Description</code>. Fill those in now.</p>
 <p>Whenever you make a change to your package, you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used for a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>.</p>
 <p>After making edits to the <span style="color: #de77ae;">DESCRIPTION</span> file, change the <span style="color: #de77ae;">Version</span> number to <code>0.1.0</code>.</p>
