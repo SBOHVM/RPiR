@@ -234,15 +234,6 @@ summary {
 <li><span style="color: #de77ae;">githubusername.Rproj</span>: an RStudio project file, which is used to make this directory an RStudio project, and can be used as a shortcut for opening this project from your filesystem, more info <a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">here</a></li>
 </ul>
 <p>Feel free to explore these files and make sure you have a good grasp of what they do.</p>
-<div id="section-demo" class="section level3">
-<h3>Demo</h3>
-<p>Try running the demo:</p>
-<pre class="r"><code>demo(topic = &quot;d0105_run_birth_death&quot;, package = &quot;githubusernameSeries03&quot;)</code></pre>
-<p>As you can see in <span style="color: #de77ae;">demo/d0301_run_birth_death.R</span>, this is just a standard script. Any script in the <span style="color: #de77ae;">demo</span> directory that has been installed as part of a package can be run using <code>demo()</code>.</p>
-<p>Calling <code>demo(package = "githubusernameSeries03")</code> lists all of the demos installed as part of the {githubusername} package.</p>
-<p>Note the <span style="color: #de77ae;">demo/00Index</span> file, which is lists each demo alongside a description, on a single line. When adding a new entry, remember to put three spaces between the demo name and its description or you won’t see it in the demo list.</p>
-<p>When you add your own demos, you need to run <code>devtools::install()</code> to permanently install them as part of your package.</p>
-</div>
 <div id="section-package-documentation" class="section level3">
 <h3>Package documentation</h3>
 <p>Look at the package documentation by using the <code>help()</code> function, or running:</p>
@@ -252,13 +243,38 @@ summary {
 <p>Remember that any changes you make to the package documentation won’t yet be visible. You need to run <code>devtools::document()</code> to recompile the documentation and <code>devtools::install()</code> to permanently install them as part of your package.</p>
 <p>Note that if you scroll to the bottom of the help function and click on <span style="color: #de77ae;">Index</span> you’ll get a list of functions exported by this package.</p>
 </div>
+<div id="section-demo" class="section level3">
+<h3>Demo</h3>
+<p>Try running the demo:</p>
+<pre class="r"><code>demo(topic = &quot;d0105_run_birth_death&quot;, package = &quot;githubusernameSeries03&quot;)</code></pre>
+<p>As you can see in <span style="color: #de77ae;">demo/d0301_run_birth_death.R</span>, this is just a standard script.</p>
+<blockquote>
+<p>The important thing to note here is that you no longer need to <code>source()</code> files, since any functions you need to use can be installed as part of the package.</p>
+</blockquote>
+<p>Calling <code>demo(package = "githubusernameSeries03")</code> lists all of the demos installed as part of the <code>githubusername</code> package.</p>
+<p>Note the <span style="color: #de77ae;">demo/00Index</span> file, which is lists each demo alongside a description, on a single line. When adding a new entry, remember to put three spaces between the demo name and its description or you won’t see it in the demo list.</p>
+<p>Any script in the <span style="color: #de77ae;">demo</span> directory that is listed in the <span style="color: #de77ae;">demo/00Index</span> file can be run using <code>demo()</code> (after the package is installed). So don’t forget when you add your own demos, you need to run <code>devtools::install()</code> to permanently install them as part of your package.</p>
+</div>
 <div id="section-function-documentation" class="section level3">
 <h3>Function documentation</h3>
-<p>Look at the help file for <code>step_deterministic_birth_death()</code> and compare this to <span style="color: #de77ae;">R/step_deterministic_birth_death.R</span>, which gives you a simple example of how functions are documented.</p>
-<p>When you add your own function to a package, after having written the {Roxygen2} comments, you should run <code>devtools::document()</code> to generate the <span style="color: #de77ae;">man/</span> files and edit the <span style="color: #de77ae;">NAMESPACE</span>. You should then run <code>devtools::install()</code> to permanently install them as part of your package.</p>
+<p>The functions themselves are stored in the <span style="color: #de77ae;">R</span> directory. Open <span style="color: #de77ae;">R/step_deterministic_birth_death.R</span> and take a look. Everything above the function is converted by the <code>roxygen2</code> package into documentation. You might see <code>#'</code> referred to as an <code>roxygen</code> comment, more info <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/roxygen2.html">here</a>.</p>
+<pre class="r"><code>#&#39; step_deterministic_birth_death
+#&#39;
+#&#39; Run one step of a simple deterministic exponential birth-death model
+#&#39;
+#&#39; @param latest a data.frame containing the latest population count
+#&#39; (column is &#39;count&#39;)
+#&#39; @param birth.rate the birth rate
+#&#39; @param death.rate the death rate
+#&#39;
+#&#39; @return Returns a data.frame containing the updated population
+#&#39; @export
+#&#39;</code></pre>
+<p>Run <code>?step_deterministic_birth_death</code> to look at the help file for <code>step_deterministic_birth_death()</code> and compare it to the <code>roxygen</code> comments you see in the file.</p>
+<p>When you add your own function to a package, after having written the <code>roxygen2</code> comments, you should run <code>devtools::document()</code> to generate the <span style="color: #de77ae;">man/</span> files and edit the <span style="color: #de77ae;">NAMESPACE</span>. You should then run <code>devtools::install()</code> to permanently install them as part of your package.</p>
 </div>
-<div id="section-package-metadata" class="section level3">
-<h3>Package metadata</h3>
+<div id="section-package-metadata-and-dependencies" class="section level3">
+<h3>Package metadata and dependencies</h3>
 <p>Open the <span style="color: #de77ae;">DESCRIPTION</span> file. It should look something like this:</p>
 <pre><code>Package: soniamitchellSeries03
 Type: Package
@@ -267,27 +283,27 @@ Version: 0.1.0
 Author: Who wrote it
 Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;
 Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/IBAHCM/soniamitchellSeries03
 BugReports: https://github.com/IBAHCM/soniamitchellSeries03/issues
 Imports: 
-    RPiR (&gt;= 0.56.0),
+RPiR (&gt;= 0.56.0),
 Remotes: 
-    IBAHCM/RPiR
+IBAHCM/RPiR
 RoxygenNote: 7.1.1</code></pre>
-<p>This file is used to record package dependencies (that is, packages that your package needs to work). We’ve added a dependency on <code>RPiR</code> so you can see how to add one. Four things are required:</p>
+<p>This file is used to record package dependencies (that is, packages that your package needs to work). Most typically, package y will be a dependency of package x if the functions in package y are being used by the functions in package x. In which case you would need to make it explicit within the functions of package x where the dependencies are (we’re not doing this just yet so don’t worry). See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for details.</p>
+<p>However, we do use the <code>RPiR</code> package in our demo, so I’ve added a dependency on <code>RPiR</code>. This was done by:</p>
 <ol style="list-style-type: decimal">
-<li><p>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file, <em>e.g.</em></p>
-<pre><code>Imports: 
-  RPiR</code></pre></li>
-<li><p>Add an <code>@import</code> in the <span style="color: #de77ae;">githubusername-package.R</span> file (located in the <span style="color: #de77ae;">R</span> directory), like this:</p>
-<pre><code>#&#39; @import RPiR</code></pre>
+<li><p>Adding an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file, <em>i.e.</em></p>
+<pre class="r"><code>Imports: 
+RPiR</code></pre></li>
+<li><p>Adding an <code>@import</code> in the <span style="color: #de77ae;">githubusername-package.R</span> file (located in the <span style="color: #de77ae;">R</span> directory), like this:</p>
+<pre class="r"><code>#&#39; @import RPiR</code></pre>
 <p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field as well as the <code>Imports</code> field.</p></li>
 <li><p>Run <code>devtools::document()</code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)</p></li>
-<li><p>If we were using functions from the <code>RPiR</code> package in our <code>githubusernameSeries03</code> functions, we’d also have to make it explicit within the <code>githubusernameSeries03</code> function where the dependencies are. See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for details.</p></li>
 </ol>
 <p>As well as recording dependencies, the <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata such as the package <code>Title</code>, <code>Authors@R</code>, and <code>Description</code>. Fill those in now.</p>
 <p>Whenever you make a change to your package, you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used for a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>.</p>
@@ -302,7 +318,7 @@ RoxygenNote: 7.1.1</code></pre>
 <h3>1. Add a function</h3>
 <p>Navigate back to the root of your package, then into the <span style="color: #de77ae;">R</span> directory, and open the <span style="color: #de77ae;">step_deterministic_birth_death.R</span> file in a new tab.</p>
 <p>The function itself should be recognizable, but the documentation is written using <code>roxygen2</code> comments and tags. More info <a href="https://r-pkgs.org/man.html#man-workflow">here</a>.</p>
-<pre><code>#&#39; step_deterministic_birth_death
+<pre class="r"><code>#&#39; step_deterministic_birth_death
 #&#39;
 #&#39; Run one step of a simple deterministic exponential birth-death model
 #&#39;
@@ -357,7 +373,7 @@ set.seed(123)
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","cachem","callr","checkmate","cli","codetools","colorspace","compiler","crayon","curl","datasets","desc","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","highr","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","MASS","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","scales","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyselect","tools","usethis","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.2.1","4.0.3","1.0.1","3.5.1","2.0.0","2.3.0","0.2-16","2.0-0","4.0.3","1.4.0","4.3","4.0.3","1.2.0","1.28","2.3.2","0.6.27","1.0.3","0.3.1","0.14","1.1.0","1.5.0","0.1.0","3.3.3","1.4.2","0.2.0.9001","4.0.3","4.0.3","4.0.3","0.3.0","0.8","0.5.1.9000","1.5.3","1.5.5","1.7.2","1.31","1.1.0.1","0.10.1.9007","0.2.0","2.0.1","1.1","7.3-53","2.0.0","4.0.3","0.9","0.5.0","1.4.7","1.2.0","2.0.3","1.1.0","1.1.1","3.4.5","1.1.1","1.5.0","0.3.4","2.5.0","1.0.6","2.2.0","0.4.10","2.6","0.53.0","2.0.2","0.13","1.1.1","1.1.1","1.6.0","4.0.3","1.5.3","1.4.0","3.0.1","3.0.6","1.1.0","4.0.3","2.0.0","4.0.3","0.3.6","2.4.1","0.20","1.8-4","2.2.1"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","cachem","callr","checkmate","cli","codetools","colorspace","compiler","crayon","curl","datasets","desc","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","highr","htmltools","htmlwidgets","httpuv","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","MASS","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","scales","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyselect","tools","usethis","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.2.1","4.0.3","1.0.1","3.5.1","2.0.0","2.3.0","0.2-16","2.0-0","4.0.3","1.4.0","4.3","4.0.3","1.2.0","1.28","2.3.2","0.6.27","1.0.3","0.3.1","0.14","1.1.0","1.5.0","0.1.0","3.3.3","1.4.2","0.2.0.9001","4.0.3","4.0.3","4.0.3","0.3.0","0.8","0.5.1.9000","1.5.3","1.5.5","1.7.2","1.31","1.1.0.1","0.10.1.9008","0.2.0","2.0.1","1.1","7.3-53","2.0.0","4.0.3","0.9","0.5.0","1.4.7","1.2.0","2.0.3","1.1.0","1.1.1","3.4.5","1.1.1","1.5.0","0.3.4","2.5.0","1.0.6","2.2.0","0.4.10","2.6","0.53.0","2.0.2","0.13","1.1.1","1.1.1","1.6.0","4.0.3","1.5.3","1.4.0","3.0.1","3.0.6","1.1.0","4.0.3","2.0.0","4.0.3","0.3.6","2.4.1","0.20","1.8-4","2.2.1"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
