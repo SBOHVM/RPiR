@@ -57,8 +57,8 @@ navbar:
          href: lectures/RPiR6a-R.html
       -  text: RPiR7a-R
          href: lectures/RPiR7a-R.html
-      -  text: RPiR8a-R
-         href: lectures/RPiR8a-R.html
+      -  text: RPiR8a-packages
+         href: lectures/RPiR8a-packages.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -82,8 +82,8 @@ navbar:
          href: lectures_html/RPiR6a-R.html
       -  text: RPiR7a-R
          href: lectures_html/RPiR7a-R.html
-      -  text: RPiR8a-R
-         href: lectures_html/RPiR8a-R.html
+      -  text: RPiR8a-packages
+         href: lectures_html/RPiR8a-packages.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
