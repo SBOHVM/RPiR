@@ -275,17 +275,16 @@ URL: https://github.com/IBAHCM/soniamitchellSeries03
 BugReports: https://github.com/IBAHCM/soniamitchellSeries03/issues
 Imports: 
     RPiR (&gt;= 0.56.0),
-    dplyr
 Remotes: 
     IBAHCM/RPiR
 RoxygenNote: 7.1.1</code></pre>
-<p>This file is used to record package dependencies (that is, packages that your package needs to work). We’ve added a dependency on <code>dplyr</code> so you can see how to add one. Three things are required:</p>
+<p>This file is used to record package dependencies (that is, packages that your package needs to work). We’ve added a dependency on <code>RPiR</code> so you can see how to add one. Three things are required:</p>
 <ol style="list-style-type: decimal">
 <li><p>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file, <em>e.g.</em></p>
 <pre><code>Imports: 
-  dplyr</code></pre></li>
+  RPiR</code></pre></li>
 <li><p>Add an <code>@import</code> in the <span style="color: #de77ae;">githubusername-package.R</span> file (located in the <span style="color: #de77ae;">R</span> directory), like this:</p>
-<pre><code>#&#39; @import dplyr</code></pre></li>
+<pre><code>#&#39; @import RPiR</code></pre></li>
 <li><p>Run <code>devtools::document()</code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)</p></li>
 </ol>
 <p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field as well as the <code>Imports</code> field.</p>

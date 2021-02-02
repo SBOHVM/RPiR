@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.58.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.59.0</span>
       </span>
     </div>
 
@@ -186,9 +186,6 @@
         <li>
           <a href="../../articles/pages/functions.html">Functions</a>
         </li>
-        <li>
-          <a href="../../articles/pages/packages.html">R Packages</a>
-        </li>
       </ul>
 </li>
   </ul>
@@ -246,7 +243,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R Packages</h1>
             
-            <h4 class="date">February 01 2021</h4>
+            <h4 class="date">February 02 2021</h4>
       
       
       <div class="hidden name"><code>packages.Rmd</code></div>
@@ -306,10 +303,14 @@
 <pre><code>#' @return Returns a \code{ggplot} object</code></pre>
 <p>The <code>@export</code> tag is used to identify this function as being exported by your package. That is, a function intended to be usable and not internal (a function that cannot be called, but is used internally by other functions).</p>
 <pre><code>#' @export</code></pre>
-<p>Finally, the <code>@examples</code> tag is used to document the <strong>Examples</strong> section. Note that here, you can use blank lines if you want.</p>
+<p>Finally, the <code>@examples</code> tag is used to document the <strong>Examples</strong> section. Note that here, you can use blank lines if you want and as usual, comments are encouraged.</p>
 <pre><code>#' @examples
+#' # Generate data
 #' data &lt;- data.frame(R = 1:5, fun = c(1:5)^2)
+#' # Plot results
 #' my_plot(data, R, fun, "Plot showing how fun increases with R")</code></pre>
+<p>We want to be able to install this function as part of our package, but there’s one thing left to do before we can do that. Our function, <code>my_plot()</code> is dependent on the <code>ggplot2</code> package. That is,</p>
+<pre><code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package("ggplot2", type = "Imports")</a></code></pre>
 </div>
   </div>
 
