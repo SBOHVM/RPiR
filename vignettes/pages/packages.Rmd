@@ -205,18 +205,24 @@ that cannot be called, but is used internally by other functions).
 ```
 
 Finally, the `@examples` tag is used to document the **Examples** section. 
-Note that here, you can use blank lines if you want.
+Note that here, you can use blank lines if you want and as usual, comments are 
+encouraged.
 
 ```
 #' @examples
+#' # Generate data
 #' data <- data.frame(R = 1:5, fun = c(1:5)^2)
+#' # Plot results
 #' my_plot(data, R, fun, "Plot showing how fun increases with R")
 ```
 
+We want to be able to install this function as part of our package, but there's
+one thing left to do before we can do that. Our function, `my_plot()` 
+is dependent on the `ggplot2` package. That is, 
 
-
-
-
+```
+usethis::use_package("ggplot2", type = "Imports")
+```
 
 
 
