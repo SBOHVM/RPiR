@@ -278,17 +278,17 @@ Imports:
 Remotes: 
     IBAHCM/RPiR
 RoxygenNote: 7.1.1</code></pre>
-<p>This file is used to record package dependencies (that is, packages that your package needs to work). We’ve added a dependency on <code>RPiR</code> so you can see how to add one. Three things are required:</p>
+<p>This file is used to record package dependencies (that is, packages that your package needs to work). We’ve added a dependency on <code>RPiR</code> so you can see how to add one. Four things are required:</p>
 <ol style="list-style-type: decimal">
 <li><p>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file, <em>e.g.</em></p>
 <pre><code>Imports: 
   RPiR</code></pre></li>
 <li><p>Add an <code>@import</code> in the <span style="color: #de77ae;">githubusername-package.R</span> file (located in the <span style="color: #de77ae;">R</span> directory), like this:</p>
-<pre><code>#&#39; @import RPiR</code></pre></li>
+<pre><code>#&#39; @import RPiR</code></pre>
+<p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field as well as the <code>Imports</code> field.</p></li>
 <li><p>Run <code>devtools::document()</code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file (which you should never edit by hand)</p></li>
+<li><p>If we were using functions from the <code>RPiR</code> package in our <code>githubusernameSeries03</code> functions, we’d also have to make it explicit within the <code>githubusernameSeries03</code> function where the dependencies are. See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for details.</p></li>
 </ol>
-<p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field as well as the <code>Imports</code> field.</p>
-<p>If we were using functions from the <code>RPiR</code> package in our <code>githubusernameSeries03</code> functions, we’d also have to make it explicit within the function where the dependencies are. See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for details.</p>
 <p>As well as recording dependencies, the <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata such as the package <code>Title</code>, <code>Authors@R</code>, and <code>Description</code>. Fill those in now.</p>
 <p>Whenever you make a change to your package, you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used for a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>.</p>
 <p>After making edits to the <span style="color: #de77ae;">DESCRIPTION</span> file, change the <span style="color: #de77ae;">Version</span> number to <code>0.1.0</code>.</p>
