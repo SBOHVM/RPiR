@@ -257,7 +257,6 @@ URL: https://github.com/IBAHCM/soniamitchellSeries03
 BugReports: https://github.com/IBAHCM/soniamitchellSeries03/issues
 Imports: 
     RPiR (>= 0.56.0),
-    dplyr
 Remotes: 
     IBAHCM/RPiR
 RoxygenNote: 7.1.1
@@ -265,20 +264,20 @@ RoxygenNote: 7.1.1
 
 This file is 
 used to record package dependencies (that is, packages that your package needs
-to work). We've added a dependency on `dplyr` so you can see how to add one. 
+to work). We've added a dependency on `RPiR` so you can see how to add one. 
 Three things are required:
 
 1. Add an entry in the `Imports` field of the 
    <span style="color: #de77ae;">DESCRIPTION</span> file, *e.g.*
    ```
    Imports: 
-     dplyr
+     RPiR
    ```
 2. Add an `@import` in the 
    <span style="color: #de77ae;">githubusername-package.R</span> file (located in 
    the <span style="color: #de77ae;">R</span> directory), like this:
    ```
-   #' @import dplyr
+   #' @import RPiR
    ```
 3. Run `devtools::document()` to populate the 
    <span style="color: #de77ae;">NAMESPACE</span> file (which you should never 

@@ -114,13 +114,13 @@ navbar:
             href: articles/pages/flow.html
          -  text: "Functions"
             href: articles/pages/functions.html
-         -  text: "R Packages"
-            href: articles/pages/packages.html
-    - text: "How to"
+    - text: "Guides"
       icon: far fa-file
       menu:
-      -  text: "Create an R project through GitHub"
-         href: articles/pages/use_github.html
+      -  text: "Create a repository on GitHub"
+         href: articles/pages/github.html
+      -  text: "RStudio projects and GitHub"
+         href: articles/pages/rstudio.html
     - text: "Installation"
       icon: far fa-file
       menu:
