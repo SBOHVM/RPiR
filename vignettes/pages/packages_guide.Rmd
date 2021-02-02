@@ -218,7 +218,13 @@ encouraged.
 
 We want to be able to install this function as part of our package, but there's
 one thing left to do before we can do that. Our function, `my_plot()` 
-is dependent on the `ggplot2` package. That is, 
+is dependent on the `ggplot2` package. That is, `my_plot()` uses functions 
+from the `ggplot2` package and therefore needs `ggplot2` to be installed before 
+it will work. We can configure our package so that this happens automatically. 
+
+## Adding dependencies
+
+To add dependencies to our package, we need to do 3 things
 
 ```
 usethis::use_package("ggplot2", type = "Imports")
