@@ -14,7 +14,7 @@ run_integration(
 )
 }
 \arguments{
-\item{deriv_function}{Dunction to calculate derivative}
+\item{deriv_function}{Function to calculate derivative}
 
 \item{populations}{Data frame with columns corresponding to function
 requirements}
