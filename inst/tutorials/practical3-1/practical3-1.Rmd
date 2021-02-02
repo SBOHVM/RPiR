@@ -265,7 +265,7 @@ RoxygenNote: 7.1.1
 This file is 
 used to record package dependencies (that is, packages that your package needs
 to work). We've added a dependency on `RPiR` so you can see how to add one. 
-Three things are required:
+Four things are required:
 
 1. Add an entry in the `Imports` field of the 
    <span style="color: #de77ae;">DESCRIPTION</span> file, *e.g.*
@@ -279,12 +279,17 @@ Three things are required:
    ```
    #' @import RPiR
    ```
+   In this particular case, the `RPiR` package is not available on CRAN, so 
+   we've had to note its location in the `Remotes` field as well as the 
+   `Imports` field.
 3. Run `devtools::document()` to populate the 
    <span style="color: #de77ae;">NAMESPACE</span> file (which you should never 
    edit by hand)
-
-In this particular case, the `RPiR` package is not available on CRAN, so we've
-had to note its location in the `Remotes` field as well as the `Imports` field.
+4. If we were using functions from the `RPiR` package in our 
+   `githubusernameSeries03` functions, we'd also have to make it explicit within 
+   the `githubusernameSeries03` function where the dependencies are. See
+   [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies) 
+   for details.
 
 As well as recording dependencies, the 
 <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata
