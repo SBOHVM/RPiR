@@ -286,6 +286,12 @@ Three things are required:
 In this particular case, the `RPiR` package is not available on CRAN, so we've
 had to note its location in the `Remotes` field as well as the `Imports` field.
 
+If we were using functions from the `RPiR` package in our 
+`githubusernameSeries03` functions, we'd also have to make it explicit within 
+the function where the dependencies are. See
+[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies) 
+for details.
+
 As well as recording dependencies, the 
 <span style="color: #de77ae;">DESCRIPTION</span> file contains various metadata
 such as the package `Title`, `Authors@R`, and `Description`. Fill those in now.
