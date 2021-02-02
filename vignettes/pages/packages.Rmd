@@ -18,11 +18,52 @@ knitr::opts_chunk$set(
 )
 ```
 
-We'll talk more about these later, but for the time being here are some talks
-from rstudio::global 2021 that was on last month.
+# Talks
+
+Here are some talks from rstudio::global 2021
 
 - [Make a package - Make some friends][rstudioglobal2021-package]
 - [You're Already Ready: Zen and the Art of R Package Development][rstudioglobal2021-repro-pkg]
 
 [rstudioglobal2021-package]: https://rstudio.com/resources/rstudioglobal-2021/make-a-package-make-some-friends
 [rstudioglobal2021-repro-pkg]: https://rstudio.com/resources/rstudioglobal-2021/youre-already-ready-zen-and-the-art-of-r-package-development 
+
+# Links
+
+The [R Packages](https://r-pkgs.org) book is a good resource covering all 
+aspects of writing packages in R.
+
+During this course, we recommend using tools in RStudio and the `usethis`
+package for easy package development. In doing so, a standard package structure
+is automatically generated for you. Here are some links that might be uesful:
+
+* <span style="color: #de77ae;">.gitignore</span>: contains regular
+expressions that should be ignored by Git, more info
+[here](https://www.pluralsight.com/guides/how-to-use-gitignore-file)
+* <span style="color: #de77ae;">.Rbuildignore</span>: contains regular
+expressions that should be ignored by R CMD check / when building the package 
+from source, more info
+[here](https://r-pkgs.org/package-structure-state.html#rbuildignore)
+* <span style="color: #de77ae;">demo/</span>: contains R demo files, more info
+[here](https://r-pkgs.org/misc.html#demo) (which we've populated with 
+<span style="color: #de77ae;">d0105_run_birth_death.R</span>, the
+script from Practical 1-5)
+* <span style="color: #de77ae;">DESCRIPTION</span>: contains metadata about 
+your package, more info [here](https://r-pkgs.org/description.html)
+* <span style="color: #de77ae;">man/</span>: contains code used to generate 
+documentation when the package is built (don't edit these files, this process 
+will be automated), more info [here](https://r-pkgs.org/man.html#man-workflow)
+* <span style="color: #de77ae;">NAMESPACE</span>: contains the names of 
+imported and exported functions (don't edit this file either), more info
+[here](https://r-pkgs.org/namespace.html#namespace)
+* <span style="color: #de77ae;">R/</span>: contains code used to generate 
+functions when the package is built (which we've populated with 
+<span style="color: #de77ae;">step_deterministic_birth_death.R</span>, the step function from
+Practical 1-5), more info [here](https://r-pkgs.org/r.html#code-organising)
+* <span style="color: #de77ae;">README.md</span>: contains markdown used to 
+generate your GitHub repository readme page, more info 
+[here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes)
+* <span style="color: #de77ae;">githubusername.Rproj</span>: an RStudio project 
+file, which is used to make this directory an RStudio project, and can be used 
+as a shortcut for opening this project from your filesystem, more info 
+[here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
