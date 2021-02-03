@@ -47,7 +47,7 @@ software development in R:
     * [Solutions to the exercises][advanced-r-solutions]
   - [2nd edition][advanced-r2] (this is obviously updated)
     * [Solutions to the exercises][advanced-r2-solutions]
-- [R Packages][r-packages]
+- [R Packages][r-packages] (with Jenny Bryan, see more of her work below)
 
 We recommend all of these books as reference material, and will point to
 specific chapters at different times, but the books themselves are probably too

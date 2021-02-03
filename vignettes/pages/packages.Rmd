@@ -18,24 +18,26 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Talks
+# Some reassurance!
 
-Here are some talks from rstudio::global 2021
+First, here are some talks about how easy this is from rstudio::global 2021:
 
 - [Make a package - Make some friends][rstudioglobal2021-package]
 - [You're Already Ready: Zen and the Art of R Package Development][rstudioglobal2021-repro-pkg]
 
-[rstudioglobal2021-package]: https://rstudio.com/resources/rstudioglobal-2021/make-a-package-make-some-friends
-[rstudioglobal2021-repro-pkg]: https://rstudio.com/resources/rstudioglobal-2021/youre-already-ready-zen-and-the-art-of-r-package-development 
+# Creating an R Package
 
-# Links
+You'll find a guide on how to create an R package linked to GitHub in RStudio
+in [a guide on this website](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html).
+
+# Other reference material
 
 The [R Packages](https://r-pkgs.org) book is a good resource covering all 
 aspects of writing packages in R.
 
 During this course, we recommend using tools in RStudio and the `usethis`
 package for easy package development. In doing so, a standard package structure
-is automatically generated for you. Here are some links that might be uesful:
+is automatically generated for you. Here are some links that might be useful:
 
 * <span style="color: #de77ae;">.gitignore</span>: contains regular
 expressions that should be ignored by Git, more info
@@ -67,3 +69,7 @@ generate your GitHub repository readme page, more info
 file, which is used to make this directory an RStudio project, and can be used 
 as a shortcut for opening this project from your filesystem, more info 
 [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
+
+[rstudioglobal2021-package]: https://rstudio.com/resources/rstudioglobal-2021/make-a-package-make-some-friends
+[rstudioglobal2021-repro-pkg]: https://rstudio.com/resources/rstudioglobal-2021/youre-already-ready-zen-and-the-art-of-r-package-development 
+
