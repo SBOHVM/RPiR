@@ -76,7 +76,7 @@ populate_package <- function(force = FALSE) {
   # Write demo index file
   tmp <- "d0105_run_birth_death   Simple birth-death difference equation model\n"
   index <- file.path("demo", "00Index")
-  if (!(file.exists(filepath)) || force) {
+  if (!(file.exists(index)) || force) {
     cat(tmp, file = index)
     usethis::ui_done(paste("Writing", usethis::ui_value(index)))
   } else {
