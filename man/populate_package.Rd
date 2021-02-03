@@ -4,7 +4,10 @@
 \alias{populate_package}
 \title{populate_package}
 \usage{
-populate_package()
+populate_package(force = FALSE)
+}
+\arguments{
+\item{force}{- overwrite existing files if TRUE (default FALSE)}
 }
 \description{
 This function will create an RStudio project and populate it with
