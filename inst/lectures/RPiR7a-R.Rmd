@@ -7,25 +7,21 @@ output: ioslides_presentation
 
 ## Useful commands
 
--   for loops:
+-   For and while loops:
 
 ```{R, eval=FALSE}
     for (...) { ... }
-```
-
--   while loops:
-
-```{R, eval=FALSE}
     while (...) { ... }
 ```
 
--   functions:
+-   Functions:
 
 ```{R, eval=FALSE}
     my_fun <- function() { ... }
 ```
 
--   if statements
+-   Comparisons and Tests
+-   If statements
 
 ```{R, eval=FALSE}
     if (...) { ... } else { ... }
