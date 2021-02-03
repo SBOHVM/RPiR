@@ -209,19 +209,24 @@ summary {
 <pre class="r"><code>pop.size &lt;- 100
 initial.infecteds &lt;- 2
 initial.recovereds &lt;- 0
-transmission.rate &lt;- 0.2
-recovery.rate &lt;- 0.1</code></pre>
+sir.transmission.rate &lt;- 0.2
+sir.recovery.rate &lt;- 0.1</code></pre>
 </div>
 </div>
 <div id="section-running-the-code-report" class="section level2">
 <h2>Running the code / Report</h2>
 <p>Run the code for different values of beta, initial conditions, and the population size. Why do the plots of the stochastic simulation end before those of the deterministic simulation? What happens as you increase the population size?</p>
 <p>Illustrate some of these effects in your demo.</p>
-<p>Now try increasing the transmission rate to increase the value of <span class="math inline">\(R_0\)</span>. Given a default value for the recovery rate of 0.1 what would beta need to be to simulate an outbreak with an <span class="math inline">\(R_0\)</span> of 15? What happens when you do this when the time step is 1? You should get an error message saying the time step is too large. You may still get a plot though! This is because R is plotting the previous value of populations held in its memory. This is why it’s important to be aware of your workspace and clear your previous history when you’re working on a new project (don’t use <code>rm(list=ls())</code> though!)</p>
+<p>Now try increasing the transmission rate to increase the value of <span class="math inline">\(R_0\)</span>. Given a default value for the recovery rate of 0.1 what would the transmission rate need to be to simulate an outbreak with an <span class="math inline">\(R_0\)</span> of 15? What happens when you do this when the time step is 1? You should get an error message saying the timestep is too large. You may still get a plot though! This is because R is plotting the previous value of populations held in its memory. This is why it’s important to be aware of your workspace and clear your previous history when you’re working on a new project (don’t use <code>rm(list=ls())</code> though!) .</p>
 <blockquote>
 <p>Remember that generating a report starts a new copy of R and so is a much better check of whether the script can run on its own.</p>
 </blockquote>
-Clear what is held in R’s workspace in RStudio. Now rerun with <span class="math inline">\(R_0 = 15\)</span> and confirm that you don’t get an output when the error message shows. Remember that clearing your workspace and trying again is often a very useful trick when you get unexpected results. 
+<p>Clear what is held in R’s workspace in RStudio. Now rerun with <span class="math inline">\(R_0 = 15\)</span> and confirm that you don’t get an output when the error message shows. Remember that clearing your workspace and trying again is often a very useful trick when you get unexpected results.</p>
+</div>
+<div id="section-check-it-works" class="section level2">
+<h2>Check it works</h2>
+<p>As with previous exercises, you need to check that everything works correctly – that the package installs, and the demos and help files work and you can generate reports from the demos – and then we want you to get a couple of other people in your breakout room to check your code and make sure it works for them, and we want you to check other people’s code too. We describe how to do this for packages in GitHub in Practical 3-1 (also under <em>Check it works</em>) if you’re uncertain.</p>
+<em>Remember, interacting like this through GitHub to help each other will count as most of your engagement marks for the course.</em> 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 

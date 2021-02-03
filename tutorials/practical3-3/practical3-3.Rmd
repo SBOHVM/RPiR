@@ -1,5 +1,5 @@
 ---
-title: "Practical 3-3: Stochastic births and deaths model"
+title: "Practical 3-3: Stochastic birth-death model"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -19,7 +19,8 @@ set.seed(123)
 
 ## Overview
 
-*In this practical you will see how we can make the code for the stochastic birth-death model safer, simpler, and more reusable.*
+*In this practical you will see how we can make the code for the stochastic
+birth-death model safer, simpler, and more reusable.*
 
 ## Background
 
@@ -117,8 +118,8 @@ would be using `timestep_stochastic_birth_death()` when we call `run_simple()`:
 final.populations <- run_simple(timestep_stochastic_birth_death,
                                 initial.populations, 
                                 end.time,
-                                birth.rate = human.annual.birth,
-                                death.rate = human.annual.death,
+                                birth.rate = some.specific.birth.rate,
+                                death.rate = some.specific.death.rate,
                                 timestep = short.timestep)
 ```
 
@@ -174,8 +175,8 @@ like this:
 especially if you used these parameters:
 
 ```{r, eval = FALSE}
-this.birth.rate <- 0.06
-this.death.rate <- 0.02
+demo.birth.rate <- 0.06
+demo.death.rate <- 0.02
 initial.count <- 1
 ```
 
@@ -186,3 +187,16 @@ automate this, you can set the y-axis upper limit to $100 \times$
 `initial.count` 
 by setting `ylim = c(0, 100 * initial.count)`. Report these results in 
 your demo.
+
+## Check it works
+
+As with previous exercises, you need to check that everything works correctly --
+that the package installs, and the demos and help files work and you can
+generate reports from the demos -- and then we want you to get a couple of other
+people in your breakout room to check your code and make sure it works for them,
+and we want you to check other people's code too. We describe how to do this for
+packages in GitHub in Practical 3-1 (also under *Check it works*) if you're
+uncertain.
+
+*Remember, interacting like this through GitHub to help each other will count as
+most of your engagement marks for the course.*

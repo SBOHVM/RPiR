@@ -184,7 +184,7 @@ summary {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this practical, we want to compare the mean stochastic result with the</em> <em>deterministic result for the SIR model.</em></p>
+<p><em>In this practical, we want to compare the mean stochastic result with the deterministic result for the SIR model.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
@@ -197,7 +197,7 @@ summary {
 <pre class="r"><code>final.populations &lt;- cleanup_timesteps(final.populations,
                                        timestep = this.timestep,
                                        end.time = end.time)</code></pre>
-<p>Once we have done this, we can calculate the averages by just adding the populations from each stochastic run to each other and dividing by the number of runs. Plot this averaged stochastic result against the deterministic result as in Practical 3-5.</p>
+<p>Once we have done this, we can calculate the averages by just adding the populations from each stochastic run to each other and dividing by the number of runs. Plot this averaged stochastic result against the deterministic result as in Practical 2-5. <strong>To do this, you will also have to copy the function for the deterministic SIR model into this package and turn it into a function in the package.</strong> <em>The function will need documentation, but otherwise it work with <code>run_simulation()</code> without changes, as (unlike <code>run_simple()</code>) it can cope with model functions that return just data frames, or functions that return a list like your new stochastic functions.</em></p>
 <p>You should get something like this:</p>
 <center>
 <img src="images/3-6.gif" title="fig:" alt="plot" />
@@ -205,8 +205,8 @@ summary {
 <p>particularly if you used these parameters:</p>
 <pre class="r"><code>initial.infecteds &lt;- 2
 initial.recovereds &lt;- 0
-transmission.rate &lt;- 0.2
-recovery.rate &lt;- 0.1</code></pre>
+sir.transmission.rate &lt;- 0.2
+sir.recovery.rate &lt;- 0.1</code></pre>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
@@ -218,7 +218,12 @@ recovery.rate &lt;- 0.1</code></pre>
 </div>
 <div id="section-report" class="section level2">
 <h2>Report</h2>
-Write a demo, showing stochastic extinction. Show different results for stochastic models and deterministic models for small initial outbreaks and low values of <span class="math inline">\(R_0\)</span>, but similar results for high <span class="math inline">\(R_0\)</span> / high initial numbers of infecteds. 
+<p>Write a demo, showing stochastic extinction. Show different results for stochastic models and deterministic models for small initial outbreaks and low values of <span class="math inline">\(R_0\)</span>, but similar results for high <span class="math inline">\(R_0\)</span> / high initial numbers of infecteds.</p>
+</div>
+<div id="section-check-it-works" class="section level2">
+<h2>Check it works</h2>
+<p>As with previous exercises, you need to check that everything works correctly – that the package installs, and the demos and help files work and you can generate reports from the demos – and then we want you to get a couple of other people in your breakout room to check your code and make sure it works for them, and we want you to check other people’s code too. We describe how to do this for packages in GitHub in Practical 3-1 (also under <em>Check it works</em>) if you’re uncertain.</p>
+<em>Remember, interacting like this through GitHub to help each other will count as most of your engagement marks for the course.</em> 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 
