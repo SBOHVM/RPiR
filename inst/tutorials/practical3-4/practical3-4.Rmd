@@ -188,10 +188,23 @@ This example was generated using:
 ```{r, eval = FALSE}
 pop.size <- 100
 initial.infecteds <- 2
-transmission.rate <- 0.3
-recovery.rate <- 0.1
+ecoli.trans <- 0.3
+ecoli.recov <- 0.1
 ```
 
 Try changing 
 the total population size and determine the impact on the observed variability.
 Demonstrates the variability in the results of the stochastic model in your demo.
+
+## Check it works
+
+As with previous exercises, you need to check that everything works correctly --
+that the package installs, and the demos and help files work and you can
+generate reports from the demos -- and then we want you to get a couple of other
+people in your breakout room to check your code and make sure it works for them,
+and we want you to check other people's code too. We describe how to do this for
+packages in GitHub in Practical 3-1 (also under *Check it works*) if you're
+uncertain.
+
+*Remember, interacting like this through GitHub to help each other will count as
+most of your engagement marks for the course.*

@@ -20,8 +20,8 @@ set.seed(123)
 
 ## Overview
 
-*In this practical, we want to compare the mean stochastic result with the*
-*deterministic result for the SIR model.*
+*In this practical, we want to compare the mean stochastic result with the
+ deterministic result for the SIR model.*
 
 
 ## Background
@@ -44,7 +44,7 @@ because some (all) simulations finished early because the outbreak died out.
 
 Go to the <span style="color: #1697C0;">IBAHCM/RPiR</span> package on 
 github and look at the `cleanup_timesteps()` function (which actually calls 
-`cleanup_times()` – both functions are in 
+`cleanup_times()` – both functions are in
 <span style="color: #1697C0;">R/cleanup.R</span>). This function takes a
 population data frame and tidies it up in various ways. For our purposes, we can
 use it to extend a data frame to the correct end time, by repeating the 
@@ -60,7 +60,12 @@ final.populations <- cleanup_timesteps(final.populations,
 Once we have done this, we can calculate the averages by just adding the 
 populations from each stochastic run to each other and dividing by the number of
 runs. Plot this averaged stochastic result against the deterministic result as
-in Practical 3-5.
+in Practical 2-5. **To do this, you will also have to copy the function for the
+deterministic SIR model into this package and turn it into a function in the
+package.** *The function will need documentation, but otherwise it work with
+`run_simulation()` without changes, as (unlike `run_simple()`) it can cope with
+model functions that return just data frames, or functions that return a list
+like your new stochastic functions.*
 
 You should get something like this:
 
@@ -71,8 +76,8 @@ particularly if you used these parameters:
 ```{r, eval = FALSE}
 initial.infecteds <- 2
 initial.recovereds <- 0
-transmission.rate <- 0.2
-recovery.rate <- 0.1
+sir.transmission.rate <- 0.2
+sir.recovery.rate <- 0.1
 ```
 
 ## Running the code
@@ -94,3 +99,16 @@ Write a demo, showing stochastic extinction. Show different results
 for stochastic models and deterministic models for small initial outbreaks and 
 low values of $R_0$, but similar results for high $R_0$ / high initial numbers 
 of infecteds.
+
+## Check it works
+
+As with previous exercises, you need to check that everything works correctly --
+that the package installs, and the demos and help files work and you can
+generate reports from the demos -- and then we want you to get a couple of other
+people in your breakout room to check your code and make sure it works for them,
+and we want you to check other people's code too. We describe how to do this for
+packages in GitHub in Practical 3-1 (also under *Check it works*) if you're
+uncertain.
+
+*Remember, interacting like this through GitHub to help each other will count as
+most of your engagement marks for the course.*

@@ -149,6 +149,15 @@ The following core practicals are included in this package:
    * `practical2-4`: SIS model; Using while() loops
    * `practical2-5`: SIR model; Adapting previous code
 
+3. Practical series 3:
+
+   * `practical3-1`: Writing an R package
+   * `practical3-2`: Simple stochastic birth-death model; Using stop()
+   * `practical3-3`: Stochastic birth-death model; Passing functions as arguments
+   * `practical3-4`: Stochastic SIS model
+   * `practical3-5`: Stochastic SIR model
+   * `practical3-6`: Comparing mean stochastic and deterministic SIR models
+
 As well as the following additional practicals:
 
 * `practicalA-1`: Introduction to for loops and functions
