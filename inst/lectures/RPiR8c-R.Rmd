@@ -1,0 +1,150 @@
+---
+title: "More Programming in R"
+output: ioslides_presentation
+---
+
+# More on functions {.smaller}
+
+## Useful commands
+
+- Functions
+  * Optional arguments
+  * Using `...` to accept any arguments
+  * Using functions as arguments
+- rbinom()
+
+## Functions
+
+Functions carry out a fixed task using the arguments provided:
+
+```{R, comment=""}
+subtract <- function(value, from) {
+  from - value
+}
+subtract(value = 5, from = 3)
+subtract(from = 3, value = 5)
+```
+
+Naming the arguments makes it clearer what you are doing.
+
+## Optional arguments
+
+Make an argument optional by providing a default value:
+
+```{R, comment=""}
+increase <- function(value, by = 1) {
+  value + by
+}
+increase(value = 5, by = 2)
+increase(value = 5, by = 1)
+increase(value = 5)
+```
+
+## Using `...` to accept any arguments
+
+Some functions don't know what their arguments will be:
+
+```{R, eval = FALSE}
+plot(x, y)
+plot(x, y, col="black")
+plot(x, y, type='l', lty=2)
+```
+
+The extra arguments get passed on to `plot.xy()` or some other function, which
+does then the work.
+
+## Using `...` to accept any arguments
+
+Some functions don't know what their arguments will be:
+
+```{R, eval = FALSE}
+plot(x, y)
+plot(x, y, col="black")
+plot(x, y, type='l', lty=2)
+```
+
+The extra arguments get passed on to `plot.xy()` or some other function, which
+does then the work. It looks a bit like this:
+
+```{r, eval = FALSE}
+### <b>
+plot <- function(x, y, log = "", ...) {
+### </b>
+  xlabel <- deparse1(substitute(x))
+  ylabel <- deparse1(substitute(y))
+  xy <- xy.coords(x, y, xlabel, ylabel, log)
+### <b>
+  plot.xy(xy, ...)
+}
+### </b>
+```
+
+## Using `...` to accept any arguments
+
+Here we do the same in `plot_populations()`:
+
+```{r, eval = FALSE}
+### <b>
+plot_populations <- function(populations, new.graph=TRUE,
+                             ylim=NA, lty=1, col=NA, ...) {
+### </b>
+  # -- lots of other code --
+  if (new.graph) {
+      # When it's a new plot, do labels and legends, etc.
+### <b>
+      plot(time, this.pop, ylim = ylim, xlab = "time",
+           ylab = "population size", type = "l",
+           col = line.cols[index], lty = line.ltys[index], ...)
+### </b>
+      # -- more code --
+    } else { # Otherwise just draw the lines
+### <b>
+      graphics::lines(time, this.pop, col = line.cols[index],
+                      lty = line.ltys[index], ...)
+### </b>
+    }
+### <b>
+}
+### </b>
+```
+
+## Using functions as arguments
+
+```{R, eval = FALSE}
+### <b>
+run_simple <- function(step_function, latest.df, end.time, ...)
+### </b>
+{
+  population.df <- latest.df
+  keep.going <- (latest.df$time < end.time)
+  while (keep.going)
+  {
+### <b>
+    data <- step_function(latest.df, ...)
+### </b>
+    latest.df <- data$updated.pop
+    population.df <- rbind(population.df, latest.df)
+    keep.going <- ((latest.df$time < end.time) &&
+                   (!data$end.experiment))
+  }
+  row.names(population.df) <- NULL
+  population.df
+}
+```
+
+## `rbinom()`
+
+- Draw 1 random number
+
+```{r, eval = FALSE}
+rbinom(1, count, prob)
+```
+
+- How many infections have occurred if there are 50 animals and there is a
+  probability of infection of 0.1 for each one?
+
+```{r}
+rbinom(1, 50, 0.1)
+rbinom(1, 50, 0.1)
+```
+
