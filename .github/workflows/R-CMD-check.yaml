@@ -154,17 +154,21 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           install.packages("rmarkdown")
-          all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
+          all_files <- dir(file.path("inst", "lectures"), recursive = TRUE,
+                           full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
+          pdf_files <- all_files[grep(".pdf", all_files)]
           if (!file.exists(file.path("docs", "lectures")))
-          dir.create(file.path("docs", "lectures"), recursive = TRUE)
+            dir.create(file.path("docs", "lectures"), recursive = TRUE)
 
-          for (i in seq_len(length(rmd_files))) {
-          rmarkdown::render(rmd_files[i],
-          output_dir = file.path("docs", "lectures"),
-          # Set the parent environment to be on the top of the search path,
-          # so that all attached methods can be found
-          envir = new.env(parent = globalenv()), clean = TRUE)
+          for (file in rmd_files) {
+            rmarkdown::render(file, output_dir = file.path("docs", "lectures"),
+            # Set the parent environment to be on the top of the search path,
+            # so that all attached methods can be found
+                              envir = new.env(parent = globalenv()), clean = TRUE)
+          }
+          for (file in pdf_files) {
+            file.copy(file, file.path("docs", "lectures"))
           }
         shell: Rscript {0}
 

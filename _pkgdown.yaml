@@ -59,6 +59,8 @@ navbar:
          href: lectures/RPiR7a-R.html
       -  text: RPiR8a-packages
          href: lectures/RPiR8a-packages.html
+      -  text: RPiR8d-development (pdf)
+         href: lectures/RPiR8d-development.pdf
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
