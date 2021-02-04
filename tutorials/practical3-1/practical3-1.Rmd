@@ -468,7 +468,7 @@ devtools::install_github("IBAHCM/githubusernameSeries03")
 demo(package = "githubusernameSeries03")
 
 # Run the demos, e.g.:
-demo("d0302_stochastic_birth_death.R", package = "githubusernameSeries03")
+demo("d0302_stochastic_birth_death", package = "githubusernameSeries03")
 ```
 
 2. If you have time, then create a new project from their GitHub repository
