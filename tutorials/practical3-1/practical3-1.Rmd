@@ -238,7 +238,7 @@ your package.
 
 The functions themselves are stored in the 
 <span style="color: #de77ae;">R</span> directory. Open 
-<span style="color: #de77ae;">R/step_deterministic_birth_death.R</span> and 
+<span style="color: #de77ae;">R/step_birth_death.R</span> and 
 take a look. Everything above the function is converted by the `roxygen2` 
 package into documentation. You might see `#'` referred to as an `roxygen` 
 comment, more info 
