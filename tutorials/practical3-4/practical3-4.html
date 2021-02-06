@@ -283,7 +283,7 @@ for (loop in 1:10) {
 }</code></pre>
 <p><img src="practical3-4_files/figure-html/tenloop-1.png" width="672" /></p>
 <p>You could do all ten plots in a single loop by setting <code>new.graph</code> appropriately - by starting with <code>TRUE</code> and them changing it to <code>FALSE</code> as I did in the slides, or changing it depending on what value <code>loop</code> has, for instance.</p>
-<p>You should also overlay the deterministic results from Practical 2-3. <code>run_simulation()</code> will now work with this as well since it automatically detects that it just returns a dataframe, and behaves appropriately:</p>
+<p>You should also overlay the deterministic results from Practical 2-4. <code>run_simulation()</code> will now work with this as well since it automatically detects that it just returns a dataframe, and behaves appropriately:</p>
 <pre class="r"><code>final.populations &lt;- run_simulation(timestep_deterministic_SIS, 
                                     initial.populations,
                                     end.time,

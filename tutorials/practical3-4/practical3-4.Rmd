@@ -166,7 +166,7 @@ You could do all ten plots in a single loop by setting `new.graph` appropriately
 - by starting with `TRUE` and them changing it to `FALSE` as I did in the slides,
 or changing it depending on what value `loop` has, for instance.  
 
-You should also overlay the deterministic results from Practical 2-3. 
+You should also overlay the deterministic results from Practical 2-4. 
 `run_simulation()` will now work with this as well since it automatically 
 detects that it just returns a dataframe, and behaves appropriately:
 
