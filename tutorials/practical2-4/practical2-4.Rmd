@@ -37,7 +37,7 @@ not realise this hack no longer works.
 In the previous practical we multiplied the transmission and recovery rates up
 (or down) to reflect changes in `timestep.` However, `transmission.rate` and
 `recovery.rate` were not really changing, and we want the code to reflect that
-rather than abusing it to do something it wasn’t intended to do. Instead add a
+rather than abusing it to do something it wasn't intended to do. Instead add a
 new argument, `timestep`, into `step_deterministic_SIS()` – we could call it
 `timestep_deterministic_SIS()`. Rather than submit the product 
 `transmission.rate * timestep` as an argument to the simulation function, we can 

@@ -44,7 +44,7 @@ population size calculation.
 
 To overlay the corresponding plot from the deterministic model you will also 
 need to use `run_simulation()` on the `timestep_deterministic_SIR()` function 
-from Practical 2-4, and then plot using `new.graph = FALSE`.
+from Practical 2-5, and then plot using `new.graph = FALSE`.
 
 ### demo/d0305_run_SIR.R
 
