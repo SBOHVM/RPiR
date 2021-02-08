@@ -337,14 +337,18 @@ passed in has a global variable" />
 passed in has a global variable</p>
     </div>
 
-    <pre class="usage"><span class='fu'>assert_no_globals</span><span class='op'>(</span><span class='va'>fname</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>assert_no_globals</span><span class='op'>(</span><span class='va'>test_function</span>, name <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/deparse.html'>deparse1</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/substitute.html'>substitute</a></span><span class='op'>(</span><span class='va'>test_function</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>fname</th>
-      <td><p>function name to check for global</p></td>
+      <th>test_function</th>
+      <td><p>function to check for global variables</p></td>
+    </tr>
+    <tr>
+      <th>name</th>
+      <td><p>optionally (otherwise taken from test_function) name of function</p></td>
     </tr>
     </table>
 
