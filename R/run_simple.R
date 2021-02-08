@@ -6,8 +6,8 @@
 #' and over until the time ends or \code{step_function()} reports that the
 #' experiment has ended.
 #'
-#' @seealso [run_simulation()] if you want a more flexible version of this
-#' function that will allow your \code{step_function()} to return just a
+#' @seealso \code{\link{run_simulation}} if you want a more flexible version
+#' of this function that will allow your \code{step_function()} to return just a
 #' data frame and will print some debugging information on request.
 #'
 #' @param step_function Function to run a timestep (\code{step_function()})

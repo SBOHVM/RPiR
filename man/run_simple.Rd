@@ -47,7 +47,7 @@ plot_populations(results)
 
 }
 \seealso{
-[run_simulation()] if you want a more flexible version of this
-function that will allow your \code{step_function()} to return just a
+\code{\link{run_simulation}} if you want a more flexible version
+of this function that will allow your \code{step_function()} to return just a
 data frame and will print some debugging information on request.
 }

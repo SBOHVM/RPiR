@@ -9,9 +9,9 @@
 #' (potentially) useful debugging information while it runs. It will also
 #' check whether your function has any global variables.
 #'
-#' @seealso [run_simple()] if you want a much simpler and more restrictive
-#' version of the simulation code that may be useful for better understanding
-#' how the function works.
+#' @seealso \code{\link{run_simple}} if you want a much simpler but more
+#' restrictive version of the simulation code that may be useful for better
+#' understanding how the function works.
 #'
 #' @param step_function Function to run a timestep (\code{step_function()})
 #'   which returns a list containing elements \code{updated.pop} with the
