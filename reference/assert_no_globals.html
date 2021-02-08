@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>available_practicals — available_practicals • RPiR</title>
+<title>assert_no_globals — assert_no_globals • RPiR</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="available_practicals — available_practicals" />
-<meta property="og:description" content="available_practicals" />
+<meta property="og:title" content="assert_no_globals — assert_no_globals" />
+<meta property="og:description" content="This function will stop code execution with an error if the function
+passed in has a global variable" />
 
 
 
@@ -326,26 +327,30 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>available_practicals</h1>
+    <h1>assert_no_globals</h1>
     
-    <div class="hidden name"><code>available_practicals.Rd</code></div>
+    <div class="hidden name"><code>assert_no_globals.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>available_practicals</p>
+    <p>This function will stop code execution with an error if the function
+passed in has a global variable</p>
     </div>
 
-    <pre class="usage"><span class='fu'>available_practicals</span><span class='op'>(</span>verbose <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>assert_no_globals</span><span class='op'>(</span><span class='va'>fname</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>verbose</th>
-      <td><p>Add the description text if TRUE (default FALSE)</p></td>
+      <th>fname</th>
+      <td><p>function name to check for global</p></td>
     </tr>
     </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>nothing</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
