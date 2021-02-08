@@ -40,7 +40,10 @@
 
 
 <meta property="og:title" content="Simplest code to run a simulation loop — run_simple" />
-<meta property="og:description" content="A generic function to run a simulation loop for a fixed period of time." />
+<meta property="og:description" content="A generic function to run a simulation loop for a fixed period of time.
+run_simple() will call step_function(initial.pop, ...) over
+and over until the time ends or step_function() reports that the
+experiment has ended." />
 
 
 
@@ -72,7 +75,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.65.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.65.1</span>
       </span>
     </div>
 
@@ -332,7 +335,10 @@
     </div>
 
     <div class="ref-description">
-    <p>A generic function to run a simulation loop for a fixed period of time.</p>
+    <p>A generic function to run a simulation loop for a fixed period of time.
+<code>run_simple()</code> will call <code>step_function(initial.pop, ...)</code> over
+and over until the time ends or <code>step_function()</code> reports that the
+experiment has ended.</p>
     </div>
 
     <pre class="usage"><span class='fu'>run_simple</span><span class='op'>(</span><span class='va'>step_function</span>, <span class='va'>initial.pop</span>, <span class='va'>end.time</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -350,7 +356,8 @@ experiment has ended (FALSE if not)</p></td>
     <tr>
       <th>initial.pop</th>
       <td><p>Initial population data frame with columns corresponding
-to function requirements</p></td>
+to function requirements. This *must* include a <code>time</code> column so that
+<code>run_simple()</code> can check whether the <code>end.time</code> has been reached.</p></td>
     </tr>
     <tr>
       <th>end.time</th>
@@ -366,6 +373,11 @@ e.g. parameters or timestep</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Data frame containing population history of simulation over time</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>[run_simulation()] if you want a more flexible version of this
+function that will allow your <code>step_function()</code> to return just a
+data frame and will print some debugging information on request.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>

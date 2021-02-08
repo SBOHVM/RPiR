@@ -40,7 +40,13 @@
 
 
 <meta property="og:title" content="Run a simulation loop — run_simulation" />
-<meta property="og:description" content="A generic function to run a simulation loop for a fixed period of time." />
+<meta property="og:description" content="A generic function to run a simulation loop for a fixed period of time.
+This function can cope with model step functions that return an updated
+data frame, or functions that return a list with an end.experiment
+element and an updated.pop element. If the simulation isn't working
+you can set debug = TRUE in the arguments, and it will print some
+(potentially) useful debugging information while it runs. It will also
+check whether your function has any global variables." />
 
 
 
@@ -72,7 +78,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.65.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.65.1</span>
       </span>
     </div>
 
@@ -332,7 +338,13 @@
     </div>
 
     <div class="ref-description">
-    <p>A generic function to run a simulation loop for a fixed period of time.</p>
+    <p>A generic function to run a simulation loop for a fixed period of time.
+This function can cope with model step functions that return an updated
+data frame, or functions that return a list with an <code>end.experiment</code>
+element and an <code>updated.pop</code> element. If the simulation isn't working
+you can set <code>debug = TRUE</code> in the arguments, and it will print some
+(potentially) useful debugging information while it runs. It will also
+check whether your function has any global variables.</p>
     </div>
 
     <pre class="usage"><span class='fu'>run_simulation</span><span class='op'>(</span><span class='va'>step_function</span>, <span class='va'>initial.pop</span>, <span class='va'>end.time</span>, debug <span class='op'>=</span> <span class='cn'>FALSE</span>, <span class='va'>...</span><span class='op'>)</span></pre>
@@ -351,7 +363,8 @@ with the updated population</p></td>
     <tr>
       <th>initial.pop</th>
       <td><p>Initial population data frame with columns corresponding
-to function requirements</p></td>
+to function requirements. This *must* include a <code>time</code> column so that
+<code><a href='run_simple.html'>run_simple()</a></code> can check whether the <code>end.time</code> has been reached.</p></td>
     </tr>
     <tr>
       <th>end.time</th>
@@ -372,6 +385,11 @@ e.g. parameters or timestep</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>Data frame containing population history of simulation over time</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>[run_simple()] if you want a much simpler and more restrictive
+version of the simulation code that may be useful for better understanding
+how the function works.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
