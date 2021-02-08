@@ -14,7 +14,7 @@ articles:
   pages/reference: reference.html
   pages/rstudio: rstudio.html
   pages/vscode_liveshare: vscode_liveshare.html
-last_built: 2021-02-08T17:00Z
+last_built: 2021-02-08T17:11Z
 urls:
   reference: https://ibahcm.github.io/RPiR//reference
   article: https://ibahcm.github.io/RPiR//articles
