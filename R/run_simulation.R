@@ -63,9 +63,9 @@ run_simulation <- function(step_function, initial.pop, end.time,
     if (is.data.frame(data)) {
       # We have an experiment that doesn't end, or can't determine when it does
       latest.df <- data
+      ended <- FALSE
       cat("step_function() returns a data frame.\n")
-    }
-    else {
+    } else {
       # If a list, we have an experiment that can determine when it ends
       cat("step_function() returns a list.\n")
       list.names <- c("updated.pop", "end.experiment")
