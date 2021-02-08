@@ -2,14 +2,25 @@
 #'
 #' @description
 #' A generic function to run a simulation loop for a fixed period of time.
-
+#' This function can cope with model step functions that return an updated
+#' data frame, or functions that return a list with an \code{end.experiment}
+#' element and an \code{updated.pop} element. If the simulation isn't working
+#' you can set \code{debug = TRUE} in the arguments, and it will print some
+#' (potentially) useful debugging information while it runs. It will also
+#' check whether your function has any global variables.
+#'
+#' @seealso \code{\link{run_simple}} if you want a much simpler but more
+#' restrictive version of the simulation code that may be useful for better
+#' understanding how the function works.
+#'
 #' @param step_function Function to run a timestep (\code{step_function()})
 #'   which returns a list containing elements \code{updated.pop} with the
 #'   updated population and \code{end.experiment} which is TRUE if the
 #'   experiment has ended (FALSE if not), OR which just returns a data frame
 #'   with the updated population
 #' @param initial.pop Initial population data frame with columns corresponding
-#'   to function requirements
+#'   to function requirements. This *must* include a \code{time} column so that
+#'   \code{run_simple()} can check whether the \code{end.time} has been reached.
 #' @param end.time End time of simulation
 #' @param debug (optionally) do you want to print out a limited amount of
 #'   debugging information about your code? - default FALSE
@@ -38,11 +49,8 @@
 run_simulation <- function(step_function, initial.pop, end.time,
                            debug=FALSE, ...) {
   # Check whether step_function uses global variables
-  if (length(codetools::findGlobals(step_function, merge = FALSE)$variables) > 0)
-    warning(paste("Function provided uses global variable(s):",
-                  paste(codetools::findGlobals(step_function,
-                                               merge = FALSE)$variables,
-                        collapse = ", ")))
+  RPiR::assert_no_globals(step_function,
+                          name = deparse1(substitute(step_function)))
 
   # Collect and report debugging information to identify sources of errors
   pop.names <- colnames(initial.pop)
@@ -61,9 +69,9 @@ run_simulation <- function(step_function, initial.pop, end.time,
     if (is.data.frame(data)) {
       # We have an experiment that doesn't end, or can't determine when it does
       latest.df <- data
+      ended <- FALSE
       cat("step_function() returns a data frame.\n")
-    }
-    else {
+    } else {
       # If a list, we have an experiment that can determine when it ends
       cat("step_function() returns a list.\n")
       list.names <- c("updated.pop", "end.experiment")

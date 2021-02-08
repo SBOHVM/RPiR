@@ -4,10 +4,12 @@
 \alias{assert_no_globals}
 \title{assert_no_globals}
 \usage{
-assert_no_globals(fname)
+assert_no_globals(test_function, name = deparse1(substitute(test_function)))
 }
 \arguments{
-\item{fname}{function name to check for global}
+\item{test_function}{function to check for global variables}
+
+\item{name}{optionally (otherwise taken from test_function) name of function}
 }
 \value{
 nothing

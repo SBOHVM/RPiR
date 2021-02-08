@@ -14,7 +14,8 @@ experiment has ended (FALSE if not), OR which just returns a data frame
 with the updated population}
 
 \item{initial.pop}{Initial population data frame with columns corresponding
-to function requirements}
+to function requirements. This *must* include a \code{time} column so that
+\code{run_simple()} can check whether the \code{end.time} has been reached.}
 
 \item{end.time}{End time of simulation}
 
@@ -29,6 +30,12 @@ Data frame containing population history of simulation over time
 }
 \description{
 A generic function to run a simulation loop for a fixed period of time.
+This function can cope with model step functions that return an updated
+data frame, or functions that return a list with an \code{end.experiment}
+element and an \code{updated.pop} element. If the simulation isn't working
+you can set \code{debug = TRUE} in the arguments, and it will print some
+(potentially) useful debugging information while it runs. It will also
+check whether your function has any global variables.
 }
 \examples{
 
@@ -45,4 +52,9 @@ df <- data.frame(time=0, count=1)
 results <- run_simulation(growth, df, 100, growth.rate=0.1, debug=TRUE)
 plot_populations(results)
 
+}
+\seealso{
+\code{\link{run_simple}} if you want a much simpler but more
+restrictive version of the simulation code that may be useful for better
+understanding how the function works.
 }

@@ -13,7 +13,8 @@ updated population and \code{end.experiment} which is TRUE if the
 experiment has ended (FALSE if not)}
 
 \item{initial.pop}{Initial population data frame with columns corresponding
-to function requirements}
+to function requirements. This *must* include a \code{time} column so that
+\code{run_simple()} can check whether the \code{end.time} has been reached.}
 
 \item{end.time}{End time of simulation}
 
@@ -25,6 +26,9 @@ Data frame containing population history of simulation over time
 }
 \description{
 A generic function to run a simulation loop for a fixed period of time.
+\code{run_simple()} will call \code{step_function(initial.pop, ...)} over
+and over until the time ends or \code{step_function()} reports that the
+experiment has ended.
 }
 \examples{
 
@@ -41,4 +45,9 @@ df <- data.frame(time=0, count=1)
 results <- run_simple(growth, df, 100, growth.rate=0.1)
 plot_populations(results)
 
+}
+\seealso{
+\code{\link{run_simulation}} if you want a more flexible version
+of this function that will allow your \code{step_function()} to return just a
+data frame and will print some debugging information on request.
 }
