@@ -49,7 +49,8 @@
 run_simulation <- function(step_function, initial.pop, end.time,
                            debug=FALSE, ...) {
   # Check whether step_function uses global variables
-  RPiR::assert_no_globals(step_function)
+  RPiR::assert_no_globals(step_function,
+                          name = deparse1(substitute(step_function)))
 
   # Collect and report debugging information to identify sources of errors
   pop.names <- colnames(initial.pop)

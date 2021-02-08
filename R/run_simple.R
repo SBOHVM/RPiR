@@ -42,7 +42,8 @@
 #'
 run_simple <- function(step_function, initial.pop, end.time, ...) {
   # Check whether step_function uses global variables
-  RPiR::assert_no_globals(step_function)
+  RPiR::assert_no_globals(step_function,
+                          name = deparse1(substitute(step_function)))
 
   population.df <- latest.df <- initial.pop
   keep.going <- (latest.df$time < end.time)
