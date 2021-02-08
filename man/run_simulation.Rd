@@ -14,7 +14,8 @@ experiment has ended (FALSE if not), OR which just returns a data frame
 with the updated population}
 
 \item{initial.pop}{Initial population data frame with columns corresponding
-to function requirements}
+to function requirements. This *must* include a \code{time} column so that
+\code{run_simple()} can check whether the \code{end.time} has been reached.}
 
 \item{end.time}{End time of simulation}
 
@@ -51,4 +52,9 @@ df <- data.frame(time=0, count=1)
 results <- run_simulation(growth, df, 100, growth.rate=0.1, debug=TRUE)
 plot_populations(results)
 
+}
+\seealso{
+[run_simple()] if you want a much simpler and more restrictive
+version of the simulation code that may be useful for better understanding
+how the function works.
 }

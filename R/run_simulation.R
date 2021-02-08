@@ -9,13 +9,18 @@
 #' (potentially) useful debugging information while it runs. It will also
 #' check whether your function has any global variables.
 #'
+#' @seealso [run_simple()] if you want a much simpler and more restrictive
+#' version of the simulation code that may be useful for better understanding
+#' how the function works.
+#'
 #' @param step_function Function to run a timestep (\code{step_function()})
 #'   which returns a list containing elements \code{updated.pop} with the
 #'   updated population and \code{end.experiment} which is TRUE if the
 #'   experiment has ended (FALSE if not), OR which just returns a data frame
 #'   with the updated population
 #' @param initial.pop Initial population data frame with columns corresponding
-#'   to function requirements
+#'   to function requirements. This *must* include a \code{time} column so that
+#'   \code{run_simple()} can check whether the \code{end.time} has been reached.
 #' @param end.time End time of simulation
 #' @param debug (optionally) do you want to print out a limited amount of
 #'   debugging information about your code? - default FALSE

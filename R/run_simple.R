@@ -2,13 +2,21 @@
 #'
 #' @description
 #' A generic function to run a simulation loop for a fixed period of time.
+#' \code{run_simple()} will call \code{step_function(initial.pop, ...)} over
+#' and over until the time ends or \code{step_function()} reports that the
+#' experiment has ended.
+#'
+#' @seealso [run_simulation()] if you want a more flexible version of this
+#' function that will allow your \code{step_function()} to return just a
+#' data frame and will print some debugging information on request.
 #'
 #' @param step_function Function to run a timestep (\code{step_function()})
 #'   which returns a list containing elements \code{updated.pop} with the
 #'   updated population and \code{end.experiment} which is TRUE if the
 #'   experiment has ended (FALSE if not)
 #' @param initial.pop Initial population data frame with columns corresponding
-#'   to function requirements
+#'   to function requirements. This *must* include a \code{time} column so that
+#'   \code{run_simple()} can check whether the \code{end.time} has been reached.
 #' @param end.time End time of simulation
 #' @param ... (optionally) any other arguments for \code{step_function()},
 #'   e.g. parameters or timestep
