@@ -2,7 +2,13 @@
 #'
 #' @description
 #' A generic function to run a simulation loop for a fixed period of time.
-
+#' This function can cope with model step functions that return an updated
+#' data frame, or functions that return a list with an \code{end.experiment}
+#' element and an \code{updated.pop} element. If the simulation isn't working
+#' you can set \code{debug = TRUE} in the arguments, and it will print some
+#' (potentially) useful debugging information while it runs. It will also
+#' check whether your function has any global variables.
+#'
 #' @param step_function Function to run a timestep (\code{step_function()})
 #'   which returns a list containing elements \code{updated.pop} with the
 #'   updated population and \code{end.experiment} which is TRUE if the
@@ -38,11 +44,7 @@
 run_simulation <- function(step_function, initial.pop, end.time,
                            debug=FALSE, ...) {
   # Check whether step_function uses global variables
-  if (length(codetools::findGlobals(step_function, merge = FALSE)$variables) > 0)
-    warning(paste("Function provided uses global variable(s):",
-                  paste(codetools::findGlobals(step_function,
-                                               merge = FALSE)$variables,
-                        collapse = ", ")))
+  RPiR::assert_no_globals(step_function)
 
   # Collect and report debugging information to identify sources of errors
   pop.names <- colnames(initial.pop)

@@ -2,7 +2,7 @@
 #'
 #' @description
 #' A generic function to run a simulation loop for a fixed period of time.
-
+#'
 #' @param step_function Function to run a timestep (\code{step_function()})
 #'   which returns a list containing elements \code{updated.pop} with the
 #'   updated population and \code{end.experiment} which is TRUE if the
@@ -34,12 +34,7 @@
 #'
 run_simple <- function(step_function, initial.pop, end.time, ...) {
   # Check whether step_function uses global variables
-  if (length(codetools::findGlobals(step_function,
-                                    merge = FALSE)$variables) > 0)
-    warning(paste("Function provided uses global variable(s):",
-                  paste(codetools::findGlobals(step_function,
-                                               merge = FALSE)$variables,
-                        collapse = ", ")))
+  RPiR::assert_no_globals(step_function)
 
   population.df <- latest.df <- initial.pop
   keep.going <- (latest.df$time < end.time)

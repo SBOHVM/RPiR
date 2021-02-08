@@ -29,6 +29,12 @@ Data frame containing population history of simulation over time
 }
 \description{
 A generic function to run a simulation loop for a fixed period of time.
+This function can cope with model step functions that return an updated
+data frame, or functions that return a list with an \code{end.experiment}
+element and an \code{updated.pop} element. If the simulation isn't working
+you can set \code{debug = TRUE} in the arguments, and it will print some
+(potentially) useful debugging information while it runs. It will also
+check whether your function has any global variables.
 }
 \examples{
 
