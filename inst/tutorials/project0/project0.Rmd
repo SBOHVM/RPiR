@@ -1,5 +1,5 @@
 ---
-title: "Project 0: title"
+title: "Project 0: Setup"
 output:
   learnr::tutorial:
     theme: lumen
@@ -22,68 +22,24 @@ set.seed(123)
 
 ## Overview
 
-*In this series of practicals you will develop the code to calculate diversity
+In this series of practicals you will develop the code to calculate diversity
 measures. You will have to choose the names of functions and variables in your 
 code for yourself, and structure it appropriately, though some small amounts of
-guidance will be given.*
+guidance will be given.
 
-* Remember that these practicals constitute the "project" part of the course, 
+Remember that these practicals constitute the "project" part of the course, 
 which constitutes 50% of the marks, so well-structured and well-commented code, 
 and clear reports of the results, are very important. Any of the in-course 
 exercises that you haven't finished by the end of the course should be 
-completed in your own time.*
+completed in your own time.
 
-## Projects, packages, git and GitHub
+## R packages and GitHub
 
-Any work you do must be in a single project (or a package, see below) and this 
-must be a git repository. You must commit a change at least at the end of each
-exercise (i.e. Project 1, 2, 3, 4 and 5) with sensible commit messages stating 
+Any work you do must be written as an R package and pushed to a GitHub 
+repository. Please make your repository private and add (just) me as a 
+collaborator. You must commit a change at least at the end of each
+exercise (*i.e.* Project 1, 2, 3, 4 and 5) with sensible commit messages stating 
 what you have just done. You are welcome to do more commits if this is useful 
 to you, and it's completely okay (and indeed normal) if you go back to earlier
 exercises and make further edits and commit them after completing later 
-exercises. You should commit the html reports generated as part of these 
-exercises to git too on this occasion. Don't get completely carried away and 
-commit hundreds of versions of the html reports though, as they are big files. 
-Try just do that at the end when you're happy with them (but it's okay if you 
-do it a few times if necessary).
-
-**You can choose whether or not to put any project or package on GitHub. I 
-expect that you will not, and instead you will leave it entirely on your 
-computer.** If you do put it on GitHub, however, you must make the 
-repository/ies private and add (just) me as a collaborator. Remember that to 
-add a new project or package to GitHub, create it as usual in RStudio (with 
-git repository ticked) and then **after you have made your first commit**, 
-call `usethis::use_github()` (and choose https) to create a new repository on 
-GitHub. That should open the repository in your browser, so then go to 
-<span style="color: #de77ae;">Settings</span> and make it private immediately. 
-Then add me as a collaborator.
-
-If you choose to put the work on GitHub you can submit just the link to the 
-website address of the repository. Otherwise you **must zip up the whole 
-folder** with the project/package in it and submit it – if you just zip up 
-individual files, you will not capture the git repository itself, which is 
-hidden inside the folder – so you must submit the (zipped) folder.
-
-## Files vs. package for functions
-
-All through these project exercises, except where I specifically mention it in
-Project 5 for the `sample_by_individuals()` function, you can choose whether to 
-put functions into one or more files **that are separate from your scripts that 
-run the analyses** (as you did in main practical series – this is what I 
-expect!) and then `source()` these files from your scripts, or you can 
-construct a new R package and put all of functions into the 
-<span style="color: #de77ae;">R</span> folder in that package as you just did 
-with `sample_by_subcommunities()` and `sample_by_species()` in your BCI 
-package. If you put the functions into files in a project, you should document 
-them as I showed you using Rmarkdown (*e.g.* in Practical 2-2). If you put them 
-in a package you should document them as I showed you in the `sample_...()`
-functions, and as you can also see in the boydorr/ProgInR package I provide you 
-with (*i.e.* using @param to describe arguments to a function, etc.).
-
-## Scripts
-
-Whether you have created a project or a package, and whether or not it is on 
-GitHub, you should put the scripts for each project exercise in the project or
-package along with the associated html reports (remember, **don't** put scripts 
-in the <span style="color: #de77ae;">R</span> subfolder if you are creating a
-package).
+exercises. 

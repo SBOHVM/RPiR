@@ -1,5 +1,5 @@
 ---
-title: "Project 0: title"
+title: "Project 2: A general measure of diversity"
 output:
   learnr::tutorial:
     theme: lumen
@@ -22,43 +22,46 @@ set.seed(123)
 
 ## Overview
 
-*There is a general series of measures of diversity, which is defined as 
+There is a general series of measures of diversity, which is defined as 
 follows:
 
 $$D_q = \left( \sum_{i \in \{1 \dots N_S, p_i \neq 0\}} p_i^q \right)^{\frac{1}{1-q}}$$
 
 where $N_s$ is the number of species that we have observed at least one of, and
-$pi_$ is the proportion of individuals that are in the $i^{th}$ species. $D^q$ 
+$p_i$ is the proportion of individuals that are in the $i^{th}$ species. $D_q$ 
 is then the $q^{th}$ diversity measure.
 
 We can translate this general measure easily into more specific measures (such 
-as the ones we looked at in Project 1), by setting q to different values. In 
+as the ones we looked at in Project 1), by setting $q$ to different values. In 
 this exercise, we will write a function to calculate this general diversity
-measure, and then rewrite the specific functions so they use the general one.*
+measure, and then rewrite the specific functions so they use the general one.
 
 ## Background
 
 Hill developed a unifying series of diversity measures in 1973 that were 
-closely related to most existing measures (Hill, M. O. (1973) Diversity and
+closely related to most existing measures (Hill, M. O., 1973. Diversity and
 evenness: a unifying notation and its consequences. *Ecology*, 54, 427–432) but 
 had a firm mathematical footing, being based on a measure called the Rényi 
-Entropy (A. Rényi (1961). On measures of information and entropy. *Proceedings
+Entropy (A. Rényi, 1961. On measures of information and entropy. *Proceedings
 of the 4th Berkeley Symposium on Mathematics, Statistics and Probability 1960*,
 pp. 547–561). These have been slightly adapted into the equation above by Lou 
-Jost (Jost, L. (2006) Entropy and diversity. *Oikos*, 113, 363– 375) to give a 
+Jost (Jost, L., 2006. Entropy and diversity. *Oikos*, 113, 363– 375) to give a 
 series of measures of the **effective number of species**. You are very likely 
-to be unfamiliar with at least some of the notation of the equation. That's 
+to be unfamiliar with at least some of the notation in the equation. That's 
 fine -- it says:
 
-> "For the qth diversity measure, take the non-zero species proportions (note – proportions, so they all sum to 1, not counts), and raise them each (individually) to the power q. Then add all of the results together, and finally raise the sum to the power 1/(1-q)."
+> "For the $q^{th}$ diversity measure, take the non-zero species proportions 
+(note – proportions, so they all sum to 1, not counts), and raise them each 
+(individually) to the power $q$. Then add all of the results together, and 
+finally raise the sum to the power $\frac{1}{1-q}$."
 
 This measure always gives a result between 1 and $N_s$, where $N_s$ is the 
 total number of species. Where one species completely dominates and the others 
 are not observed we will see "effectively" only 1 species, and where all 
 species are exactly equally abundant, we will count them all equally, and 
 effectively see the full $N_s$ species. Other species distributions will fall 
-somewhere in between. The species richness of a population is $D^0$, and the 
-Simpson diversity of a population is $\frac{1}{D^2}$.
+somewhere in between. The species richness of a population is $D_0$, and the 
+Simpson diversity of a population is $\frac{1}{D_2}$.
 
 ## Tasks
 
@@ -71,7 +74,7 @@ Now write two more new functions to calculate species richness and Simpson
 diversity that do almost no work themselves, but instead just call this first 
 function to do the work with the right arguments, and then transform the
 results if necessary as detailed above -- this is just like 
-`plot_populations()` in the ProgInR package, which does some work and then 
+`plot_populations()` in the `RPiR` package, which does some work and then 
 calls `plot()`, or `cleanup_timesteps()`, which calls `cleanup_times()`, 
 rather than calculating the values directly in the function like you did in
 Project 1. Note the functions you write here should produce exactly the same
@@ -83,15 +86,17 @@ the same argument.
 Run the three functions on the populations provided and check that your results 
 are identical to the original functions (though the diversity of `rand.pop`, 
 `quadrat.pop` and `quadrat10.pop` will only be the same if you use the same 
-random set of values / run them at the same time!). Remember that to run both 
+random set of values / run them at the same time!) Remember that to run both 
 sets of functions in the same script you will need to make sure that the 
 functions have different names or they will overwrite one another.
 
 You will almost certainly find that `one.pop` now has a different species 
-richness (if not, then well done though!). This is probably because you are not 
+richness (if not, then well done though!) This is probably because you are not 
 looking only at the non-zero species abundances. If so, rewrite your code to 
-exclude zeros from the proportions... Hint: remember that `a[a < 3]` will 
-return those elements of a vector a which are less than 3.
+exclude zeros from the proportions. 
+
+*Hint:* remember that `a[a < 3]` will return those elements of a vector a which 
+are less than 3.
 
 Note that here, and throughout these exercises, if you want to -- it's not
 compulsory – you can check the values of the diversity function itself by 
@@ -101,31 +106,29 @@ values of the `qs` argument.
 
 ## Report
 
-Write a script that loads in the function files from both Project 1 and this 
-exercise (or loads the library you have written) and shows that they generate 
-the same results for $q = 0$ (Species richness) and $q = 2$
-(Simpson diversity). Again, your function code should be documented, so build a 
-report for that file too (or build the documentation for the package).
+Write a demo that loads your package (and therefore the functions you've written
+from both Project 1 and this exercise) and shows that each set of functions 
+generate the same results for $q = 0$ (Species richness) and $q = 2$
+(Simpson diversity). Again, your function code should be documented, so 
+remember to build the documentation for the package.
 
-### Important note
-Please remember the order of calculations (*i.e.* BODMAS – or that's the name I
-was taught), so:
+**Important note:** Please remember the order of calculations (*i.e.* BODMAS --
+Brackets, Orders, Division / Multiplication, Addition / Subtraction). If you 
+do things in the wrong order you could get any of these:
 
 $$
 a^{\frac{b}{c+d}} \neq \frac{a^b}{c}+d \neq \frac{a^b}{c+d} \neq a^{\frac{b}{c}}+d \neq a^{\frac{b}{c}+d}
 $$
 
-A reminder is in the maths intro you did on the first day of the course. If you 
-do things in the wrong order you could get any of the above. Generally, if you
+Generally, if you
 have an equation then do the things that are grouped most tightly together first
 (within clusters or brackets do the raising to the power first, then the
-multiplication and division, then the addition and subtraction). So in this 
-case you calculate $c+d$ because they are on a line of their own, then
+multiplication and division, then the addition and subtraction). So for
+$a^{\frac{b}{c+d}}$, you calculate $c+d$ because they are on a line of their 
+own, then
 $\frac{b}{c+d}$ because they cluster together, and only then 
 $a^{\frac{b}{c+d}}$. Or you can just use brackets in the right places to do it 
-all in one go if you're confident:
-
-$$a^{\left( \frac{b}{(c+d)} \right)}$$
+all in one go, like this: $a^{\left( \frac{b}{(c+d)} \right)}$.
 
 If in doubt, check it by calculating the intermediate bits by hand or with a 
 calculator and then compare it with your final answer.

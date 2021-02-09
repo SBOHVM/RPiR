@@ -1,5 +1,5 @@
 ---
-title: "Project 0: title"
+title: "Project 1: Species richness and Shannon diversity"
 output:
   learnr::tutorial:
     theme: lumen
@@ -22,17 +22,17 @@ set.seed(123)
 
 ## Overview
 
-*In this series of practicals you will develop the code to calculate diversity
+In this series of practicals you will develop the code to calculate diversity
 measures. In the first practical we will calculate the species richness and 
-Simpson diversity of a population.*
+Simpson diversity of a population.
 
 ## Background
 
 R provides us with many built-in datasets, but sadly none of them are counts of
 species abundances, so you will use the famous Barro Colorado Island dataset, a 
 30+ year study of a 50-hectare forest plot in Panama. We will use the number of 
-trees in the study site in 2010, which you have access to from the package you 
-have developed during the course.
+trees in the study site in 2010, which you have access to from the package you
+developed in Practical Series 4.
 
 You will also construct a couple of fake datasets that you will use for 
 comparison. Calculating the diversity of these populations (remembering that 
@@ -41,11 +41,11 @@ many observed species there are – the species richness – and give us measure
 of how evenly distributed the trees are amongst the tree species (the evenness 
 of the species distribution) by various measures. **Species richness** is a 
 very commonly used measure of diversity, which simply **counts the number of
-non-zero species abundances**; **Simpson diversity** is also common: it simply
-**calculates the species proportions from the counts (so the total sums to 1),
-square them all individually, and add them all together** – it tells us (amongst 
-other things) how likely two randomly chosen individuals are to be from the same 
-species.
+non-zero species abundances**; **Simpson diversity** is also commonly used: it
+simply **calculates the species proportions from the counts (so the total sums 
+to 1), squares them all individually, and add them all together** – it tells us
+(amongst other things) how likely two randomly chosen individuals are to be 
+from the same species.
 
 ## Tasks
 
@@ -68,7 +68,7 @@ num.trees <- sum(tree.pop)
 mean.trees <- mean(tree.pop)
 ```
 
-The next two lines sample a single random quadrat and sums up 10 random 
+The next two lines sample a single random quadrat and sum up 10 random 
 quadrats, and store the results in `quadrat.pop` and `quadrat10.pop`,
 respectively:
 
@@ -89,17 +89,19 @@ rand50.pop <- as.vector(rmultinom(1, round(num.trees / 50), rep(1 / num.sp, num.
 ```
 
 Remember that `rep(x, size)` repeats `x`, `size` times to make a vector of
-length `size`, and `rmultinom()` draws from the **multinomial distribution**, in 
-this case the first call itself creates a population of 222,718 individuals 
-drawn from 301 species, each equally abundant (1/301).
+length `size`, and `rmultinom()` draws from the **multinomial distribution**, 
+in this case, `rand.pop` is a population of 222,718 individuals 
+drawn from 301 species, each equally abundant ($\frac{1}{301}$).
 
-Create a project (or a package), and in one file, write and document one
-function that takes a vector of abundances like the data above as an argument 
-and calculates the species richness from it. Hint: Applying a test to a vector 
+Create a package. Then write and document a function that takes a vector of
+abundances like the data above as an argument and calculates the species 
+richness from it. 
+
+*Hint:* Applying a test to a vector 
 of numbers, will apply the test to all of the numbers in the vector and produce 
-a vector of Booleans (`TRUE` or `FALSE`) values, so `c(1, 3, 5, 7) > 4` returns 
+a vector of booleans (`TRUE` or `FALSE`) values, so `c(1, 3, 5, 7) > 4` returns 
 `c(FALSE, FALSE, TRUE, TRUE)`. And `sum()` will count the number of `TRUE`s in 
-a such vector of booleans. If you think about it, you should be able to see how 
+such a vector of booleans. If you think about it, you should be able to see how 
 to use these two ideas to count the number of non-zero abundances in a 
 population.
 
@@ -122,16 +124,11 @@ means a higher diversity for the Simpson diversity measure.
 
 ## Report
 
-In the project or package that you have created, and write a script that loads 
-in the functions (either using `source()` on the file if you are using a 
-project, or by building the package and calling `library()` on the package in
-other case). The script then needs to read in the BCI data and in the rest of 
-it you should generate a report that shows some kind of plot of each of the 
-series of counts, and then calculates their species richness and Simpson 
-diversity. If your function code is also be documented using the notebook 
-report format, build a report for that file too. If it is a package, I should 
-be able to use `?species_richness` or whatever you have called the functions to 
-read the help files.
+Write a demo that loads in the functions (by calling `library()`), 
+reads in the BCI data, and generates a report that shows some kind of plot of 
+each of the series of counts and then calculates their species richness and 
+Simpson diversity. Check that your functions also generate appropriate help 
+files (*e.g.* `?species_richness`).
 
 Remember to commit the code once you are happy before moving on to the next 
 exercise – you can always come back later and make further commits if you 
@@ -140,11 +137,11 @@ subsequent exercises.
 
 ## Note on function names
 
-Note that you will often need to refer back to functions in later exercises, as 
-you did occasionally in the practicals, and you will be writing several very 
-similar functions in successive exercises that you might be tempted to give the 
-same names. You will need to make sure they do not have identical names though 
-or you won't be able to call them all. The simplest way of doing this might be 
+Note that you will often need to refer back to functions in later exercises (as 
+you did in the practicals) and you will be writing several very 
+similar functions in successive exercises. You will need to make sure they do 
+not have identical names or you won't be able to call them all. 
+The simplest way of doing this might be 
 to number them and call them `species_richness_1`, `species_richness_2`, *etc.* 
 depending on what exercise you are in, but you are welcome to find a more 
 elegant solution – anything that distinguishes them is fine.

@@ -1,5 +1,5 @@
 ---
-title: "Project 0: title"
+title: "Project 4: Diversity profile"
 output:
   learnr::tutorial:
     theme: lumen
@@ -22,9 +22,9 @@ set.seed(123)
 
 ## Overview
 
-*At the end of the last practical we looked at the diversity of a population 
+At the end of the last practical we looked at the diversity of a population 
 using a variety of different diversity measures. We now want to be able to do 
-that more easily so that we can examine the diversity profile of a population.*
+that more easily so that we can examine the diversity profile of a population.
 
 ## Background
 
@@ -36,18 +36,18 @@ species drops as $q$ increases, and you may remember that I said that this is
 because $q$ is a measure of how much we care about evenness of the species 
 abundances. At $q = 0$, we don't care at all, and the rarest species counts as 
 much as the most common; at $q = \infty$ we care only about evenness, and not 
-about the actual number of species present. When we plot $D^q$ against $q$,
+about the actual number of species present. When we plot $D_q$ against $q$,
 profiles which drop away quickly are indicative of uneven distributions of 
-species, whereas profiles which are more insensitive to $q$ show more evenly 
-distributed species, where none is much more abundant than any other.
+species, whereas profiles which are less sensitive to $q$ show more evenly 
+distributed species (none much more abundant than any other).
 
 ## Tasks
 
-We want to plot $D^q$ against $q$ for a variety of values of $q$ -- say from 
+We want to plot $D_q$ against $q$ for a variety of values of $q$ -- say from 
 0 to 10 in small steps. First call your general diversity function with a vector 
 of values for $q$ instead of a single value. You will probably get a warning 
 message, and in any event you will only get a single result, whereas you wanted 
-a result for each value of q. This is because the raise-to-the-power function 
+a result for each value of $q$. This is because the raise-to-the-power function 
 `^` does not understand that you want to raise each species proportion to the 
 first power, then each to the second power, and so on in turn and instead raises 
 the first proportion to the first power, the second to the second, and so on. 
@@ -61,9 +61,9 @@ happening again! You will need to rewrite all of your specific functions so they
 call the new function.
 
 Now write a completely new function to calculate a series of diversity measures 
-for a vector of values of q given as a second argument (*e.g.* `c(0, 0.1, 3.4, 
+for a vector of values of $q$ given as a second argument (*e.g.* `c(0, 0.1, 3.4, 
 7, 15)` or `0:20`, etc.). In the function, you should just loop over all of the 
-values of q given to it as an argument (just like your original diversity 
+values of $q$ given to it as an argument (just like your original diversity 
 function took one value of $q$ as an argument) and then just call your original 
 function with each value of $q$ (and the population) in turn. We want to reuse 
 our code from the last exercise as much as possible to avoid making new 
@@ -84,6 +84,6 @@ etc.
 
 ## Report
 
-Write a script that calculates these diversity profiles for each dataset and 
-plots them against each other and comments on the differences between the 
+Write a demo that calculates diversity profiles for each dataset, 
+plots them against each other, and comments on the differences between the 
 results.
