@@ -1,0 +1,45 @@
+---
+title: "Project 0: Setup"
+output:
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Final project.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
+gradethis::gradethis_setup()
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+
+## Overview
+
+In this series of practicals you will develop the code to calculate diversity
+measures. You will have to choose the names of functions and variables in your 
+code for yourself, and structure it appropriately, though some small amounts of
+guidance will be given.
+
+Remember that these practicals constitute the "project" part of the course, 
+which constitutes 50% of the marks, so well-structured and well-commented code, 
+and clear reports of the results, are very important. Any of the in-course 
+exercises that you haven't finished by the end of the course should be 
+completed in your own time.
+
+## R packages and GitHub
+
+Any work you do must be written as an R package and pushed to a GitHub 
+repository. Please make your repository private and add (just) me as a 
+collaborator. You must commit a change at least at the end of each
+exercise (*i.e.* Project 1, 2, 3, 4 and 5) with sensible commit messages stating 
+what you have just done. You are welcome to do more commits if this is useful 
+to you, and it's completely okay (and indeed normal) if you go back to earlier
+exercises and make further edits and commit them after completing later 
+exercises. 
