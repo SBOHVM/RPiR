@@ -1,0 +1,85 @@
+---
+title: "Project 0: title"
+output:
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Final project.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
+gradethis::gradethis_setup()
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+
+## Overview
+
+*So far, we have been using the true counts of our real (and imagined)
+populations. Ordinarily we have only a small proportion, a sample, of this data. 
+We will now investigate how much it matters if we only have a small sample of 
+data to work with rather than the whole picture.*
+
+## Background
+
+Usually we are not in the happy situation of having a massive dataset and only 
+wanting to look at part of it, but in fact it is not as rare an event as you 
+might think. In this context, it turns out that some diversity measures are very 
+sensitive to the amount of data that has been collected, and so if you want to 
+compare two populations to identify the more diverse, you may need to subsample 
+the larger dataset to the size of the smaller to make a fair comparison.
+
+## Tasks
+
+There are several ways of subsampling a population like we have here. The 
+simplest way to **approximate** the process is to use `rmultinom()` to generate 
+a small dataset with appropriate probabilities as we did in Project 1 to create 
+`rand.pop`. Switch to your BCI data package, and write and document a function 
+(putting it alongside the `sample_by_species`, etc.) to subsample a dataset to a 
+given size called `sample_by_individuals` (perhaps using this `rmultinom` 
+function) – it can take a vector of population counts and a sample size as its 
+arguments and return a vector of sample counts. Note this is slightly different 
+from the other `sample_xxx` functions that I provided that take the whole 
+`bci_2010` dataset as an argument (a matrix, not a vector). That's absolutely 
+fine.
+
+Once you're happy with it, commit the changes and push them to GitHub. If you 
+want to, you can get your collaborator to check it over (only this package, not 
+your project as a whole), but you are under no obligation to do so. Make sure 
+the rest of that package is correct, with all of the documentation, etc. looking 
+good, as this is the version of that package that I will be assessing for 
+Practical 1.
+
+Incidentally, can you work out why this is only an approximation? Can you think 
+of a better solution? This is not easy (or I can't see how to do it easily 
+anyway!), so don't worry if you just use the suggested method. If you can work 
+out what's wrong, put an explanation into the documentation for the function.
+
+## Running the code / Report
+
+Now go back to the project / package you have been using for these current 
+exercises and create a new report script. For each dataset in turn that has the 
+full number of individuals in (*i.e.* not `quadrat.pop`, `quadrat10.pop` or 
+`rand50.pop`), plot the diversity profile of the full dataset, and then plot the 
+diversity profile of a subsample of 10 individuals, then 100, 1000, 10000, etc. 
+until you reach the full population size. See what effect sample size has on 
+diversity for different values of q. At this point you have two choices:
+
+**Either** (a more qualitative, graphical project) look at plots of the full 
+dataset, and then multiple repeats of, say, 100 or 1000 individuals and see how 
+variable your answers are with small samples, investigating issues arising from 
+not collecting enough data in as much detail as you like...
+
+**Or alternatively** (a more analytical project) you could choose to run 
+analyses on the different populations and subsamples of them, and then repeat 
+the same analyses on the exact same populations and subsamples using our 
+`rdiversity` package and compare the results numerically (as in Project 3, 
+remember that you can test whether two numbers are approximately equal to each 
+other using `if (abs(x-y) < 0.000001)`) to ensure they give the same results.
