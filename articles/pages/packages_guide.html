@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.66.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.66.1</span>
       </span>
     </div>
 
@@ -358,7 +358,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <h2 class="hasAnchor">
 <a href="#functions-and-documentation" class="anchor"></a>Functions and documentation</h2>
 <p>Now I’m going to add a new function (you can add any function you like). Make sure the name of your function is the same as the file you’re writing in and save it in the <span style="color: #de77ae;">R</span> directory. I’ve also added some documentation above the function (details described below).</p>
-<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> in the package root to automatically generate the documentation files in the <span style="color: #de77ae;">man</span> directory. After which you can run <code>?my_plot</code> to look at it.</p>
+<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> in the package root to populate the <span style="color: #de77ae;">NAMESPACE</span> and automatically generate the documentation files in the <span style="color: #de77ae;">man</span> directory. After which you can run <code>?my_plot</code> to look at it.</p>
 <p><img src="images/packages/12.png" width="100%" style="display: block; margin: auto;"></p>
 <p>The first line is the title.</p>
 <pre><code>#' my_plot</code></pre>
