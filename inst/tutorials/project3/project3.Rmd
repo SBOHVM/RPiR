@@ -1,0 +1,135 @@
+---
+title: "Project 3: Shannon entropy and the Berger-Parker index"
+output:
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Final project.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
+gradethis::gradethis_setup()
+
+knitr::opts_chunk$set(error = TRUE)
+set.seed(123)
+```
+
+
+## Overview
+
+We are now going to look at two special cases, where the equation we used 
+before needs to be adapted -- Shannon entropy, which 
+is $\log(D_1)$, and the Berger-Parker index, which is $\frac{1}{D_\infty}$, and adapt the code to cope with these.
+
+$$D_1 = \prod_{i \in \{1 \dots N_S, p_i \neq 0\}} p_i^{-p_i}$$
+
+$$D_\infty = \frac{1}{\max_i p_i}$$
+
+## Background
+
+**Shannon entropy** is an extremely well-known mathematical measure of the
+information content of a set of data. It is used here as a measure of 
+"surprise" -- how surprising the species of the next individual observed in a 
+sequence is likely to be. Where there is only 1 species, each observation is 
+the same, and there is no surprise. However, when there are lots of species 
+that are all equally abundant (we are ignoring how well mixed the population 
+is), every encounter is likely to surprise us.
+
+The **Berger-Parker** index simply tells us how dominant the most abundant 
+species is. It ignores everything else. The lower the index, the less dominant 
+the most abundant species is, and so the more other species are also observed.
+
+## Tasks
+
+You may want to copy your existing function code from Project 2 as a starting 
+point for this exercise. If you do, remember that you need different function 
+names in this exercise so that they don't conflict. 
+
+You will be 
+writing a function to calculate diversity, and then two functions to calculate 
+species richness and Simpson diversity from it as you did in Project 2. Then 
+you need to write two new very simple functions which calculate the Shannon 
+entropy and the Berger-Parker index, using the generic function you created 
+above and **not** by calculating them from scratch (they will also need the 
+small amount of additional calculation – Shannon entropy is actually 
+$\log(D_1)$ and Berger Parker is $\frac{1}{D_\infty}$ – as detailed above in 
+the overview). You will probably find that the functions as written do not 
+work! You may choose to test what the results should be again by comparing the 
+outputs from the generic function at $q=1$ and $q=\infty$ (infinity, written as 
+`Inf` in R) to matching results from the `rdiversity` package.
+
+You should see that the generic function from Project 2 produces very different 
+answers for a value of $q = 1$ and a value near 1 (say $q = 0.99$ or 
+$q = 1.01$), and similarly for $q = \infty$ and a reasonably large number (say 
+$q = 20$ or $q = 30$). In fact, you should actually get errors 
+for exactly 1 and $\infty$, though you may in fact just produce the wrong 
+answers (that are inconsistent with "nearby" numbers). In the former case, this 
+is because we calculate $\frac{1}{0}$ in the equation (which is not a number), 
+and in the latter we 
+have a rounding error and end up calculating $0^0$ instead of 
+$0.000001^{0.000001}$ which turn out to be very different 
+numbers.
+
+You will need to rewrite the general function using: 
+
+```{r, eval = FALSE}
+if (some_test) {
+  # do something
+} else if (some_other_test) {
+  # do something different
+} else {
+  # a third thing
+}
+``` 
+
+So that it checks for these two specific values of $q$, and instead use 
+the following two equations: 
+
+$$D_1 = \exp(-\sum(p \times \log(p)))$$
+$$D_\infty = \frac{1}{\max(p)}$$
+
+where $p$ is the vector of non-zero species proportions.
+
+You should to end up with the updated general function and the four specific 
+functions that call this new updated function to calculate the four measures of 
+diversity we have discussed so far.
+
+## Running the code
+
+Run the two new functions again to make sure there are no errors, and also 
+make sure that the generic function now gives the same (or very similar) 
+results for 1 and 1.01, and for 20 and $\infty$.
+
+**Note:** 
+It is just possible that you may find a problem with the code still not giving 
+you the correct answer when $q=1$. You can test for $q$ being infinity by just by 
+comparing the value to `Inf`, but this doesn't work reliably for other numbers 
+– what goes wrong is a rounding error that is very common in computer 
+programming. Whole numbers cannot be correctly represented as decimals without 
+small errors creeping in – so 1 may actually appear as 1.000000000001 – and 
+testing whether it is then equal to 1 will fail. Instead you should test 
+whether it is sufficiently close to 1 for your purposes. Fortunately, we can do 
+this by saying `if (abs(q-1) < 0.000001)`, say, instead of `if (q==1)`, which 
+will check whether you are within 0.000001 of 1 -- *i.e.* 0.999999 to 1.000001. 
+I've picked 0.000001, but you can pick another value if it seems better. R 
+actually provides a number for this itself called the "machine 
+epsilon", `.Machine$double.eps`, which is about $10^{-16}$, but it may 
+be too small for our purposes. People often use `sqrt(.Machine$double.eps)` as 
+a compromise (about $10^{-8}$). I honestly don't know why except that it looks 
+quite technical, but feel free to use it if you like!
+
+## Project
+Now write a demo that loads in this new functionality and then calculates the 
+four diversity measures we have discussed for each dataset.
+
+The demo should then call the general function directly (not the 4 specific 
+functions) and just calculate the general diversity measures for the datasets 
+provided with $q = 0$, 1, 2, and $\infty$ (remember, these correspond to the 4 
+individual diversity measures we have investigated so far). Do you see a 
+progression in the values you observe within each set of population counts as 
+$q$ increases? Comment on this in the report.
