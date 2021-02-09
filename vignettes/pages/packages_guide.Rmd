@@ -352,20 +352,24 @@ the `my_demo` demo.
 ## Add data
 
 The next thing we're going to do is add data to our package. To do this, run
-`usethis::use_data_raw()`. This will create a new directory, called `data-raw` 
-and within it a file called <span style="color: #de77ae;">DATASET.R</span>. We 
-should put our raw, unedited data in this directory. Any code we use to process 
-our data should be written in <span style="color: #de77ae;">DATASET.R</span>. 
-Note that if you have multiple datasets, it might make sense to rename this processing file. The processing file should end up looking something like this:
+`usethis::use_data_raw("BCI")`. This will create a new directory, called
+`data-raw` and within it a file called
+<span style="color: #de77ae;">BCI.R</span>. We should put our raw, unedited data
+in this directory. Any code we use to process our data should be written in
+<span style="color: #de77ae;">BCI.R</span>. The processing file should end up
+looking something like this:
 
 ```{r, eval = FALSE}
+## code to prepare `BCI` dataset goes here
+
 # Read the data
-mydataset <- read.csv("mydataset.csv", header = TRUE)
+raw.data <- read.csv("myrawdata.csv", header = TRUE)
 
 # Process the data
+BCI <- some_tidying_process(raw.data)
 
 # Add the data to your package
-usethis::use_data(mydataset, overwrite = TRUE)
+usethis::use_data(BCI, overwrite = TRUE)
 ```
 
 Note that in this example, our dataset will be named `mydataset`. You might 
