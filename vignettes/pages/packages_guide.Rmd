@@ -349,6 +349,62 @@ After which, we can run `demo(package = "packagename")` to list all of the
 demos in our package, or `demo("my_demo", package = "packagename")` to run 
 the `my_demo` demo.
 
+## Add data
+
+The next thing we're going to do is add data to our package. To do this, run
+`usethis::use_data_raw()`. This will create a new directory, called `data-raw` 
+and within it a file called <span style="color: #de77ae;">DATASET.R</span>. We 
+should put our raw, unedited data in this directory. Any code we use to process 
+our data should be written in <span style="color: #de77ae;">DATASET.R</span>. 
+Note that if you have multiple datasets, it might make sense to rename this processing file. The processing file should end up looking something like this:
+
+```{r, eval = FALSE}
+# Read the data
+mydataset <- read.csv("mydataset.csv", header = TRUE)
+
+# Process the data
+
+# Add the data to your package
+usethis::use_data(mydataset, overwrite = TRUE)
+```
+
+Note that in this example, our dataset will be named `mydataset`. You might 
+want to choose a more informative name. 
+
+Next we need to generate the packaged data by running the processing script. 
+The `use_data()` function will create a
+<span style="color: #de77ae;">data</span> directory, within which will be
+an rds file containing our dataset.
+
+The next step is to open our <span style="color: #de77ae;">.gitignore</span>
+file and add `data-raw` on a new line to ignore the contents of this directory. 
+The reason being, the contents of <span style="color: #de77ae;">data-raw</span> 
+are not part of the package (installable data exists 
+within your <span style="color: #de77ae;">data</span> directory) and we don't 
+want to upload these large files to GitHub.
+
+Next we should document our data (more info 
+[here](https://r-pkgs.org/data.html). To do that, we need to create a
+<span style="color: #de77ae;">data.R</span> file in the 
+<span style="color: #de77ae;">R</span> directory. It should look something like
+this:
+
+```{r, eval = FALSE}
+#' data
+#' 
+#' Description of mydataset
+#' 
+#' @source \url{http://somewhere.important.com/}
+"mydataset"
+```
+
+As usual, we need to run `devtools::document()` in the package root to automatically
+generate the documentation files and then `devtools::install()` to install our
+package.
+
+After which, we can run `data(package = "packagename")` to list all of the 
+data in our package.
+
 ## Final thoughts
 
 Whenever you make a change to your package (particularly when you're pushing
@@ -382,3 +438,8 @@ devtools::install_github("IBAHCM/packagename")
 ```
 
 Go ahead and try to install my package. Try to run the demo. 
+
+Note that if for some reason you can't install a package using 
+`install_github()`, you can clone a repository as you did
+[here](https://ibahcm.github.io/RPiR/articles/pages/rstudio.html) and instead 
+run `devtools::install()` in the package root, in the usual way.
