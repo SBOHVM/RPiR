@@ -1,5 +1,5 @@
 ---
-title: "Practical 4-2"
+title: "Practical 4-2: Provide some helper functions through the package"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students add functions and documentation to a data package.
+  Students add some functions to the data package.
 ---
 
 ```{r setup, include=FALSE}
