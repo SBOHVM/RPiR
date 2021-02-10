@@ -1,5 +1,5 @@
 ---
-title: "Practical 4-2: Add a package demo"
+title: "Practical 4-3: Add a package demo"
 output: 
   learnr::tutorial:
     theme: lumen
