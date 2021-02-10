@@ -383,9 +383,6 @@ BCI <- some_tidying_process(raw.data)
 usethis::use_data(BCI, overwrite = TRUE)
 ```
 
-Note that in this example, our dataset will be named `mydataset`. You might 
-want to choose a more informative name. 
-
 Next we need to generate the packaged data by running the processing script. 
 The `use_data()` function will create a
 <span style="color: #de77ae;">data</span> directory, within which will be
