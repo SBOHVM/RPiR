@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.69.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.69.2</span>
       </span>
     </div>
 
@@ -412,6 +412,9 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <li>
 <p>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file (lines 15-16). This can be automated using <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package("ggplot2", type = "Imports")</a></code>.</p>
 <p><img src="images/packages/13.png" width="100%" style="display: block; margin: auto;"></p>
+<p>Note that if you need to add a dependency on a package that exists within a GitHub repository, you can use this instead:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_dev_package</a></span><span class="op">(</span><span class="st">"RPiR"</span>, <span class="st">"Imports"</span>, remote <span class="op">=</span> <span class="st">"IBAHCM/RPiR"</span><span class="op">)</span></code></pre></div>
 </li>
 <li>
 <p>Add an <code>@import</code> tag to the <span style="color: #de77ae;">packagename-package.R</span> file (see line 15).</p>
@@ -440,7 +443,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <h2 class="hasAnchor">
 <a href="#add-data" class="anchor"></a>Add data</h2>
 <p>The next thing we’re going to do is add data to our package. To do this, run <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data_raw("BCI")</a></code>. This will create a new directory, called <code>data-raw</code> and within it a file called <span style="color: #de77ae;">BCI.R</span>. We should put our raw, unedited data in this directory. Any code we use to process our data should be written in <span style="color: #de77ae;">BCI.R</span>. The processing file should end up looking something like this:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## code to prepare `BCI` dataset goes here</span>
 
 <span class="co"># Read the data</span>
@@ -455,7 +458,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <p>Next we need to generate the packaged data by running the processing script. The <code><a href="https://usethis.r-lib.org/reference/use_data.html">use_data()</a></code> function will create a <span style="color: #de77ae;">data</span> directory, within which will be an rds file containing our dataset.</p>
 <p>The next step is to open our <span style="color: #de77ae;">.gitignore</span> file and add <code>data-raw</code> on a new line to ignore the contents of this directory. The reason being, the contents of <span style="color: #de77ae;">data-raw</span> are not part of the package (installable data exists within your <span style="color: #de77ae;">data</span> directory) and we don’t want to upload these large files to GitHub.</p>
 <p>Next we should document our data (more info <a href="https://r-pkgs.org/data.html">here</a>. To do that, we need to create a <span style="color: #de77ae;">data.R</span> file in the <span style="color: #de77ae;">R</span> directory. It should look something like this:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' data</span>
 <span class="co">#' </span>
 <span class="co">#' Description of mydataset</span>
@@ -501,6 +504,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <div id="final-thoughts" class="section level2">
 <h2 class="hasAnchor">
 <a href="#final-thoughts" class="anchor"></a>Final thoughts</h2>
+<p>If you get stuck and need to troubleshoot your package, try running <code><a href="https://devtools.r-lib.org//reference/check.html">devtools::check()</a></code>. This will build your package in a clean environment and potentially highlight any issues that might be causing problems.</p>
 <p>Whenever you make a change to your package (particularly when you’re pushing to GitHub), you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used in a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>.</p>
 <p>The version of your package is recorded in the <span style="color: #de77ae;">DESCRIPTION</span> file, like this:</p>
 <pre><code>Version: 0.1.0</code></pre>
