@@ -206,9 +206,12 @@ usethis::use_data_raw(&quot;bci_taxa&quot;)</code></pre>
 <p>Now copy the files you have downloaded to the <span style="color: #1697C0;">data-raw</span> folder that has just been created inside the R package, and unzip the <span style="color: #1697C0;">ViewFullTable.zip</span> file into the same folder. You can now delete the zip file if you like. Now we need to make sure that none of these files make it into your git repo by accident. Run:</p>
 <pre class="r"><code>usethis::edit_git_ignore(&quot;project&quot;)</code></pre>
 <p>And add the following lines to the end of the <span style="color: #1697C0;">.gitignore</span> file that is opened:</p>
-<pre class="r"><code>ViewFullTable
+<pre class="r"><code>ViewTax.txt
 ViewFullTable.zip
-ViewTax.txt</code></pre>
+ViewFullTable
+TSMAttributes.txt
+ViewFullTable.txt
+ViewFullTable.pdf</code></pre>
 <p>Now go to the git pane in RStudio, and make sure that the none of the files you just downloaded show up in the pane. Now commit everything and create a suitable commit message for these initial files. Now create a new R file in the <span style="color: #1697C0;">data-raw</span> folder. This will be the file you run to put all of the data into the package. It should contain the following:</p>
 <pre class="r"><code># Put the datasets into the package
 library(dplyr)
