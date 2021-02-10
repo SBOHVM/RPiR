@@ -121,9 +121,12 @@ And add the following lines to the end of the
 <span style="color: #1697C0;">.gitignore</span> file that is opened:
 
 ```{R, eval = FALSE}
-ViewFullTable
-ViewFullTable.zip
 ViewTax.txt
+ViewFullTable.zip
+ViewFullTable
+TSMAttributes.txt
+ViewFullTable.txt
+ViewFullTable.pdf
 ```
 
 Now go to the git pane in RStudio, and make sure that the none of the files you
