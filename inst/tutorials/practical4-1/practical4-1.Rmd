@@ -265,9 +265,52 @@ GitHub.
 First you need to edit the <span style="color: #1697C0;">DESCRIPTION</span> file
 (more [here](https://r-pkgs.org/description.html) so that it contains the right
 information about you and the package, and you need to create a documentation
-file for the package in the <span style="color: #1697C0;">R</span> folder.
-You'll see details on how to do that 
+file for the package in the <span style="color: #1697C0;">R</span> folder so
+that `?BCI` returns a description. You had this in the package for the third
+practical series, but you'll see details on how to do that 
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
+
+Create a new file in the <span style="color: #de77ae;">R</span> 
+folder – I’m going to call it <span style="color: #de77ae;">githubusernameBCI-package.R</span> 
+because the convention is {packagename}-package.R. Then describe your package
+(most easily lifted from the <span style="color: #de77ae;">DESCRIPTION</span> file):
+
+```{r eval = FALSE}
+#' Barro Colorado Island data package 
+#'
+#' Package to hold the BCI data (or whatever) – maybe also mention something
+#' about these functions now, and put that in the DESCRIPTION too. And then
+#' put it in the README.md file. And don't forget to reference the source of
+#' the data correctly.
+#'
+#' @import magrittr 
+#'
+#' @name githubusernameBCI-package
+#' @aliases githubusernameBCI
+#' @docType package 
+#'
+NULL
+```
+
+There are a few things going on here that you should notice for making packages 
+in the future. The first is that you need to say what your package is called –- 
+here I have given it two names `githubusernameBCI-package` and an alias of just
+`githubusernameBCI`, which you do with the `@aliases` command. Secondly, the
+`NULL` at the end of the file is included when there is no object associated
+with this documentation, which is the case here, since this file contains the
+package documentation, as defined explicitly in the `@docType` tag (more info
+[here](http://r-pkgs.had.co.nz/man.html#man-packages)). Finally, if you are
+using any packages in any of your functions, you may want to import them into
+your package here. This is done using `@import` –- see more
+[here](http://r-pkgs.had.co.nz/namespace.html). You can then put the same, or a
+similar, package description into the
+<span style="color: #de77ae;">README.md</span> file in the package so that 
+people going to GitHub will see what the package that you have created does 
+without having to install it. Note that GitHub README pages use a special type 
+of markdown called Git Flavored Markdown; more information can be found here https://docs.github.com/en/free-pro-team@latest/github/writing-on-github with 
+more general documentation here 
+https://guides.github.com/features/mastering-markdown/. Note that with markdown
+you don’t need to start lines with `#'`.
 
 Second, you need to document the data that you are providing in this package,
 by creating file(s) in the <span style="color: #1697C0;">R</span> folder again.
