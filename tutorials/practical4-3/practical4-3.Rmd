@@ -92,7 +92,7 @@ determined by a parameter $q$, which varies from 0, where relative abundance is
 ignored and only presence-absence is considered, to $\infty$, where we 
 only consider the most abundant species. This standard for dealing with 
 diversities as effective numbers, while far from universal, has now been pursued 
-for over 40 years and is broadly accepted – originally by Hill (1972), and
+for over 40 years and is broadly accepted – originally by Hill (1973), and
 subsequently, for instance, by Jost (2007), Leinster and Cobbold (2012), and 
 Reeve et al. (2016).
 
@@ -135,19 +135,14 @@ measuring several kinds of alpha, beta and gamma diversity, as detailed below.
 But in order to do some work with measures of taxonomic diversity, the taxonomy
 will first need to match the species abundance data from the BCI dataset,
 exactly. Here I’m assuming that you created the package {githubusernameBCI}, and
-in it `bci_taxa` contains the taxonomy of  all BCI species and `bci_2010`
+in it `bci_taxa` contains the taxonomy of all BCI species and `bci_2010`
 contains the 2010 BCI census.
 
 ```{r eval = FALSE}
 library(githubusernameBCI)
-library(dplyr)
 # First filter for the correct species, either using dplyr: 
-taxonomy <- bci_taxa %>%
-  filter(GenusSpecies %in% rownames(bci_2010)) %>%
-  unique() %>% as.data.frame()
-# or using convential code:
-taxonomy <- as.data.frame(unique(bci_taxa[bci_taxa$GenusSpecies %in% rownames(bci_2010),]))
-# Then order the species correctly:
+taxonomy <- as.data.frame(bci_taxa)
+# Then make sure the species are ordered correctly:
 rownames(taxonomy) <- taxonomy$GenusSpecies 
 taxonomy <- taxonomy[rownames(bci_2010),]
 ```
@@ -170,7 +165,9 @@ First use `tax2dist()` to create a distance matrix from a taxonomy, then use
 `dist2sim()` to create a similarity matrix from the distance matrix:
 
 ```{r eval = FALSE}
-taxSim <- tax2dist(taxonomy, c(GenusSpecies=0, Genus=1, Family=2, Other=3)) %>%
+library(magrittr)
+taxSim <- taxonomy %>%
+  tax2dist(c(GenusSpecies=0, Genus=1, Family=2, Other=3)) %>%
   dist2sim("linear") 
 metatax <- metacommunity(bci_2010, taxSim)
 results4tax <- meta_gamma(metatax, qs = seq(from = 0, to = 5)) 
@@ -239,7 +236,7 @@ different.
 
 Remember to add some text chunks into the report to describe the results for
 when you compile a report rather than run the demo. Now reinstall the package
-and make sure the demo runs successfully too. Don't forget to remove any html
+and make sure the demo runs successfully too. Don't forget to delete any html
 files that have been generated and don't commit them to the repo.
 
 ## Checking each others' packages
