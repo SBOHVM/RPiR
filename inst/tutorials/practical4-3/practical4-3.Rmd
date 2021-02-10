@@ -1,5 +1,5 @@
 ---
-title: "Practical 4-3"
+title: "Practical 4-2: Add a package demo"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students add functions and documentation to a data package.
+  Students write a demo for their data package.
 ---
 
 ```{r setup, include=FALSE}
@@ -19,82 +19,243 @@ set.seed(123)
 
 
 ## Overview
-*In this session you will add some functions to your biodiversity data package* 
-*to allow you to subsample from your data. The intention is just to see how we* 
-*add functions to a package, and to provide you with an example of what the*
-*documentation for a function in an R package looks like. You will also add the*
-*documentation for the package as a whole.*
+
+*In this session you will take the biodiversity data package you have created
+and write a demo that calculates a variety of diversity measures on the data.*
 
 ## Background
 
-It’s rarely the case that you will have access to a fully sampled dataset like
-that at BCI. To pretend that your dataset has incomplete data, I have provided 
-you with two functions on Moodle that will subsample the data in different ways. 
-The first, `sample_by_species()`, will sample from the dataset as if you were
-recording only some of the species (chosen at random) and ignoring the others. 
-The second, `sample_by_subcommunities()`, will record the counts from only 
-some of the subcommunities (here quadrats) and ignore the others. There are 
-other ways of subsampling or recording data incompletely, and we will
-investigate this in the project. You can see some documentation on how to write
-help files for functions at https://r-pkgs.org/man.html#man-functions and an
-older version at http://r-pkgs.had.co.nz/man.html#man-functions – these pages 
-are very useful and you should take a look.
+Now you have a package with your data in it, we can easily run analyses, simply
+starting each analysis script with the R command `library(githubusernameBCI)`. 
+
+There are an enormous number of different ways of measuring diversity, to the 
+extent that diversity itself has been declared a "non-concept" in the past (by
+Hurlbert, 1971), but nowadays they fit broadly within Whittaker’s framework of 
+three basic types of diversity: alpha, beta and gamma diversity.
+
+* Gamma diversity is the diversity of a metacommunity, the whole area being 
+studied, whether that is an ecosystem or a single study site;
+* Alpha diversity is the average diversity of the subcommunities that together
+comprise the metacommunity. The metacommunity can either be broken up into
+subcommunities spatially in the case of a landscape formed of several habitats,
+or temporally in the case of time series data from a single site;
+* Beta diversity is some measure of the differences between these 
+subcommunities. This is the most variable in definition of the three types of
+measure, and includes such concepts as turnover of species along a transect in
+space or time, the effective number of distinct subcommunities in a 
+metacommunity, the average distinctiveness of the constituent subcommunities,
+and many other related concepts. Tuomisto (2010) has made a brave attempt to
+make sense of these different meanings.
+
+All of these types of diversity can be measured in several different ways. The
+standard approach is often called "species diversity", where we treat all 
+species as distinct and all of our measures of alpha and gamma diversity are 
+counting in terms of **effective numbers of species**. However, we often need to 
+consider similarity between species, and this results in a wide variety of
+measures, from closely related ones such as counts of "distinct species"
+(species that are taxonomically unrelated) or "distinct evolutionary histories"
+(species that have no common ancestor in a phylogeny), to ones that are more
+peripherally connected such as "distinct functional groups" (species that are
+functionally distinct). Leinster and Cobbold (2012) have developed a framework 
+for working with all of these types of similarity consistently. Because beta 
+diversity measures are comparing subcommunities, they are generally unitless
+(measuring fractions or percentages) or are measured in terms of numbers of
+subcommunities; how similar two subcommunities are seen to be still entirely 
+depends on the type of similarity though, resulting in, for instance a count of
+"the effective number of phylogenetically / functionally / taxonomically
+distinct subcommunities". The relationship between alpha, beta and gamma has 
+been the source of many arguments – see, for example, Whittaker (1972), Jost
+(2007) and Reeve et al. (2016).
+
+Finally, I used the phrase "effective number" several times above. At one 
+extreme, when we disregard abundance and just look at presence-absence data,
+we measure "species richness" by simply counting the number of species present;
+at the opposite extreme, we have measures such as Berger-Parker which only look
+at dominance of the most abundant species. In between, we find measures such as
+Simpson and Shannon, where we weight our counting of species by their abundance. 
+For instance, Shannon entropy is a measure of the "surprise" or uncertainty 
+expected from the next observation, which is low if there are few species or one
+is dominant, but high when many are equally abundant. In all cases, the highest
+diversity is achieved when all species are equally abundant (and completely 
+distinct, when we are considering similarity). We therefore talk about the 
+"effective number of species" as:
+
+>the number of completely distinct, equally abundant species that would give us 
+the same value of diversity as the observed community. 
+
+This acts as a reference to allow fair comparisons to be
+made. In the case of species richness, this is just the richness itself, but for
+instance in the case of Shannon entropy, the *effective numbers equivalent* is 
+in fact the exponential of the entropy. For diversity measures that work in 
+terms of these effective numbers, the extent to which we weight by abundance is
+determined by a parameter $q$, which varies from 0, where relative abundance is 
+ignored and only presence-absence is considered, to $\infty$, where we 
+only consider the most abundant species. This standard for dealing with 
+diversities as effective numbers, while far from universal, has now been pursued 
+for over 40 years and is broadly accepted – originally by Hill (1973), and
+subsequently, for instance, by Jost (2007), Leinster and Cobbold (2012), and 
+Reeve et al. (2016).
 
 ## Tasks
 
-You simply need to download the R files for these functions from Moodle and put
-them in the <span style="color: #de77ae;">R</span> folder of your package, and
-edit the documentation for each of these functions and the 
-<span style="color: #de77ae;">DESCRIPTION</span> file of your package so that 
-all dependencies are included. Then regenerate the documentation and reinstall 
-the package from the <span style="color: #de77ae;">Build</span> menu. Doing this 
-should allow you to access the help files for these functions 
-(`?sample_by_species` and `?sample_by_communities`) and run the example code (by 
-calling `example(sample_by_species)`, for instance). 
+### Setting up R
 
-You should also create a description for the overall package, so that `?BCI` 
-returns a description, and you should put the same (or similar) text into the 
-<span style="color: #de77ae;">README.md</span> file for the package so that 
-people going to GitHub will see what the package that you have created does 
-without having to install it. Note that GitHub README pages use a special type 
-of markdown called Git Flavored Markdown; more information can be found here https://docs.github.com/en/free-pro-team@latest/github/writing-on-github with 
-more general documentation here 
-https://guides.github.com/features/mastering-markdown/. Note that with markdown
-you don’t need to start lines with `#'`.
+First, remember as you add in `library(xxx)` calls into your demo, you'll need to
+add them in as dependencies to the package using `usethis::use_package("xxx")`,
+otherwise other people may not be able to run the demo. To test the demo as you
+go along you may also need to install the packages in advance using
+`install.packages("xxx")`.
 
-To do this, create a new file in the <span style="color: #de77ae;">R</span> 
-folder – I’m going to call it <span style="color: #de77ae;">BCI-package.R</span> 
-because the convention is {packagename}-package.R. Then describe your package (most easily lifted 
-from the <span style="color: #de77ae;">DESCRIPTION</span> file):
+### Create the demo files
 
-```{r eval = FALSE}
-#' BCI data package 
-#'
-#' Package to hold the BCI data (or whatever) – maybe also mention something
-#' about these functions now, and put that in the DESCRIPTION too. And then
-#' put it in the README.md file. 
-#'
-#' @import magrittr 
-#'
-#' @name BCI-package
-#' @aliases BCI
-#' @docType package 
-#'
-NULL
+As in the last practical series, we're going to create a **demo** inside the
+package. In the <span style="color: #de77ae;">Files</span> tab, you may need to
+create a new <span style="color: #de77ae;">demo</span> folder. Then create an R
+script in that folder to contain your demo, call it
+<span style="color: #de77ae;">diversity-of-BCI.R</span>. Note in general you
+just have to make sure the name of the script has **no spaces in it**. Then
+(again, as before) create a new text file also in that folder called
+<span style="color: #de77ae;">00Index</span>,
+with **no file extension** to contain the list of the demos in your
+package. As you should know by now, each demo you create is entered into one
+line of this file with the demo name followed by a one-line description. For
+example, here, the demo file 
+<span style="color: #de77ae;">diversity-of-BCI.R</span> would have a line like:
+
+```
+diversity-of-BCI    Showing the diversity of the BCI forest plot.
 ```
 
-There are a few things going on here that you should notice for making packages 
-in the future. The first is that you need to say what your package is called – 
-here I have given it two names `BCI-package` and an alias of just `BCI`, which 
-you do with the `@aliases` command. Secondly, the `NULL` at the end of the file
-is included when there is no object associated with this documentation, which is
-the case here, since this file contains the package documentation, as defined
-explicitly in the `@docType` tag (more info here –
-http://r-pkgs.had.co.nz/man.html#man-packages). Finally, if you are using any 
-packages in any of your functions, you may want to import them into your 
-package. This is done using `@import` – see more here –
-http://r-pkgs.had.co.nz/namespace.html. You can then put the same, or a similar,
-package description into the <span style="color: #de77ae;">README.md</span> 
-file. Once you have redocumented and reinstalled everything, and checked that it 
-is all working, commit and push all of the changes to GitHub and ask your 
-collaborator to check that this works for them as well.
+For more details on how to create a demo go [here](https://r-pkgs.org/misc.html#demo).
+
+### Create the demo itself
+
+Now you're going to write the R script that will be the demo. The script will be
+measuring several kinds of alpha, beta and gamma diversity, as detailed below.
+But in order to do some work with measures of taxonomic diversity, the taxonomy
+will first need to match the species abundance data from the BCI dataset,
+exactly. Here I’m assuming that you created the package {githubusernameBCI}, and
+in it `bci_taxa` contains the taxonomy of all BCI species and `bci_2010`
+contains the 2010 BCI census.
+
+```{r eval = FALSE}
+library(githubusernameBCI)
+# First filter for the correct species, either using dplyr: 
+taxonomy <- as.data.frame(bci_taxa)
+# Then make sure the species are ordered correctly:
+rownames(taxonomy) <- taxonomy$GenusSpecies 
+taxonomy <- taxonomy[rownames(bci_2010),]
+```
+
+To create a metacommunity to analyse in the {rdiversity} package, you will need 
+to create an object of that type using `metacommunity()`, and then you can 
+calculate, for example, the gamma diversity of the whole metacommunity with the
+function `meta_gamma()` and plot the output with `plot()`:
+
+```{r eval = FALSE}
+library(rdiversity)
+meta <- metacommunity(bci_2010)
+results <- meta_gamma(meta, qs = seq(from = 0, to = 5)) 
+plot(diversity ~ q, type = "l", data = results)
+```
+
+To create a metacommunity that takes account of the similarity between species, 
+you need to input the similarity as a second argument to `metacommunity()`. 
+First use `tax2dist()` to create a distance matrix from a taxonomy, then use 
+`dist2sim()` to create a similarity matrix from the distance matrix:
+
+```{r eval = FALSE}
+library(magrittr)
+taxSim <- taxonomy %>%
+  tax2dist(c(GenusSpecies=0, Genus=1, Family=2, Other=3)) %>%
+  dist2sim("linear") 
+metatax <- metacommunity(bci_2010, taxSim)
+results4tax <- meta_gamma(metatax, qs = seq(from = 0, to = 5)) 
+lines(diversity ~ q, col=2, data = results4tax)
+```
+
+Finally, to create a metacommunity to analyse in {vegan}, you need to transpose 
+the axes of the abundance data matrix:
+
+```{r eval = FALSE}
+library(vegan)
+# Swap rows and columns 
+abundances <- t(bci_2010)
+# Calculate species richness (gamma diversity)
+specnumber(abundances, groups = 1) 
+```
+
+This loads the dataset and then calculates the species richness of the whole
+metacommunity. **It’s important to always use the `abundances` object when using
+the {vegan} package, and always use the `bci_2010` object when using
+{rdiversity} –- they need the data in opposite formats!**
+
+### Your own additions
+
+First, read the {rdiversity} package documentation and examples. You can find
+this by going to the GitHub repository (https://github.com/boydorr/rdiversity), 
+and clicking on the <span style="color: #1697C0;">docs: rdiversity</span> badge, 
+or by clicking the link to https://boydorr.github.io/rdiversity/.
+
+Then write a script to calculate and plot the gamma diversity and the normalised 
+alpha diversity for the 2010 BCI census, for a range of values of $q$, say 
+`qs = 0:5`; individuals of the same species have a taxonomic distance of zero 
+and each species is taxonomically distinct. Then repeat these calculations using
+taxonomic similarity, showing that there are fewer taxonomically distinct 
+species than there are species. Then do this again counting the effective number 
+of genera and families. Note that this can be achieved by using `tax2dist()` 
+with `c(GenusSpecies=0, Genus=0, Family=1, Other=1)` and 
+`c(GenusSpecies=0, Genus=0, Family=0, Other=1)`, respectively – these distance
+measurements say that two species in the same genus (or family) are zero
+distance apart, just like two individuals in the same species. As a result, the
+diversity measures following these instructions will simply count in effective
+numbers of genera or families, respectively, rather than species.
+
+Moving on to beta diversity, we now want to find out which quadrats in the BCI 
+study site are the most distinct. We can measure the average distinctiveness of 
+all of the quadrats in the plot using `raw_meta_beta()`, but you can also ask 
+for the distinctiveness of every quadrat individually using `raw_sub_beta()`. 
+Calculate that for a single value of $q$, say `qs=1`, and show a histogram of 
+the distinctivenesses (the diversity column) of the subcommunities. Sort the 
+data frame by distinctiveness and output just the highest values. Bearing in 
+mind that the first two digits of the quadrat name are an x-coordinate, and the
+second two are a y-coordinate, is there any pattern about these distinct areas?
+If so write about it in the report.
+
+A similar option in {vegan} is the function `betadiver()`. Look at the 
+documentation in R for this function – you will see that it can calculate a very 
+large range of different beta diversity measures – and calculate the beta 
+diversities for the subcommunities using the `"j"` Jaccard and `"sor"` Sorensen 
+similarity measures. This function calculates pairwise similarities between the 
+quadrats as `dist` objects. You can convert these to a matrix and then calculate 
+the average similarities to all of the quadrats by using `as.matrix()` and then 
+`rowMeans()`. You should be able to show that some of the identified quadrats 
+(with the lowest average similarity to the other quadrats) are the same, even
+though the exact beta diversity measure, and indeed even its direction, is 
+different.
+
+Remember to add some text chunks into the report to describe the results for
+when you compile a report rather than run the demo. Now reinstall the package
+and make sure the demo runs successfully too. Don't forget to delete any html
+files that have been generated and don't commit them to the repo.
+
+## Checking each others' packages
+
+Now push all of your changes to GitHub and check each other's packages to make
+sure the demo works.
+
+### A note on generating a report from a demo
+
+If you've installed a package directly using `devtools::install_github()`
+you can still generate a report from the demo as follows without cloning the
+repo:
+
+```{r eval = FALSE}
+rmarkdown::render(system.file("demo", "diversity-of-BCI.R", 
+                              package = "mypartnersBCIpackage"),
+                  output_dir = ".")
+```
+
+The report will be saved to the base folder of your current project (or whatever 
+your current working directory is). Check that it looks okay by opening it in a
+web browser (and delete the html file afterwards).
