@@ -499,6 +499,10 @@ You can now rejoin the instructions above
 
 ## Final thoughts
 
+If you get stuck and need to troubleshoot your package, try running 
+`devtools::check()`. This will build your package in a clean environment and 
+potentially highlight any issues that might be causing problems. 
+
 Whenever you make a change to your package (particularly when you're pushing
 to GitHub), you should try to get into the 
 habit of changing the version number. This is important because it allows
