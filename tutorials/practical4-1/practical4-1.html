@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 4-1</title>
+<title>Practical 4-1: Create a data package</title>
 
 
 <style type="text/css">
@@ -177,7 +177,7 @@ summary {
 
 
 
-<h1 class="title toc-ignore">Practical 4-1</h1>
+<h1 class="title toc-ignore">Practical 4-1: Create a data package</h1>
 
 </div>
 
@@ -188,29 +188,158 @@ summary {
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>When we think about biodiversity data, we generally think about the hypothesis we are testing, how we are going to collect the data, and how we need to analyse it to investigate that hypothesis. Little thought is usually given to how to store the data. This is a mistake! Large amounts of hard work in the field can be wasted by mistakes in storage. After regular backups so you don’t physically lose your data (if you’re not doing this, then you should think about it very hard), the next important thing to consider is whether you are always using the most up-to-date, error-free copy of your dataset.</p>
-<p>If your data is stored in one or more csv files or excel spreadsheets, you need to read that file into R. For that you need to know where it is. If you only have one copy of it on your computer, and you update that when you clean the data or add new records, then that is a single point of failure. If you accidentally make incorrect edits or delete the file, then you are entirely dependent on backups to recover from your mistakes.</p>
+<p>When we think about biodiversity data, we generally think about the hypothesis we are testing, how we are going to collect the data, and how we need to analyse it to investigate that hypothesis. Little thought is usually given to how to store the data. This is a mistake! Large amounts of hard work in the field can be wasted by mistakes in storage. After regular backups so you don’t physically lose your data <em>(if you’re not doing this, then you should stop whatever you’re doing and fix that now!)</em>, the next important thing to consider is whether you are <strong>definitely</strong>, <strong>always</strong> using the most up-to-date, error-free copy of your dataset when you carry out analyses.</p>
+<p>If your data is stored in one or more csv files or excel spreadsheets, you need to read that file into R. For that you need to know where it is. If you only have one copy of it on your computer, and you update that when you clean the data or add new records, then that is a single point of failure. If you accidentally make incorrect edits or delete the file, then you are entirely dependent on backups to recover from your mistakes (assuming you followed the instructions above and have a backup!).</p>
 <p>If, on the other hand, you create a new file every time you update the data, then all of your R scripts that do analyses on the data now have to refer to the new file, or you will need to copy the new data file to the projects where you are doing the analysis. If you don’t do either of these everywhere you are working on the data, one or more of your analyses may be using an out of date version of the data, and silently give incorrect answers.</p>
 <p>Even if your behaviour is perfect, and you never make mistakes with your data, then it is usually necessary to do some processing to the data before carrying out the analyses. This may be as simple as changing some of the column names in your tables so they are easier to work with in R (no spaces, for instance), some cleaning of the data to remove missing data, or some significant processing to turn records that are easy to collect into data that is easy to analyse. Such a script, just like the data, needs to be updated, and the code needs to be present wherever you carry out an analysis. It therefore suffers from exactly the same problems as the data itself.</p>
 <p>There is a simple(-ish!) solution though. You don’t need to carry around your own copy of <code>ggplot()</code> or <code>lmer()</code> in every script you write, so why should you have to do it with the data? There is one definitive version of <code>ggplot()</code> and <code>lmer()</code> on your computer, and you just refer to them by loading the {ggplot2} and {lme4} packages using the <code>library()</code> function. When these packages get updated to fix bugs or extend functionality, you just do it once by installing (normally updating) the R package, and then all of your scripts use the new version. So why not turn your data into an R package and do the same?</p>
+<p>You’ll go through the process of creating a package, processing data, inserting the data into the package, and building the package so that you can use it during the project work at the end of the course.</p>
 </div>
-<div id="section-tasks" class="section level2">
-<h2>Tasks</h2>
-<p>You need to download the Barro Colorado Forest Census Plot Data from the Smithsonian’s repository at <a href="https://repository.si.edu/handle/10088/20925" class="uri">https://repository.si.edu/handle/10088/20925</a>. Download files 3 and 4, the full census data (<span style="color: #1697C0;">ViewFullTable.zip</span>) and the taxonomic data on all of the species present (<span style="color: #1697C0;">ViewTax.txt</span>), and download <span style="color: #1697C0;">generate-data.R</span> and other files from Moodle. You’re now ready to start. Create a private repository on GitHub with a suitable name, and create a project based on that git repository. Store it somewhere sensible on your computer.</p>
-<p>We’ll go through the process of creating a package, processing the data, inserting the data into the package, and building the package so that you can use it during the class. Remember <strong>under no circumstances</strong> commit the raw BCI records to your repository – it’s far too big. I’ll show you how to ignore it so that you don’t do this by mistake. Once you have a working package, you’ll need to add documentation to remind you what the package does – see <a href="https://r-pkgs.org/description.html" class="uri">https://r-pkgs.org/description.html</a> and <a href="https://r-pkgs.org/data.html" class="uri">https://r-pkgs.org/data.html</a> for more information, and then you’ll be checking each other’s packages to make sure they work. You can add someone as a collaborator (so they can see your package) by going to <span style="color: #1697C0;">Settings &gt; Collaborators</span> from the repository web page.</p>
+<div id="section-tasks-storing-the-data" class="section level2">
+<h2>Tasks: storing the data</h2>
+<p>First, create a new package called <code>githubusernameBCI</code> (replacing <code>githubusername</code> with your actual GitHub username) as a git repository connected to GitHub as a repo in the <code>IBAHCM</code> organisation. Remember that a guide to creating packages on GitHub is available on the {RPiR} help pages <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html">here</a> if you’re not sure what to do.</p>
+<p>Generally, you would want to store the raw data from your work in the git repository so everything is archived and version controlled on GitHub. However, in this work, the dataset is not yours, and it’s so big it easily exceeds file limits for storage in GitHub. So, <strong>under no circumstances</strong> commit the raw records to your git repository –- it’s far too big. We’ll show you how to ignore it so that you don’t do this by mistake shortly, but just bear this in mind now so you ensure that you don’t – the moment you commit a file like this into a repo it’s hard to undo the error.</p>
+<p>Next, you need to download the Barro Colorado Forest Census Plot Data from the Smithsonian’s repository at <a href="https://repository.si.edu/handle/10088/20925" class="uri">https://repository.si.edu/handle/10088/20925</a>. Download files 3 and 4, the full census data (<span style="color: #1697C0;">ViewFullTable.zip</span>) and the taxonomic data on all of the species present (<span style="color: #1697C0;">ViewTax.txt</span>). Now create a folder to store these raw data in, and create the files you will use shortly to process the data:</p>
+<pre class="r"><code>usethis::use_data_raw(&quot;bci_2010&quot;)
+usethis::use_data_raw(&quot;bci_quadrats&quot;)
+usethis::use_data_raw(&quot;bci_taxa&quot;)</code></pre>
+<p>Now copy the files you have downloaded to the <span style="color: #1697C0;">data-raw</span> folder that has just been created inside the R package, and unzip the <span style="color: #1697C0;">ViewFullTable.zip</span> file into the same folder. You can now delete the zip file if you like. Now we need to make sure that none of these files make it into your git repo by accident. Run:</p>
+<pre class="r"><code>usethis::edit_git_ignore(&quot;project&quot;)</code></pre>
+<p>And add the following lines to the end of the <span style="color: #1697C0;">.gitignore</span> file that is opened:</p>
+<pre class="r"><code>ViewFullTable
+ViewFullTable.zip
+ViewTax.txt</code></pre>
+<p>Now go to the git pane in RStudio, and make sure that the none of the files you just downloaded show up in the pane. Now commit everything and create a suitable commit message for these initial files. Now create a new R file in the <span style="color: #1697C0;">data-raw</span> folder. This will be the file you run to put all of the data into the package. It should contain the following:</p>
+<pre class="r"><code># Put the datasets into the package
+library(dplyr)
+
+## Move to the data-raw subfolder to access the raw data
+devtools::wd(&quot;.&quot;, &quot;data-raw&quot;)
+
+## BCI data
+
+### Load individual BCI records
+data &lt;- read.delim(file.path(&quot;ViewFullTable&quot;, &quot;ViewFullTable.txt&quot;))
+
+### Load BCI taxonomic data, create new species column, and extract species
+taxa &lt;- read.delim(&quot;ViewTax.txt&quot;) %&gt;%
+  mutate(GenusSpecies = as.factor(paste(Genus, SpeciesName))) %&gt;%
+  filter(IDLevel == &quot;species&quot;)
+
+### Store species counts from 2010 census in package
+source(&quot;bci_2010.R&quot;)
+
+### Store quadrat metadata in package
+source(&quot;bci_quadrats.R&quot;)
+
+### Store taxonomic data in package
+source(&quot;bci_taxa.R&quot;)</code></pre>
+<p>This will load all of the raw data into R (this will take some time) and run the files you have created to process each of them and store them in the package. You now need to create the processing files. Actually, we provide them here.</p>
+<p>This is <span style="color: #1697C0;">bci_2010.R</span>:</p>
+<pre class="r"><code>library(dplyr)
+library(reshape2)
+
+# Clean data to remove secondary and dead stems of trees,
+# and species not in taxonomy
+records &lt;- data %&gt;%
+  filter(PrimaryStem == &quot;main&quot;, Status == &quot;alive&quot;, !is.na(QuadratName)) %&gt;%
+  filter(GenusSpecies %in% taxa$GenusSpecies) %&gt;%
+  select(GenusSpecies, PlotCensusNumber, QuadratName) %&gt;%
+  mutate(col=as.integer(floor(QuadratName/100)),
+         row=as.integer(QuadratName-col*100)) %&gt;%
+  filter(row &lt; 25)
+
+# Extract table at a single timepoint
+bci_2010 &lt;- records %&gt;% filter(PlotCensusNumber == 7) %&gt;%
+  select(GenusSpecies, QuadratName) %&gt;%
+  acast(GenusSpecies ~ QuadratName, fill = 0,
+        value.var = &quot;QuadratName&quot;, fun.aggregate = length)
+
+# Call columns Q.xxyy, and store package
+colnames(bci_2010) &lt;- sprintf(&quot;Q.%04d&quot;, as.integer(colnames(bci_2010)))
+
+# Store in package
+usethis::use_data(bci_2010, overwrite = TRUE)</code></pre>
+<p>It takes the massive Barro Colorado Island (BCI) dataset and extracts only the 2010 (7th) census and summarises it to extract a matrix of counts of known species of living trees in 20m x 20m quadrats across the site.</p>
+<p>This is <span style="color: #1697C0;">bci_quadrats.R</span>:</p>
+<pre class="r"><code>library(dplyr)
+library(tibble)
+
+# Work out useful information about the quadrats themselves
+## Note: they index from 0 and they are 20m x 20m quadrats
+bci_quadrats &lt;- records %&gt;% select(QuadratName, row, col) %&gt;%
+  unique %&gt;%
+  mutate(x = row * 20, y = col * 20, row = row + 1, col = col + 1) %&gt;%
+  mutate(Quadrat = sprintf(&quot;Q.%04d&quot;, as.integer(QuadratName))) %&gt;%
+  arrange(Quadrat) %&gt;%
+  as_tibble
+
+# Store in package
+usethis::use_data(bci_quadrats, overwrite = TRUE)</code></pre>
+<p>It provides metadata about the quadrats – where they are within the site – as a tibble (a prettier version of a data frame that the RStudio team have created).</p>
+<p>Finally, this is <span style="color: #1697C0;">bci_taxa.R</span>:</p>
+<pre class="r"><code>library(dplyr)
+library(tibble)
+
+# Discard species not identified to species level
+bci_taxa &lt;- taxa %&gt;% filter(IDLevel == &quot;species&quot;) %&gt;%
+  select(GenusSpecies, Genus, Family) %&gt;%
+  filter(GenusSpecies %in% rownames(bci_2010)) %&gt;%
+  unique %&gt;% as_tibble
+
+# Store in package
+usethis::use_data(bci_taxa, overwrite = TRUE)</code></pre>
+<p>This will turn the huge data frame containing all of the taxonomic records of the site into a tibble called <code>bci_taxa</code>, which just contains the species name (<code>GenusSpecies</code>), genus (<code>Genus</code>) and family (<code>Family</code>) of each living tree species on Barro Colorado Island (BCI) and stores it in the package.</p>
+<p>Finally you need to do three things:</p>
+<ol style="list-style-type: decimal">
+<li>Commit all of the scripts that you have just created</li>
+<li>Run the script that you created to generate the data files and commit them</li>
+<li>Add in all of the packages you are using as dependencies of this package</li>
+</ol>
+<p>The latter is easy, and it is something you are going to have to keep up to date as you develop any package – you need to check which libraries you load using <code>library(xxx)</code> in any script or demo, and which libraries you use by qualifying function calls with <code>xxx::xxx_function()</code>. You then need to run:</p>
+<pre class="r"><code>usethis::use_package(&quot;xxx&quot;)</code></pre>
+<p>to add the <code>xxx</code> package to those <em>imported</em> by your package in the <span style="color: #1697C0;">DESCRIPTION</span> file. See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for further details. Commit these changes to the repo too, and push them to GitHub.</p>
+</div>
+<div id="section-tasks-documenting-the-package" class="section level2">
+<h2>Tasks: documenting the package</h2>
+<p>First you need to edit the <span style="color: #1697C0;">DESCRIPTION</span> file (more <a href="https://r-pkgs.org/description.html">here</a> so that it contains the right information about you and the package, and you need to create a documentation file for the package in the <span style="color: #1697C0;">R</span> folder so that <code>?BCI</code> returns a description. You had this in the package for the third practical series, but you’ll see details on how to do that <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation">here</a>.</p>
+<p>Create a new file in the <span style="color: #de77ae;">R</span> folder – I’m going to call it <span style="color: #de77ae;">githubusernameBCI-package.R</span> because the convention is {packagename}-package.R. Then describe your package (most easily lifted from the <span style="color: #de77ae;">DESCRIPTION</span> file):</p>
+<pre class="r"><code>#&#39; Barro Colorado Island data package 
+#&#39;
+#&#39; Package to hold the BCI data (or whatever) – maybe also mention something
+#&#39; about these functions now, and put that in the DESCRIPTION too. And then
+#&#39; put it in the README.md file. And don&#39;t forget to reference the source of
+#&#39; the data correctly.
+#&#39;
+#&#39; @import magrittr 
+#&#39;
+#&#39; @name githubusernameBCI-package
+#&#39; @aliases githubusernameBCI
+#&#39; @docType package 
+#&#39;
+NULL</code></pre>
+<p>There are a few things going on here that you should notice for making packages in the future. The first is that you need to say what your package is called –- here I have given it two names <code>githubusernameBCI-package</code> and an alias of just <code>githubusernameBCI</code>, which you do with the <code>@aliases</code> command. Secondly, the <code>NULL</code> at the end of the file is included when there is no object associated with this documentation, which is the case here, since this file contains the package documentation, as defined explicitly in the <code>@docType</code> tag (more info <a href="http://r-pkgs.had.co.nz/man.html#man-packages">here</a>). Finally, if you are using any packages in any of your functions, you may want to import them into your package here. This is done using <code>@import</code> –- see more <a href="http://r-pkgs.had.co.nz/namespace.html">here</a>. You can then put the same, or a similar, package description into the <span style="color: #de77ae;">README.md</span> file in the package so that people going to GitHub will see what the package that you have created does without having to install it. Note that GitHub README pages use a special type of markdown called Git Flavored Markdown; more information can be found here <a href="https://docs.github.com/en/free-pro-team@latest/github/writing-on-github" class="uri">https://docs.github.com/en/free-pro-team@latest/github/writing-on-github</a> with more general documentation here <a href="https://guides.github.com/features/mastering-markdown/" class="uri">https://guides.github.com/features/mastering-markdown/</a>. Note that with markdown you don’t need to start lines with <code>#'</code>.</p>
+<p>Second, you need to document the data that you are providing in this package, by creating file(s) in the <span style="color: #1697C0;">R</span> folder again. You’ll find details on how to create the documentation <a href="https://r-pkgs.org/data.html">here</a>, or an abbreviated version in our guide <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-data">here</a>.</p>
+<p>Finally, build the documentation (using <code>devtools::document()</code>), and commit all of the changes to git.</p>
+<p>Make sure throughout the documentation that you credit the real source of the data <a href="https://repository.si.edu/handle/10088/20925">at the Smithsonian</a>.</p>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
-<p>The critical test is that you can restart R, call <code>library(mypackage)</code> on your package (where <code>mypackage</code> is the name of the package you created, I’m going to call it <span style="color: #de77ae;">BCI</span>), and then immediately access the data that you created. If you are testing someone else’s you’ll need to download it first by creating a new project based on the GitHub repository or by calling <code>devtools::install_github("username/packagename")</code>.</p>
+<p>Now you should have a working R data package. Try installing it (using <code>devtools::install()</code>), restarting R and loading it. Check that the objects you have created exist – you should be able to see them in the <code>Environment</code> pane, but more simply by just typing:</p>
+<pre class="r"><code>library(githubusernameBCI)
+bci_taxa
+bci_quadrats
+bci_2010</code></pre>
+<p>You should (hopefully!) find that all of the objects exist, though you may be surprised to find that they appear to be normal data frames instead of tibbles. This actually isn’t true, and if you run:</p>
+<pre class="r"><code>library(githubusernameBCI)
+library(tibble)
+bci_taxa
+bci_quadrats</code></pre>
+<p>You’ll see that they are tibbles. Tibbles automatically fall back to being data frames if you don’t load the library.</p>
 </div>
-<div id="section-additional-work" class="section level2">
-<h2>Additional work</h2>
-<p>Finally, if you have time, select another biodiversity dataset – you could, for instance, take one from the BioTIME repository at <a href="http://biotime.st-andrews.ac.uk/" class="uri">http://biotime.st-andrews.ac.uk/</a> – and create a new package yourself to show you understood the process.</p>
-</div>
-<div id="section-submission" class="section level2">
-<h2>Submission</h2>
-<p>Once the package(s) is/are working, you need to submit it/them as your assignment for today. First you need to make sure you have pushed all of the changes to GitHub, then add me, <strong>richardreeve</strong>, as a collaborator on your repository on GitHub, and then submit the link to the GitHub web page for your repository as your exercise on GitHub.</p>
-If you’d like to write a short script demonstrating it working, you can add an R file to the repository, you can put this in an <span style="color: #de77ae;">inst</span> directory, not the existing <span style="color: #de77ae;">R</span> directory (which is where package functions are stored), or the package will very likely not build. Check this by clicking <span style="color: #de77ae;">Install and Restart</span> before you submit your package! 
+<div id="section-sharing-is-caring" class="section level2">
+<h2>Sharing is caring</h2>
+Now give your breakout room partners access to the repo, and get them to install your package using <code>devtools::install_github("IBAHCM/githubusernameBCI")</code> (or cloning the package and installing it directly if need be) and check it works. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
  

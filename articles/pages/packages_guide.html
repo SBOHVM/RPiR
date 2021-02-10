@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.67.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.68.0</span>
       </span>
     </div>
 
@@ -179,6 +179,15 @@
     <li>
       <a href="../../tutorials/practical3-6/practical3-6.html">Practical3-6</a>
     </li>
+    <li>
+      <a href="../../tutorials/practical4-1/practical4-1.html">Practical4-1</a>
+    </li>
+    <li>
+      <a href="../../tutorials/practical4-2/practical4-2.html">Practical4-2</a>
+    </li>
+    <li>
+      <a href="../../tutorials/practical4-3/practical4-3.html">Practical4-3</a>
+    </li>
   </ul>
 </li>
 <li>
@@ -285,7 +294,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R Packages</h1>
             
-            <h4 class="date">February 09 2021</h4>
+            <h4 class="date">February 10 2021</h4>
       
       
       <div class="hidden name"><code>packages_guide.Rmd</code></div>
@@ -429,15 +438,18 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <div id="add-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-data" class="anchor"></a>Add data</h2>
-<p>The next thing we’re going to do is add data to our package. To do this, run <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data_raw()</a></code>. This will create a new directory, called <code>data-raw</code> and within it a file called <span style="color: #de77ae;">DATASET.R</span>. We should put our raw, unedited data in this directory. Any code we use to process our data should be written in <span style="color: #de77ae;">DATASET.R</span>. Note that if you have multiple datasets, it might make sense to rename this processing file. The processing file should end up looking something like this:</p>
+<p>The next thing we’re going to do is add data to our package. To do this, run <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data_raw("BCI")</a></code>. This will create a new directory, called <code>data-raw</code> and within it a file called <span style="color: #de77ae;">BCI.R</span>. We should put our raw, unedited data in this directory. Any code we use to process our data should be written in <span style="color: #de77ae;">BCI.R</span>. The processing file should end up looking something like this:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Read the data</span>
-<span class="va">mydataset</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"mydataset.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<code class="sourceCode R"><span class="co">## code to prepare `BCI` dataset goes here</span>
+
+<span class="co"># Read the data</span>
+<span class="va">raw.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"myrawdata.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co"># Process the data</span>
+<span class="va">BCI</span> <span class="op">&lt;-</span> <span class="fu">some_tidying_process</span><span class="op">(</span><span class="va">raw.data</span><span class="op">)</span>
 
 <span class="co"># Add the data to your package</span>
-<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">mydataset</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">BCI</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Note that in this example, our dataset will be named <code>mydataset</code>. You might want to choose a more informative name.</p>
 <p>Next we need to generate the packaged data by running the processing script. The <code><a href="https://usethis.r-lib.org/reference/use_data.html">use_data()</a></code> function will create a <span style="color: #de77ae;">data</span> directory, within which will be an rds file containing our dataset.</p>
 <p>The next step is to open our <span style="color: #de77ae;">.gitignore</span> file and add <code>data-raw</code> on a new line to ignore the contents of this directory. The reason being, the contents of <span style="color: #de77ae;">data-raw</span> are not part of the package (installable data exists within your <span style="color: #de77ae;">data</span> directory) and we don’t want to upload these large files to GitHub.</p>
