@@ -28,7 +28,6 @@ Imports:
     rmarkdown,
     roxygen2,
     rstudioapi,
-    testthat,
     tibble,
     usethis,
     utils
