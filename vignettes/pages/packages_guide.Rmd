@@ -374,7 +374,7 @@ looking something like this:
 ## code to prepare `BCI` dataset goes here
 
 # Read the data
-raw.data <- read.csv("myrawdata.csv", header = TRUE)
+raw.data <- read.csv("data-raw/myrawdata.csv", header = TRUE)
 
 # Process the data
 BCI <- some_tidying_process(raw.data)
