@@ -140,10 +140,10 @@ contains the 2010 BCI census.
 
 ```{r eval = FALSE}
 library(githubusernameBCI)
-# First filter for the correct species, either using dplyr: 
+# Make a copy of the taxonomy as a data frame
 taxonomy <- as.data.frame(bci_taxa)
-# Then make sure the species are ordered correctly:
-rownames(taxonomy) <- taxonomy$GenusSpecies 
+# Make sure the species are ordered correctly
+rownames(taxonomy) <- taxonomy$GenusSpecies
 taxonomy <- taxonomy[rownames(bci_2010),]
 ```
 
