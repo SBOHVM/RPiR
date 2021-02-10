@@ -20,6 +20,10 @@ knitr::opts_chunk$set(
 
 *R packages*
 
+Warning: If for any reason you can't get `usethis::use_github()` to work, then
+skip to the end of the page and follow the 
+[alternative setup](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#alternative-setup) instructions.
+
 ## Package structure
 
 The easiest way to create an R package in RStudio is to generate one 
@@ -408,6 +412,83 @@ package.
 
 After which, we can run `data(package = "packagename")` to list all of the 
 data in our package.
+
+## Alternative setup
+
+If for any reason you can't get `usethis::use_github()` to work, then follow
+these [instructions](https://ibahcm.github.io/RPiR/articles/pages/github.html)
+to create a repository on GitHub with a 
+<span style="color: #de77ae;">README</span> file. Remember that the name of your
+repository should match the name of your package and be aware that the name of
+your package:
+
+> "should contain only (ASCII) letters, numbers and dot, have at least two 
+characters and start with a letter and not end in a dot"
+([ref](https://cran.r-project.org/doc/manuals/R-exts.html)). 
+
+Though very few
+[package names](https://cran.r-project.org/web/packages/available_packages_by_name.html)
+include a dot. In the following example, the name of our repository 
+(and package) is `packagename`.
+
+Once you have a repository on GitHub, follow
+these [instructions](https://ibahcm.github.io/RPiR/articles/pages/rstudio.html)
+to clone your repository and add it as a new project in RStudio. Then create the
+package structure by running:
+
+```
+usethis::create_package("structure")
+```
+
+at which point you'll get a warning saying you shouldn't really be nesting 
+RStudio projects inside each other. Ignore that and say yes, you want to 
+continue. You'll end up with a file structure that looks a bit like this:
+
+```
+packagename/ ---> .gitignore
+                  README.md
+                  packagename.Rproj
+                  structure/        ---> .gitignore 
+                                         .Rbuildignore
+                                         DESCRIPTION
+                                         NAMESPACE
+                                         structure.Rproj
+                                         R/
+                                         
+```
+
+Take everything in the <span style="color: #de77ae;">structure</span>
+directory except for the <span style="color: #de77ae;">structure.Rproj</span>
+and <span style="color: #de77ae;">.gitignore</span>
+files and put it in the <span style="color: #de77ae;">packagename</span> 
+directory. Now delete the <span style="color: #de77ae;">structure</span>
+directory and move to the <span style="color: #de77ae;">packagename</span>
+project in RStudio. Once you've done that, create an empty directory within 
+<span style="color: #de77ae;">packagename</span> called 
+<span style="color: #de77ae;">man</span>. Your file structure should now look 
+like this:
+
+```
+packagename/ ---> .gitignore
+                  README.md
+                  packagename.Rproj
+                  .Rbuildignore
+                  DESCRIPTION
+                  NAMESPACE
+                  R/
+                  man/
+```
+
+Finally, delete the <span style="color: #de77ae;">NAMESPACE file</span> and
+run `devtools::document()` from the package root to create a new 
+<span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and
+recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it 
+will be automatically populated whenever we call `devtools::document()`, which 
+is only possible if we use `devtools::document()` to create a new file.
+Also, don't forget to keep pushing your changes to GitHub.
+
+You can now rejoin the instructions above
+[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
 
 ## Final thoughts
 
