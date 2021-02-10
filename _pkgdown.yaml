@@ -117,6 +117,12 @@ navbar:
          href: tutorials/practical3-5/practical3-5.html
       -  text: Practical3-6
          href: tutorials/practical3-6/practical3-6.html
+      -  text: Practical4-1
+         href: tutorials/practical4-1/practical4-1.html
+      -  text: Practical4-2
+         href: tutorials/practical4-2/practical4-2.html
+      -  text: Practical4-3
+         href: tutorials/practical4-3/practical4-3.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions
