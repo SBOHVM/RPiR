@@ -1,5 +1,5 @@
 ---
-title: "Practical 4-2"
+title: "Practical 4-2: Add a package demo"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to write a package demo.
+  Students write a demo for their data package.
 ---
 
 ```{r setup, include=FALSE}
@@ -20,12 +20,13 @@ set.seed(123)
 
 ## Overview
 
-*In this session you will take the biodiversity data package you created last week and write a demo that calculates a variety of diversity measures on the data.*
+*In this session you will take the biodiversity data package you have created
+and write a demo that calculates a variety of diversity measures on the data.*
 
 ## Background
 
 Now you have a package with your data in it, we can easily run analyses, simply
-starting each analysis script with the R command `library(BCI)`. 
+starting each analysis script with the R command `library(githubusernameBCI)`. 
 
 There are an enormous number of different ways of measuring diversity, to the 
 extent that diversity itself has been declared a "non-concept" in the past (by
@@ -95,51 +96,50 @@ for over 40 years and is broadly accepted – originally by Hill (1972), and
 subsequently, for instance, by Jost (2007), Leinster and Cobbold (2012), and 
 Reeve et al. (2016).
 
-## Setting up R
+## Tasks
 
-First, you need to go back to the project that contained your diversity data by
-selecting it in the top right of the RStudio window. Then make sure that all of
-the correct packages are installed to do the biodiversity analyses:
+### Setting up R
 
-```{r eval = FALSE}
-install.packages(c("vegan", "tibble", "dplyr", "magrittr", "devtools", "rdiversity"))
-```
+First, remember as you add in `library(xxx)` calls into your demo, you'll need to
+add them in as dependencies to the package using `usethis::use_package("xxx")`,
+otherwise other people may not be able to run the demo. To test the demo as you
+go along you may also need to install the packages in advance using
+`install.packages("xxx")`.
 
-You will need to make sure that your package depends on all of these packages, 
-so that they are automatically installed with your package. To do this you 
-need to add them to the `Imports:` section of the 
-<span style="color: #de77ae;">DESCRIPTION</span> file. Any package that you use 
-in your demo script (*i.e.* any package you call `library(pkgname)` on) should 
-go into the <span style="color: #de77ae;">DESCRIPTION</span> file.
+### Create the demo files
 
-Now we're going to create a **demo** inside the package. First go to the 
-<span style="color: #de77ae;">Files</span> tab and create a <span style="color: #de77ae;">New Folder</span> called
-<span style="color: #de77ae;">demo</span>. Then create an R script 
-in that folder, making sure the name of the script has **no spaces in it** (this 
-script will contain your demo). Then create a new text file also in that folder 
-called <span style="color: #de77ae;">00Index</span>, with **no file extension**
-(this file will contain a list of the demos in your package). Each demo you 
-create is entered into one line of this file with the demo name followed by a 
-one-line description. For example, the demo file 
+As in the last practical series, we're going to create a **demo** inside the
+package. In the <span style="color: #de77ae;">Files</span> tab, you may need to
+create a new <span style="color: #de77ae;">demo</span> folder. Then create an R
+script in that folder to contain your demo, call it
+<span style="color: #de77ae;">diversity-of-BCI.R</span>. Note in general you
+just have to make sure the name of the script has **no spaces in it**. Then
+(again, as before) create a new text file also in that folder called
+<span style="color: #de77ae;">00Index</span>,
+with **no file extension** to contain the list of the demos in your
+package. As you should know by now, each demo you create is entered into one
+line of this file with the demo name followed by a one-line description. For
+example, here, the demo file 
 <span style="color: #de77ae;">diversity-of-BCI.R</span> would have a line like:
 
 ```
-diversity-of-BCI Showing the diversity of the BCI forest plot.
+diversity-of-BCI    Showing the diversity of the BCI forest plot.
 ```
 
-For more details on how to create a demo go here: https://r-pkgs.org/misc.html?q=demo#demo.
+For more details on how to create a demo go [here](https://r-pkgs.org/misc.html#demo).
 
-Now we're going to write the R script that will be the demo. Note that demos 
-should never contain any commands to install packages, the above code is not 
-part of the demo! The script will be measuring several kinds of alpha, 
-beta and gamma diversity, as detailed below. But in order to do some work with 
-measures of taxonomic diversity, the taxonomy will first need to match the 
-species abundance data from the BCI dataset, exactly. Here I’m assuming that you
-created the package {BCI}, and in it `bci_taxa` contains the taxonomy of 
-all BCI species and `bci_2010` contains the 2010 BCI census.
+### Create the demo itself
+
+Now you're going to write the R script that will be the demo. The script will be
+measuring several kinds of alpha, beta and gamma diversity, as detailed below.
+But in order to do some work with measures of taxonomic diversity, the taxonomy
+will first need to match the species abundance data from the BCI dataset,
+exactly. Here I’m assuming that you created the package {githubusernameBCI}, and
+in it `bci_taxa` contains the taxonomy of  all BCI species and `bci_2010`
+contains the 2010 BCI census.
 
 ```{r eval = FALSE}
-library(BCI)
+library(githubusernameBCI)
 library(dplyr)
 # First filter for the correct species, either using dplyr: 
 taxonomy <- bci_taxa %>%
@@ -189,9 +189,11 @@ specnumber(abundances, groups = 1)
 ```
 
 This loads the dataset and then calculates the species richness of the whole
-metacommunity. **It’s important to always use the `abundances` object when using the {vegan} package, and always use the `bci_2010` object when using {rdiversity} – they need the data in opposite formats!**
+metacommunity. **It’s important to always use the `abundances` object when using
+the {vegan} package, and always use the `bci_2010` object when using
+{rdiversity} –- they need the data in opposite formats!**
 
-## Tasks
+### Your own additions
 
 First, read the {rdiversity} package documentation and examples. You can find
 this by going to the GitHub repository (https://github.com/boydorr/rdiversity), 
@@ -235,57 +237,28 @@ the average similarities to all of the quadrats by using `as.matrix()` and then
 though the exact beta diversity measure, and indeed even its direction, is 
 different.
 
-Remember if you want to add some plain text into a report, you just write it 
-after a `#'` comment:
+Remember to add some text chunks into the report to describe the results for
+when you compile a report rather than run the demo. Now reinstall the package
+and make sure the demo runs successfully too. Don't forget to remove any html
+files that have been generated and don't commit them to the repo.
 
-```{r}
-#' We can make an observation here that Sorensen, Jaccard and {rdiversity}'s 
-#' beta diversity measures identify overlapping quadrats as the least similar /
-#' most distinct and it will appear as plain text in the report.
-```
+## Checking each others packages
 
-Generate a report from the script(s) – for each file go to the 
-<span style="color: #de77ae;">File</span> menu, choose 
-<span style="color: #de77ae;">Compile Report...</span>, select the 
-<span style="color: #de77ae;">html</span> output format, and click 
-<span style="color: #de77ae;">Compile</span>. A webpage should pop up in a 
-viewer after a couple of seconds, and a new file should appear in the directory 
-you are working in. You can check that this has really worked by opening the 
-file in a web browser. At this point, you can improve the commenting on the 
-document, so that it uses more of the features of the markdown format. Once 
-you’re happy with it, recompile the report, and check it seems okay. Now
-reinstall the package, call `library(BCI)` and run 
-`demo("diversity-of-BCI")` or whatever you called the package and script – make 
-sure that it runs as expected when you do this. Alternatively you can call 
-`demo("diversity-of-BCI", package = "BCI")` without loading the library 
-first.
+Now push all of your changes to GitHub and check each other's packages to make
+sure the demo works.
 
-## Reporting the results
+### A note on generating a report from a demo
 
-You now have a demo file that will install with your package and show examples
-of diversity calculations of the BCI data. You should commit all of these 
-changes with an informative message (except the html file generated as the 
-report, **you should delete this**) and push the committed changes to GitHub. 
-Now open an issue on GitHub asking your partner/collaborator to test the package 
-for you.
-
-Your collaborator should now check the package to make sure that they can see
-and run the demo successfully. 
-
-As the collaborator, you should attempt to install your partner's package using 
-`devtools::install_github()` using your partner's GitHub username and the name 
-of their repository. You can then test the demo by using the `demo()` function. 
-You can also generate a report from the demo as follows:
+If you've installed a package directly using `devtools::install_github()`
+you can still generate a report from the demo as follows without cloning the
+repo:
 
 ```{r eval = FALSE}
-rmarkdown::render(system.file("demo/diversity-of-BCI.R", 
+rmarkdown::render(system.file("demo", "diversity-of-BCI.R", 
                               package = "mypartnersBCIpackage"),
                   output_dir = ".")
 ```
 
 The report will be saved to the base folder of your current project (or whatever 
 your current working directory is). Check that it looks okay by opening it in a
-web browser (you can delete the html file afterwards). If everything looks okay, 
-or if you identify a problem, you should reply to the issue saying what you 
-find. Depending on whether there was a problem, you may need to go back and 
-forth, or that may be everything finished...
+web browser (and delete the html file afterwards).
