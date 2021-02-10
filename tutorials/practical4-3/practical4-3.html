@@ -218,10 +218,10 @@ summary {
 <h3>Create the demo itself</h3>
 <p>Now you’re going to write the R script that will be the demo. The script will be measuring several kinds of alpha, beta and gamma diversity, as detailed below. But in order to do some work with measures of taxonomic diversity, the taxonomy will first need to match the species abundance data from the BCI dataset, exactly. Here I’m assuming that you created the package {githubusernameBCI}, and in it <code>bci_taxa</code> contains the taxonomy of all BCI species and <code>bci_2010</code> contains the 2010 BCI census.</p>
 <pre class="r"><code>library(githubusernameBCI)
-# First filter for the correct species, either using dplyr: 
+# Make a copy of the taxonomy as a data frame
 taxonomy &lt;- as.data.frame(bci_taxa)
-# Then make sure the species are ordered correctly:
-rownames(taxonomy) &lt;- taxonomy$GenusSpecies 
+# Make sure the species are ordered correctly
+rownames(taxonomy) &lt;- taxonomy$GenusSpecies
 taxonomy &lt;- taxonomy[rownames(bci_2010),]</code></pre>
 <p>To create a metacommunity to analyse in the {rdiversity} package, you will need to create an object of that type using <code>metacommunity()</code>, and then you can calculate, for example, the gamma diversity of the whole metacommunity with the function <code>meta_gamma()</code> and plot the output with <code>plot()</code>:</p>
 <pre class="r"><code>library(rdiversity)
