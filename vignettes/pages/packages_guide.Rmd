@@ -301,6 +301,13 @@ this we need to do four things.
    ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
    knitr::include_graphics('images/packages/13.png')
    ```
+   
+   Note that if you need to add a dependency on a package that exists within a
+   GitHub repository, you can use this instead:
+
+   ```{r, eval = FALSE}
+   usethis::use_dev_package("RPiR", "Imports", remote = "IBAHCM/RPiR")
+   ```
 
 3. Add an `@import` tag to the 
    <span style="color: #de77ae;">packagename-package.R</span> file 
