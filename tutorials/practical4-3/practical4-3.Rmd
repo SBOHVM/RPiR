@@ -186,25 +186,34 @@ specnumber(abundances, groups = 1)
 ```
 
 This loads the dataset and then calculates the species richness of the whole
-metacommunity. **It’s important to always use the `abundances` object when using
-the {vegan} package, and always use the `bci_2010` object when using
-{rdiversity} –- they need the data in opposite formats!**
+metacommunity. **It’s important to always use the `abundances` object (created
+above) when using the {vegan} package, and always use the `bci_2010` object when
+using {rdiversity} –- they need the data in opposite formats!** 
 
-### Your own additions
+Note the documentation and reference manual for the {vegan} package is available
+at https://cran.r-project.org/web/packages/vegan/index.html and the package
+itself is developed on GitHub at https://github.com/vegandevs/vegan.
+
+### Your own additions -- **this section is optional**
+
+*Because we lost a day this week, the material here wasn't fully covered, so is
+optional if you have enough time to look further at the documentation for the
+{rdiversity} and {vegan} packages.*
 
 First, read the {rdiversity} package documentation and examples. You can find
 this by going to the GitHub repository (https://github.com/boydorr/rdiversity), 
 and clicking on the <span style="color: #1697C0;">docs: rdiversity</span> badge, 
-or by clicking the link to https://boydorr.github.io/rdiversity/.
+or by clicking the link to https://boydorr.github.io/rdiversity.
 
-Then write a script to calculate and plot the gamma diversity and the normalised 
-alpha diversity for the 2010 BCI census, for a range of values of $q$, say 
-`qs = 0:5`; individuals of the same species have a taxonomic distance of zero 
-and each species is taxonomically distinct. Then repeat these calculations using
-taxonomic similarity, showing that there are fewer taxonomically distinct 
-species than there are species. Then do this again counting the effective number 
-of genera and families. Note that this can be achieved by using `tax2dist()` 
-with `c(GenusSpecies=0, Genus=0, Family=1, Other=1)` and 
+Then add to the script you have started above to calculate and plot the gamma
+diversity and the normalised  alpha diversity for the 2010 BCI census, for a
+range of values of $q$, say `qs = 0:5`; individuals of the same species have a
+taxonomic distance of zero and each species is taxonomically distinct. Then
+repeat these calculations using taxonomic similarity, showing that there are
+fewer taxonomically distinct species than there are species. Then do this again
+counting the effective number of genera and families. Note that this can be
+achieved by using `tax2dist()` with
+`c(GenusSpecies=0, Genus=0, Family=1, Other=1)` and 
 `c(GenusSpecies=0, Genus=0, Family=0, Other=1)`, respectively – these distance
 measurements say that two species in the same genus (or family) are zero
 distance apart, just like two individuals in the same species. As a result, the

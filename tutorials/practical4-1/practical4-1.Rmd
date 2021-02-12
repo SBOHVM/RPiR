@@ -164,7 +164,11 @@ source("bci_taxa.R")
 
 This will load all of the raw data into R (this will take some time) and run the
 files you have created to process each of them and store them in the package.
-You now need to create the processing files. Actually, we provide them here.
+**Don't do this yet! First, you need to edit the processing files
+<span style="color: #1697C0;">bci_2010.R</span>,
+<span style="color: #1697C0;">bci_quadrats.R</span> and
+<span style="color: #1697C0;">bci_taxa.R</span> to do the processing
+correctly. Actually, we provide them for you here!**
 
 This is <span style="color: #1697C0;">bci_2010.R</span>:
 
@@ -248,9 +252,25 @@ Finally you need to do three things:
 2. Run the script that you created to generate the data files and commit them
 3. Add in all of the packages you are using as dependencies of this package
 
-The latter is easy, and it is something you are going to have to keep up to
-date as you develop any package -- you need to check which libraries you load
-using `library(xxx)` in any script or demo, and which libraries you use by
+If you have a problem in step 2, with an error about a file missing here:
+
+```{R, eval = FALSE}
+data <- read.delim(file.path("ViewFullTable", "ViewFullTable.txt"))
+```
+
+Then your computer may have unzipped files differently from mine -- mine has
+created a folder in <span style="color: #1697C0;">data-raw</span>
+called <span style="color: #1697C0;">ViewFullTable</span>, but yours may have
+just unzipped the files directly into data-raw. In that case, just change the
+line to:
+
+```{R, eval = FALSE}
+data <- read.delim("ViewFullTable.txt")
+```
+
+Step 3 is (hopefully!) easy, and it is something you are going to have to keep
+up to date as you develop any package -- you need to check which libraries you
+load using `library(xxx)` in any script or demo, and which libraries you use by
 qualifying function calls with `xxx::xxx_function()`. You then need to run:
 
 ```{R, eval = FALSE}

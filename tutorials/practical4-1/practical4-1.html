@@ -237,7 +237,7 @@ source(&quot;bci_quadrats.R&quot;)
 
 ### Store taxonomic data in package
 source(&quot;bci_taxa.R&quot;)</code></pre>
-<p>This will load all of the raw data into R (this will take some time) and run the files you have created to process each of them and store them in the package. You now need to create the processing files. Actually, we provide them here.</p>
+<p>This will load all of the raw data into R (this will take some time) and run the files you have created to process each of them and store them in the package. <strong>Don’t do this yet! First, you need to edit the processing files <span style="color: #1697C0;">bci_2010.R</span>, <span style="color: #1697C0;">bci_quadrats.R</span> and <span style="color: #1697C0;">bci_taxa.R</span> to do the processing correctly. Actually, we provide them for you here!</strong></p>
 <p>This is <span style="color: #1697C0;">bci_2010.R</span>:</p>
 <pre class="r"><code>library(dplyr)
 library(reshape2)
@@ -299,7 +299,11 @@ usethis::use_data(bci_taxa, overwrite = TRUE)</code></pre>
 <li>Run the script that you created to generate the data files and commit them</li>
 <li>Add in all of the packages you are using as dependencies of this package</li>
 </ol>
-<p>The latter is easy, and it is something you are going to have to keep up to date as you develop any package – you need to check which libraries you load using <code>library(xxx)</code> in any script or demo, and which libraries you use by qualifying function calls with <code>xxx::xxx_function()</code>. You then need to run:</p>
+<p>If you have a problem in step 2, with an error about a file missing here:</p>
+<pre class="r"><code>data &lt;- read.delim(file.path(&quot;ViewFullTable&quot;, &quot;ViewFullTable.txt&quot;))</code></pre>
+<p>Then your computer may have unzipped files differently from mine – mine has created a folder in <span style="color: #1697C0;">data-raw</span> called <span style="color: #1697C0;">ViewFullTable</span>, but yours may have just unzipped the files directly into data-raw. In that case, just change the line to:</p>
+<pre class="r"><code>data &lt;- read.delim(&quot;ViewFullTable.txt&quot;)</code></pre>
+<p>Step 3 is (hopefully!) easy, and it is something you are going to have to keep up to date as you develop any package – you need to check which libraries you load using <code>library(xxx)</code> in any script or demo, and which libraries you use by qualifying function calls with <code>xxx::xxx_function()</code>. You then need to run:</p>
 <pre class="r"><code>usethis::use_package(&quot;xxx&quot;)</code></pre>
 <p>to add the <code>xxx</code> package to those <em>imported</em> by your package in the <span style="color: #1697C0;">DESCRIPTION</span> file. See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for further details. Commit these changes to the repo too, and push them to GitHub.</p>
 </div>
