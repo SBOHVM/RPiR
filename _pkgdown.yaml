@@ -65,6 +65,10 @@ navbar:
          href: lectures/RPiR8c-R.html
       -  text: RPiR8d-development (pdf)
          href: lectures/RPiR8d-development.pdf
+      -  text: RPiR12a-programming
+         href: lectures/RPiR12a-programming.html
+      -  text: RPiR12b-data
+         href: lectures/RPiR12b-data.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -92,6 +96,10 @@ navbar:
          href: lectures_html/RPiR8a-packages.html
       -  text: RPiR8c-R
          href: lectures_html/RPiR8c-R.html
+      -  text: RPiR12a-programming
+         href: lectures_html/RPiR12a-programming.html
+      -  text: RPiR12b-data
+         href: lectures_html/RPiR12b-data.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
