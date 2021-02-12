@@ -73,6 +73,19 @@ output:
 > - Massive database of user-supplied packages
 >   - Easy(-ish!) to create your own packages
 
+## A note of packages you use {.smaller}
+
+- When you use a package to carry out an analysis, you should always say so!
+- You have two commands to tell you what to do:
+  - `library(help="packagename")`
+    - This shows the `DESCRIPTION` file, in particular the version you are using
+  - `citation("packagename")`
+    - This tell you how to reference it in your paper
+
+```{R, comment=""}
+citation("deSolve")
+```
+
 ## What does this tell us?
 
 R is designed for:
