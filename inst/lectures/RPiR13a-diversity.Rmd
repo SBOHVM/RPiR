@@ -91,6 +91,18 @@ Covers all of these measures.
 - `Inf`
 - `lines()`
 
+## Stopping warnings
+
+```{R, eval = FALSE}
+usethis::edit_r_profile(scope = "user")
+```
+
+And add this to the file that is opened:
+
+```{R, eval = FALSE}
+options(yaml.eval.expr = TRUE)
+```
+
 ## Deadlines
 
 > - Edits to GitHub repos
