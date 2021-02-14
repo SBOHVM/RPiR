@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Final project.
+  Final project, creating a general diversity function
 ---
 
 ```{r setup, include=FALSE}
@@ -36,22 +36,22 @@ as the ones we looked at in Project 1), by setting $q$ to different values. In
 this exercise, we will write a function to calculate this general diversity
 measure, and then rewrite the specific functions so they use the general one.
 
-## Background
+### Background
 
 Hill developed a unifying series of diversity measures in 1973 that were 
 closely related to most existing measures (Hill, M. O., 1973. Diversity and
-evenness: a unifying notation and its consequences. *Ecology*, 54, 427–432) but 
+evenness: a unifying notation and its consequences. *Ecology*, 54, 427--432) but 
 had a firm mathematical footing, being based on a measure called the Rényi 
 Entropy (A. Rényi, 1961. On measures of information and entropy. *Proceedings
 of the 4th Berkeley Symposium on Mathematics, Statistics and Probability 1960*,
-pp. 547–561). These have been slightly adapted into the equation above by Lou 
-Jost (Jost, L., 2006. Entropy and diversity. *Oikos*, 113, 363– 375) to give a 
+pp. 547-561). These have been slightly adapted into the equation above by Lou 
+Jost (Jost, L., 2006. Entropy and diversity. *Oikos*, 113, 363-375) to give a 
 series of measures of the **effective number of species**. You are very likely 
 to be unfamiliar with at least some of the notation in the equation. That's 
 fine -- it says:
 
 > "For the $q^{th}$ diversity measure, take the non-zero species proportions 
-(note – proportions, so they all sum to 1, not counts), and raise them each 
+(note -- proportions, so they all sum to 1, not counts), and raise them each 
 (individually) to the power $q$. Then add all of the results together, and 
 finally raise the sum to the power $\frac{1}{1-q}$."
 
@@ -65,10 +65,14 @@ Simpson diversity of a population is $\frac{1}{D_2}$.
 
 ## Tasks
 
+### A diversity function
+
 Write a function that takes a set of population counts and a value $q$ as 
 arguments and calculates the $q^{th}$ diversity measure of the counts. Remember 
 that the equation described above uses the species proportions, not the counts 
 themselves.
+
+### New species richness and Simpson diversity functions
 
 Now write two more new functions to calculate species richness and Simpson 
 diversity that do almost no work themselves, but instead just call this first 
@@ -81,36 +85,43 @@ Project 1. Note the functions you write here should produce exactly the same
 answers as the functions you wrote in the previous exercise when called with 
 the same argument.
 
-## Running the code
+### Running the code
 
 Run the three functions on the populations provided and check that your results 
 are identical to the original functions (though the diversity of `rand.pop`, 
 `quadrat.pop` and `quadrat10.pop` will only be the same if you use the same 
-random set of values / run them at the same time!) Remember that to run both 
+random set of values / run them at the same time!). Remember that to run both 
 sets of functions in the same script you will need to make sure that the 
 functions have different names or they will overwrite one another.
 
 You will almost certainly find that `one.pop` now has a different species 
-richness (if not, then well done though!) This is probably because you are not 
+richness (if not, then well done though!). This is probably because you are not 
 looking only at the non-zero species abundances. If so, rewrite your code to 
-exclude zeros from the proportions. 
+exclude zeros from the proportions.
 
 *Hint:* remember that `a[a < 3]` will return those elements of a vector a which 
 are less than 3.
 
 Note that here, and throughout these exercises, if you want to -- it's not
-compulsory – you can check the values of the diversity function itself by 
+compulsory -- you can check the values of the diversity function itself by 
 loading in the `rdiversity` library, and then creating a metacommunity from a 
 population and calculating its metacommunity gamma diversity with the right 
 values of the `qs` argument.
 
-## Report
+## Demo
 
 Write a demo that loads your package (and therefore the functions you've written
 from both Project 1 and this exercise) and shows that each set of functions 
 generate the same results for $q = 0$ (Species richness) and $q = 2$
-(Simpson diversity). Again, your function code should be documented, so 
-remember to build the documentation for the package.
+(Simpson diversity). Your demo will probably need to start with the same block
+of code that the last demo did, so that it generates the same populations. You
+can just copy it from one demo to the next (or you may come up with a cleverer
+way of dealing with this problem).
+
+Again, your function code should be documented, so remember to build the
+documentation for the package.
+
+### Using brackets
 
 **Important note:** Please remember the order of calculations (*i.e.* BODMAS --
 Brackets, Orders, Division / Multiplication, Addition / Subtraction). If you 
@@ -120,13 +131,11 @@ $$
 a^{\frac{b}{c+d}} \neq \frac{a^b}{c}+d \neq \frac{a^b}{c+d} \neq a^{\frac{b}{c}}+d \neq a^{\frac{b}{c}+d}
 $$
 
-Generally, if you
-have an equation then do the things that are grouped most tightly together first
-(within clusters or brackets do the raising to the power first, then the
-multiplication and division, then the addition and subtraction). So for
-$a^{\frac{b}{c+d}}$, you calculate $c+d$ because they are on a line of their 
-own, then
-$\frac{b}{c+d}$ because they cluster together, and only then 
+Generally, if you have an equation then do the things that are grouped most
+tightly together first (within clusters or brackets do the raising to the power
+first, then the multiplication and division, then the addition and subtraction).
+So for $a^{\frac{b}{c+d}}$, you calculate $c+d$ because they are on a line of
+their own, then $\frac{b}{c+d}$ because they cluster together, and only then 
 $a^{\frac{b}{c+d}}$. Or you can just use brackets in the right places to do it 
 all in one go, like this: $a^{\left( \frac{b}{(c+d)} \right)}$.
 
