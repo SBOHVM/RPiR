@@ -88,7 +88,7 @@ Covers all of these measures.
 - `rep()`
 - `barplot()`
 - `rmultinom()` to generate multinomially distributed samples
-- `Inf`
+- `Inf` is how we say infinity in R
 - `lines()`
 
 ## Stopping warnings
