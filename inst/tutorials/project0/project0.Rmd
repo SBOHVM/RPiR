@@ -1,5 +1,5 @@
 ---
-title: "Project 0: Setup"
+title: "Project Setup"
 output:
   learnr::tutorial:
     theme: lumen
@@ -28,18 +28,89 @@ code for yourself, and structure it appropriately, though some small amounts of
 guidance will be given.
 
 Remember that these practicals constitute the "project" part of the course, 
-which constitutes 50% of the marks, so well-structured and well-commented code, 
-and clear reports of the results, are very important. Any of the in-course 
-exercises that you haven't finished by the end of the course should be 
-completed in your own time.
+which constitutes 33% of the marks, so well-structured and well-commented code, 
+documented functions and demos that also generate clear reports of the results,
+are very important. Any of the in-course exercises that you decide to continue
+to work on after the end of the course should be completed in your own time.
 
 ## R packages and GitHub
 
-Any work you do must be written as an R package and pushed to a GitHub 
-repository. Please make your repository private and add (just) me as a 
-collaborator. You must commit a change at least at the end of each
-exercise (*i.e.* Project 1, 2, 3, 4 and 5) with sensible commit messages stating 
-what you have just done. You are welcome to do more commits if this is useful 
-to you, and it's completely okay (and indeed normal) if you go back to earlier
-exercises and make further edits and commit them after completing later 
+**Your work must be written as an R package using git and pushed to a GitHub 
+repository in the IBAHCM organisation as the last two practical series.**
+Please make your repository private and for this project don't add anyone as
+collaborators -- this project is done on your own to assess how much you have
+learned on the course. You must commit a change at least at the end of each
+exercise (*i.e.* Projects 0, 1, 2, 3, 4 and 5) with sensible commit messages
+stating what you have just done. You are welcome to do more commits if this is
+useful  to you, and it's completely okay (and indeed normal) if you go back to
+earlier exercises and make further edits and commit them after completing later 
 exercises. 
+
+Remember a few things:
+
+- Libraries you use in your package (for example the data package) should be
+  correctly added to your package as dependencies;
+- Functions should be kept in the <span style="color: #1697C0;">R</span> folder
+  inside the package and documented so that the documentation is available
+  through R's help system;
+- Scripts for each project exercise should be stored in the
+  <span style="color: #1697C0;">demo</span> folder. They should be available
+  to run through the `demo()` function when we install the package, **and**
+  we should be able to compile them into a report which will contain code and
+  text blocks (and whatever else you wish) that tidily explains what is
+  happening in the script.
+
+## Tasks
+
+1. Create an initial empty R package called **githubusernameDiversity** in
+   RStudio that uses git and is connected to a private repository in the IBAHCM
+   organisation;
+   - You will use this package for all of your remaining work in this project
+2. Update the <span style="color: #1697C0;">DESCRIPTION</span> file with the
+   correct information about yourself and the package;
+3. Create a help file for the package in the
+   <span style="color: #1697C0;">R</span> folder, and run `devtools::document()`
+   and `devtools::install()` to make sure that the documentation works when you
+   call `?githubusernameDiversity` at the console once you have loaded the
+   library by calling `library(githubusernameDiversity)`;
+   - Remember you will have to do this again every time you edit a function or
+     demo in the package in subsequent exercises
+4. Add your data package as a dependency of the package (or mine if you're using
+   it instead) -- the `usethis::use_dev_package()` function will add the correct
+   entries to the <span style="color: #1697C0;">DESCRIPTION</span> file, just
+   like the `usethis::use_package()` function adds in normal (CRAN) packages;
+   - Remember to do this with any subsequent packages that you decide to use
+     later in the project
+5. Import your data package into the package by adding the `@import` command to
+   the package's help file in the <span style="color: #1697C0;">R</span> folder
+   that you made in step 3, above;
+6. Commit these changes and push them to GitHub.
+
+You will need to much of this again in subsquent project exercises, for
+instance every time you need to add a new package dependency into your package.
+
+### Adding dependencies
+
+A quick note on adding dependencies to your package, though this is also covered
+in the packaging guide on the
+[RPiR website](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies).
+
+Note that for adding dependencies to your package, if you run this in the
+console:
+```{R, eval = FALSE}
+usethis::use_package("ggplot2")
+usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR")
+```
+it edit your <span style="color: #1697C0;">DESCRIPTION</span> file to add the
+CRAN `ggplot2` package to your package's dependencies and the `RPiR` package in
+the IBAHCM organisation on GitHub to your package's dependencies. If you then
+add the following to the documentation in the
+<span style="color: #1697C0;">R</span> folder, this will mark the functions and
+data in those packages as usable by functions in your package:
+```{R, eval = FALSE}
+#' @import ggplot2
+#' @import RPiR
+```
+
+**NB I am not suggesting you necessarily want to do this with these specific
+packages.**
