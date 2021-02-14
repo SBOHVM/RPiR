@@ -139,6 +139,8 @@ navbar:
          href: tutorials/project2/project2.html
       -  text: Project3
          href: tutorials/project3/project3.html
+      -  text: Project4
+         href: tutorials/project4/project4.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions

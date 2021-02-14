@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Final project.
+  Final project, adjusting the diversity function to handle multiple values of q
 ---
 
 ```{r setup, include=FALSE}
@@ -26,7 +26,7 @@ At the end of the last practical we looked at the diversity of a population
 using a variety of different diversity measures. We now want to be able to do 
 that more easily so that we can examine the diversity profile of a population.
 
-## Background
+### Background
 
 Instead of looking at individual diversity measures, we can instead look at the
 **diversity profile** of a population. This is a plot of the effective number 
@@ -53,12 +53,18 @@ first power, then each to the second power, and so on in turn and instead raises
 the first proportion to the first power, the second to the second, and so on. 
 Instead we need to write a loop to iterate over the different values of $q$.
 
-First, you probably want to copy your existing functions again. Now edit this 
-code (renaming the functions) to add a test in the general diversity function 
-that tests that there is only one value of $q$ and `stop()`s if there is more 
-than one -- now we have identified a problem in our code, we want to avoid it 
-happening again! You will need to rewrite all of your specific functions so they 
-call the new function.
+First, you probably want to copy your existing functions again. You will edit
+these functions (renaming them as you go along) to create final, definitive
+diversity functions that do everything we want.
+
+### Final diversity functions for a single value of `q`
+
+Add a test in the general diversity function that checks that there is only one
+value of $q$ and `stop()`s if there is more than one -- now we have identified a
+problem in our code, we want to avoid it happening again! You will need to
+rewrite all of your specific functions so they call the new function.
+
+### Function to create a diversity profile from multiple `q`s
 
 Now write a completely new function to calculate a series of diversity measures 
 for a vector of values of $q$ given as a second argument (*e.g.* `c(0, 0.1, 3.4, 
@@ -73,16 +79,16 @@ been given. Remember that if we have a vector of values (called `Dqs.so.far`),
 and want to add a new value `Dq` to the end, then we can do that with just 
 `c(Dqs.so.far, Dq)`.
 
-## Running the code
+### Running the code
 
 Check that the first diversity function now correctly rejects more than one 
 value of $q$. Then calculate the diversity profiles of the datasets, and plot 
 them all on a graph. You can display however you like, but in the simplest case 
 you can use `plot(qs, Dqs)` for the first graph, and `lines(qs, Dqs)` for 
 subsequent graphs while changing the colours (`col=`) or line types (`lty=`), 
-etc.
+*etc*.
 
-## Report
+## Demo
 
 Write a demo that calculates diversity profiles for each dataset, 
 plots them against each other, and comments on the differences between the 
