@@ -1,0 +1,103 @@
+---
+title: "Calculating Diversity"
+output: 
+  ioslides_presentation: default
+  html_document: default
+---
+
+## Measures of Diversity
+
+> - Species richness
+>   - Number of species actually present
+> - Simpson diversity
+>   - Chance of two individuals being the same species
+> - Shannon entropy
+>   - Surprise in seeing next individual
+> - Berger-Parker
+>   - Evenness / Dominance of most abundant species
+
+## Measures of Diversity
+
+
+$$D_q = \left( \sum_{i \in \{1 \dots N_S, p_i \neq 0\}} p_i^q \right)^{\frac{1}{1-q}}$$
+
+Covers all of these measures.
+
+## Measures of Diversity
+
+- Species richness
+  - Number of species actually present
+- Simpson diversity
+  - Chance of two individuals being the same species
+- Shannon entropy
+  - Surprise in seeing next individual
+- Berger-Parker
+  - Evenness / Dominance of most abundant species
+
+## Measures of Diversity
+
+- Species richness
+  - $D_0$
+- Simpson diversity
+  - $\frac{1}{D_2}$
+- Shannon entropy
+  - $log(D_1)$
+- Berger-Parker
+  - $\frac{1}{D_\infty}$
+
+## Measures of Diversity
+
+- Species richness
+  - $D_0$
+- Shannon entropy
+  - $log(D_1)$
+- Simpson diversity
+  - $\frac{1}{D_2}$
+- Berger-Parker
+  - $\frac{1}{D_\infty}$
+
+## Measures of Diversity
+
+- $D_0$
+  - Species richness
+- $log(D_1)$
+  - Shannon entropy
+- $\frac{1}{D_2}$
+  - Simpson diversity
+- $\frac{1}{D_\infty}$
+  - Berger-Parker
+
+## Measures of Diversity
+
+- $D_0$
+  - Species richness
+- $D_1$
+  - exp(Shannon entropy)
+- $D_2$
+  - 1 / Simpson diversity
+- $D_\infty$
+  - 1 / Berger-Parker
+
+## Diversity profiles
+
+<center>![](images/RPiR13a-profile.png){ width=80% }</center>
+
+## Useful R
+
+- `sort()` to sort a vector into ascending order
+- `rep()`
+- `barplot()`
+- `rmultinom()` to generate multinomially distributed samples
+- `Inf`
+- `lines()`
+
+## Deadlines
+
+> - Edits to GitHub repos
+>   - Practical Series 2: Tues 16th
+>   - Practical Series 3: Friday 19th
+>   - Practical Series 4: Mon 15th
+>     - unless you ask for an extension
+> - Project submission
+>   - Submission by Monday 1st March, 1pm
+> - Marks returned by Monday 22nd March

@@ -69,6 +69,8 @@ navbar:
          href: lectures/RPiR12a-programming.html
       -  text: RPiR12b-data
          href: lectures/RPiR12b-data.html
+      -  text: RPiR13a-diversity
+         href: lectures/RPiR13a-diversity.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -100,6 +102,8 @@ navbar:
          href: lectures_html/RPiR12a-programming.html
       -  text: RPiR12b-data
          href: lectures_html/RPiR12b-data.html
+      -  text: RPiR13a-diversity
+         href: lectures_html/RPiR13a-diversity.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
