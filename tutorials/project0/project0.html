@@ -223,7 +223,7 @@ summary {
 <p>Note that for adding dependencies to your package, if you run this in the console:</p>
 <pre class="r"><code>usethis::use_package(&quot;ggplot2&quot;)
 usethis::use_dev_package(&quot;RPiR&quot;, remote = &quot;IBAHCM/RPiR&quot;)</code></pre>
-<p>it edit your <span style="color: #1697C0;">DESCRIPTION</span> file to add the CRAN <code>ggplot2</code> package to your package’s dependencies and the <code>RPiR</code> package in the IBAHCM organisation on GitHub to your package’s dependencies. If you then add the following to the documentation in the <span style="color: #1697C0;">R</span> folder, this will mark the functions and data in those packages as usable by functions in your package:</p>
+<p>it edits your <span style="color: #1697C0;">DESCRIPTION</span> file to add the CRAN <code>ggplot2</code> package to your package’s dependencies and the <code>RPiR</code> package in the IBAHCM organisation on GitHub to your package’s dependencies as a package in development on GitHub. You may need to have already installed development packages in RStudio first to get this second command to work (using <code>devtools::install_github("IBAHCM/RPiR")</code> or <code>devtools::install()</code> locally). If you then add the following to the documentation in the <span style="color: #1697C0;">R</span> folder, this will mark the functions and data in those packages as usable by functions in your package:</p>
 <pre class="r"><code>#&#39; @import ggplot2
 #&#39; @import RPiR</code></pre>
 <strong>NB I am not suggesting you necessarily want to do this with these specific packages.</strong> 
