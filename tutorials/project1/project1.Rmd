@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Final project.
+  Final project, creating species richness and Simpson diversity functions
 ---
 
 ```{r setup, include=FALSE}
@@ -19,14 +19,13 @@ knitr::opts_chunk$set(error = TRUE)
 set.seed(123)
 ```
 
-
 ## Overview
 
-In this series of practicals you will develop the code to calculate diversity
-measures. In the first practical we will calculate the species richness and 
-Simpson diversity of a population.
+In this series of practicals you will develop the code to calculate a few
+diversity measures. In this first exercise we will calculate the species
+richness and Simpson diversity of a population.
 
-## Background
+### Background
 
 R provides us with many built-in datasets, but sadly none of them are counts of
 species abundances, so you will use the famous Barro Colorado Island dataset, a 
@@ -37,28 +36,41 @@ developed in Practical Series 4.
 You will also construct a couple of fake datasets that you will use for 
 comparison. Calculating the diversity of these populations (remembering that 
 there are many, in fact a continuum of, diversity measures) will tell us how 
-many observed species there are – the species richness – and give us measures 
+many observed species there are -- the species richness -- and give us measures 
 of how evenly distributed the trees are amongst the tree species (the evenness 
 of the species distribution) by various measures. **Species richness** is a 
 very commonly used measure of diversity, which simply **counts the number of
 non-zero species abundances**; **Simpson diversity** is also commonly used: it
 simply **calculates the species proportions from the counts (so the total sums 
-to 1), squares them all individually, and add them all together** – it tells us
+to 1), squares them all individually, and add them all together** -- it tells us
 (amongst other things) how likely two randomly chosen individuals are to be 
 from the same species.
 
 ## Tasks
 
-We are taking the data from the 2010 census – the true abundances for the whole 
+This project will be written in the **githubusernameDiversity** package that
+you set up in the last exercise, with functions being saved in the
+<span style="color: #1697C0;">R</span> folder and documented so that they work
+with the standard R help system, and scripts being saved as demos in the
+<span style="color: #1697C0;">demo</span> folder so that they can be run using
+the `demo()` function or compiled into reports to read the results with suitable
+reporting explaining what is happening. In each project exercise you will have
+to write some functions and (most likely) one script. *So now create a demo
+script for this project and add an entry for it in the
+<span style="color: #1697C0;">00Index</span> file in the same folder.*
+
+### The study populations
+
+We are taking the data from the 2010 census -- the true abundances for the whole 
 site can be calculated as follows:
 
 ```{r, eval = FALSE}
-library(BCI.package.name) 
+library(githubusernameBCI) 
 tree.pop <- rowSums(bci_2010)
 ```
 
 The total counts of trees of different species in this forest plot are now 
-available in the variable tree.pop. We can then do some simple extraction of
+available in the variable `tree.pop`. We can then do some simple extraction of
 information from the full species counts:
 
 ```{r, eval = FALSE}
@@ -90,58 +102,107 @@ rand50.pop <- as.vector(rmultinom(1, round(num.trees / 50), rep(1 / num.sp, num.
 
 Remember that `rep(x, size)` repeats `x`, `size` times to make a vector of
 length `size`, and `rmultinom()` draws from the **multinomial distribution**, 
-in this case, `rand.pop` is a population of 222,718 individuals 
-drawn from 301 species, each equally abundant ($\frac{1}{301}$).
+in this case, `rand.pop` is a population of 222,715 individuals 
+drawn from 299 species, each equally abundant ($\frac{1}{299}$). Note that
+`rmultinom()` is is in the `stats` package, so you need to add this to the
+dependencies of your package now. We won't tell you about any future
+dependencies you need to add, but note that you can check what package a
+function is in by looking in the help file for the function:
 
-Create a package. Then write and document a function that takes a vector of
-abundances like the data above as an argument and calculates the species 
-richness from it. 
+```{R, eval = FALSE}
+?rmultinom
+```
+
+If you run this in the console, the **Multinom {stats}** in the top left of the
+help page tells you that this function is in the `stats` package.
+
+### A species richness function
+
+Then write and document a function that takes a vector of abundances like the
+data above as an argument and calculates the species richness from it. Remember
+that the species richness is the number of species whose abundance is not zero.
+The name of this function should start with the letters `p1_`, so if you decide
+to call it `species_richness()`, you should actually call it
+`p1_species_richness()`. This is because you will be making a series of similar
+functions throughout the project, so they will need to be called
+`p1_species_richness()`, `p2_species_richness()`, `p3_species_richness()`,
+*etc.* to distinguish them.
 
 *Hint:* Applying a test to a vector 
 of numbers, will apply the test to all of the numbers in the vector and produce 
-a vector of booleans (`TRUE` or `FALSE`) values, so `c(1, 3, 5, 7) > 4` returns 
-`c(FALSE, FALSE, TRUE, TRUE)`. And `sum()` will count the number of `TRUE`s in 
-such a vector of booleans. If you think about it, you should be able to see how 
-to use these two ideas to count the number of non-zero abundances in a 
-population.
+a vector of booleans (`TRUE` or `FALSE`) values, so:
+
+```{R, comment = ""}
+c(1, 3, 5, 7) > 4
+```
+1 and 3 are not `> 4` and 5 and 7 are. And then `sum()` will count the number of
+`TRUE`s in such a vector of booleans. So:
+
+```{R, comment = ""}
+over4s <- (c(1, 3, 5, 7) > 4)
+sum(over4s)
+```
+
+If you think about it, you should be able to see how to use these two ideas to
+count the number of non-zero abundances in a population.
+
+### A Simpson diversity function
 
 Then write and document a second function that will calculate the Simpson 
 diversity of the population, remembering, first, that this measure works with 
 the relative proportions of the species not the total counts and, second, that 
 we can do calculations with the whole vector at once.
 
-## Running the code
+### Running the code
 
-Look at the values in the nine population vectors – you could try sorting them 
+Look at the values in the nine population vectors -- you could try sorting them 
 using `sort(x.pop)` and plotting them using `plot(sort(x.pop))`, 
 `barplot(sort(x.pop))` (or something more attractive?) to get a clearer idea of 
-what they look like – and decide which you think have the richest species 
+what they look like -- and decide which you think have the richest species 
 diversity.
 
 Run the two functions on the populations provided as see whether the results of 
 the two diversity measures agree with your assessments. Note that a lower value 
 means a higher diversity for the Simpson diversity measure.
 
-## Report
+**NB** Remember that to make the functions you have written accessible to
+your demo, you need to document and install them:
 
-Write a demo that loads in the functions (by calling `library()`), 
-reads in the BCI data, and generates a report that shows some kind of plot of 
-each of the series of counts and then calculates their species richness and 
-Simpson diversity. Check that your functions also generate appropriate help 
-files (*e.g.* `?species_richness`).
+```{R, eval = FALSE}
+devtools::document()
+devtools::install()
+library(githubusernameDiversity)
+?p1_species_richness
+```
+
+You also need to install the package to use the demos:
+
+```{R, eval = FALSE}
+devtools::install()
+demo(package = "githubusernameDiversity")
+```
+
+## Demo
+
+Edit the demo that you have started above so that it loads in the functions (by
+calling `library(githubusernameDiversity)`),  reads in the BCI data, and
+generates a report that shows some kind of plot of each of the series of counts
+and then calculates their species richness and Simpson diversity. Check that
+your functions also generate appropriate help files
+(*e.g.* `?p1_species_richness`).
 
 Remember to commit the code once you are happy before moving on to the next 
-exercise – you can always come back later and make further commits if you 
+exercise -- you can always come back later and make further commits if you 
 realise you need to change something. I won't remind you about this in 
 subsequent exercises.
 
-## Note on function names
+### Note on function names
 
-Note that you will often need to refer back to functions in later exercises (as 
-you did in the practicals) and you will be writing several very 
-similar functions in successive exercises. You will need to make sure they do 
-not have identical names or you won't be able to call them all. 
-The simplest way of doing this might be 
-to number them and call them `species_richness_1`, `species_richness_2`, *etc.* 
+As we said above, note that you will often need to refer back to functions in
+later exercises (as you did in the practicals) and you will be writing several
+very  similar functions in successive exercises. You will need to make sure they
+do not have identical names or you won't be able to call them all. 
+The simplest way of doing this might be to label them by the project exercise
+number and call them `p1_species_richness`, `p2_species_richness`, *etc.* 
 depending on what exercise you are in, but you are welcome to find a more 
-elegant solution – anything that distinguishes them is fine.
+elegant solution -- anything that distinguishes them is fine.
