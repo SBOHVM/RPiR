@@ -295,7 +295,7 @@ practical series, but you'll see details on how to do that
 
 Create a new file in the <span style="color: #de77ae;">R</span> 
 folder – I’m going to call it <span style="color: #de77ae;">githubusernameBCI-package.R</span> 
-because the convention is {packagename}-package.R. Then describe your package
+because the convention is packagename-package.R. Then describe your package
 (most easily lifted from the <span style="color: #de77ae;">DESCRIPTION</span> file):
 
 ```{r eval = FALSE}
