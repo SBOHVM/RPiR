@@ -296,7 +296,7 @@ this we need to do four things.
 2. Add an entry in the `Imports` field of the 
    <span style="color: #de77ae;">DESCRIPTION</span> file (lines 15-16). 
    This can be automated using
-   `usethis::use_package("ggplot2", type = "Imports")`.
+   `usethis::use_package("ggplot2")`.
    
    ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
    knitr::include_graphics('images/packages/13.png')
@@ -306,7 +306,7 @@ this we need to do four things.
    GitHub repository, you can use this instead:
 
    ```{r, eval = FALSE}
-   usethis::use_dev_package("RPiR", "Imports", remote = "IBAHCM/RPiR")
+   usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR")
    ```
 
 3. Add an `@import` tag to the 
