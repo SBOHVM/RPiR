@@ -63,7 +63,7 @@
 #' @import rstudioapi
 #' @import usethis
 #' @import utils
-#' @import withr
+#' @importFrom withr with_dir
 #'
 #' @examples
 #' \dontrun{
