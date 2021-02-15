@@ -208,8 +208,7 @@ summary {
 #&#39; sample_by_species(bci_2010, count = 20) %&gt;%
 #&#39;   sample_by_subcommunities(count = 6)
 #&#39;
-sample_by_species &lt;- function(dataset, count)
-{
+sample_by_species &lt;- function(dataset, count) {
   rows &lt;- nrow(dataset)
   if (count &gt; rows) {
     warning(&quot;Trying to pick more species than are present&quot;)
@@ -217,7 +216,7 @@ sample_by_species &lt;- function(dataset, count)
   }
 
   sample.rows &lt;- sample(rows, count)
-  return(dataset[sample.rows,, drop=FALSE])
+  dataset[sample.rows, , drop = FALSE]
 }</code></pre>
 <p>and then the <code>sample_by_subcommunities()</code> function:</p>
 <pre class="r"><code>#&#39; Subsample a dataset by subcommunities
@@ -235,8 +234,7 @@ sample_by_species &lt;- function(dataset, count)
 #&#39; sample_by_species(bci_2010, count = 20) %&gt;%
 #&#39;   sample_by_subcommunities(count = 6)
 #&#39;
-sample_by_subcommunities &lt;- function(dataset, count)
-{
+sample_by_subcommunities &lt;- function(dataset, count) {
   cols &lt;- ncol(dataset)
   if (count &gt; cols) {
     warning(&quot;Trying to pick more subcommunities than are present&quot;)
@@ -244,7 +242,7 @@ sample_by_subcommunities &lt;- function(dataset, count)
   }
 
   sample.cols &lt;- sample(cols, count)
-  return(dataset[, sample.cols, drop=FALSE])
+  dataset[, sample.cols, drop = FALSE]
 }</code></pre>
 </div>
 <div id="section-checking-each-others-packages" class="section level2">
