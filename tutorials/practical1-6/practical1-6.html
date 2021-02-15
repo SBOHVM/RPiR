@@ -212,7 +212,7 @@ if (length(globals) != 0) {
 <p>Remember again that our first model of simple population growth model looks like this:</p>
 <p><span class="math display">\[N(t+1) = N(t) + \lambda \times N(t)\]</span></p>
 <p>The birth and death model is slightly more complex:</p>
-<p><span class="math display">\[ N(t+1) = N(t) + b \times N(t) – d \times N(t)\]</span></p>
+<p><span class="math display">\[ N(t+1) = N(t) + b \times N(t) - d \times N(t)\]</span></p>
 <p>Remember that <span style="color: #de77ae;">0104-step-growth.r</span> has the <code>step_deterministic_growth()</code> function and <span style="color: #de77ae;">0105-step-birth-death.r</span> has the <code>step_deterministic_birth_death()</code> function, so we need to <code>source()</code> both of these files (as well as <span style="color: #de77ae;">0104-plot-helper.r</span>).</p>
 <p>Now open RStudio. For this practical, we’re going to generate a report called <span style="color: #de77ae;">0106-final-report.r</span>. We want to compare the models, so write some code that first runs a simulation with one model and plots it, and then with the other model and plots that as well. Remember that you can plot a second (or third, etc.) result on top of a first with commands like:</p>
 <pre class="r"><code>plot_populations(population.b, new.graph = FALSE, col = &quot;red&quot;)</code></pre>
