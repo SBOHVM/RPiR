@@ -33,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.71.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.71.1</span>
       </span>
     </div>
 
@@ -286,6 +286,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="articles/pages/preparation.html">Course preparation</a>
+    </li>
+    <li>
       <a href="articles/pages/github.html">Create a repository on GitHub</a>
     </li>
     <li>
@@ -336,33 +339,7 @@
 <div id="course-preparation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#course-preparation" class="anchor"></a>Course preparation</h2>
-<p>You’ll need to do a few things before we can start the course. First you need to check you have up-to-date versions of R and RStudio. This means that R should be at least version 4. You can check by typing this in R:</p>
-<pre class="{r}"><code>version$major &gt;= 4</code></pre>
-<p>If this is <code>FALSE</code>, download and install a new version from <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>. Next install these packages:</p>
-<pre class="{r}"><code><a href="https://rdrr.io/r/utils/install.packages.html">install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))</a></code></pre>
-<p>Then check whether RStudio is up to date:</p>
-<pre class="{r}"><code><a href="https://github.com/rstudio/rstudioapi"># Load the rstudioapi library and check RStudio version
-library(rstudioapi)
-isAvailable("1.4")
-
-# or just
-rstudioapi::isAvailable("1.4")</a></code></pre>
-<p><strong>NB <code>rstudioapi::xxx()</code> means <em>“find the <code>xxx()</code> function in the <code>rstudioapi</code> package”</em>.</strong></p>
-<p>If <code>FALSE</code>, download and install the latest version of <a href="https://rstudio.com/products/rstudio">RStudio Desktop</a> and check this has worked by running the above again.</p>
-<p>Next, check you are now ready to build R packages:</p>
-<pre class="{r}"><code><a href="https://devtools.r-lib.org/"># Load the devtools library and check whether compilers are installed
-library(devtools)
-has_devel()
-
-# or just
-devtools::has_devel()</a></code></pre>
-<p>If this is <code>FALSE</code> or errors, then you will need to follow instructions given by the function or ask for help until this works.</p>
-<p>Once all of the above works, you’re ready to start, so follow the details under the <code>Installation</code> dropdown menu <a href="https://ibahcm.github.io/RPiR">in the documentation for this package</a>. Specifically:</p>
-<ol>
-<li>First <a href="https://ibahcm.github.io/RPiR/articles/pages/install_github.html">create an account on GitHub and connect it to RStudio</a>. This will also show you how to create a practice project on github. You’ll use this in the second practical series, but it’s worth trying out the instructions now to check that everything is working.</li>
-<li>Then <a href="https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html">install the RPiR package</a>.</li>
-<li>Finally, <a href="https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html">install Visual Studio Code and then Live Share</a>. You will need your GitHub id from the previous step to set this up.</li>
-</ol>
+<p>You’ll need to do a few things before you can start the course. The details are available in the guide section of the <a href="https://ibahcm.github.io/RPiR">docs</a> at <a href="https://ibahcm.github.io/RPiR/articles/pages/preparation.html">this link</a>.</p>
 </div>
 <div id="running-the-course" class="section level2">
 <h2 class="hasAnchor">
