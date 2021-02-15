@@ -396,15 +396,26 @@ within your <span style="color: #de77ae;">data</span> directory) and we don't
 want to upload these large files to GitHub.
 
 Next we should document our data (more info 
-[here](https://r-pkgs.org/data.html). To do that, we need to create a
-<span style="color: #de77ae;">data.R</span> file in the 
+[here](https://r-pkgs.org/data.html) and
+[here](https://kbroman.org/pkg_primer/pages/data.html)). To do that, we need to 
+create a <span style="color: #de77ae;">data.R</span> file in the 
 <span style="color: #de77ae;">R</span> directory. It should look something like
 this:
 
 ```{r, eval = FALSE}
-#' data
+#' mydataset
 #' 
 #' Description of mydataset
+#' 
+#' @docType data
+#' @usage data(mydataset)
+#' 
+#' @format A data frame with x rows and y variables:
+#' \describe{
+#'   \item{variable1}{description}
+#'   \item{variabl2}{description}
+#'   ...
+#' }
 #' 
 #' @source \url{http://somewhere.important.com/}
 "mydataset"
