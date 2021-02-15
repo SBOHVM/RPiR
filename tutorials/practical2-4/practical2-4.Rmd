@@ -26,10 +26,10 @@ set.seed(123)
 
 When we are programming we often make quick additions to code, as we did in the
 last practical but it is good practice, if we want to keep them, to make sure
-they are included in the code in a way that makes it clear what's going on. We
+they are included in the code in a way that makes it clear what’s going on. We
 had to know how the SIS model works to know that we could get away with 
 multiplying the parameters with `timestep.` This use of a low-level detail of
-how the model runs might be risky -- we may later change the model and 
+how the model runs might be risky – we may later change the model and 
 not realise this hack no longer works.
 
 ## Tasks
@@ -38,7 +38,7 @@ In the previous practical we multiplied the transmission and recovery rates up
 (or down) to reflect changes in `timestep.` However, `transmission.rate` and
 `recovery.rate` were not really changing, and we want the code to reflect that
 rather than abusing it to do something it wasn't intended to do. Instead add a
-new argument, `timestep`, into `step_deterministic_SIS()` -- we could call it
+new argument, `timestep`, into `step_deterministic_SIS()` – we could call it
 `timestep_deterministic_SIS()`. Rather than submit the product 
 `transmission.rate * timestep` as an argument to the simulation function, we can 
 now separately pass the real rate parameters and the `timestep` separately.
@@ -66,9 +66,9 @@ population.df <- data.frame(time = start.time,
 And the `timestep_deterministic_SIS()` function can update the time along with 
 the number of susceptibles and infecteds. Here, it makes the code slightly more
 elegant but it might be critical if, for instance, we wanted to adjust the 
-timestep as we went along, which we will need to do later. Now we're not making 
+timestep as we went along, which we will need to do later. Now we’re not making 
 the vector of timesteps in advance, we can use a `while()` loop to decide when 
-we're finished. For instance:
+we’re finished. For instance:
 
 ```{r, eval = FALSE}
 latest.population <- population.df
@@ -87,7 +87,7 @@ from the data frame after each timestep.
 ## Running the code
 
 Run this code and check that it gives the same answers as in the previous 
-practical. Don't forget to check that your function is using only arguments 
+practical. Don’t forget to check that your function is using only arguments 
 passed to it by running `findGlobals()`.
 
 ## Report

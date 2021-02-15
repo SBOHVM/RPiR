@@ -111,7 +111,7 @@ from the model, and to simplify and automate the running of multiple stochastic
 simulations. If you look closely you can see that the function `run_simple()` 
 does the job we described in the <span style="color: #de77ae;">And again!</span>
 section (at the top of this page). It is set up in terms 
-of the generically named `step_function()` -- in the case of the current model we
+of the generically named `step_function()` – in the case of the current model we
 would be using `timestep_stochastic_birth_death()` when we call `run_simple()`:
 
 ```{r, eval = FALSE}
@@ -126,8 +126,8 @@ final.populations <- run_simple(timestep_stochastic_birth_death,
 There are two things going on here that we haven't seen before: (1) We're 
 passing the step function as an argument to the `run_simple()` function. This 
 just happens like any other argument being passed, you pass in the function, it 
-gets assigned to the `step_function` argument -- remember that we can call it 
-anything inside a function -- and then `step_function` gets used just like
+gets assigned to the `step_function` argument – remember that we can call it 
+anything inside a function – and then `step_function` gets used just like
 `initial.pop` and all of the other arguments. (2) the argument `...`. 
 This is a way of saying "and there will be other arguments I don't want to (or 
 can't) specify". You will find this in lots of R code (see `?plot` for example). 
@@ -140,7 +140,7 @@ data <- step_function(initial.pop, ...)
 ```
 
 **Any arguments after the three fixed arguments to** `run_simple()`
-**must be named** -- they will be passed straight through to the step function 
+**must be named** – they will be passed straight through to the step function 
 (via the `...`).
 
 ### demo/d0303_run_birth_death.R
@@ -155,7 +155,7 @@ of code that we never need to write (or copy and paste) again.
 
 Note that there is a demo in the `RPiR` package that checks
 all of the functions provided for global variables for you, so you don't have to
-remember -- another optimisation to stop you forgetting to check.
+remember – another optimisation to stop you forgetting to check.
 
 If you encounter any problems, `RPiR` has a function, `run_simulation()`, 
 that does some additional checking and reporting if you set an additional 

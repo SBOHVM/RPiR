@@ -202,7 +202,7 @@ summary {
 <pre class="r"><code>next.count &lt;- latest$count + lambda * latest$count</code></pre>
 <p>This use of greek letters is fine for mathematicians, but we use <code>growth.rate</code> for <code>lambda</code> in our code as we want the code to read more like English. We will also write this on multiple lines as we calculate the new additions separately and then add them in. Note that, for consistency, throughout these practicals our code will refer to the data frame with the current latest population counts in as <code>latest</code> as in Practical 1-4, and these are referred to in the equations such as those on this page as <span class="math inline">\(N(t)\)</span>. The updated values, referred to above as <span class="math inline">\(N(t+1)\)</span>, appear as <code>next.something</code> in the functions if they have a name at all, and <code>updated.something</code> in the main script just to be distinct.</p>
 <p>We now want to update the model to include both births and deaths, <em>i.e.</em></p>
-<p><span class="math display">\[N(t+1) = N(t) + b \times N(t) - d \times N(t)\]</span> which can be similarly translated as</p>
+<p><span class="math display">\[N(t+1) = N(t) + b \times N(t) – d \times N(t)\]</span> which can be similarly translated as</p>
 <blockquote>
 <p>“the next population size is the current size plus the new births (b times the current size) minus the new deaths (d times the current size)”</p>
 </blockquote>

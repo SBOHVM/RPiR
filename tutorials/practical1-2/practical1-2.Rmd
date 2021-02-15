@@ -23,7 +23,7 @@ set.seed(123)
 
 ## Overview
 
-*In this session you will break the program 0101-growth-loop.R into two conceptually distinct parts -- moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
+*In this session you will break the program 0101-growth-loop.R into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.*
 
 ## Introduction
 
@@ -81,7 +81,7 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 Inside the simulation, we have the mechanics of iterating over the timesteps and keeping track of the results, and there is the implementation of the growth 
 model itself, which occurs inside the curly brackets. Obviously in this case 
 none of these four steps are very complex (and you indeed might decide there are
-fewer -- or even more -- that are actually important), but as we develop more 
+fewer – or even more – that are actually important), but as we develop more 
 complex models some or all of them will become more complicated, and if they are 
 all written out in one continuous piece of code it will become harder and harder 
 to work out where one part ends and another begins, and how we need to change
@@ -462,7 +462,7 @@ Find all the instances of `growth.rate` and replace them with `my.rate` in the
 run the code. What happens? You should get an error. It will tell you that you 
 have an unused argument, `growth.rate` when you call `step_simple_growth()`. 
 This is because when you call the function (lines 47-48), you set its 
-`growth.rate` argument to the main script's value of `growth.rate`, but the 
+`growth.rate` argument to the main script’s value of `growth.rate`, but the 
 function now only has an argument called `my.rate` (line 11). To fix this, we can 
 change the call to `step_simple_growth()` to say `my.rate = growth.rate` (line 
 48), remembering to . Now rerun the code and check it works.
@@ -470,7 +470,7 @@ change the call to `step_simple_growth()` to say `my.rate = growth.rate` (line
 Now do the same with `next.population`, replacing it **just in the function** 
 with `my.population`, or something sensible, then run the code. What happens? You 
 should find that the model runs exactly as before this time. This is because 
-none of the names of objects being used in the function matter -- even if their
+none of the names of objects being used in the function matter – even if their
 values are being returned to the main script. Object names and values are 
 thrown away when the function finishes. Only the objects in the main script are 
 retained. The only thing that matters is that object names are used consistently
@@ -484,7 +484,7 @@ used in functions. If we never reused names in different bits of code we would
 not have to check this. For the time being (and the rest of this practical 
 series), make 
 sure that no argument names in the main script accidentally match names in 
-functions (it's okay for variable names in different functions to match). You 
+functions (it’s okay for variable names in different functions to match). You 
 can relax this requirement in the real world, but it is best to be over-cautious 
 for the time being.
 

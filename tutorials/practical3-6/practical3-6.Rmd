@@ -27,7 +27,7 @@ set.seed(123)
 ## Background
 
 We know that the outbreak can die out by chance before it gets going in the 
-stochastic model, and it's not clear that the deterministic model takes this 
+stochastic model, and it’s not clear that the deterministic model takes this 
 into account, so we want to directly compare the two and check. Also, since the
 stochastic model can finish before the end time of the simulation, we need a 
 small amendment to allow us to average across "incomplete" simulations.
@@ -44,7 +44,7 @@ because some (all) simulations finished early because the outbreak died out.
 
 Go to the <span style="color: #1697C0;">IBAHCM/RPiR</span> package on 
 github and look at the `cleanup_timesteps()` function (which actually calls 
-`cleanup_times()` -- both functions are in
+`cleanup_times()` – both functions are in
 <span style="color: #1697C0;">R/cleanup.R</span>). This function takes a
 population data frame and tidies it up in various ways. For our purposes, we can
 use it to extend a data frame to the correct end time, by repeating the 

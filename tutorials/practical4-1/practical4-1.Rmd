@@ -29,8 +29,8 @@ When we think about biodiversity data, we generally think about the hypothesis
 we are testing, how we are going to collect the data, and how we need to analyse
 it to investigate that hypothesis. Little thought is usually given to how to 
 store the data. This is a mistake! Large amounts of hard work in the field can
-be wasted by mistakes in storage. After regular backups so you don't physically
-lose your data *(if you're not doing this, then you should stop whatever you're
+be wasted by mistakes in storage. After regular backups so you don’t physically
+lose your data *(if you’re not doing this, then you should stop whatever you're
 doing and fix that now!)*, the next important thing to consider is whether you
 are **definitely**, **always** using the most up-to-date, error-free copy of
 your dataset when you carry out analyses.
@@ -46,7 +46,7 @@ instructions above and have a backup!).
 If, on the other hand, you create a new file every time you update the data, 
 then all of your R scripts that do analyses on the data now have to refer to the
 new file, or you will need to copy the new data file to the projects where you
-are doing the analysis. If you don't do either of these everywhere you are 
+are doing the analysis. If you don’t do either of these everywhere you are 
 working on the data, one or more of your analyses may be using an out of date 
 version of the data, and silently give incorrect answers.
 
@@ -60,7 +60,7 @@ script, just like the data, needs to be updated, and the code needs to be
 present wherever you carry out an analysis. It therefore suffers from exactly 
 the same problems as the data itself.
 
-There is a simple(-ish!) solution though. You don't need to carry around your 
+There is a simple(-ish!) solution though. You don’t need to carry around your 
 own copy of `ggplot()` or `lmer()` in every script you write, so why should you 
 have to do it with the data? There is one definitive version of `ggplot()` and 
 `lmer()` on your computer, and you just refer to them by loading the {ggplot2} 
@@ -69,7 +69,7 @@ updated to fix bugs or extend functionality, you just do it once by installing
 (normally updating) the R package, and then all of your scripts use the new 
 version. So why not turn your data into an R package and do the same?
 
-You'll go through the process of creating a package, processing data, inserting
+You’ll go through the process of creating a package, processing data, inserting
 the data into the package, and building the package so that you can use it
 during the project work at the end of the course.
 
@@ -86,13 +86,13 @@ Generally, you would want to store the raw data from your work in the git
 repository so everything is archived and version controlled on GitHub. However,
 in this work, the dataset is not yours, and it's so big it easily exceeds file
 limits for storage in GitHub. So, **under no circumstances** commit the raw
-records to your git repository -- it's far too big. We'll show you how to ignore
-it so that you don't do this by mistake shortly, but just bear this in mind now
+records to your git repository –- it’s far too big. We’ll show you how to ignore
+it so that you don’t do this by mistake shortly, but just bear this in mind now
 so you ensure that you don't -- the moment you commit a file like this into a
 repo it's hard to undo the error.
 
 Next, you need to download the Barro Colorado Forest Census Plot Data from the 
-Smithsonian's repository at https://repository.si.edu/handle/10088/20925. 
+Smithsonian’s repository at https://repository.si.edu/handle/10088/20925. 
 Download files 3 and 4, the full census data 
 (<span style="color: #1697C0;">ViewFullTable.zip</span>) and the taxonomic data 
 on all of the species present 
@@ -294,14 +294,14 @@ practical series, but you'll see details on how to do that
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
 
 Create a new file in the <span style="color: #de77ae;">R</span> 
-folder -- I'm going to call it <span style="color: #de77ae;">githubusernameBCI-package.R</span> 
+folder – I’m going to call it <span style="color: #de77ae;">githubusernameBCI-package.R</span> 
 because the convention is packagename-package.R. Then describe your package
 (most easily lifted from the <span style="color: #de77ae;">DESCRIPTION</span> file):
 
 ```{r eval = FALSE}
 #' Barro Colorado Island data package 
 #'
-#' Package to hold the BCI data (or whatever) -- maybe also mention something
+#' Package to hold the BCI data (or whatever) – maybe also mention something
 #' about these functions now, and put that in the DESCRIPTION too. And then
 #' put it in the README.md file. And don't forget to reference the source of
 #' the data correctly.
@@ -316,7 +316,7 @@ NULL
 ```
 
 There are a few things going on here that you should notice for making packages 
-in the future. The first is that you need to say what your package is called -- 
+in the future. The first is that you need to say what your package is called –- 
 here I have given it two names `githubusernameBCI-package` and an alias of just
 `githubusernameBCI`, which you do with the `@aliases` command. Secondly, the
 `NULL` at the end of the file is included when there is no object associated
@@ -324,7 +324,7 @@ with this documentation, which is the case here, since this file contains the
 package documentation, as defined explicitly in the `@docType` tag (more info
 [here](http://r-pkgs.had.co.nz/man.html#man-packages)). Finally, if you are
 using any packages in any of your functions, you may want to import them into
-your package here. This is done using `@import` -- see more
+your package here. This is done using `@import` –- see more
 [here](http://r-pkgs.had.co.nz/namespace.html). You can then put the same, or a
 similar, package description into the
 <span style="color: #de77ae;">README.md</span> file in the package so that 
@@ -333,7 +333,7 @@ without having to install it. Note that GitHub README pages use a special type
 of markdown called Git Flavored Markdown; more information can be found here https://docs.github.com/en/free-pro-team@latest/github/writing-on-github with 
 more general documentation here 
 https://guides.github.com/features/mastering-markdown/. Note that with markdown
-you don't need to start lines with `#'`.
+you don’t need to start lines with `#'`.
 
 Second, you need to document the data that you are providing in this package,
 by creating file(s) in the <span style="color: #1697C0;">R</span> folder again.

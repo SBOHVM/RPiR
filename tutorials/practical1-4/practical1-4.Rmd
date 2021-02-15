@@ -21,7 +21,7 @@ set.seed(123)
 
 ## Overview
 
-*In this session we will start to think ahead about what kind of framework we will need when we move on to more complex models. We will build this framework (using data frames) in the context of our existing exponential growth model, and we will separate out another potentially complex element of the code -- the plotting function -- where we can refine it separately from the functionally important simulation code.*
+*In this session we will start to think ahead about what kind of framework we will need when we move on to more complex models. We will build this framework (using data frames) in the context of our existing exponential growth model, and we will separate out another potentially complex element of the code – the plotting function – where we can refine it separately from the functionally important simulation code.*
 
 ## Background
 
@@ -38,7 +38,7 @@ individuals), more complex ways of updating the population structure (of which
 more later), and more sophisticated ways of displaying the results.
 
 With that in mind we are going to see how to make some of the structures in the 
-code more general by introducing **data frames**, which are just R's way of 
+code more general by introducing **data frames**, which are just R’s way of 
 representing a table of data. Although the advantages of this are somewhat 
 limited at the moment, they will be hopefully be clear when we move on to the 
 epidemiological models.
@@ -52,13 +52,13 @@ want to end up with a population update function
 later programs) that takes in a data frame containing the current population 
 count and the `growth.rate` parameter and outputs a data frame containing the 
 updated count. Rewrite the code throughout so that it uses a data frame instead 
-of a vector -- we have called these files 
+of a vector – we have called these files 
 <span style="color: #de77ae;">0104-run-growth.R</span> and 
 <span style="color: #de77ae;">0104-step-growth.R</span>. Remember to 
 use `data.frame()` to create a data frame and `rbind()` to append one onto 
 another. 
 
-So that we don't need to worry about how to plot the outputs, we have provided a 
+So that we don’t need to worry about how to plot the outputs, we have provided a 
 function called `plot_populations()` in the `RPiR` package which will take a 
 data frame with any number of population columns and a single corresponding 
 `time` column and plot them together in different colours with a legend 
@@ -143,7 +143,7 @@ dynamics.
 We are now allowing the populations that are handled within this function to 
 potentially contain several columns corresponding to different sets of 
 individuals. Thus, `latest` is a data frame that contains a single row
-containing the latest population size for each of the component populations -- in 
+containing the latest population size for each of the component populations – in 
 this case just the one, `count`. Therefore, to perform the update step we need 
 to extract the actual population we are interested in. For this we use the `$` expression:
 
@@ -316,10 +316,10 @@ up will happen like this:
 population.df <- data.frame(count = initial.count)
 ```
 
-A data frame is just R's ways of referring to a table of data, so whereas our 
+A data frame is just R’s ways of referring to a table of data, so whereas our 
 vector approach in the previous code would allow us to have a single list of 
 values, the data frame will allow us to have several columns of data. Whilst 
-this isn't necessary for this piece of code the approach will be very useful 
+this isn’t necessary for this piece of code the approach will be very useful 
 when we are handling multiple populations (for example susceptible, infected and
 recovered individuals in an epidemiological model).
 
@@ -335,17 +335,17 @@ updated.population <- step_deterministic_growth(latest = tail(population.df, 1),
 population.df <- rbind(population.df, updated.population)
 ```
 
-The second line is slightly different, however. `rbind()` binds -- appends -- the 
+The second line is slightly different, however. `rbind()` binds – appends – the 
 rows of a second data frame (`updated.population`) after the end of the last row of the first data 
 frame (`population.df`). The two data frames must have the same columns for this to work, or they
-wouldn't fit: in this case they will both have to have one column called 
+wouldn’t fit: in this case they will both have to have one column called 
 `count`, so our function will need to return a data frame with just that column 
 in it when we write it below. You will get a clearer idea of how the data frames 
 work once we start on the epidemiological models with multiple populations, so 
-don't worry if it isn't currently clear.
+don’t worry if it isn’t currently clear.
 
 At the end of your new <span style="color: #de77ae;">0104-run-growth.R</span> file,
-rather than use R's basic plot command plot as we did previously, we have now
+rather than use R’s basic plot command plot as we did previously, we have now
 used a function `plot_populations()`, which is defined
 inside the `RPiR` library. The job of 
 this function is to take a data frame with any number of population columns and 
@@ -381,9 +381,9 @@ results using:
 plot_populations(population.df, new.graph = FALSE, col = "red")
 ```
 
-The extra argument `col` sets the colour of the line in the plot -- "red", 
-"blue", etc.; or you could use `lty` to set the type of line -- solid, 
-dash, dot, etc. -- by using numbers (1 is solid, 2, 3, *etc.*). Note that
+The extra argument `col` sets the colour of the line in the plot – "red", 
+"blue", etc.; or you could use `lty` to set the type of line – solid, 
+dash, dot, etc. – by using numbers (1 is solid, 2, 3, *etc.*). Note that
 `plot_populations()` also has a help file, which you can access by typing
 `?plot_populations`:
 
@@ -399,7 +399,7 @@ This documentation is available, since `plot_populations()` was installed as
 part of {RPiR}. When functions are loaded using `source()`, rather than being 
 installed, then the only documentation is that in the file itself. 
 Occasionally, you might come across a function that won't let you ask for help 
-using the `?` syntax -- `?for`, `?function` and a couple of others. In that case 
+using the `?` syntax – `?for`, `?function` and a couple of others. In that case 
 you can use the `help()` function instead.
 
 ```{r function_help, exercise = TRUE}
@@ -436,6 +436,6 @@ plot_simple
 Many of the helper functions in the course are fairly 
 sophisticated and you will probably have to take on trust for the time being.
 We will be providing these functions as we go along to allow you to focus on the
-models being developed -- you are welcome to use them yourselves later, but if 
+models being developed – you are welcome to use them yourselves later, but if 
 you use them for real you should spend some time satisfying yourself that they 
 really do what you want.

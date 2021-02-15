@@ -58,7 +58,7 @@ of 5, a growth rate of 0.1 per day, and to run it for 20 days.
 
 We can start by first initialising the population, $N$, and setting the growth 
 rate parameter (remembering that $\lambda$ is the greek letter written as 
-`lambda` in English -- since R doesn't understand greek!). Then create a `for()` 
+`lambda` in English – since R doesn’t understand greek!). Then create a `for()` 
 loop to repeatedly update the population (20 times in this case), and print out 
 the final answer. If you run this code, it should give you a final population 
 size of 33.6375.
@@ -186,8 +186,8 @@ next exercise we will learn how to write functions).
 
 ## Tasks
 
-We're now going to start again, but write out our code more clearly. In 
-particular we're going to name our variables well, so we know what they are, 
+We’re now going to start again, but write out our code more clearly. In 
+particular we’re going to name our variables well, so we know what they are, 
 and comment the code (we call it adding documentation) so that we know what the 
 code is doing. Our aim is to write an **R program** to run a difference 
 equation model of an exponentially growing population. We'll go through how to 
@@ -262,7 +262,7 @@ code that describe the simulation:
 #' Then run it so that we can get the output we need
 ```
 
-Note again the use of `#'`. Since we've chosen to write this in R markdown,
+Note again the use of `#'`. Since we’ve chosen to write this in R markdown,
 **this will define a section in our report**. Our simple model earlier only gave 
 us the final population size, but we want to be able to plot the population size 
 against time so we want to store each new population size as it is generated. 
@@ -328,7 +328,7 @@ for (new.time in timesteps) {
 
 The variable `new.time` will count the 
 timesteps from `start.time + 1` to the `end.time`. Inside the loop (the bit 
-inside the curly brackets -- remembering that curly brackets allow you to repeat
+inside the curly brackets – remembering that curly brackets allow you to repeat
 multiple lines of commands in a `for()` loop instead of the just one). The first 
 step on each run through the loop is to extract the `current.population` size 
 from our `population.vector` using the `tail()` command. By default

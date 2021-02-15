@@ -22,7 +22,7 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we will look at programming a simple epidemiological model --
+*In this practical we will look at programming a simple epidemiological model –
 the Susceptible-Infected-Susceptible or SIS model. We will report on the 
 transmission of E. coli O157 in cattle.*
 
@@ -30,15 +30,15 @@ transmission of E. coli O157 in cattle.*
 
 We have now built a simple population dynamics model, but the framework we are 
 using is capable of handling much more. We will start with the simplest model of
-infectious disease dynamics -- the SIS model -- that we covered in the
+infectious disease dynamics – the SIS model – that we covered in the
 epidemiology lecture.
 
 The SIS model requires two populations (of susceptible and infected animals) to
 replace the single population we have used so far. Susceptibles, $S$, and
 infecteds, $I$, are updated as follows:
 
-$$S(t+1) = S(t) - \beta \times \frac{S(t) \times I(t)}{N} + \sigma \times I(t)$$
-$$I(t+1) = I(t) + \beta \times \frac{S(t) \times I(t)}{N} - \sigma \times I(t)$$
+$$S(t+1) = S(t) – \beta \times \frac{S(t) \times I(t)}{N} + \sigma \times I(t)$$
+$$I(t+1) = I(t) + \beta \times \frac{S(t) \times I(t)}{N} – \sigma \times I(t)$$
 
 where the total population, $N = S(t) + I(t)$, the sum of the number of
 susceptibles and infected is constant.
@@ -47,9 +47,9 @@ As we said earlier, it is a good idea to use descriptive names in your code to
 avoid confusion, so we will call the two populations `susceptibles` and
 `infecteds` - these will be the column names in your data frame. The
 two epidemiological parameters are $\beta$ (beta, the transmission rate) and
-$\sigma$ (sigma, the recovery rate) -- these Greek letters are almost universally
+$\sigma$ (sigma, the recovery rate) – these Greek letters are almost universally
 used as the names of basic transmission and recovery rates in epidemiology.
-However, unless you're doing a lot of epidemiology, this isn't obvious. In any
+However, unless you’re doing a lot of epidemiology, this isn’t obvious. In any
 event, in our function definition we will give them descriptive names again,
 calling them generically `transmission.rate` and `recovery.rate` in the function
 definition, and in the script we will be more specific and call them
@@ -81,10 +81,10 @@ whole rpir team (actually *IBAHCM/rpir*) (again with read access).
 Create a new R file, using <span style="color: #de77ae;">File > New > R
 Script</span>. You should adapt the code from Practical 1-5 (remember you now
 have a project with all of this code in, and it is easy to have two RStudio
-sessions so you can copy and refer to earlier code easily), creating 2 files -- 
+sessions so you can copy and refer to earlier code easily), creating 2 files – 
 <span style="color: #de77ae;">0202-run-SIS.R</span>
-and <span style="color: #de77ae;">0202-step-SIS.R</span> -- but where in 1-5 
-the data frame had only a `count` column, now you will need to have two --
+and <span style="color: #de77ae;">0202-step-SIS.R</span> – but where in 1-5 
+the data frame had only a `count` column, now you will need to have two –
 `susceptibles` and `infecteds`. You **do not** need to have the total population
 size (`N`, above) in there, because at every step it is just
 `susceptibles + infecteds`. In fact, with no death in this model, it is just
@@ -101,7 +101,7 @@ total population size, while allowing us to vary the things we are
 investigating. Writing the code to make this as easy as possible makes it harder 
 to make mistakes, and that is always a good thing!
 
-Once we've done that, we can create the data frame with those values -- this is
+Once we’ve done that, we can create the data frame with those values – this is
 the initial state of the population when we start the simulation:
 
 ```{r, eval = FALSE}
@@ -132,7 +132,7 @@ recent) numbers and the parameters using the formulae above; and then
 Run the code in <span style="color: #de77ae;">0202-run-SIS.R</span>. Remember 
 that the `source()` command means that it automatically loads in 
 <span style="color: #de77ae;">0202-step-SIS.R</span>, meaning that you 
-needing to load these files yourself. Don't forget to check that
+needing to load these files yourself. Don’t forget to check that
 your function is not using any global variables. Check that you get the same
 results as you saw in the lecture. Adding the argument `col = c("green", "red")` 
 to `plot.populations()` will allow you to change the colours of the (now) two
@@ -183,8 +183,8 @@ data frame.
 ## Report
 Adapt your script to generate a report which shows you running the model with at 
 least a couple of different transmission rates and calculating different values
-for $R_0$ from the results with some explanation of what's going on. You 
-should also submit a table in Word or Excel with the above values filled in -- 
+for $R_0$ from the results with some explanation of what’s going on. You 
+should also submit a table in Word or Excel with the above values filled in – 
 just save it in the project folder. In particular for *E. coli O157* infections 
 in cattle, for timesteps in weeks, the recovery rate is about $\frac{1}{3}$ and 
 the transmission rate is 1.

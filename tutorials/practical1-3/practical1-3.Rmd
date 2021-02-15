@@ -23,7 +23,7 @@ set.seed(123)
 ## Overview
 *In this session you will make it easier to reuse your code by placing functions
 in separate files, so that they can be referred to directly without having to be
-copied and pasted from file to file -- a potentially error-strewn pastime.*
+copied and pasted from file to file – a potentially error-strewn pastime.*
 
 ## Background
 
@@ -143,7 +143,7 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
-When we run the code, we don't even need to open the file 
+When we run the code, we don’t even need to open the file 
 <span style="color: #de77ae;">0103-step-simple-growth-function.R</span>, 
 we just run the main script
 (<span style="color: #de77ae;">0103-run-simple-growth.R</span>) making sure that 
