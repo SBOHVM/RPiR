@@ -39,12 +39,12 @@ To write a model to handle stochastic population dynamics we obviously have to
 update the timestep function to handle the new dynamics. However, we also have 
 to understand whether anything else has changed in how the simulation works. In
 fact, something has. There is now the chance that the population will die out
-before the end of the experiment, so we need to look for this happening – not 
+before the end of the experiment, so we need to look for this happening -- not 
 least to speed up the simulation.
 
 ### demo/d0302_stochastic_birth_death.R
 
-We’ll start by writing the structural code in a new demo file. In Practical 3-1
+We'll start by writing the structural code in a new demo file. In Practical 3-1
 we created this file and named it <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo
 is a copy of the <span style="color: #de77ae;">d0105_run_birth_death</span> 
 demo, which is a good starting point. In this Practical you will edit this code.
@@ -60,7 +60,7 @@ while (latest.population$time < end.time) {
 ```
 
 The loop ends when the time runs out. Now, instead, there are two reasons why we
-might stop the simulation – the time may have run out, or the timestep code may
+might stop the simulation -- the time may have run out, or the timestep code may
 identify that the dynamics are now complete. To achieve this, the timestep code 
 will have to return both the updated population and whether the simulation is
 over. We suggest doing something like this:
@@ -115,7 +115,7 @@ timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, time
 ```
 
 Then we need to work out whether the simulation has ended and return both
-pieces of information – the updated population and simulation state, by 
+pieces of information -- the updated population and simulation state, by 
 returning a list like this at the end of the function (since a function can only
 return one item, we will have to return a list with two elements):
 
@@ -128,7 +128,7 @@ timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, time
 }
 ```
 
-But we need to determine whether the experiment is finished first – before the
+But we need to determine whether the experiment is finished first -- before the
 end of the function! In this case, the experiment will only end if the
 population completely dies out, so:
 
@@ -185,7 +185,7 @@ to permanently install it.
 
 When you are happy that the code is working and makes sense, run the code
 several times without changing any parameters of initial conditions and look at
-the output. The stochasticity means that we see variable outputs. If you don’t
+the output. The stochasticity means that we see variable outputs. If you don't
 it may be because your starting population is too high. Try something much 
 smaller, say 7 instead of 7 billion! 
 
@@ -209,13 +209,13 @@ initial.count <- 1
 ```
 
 You could also increase birth and death 
-rates or the time you’re simulating over to increase visible variability.
+rates or the time you're simulating over to increase visible variability.
 
 Notice that (as before) we have repeated the piece of code doing the simulation
 and have made use of the `new.graph = FALSE` option to overlay a second plot on 
 the first.
 
-If you haven’t already, try increasing the value of timestep. What happens? You
+If you haven't already, try increasing the value of timestep. What happens? You
 are actually getting impossible numbers (`NA`s) because the probability of
 giving birth has got above 1. You can fix this by using the `stop()` command in
 `timestep_stochastic_birth_death()` to stop running code when the numbers you 

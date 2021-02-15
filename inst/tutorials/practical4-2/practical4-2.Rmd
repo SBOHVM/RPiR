@@ -27,7 +27,7 @@ set.seed(123)
 
 ## Background
 
-It’s rarely the case that you will have access to a fully sampled dataset like
+It's rarely the case that you will have access to a fully sampled dataset like
 that at BCI. To pretend that your dataset has incomplete data, I am providing 
 you with two functions that will subsample the data in different ways. 
 The first, `sample_by_species()`, will sample from the dataset as if you were
