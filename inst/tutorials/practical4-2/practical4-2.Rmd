@@ -62,8 +62,7 @@ the `sample_by_species()` function:
 #' sample_by_species(bci_2010, count = 20) %>%
 #'   sample_by_subcommunities(count = 6)
 #'
-sample_by_species <- function(dataset, count)
-{
+sample_by_species <- function(dataset, count) {
   rows <- nrow(dataset)
   if (count > rows) {
     warning("Trying to pick more species than are present")
@@ -71,7 +70,7 @@ sample_by_species <- function(dataset, count)
   }
 
   sample.rows <- sample(rows, count)
-  return(dataset[sample.rows,, drop=FALSE])
+  dataset[sample.rows, , drop = FALSE]
 }
 ```
 
@@ -93,8 +92,7 @@ and then the `sample_by_subcommunities()` function:
 #' sample_by_species(bci_2010, count = 20) %>%
 #'   sample_by_subcommunities(count = 6)
 #'
-sample_by_subcommunities <- function(dataset, count)
-{
+sample_by_subcommunities <- function(dataset, count) {
   cols <- ncol(dataset)
   if (count > cols) {
     warning("Trying to pick more subcommunities than are present")
@@ -102,7 +100,7 @@ sample_by_subcommunities <- function(dataset, count)
   }
 
   sample.cols <- sample(cols, count)
-  return(dataset[, sample.cols, drop=FALSE])
+  dataset[, sample.cols, drop = FALSE]
 }
 ```
 
