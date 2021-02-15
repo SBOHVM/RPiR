@@ -47,7 +47,7 @@ plot_simple <- function(populations, new.graph=TRUE, xlim=NA, ylim=NA,
     ylim <- c(0, max(rowSums(populations)))
 
   # And plot the individual columns against time
-  for (index in 1:length(labels)) {
+  for (index in seq_len(labels)) {
     label <- labels[index]
     this.pop <- populations[[label]]
     if (new.graph) {
