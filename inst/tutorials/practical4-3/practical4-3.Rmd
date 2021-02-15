@@ -30,7 +30,7 @@ starting each analysis script with the R command `library(githubusernameBCI)`.
 
 There are an enormous number of different ways of measuring diversity, to the 
 extent that diversity itself has been declared a "non-concept" in the past (by
-Hurlbert, 1971), but nowadays they fit broadly within Whittaker’s framework of 
+Hurlbert, 1971), but nowadays they fit broadly within Whittaker's framework of 
 three basic types of diversity: alpha, beta and gamma diversity.
 
 * Gamma diversity is the diversity of a metacommunity, the whole area being 
@@ -64,7 +64,7 @@ subcommunities; how similar two subcommunities are seen to be still entirely
 depends on the type of similarity though, resulting in, for instance a count of
 "the effective number of phylogenetically / functionally / taxonomically
 distinct subcommunities". The relationship between alpha, beta and gamma has 
-been the source of many arguments – see, for example, Whittaker (1972), Jost
+been the source of many arguments -- see, for example, Whittaker (1972), Jost
 (2007) and Reeve et al. (2016).
 
 Finally, I used the phrase "effective number" several times above. At one 
@@ -92,7 +92,7 @@ determined by a parameter $q$, which varies from 0, where relative abundance is
 ignored and only presence-absence is considered, to $\infty$, where we 
 only consider the most abundant species. This standard for dealing with 
 diversities as effective numbers, while far from universal, has now been pursued 
-for over 40 years and is broadly accepted – originally by Hill (1973), and
+for over 40 years and is broadly accepted -- originally by Hill (1973), and
 subsequently, for instance, by Jost (2007), Leinster and Cobbold (2012), and 
 Reeve et al. (2016).
 
@@ -134,7 +134,7 @@ Now you're going to write the R script that will be the demo. The script will be
 measuring several kinds of alpha, beta and gamma diversity, as detailed below.
 But in order to do some work with measures of taxonomic diversity, the taxonomy
 will first need to match the species abundance data from the BCI dataset,
-exactly. Here I’m assuming that you created the package {githubusernameBCI}, and
+exactly. Here I'm assuming that you created the package {githubusernameBCI}, and
 in it `bci_taxa` contains the taxonomy of all BCI species and `bci_2010`
 contains the 2010 BCI census.
 
@@ -186,9 +186,9 @@ specnumber(abundances, groups = 1)
 ```
 
 This loads the dataset and then calculates the species richness of the whole
-metacommunity. **It’s important to always use the `abundances` object (created
+metacommunity. **It's important to always use the `abundances` object (created
 above) when using the {vegan} package, and always use the `bci_2010` object when
-using {rdiversity} –- they need the data in opposite formats!** 
+using {rdiversity} -- they need the data in opposite formats!** 
 
 Note the documentation and reference manual for the {vegan} package is available
 at https://cran.r-project.org/web/packages/vegan/index.html and the package
@@ -214,7 +214,7 @@ fewer taxonomically distinct species than there are species. Then do this again
 counting the effective number of genera and families. Note that this can be
 achieved by using `tax2dist()` with
 `c(GenusSpecies=0, Genus=0, Family=1, Other=1)` and 
-`c(GenusSpecies=0, Genus=0, Family=0, Other=1)`, respectively – these distance
+`c(GenusSpecies=0, Genus=0, Family=0, Other=1)`, respectively -- these distance
 measurements say that two species in the same genus (or family) are zero
 distance apart, just like two individuals in the same species. As a result, the
 diversity measures following these instructions will simply count in effective
@@ -232,8 +232,8 @@ second two are a y-coordinate, is there any pattern about these distinct areas?
 If so write about it in the report.
 
 A similar option in {vegan} is the function `betadiver()`. Look at the 
-documentation in R for this function – you will see that it can calculate a very 
-large range of different beta diversity measures – and calculate the beta 
+documentation in R for this function -- you will see that it can calculate a very 
+large range of different beta diversity measures -- and calculate the beta 
 diversities for the subcommunities using the `"j"` Jaccard and `"sor"` Sorensen 
 similarity measures. This function calculates pairwise similarities between the 
 quadrats as `dist` objects. You can convert these to a matrix and then calculate 

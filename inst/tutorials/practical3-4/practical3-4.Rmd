@@ -26,7 +26,7 @@ set.seed(123)
 We saw in the previous practicals the impact of including randomness into the
 exponential model with births and deaths. Having developed the programming 
 framework, it is now time to investigate the impact of randomness in the 
-simplest epidemiological model – the SIS model.
+simplest epidemiological model -- the SIS model.
 
 ## Tasks
 
