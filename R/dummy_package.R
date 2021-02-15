@@ -68,10 +68,8 @@ dummy_package <- function(package_name) {
   usethis::ui_done(paste("Writing", usethis::ui_value(filename)))
 
   # Add dependency on dplyr
-  current_wd <- getwd()
-  setwd(package_dir)
-  usethis::use_dev_package("RPiR", "Imports", remote = "IBAHCM/RPiR")
-  setwd(current_wd)
+  withr::with_dir(package_dir,
+                  usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR"))
 
   # Document package
   devtools::document(package_name, quiet = TRUE)
