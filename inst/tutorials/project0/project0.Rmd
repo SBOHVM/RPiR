@@ -84,9 +84,16 @@ Remember a few things:
 5. Import your data package into the package by adding the `@import` command to
    the package's help file in the <span style="color: #1697C0;">R</span> folder
    that you made in step 3, above;
-6. Commit these changes and push them to GitHub.
+6. Add a license. It's completely up to you what license you use. We probably
+   recommend using the MIT license as it is very permissive in terms of other
+   people reusing your work later for something as (relatively!) unimportant
+   as these exercises. You can add the MIT license to your package by running
+   `usethis::use_mit_license()` in your console, and you can investigate other
+   licenses more broadly at https://choosealicense.com, and how to select
+   them for your package at https://usethis.r-lib.org/reference/licenses.html.
+7. Commit these changes and push them to GitHub.
 
-You will need to much of this again in subsquent project exercises, for
+You will need to much of this again in subsequent project exercises, for
 instance every time you need to add a new package dependency into your package.
 
 ### Adding dependencies
