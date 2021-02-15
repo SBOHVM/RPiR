@@ -18,6 +18,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Checking that R and RStudio are up to date
+
 You'll need to do a few things before we can start the course. First you need to
 check you have up-to-date versions of R and RStudio. This means that R should be
 at least version 4. You can check by typing this in R:
@@ -62,6 +64,8 @@ devtools::has_devel()
 If this is `FALSE` or errors, then you will need to follow instructions given
 by the function or ask for help until this works.
 
+## Creating accounts and installation
+
 Once all of the above works, you're ready to start, so follow the details under
 the `Installation` dropdown menu [in the documentation for this package][docs].
 Specifically:
@@ -73,6 +77,24 @@ Specifically:
 2. Then [install the RPiR package][package].
 3. Finally, [install Visual Studio Code and then Live Share][vscode].
    You will need your GitHub id from the previous step to set this up.
+
+## Stopping warnings
+
+Finally, you will probably find that some warnings are being generated when you
+load the package. This is a known issue in another package that we can't
+currently fix. To stop them, you need to type this in the console:
+
+```{R, eval = FALSE}
+usethis::edit_r_profile(scope = "user")
+```
+
+And add this to the file that is opened:
+
+```{R, eval = FALSE}
+options(yaml.eval.expr = TRUE)
+```
+
+If you restart R, you should then find that the warnings have been removed.
 
 [rstudio]: https://rstudio.com/products/rstudio
 [docs]: https://ibahcm.github.io/RPiR
