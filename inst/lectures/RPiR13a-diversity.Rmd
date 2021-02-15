@@ -113,3 +113,15 @@ options(yaml.eval.expr = TRUE)
 - Project submission
   - by Monday 1st March, 1pm
 - Marks returned by Monday 22nd March
+
+## Package assessment
+
+- Does the package work (installs, docs, functions, demos and dependencies)?
+```{R, eval = FALSE}
+    library(pkgname)
+    library(help="pkgname")
+    demo(package="pkgname")
+```
+- Is the code well structured and with clear variable names and comments?
+- Is the documentation correct (for package, functions, and text in reports)?
+- Does the code work correctly?
