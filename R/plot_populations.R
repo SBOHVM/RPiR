@@ -39,9 +39,9 @@ plot_populations <- function(populations, new.graph = TRUE, ylim = NA, lty = 1,
   # Sort out the line colours for the populations
   labels <- colnames(populations)
   if (is.na(col[1]))
-    line.cols <- seq_len(labels)
+    line.cols <- seq_along(labels)
   else {
-    if (all(labels(col) == seq_len(col)))
+    if (all(labels(col) == seq_along(col)))
       line.cols <- rep(col, length.out = length(labels))
     else {
       line.cols <- vector()
@@ -52,9 +52,9 @@ plot_populations <- function(populations, new.graph = TRUE, ylim = NA, lty = 1,
 
   # Sort out the line types for the populations
   if (is.na(lty[1]))
-    line.ltys <- seq_len(labels)
+    line.ltys <- seq_along(labels)
   else {
-    if (all(labels(lty) == seq_len(lty)))
+    if (all(labels(lty) == seq_along(lty)))
       line.ltys <- rep(lty, length.out = length(labels))
     else {
       line.ltys <- vector()
@@ -68,7 +68,7 @@ plot_populations <- function(populations, new.graph = TRUE, ylim = NA, lty = 1,
     ylim <- c(0, max(rowSums(populations)))
 
   # And now plot the graphs
-  for (index in seq_len(labels)) {
+  for (index in seq_along(labels)) {
     label <- labels[index]
     this.pop <- populations[[label]]
     if (new.graph) {

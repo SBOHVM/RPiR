@@ -40,14 +40,14 @@ plot_simple <- function(populations, new.graph=TRUE, xlim=NA, ylim=NA,
   # Get the column names of the data frame to use as labels
   labels <- colnames(populations)
   # Create our own standard set of colours
-  line.cols <- seq_len(length(labels))
+  line.cols <- seq_along(labels)
 
   # Get y-limits on graph from input if we haven't set our own
   if (is.na(ylim[1]))
     ylim <- c(0, max(rowSums(populations)))
 
   # And plot the individual columns against time
-  for (index in seq_len(labels)) {
+  for (index in seq_along(labels)) {
     label <- labels[index]
     this.pop <- populations[[label]]
     if (new.graph) {
