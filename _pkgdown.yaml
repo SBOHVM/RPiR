@@ -173,6 +173,8 @@ navbar:
     - text: "Guides"
       icon: far fa-file
       menu:
+      -  text: "Course preparation"
+         href: articles/pages/preparation.html
       -  text: "Create a repository on GitHub"
          href: articles/pages/github.html
       -  text: "RStudio projects and GitHub"

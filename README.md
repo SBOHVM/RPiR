@@ -7,61 +7,8 @@
 
 ## Course preparation
 
-You'll need to do a few things before we can start the course. First you need to
-check you have up-to-date versions of R and RStudio. This means that R should be
-at least version 4. You can check by typing this in R:
-
-```{R}
-version$major >= 4
-```
-
-If this is `FALSE`, download and install a new version from
-https://www.r-project.org. Next install these packages:
-
-```{R}
-install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))
-```
-
-Then check whether RStudio is up to date:
-
-```{R}
-# Load the rstudioapi library and check RStudio version
-library(rstudioapi)
-isAvailable("1.4")
-
-# or just
-rstudioapi::isAvailable("1.4")
-```
-**NB `rstudioapi::xxx()` means *"find the `xxx()` function in the `rstudioapi` package"*.**
-
-If `FALSE`, download and install the latest version of [RStudio Desktop][rstudio]
-and check this has worked by running the above again.
-
-Next, check you are now ready to build R packages:
-
-```{R}
-# Load the devtools library and check whether compilers are installed
-library(devtools)
-has_devel()
-
-# or just
-devtools::has_devel()
-```
-
-If this is `FALSE` or errors, then you will need to follow instructions given
-by the function or ask for help until this works.
-
-Once all of the above works, you're ready to start, so follow the details under
-the `Installation` dropdown menu [in the documentation for this package][docs].
-Specifically:
-
-1. First [create an account on GitHub and connect it to RStudio][github]. This will
-   also show you how to create a practice project on github. You'll use this in
-   the second practical series, but it's worth trying out the instructions now
-   to check that everything is working.
-2. Then [install the RPiR package][package].
-3. Finally, [install Visual Studio Code and then Live Share][vscode].
-   You will need your GitHub id from the previous step to set this up.
+You'll need to do a few things before you can start the course. The details are
+available in the guide section of the [docs][docs] at [this link][prep].
 
 ## Running the course
 
@@ -171,8 +118,5 @@ the package at the location returned by the following command if you prefer:
 system.file("dummy_notebook/0200-example-notebook.R", package="RPiR")
 ```
 
-[rstudio]: https://rstudio.com/products/rstudio
+[prep]: https://ibahcm.github.io/RPiR/articles/pages/preparation.html
 [docs]: https://ibahcm.github.io/RPiR
-[package]: https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html
-[github]: https://ibahcm.github.io/RPiR/articles/pages/install_github.html
-[vscode]: https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html

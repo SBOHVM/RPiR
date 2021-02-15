@@ -1,0 +1,81 @@
+---
+title: "Course preparation"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+output:
+  rmarkdown::html_vignette:
+  toc: true
+  toc_depth: 2
+  vignette: >
+    %\VignetteIndexEntry{Course preparation}
+    %\VignetteEngine{knitr::knitr}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+You'll need to do a few things before we can start the course. First you need to
+check you have up-to-date versions of R and RStudio. This means that R should be
+at least version 4. You can check by typing this in R:
+
+```{R, eval = FALSE}
+version$major >= 4
+```
+
+If this is `FALSE`, download and install a new version from
+https://www.r-project.org. Next install these packages:
+
+```{R, eval = FALSE}
+install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))
+```
+
+Then check whether RStudio is up to date:
+
+```{R, eval = FALSE}
+# Load the rstudioapi library and check RStudio version
+library(rstudioapi)
+isAvailable("1.4")
+
+# or just
+rstudioapi::isAvailable("1.4")
+```
+**NB `rstudioapi::xxx()` means *"find the `xxx()` function in the `rstudioapi` package"*.**
+
+If `FALSE`, download and install the latest version of [RStudio Desktop][rstudio]
+and check this has worked by running the above again.
+
+Next, check you are now ready to build R packages:
+
+```{R, eval = FALSE}
+# Load the devtools library and check whether compilers are installed
+library(devtools)
+has_devel()
+
+# or just
+devtools::has_devel()
+```
+
+If this is `FALSE` or errors, then you will need to follow instructions given
+by the function or ask for help until this works.
+
+Once all of the above works, you're ready to start, so follow the details under
+the `Installation` dropdown menu [in the documentation for this package][docs].
+Specifically:
+
+1. First [create an account on GitHub and connect it to RStudio][github]. This will
+   also show you how to create a practice project on github. You'll use this in
+   the second practical series, but it's worth trying out the instructions now
+   to check that everything is working.
+2. Then [install the RPiR package][package].
+3. Finally, [install Visual Studio Code and then Live Share][vscode].
+   You will need your GitHub id from the previous step to set this up.
+
+[rstudio]: https://rstudio.com/products/rstudio
+[docs]: https://ibahcm.github.io/RPiR
+[package]: https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html
+[github]: https://ibahcm.github.io/RPiR/articles/pages/install_github.html
+[vscode]: https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html
