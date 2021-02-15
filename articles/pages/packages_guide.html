@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.71.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.71.7</span>
       </span>
     </div>
 
@@ -495,11 +495,21 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">BCI</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Next we need to generate the packaged data by running the processing script. The <code><a href="https://usethis.r-lib.org/reference/use_data.html">use_data()</a></code> function will create a <span style="color: #de77ae;">data</span> directory, within which will be an rds file containing our dataset.</p>
 <p>The next step is to open our <span style="color: #de77ae;">.gitignore</span> file and add <code>data-raw</code> on a new line to ignore the contents of this directory. The reason being, the contents of <span style="color: #de77ae;">data-raw</span> are not part of the package (installable data exists within your <span style="color: #de77ae;">data</span> directory) and we don’t want to upload these large files to GitHub.</p>
-<p>Next we should document our data (more info <a href="https://r-pkgs.org/data.html">here</a>. To do that, we need to create a <span style="color: #de77ae;">data.R</span> file in the <span style="color: #de77ae;">R</span> directory. It should look something like this:</p>
+<p>Next we should document our data (more info <a href="https://r-pkgs.org/data.html">here</a> and <a href="https://kbroman.org/pkg_primer/pages/data.html">here</a>). To do that, we need to create a <span style="color: #de77ae;">data.R</span> file in the <span style="color: #de77ae;">R</span> directory. It should look something like this:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co">#' data</span>
+<code class="sourceCode R"><span class="co">#' mydataset</span>
 <span class="co">#' </span>
 <span class="co">#' Description of mydataset</span>
+<span class="co">#' </span>
+<span class="co">#' @docType data</span>
+<span class="co">#' @usage data(mydataset)</span>
+<span class="co">#' </span>
+<span class="co">#' @format A data frame with x rows and y variables:</span>
+<span class="co">#' \describe{</span>
+<span class="co">#'   \item{variable1}{description}</span>
+<span class="co">#'   \item{variabl2}{description}</span>
+<span class="co">#'   ...</span>
+<span class="co">#' }</span>
 <span class="co">#' </span>
 <span class="co">#' @source \url{http://somewhere.important.com/}</span>
 <span class="st">"mydataset"</span></code></pre></div>
