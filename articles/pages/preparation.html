@@ -342,6 +342,9 @@
 
     
     
+<div id="checking-that-r-and-rstudio-are-up-to-date" class="section level2">
+<h2 class="hasAnchor">
+<a href="#checking-that-r-and-rstudio-are-up-to-date" class="anchor"></a>Checking that R and RStudio are up to date</h2>
 <p>You’ll need to do a few things before we can start the course. First you need to check you have up-to-date versions of R and RStudio. This means that R should be at least version 4. You can check by typing this in R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">version</span><span class="op">$</span><span class="va">major</span> <span class="op">&gt;=</span> <span class="fl">4</span></code></pre></div>
@@ -367,6 +370,10 @@
 <span class="co"># or just</span>
 <span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>If this is <code>FALSE</code> or errors, then you will need to follow instructions given by the function or ask for help until this works.</p>
+</div>
+<div id="creating-accounts-and-installation" class="section level2">
+<h2 class="hasAnchor">
+<a href="#creating-accounts-and-installation" class="anchor"></a>Creating accounts and installation</h2>
 <p>Once all of the above works, you’re ready to start, so follow the details under the <code>Installation</code> dropdown menu <a href="https://ibahcm.github.io/RPiR">in the documentation for this package</a>. Specifically:</p>
 <ol style="list-style-type: decimal">
 <li>First <a href="https://ibahcm.github.io/RPiR/articles/pages/install_github.html">create an account on GitHub and connect it to RStudio</a>. This will also show you how to create a practice project on github. You’ll use this in the second practical series, but it’s worth trying out the instructions now to check that everything is working.</li>
@@ -374,10 +381,24 @@
 <li>Finally, <a href="https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html">install Visual Studio Code and then Live Share</a>. You will need your GitHub id from the previous step to set this up.</li>
 </ol>
 </div>
+<div id="stopping-warnings" class="section level2">
+<h2 class="hasAnchor">
+<a href="#stopping-warnings" class="anchor"></a>Stopping warnings</h2>
+<p>Finally, you will probably find that some warnings are being generated when you load the package. This is a known issue in another package that we can’t currently fix. To stop them, you need to type this in the console:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_profile</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="st">"user"</span><span class="op">)</span></code></pre></div>
+<p>And add this to the file that is opened:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>yaml.eval.expr <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>If you restart R, you should then find that the warnings have been removed.</p>
+</div>
+  </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-      </div>
+        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
+    </nav>
+</div>
 
 </div>
 
