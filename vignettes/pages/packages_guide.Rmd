@@ -183,7 +183,7 @@ has been changed to
 
 ```
 Authors@R: person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
-                  role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")
+                  role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066"))
 ```
 
 because it allows us to include more information, more info
