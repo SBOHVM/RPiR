@@ -37,9 +37,9 @@ you want to do that.
 
 ## Background
 
-We are now going to demonstrate in a small way why it’s worth dividing up the
+We are now going to demonstrate in a small way why it's worth dividing up the
 code into separate functions, and indeed separate files. Previously we wrote a
-simple growth model, and a model of birth and death. We’re now going to use the
+simple growth model, and a model of birth and death. We're now going to use the
 two-step functions we created and run both models in a new script that compares 
 them. For this final part of practical 1, we're going to generate a report in 
 RStudio using everything we've learned so far.
@@ -47,15 +47,15 @@ RStudio using everything we've learned so far.
 ## A clean start
 
 Sometimes you can find that something you have done before in R can interfere 
-with what you are now doing -- though if you’ve written all of your code 
+with what you are now doing -- though if you've written all of your code 
 correctly, then obviously(!) this should never happen. It is useful then
-to know that you can clear what is held in R’s memory using `rm(list=ls())`. 
+to know that you can clear what is held in R's memory using `rm(list=ls())`. 
 This will cause all of the variables and functions in your 
 **Global Environment** to disappear (*e.g.* if you type `human.annual.growth` 
 in the R console it should tell you that the object is "not found"). As a 
 fundamental rule however, you should **never hardcode** `rm(list=ls())` 
 **into any of your scripts**, and in fact you should just not use it.
-It’s generally a sign your code isn’t written well if it can be affected by
+It's generally a sign your code isn't written well if it can be affected by
 something before it. Instead, you can clear your workspace by clicking the brush
 in the <span style="color: #de77ae;">Environment</span> tab in RStudio (or 
 <span style="color: #de77ae;">Session > Clear Workspace...</span> in the menus). 
@@ -70,7 +70,7 @@ have to start running your code again completely from the beginning.
 
 Note that, when you generate a report from the script file, they are always 
 generated from a new, clean, version of R. So this is a very important final 
-check that all of your code is working correctly – it’s as if 
+check that all of your code is working correctly -- it's as if 
 you did restart R without actually wiping everything in your current R console -
 but only if you read it and check it looks right!
 
@@ -79,7 +79,7 @@ does not use any global variables by using `findGlobals()`.
 
 You should also generate a report for any function files you create. If you want 
 to, you can put the `findGlobals()` check into this function file (which will
-run the check when you generate the report for that file) so it doesn’t 
+run the check when you generate the report for that file) so it doesn't 
 clutter up the main script itself. But this is only useful if you generate a 
 report from the function file! To solve this, you can make it so the report will 
 fail to generate for that script when global variables are used with the 
@@ -103,7 +103,7 @@ $$N(t+1) = N(t) + \lambda \times N(t)$$
 
 The birth and death model is slightly more complex:
 
-$$ N(t+1) = N(t) + b \times N(t) – d \times N(t)$$
+$$ N(t+1) = N(t) + b \times N(t) - d \times N(t)$$
 
 Remember that <span style="color: #de77ae;">0104-step-growth.r</span> has the
 `step_deterministic_growth()` function and 
@@ -140,7 +140,7 @@ the second as follows:
 plot_populations(population.df, ylim = c(0, 20000000000))
 ```
 
-Once you’ve done this it should be easier to compare the two (by eye at least).
+Once you've done this it should be easier to compare the two (by eye at least).
 
 ## Report
 
@@ -150,7 +150,7 @@ birth-death models, noting for instance that the crude global birth and death
 rates are around 23 per 1000 population and 8 per 1000 respectively. You can see
 an example of most of the possible formatting options in 
 <span style="color: #de77ae;">0200-example-notebook.R</span>. Use an 
-understanding of what you want to describe –
-and formatting from the example file or elsewhere – to break up your script so 
+understanding of what you want to describe --
+and formatting from the example file or elsewhere -- to break up your script so 
 that your code and the results and figures are interspersed with a reasonable
 explanation of what is going on.

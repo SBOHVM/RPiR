@@ -88,7 +88,7 @@ you're working on a new project (don't use `rm(list=ls())` though!) .
 > Remember that generating a report starts a new copy of R and so is a much 
 better check of whether the script can run on its own.
 
-Clear what is held in R’s workspace in RStudio. Now rerun with $R_0 = 15$ and 
+Clear what is held in R's workspace in RStudio. Now rerun with $R_0 = 15$ and 
 confirm that you don't get an output when the error message shows. Remember
 that clearing your workspace and trying again is often a very useful trick when
 you get unexpected results.

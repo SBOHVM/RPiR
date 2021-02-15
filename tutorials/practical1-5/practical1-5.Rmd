@@ -61,7 +61,7 @@ to be distinct.
 
 We now want to update the model to include both births and deaths, *i.e.*
 
-$$N(t+1) = N(t) + b \times N(t) – d \times N(t)$$
+$$N(t+1) = N(t) + b \times N(t) - d \times N(t)$$
 which can be similarly translated as
 
 > "the next population size is the current size plus the new births (b times 
@@ -226,7 +226,7 @@ plot_populations(population.b, new.graph = FALSE, col = "red")
 
 However, if you want to do that, you should put the plot commands together,
 because the `#'` comment closes the current plot and you can't then draw on
-top of it. Remember that `col` sets the colour of the line in the plot –
+top of it. Remember that `col` sets the colour of the line in the plot --
 use names "red", "blue", *etc.*
 
 ```{r sameanswer, echo=FALSE}
