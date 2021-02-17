@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.71.10</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.71.11</span>
       </span>
     </div>
 
@@ -333,7 +333,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Flow control</h1>
             
-            <h4 class="date">February 15 2021</h4>
+            <h4 class="date">February 17 2021</h4>
       
       
       <div class="hidden name"><code>flow.Rmd</code></div>
@@ -396,7 +396,7 @@
 <span class="op">}</span></code></pre></div>
 <p>does nothing. We use <code>if</code> and <code>if ... else</code> statements throughout the helper functions and the example code you’ve been provided with. For instance:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">codetools</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://gitlab.com/luke-tierney/codetools">codetools</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span>
 
 <span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/codetools/man/findGlobals.html">findGlobals</a></span><span class="op">(</span><span class="va">plot_simple</span>, merge <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">variables</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>

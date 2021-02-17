@@ -91,7 +91,7 @@ So that it checks for these two specific values of $q$, and instead use
 the following two equations: 
 
 $$D_1 = \exp(-\sum(p \times \log(p)))$$
-which is to say `exp(sum(p * log(p)))` in R, where `p` is the vector of non-zero
+which is to say `exp(-sum(p * log(p)))` in R, where `p` is the vector of non-zero
 species proportions.
 
 $$D_\infty = \frac{1}{\max(p)}$$
