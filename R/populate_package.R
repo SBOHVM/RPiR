@@ -84,8 +84,9 @@ populate_package <- function(force = FALSE) {
   }
 
   # Write function
-  tmp <- system.file("dummy_package/step_birth_death.R", package = "RPiR")
-  func.file <- file.path("R", "step_birth_death.R")
+  tmp <- system.file("dummy_package/step_deterministic_birth_death.R",
+                     package = "RPiR")
+  func.file <- file.path("R", "step_deterministic_birth_death.R")
   if (!(file.exists(func.file)) || force) {
     file.copy(tmp, func.file, overwrite = force)
     usethis::ui_done(paste("Writing", usethis::ui_value(func.file)))
