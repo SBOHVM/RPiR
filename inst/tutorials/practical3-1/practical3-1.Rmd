@@ -155,11 +155,9 @@ The default option for the `pkg` argument is `"."`, which corresponds
 to the current working directory. So, you don't need to specify a file path if 
 you're in the working directory of your package (which you are).
 
-1. `devtools::` tells R to look for the `install()` function inside the
-   `devtools` package. It is equivalent to calling `library(devtools)` and then
-   just calling `install()` directly; and
-2. you don't need to specify a file path if you're in the working directory of
-   your package (which you are), see `?install` for details.
+>Also note that `devtools::` tells R to look for the `install()` function 
+inside the `devtools` package. It is equivalent to calling `library(devtools)` 
+and then just calling `install()` directly.
 
 At this point your RStudio session should look something like this:
 
