@@ -24,7 +24,7 @@ set.seed(123)
 *In this practical we will learn how to create an R package. There is much more
 information on R packages in [this book](https://r-pkgs.org).*
 
-## Tasks
+## Create a package
 
 We're now going to create an R package, in RStudio. To do this, click
 <span style="color: #de77ae;">File > New project... > New Directory > R Package</span>. 
