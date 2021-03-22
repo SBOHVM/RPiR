@@ -124,8 +124,7 @@ practical series). Now push all of the changes to GitHub.
 ## Package structure
 
 We're ready now to see what this package does. So first, we need to install it
-on your machine. Make sure you're in the root directory of your package (if 
-you've been following these instructions you probably are), and run
+on your machine by running:
 
 ```{r, eval = FALSE}
 devtools::install()
@@ -183,7 +182,13 @@ they do.
 
 ### Package documentation
 
-Look at the package documentation by using the `help()` function, or running:
+Look at the package documentation by using the `help()` function:
+
+```{r, eval = FALSE}
+help(package = githubusername) 
+```
+
+or `?`:
 
 ```{r, eval = FALSE}
 library(githubusername) 
@@ -219,17 +224,19 @@ this is just a standard script.
 files, since any functions you need to use can be installed as part of the 
 package.
 
-Calling `demo(package = "githubusernameSeries03")` lists
-all of the demos installed as part of the `githubusername` package. 
+To list all of the demos installed as part of the `githubusername` package, 
+run:
 
-Note the <span style="color: #de77ae;">demo/00Index</span> file, which is lists 
+```{r, eval = FALSE}
+demo(package = "githubusernameSeries03")
+```
+
+The descriptions in this listing are generated from the 
+<span style="color: #de77ae;">demo/00Index</span> file, which lists 
 each demo alongside a description, on a single line. When adding a new entry, 
 remember to put three spaces between the demo name and its description or you 
-won't see it in the demo list. 
-
-Any script in the
-<span style="color: #de77ae;">demo</span> directory that is listed in the 
-<span style="color: #de77ae;">demo/00Index</span> file can be run using `demo()`
+won't see it in the demo list. Note that any script in the
+<span style="color: #de77ae;">demo</span> directory can be run using `demo()`
 (after the package is installed). So don't forget when you add your own demos, 
 you need to run `devtools::install()` to permanently install them as part of 
 your package.
@@ -259,16 +266,19 @@ comment, more info
 #'
 ```
 
-Run `?step_deterministic_birth_death` to look at the help file for
-`step_deterministic_birth_death()` and compare it to the `roxygen` 
-comments you see in the file. 
+Run `?step_deterministic_birth_death` and compare it to the `roxygen` 
+comments you see in 
+<span style="color: #de77ae;">R/step_deterministic_birth_death.R</span>. 
 
 When you add your own function to a package, after having written the 
 `roxygen2` comments, you should run `devtools::document()` to generate the 
-<span style="color: #de77ae;">man/</span> files and edit the 
-<span style="color: #de77ae;">NAMESPACE</span>. You should then run 
-`devtools::install()` to permanently install them as part 
-of your package.
+documentation files (which will automatically populate 
+<span style="color: #de77ae;">man/</span>) and
+edit the <span style="color: #de77ae;">NAMESPACE</span> (if you forget to do
+this, your functions may not work!) 
+
+You should then run `devtools::install()` to permanently install these changes 
+as part of your package.
 
 ### Package metadata and dependencies
 
