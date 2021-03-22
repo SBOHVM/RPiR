@@ -130,7 +130,30 @@ on your machine by running:
 devtools::install()
 ```
 
-Note that:
+Note that the brackets are empty. To understand what's happening here, run
+`?install` (you may need to `library(devtools)` first) and look at the 
+arguments list. Under <span style="color: #de77ae;">Usage</span>, you can see
+that every argument has a listed default value:
+```
+install(
+  pkg = ".",
+  reload = TRUE,
+  quick = FALSE,
+  build = !quick,
+  args = getOption("devtools.install.args"),
+  quiet = FALSE,
+  dependencies = NA,
+  upgrade = "ask",
+  build_vignettes = FALSE,
+  keep_source = getOption("keep.source.pkgs"),
+  force = FALSE,
+  ...
+)
+```
+
+The default option for the `pkg` argument is `"."`, which corresponds 
+to the current working directory. So, you don't need to specify a file path if 
+you're in the working directory of your package (which you are).
 
 1. `devtools::` tells R to look for the `install()` function inside the
    `devtools` package. It is equivalent to calling `library(devtools)` and then
