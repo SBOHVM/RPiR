@@ -217,6 +217,10 @@ can do with an `if` statement. You should get something like this:
 
 <center>![plot](images/3-2.png)</center>
 
+Notice that (as before) we have repeated the piece of code doing the simulation
+and have made use of the `new.graph = FALSE` option to overlay a second plot on 
+the first
+
 ### 2. Increase variability
 
 Increase birth and death rates or the time you're simulating over to
