@@ -43,7 +43,7 @@ source("0104-step-growth.R")
 source("0105-step-birth-death.R")
 ```
 
-```{R, eval = FALSE}
+```{R, echo = FALSE}
 #'
 #' Load in the functions that do the work
 library(RPiR)

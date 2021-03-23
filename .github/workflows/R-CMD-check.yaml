@@ -154,6 +154,7 @@ jobs:
         if: runner.os == 'macOS'
         run: |
           install.packages("rmarkdown")
+          devtools::install()
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE,
                            full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
