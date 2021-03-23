@@ -18,8 +18,7 @@ default min to max time}
 \item{ylim}{(optionally, for new graphs) the limits of the y axis,
 default min to max pop size}
 
-\item{lty}{(optionally) the line type for all lines on the graph,
-default 1}
+\item{lty}{(optionally) the line type for all lines on the graph, default 1}
 }
 \description{
 A simple plot all of the populations in a data frame against time. One column
@@ -29,9 +28,8 @@ column names. See plot_populations() above for a more sophisticated plotting
 function.
 }
 \examples{
-
-df <- data.frame(time=0:100, grow=exp((0:100) / 10),
-                 die=exp(seq(10, 0, by = -0.1)))
+df <- data.frame(time = 0:100, grow=exp((0:100) / 10),
+                 die = exp(seq(10, 0, by = -0.1)))
 plot_simple(df, lty = c(2, 3))
 
 }

@@ -31,7 +31,6 @@ and over until the time ends or \code{step_function()} reports that the
 experiment has ended.
 }
 \examples{
-
 growth <- function(latest.df, growth.rate) {
 current.count <- latest.df$count
 growth.num <- current.count * growth.rate
@@ -42,7 +41,7 @@ finished <- next.count == 0
 list(updated.pop=new.df, end.experiment=finished)
 }
 df <- data.frame(time=0, count=1)
-results <- run_simple(growth, df, 100, growth.rate=0.1)
+results <- run_simple(growth, df, 100, growth.rate = 0.1)
 plot_populations(results)
 
 }
