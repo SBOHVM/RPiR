@@ -200,7 +200,11 @@ to permanently install it.
 
 When you are happy that the code is working and makes sense, start working on
 your report (in your
-<span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span> demo file). Remember that you can run your code by compiling a notebook or by running it as a demo, 
+<span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span> demo 
+file). Remember that you can run your code by 
+
+1. compiling a notebook, or by 
+2. running it as a demo
 
 ```{r eval = FALSE}
 demo("d0302_stochastic_birth_death", package = "githubusername")
@@ -208,9 +212,9 @@ demo("d0302_stochastic_birth_death", package = "githubusername")
 
 ### 1. Demonstrate stochasticity
 
-Run the code several times with a birth rate of 0.2, a death rate of 0.1, 
-and an initial population count of 1. Since we're repeating the piece of
-code doing the simulation, you could do this using a `for` loop. The 
+Run the code several times with a birth rate of 0.2, a death rate of 0.1, an 
+initial population count of 1, and a timestep of 1. Since we're repeating the 
+piece of code doing the simulation, you could do this using a `for` loop. The 
 stochasticity means that we see variable outputs. This is most easily 
 demonstrated if you plot multiple results in the same figure, which you
 can do with an `if` statement. You should get something like this:
@@ -223,7 +227,7 @@ Increase birth and death rates or the time you're simulating over to
 increase visible variability. Again, you could use a `for` loop to generate
 outputs over a range of different rates / time periods.
 
-### 3. Increase variability
+### 3. Increase timestep
 
 If you haven't already, try increasing the value of timestep. What happens? You
 are actually getting impossible numbers (`NA`s) because the probability of
