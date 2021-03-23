@@ -32,44 +32,22 @@ contained within the
 
 ## Tasks
 
-You can look at the code used to generate this package on GitHub at https://github.com/IBAHCM/RPiR.
-Take a look at this code online and read the following explanation.
+In the previous practical your script repeated a section of code to overlay 
+multiple outputs on the same plot We recommended that you use a `for` loop to 
+solve this problem, since **copying and pasting identical code is bad practice** 
+and can easily introduce mistakes. In this practical, we're going to attempt
+to improve our code further by separating the simulation functionality from the 
+model more cleanly. 
 
-Remember that in the previous practical the program 
-repeated a section of code to overlay another output on the graph:
-
-```{r, eval = FALSE}
-#' Section: And again!
-#' -------------------
-population.df <- data.frame(time = start.time,
-                            count = initial.count) 
-
-latest.population <- population.df
-keep.going <- latest.population$time < end.time 
-
-while (keep.going) {
-  data <- timestep_stochastic_birth_death(latest.population,
-                                          human.annual.birth,
-                                          human.annual.death,
-                                          short.timestep)
-  latest.population <- data$updated.pop
-  population.df <- rbind(population.df, latest.population) 
-  keep.going <- (!data$end.experiment) && (latest.population$time < end.time)
-}
-
-plot_populations(population.df, new.graph = FALSE, lty = 2)
-```
-
-**It is bad practice to be copying and pasting identical code** as we can easily
-introduce mistakes. So we should try to separate the simulation functionality 
-from the model more cleanly. Take a look at the new 
-function `run_simple()` online. Go to <span style="color: #1697C0;">https://github.com/IBAHCM/RPiR</span>, open on the 
+Take a look at the new function `run_simple()` online. Go to 
+<span style="color: #1697C0;">https://github.com/IBAHCM/RPiR</span>, open on the 
 <span style="color: #1697C0;">R</span> folder, and find the file called 
 <span style="color: #1697C0;">run_simple.R</span>. It should look something like
 this:
 
 ```{r, eval = FALSE}
-#' @title Simplest code to run a simulation loop #'
+#' @title Simplest code to run a simulation loop 
+#'
 #' @description
 #' A generic function to run a simulation loop for a fixed period of time.
 #'
