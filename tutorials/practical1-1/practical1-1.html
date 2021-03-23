@@ -491,11 +491,12 @@ learnr:::store_exercise_cache("forloop", list(setup = NULL, chunks = list(list(l
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "forloop", 
-        exercise.cap = "Exercise 1", exercise = TRUE, code = c("N <- 5", 
-        "lambda <- 0.1", "days <- seq(from = 1, to = 20)", "", 
-        "for (i in days) {", "  N <- N + lambda * N", "}", "print(N)"
-        ), out.width.px = 672, out.height.px = 480, params.src = "forloop, exercise.cap = \"Exercise 1\", exercise=TRUE", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "forloop", exercise.cap = "Exercise 1", exercise = TRUE, 
+        code = c("N <- 5", "lambda <- 0.1", "days <- seq(from = 1, to = 20)", 
+        "", "for (i in days) {", "  N <- N + lambda * N", "}", 
+        "print(N)"), out.width.px = 672, out.height.px = 480, 
+        params.src = "forloop, exercise.cap = \"Exercise 1\", exercise=TRUE", 
         fig.num = 0, exercise.df_print = "default"), engine = "r"))
 </script>
  
@@ -608,10 +609,11 @@ learnr:::store_exercise_cache("printloop", list(setup = NULL, chunks = list(list
     ref.label = NULL, child = NULL, engine = "r", split = FALSE, 
     include = TRUE, purl = TRUE, tutorial = TRUE, exercise.reveal_solution = FALSE, 
     exercise.timelimit = 60, exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-    exercise.error.check.code = "grade_this_code()", label = "printloop", 
-    exercise = TRUE, code = c("N <- 5", "lambda <- 0.1", "days <- seq(from = 1, to = 20)", 
-    "", "for (i in days) {", "  N <- N + lambda * N", "}", "print(N)"
-    ), out.width.px = 672, out.height.px = 480, params.src = "printloop, exercise = TRUE", 
+    exercise.error.check.code = "gradethis_error_checker()", 
+    label = "printloop", exercise = TRUE, code = c("N <- 5", 
+    "lambda <- 0.1", "days <- seq(from = 1, to = 20)", "", "for (i in days) {", 
+    "  N <- N + lambda * N", "}", "print(N)"), out.width.px = 672, 
+    out.height.px = 480, params.src = "printloop, exercise = TRUE", 
     fig.num = 0, exercise.df_print = "default"), engine = "r"))
 </script>
  
@@ -651,11 +653,12 @@ learnr:::store_exercise_cache("changenames", list(setup = NULL, chunks = list(li
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "changenames", 
-        exercise.cap = "Exercise 2", exercise = TRUE, code = c("N <- 5", 
-        "lambda <- 0.1", "a <- 1", "e <- 20", "days <- seq(from = a, to = e)", 
-        "", "for (i in days) {", "  N <- N + lambda * N", "}"
-        ), out.width.px = 672, out.height.px = 480, params.src = "changenames, exercise.cap = \"Exercise 2\", exercise = TRUE", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "changenames", exercise.cap = "Exercise 2", exercise = TRUE, 
+        code = c("N <- 5", "lambda <- 0.1", "a <- 1", "e <- 20", 
+        "days <- seq(from = a, to = e)", "", "for (i in days) {", 
+        "  N <- N + lambda * N", "}"), out.width.px = 672, out.height.px = 480, 
+        params.src = "changenames, exercise.cap = \"Exercise 2\", exercise = TRUE", 
         fig.num = 0, exercise.df_print = "default"), engine = "r"))
 </script>
  
@@ -688,8 +691,8 @@ learnr:::store_exercise_cache("init", list(setup = NULL, chunks = list(list(labe
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "init", 
-        exercise = TRUE, exercise.cap = "R Markdown header", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "init", exercise = TRUE, exercise.cap = "R Markdown header", 
         code = c("#' ---", "#' title: \"Simple growth difference equation model\"", 
         "#' author: \"My Full Name\"", "#' date: '`r format(Sys.Date(), \"%B %d %Y\")`'", 
         "#' output: html_document", "#' ---", "", "#' File: 0101-growth-loop.r", 
@@ -734,9 +737,9 @@ learnr:::store_exercise_cache("printvector", list(setup = "growth.rate <- 0.015\
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "printvector", 
-        exercise.cap = "Exercise 3", exercise = TRUE, code = "", 
-        out.width.px = 672, out.height.px = 480, params.src = "printvector, exercise.cap = \"Exercise 3\", exercise = TRUE", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "printvector", exercise.cap = "Exercise 3", exercise = TRUE, 
+        code = "", out.width.px = 672, out.height.px = 480, params.src = "printvector, exercise.cap = \"Exercise 3\", exercise = TRUE", 
         fig.num = 0L, exercise.df_print = "default"), engine = "r"))
 </script>
  
@@ -772,8 +775,9 @@ learnr:::store_exercise_cache("population", list(setup = "growth.rate <- 0.015\n
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "population", 
-        exercise.cap = "Exercise 4", exercise = TRUE, code = c("# Now we loop through the time itself (starting at the second timestep)", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "population", exercise.cap = "Exercise 4", exercise = TRUE, 
+        code = c("# Now we loop through the time itself (starting at the second timestep)", 
         "for (new.time in timesteps) {", "  # First extract the current population size", 
         "  current.population <- tail(population.vector, 1)", 
         "  # Calculate changes to population (births)", "  new.additions <- growth.rate * current.population", 
@@ -869,8 +873,8 @@ learnr:::store_exercise_cache("plot", list(setup = NULL, chunks = list(list(labe
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "plot", 
-        exercise = TRUE, exercise.cap = "0101-growth-loop.R", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "plot", exercise = TRUE, exercise.cap = "0101-growth-loop.R", 
         exercise.lines = 42, code = c("#' Set up the simulation parameters", 
         "#' --------------------------------", "#' First we set up the parameters for the simulation.", 
         "", "# Set the growth rate", "growth.rate <- 0.015", 
@@ -932,10 +936,10 @@ learnr:::store_exercise_cache("summary", list(setup = "#' Set up the simulation 
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "summary", 
-        exercise.cap = "Exercise 5", exercise = TRUE, exercise.setup = "plot", 
-        code = c("# Output a summary of population.vector", ""
-        ), out.width.px = 672, out.height.px = 480, params.src = "summary, exercise.cap = \"Exercise 5\", exercise = TRUE, exercise.setup = \"plot\"", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "summary", exercise.cap = "Exercise 5", exercise = TRUE, 
+        exercise.setup = "plot", code = c("# Output a summary of population.vector", 
+        ""), out.width.px = 672, out.height.px = 480, params.src = "summary, exercise.cap = \"Exercise 5\", exercise = TRUE, exercise.setup = \"plot\"", 
         fig.num = 0, exercise.df_print = "default"), engine = "r"))
 </script>
  
@@ -974,9 +978,9 @@ learnr:::store_exercise_cache("head", list(setup = "#' Set up the simulation par
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "head", 
-        exercise.cap = "Exercise 6", exercise = TRUE, exercise.setup = "plot", 
-        code = c("# Output the first 6 elements of population.vector", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "head", exercise.cap = "Exercise 6", exercise = TRUE, 
+        exercise.setup = "plot", code = c("# Output the first 6 elements of population.vector", 
         ""), out.width.px = 672, out.height.px = 480, params.src = "head, exercise.cap = \"Exercise 6\", exercise = TRUE, exercise.setup = \"plot\"", 
         fig.num = 0, exercise.df_print = "default"), engine = "r"))
 </script>
@@ -1016,9 +1020,9 @@ learnr:::store_exercise_cache("head2", list(setup = "#' Set up the simulation pa
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "head2", 
-        exercise.cap = "Exercise 7", exercise = TRUE, exercise.setup = "plot", 
-        code = c("# Output the first 10 elements of population.vector", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "head2", exercise.cap = "Exercise 7", exercise = TRUE, 
+        exercise.setup = "plot", code = c("# Output the first 10 elements of population.vector", 
         ""), out.width.px = 672, out.height.px = 480, params.src = "head2, exercise.cap = \"Exercise 7\", exercise = TRUE, exercise.setup = \"plot\"", 
         fig.num = 0, exercise.df_print = "default"), engine = "r"))
 </script>
@@ -1058,9 +1062,9 @@ learnr:::store_exercise_cache("tail", list(setup = "#' Set up the simulation par
         engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
         tutorial = TRUE, exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
         exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, ...)\n}", 
-        exercise.error.check.code = "grade_this_code()", label = "tail", 
-        exercise.cap = "Exercise 8", exercise = TRUE, exercise.setup = "plot", 
-        code = c("# Print the last element of population.vector", 
+        exercise.error.check.code = "gradethis_error_checker()", 
+        label = "tail", exercise.cap = "Exercise 8", exercise = TRUE, 
+        exercise.setup = "plot", code = c("# Print the last element of population.vector", 
         ""), out.width.px = 672, out.height.px = 480, params.src = "tail, exercise.cap = \"Exercise 8\", exercise = TRUE, exercise.setup = \"plot\"", 
         fig.num = 0, exercise.df_print = "default"), engine = "r"))
 </script>
@@ -1071,7 +1075,7 @@ learnr:::store_exercise_cache("tail", list(setup = "#' Set up the simulation par
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","checkmate","compiler","curl","datasets","digest","ellipsis","evaluate","fastmap","gradethis","graphics","grDevices","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","methods","mime","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","sass","shiny","stats","stringi","stringr","tools","utils","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.2.1","4.0.4","0.2.4","2.0.0","4.0.4","4.3","4.0.4","0.6.27","0.3.1","0.14","1.1.0","0.2.2.9000","4.0.4","4.0.4","0.8","0.5.1.9000","1.5.3","1.5.5","0.1.3","1.7.2","1.31","1.1.0.1","0.10.1.9008","1.0.0","2.0.1","1.1","4.0.4","0.10","1.2.0.1","2.5.0","1.0.6","0.4.10","2.7","2.0.2","0.3.1","1.6.0","4.0.4","1.5.3","1.4.0","4.0.4","4.0.4","2.4.1","0.21","1.8-4","2.2.1"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","checkmate","compiler","curl","datasets","digest","ellipsis","evaluate","fastmap","gradethis","graphics","grDevices","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","methods","mime","promises","R6","Rcpp","rlang","rmarkdown","rprojroot","sass","shiny","stats","stringi","stringr","tools","utils","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.2.1","4.0.4","0.2.4","2.0.0","4.0.4","4.3","4.0.4","0.6.27","0.3.1","0.14","1.1.0","0.2.3.9001","4.0.4","4.0.4","0.8","0.5.1.1","1.5.3","1.5.5","0.1.3","1.7.2","1.31","1.1.0.1","0.10.1.9008","1.0.0","2.0.1","1.1","4.0.4","0.10","1.2.0.1","2.5.0","1.0.6","0.4.10","2.7","2.0.2","0.3.1","1.6.0","4.0.4","1.5.3","1.4.0","4.0.4","4.0.4","2.4.1","0.22","1.8-4","2.2.1"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>

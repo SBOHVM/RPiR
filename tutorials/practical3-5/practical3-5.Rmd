@@ -30,7 +30,7 @@ we are now ready to extend this framework to the SIR model.
 
 Using the code from the previous demo 
 <span style="color: #de77ae;">d0304_run_SIS</span> and
-`timestep_stochastic_SIS()` (from Practical 3-4), create two a new demo 
+`timestep_stochastic_SIS()` (from Practical 3-4), create a new demo 
 <span style="color: #de77ae;">d0305_run_SIR</span> and a new function,
 `timestep_stochastic_SIR()` that will simulate
 the stochastic SIR model.

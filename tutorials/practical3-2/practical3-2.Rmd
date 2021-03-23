@@ -42,7 +42,7 @@ fact, something has. There is now the chance that the population will die out
 before the end of the experiment, so we need to look for this happening -- not 
 least to speed up the simulation.
 
-### demo/d0302_stochastic_birth_death.R
+### 1. Write a demo
 
 We'll start by writing the structural code in a new demo file. In Practical 3-1
 we created this file and named it <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo
@@ -50,11 +50,14 @@ is a copy of the <span style="color: #de77ae;">d0105_run_birth_death</span>
 demo, which is a good starting point. In this Practical you will edit this code.
 
 From Practicals 2-4 and 2-5 we have a `while()` loop which runs the simulation,
-e.g.:
+*e.g.*
 
 ```{r, eval = FALSE}
 while (latest.population$time < end.time) {
-  latest.population <- timestep_deterministic_SIR(# -- some arguments -- ) 
+  latest.population <- timestep_deterministic_SIR(latest, 
+                                                  transmission.rate, 
+                                                  recovery.rate, 
+                                                  timestep)
   population.df <- rbind(population.df, latest.population)
 }
 ```
@@ -67,7 +70,10 @@ over. We suggest doing something like this:
 
 ```{r, eval = FALSE}
 while (keep.going) {
-  data <- timestep_stochastic_birth_death(# -- some arguments -- ) 
+  data <- timestep_stochastic_birth_death(latest, 
+                                          transmission.rate, 
+                                          recovery.rate, 
+                                          timestep) 
   latest.population <- data$updated.pop
   population.df <- rbind(population.df, latest.population)
   # The experiment may end stochastically or the time may run out 
@@ -87,9 +93,9 @@ Remember that `library(RPiR)` at the top of the script loads
 `timestep_stochastic_birth_death()`, which means you 
 no longer need to source any helper files.
 
-### R/timestep_stochastic_birth_death.R
+### 2. Write a function
 
-Now you will need to write the `timestep_stochastic_birth_death()` 
+You will need to write the `timestep_stochastic_birth_death()` 
 function to provide the right information to the main loop. We created this 
 file in Practical 3-1, but the function itself contains the deterministic step 
 function for single species population dynamics,
@@ -100,45 +106,31 @@ First, we need to handle the effect of changing timesteps and update
 the code with something like this:
 
 ```{r, eval = FALSE}
-timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, timestep) {
+timestep_stochastic_birth_death <- function(latest, 
+                                            birth.rate, 
+                                            death.rate, 
+                                            timestep) {
+  # Multiply birth and death rates by timestep
   effective.birth.rate <- birth.rate * timestep
-  effective.death.rate <- # -- something similar --
-
-  # -- some code to determine the numbers of new births and deaths -- 
-
-  next.population <- data.frame(time = latest$time + timestep, # -- some code -- )
-
-  # -- some code to calculate whether the experiment is finished --
-
-  # -- return both of these pieces of information --
+  effective.death.rate <- ____ * ____
+  
+  # Determine the numbers of new births and deaths
+  
+  
+  # Store new time and count in a dataframe
+  next.population <- data.frame(time = latest$time + timestep, 
+                                ____ = ____)
+  
+  # Determine whether the experiment is finished
+  
+  
+  # Return both of these pieces of information
+  
+  
 }
 ```
 
-Then we need to work out whether the simulation has ended and return both
-pieces of information -- the updated population and simulation state, by 
-returning a list like this at the end of the function (since a function can only
-return one item, we will have to return a list with two elements):
-
-```{r, eval = FALSE}
-timestep_stochastic_birth_death <- function(latest, birth.rate, death.rate, timestep) {
-  
-  # -- those clever bits of code you have just written --
-  
-  list(updated.pop = next.population, end.experiment = is.finished) 
-}
-```
-
-But we need to determine whether the experiment is finished first -- before the
-end of the function! In this case, the experiment will only end if the
-population completely dies out, so:
-
-```{r, eval = FALSE}
-is.finished <- (the.number.of.individuals.left == 0)
-```
-
-You just need to work out what `the.number.of.individuals.left` should be...
-
-Finally, we need to make the simulation stochastic using `rbinom()`. Remember, 
+Then we need to make the simulation stochastic using `rbinom()`. Remember, 
 if you want to draw once from the binomial distribution with `count` trials, and 
 a probability of success of `prob`, then the number of successes is:
 
@@ -147,16 +139,39 @@ new.events <- rbinom(1, count, prob)
 ```
 
 So, the key is to use the `rbinom()` function to determine the numbers of new 
-births and deaths in each time step. The number of births is drawn from a binomial
-distribution with size `count` and probability `birth.rate * timestep`, and the
-number of deaths is drawn from the same distribution with probability 
+births and deaths in each time step. The number of births is drawn from a 
+binomial distribution with size `count` and probability `birth.rate * timestep`, 
+and the number of deaths is drawn from the same distribution with probability 
 `death.rate * timestep`.
+
+We then store the next timestep and next count values in a dataframe.
+
+Then we need to determine whether the experiment is finished. In this case, the 
+experiment will only end if the population completely dies out, so:
+
+```{r, eval = FALSE}
+is.finished <- (the.number.of.individuals.left == 0)
+```
+
+You just need to work out what `the.number.of.individuals.left` should be...
+
+Finally, we need to return both the updated population and simulation state
+(whether the simulation has ended) from the function. Since a
+function can only return one item, we will have to return a list with two
+elements at the end of the function:
+
+```{r, eval = FALSE}
+list(updated.pop = next.population, end.experiment = is.finished) 
+```
+
+***
 
 Note that the `rbinom()` function is in the `stats` library, so you could
 perhaps more correctly call it as `stats::rbinom(1, count, prob)`, and then add
 the stats library to your package's dependencies by typing
 `usethis::use_package("stats")` in the console (this will update the
-`DESCRIPTION` file). Finally in the `R/githubusernameSeries03-package.R` file,
+<span style="color: #de77ae;">DESCRIPTION</span> file). Finally in the 
+<span style="color: #de77ae;">R/githubusernameSeries03-package.R</span> file,
 you need to import the functions from this library, as you already have for
 `RPiR`:
 
@@ -181,39 +196,38 @@ Once you're happy with your function, run `devtools::document()` to generate
 <span style="color: #de77ae;">NAMESPACE</span>. Then run `devtools::install()`
 to permanently install it.
 
-## Running the code
+## Report
 
-When you are happy that the code is working and makes sense, run the code
-several times without changing any parameters of initial conditions and look at
-the output. The stochasticity means that we see variable outputs. If you don't
-it may be because your starting population is too high. Try something much 
-smaller, say 7 instead of 7 billion! 
+When you are happy that the code is working and makes sense, start working on
+your report (in your
+<span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span> demo 
+file). Remember that you can run your code by 
 
-Remember that you can run your code as a demo, 
+1. compiling a notebook, or by 
+2. running it as a demo
 
 ```{r eval = FALSE}
 demo("d0302_stochastic_birth_death", package = "githubusername")
 ```
 
-or by opening the file in RStudio and compiling a notebook. You should get plots 
-like these:
+### 1. Demonstrate stochasticity
 
-<center>![plot](images/3-2.gif)</center>
+Run the code several times with a birth rate of 0.2, a death rate of 0.1, an 
+initial population count of 1, and a timestep of 1. Since we're repeating the 
+piece of code doing the simulation, you could do this using a `for` loop. The 
+stochasticity means that we see variable outputs. This is most easily 
+demonstrated if you plot multiple results in the same figure, which you
+can do with an `if` statement. You should get something like this:
 
-In this example we used these parameters:
+<center>![plot](images/3-2.png)</center>
 
-```{r, eval = FALSE}
-small.birth.rate <- 0.2
-v.small.death.rate <- 0.1
-initial.count <- 1
-```
+### 2. Increase variability
 
-You could also increase birth and death 
-rates or the time you're simulating over to increase visible variability.
+Increase birth and death rates or the time you're simulating over to
+increase visible variability. Again, you could use a `for` loop to generate
+outputs over a range of different rates / time periods.
 
-Notice that (as before) we have repeated the piece of code doing the simulation
-and have made use of the `new.graph = FALSE` option to overlay a second plot on 
-the first.
+### 3. Increase timestep
 
 If you haven't already, try increasing the value of timestep. What happens? You
 are actually getting impossible numbers (`NA`s) because the probability of

@@ -160,17 +160,23 @@ pre code {
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
 <p>To write a model to handle stochastic population dynamics we obviously have to update the timestep function to handle the new dynamics. However, we also have to understand whether anything else has changed in how the simulation works. In fact, something has. There is now the chance that the population will die out before the end of the experiment, so we need to look for this happening – not least to speed up the simulation.</p>
-<div id="section-demod0302_stochastic_birth_death.r" class="section level3">
-<h3>demo/d0302_stochastic_birth_death.R</h3>
+<div id="section-write-a-demo" class="section level3">
+<h3>1. Write a demo</h3>
 <p>We’ll start by writing the structural code in a new demo file. In Practical 3-1 we created this file and named it <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo is a copy of the <span style="color: #de77ae;">d0105_run_birth_death</span> demo, which is a good starting point. In this Practical you will edit this code.</p>
-<p>From Practicals 2-4 and 2-5 we have a <code>while()</code> loop which runs the simulation, e.g.:</p>
+<p>From Practicals 2-4 and 2-5 we have a <code>while()</code> loop which runs the simulation, <em>e.g.</em></p>
 <pre class="r"><code>while (latest.population$time &lt; end.time) {
-  latest.population &lt;- timestep_deterministic_SIR(# -- some arguments -- ) 
+  latest.population &lt;- timestep_deterministic_SIR(latest, 
+                                                  transmission.rate, 
+                                                  recovery.rate, 
+                                                  timestep)
   population.df &lt;- rbind(population.df, latest.population)
 }</code></pre>
 <p>The loop ends when the time runs out. Now, instead, there are two reasons why we might stop the simulation – the time may have run out, or the timestep code may identify that the dynamics are now complete. To achieve this, the timestep code will have to return both the updated population and whether the simulation is over. We suggest doing something like this:</p>
 <pre class="r"><code>while (keep.going) {
-  data &lt;- timestep_stochastic_birth_death(# -- some arguments -- ) 
+  data &lt;- timestep_stochastic_birth_death(latest, 
+                                          transmission.rate, 
+                                          recovery.rate, 
+                                          timestep) 
   latest.population &lt;- data$updated.pop
   population.df &lt;- rbind(population.df, latest.population)
   # The experiment may end stochastically or the time may run out 
@@ -180,36 +186,43 @@ pre code {
 <p>Notice also that at the start of the loop <code>keep.going</code> has not yet been defined, which will cause an error, so you will need to start it off with an appropriate value.</p>
 <p>Remember that <code>library(RPiR)</code> at the top of the script loads <code>plot_populations()</code>, and <code>library(githubusernameSeries03)</code> loads <code>timestep_stochastic_birth_death()</code>, which means you no longer need to source any helper files.</p>
 </div>
-<div id="section-rtimestep_stochastic_birth_death.r" class="section level3">
-<h3>R/timestep_stochastic_birth_death.R</h3>
-<p>Now you will need to write the <code>timestep_stochastic_birth_death()</code> function to provide the right information to the main loop. We created this file in Practical 3-1, but the function itself contains the deterministic step function for single species population dynamics, <code>step_deterministic_birth_death()</code> (from Practical 1-5). This is a useful starting point. Starting with this code, you need to make three changes.</p>
+<div id="section-write-a-function" class="section level3">
+<h3>2. Write a function</h3>
+<p>You will need to write the <code>timestep_stochastic_birth_death()</code> function to provide the right information to the main loop. We created this file in Practical 3-1, but the function itself contains the deterministic step function for single species population dynamics, <code>step_deterministic_birth_death()</code> (from Practical 1-5). This is a useful starting point. Starting with this code, you need to make three changes.</p>
 <p>First, we need to handle the effect of changing timesteps and update the code with something like this:</p>
-<pre class="r"><code>timestep_stochastic_birth_death &lt;- function(latest, birth.rate, death.rate, timestep) {
+<pre class="r"><code>timestep_stochastic_birth_death &lt;- function(latest, 
+                                            birth.rate, 
+                                            death.rate, 
+                                            timestep) {
+  # Multiply birth and death rates by timestep
   effective.birth.rate &lt;- birth.rate * timestep
-  effective.death.rate &lt;- # -- something similar --
-
-  # -- some code to determine the numbers of new births and deaths -- 
-
-  next.population &lt;- data.frame(time = latest$time + timestep, # -- some code -- )
-
-  # -- some code to calculate whether the experiment is finished --
-
-  # -- return both of these pieces of information --
-}</code></pre>
-<p>Then we need to work out whether the simulation has ended and return both pieces of information – the updated population and simulation state, by returning a list like this at the end of the function (since a function can only return one item, we will have to return a list with two elements):</p>
-<pre class="r"><code>timestep_stochastic_birth_death &lt;- function(latest, birth.rate, death.rate, timestep) {
+  effective.death.rate &lt;- ____ * ____
   
-  # -- those clever bits of code you have just written --
+  # Determine the numbers of new births and deaths
   
-  list(updated.pop = next.population, end.experiment = is.finished) 
+  
+  # Store new time and count in a dataframe
+  next.population &lt;- data.frame(time = latest$time + timestep, 
+                                ____ = ____)
+  
+  # Determine whether the experiment is finished
+  
+  
+  # Return both of these pieces of information
+  
+  
 }</code></pre>
-<p>But we need to determine whether the experiment is finished first – before the end of the function! In this case, the experiment will only end if the population completely dies out, so:</p>
-<pre class="r"><code>is.finished &lt;- (the.number.of.individuals.left == 0)</code></pre>
-<p>You just need to work out what <code>the.number.of.individuals.left</code> should be…</p>
-<p>Finally, we need to make the simulation stochastic using <code>rbinom()</code>. Remember, if you want to draw once from the binomial distribution with <code>count</code> trials, and a probability of success of <code>prob</code>, then the number of successes is:</p>
+<p>Then we need to make the simulation stochastic using <code>rbinom()</code>. Remember, if you want to draw once from the binomial distribution with <code>count</code> trials, and a probability of success of <code>prob</code>, then the number of successes is:</p>
 <pre class="r"><code>new.events &lt;- rbinom(1, count, prob)</code></pre>
 <p>So, the key is to use the <code>rbinom()</code> function to determine the numbers of new births and deaths in each time step. The number of births is drawn from a binomial distribution with size <code>count</code> and probability <code>birth.rate * timestep</code>, and the number of deaths is drawn from the same distribution with probability <code>death.rate * timestep</code>.</p>
-<p>Note that the <code>rbinom()</code> function is in the <code>stats</code> library, so you could perhaps more correctly call it as <code>stats::rbinom(1, count, prob)</code>, and then add the stats library to your package’s dependencies by typing <code>usethis::use_package("stats")</code> in the console (this will update the <code>DESCRIPTION</code> file). Finally in the <code>R/githubusernameSeries03-package.R</code> file, you need to import the functions from this library, as you already have for <code>RPiR</code>:</p>
+<p>We then store the next timestep and next count values in a dataframe.</p>
+<p>Then we need to determine whether the experiment is finished. In this case, the experiment will only end if the population completely dies out, so:</p>
+<pre class="r"><code>is.finished &lt;- (the.number.of.individuals.left == 0)</code></pre>
+<p>You just need to work out what <code>the.number.of.individuals.left</code> should be…</p>
+<p>Finally, we need to return both the updated population and simulation state (whether the simulation has ended) from the function. Since a function can only return one item, we will have to return a list with two elements at the end of the function:</p>
+<pre class="r"><code>list(updated.pop = next.population, end.experiment = is.finished) </code></pre>
+<hr />
+<p>Note that the <code>rbinom()</code> function is in the <code>stats</code> library, so you could perhaps more correctly call it as <code>stats::rbinom(1, count, prob)</code>, and then add the stats library to your package’s dependencies by typing <code>usethis::use_package("stats")</code> in the console (this will update the <span style="color: #de77ae;">DESCRIPTION</span> file). Finally in the <span style="color: #de77ae;">R/githubusernameSeries03-package.R</span> file, you need to import the functions from this library, as you already have for <code>RPiR</code>:</p>
 <pre class="r"><code>#&#39; @import RPiR
 #&#39; @import stats</code></pre>
 <p>Doing this is not strictly necessary since <code>stats</code> is a core built-in R library, but it will be necessary if you use any functions from other libraries in later exercises. We described this for <code>RPiR</code> in Practical 3-1 in the <em>Package metadata and dependencies</em> section.</p>
@@ -217,25 +230,32 @@ pre code {
 <p>Once you’re happy with your function, run <code>devtools::document()</code> to generate <span style="color: #de77ae;">man/</span> files and edit the <span style="color: #de77ae;">NAMESPACE</span>. Then run <code>devtools::install()</code> to permanently install it.</p>
 </div>
 </div>
-<div id="section-running-the-code" class="section level2">
-<h2>Running the code</h2>
-<p>When you are happy that the code is working and makes sense, run the code several times without changing any parameters of initial conditions and look at the output. The stochasticity means that we see variable outputs. If you don’t it may be because your starting population is too high. Try something much smaller, say 7 instead of 7 billion!</p>
-<p>Remember that you can run your code as a demo,</p>
+<div id="section-report" class="section level2">
+<h2>Report</h2>
+<p>When you are happy that the code is working and makes sense, start working on your report (in your <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span> demo file). Remember that you can run your code by</p>
+<ol style="list-style-type: decimal">
+<li>compiling a notebook, or by</li>
+<li>running it as a demo</li>
+</ol>
 <pre class="r"><code>demo(&quot;d0302_stochastic_birth_death&quot;, package = &quot;githubusername&quot;)</code></pre>
-<p>or by opening the file in RStudio and compiling a notebook. You should get plots like these:</p>
+<div id="section-demonstrate-stochasticity" class="section level3">
+<h3>1. Demonstrate stochasticity</h3>
+<p>Run the code several times with a birth rate of 0.2, a death rate of 0.1, an initial population count of 1, and a timestep of 1. Since we’re repeating the piece of code doing the simulation, you could do this using a <code>for</code> loop. The stochasticity means that we see variable outputs. This is most easily demonstrated if you plot multiple results in the same figure, which you can do with an <code>if</code> statement. You should get something like this:</p>
 <center>
-<img src="images/3-2.gif" title="fig:" alt="plot" />
+<img src="images/3-2.png" title="fig:" alt="plot" />
 </center>
-<p>In this example we used these parameters:</p>
-<pre class="r"><code>small.birth.rate &lt;- 0.2
-v.small.death.rate &lt;- 0.1
-initial.count &lt;- 1</code></pre>
-<p>You could also increase birth and death rates or the time you’re simulating over to increase visible variability.</p>
-<p>Notice that (as before) we have repeated the piece of code doing the simulation and have made use of the <code>new.graph = FALSE</code> option to overlay a second plot on the first.</p>
+</div>
+<div id="section-increase-variability" class="section level3">
+<h3>2. Increase variability</h3>
+<p>Increase birth and death rates or the time you’re simulating over to increase visible variability. Again, you could use a <code>for</code> loop to generate outputs over a range of different rates / time periods.</p>
+</div>
+<div id="section-increase-timestep" class="section level3">
+<h3>3. Increase timestep</h3>
 <p>If you haven’t already, try increasing the value of timestep. What happens? You are actually getting impossible numbers (<code>NA</code>s) because the probability of giving birth has got above 1. You can fix this by using the <code>stop()</code> command in <code>timestep_stochastic_birth_death()</code> to stop running code when the numbers you put in are impossible:</p>
 <pre class="r"><code>if ((effective.birth.rate &gt;= 1) || (effective.death.rate &gt;= 1))
   stop(&quot;Effective rate too high, timestep must be too big&quot;)</code></pre>
 <p>Rerun the code and check it stops when appropriate.</p>
+</div>
 </div>
 <div id="section-check-it-works" class="section level2">
 <h2>Check it works</h2>
@@ -254,7 +274,7 @@ set.seed(123)
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","bslib","cachem","callr","checkmate","cli","codetools","colorspace","compiler","crayon","curl","datasets","desc","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","MASS","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","sass","scales","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyselect","tools","usethis","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.2.1","4.0.4","0.2.4","1.0.4","3.5.1","2.0.0","2.3.1","0.2-18","2.0-0","4.0.4","1.4.1","4.3","4.0.4","1.2.0","1.28","2.3.2","0.6.27","1.0.4","0.3.1","0.14","0.4.2","1.1.0","1.5.0","0.1.0","3.3.3","1.4.2","0.2.2.9000","4.0.4","4.0.4","4.0.4","0.3.0","0.8","0.5.1.9000","1.5.3","1.5.5","0.1.3","1.7.2","1.31","1.1.0.1","0.10.1.9008","1.0.0","2.0.1","1.1","7.3-53","2.0.0","4.0.4","0.10","0.5.0","1.5.0","1.2.0","2.0.3","1.2.0","1.1.1","3.4.5","1.2.0.1","1.5.0","0.3.4","2.5.0","1.0.6","2.2.0","0.4.10","2.7","0.53.0","2.0.2","0.13","0.3.1","1.1.1","1.1.1","1.6.0","4.0.4","1.5.3","1.4.0","3.0.2","3.0.6","1.1.0","4.0.4","2.0.1","1.1.4","4.0.4","0.3.6","2.4.1","0.21","1.8-4","2.2.1"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85]}},"value":[{"type":"character","attributes":{},"value":["assertthat","backports","base","bslib","cachem","callr","checkmate","cli","codetools","colorspace","compiler","crayon","curl","datasets","desc","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","MASS","memoise","methods","mime","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","sass","scales","sessioninfo","shiny","stats","stringi","stringr","testthat","tibble","tidyselect","tools","usethis","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["0.2.1","1.2.1","4.0.4","0.2.4","1.0.4","3.5.1","2.0.0","2.3.1","0.2-18","2.0-0","4.0.4","1.4.1","4.3","4.0.4","1.3.0","1.28","2.3.2","0.6.27","1.0.5","0.3.1","0.14","0.4.2","1.1.0","1.5.0","0.1.0","3.3.3","1.4.2","0.2.3.9001","4.0.4","4.0.4","4.0.4","0.3.0","0.8","0.5.1.1","1.5.3","1.5.5","0.1.3","1.7.2","1.31","1.1.0.1","0.10.1.9008","1.0.0","2.0.1","1.1","7.3-53","2.0.0","4.0.4","0.10","0.5.0","1.5.1","1.2.0","2.0.3","1.2.0","1.1.1","3.4.5","1.2.0.1","1.6.0","0.3.4","2.5.0","1.0.6","2.2.0","0.4.10","2.7","0.71.11","2.0.2","0.13","0.3.1","1.1.1","1.1.1","1.6.0","4.0.4","1.5.3","1.4.0","3.0.2","3.1.0","1.1.0","4.0.4","2.0.1","1.2.1","4.0.4","0.3.6","2.4.1","0.22","1.8-4","2.2.1"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>
