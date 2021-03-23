@@ -8,21 +8,19 @@
 #' function.
 #'
 #' @param populations Data frame with columns corresponding to different
-#'    population segments and a 'time' column
+#' population segments and a 'time' column
 #' @param new.graph (optionally) whether to start a new graph, default TRUE
 #' @param xlim (optionally, for new graphs) the limits of the x axis,
-#'    default min to max time
+#' default min to max time
 #' @param ylim (optionally, for new graphs) the limits of the y axis,
-#'    default min to max pop size
-#' @param lty (optionally) the line type for all lines on the graph,
-#'    default 1
+#' default min to max pop size
+#' @param lty (optionally) the line type for all lines on the graph, default 1
 #'
 #' @export
 #'
 #' @examples
-#'
-#' df <- data.frame(time=0:100, grow=exp((0:100) / 10),
-#'                  die=exp(seq(10, 0, by = -0.1)))
+#' df <- data.frame(time = 0:100, grow=exp((0:100) / 10),
+#'                  die = exp(seq(10, 0, by = -0.1)))
 #' plot_simple(df, lty = c(2, 3))
 #'
 plot_simple <- function(populations, new.graph=TRUE, xlim=NA, ylim=NA,

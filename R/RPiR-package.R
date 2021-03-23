@@ -43,7 +43,7 @@
 #' @author
 #' Sonia Mitchell <sonia.mitchell@glasgow.ac.uk> (maintainer) \cr
 #' Richard Reeve <richard.reeve@glasgow.ac.uk>
-
+#'
 #' @name RPiR-package
 #' @aliases RPiR
 #' @docType package
