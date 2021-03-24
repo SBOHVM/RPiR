@@ -291,8 +291,8 @@ help(package = githubusernameSeries03)
 or `?`:
 
 ```{r, eval = FALSE}
-library(githubusername) 
-?githubusername
+library(githubusernameSeries03)
+?githubusernameSeries03
 ```
 
 This documentation was generated from 
