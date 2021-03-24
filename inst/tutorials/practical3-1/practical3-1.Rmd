@@ -285,7 +285,7 @@ your package.
 Look at the package documentation by using the `help()` function:
 
 ```{r, eval = FALSE}
-help(package = githubusername) 
+help(package = githubusernameSeries03)
 ```
 
 or `?`:
