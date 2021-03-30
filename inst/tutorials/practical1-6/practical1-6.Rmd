@@ -23,25 +23,35 @@ set.seed(123)
 
 ## Overview
 
-*In this session we will take the code for the models with just growth (1-4)* 
-*and with births and deaths (1-5) and make a clearer report comparing the two.*
+*In this session we will take the code for the models with just growth 
+(Practical 1-4) and with births and deaths (Practical 1-5) and make a clearer 
+report comparing the two.*
 
-> Note that from here on out you need to have two versions of RStudio
-open at a time. One to run the {learnr} course (this will likely have a big red
-stop button preventing you from being able to run anything in the Console) and
-one to do your work in. If you don't still have it open, you should be able to
-open the new project that you created in Practical 1-1
-using <span style="color: #de77ae;">File > Open Project in New Session...</span>
-in RStudio or follow the instructions in 1-1 to create another new project if
-you want to do that.
+---
+
+Note that from here on out you will be working in RStudio. If you don't still 
+have it open, you should be able to open the new project that you created in 
+Practical 1-1 using <span style="color: #dd1c77;">File > Open Project in New 
+Session...</span> in RStudio or follow the instructions in 1-1 to create 
+another new project if you want to do that.
+
+To access course materials, you have two options:
+
+1. In RStudio, click <span style="color: #dd1c77;">View > Panes > 
+   Pane Layout... > then in the Files, Plots, Packages, Help, Tutorial, 
+   Viewer</span> section, scroll down and check the box next to Tutorial. This 
+   will give you a tutorial tab from which to access materials.
+2. Open two versions of RStudio. One to run the `learnr` course (this will 
+   likely have a big red stop button preventing you from being able to run 
+   anything in the Console) and one to do your work in. 
 
 ## Background
 
-We are now going to demonstrate in a small way why it's worth dividing up the
+In this practical, we are going to demonstrate why it's worth dividing up the
 code into separate functions, and indeed separate files. Previously we wrote a
 simple growth model, and a model of birth and death. We're now going to use the
 two-step functions we created and run both models in a new script that compares 
-them. For this final part of practical 1, we're going to generate a report in 
+them. For this final part of Practical 1, we're going to generate a report in 
 RStudio using everything we've learned so far.
 
 ## A clean start
@@ -57,11 +67,11 @@ fundamental rule however, you should **never hardcode** `rm(list=ls())`
 **into any of your scripts**, and in fact you should just not use it.
 It's generally a sign your code isn't written well if it can be affected by
 something before it. Instead, you can clear your workspace by clicking the brush
-in the <span style="color: #de77ae;">Environment</span> tab in RStudio (or 
-<span style="color: #de77ae;">Session > Clear Workspace...</span> in the menus). 
+in the <span style="color: #dd1c77;">Environment</span> tab in RStudio (or 
+<span style="color: #dd1c77;">Session > Clear Workspace...</span> in the menus). 
 
 However, generally it's easier to Restart R. This is much safer and more final.
-You can do it in RStudio via <span style="color: #de77ae;">Session > Restart R</span>
+You can do it in RStudio via <span style="color: #dd1c77;">Session > Restart R</span>
 in the menus: it is far 
 more effective than clearing just the workspace as it resets everything, while 
 leaving RStudio itself unaffected. Remember that once you have done this you may 
@@ -105,22 +115,39 @@ The birth and death model is slightly more complex:
 
 $$ N(t+1) = N(t) + b \times N(t) - d \times N(t)$$
 
-Remember that <span style="color: #de77ae;">0104-step-growth.r</span> has the
-`step_deterministic_growth()` function and 
-<span style="color: #de77ae;">0105-step-birth-death.r</span> has the 
-`step_deterministic_birth_death()` function, so we need to `source()` both of
-these files (as well as 
-<span style="color: #de77ae;">0104-plot-helper.r</span>).
+Open RStudio and create a new script called 
+<span style="color: #dd1c77;">0106-final-report.R</span>.
 
-Now open RStudio. For this practical, we're going to generate a report called 
-<span style="color: #de77ae;">0106-final-report.r</span>. We want to compare the
-models, so write some code that first runs a simulation with one model and plots 
-it, and then with the other model and plots that as well. Remember that you can 
-plot a second (or third, etc.) result on top of a first with commands like:
+Remember that <span style="color: #dd1c77;">0104-step-growth.R</span> has the
+`step_deterministic_growth()` function and 
+<span style="color: #dd1c77;">0105-step-birth-death.R</span> has the 
+`step_deterministic_birth_death()` function, so we need to `source()` both of
+these files at the top of our script.
+
+We want to compare the models, so write some code that first runs a simulation 
+with one model and plots it, and then runs a simulation with the other model 
+and plots that as well. Remember that you can plot a second (or third, etc.) 
+result on top of a first with commands like:
 
 ```{r, eval = FALSE}
+plot_populations(population.a, new.graph = TRUE, col = "black")
 plot_populations(population.b, new.graph = FALSE, col = "red")
 ```
+
+## Report
+
+For this report, we want something substantially clearer and better laid out, 
+showing something that demonstrates the relationship between the growth and the
+birth-death models, noting for instance that the crude global birth and death 
+rates are around 23 per 1000 population and 8 per 1000 respectively. You can see
+an example of most of the possible formatting options in 
+<span style="color: #dd1c77;">0200-example-notebook.R</span>. Use an 
+understanding of what you want to describe --
+and formatting from the example file or elsewhere -- to break up your script so 
+that your code and the results and figures are interspersed with a reasonable
+explanation of what is going on.
+
+### 1. Vary parameters
 
 You should try running:
 
@@ -141,16 +168,3 @@ plot_populations(population.df, ylim = c(0, 20000000000))
 ```
 
 Once you've done this it should be easier to compare the two (by eye at least).
-
-## Report
-
-For this report, we want something substantially clearer and better laid out, 
-showing something that demonstrates the relationship between the growth and the
-birth-death models, noting for instance that the crude global birth and death 
-rates are around 23 per 1000 population and 8 per 1000 respectively. You can see
-an example of most of the possible formatting options in 
-<span style="color: #de77ae;">0200-example-notebook.R</span>. Use an 
-understanding of what you want to describe --
-and formatting from the example file or elsewhere -- to break up your script so 
-that your code and the results and figures are interspersed with a reasonable
-explanation of what is going on.
