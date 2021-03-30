@@ -32,11 +32,11 @@ $$R(t+1) = R(t) + \sigma \times I(t)$$
 ## Tasks
 
 Your task is to copy and edit the files from the previous practical 
-(<span style="color: #de77ae;">0204-deterministic-SIS.R</span> and 
-<span style="color: #de77ae;">0204-run-SIS.R</span>) to produce
+(<span style="color: #dd1c77;">0204-deterministic-SIS.R</span> and 
+<span style="color: #dd1c77;">0204-run-SIS.R</span>) to produce
 the corresponding files 
-<span style="color: #de77ae;">0205-deterministic-SIR.R</span> and 
-<span style="color: #de77ae;">0205-run-SIR.R</span> that 
+<span style="color: #dd1c77;">0205-deterministic-SIR.R</span> and 
+<span style="color: #dd1c77;">0205-run-SIR.R</span> that 
 run the SIR model rather than the SIS model. There shouldn't be too many changes 
 that are necessary, though obviously the first is to add a new population (the
 **recovereds**) to the data frame and remember than $N$, the total population size, 
@@ -59,7 +59,7 @@ have to be below 1 to be stable.
 
 ## Running the code
 
-Run the code by running your new file <span style="color: #de77ae;">0205-run-SIR.R</span>.
+Run the code by running your new file <span style="color: #dd1c77;">0205-run-SIR.R</span>.
 Check that you get the same results as you saw in the lecture for an $R_0$ of 2.
 Adding the argument `col=c("green", "red", "black")` to `plot_populations()`
 will allow you to change the colours of the plot to match those from the lecture.

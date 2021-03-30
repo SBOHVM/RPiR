@@ -43,7 +43,7 @@ We can turn the single program from the previous practical into two pieces of
 code by putting the `step_simple_growth()` function into a separate file, and 
 reading that file in the original script using the `source()` function. We have
 called the new file containing the function 
-<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>, so we 
+<span style="color: #dd1c77;">0103-step-simple-growth-function.R</span>, so we 
 will use the command:
 
 ```{r, eval = FALSE}
@@ -51,7 +51,7 @@ source("0103-step-simple-growth-function.R")
 ``` 
 
 to tell the main script (the R program) that it needs to look in 
-<span style="color: #de77ae;">0103-step-simple-growth-function.R</span> for
+<span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> for
 code. 
 
 The function documentation should be in the function file now and not 
@@ -80,13 +80,13 @@ step_simple_growth <- function(current.population, growth.rate) {
 ## Note, running a script with just a function in will not output anything
 ```
 
-and the main script (<span style="color: #de77ae;">0103-run-simple-growth.R</span>) 
+and the main script (<span style="color: #dd1c77;">0103-run-simple-growth.R</span>) 
 should look 
 something like this:
 
 > Note that {learnr} doesn't create files, so `source` doesn't work here. To 
 avoid an error, we commented out line 2, and instead preloaded
-<span style="color: #de77ae;">0103-step-simple-growth-function.R</span> into the
+<span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> into the
 following code block)
 
 ```{r main-setup}
@@ -144,14 +144,14 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 ```
 
 When we run the code, we don't even need to open the file 
-<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>, 
+<span style="color: #dd1c77;">0103-step-simple-growth-function.R</span>, 
 we just run the main script
-(<span style="color: #de77ae;">0103-run-simple-growth.R</span>) making sure that 
+(<span style="color: #dd1c77;">0103-run-simple-growth.R</span>) making sure that 
 we have specified 
-<span style="color: #de77ae;">0103-step-simple-growth-function.R</span> as a 
+<span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> as a 
 `source()` in it. Its contents (the `step_simple_growth()` function) are safely 
 packaged away unless we want to edit them. 
-<span style="color: #de77ae;">0103-run-simple-growth.R</span> and 
-<span style="color: #de77ae;">0103-step-simple-growth-function.R</span>
+<span style="color: #dd1c77;">0103-run-simple-growth.R</span> and 
+<span style="color: #dd1c77;">0103-step-simple-growth-function.R</span>
 together do **exactly** what 
-<span style="color: #de77ae;">0102-growth-functional.R</span> did. 
+<span style="color: #dd1c77;">0102-growth-functional.R</span> did. 

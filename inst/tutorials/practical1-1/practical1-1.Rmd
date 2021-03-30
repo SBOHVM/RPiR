@@ -218,8 +218,8 @@ some details on exactly what is going on.
 The text at the top, bordered by `#' ---` is a yaml header, which 
 generates an **R markdown report** header in a special format. If you were 
 writing this script in RStudio, you could generate a report from the
-<span style="color: #de77ae;">File</span> menu by selecting
-<span style="color: #de77ae;">Compile Report...</span> (we'll do this later).
+<span style="color: #dd1c77;">File</span> menu by selecting
+<span style="color: #dd1c77;">Compile Report...</span> (we'll do this later).
 An html document would pop up in a viewer after a couple of seconds, and a new
 file should appear in the directory you were working in. The lines below the
 yaml header, beginning with `#'` generate text chunks in such a report. 
@@ -409,7 +409,7 @@ plot(c(start.time, timesteps), population.vector, type = "l")
 Now we have a complete program, which should show the growth of the human 
 population from 7 billion and generate a plot showing how population varies with
 time. So that we can reference it later, we've named it 
-<span style="color: #de77ae;">0101-growth-loop.R</span> (check the header 
+<span style="color: #dd1c77;">0101-growth-loop.R</span> (check the header 
 of the code block below). Try running the code now. Try to make sure you 
 understand how everything works by adding print statements or commenting out
 different sections if necessary. 
@@ -527,21 +527,21 @@ lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that
 you agree with the doubling time we calculated theoretically of ~46 years.
 
 Finally, create a new project in RStudio - you can do this by selecting
-<span style="color: #de77ae;">File</span> > <span style="color: #de77ae;">New
-Project...</span>, and then choose <span style="color: #de77ae;">New
-Directory</span> > <span style="color: #de77ae;">New Project</span> and then a
+<span style="color: #dd1c77;">File</span> > <span style="color: #dd1c77;">New
+Project...</span>, and then choose <span style="color: #dd1c77;">New
+Directory</span> > <span style="color: #dd1c77;">New Project</span> and then a
 name and a location on your computer to save it in, and tick
-<span style="color: #de77ae;">Open in new session</span> because your current
+<span style="color: #dd1c77;">Open in new session</span> because your current
 session is used up by this practical. From now on all of the coding you do will
 happen in this (or another) new RStudio session. Keep the current one just for
 running the practicals.
 
 In the new session, create a new R file, and copy the code in
-the <span style="color: #de77ae;">R Markdown header</span>
-and <span style="color: #de77ae;">0101-growth-loop.R</span> code sections
+the <span style="color: #dd1c77;">R Markdown header</span>
+and <span style="color: #dd1c77;">0101-growth-loop.R</span> code sections
 into it (ignoring duplicates), save it, and generate a report from it.
-You can do this by clicking on <span style="color: #de77ae;">File</span> >
-<span style="color: #de77ae;">Compile Report...</span>) or you
+You can do this by clicking on <span style="color: #dd1c77;">File</span> >
+<span style="color: #dd1c77;">Compile Report...</span>) or you
 can click on the little notebook icon:
 
 ```{r echo = FALSE, fig.align = "center", out.width = "60%"}

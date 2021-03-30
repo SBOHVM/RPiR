@@ -54,7 +54,7 @@ transmissions and recoveries that occur in one unit of time. To simulate
 stepping forward in larger of smaller amounts of time we scale the parameters by
 the new time step.
 
-The task now is edit <span style="color: #de77ae;">0202-run-SIS.R</span> so that
+The task now is edit <span style="color: #dd1c77;">0202-run-SIS.R</span> so that
 it is easy to alter the timestep of the simulation -- you can reuse
 `step_deterministic_SIS()`. All you need to do is to write a new script file
 which creates a new parameter, `timestep`, so that you can scale
@@ -64,7 +64,7 @@ You also need to remember that the vector of `timesteps` to loop through is now
 also wrong. Make sure that you adjust it correctly so that it will give the
 correct times for the plot. You can check it has by looking at
 `population.df$time` after you've added it in to the data frame and make sure it
-looks right to you. We can call this new version <span style="color: #de77ae;">
+looks right to you. We can call this new version <span style="color: #dd1c77;">
 0203-test-SIS.R</span>.
 
 ## Running the code

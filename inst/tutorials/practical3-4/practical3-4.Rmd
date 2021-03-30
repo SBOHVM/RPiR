@@ -83,9 +83,9 @@ list(updated.pop = next.population, end.experiment = is.finished)
 ### 2. Write a demo
 
 Now write a new demo called 
-<span style="color: #de77ae;">d0304_run_SIS</span>, to demonstrate the SIS 
+<span style="color: #dd1c77;">d0304_run_SIS</span>, to demonstrate the SIS 
 model. It might be useful to adapt the code you wrote in 
-<span style="color: #de77ae;">d0303_run_birth_death</span>.
+<span style="color: #dd1c77;">d0303_run_birth_death</span>.
 
 ### 3. Check your function
 

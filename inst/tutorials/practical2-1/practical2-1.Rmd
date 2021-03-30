@@ -78,12 +78,12 @@ whole rpir team (actually *IBAHCM/rpir*) (again with read access).
 
 ### Coding
 
-Create a new R file, using <span style="color: #de77ae;">File > New > R
+Create a new R file, using <span style="color: #dd1c77;">File > New > R
 Script</span>. You should adapt the code from Practical 1-5 (remember you now
 have a project with all of this code in, and it is easy to have two RStudio
 sessions so you can copy and refer to earlier code easily), creating 2 files -- 
-<span style="color: #de77ae;">0202-run-SIS.R</span>
-and <span style="color: #de77ae;">0202-step-SIS.R</span> -- but where in 1-5 
+<span style="color: #dd1c77;">0202-run-SIS.R</span>
+and <span style="color: #dd1c77;">0202-step-SIS.R</span> -- but where in 1-5 
 the data frame had only a `count` column, now you will need to have two --
 `susceptibles` and `infecteds`. You **do not** need to have the total population
 size (`N`, above) in there, because at every step it is just
@@ -129,9 +129,9 @@ recent) numbers and the parameters using the formulae above; and then
 
 ## Running the code
 
-Run the code in <span style="color: #de77ae;">0202-run-SIS.R</span>. Remember 
+Run the code in <span style="color: #dd1c77;">0202-run-SIS.R</span>. Remember 
 that the `source()` command means that it automatically loads in 
-<span style="color: #de77ae;">0202-step-SIS.R</span>, meaning that you 
+<span style="color: #dd1c77;">0202-step-SIS.R</span>, meaning that you 
 needing to load these files yourself. Don't forget to check that
 your function is not using any global variables. Check that you get the same
 results as you saw in the lecture. Adding the argument `col = c("green", "red")` 
@@ -216,7 +216,7 @@ of the practical.
 ### Checking other people's code
 
 Likewise, when you hear from someone else that a repo is available to check,
-then open it using <span style="color: #de77ae;">File > New Project...</span>,
+then open it using <span style="color: #dd1c77;">File > New Project...</span>,
 then *Version Control*, *Git*, and then put in the URL from GitHub and tick
 `Open in New Session`. In the new RStudio session that is opened, you can then
 run their code and make sure it works. If it does not, just respond in the Issue
