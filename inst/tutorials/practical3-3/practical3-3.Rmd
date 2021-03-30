@@ -19,8 +19,8 @@ set.seed(123)
 
 ## Overview
 
-*In this practical you will see how we can make the code for the stochastic
-birth-death model safer, simpler, and more reusable.*
+In this practical you will see how we can make the code for the stochastic
+birth-death model safer, simpler, and more reusable.
 
 ## Background
 

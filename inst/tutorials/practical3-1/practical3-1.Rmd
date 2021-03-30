@@ -21,8 +21,8 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we will learn how to create an R package. There is much more
-information on R packages in [this book](https://r-pkgs.org).*
+In this practical we will learn how to create an R package. There is much more
+information on R packages in [this book](https://r-pkgs.org).
 
 ## Create a package
 
