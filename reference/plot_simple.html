@@ -222,9 +222,6 @@ function." />
       <a href="../tutorials/practical2-4/practical2-4.html">Practical2-4</a>
     </li>
     <li>
-      <a href="../tutorials/practical2-5/practical2-5.html">Practical2-5</a>
-    </li>
-    <li>
       <a href="../tutorials/practical3-1/practical3-1.html">Practical3-1</a>
     </li>
     <li>
@@ -391,7 +388,14 @@ column names. See plot_populations() above for a more sophisticated plotting
 function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_simple</span><span class='op'>(</span><span class='va'>populations</span>, new.graph <span class='op'>=</span> <span class='cn'>TRUE</span>, xlim <span class='op'>=</span> <span class='cn'>NA</span>, ylim <span class='op'>=</span> <span class='cn'>NA</span>, lty <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>plot_simple</span><span class='op'>(</span>
+  <span class='va'>populations</span>,
+  new.graph <span class='op'>=</span> <span class='cn'>TRUE</span>,
+  <span class='va'>xlim</span>,
+  <span class='va'>ylim</span>,
+  lty <span class='op'>=</span> <span class='fl'>1</span>,
+  legend <span class='op'>=</span> <span class='st'>"topright"</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -403,21 +407,27 @@ population segments and a 'time' column</p></td>
     </tr>
     <tr>
       <th>new.graph</th>
-      <td><p>(optionally) whether to start a new graph, default TRUE</p></td>
+      <td><p>(optional) whether to start a new graph, default TRUE</p></td>
     </tr>
     <tr>
       <th>xlim</th>
-      <td><p>(optionally, for new graphs) the limits of the x axis,
+      <td><p>(optional, for new graphs) the limits of the x axis,
 default min to max time</p></td>
     </tr>
     <tr>
       <th>ylim</th>
-      <td><p>(optionally, for new graphs) the limits of the y axis,
+      <td><p>(optional, for new graphs) the limits of the y axis,
 default min to max pop size</p></td>
     </tr>
     <tr>
       <th>lty</th>
-      <td><p>(optionally) the line type for all lines on the graph, default 1</p></td>
+      <td><p>(optional) the line type for all lines on the graph, default 1</p></td>
+    </tr>
+    <tr>
+      <th>legend</th>
+      <td><p>(optional) legend position; choose from "topleft", "top",
+"topright" (default), "left", "center", "right", "bottomleft", "bottom", or
+"bottomright"</p></td>
     </tr>
     </table>
 

@@ -45,8 +45,8 @@ least to speed up the simulation.
 ### 1. Write a demo
 
 We'll start by writing the structural code in a new demo file. In Practical 3-1
-we created this file and named it <span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo
-is a copy of the <span style="color: #de77ae;">d0105_run_birth_death</span> 
+we created this file and named it <span style="color: #dd1c77;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo
+is a copy of the <span style="color: #dd1c77;">d0105_run_birth_death</span> 
 demo, which is a good starting point. In this Practical you will edit this code.
 
 From Practicals 2-4 and 2-5 we have a `while()` loop which runs the simulation,
@@ -170,8 +170,8 @@ Note that the `rbinom()` function is in the `stats` library, so you could
 perhaps more correctly call it as `stats::rbinom(1, count, prob)`, and then add
 the stats library to your package's dependencies by typing
 `usethis::use_package("stats")` in the console (this will update the
-<span style="color: #de77ae;">DESCRIPTION</span> file). Finally in the 
-<span style="color: #de77ae;">R/githubusernameSeries03-package.R</span> file,
+<span style="color: #dd1c77;">DESCRIPTION</span> file). Finally in the 
+<span style="color: #dd1c77;">R/githubusernameSeries03-package.R</span> file,
 you need to import the functions from this library, as you already have for
 `RPiR`:
 
@@ -192,15 +192,15 @@ it says *Binomial {stats}*, the library name is in curly brackets. If it says
 this.
 
 Once you're happy with your function, run `devtools::document()` to generate
-<span style="color: #de77ae;">man/</span> files and edit the 
-<span style="color: #de77ae;">NAMESPACE</span>. Then run `devtools::install()`
+<span style="color: #dd1c77;">man/</span> files and edit the 
+<span style="color: #dd1c77;">NAMESPACE</span>. Then run `devtools::install()`
 to permanently install it.
 
 ## Report
 
 When you are happy that the code is working and makes sense, start working on
 your report (in your
-<span style="color: #de77ae;">demo/d0302_stochastic_birth_death.R</span> demo 
+<span style="color: #dd1c77;">demo/d0302_stochastic_birth_death.R</span> demo 
 file). Remember that you can run your code by 
 
 1. compiling a notebook, or by 

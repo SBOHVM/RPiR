@@ -50,14 +50,14 @@ from the same species.
 
 This project will be written in the **githubusernameDiversity** package that
 you set up in the last exercise, with functions being saved in the
-<span style="color: #1697C0;">R</span> folder and documented so that they work
+<span style="color: #dd1c77;">R</span> folder and documented so that they work
 with the standard R help system, and scripts being saved as demos in the
-<span style="color: #1697C0;">demo</span> folder so that they can be run using
+<span style="color: #dd1c77;">demo</span> folder so that they can be run using
 the `demo()` function or compiled into reports to read the results with suitable
 reporting explaining what is happening. In each project exercise you will have
 to write some functions and (most likely) one script. *So now create a demo
 script for this project and add an entry for it in the
-<span style="color: #1697C0;">00Index</span> file in the same folder.*
+<span style="color: #dd1c77;">00Index</span> file in the same folder.*
 
 ### The study populations
 

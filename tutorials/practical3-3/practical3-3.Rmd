@@ -19,8 +19,8 @@ set.seed(123)
 
 ## Overview
 
-*In this practical you will see how we can make the code for the stochastic
-birth-death model safer, simpler, and more reusable.*
+In this practical you will see how we can make the code for the stochastic
+birth-death model safer, simpler, and more reusable.
 
 ## Background
 
@@ -127,10 +127,10 @@ step function (via the `...`).
 ### Write a demo
 
 Now write a new demo called 
-<span style="color: #de77ae;">d0303_run_birth_death</span> using
+<span style="color: #dd1c77;">d0303_run_birth_death</span> using
 `run_simple()` to replace the whole simulation loop in the earlier code. 
 This should make the code in
-<span style="color: #de77ae;">d0302_stochastic_birth_death</span> more compact, 
+<span style="color: #dd1c77;">d0302_stochastic_birth_death</span> more compact, 
 and will also make it much less prone to error, as we've isolated 10 more lines 
 of code that we never need to write (or copy and paste) again. 
 

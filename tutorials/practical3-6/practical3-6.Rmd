@@ -34,8 +34,8 @@ small amendment to allow us to average across "incomplete" simulations.
 
 ## Tasks
 
-Adapt the code from <span style="color: #de77ae;">d0305_run_SIR</span> to make a 
-new demo, <span style="color: #de77ae;">0306_mean_SIR</span>. Try just 
+Adapt the code from <span style="color: #dd1c77;">d0305_run_SIR</span> to make a 
+new demo, <span style="color: #dd1c77;">0306_mean_SIR</span>. Try just 
 adding the stochastic simulations from 3-5 together by adding the 
 `final.populations` data frames together, and then dividing by the number of 
 runs. Unless you are lucky (in which case run it again!), you will probably find 

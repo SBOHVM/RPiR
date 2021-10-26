@@ -70,10 +70,10 @@ the current size) minus the new deaths (d times the current size)"
 where $b$ represents the birth rate and $d$ represents the death rate.
 
 In this practical, we will reuse the `RPiR` package while adapting 
-<span style="color: #de77ae;">0104-run-growth.R</span> and 
-<span style="color: #de77ae;">0104-step-growth.R</span> appropriately. For convenience, we've generated
-<span style="color: #de77ae;">0105-step-birth-death.R</span> (from 
-<span style="color: #de77ae;">0104-step-growth.R</span>) for you, with 
+<span style="color: #dd1c77;">0104-run-growth.R</span> and 
+<span style="color: #dd1c77;">0104-step-growth.R</span> appropriately. For convenience, we've generated
+<span style="color: #dd1c77;">0105-step-birth-death.R</span> (from 
+<span style="color: #dd1c77;">0104-step-growth.R</span>) for you, with 
 blanks for you to fill in:
 
 ```{r stepbirthdeath, exercise = TRUE, exercise.cap = "0105-step-birth-death.R", exercise.lines = 20}
@@ -132,8 +132,8 @@ grade_this_code()
 ```
 
 Likewise, we've generated 
-<span style="color: #de77ae;">0105-run-birth-death.R</span> (from
-<span style="color: #de77ae;">0104-run-growth.R</span>), with added blanks 
+<span style="color: #dd1c77;">0105-run-birth-death.R</span> (from
+<span style="color: #dd1c77;">0104-run-growth.R</span>), with added blanks 
 for you to fill in. Again,`source()`
 has been commented out as it won't work in the {learnr} environment. Instead, 
 the necessary files have been preloaded for you. Try to fill in the blanks and

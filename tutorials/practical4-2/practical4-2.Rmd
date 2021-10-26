@@ -40,8 +40,8 @@ investigate this in the project.
 ## Tasks
 
 You simply need to put the code provided into R files in the
-<span style="color: #de77ae;">R</span> folder of your package, and
-edit the <span style="color: #de77ae;">DESCRIPTION</span> file of your package
+<span style="color: #dd1c77;">R</span> folder of your package, and
+edit the <span style="color: #dd1c77;">DESCRIPTION</span> file of your package
 (using `usethis::use_package()` if you like) so that all dependencies are
 included. Then regenerate the documentation and reinstall the package. First
 the `sample_by_species()` function:
