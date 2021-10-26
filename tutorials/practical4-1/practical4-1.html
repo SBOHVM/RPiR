@@ -271,7 +271,7 @@ usethis::use_data(bci_taxa, overwrite = TRUE)</code></pre>
 <pre class="r"><code>data &lt;- read.delim(file.path(&quot;ViewFullTable&quot;, &quot;ViewFullTable.txt&quot;))</code></pre>
 <p>Then your computer may have unzipped files differently from mine – mine has created a folder in <span style="color: #1697C0;">data-raw</span> called <span style="color: #1697C0;">ViewFullTable</span>, but yours may have just unzipped the files directly into data-raw. In that case, just change the line to:</p>
 <pre class="r"><code>data &lt;- read.delim(&quot;ViewFullTable.txt&quot;)</code></pre>
-<p>Step 3 is (hopefully!) easy, and it is something you are going to have to keep up to date as you develop any package – you need to check which libraries you load using <code>library(xxx)</code> in any script or demo, and which libraries you use by qualifying function calls with <code>xxx::xxx_function()</code>. You then need to run:</p>
+<p>Step 3 is (hopefully!) easy, and it is something you are going to have to keep up to date as you develop any package – you need to check which libraries you load using <code>library(xxx)</code> in any script or demo, and which libraries you use by qualifying function calls with <code>xxx::function_name()</code>. You then need to run:</p>
 <pre class="r"><code>usethis::use_package(&quot;xxx&quot;)</code></pre>
 <p>to add the <code>xxx</code> package to those <em>imported</em> by your package in the <span style="color: #1697C0;">DESCRIPTION</span> file. See <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for further details. Commit these changes to the repo too, and push them to GitHub.</p>
 </div>

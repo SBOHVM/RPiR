@@ -271,7 +271,7 @@ data <- read.delim("ViewFullTable.txt")
 Step 3 is (hopefully!) easy, and it is something you are going to have to keep
 up to date as you develop any package -- you need to check which libraries you
 load using `library(xxx)` in any script or demo, and which libraries you use by
-qualifying function calls with `xxx::xxx_function()`. You then need to run:
+qualifying function calls with `xxx::function_name()`. You then need to run:
 
 ```{R, eval = FALSE}
 usethis::use_package("xxx")
