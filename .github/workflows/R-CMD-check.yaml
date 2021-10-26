@@ -127,7 +127,7 @@ jobs:
           testthat::test_that("Lectures (slides)", {
             test_nav <- navbar$`Lectures (slides)` %>%
               gsub("^lectures/", "", .)
-            test_files <- dir("inst/lectures", ".Rmd$") %>%
+            test_files <- dir("inst/lectures", ".Rmd|.pdf$") %>%
               gsub("Rmd$", "html", .)
             testthat::expect_true(all(test_nav %in% test_files))
           })
@@ -189,7 +189,6 @@ jobs:
           }
         shell: Rscript {0}
 
-      # Move learnr tutorials to docs
       - name: Move learnr tutorials to docs
         if: runner.os == 'macOS'
         run: |
