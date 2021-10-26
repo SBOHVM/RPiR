@@ -109,18 +109,18 @@ go along you may also need to install the packages in advance using
 ### Create the demo files
 
 As in the last practical series, we're going to create a **demo** inside the
-package. In the <span style="color: #de77ae;">Files</span> tab, you may need to
-create a new <span style="color: #de77ae;">demo</span> folder. Then create an R
+package. In the <span style="color: #dd1c77;">Files</span> tab, you may need to
+create a new <span style="color: #dd1c77;">demo</span> folder. Then create an R
 script in that folder to contain your demo, call it
-<span style="color: #de77ae;">diversity-of-BCI.R</span>. Note in general you
+<span style="color: #dd1c77;">diversity-of-BCI.R</span>. Note in general you
 just have to make sure the name of the script has **no spaces in it**. Then
 (again, as before) create a new text file also in that folder called
-<span style="color: #de77ae;">00Index</span>,
+<span style="color: #dd1c77;">00Index</span>,
 with **no file extension** to contain the list of the demos in your
 package. As you should know by now, each demo you create is entered into one
 line of this file with the demo name followed by a one-line description. For
 example, here, the demo file 
-<span style="color: #de77ae;">diversity-of-BCI.R</span> would have a line like:
+<span style="color: #dd1c77;">diversity-of-BCI.R</span> would have a line like:
 
 ```
 diversity-of-BCI    Showing the diversity of the BCI forest plot.

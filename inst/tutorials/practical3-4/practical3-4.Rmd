@@ -36,23 +36,31 @@ extra functionality over `run_simple()` to run simulations using the older
 deterministic models. Pay attention in particular to writing 
 the function, where the most important changes need to be made.
 
-### R/timestep_stochastic_birth_death.R
+### 1. Write a function
+
+First, you need to write a new function, `timestep_stochastic_SIS()`, adapted 
+from `timestep_stochastic_birth_death()` to handle the SIS model rather than 
+exponential growth. 
 
 The function should be defined like this:
 
 ```{r, eval = FALSE}
-timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, timestep) {
-  # -- some code --
+timestep_stochastic_SIS <- function(latest, 
+                                    transmission.rate, 
+                                    recovery.rate, 
+                                    timestep) {
+  # Some code
+  
 }
 ```
 
 It proceeds much as before with the deterministic SIS model, calculating the 
-effective beta and sigma at this timestep, and then as with the stochastic birth 
-death model, you need to work out whether the individual rate of infection or 
-recovery per timestep is greater than 1, in which case it cannot be used as a
-probability. In this case, the actual individual infection rate is 
-`effective.transmission.rate` $\times \frac{I}{N}$ and the individual recovery 
-rate is `effective.recovery.rate`.
+effective transmission rate (beta) and recovery rate (sigma) at this timestep. 
+Then as with the stochastic birth death model, you need to work out whether the 
+individual rate of infection or recovery per timestep is greater than 1, in 
+which case it cannot be used as a probability. In this case, the actual 
+individual infection rate is `effective.transmission.rate` $\times \frac{I}{N}$ 
+and the individual recovery rate is `effective.recovery.rate`.
 
 Now for the key step... you need to sample from the binomial distribution (as 
 described in the lecture) to determine the number of new infecteds and 
@@ -72,103 +80,43 @@ finished or not.
 list(updated.pop = next.population, end.experiment = is.finished)
 ```
 
-### demo/d0304_run_SIS.R
+### 2. Write a demo
 
-You need to write a new demo, <span style="color: #de77ae;">d0304_run_SIS</span>, and 
-a new function, `timestep_stochastic_SIS()`, adapted from the
-<span style="color: #de77ae;">d0303_run_birth_death</span> demo and
-`timestep_stochastic_birth_death()` to handle the SIS model rather than 
-exponential growth. 
+Now write a new demo called 
+<span style="color: #dd1c77;">d0304_run_SIS</span>, to demonstrate the SIS 
+model. It might be useful to adapt the code you wrote in 
+<span style="color: #dd1c77;">d0303_run_birth_death</span>.
 
-## Running the code / Report
+### 3. Check your function
 
-When you are happy with the structure of the code, run it a few times with the 
-same parameter values and observe the variability. Try changing beta (which will
-change $R_0$) and the initial number of infecteds and see how the likelihood of
-early extinction changes. Notice that we can automate overlaying multiple 
-simulations on the same graph:
+What happens when you do this when the time step is 1? You should get an error 
+message saying the timestep is too large. You may still get a plot though! 
+This is because R is plotting the previous value of populations held in its 
+memory. This is why it's important to be aware of your workspace and clear your 
+previous history when you're working on a new project (don't use 
+`rm(list=ls())` though!).
 
-```{r tenloop-setup}
-library(RPiR)
+> Remember that generating a report starts a new copy of R and so is a much 
+better check of whether the script can run on its own.
 
-timestep_stochastic_SIS <- function(latest, transmission.rate, recovery.rate, 
-                                    timestep = 1) {
-  ## Calculate total size of population, effective beta and sigma
-  pop.size <- latest$susceptibles + latest$infecteds
-  effective.transmission.rate <- transmission.rate * timestep
-  effective.recovery.rate <- recovery.rate * timestep
-  if ((effective.transmission.rate * latest$infecteds / pop.size >= 1) ||
-        (effective.recovery.rate >= 1))
-    stop("Effective rate too high, timestep must be too big")
-  
-  ## Calculate changes to populations
-  new.infecteds <- rbinom(1, latest$susceptibles,
-                          effective.transmission.rate * latest$infecteds / pop.size)
-  new.susceptibles <- rbinom(1, latest$infecteds, effective.recovery.rate) 
-  next.susceptibles <- latest$susceptibles + new.susceptibles - new.infecteds
-  next.infecteds <- latest$infecteds - new.susceptibles + new.infecteds
-  
-  ## Is the experiment over?
-  is.finished <- (next.infecteds == 0)
-  
-  ## Create new row of populations data frame and return list
-  next.population <- data.frame(time = latest$time + timestep,
-                                susceptibles = next.susceptibles,
-                                infecteds = next.infecteds)
-  list(updated.pop = next.population, end.experiment = is.finished)
-}
+Clear what is held in R's workspace in RStudio. Now rerun with $R_0 = 15$ and 
+confirm that you don't get an output when the error message shows. Remember
+that clearing your workspace and trying again is often a very useful trick when
+you get unexpected results.
 
-# Set up initial populations
-pop.size <- 100
-initial.infecteds <- 2
-initial.susceptibles <- pop.size - initial.infecteds
+## Report
 
-# Transmission and recovery rates
-ecoli.trans <- 0.3
-ecoli.recov <- 0.1
+### 1. Compare stochastic and deterministic models
 
-# Simulation times
-start.time <- 0
-end.time <- 200
-this.timestep <- 1
-
-# And initial population sizes
-initial.populations <- data.frame(time = start.time,
-                                  susceptibles = initial.susceptibles,
-                                  infecteds = initial.infecteds)
-```
-
-```{r tenloop, exercise = TRUE, exercise.lines = 21}
-# We want a total of 10 plots
-first.graph <- TRUE 
-for (loop in 1:10) {
-  final.populations <- run_simulation(timestep_stochastic_SIS,
-                                      initial.populations,
-                                      end.time,
-                                      transmission.rate = ecoli.trans, 
-                                      recovery.rate = ecoli.recov, 
-                                      timestep = this.timestep)
-  # First time, make a new plot, afterwards just draw lines
-  if (first.graph) {
-    plot_populations(final.populations,
-                     new.graph = TRUE, 
-                     col = c(susceptibles = "green", infecteds = "red"))
-    first.graph <- FALSE 
-  } else {
-    plot_populations(final.populations,
-                     new.graph = FALSE,
-                     col = c(susceptibles = "green", infecteds = "red"))
-  }
-}
-```
-
-You could do all ten plots in a single loop by setting `new.graph` appropriately
-- by starting with `TRUE` and them changing it to `FALSE` as I did in the slides,
-or changing it depending on what value `loop` has, for instance.  
+When you are happy with the structure of the code, run it a few times with a
+transmission rate of 0.3, a recovery rate of 0.1, and 2 initial infecteds from 
+a population size of 100. Demonstrate the variability in the results of the 
+stochastic model.
 
 You should also overlay the deterministic results from Practical 2-4. 
-`run_simulation()` will now work with this as well since it automatically 
-detects that it just returns a dataframe, and behaves appropriately:
+Noting that `run_simulation()` will work with this as well since it 
+automatically detects that it just returns a dataframe, and behaves 
+appropriately:
 
 ```{r, eval = FALSE}
 final.populations <- run_simulation(timestep_deterministic_SIS, 
@@ -179,22 +127,16 @@ final.populations <- run_simulation(timestep_deterministic_SIS,
                                     timestep = working.timestep)
 ```
 
-Here's an example of the kinds of outputs you might see:
+### 2. Vary the rate of transmission and the initial number of infecteds
 
-<center>![plot](images/3-4.gif)</center>
+Try varying the transmission rate (beta) -- this will change $R_0$ -- and the 
+initial number of infecteds and see how the likelihood of early extinction 
+changes. 
 
-This example was generated using:
+### 3. Vary the total population size 
 
-```{r, eval = FALSE}
-pop.size <- 100
-initial.infecteds <- 2
-ecoli.trans <- 0.3
-ecoli.recov <- 0.1
-```
-
-Try changing 
-the total population size and determine the impact on the observed variability.
-Demonstrates the variability in the results of the stochastic model in your demo.
+Try changing the total population size and determine the impact on the observed 
+variability.
 
 ## Check it works
 

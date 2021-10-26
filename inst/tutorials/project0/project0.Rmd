@@ -50,11 +50,11 @@ Remember a few things:
 
 - Libraries you use in your package (for example the data package) should be
   correctly added to your package as dependencies;
-- Functions should be kept in the <span style="color: #1697C0;">R</span> folder
+- Functions should be kept in the <span style="color: #dd1c77;">R</span> folder
   inside the package and documented so that the documentation is available
   through R's help system;
 - Scripts for each project exercise should be stored in the
-  <span style="color: #1697C0;">demo</span> folder. They should be available
+  <span style="color: #dd1c77;">demo</span> folder. They should be available
   to run through the `demo()` function when we install the package, **and**
   we should be able to compile them into a report which will contain code and
   text blocks (and whatever else you wish) that tidily explains what is
@@ -66,10 +66,10 @@ Remember a few things:
    RStudio that uses git and is connected to a private repository in the IBAHCM
    organisation;
    - You will use this package for all of your remaining work in this project
-2. Update the <span style="color: #1697C0;">DESCRIPTION</span> file with the
+2. Update the <span style="color: #dd1c77;">DESCRIPTION</span> file with the
    correct information about yourself and the package;
 3. Create a help file for the package in the
-   <span style="color: #1697C0;">R</span> folder, and run `devtools::document()`
+   <span style="color: #dd1c77;">R</span> folder, and run `devtools::document()`
    and `devtools::install()` to make sure that the documentation works when you
    call `?githubusernameDiversity` at the console once you have loaded the
    library by calling `library(githubusernameDiversity)`;
@@ -77,12 +77,12 @@ Remember a few things:
      demo in the package in subsequent exercises
 4. Add your data package as a dependency of the package (or mine if you're using
    it instead) -- the `usethis::use_dev_package()` function will add the correct
-   entries to the <span style="color: #1697C0;">DESCRIPTION</span> file, just
+   entries to the <span style="color: #dd1c77;">DESCRIPTION</span> file, just
    like the `usethis::use_package()` function adds in normal (CRAN) packages;
    - Remember to do this with any subsequent packages that you decide to use
      later in the project
 5. Import your data package into the package by adding the `@import` command to
-   the package's help file in the <span style="color: #1697C0;">R</span> folder
+   the package's help file in the <span style="color: #dd1c77;">R</span> folder
    that you made in step 3, above;
 6. Add a license. It's completely up to you what license you use. We probably
    recommend using the MIT license as it is very permissive in terms of other
@@ -108,14 +108,14 @@ console:
 usethis::use_package("ggplot2")
 usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR")
 ```
-it edits your <span style="color: #1697C0;">DESCRIPTION</span> file to add the
+it edits your <span style="color: #dd1c77;">DESCRIPTION</span> file to add the
 CRAN `ggplot2` package to your package's dependencies and the `RPiR` package in
 the IBAHCM organisation on GitHub to your package's dependencies as a package
 in development on GitHub. You may need to have already installed development
 packages in RStudio first to get this second command to work (using
 `devtools::install_github("IBAHCM/RPiR")` or `devtools::install()` locally). If
 you then add the following to the documentation in the
-<span style="color: #1697C0;">R</span> folder, this will mark the functions and
+<span style="color: #dd1c77;">R</span> folder, this will mark the functions and
 data in those packages as usable by functions in your package:
 ```{R, eval = FALSE}
 #' @import ggplot2

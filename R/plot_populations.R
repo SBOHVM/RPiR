@@ -7,24 +7,23 @@
 #' column names.
 #'
 #' @param populations Data frame with columns corresponding to different
-#'   population segments and a 'time' column
+#' population segments and a 'time' column
 #' @param new.graph (optionally) whether to start a new graph, default TRUE
 #' @param ylim (optionally, for new graphs) the limits of the y axis,
-#'   default min to max pop size
+#' default min to max pop size
 #' @param lty (optionally) the line type for the graph, default 1
 #' @param col (optionally) the colour for all lines,
-#'   default 1:num.populations you can name these c(susceptibles="green", ...)
+#' default 1:num.populations you can name these c(susceptibles = "green", ...)
 #' @param with.legend (optionally) whether to include the legend (TRUE or
-#'   FALSE), default TRUE
+#' FALSE), default TRUE
 #' @param ... (optionally) any other arguments that plot and lines will both
-#'   accept
+#' accept
 #'
 #' @export
 #'
 #' @examples
-#'
-#' df <- data.frame(time=0:100, grow=exp((0:100) / 10),
-#'                  die=exp(seq(10, 0, by = -0.1)))
+#' df <- data.frame(time = 0:100, grow = exp((0:100) / 10),
+#'                  die = exp(seq(10, 0, by = -0.1)))
 #' plot_populations(df, lty = 2, main = "A title")
 #'
 plot_populations <- function(populations, new.graph = TRUE, ylim = NA, lty = 1,

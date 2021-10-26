@@ -293,10 +293,10 @@ that `?BCI` returns a description. You had this in the package for the third
 practical series, but you'll see details on how to do that 
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
 
-Create a new file in the <span style="color: #de77ae;">R</span> 
-folder -- I'm going to call it <span style="color: #de77ae;">githubusernameBCI-package.R</span> 
+Create a new file in the <span style="color: #dd1c77;">R</span> 
+folder -- I'm going to call it <span style="color: #dd1c77;">githubusernameBCI-package.R</span> 
 because the convention is packagename-package.R. Then describe your package
-(most easily lifted from the <span style="color: #de77ae;">DESCRIPTION</span> file):
+(most easily lifted from the <span style="color: #dd1c77;">DESCRIPTION</span> file):
 
 ```{r eval = FALSE}
 #' Barro Colorado Island data package 
@@ -327,7 +327,7 @@ using any packages in any of your functions, you may want to import them into
 your package here. This is done using `@import` -- see more
 [here](http://r-pkgs.had.co.nz/namespace.html). You can then put the same, or a
 similar, package description into the
-<span style="color: #de77ae;">README.md</span> file in the package so that 
+<span style="color: #dd1c77;">README.md</span> file in the package so that 
 people going to GitHub will see what the package that you have created does 
 without having to install it. Note that GitHub README pages use a special type 
 of markdown called Git Flavored Markdown; more information can be found here https://docs.github.com/en/free-pro-team@latest/github/writing-on-github with 

@@ -19,7 +19,8 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we start to run a stochastic version of the SIR model.*
+In this practical we will run a stochastic version of the SIR model and compare
+it to the deterministic model from practical series 2.
 
 ## Background
 
@@ -28,14 +29,12 @@ we are now ready to extend this framework to the SIR model.
 
 ## Tasks
 
-Using the code from the previous demo 
-<span style="color: #de77ae;">d0304_run_SIS</span> and
-`timestep_stochastic_SIS()` (from Practical 3-4), create two a new demo 
-<span style="color: #de77ae;">d0305_run_SIR</span> and a new function,
-`timestep_stochastic_SIR()` that will simulate
-the stochastic SIR model.
+Using the code from the previous demo `d0304_run_SIS` and 
+`timestep_stochastic_SIS()` (from Practical 3-4), create a new demo 
+`d0305_run_SIR` and a new function, `timestep_stochastic_SIR()` that will 
+simulate the stochastic SIR model.
 
-### R/timestep_stochastic_SIR.R
+### 1. Write a function
 
 To produce `timestep_stochastic_SIR()` requires a small change to the update step
 to move the newly recovered individuals into the recovered class rather than 
@@ -46,52 +45,33 @@ To overlay the corresponding plot from the deterministic model you will also
 need to use `run_simulation()` on the `timestep_deterministic_SIR()` function 
 from Practical 2-5, and then plot using `new.graph = FALSE`.
 
-### demo/d0305_run_SIR.R
+### 2. Write a demo
 
-This should be relatively straightforward. To produce 
-<span style="color: #de77ae;">d0305_run_SIR</span> you need to add a 
-"recovereds" population to the data frame, remembering to specify 
+This should be relatively straightforward. To produce `d0305_run_SIR` you need 
+to add a "recovereds" population to the data frame, remembering to specify 
 initial values for this new population.
 
-Your outputs should look something like this:
+## Report
 
-<center>![plot](images/3-5.gif)</center>
+### 1. Compare stochastic and deterministic models
 
-This example was generated from these parameters:
+Run the code with a transmission rate of 0.2, a recovery rate of 0.1, 
+2 initial infecteds and 0 initial recovereds from a population size of 100. 
+Demonstrate the variability in the results of the stochastic model and overlay 
+the deterministic results from Practical 2-5.
 
-```{r, eval = FALSE}
-pop.size <- 100
-initial.infecteds <- 2
-initial.recovereds <- 0
-sir.transmission.rate <- 0.2
-sir.recovery.rate <- 0.1
-```
+### 2. Vary population parameters
 
-## Running the code / Report
+Run the code for different initial conditions (number of infecteds and 
+recovereds), and population size. Why do the plots of the stochastic simulation 
+end before those of the deterministic simulation? What happens as you increase 
+the population size? Illustrate these effects in your demo.
 
-Run the code for different values of beta, initial conditions, and the
-population size. Why do the plots of the stochastic simulation end before those
-of the deterministic simulation? What happens as you increase the population 
-size?
-
-Illustrate some of these effects in your demo.
+### 3. Vary transmission rate
 
 Now try increasing the transmission rate to increase the value of $R_0$. Given 
 a default value for the recovery rate of 0.1 what would the transmission rate
-need to be to  simulate an outbreak with an $R_0$ of 15? What happens when you
-do this when the time step is 1? You should get an error message saying the
-timestep is too large. You may still get a plot though! This is because R is
-plotting the  previous value of populations held in its memory. This is why it's
-important to  be aware of your workspace and clear your previous history when
-you're working on a new project (don't use `rm(list=ls())` though!) .
-
-> Remember that generating a report starts a new copy of R and so is a much 
-better check of whether the script can run on its own.
-
-Clear what is held in R's workspace in RStudio. Now rerun with $R_0 = 15$ and 
-confirm that you don't get an output when the error message shows. Remember
-that clearing your workspace and trying again is often a very useful trick when
-you get unexpected results.
+need to be to simulate an outbreak with an $R_0$ of 15? 
 
 ## Check it works
 

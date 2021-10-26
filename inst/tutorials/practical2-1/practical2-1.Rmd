@@ -1,5 +1,5 @@
 ---
-title: "Practical 2-1: RStudio projects"
+title: "Practical 2-2: SIS model"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -7,159 +7,222 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to create a GitHub repository and an RStudio project.
+  Students adapt code from the previous practical series to a new application.
+  They're also encouraged to use knitr::kable().
 ---
 
 ```{r setup, include=FALSE}
 library(learnr)
- 
+
 knitr::opts_chunk$set(error = TRUE)
+options(knitr.kable.NA = '')
+
 set.seed(123)
 ```
 
 ## Overview
 
-*In this practical we will look at GitHub and RStudio projects as a means to 
-organise your workflow.*
+*In this practical we will write some code to run a simple epidemiological 
+model -- the Susceptible-Infected-Susceptible or SIS model. From these results
+we will report on the transmission of E. coli O157 in cattle.*
+
+## Background
+
+We have now built a simple population dynamics model, but the framework we are 
+using is capable of handling much more. We will start with the simplest model of
+infectious disease dynamics -- the SIS model -- that we covered in the
+epidemiology lecture.
+
+The SIS model requires two populations (of susceptible and infected animals) to
+replace the single population we have used so far. Susceptibles, $S$, and
+infecteds, $I$, are updated as follows:
+
+$$S(t+1) = S(t) - \beta \times \frac{S(t) \times I(t)}{N} + \sigma \times I(t)$$
+$$I(t+1) = I(t) + \beta \times \frac{S(t) \times I(t)}{N} - \sigma \times I(t)$$
+
+where the total population, $N = S(t) + I(t)$, the sum of the number of
+susceptibles and infected is constant.
+
+As we said earlier, it is a good idea to use descriptive names in your code to
+avoid confusion, so we will call the two populations `susceptibles` and
+`infecteds` - these will be the column names in your data frame. The
+two epidemiological parameters are $\beta$ (beta, the transmission rate) and
+$\sigma$ (sigma, the recovery rate) -- these Greek letters are almost universally
+used as the names of basic transmission and recovery rates in epidemiology.
+However, unless you're doing a lot of epidemiology, this isn't obvious. In any
+event, in our function definition we will give them descriptive names again,
+calling them generically `transmission.rate` and `recovery.rate` in the function
+definition, and in the script we will be more specific and call them
+`ecoli.transmission` and `ecoli.recovery` since this is the  disease we are
+going to be modelling (it also avoids reusing the same variable
+names). The reason we're doing it this way round is that the function can
+work for any disease model, but the script is specifically for *E Coli*.
+
+## Tasks
+
+### Technical setup
+
+The first thing to do is to create a new GitHub repository and RStudio project
+for this practical. Do this following the *how to* instructions on the [GitHub
+documentation pages](https://ibahcm.github.io/RPiR/articles/pages/use_github.html)
+that you used for the last practical, putting the repository in
+the [IBAHCM](https://github.com/IBAHCM) organisation again, as before. Call this
+project `githubusername_series02` (obviously use your real GitHub username!).
+You'll use this project for all of the remaining exercises in this practical
+series. If you are already in a coding group, then add the specific people that
+need to be added to to your repository on GitHub in **Settings** ->
+**Manage access** -> **Invite teams or people** and just type in their GitHub
+usernames (no @ sign). Give them read access. If you don't have a group yet,
+ask the instructors which one you should join, and/or in the meanwhile add the 
+whole rpir team (actually *IBAHCM/rpir*) (again with read access).
+
+### Coding
+
+Create a new R file, using <span style="color: #dd1c77;">File > New > R
+Script</span>. You should adapt the code from Practical 1-5 (remember you now
+have a project with all of this code in, and it is easy to have two RStudio
+sessions so you can copy and refer to earlier code easily), creating 2 files -- 
+<span style="color: #dd1c77;">0202-run-SIS.R</span>
+and <span style="color: #dd1c77;">0202-step-SIS.R</span> -- but where in 1-5 
+the data frame had only a `count` column, now you will need to have two --
+`susceptibles` and `infecteds`. You **do not** need to have the total population
+size (`N`, above) in there, because at every step it is just
+`susceptibles + infecteds`. In fact, with no death in this model, it is just
+constant. You could for instance start things up with:
+
+```{r, eval = FALSE}
+num.cattle <- 100
+initial.infecteds <- 2
+initial.susceptibles <- num.cattle - initial.infecteds
+```
+
+This allows us to easily keep the things we want to fixed, in this case the 
+total population size, while allowing us to vary the things we are 
+investigating. Writing the code to make this as easy as possible makes it harder 
+to make mistakes, and that is always a good thing!
+
+Once we've done that, we can create the data frame with those values -- this is
+the initial state of the population when we start the simulation:
+
+```{r, eval = FALSE}
+herd.df <- data.frame(susceptibles = initial.susceptibles,
+                      infecteds = initial.infecteds)
+```
+
+Then we call the new step function with the current population and the
+parameters:
+
+```{r, eval = FALSE}
+next.population <- step_deterministic_SIS(latest = tail(herd.df, 1), 
+                                          transmission.rate = ecoli.transmission,
+                                          recovery.rate = ecoli.recovery)
+```
+
+If you are finding writing this code difficult, just ask, but remember that your
+function should: 
+
+* take in a data frame with the latest population sizes and the parameters of 
+the model;
+* calculate the next numbers of susceptibles and infecteds from the latest (most
+recent) numbers and the parameters using the formulae above; and then 
+* return a data frame with these updated values to the main script.
+
+## Running the code
+
+Run the code in <span style="color: #dd1c77;">0202-run-SIS.R</span>. Remember 
+that the `source()` command means that it automatically loads in 
+<span style="color: #dd1c77;">0202-step-SIS.R</span>, meaning that you 
+needing to load these files yourself. Don't forget to check that
+your function is not using any global variables. Check that you get the same
+results as you saw in the lecture. Adding the argument `col = c("green", "red")` 
+to `plot.populations()` will allow you to change the colours of the (now) two
+populations in the plot to match those from the lecture.
+
+## The science
+
+Remember from the lecture that the **basic reproduction number**, $R_0$, is 
+given by 
+
+$$R_0 = \frac{\beta}{\sigma}$$
+
+By changing the transmission rate, $\beta$, try running simulations for 
+different values of $R_0$. What happens when $R_0 > 1$ and when $R_0 < 1$? 
+Run the simulations for different values of the transmission rate (as suggested 
+in the table below) with the default value of the recovery rate, $\sigma$, set 
+to $\frac{1}{3}$. Calculate and record the corresponding value of $R_0$ using 
+the formula, which we can rewrite as:
+
+```{r, eval = FALSE}
+R0 <- ecoli.transmission / ecoli.recovery
+```
+
+Either using your plots or by asking R to 
+print out the data frame `population` work out the proportion of the population
+susceptible at equilibrium and compare it with the value of $\frac{1}{R_0}$.
+
+```{r, echo = FALSE}
+tmp <- vapply(c(1/2, 2/3, 1, 4/3), 
+              function(x) as.character(MASS::fractions(x)),
+              character(1))
+table <- data.frame(tmp, NA, NA, NA)
+col <- c("Transmission <br> rate, $\\beta$", 
+         "Basic reproduction number, $R_0$",
+         "Proportion susceptible <br> at equilibrium, $\\frac{S}{N}$",
+         "Inverse $R_0$, <br> $\\frac{1}{R_0}$")
+col <- gsub("&lt;", "<", col)
+col <- gsub("&gt;", ">", col)
+colnames(table) <- col
+knitr::kable(table, escape = FALSE, align = c(rep('c', times = 4)))
+```
+
+Remember that throughout this series of exercises, the total population size,
+$N$ is fixed, but can be easily calculated from the different parts of the
+population so you never need to pass it as an argument or store it in the
+data frame.
+
+## Report
+Adapt your script to generate a report which shows you running the model with at 
+least a couple of different transmission rates and calculating different values
+for $R_0$ from the results with some explanation of what's going on. You 
+should also submit a table in Word or Excel with the above values filled in -- 
+just save it in the project folder. In particular for *E. coli O157* infections 
+in cattle, for timesteps in weeks, the recovery rate is about $\frac{1}{3}$ and 
+the transmission rate is 1.
+
+Optionally, if you are very enthusiastic, try putting the table into the report
+(possibly using the `kable()` function in the `knitr` package). The table itself 
+(in any form) is sufficient for assessment.
 
 ## GitHub
 
-First you'll need to create a repository in the IBAHCM organisation on GitHub.
-You'll find instructions on how to do this
-[here](https://ibahcm.github.io/RPiR/articles/pages/use_github.html). Note that
-you'll need to do this throughout this practical series, which is why we've
-kept these instructions separate.
+In this exercise, we want you to get a couple of other people to check your code
+and make sure it works for them, and we want you to check other people's code
+too.
 
-After you've done that, back in RStudio, load the `RPiR` package and run the
-`practical_series_one()` function. This will populate your working directory --
-and therefore your RStudio project -- with the scripts and functions from
-Practical series 1. Remember that the question mark in the 
-<span style="color: #de77ae;">Status</span> column of the 
-<span style="color: #de77ae;">Git</span> tab means that these are not currently 
-in your GitHub repository.
+### Getting help with your code
 
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/a.png')
-```
+Once you're happy with your code, commit your changes using the Git pane in
+RStudio (it's best just to commit the R files for now - not, for instance, any
+html files that were created by generating reports). Don't forget then to push
+the changes to GitHub and check on the website that it contains your new code.
+Notify the partners we have allocated you that you have something for them to
+check. You can do this on Zoom, but please also create an issue in your
+repository asking for their review - you can contact them by tagging them in
+the message with `@theirusername`, and they should receive an email and a
+[notification on the website](https://github.com/notifications). They can then
+respond to this issue, telling you if they had any problems running your version
+of the practical.
 
-So let's push them up to GitHub! Check the boxes next to all of the files, the
-scripts, the functions, and invisible `.gitignore` file and even the RStudio
-project file. Then click <span style="color: #de77ae;">Commit</span>.
+### Checking other people's code
 
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/b.png')
-```
+Likewise, when you hear from someone else that a repo is available to check,
+then open it using <span style="color: #dd1c77;">File > New Project...</span>,
+then *Version Control*, *Git*, and then put in the URL from GitHub and tick
+`Open in New Session`. In the new RStudio session that is opened, you can then
+run their code and make sure it works. If it does not, just respond in the Issue
+that they opened on GitHub explaining what went wrong (though it might be easier
+to do this in person on Zoom if they are there). If it works, then you also need
+to respond saying so.
 
-Write a suitably descriptive message and 
-<span style="color: #de77ae;">Commit</span> the files.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/c.png')
-```
-
-Alot has happened this time. 11 files changed and 513 insertions.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/d.png')
-```
-
-Now go to your GitHub repository. Are the files there? What did we forget to 
-do? Don't forget that pressing <span style="color: #de77ae;">Commit</span> 
-isn't enough. When you commit your files, you're packaging them up ready to go. 
-You still have to <span style="color: #de77ae;">Push</span> them to GitHub. Do
-that now and make sure they appear in your repository.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/e.png')
-```
-
-## Sharing is caring
-
-Now we're going to try and share our work. To make it a little more interesting,
-edit your `README.md` file. Write a sentence or two about yourself and what you
-hope to get out of this course. Commit your changes and push them to GitHub.
-Then look at your GitHub repository and make sure you can see your changes. 
-
-To share your work, since you created a private (rather than a public) 
-repository, you need to give people permission to see it. So, click on 
-<span style="color: #de77ae;">Settings</span>, 
-<span style="color: #de77ae;">Manage access</span>, then 
-<span style="color: #de77ae;">Invite teams or people</span>.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/f.png')
-```
-
-Find the `IBAHCM/rpir` team (that's you guys).
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/g.png')
-```
-
-Make sure <span style="color: #de77ae;">Read</span> access is selected and
-<span style="color: #de77ae;">Add IBAHCM/rpir to this repository</span>.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/h.png')
-```
-
-It should look like this:
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/i.png')
-```
-
-Now, exchange repository names with your group (everyone in your breakout room).
-You should have access if you're part of the `IBAHCM/rpir` team. Now go find 
-them. Either search through the `IBAHCM` organisation, or go directly to their 
-URL. For example, if I want to find `louisematthews`, I'd go here
-https://github.com/IBAHCM/louisematthews_0201. Remember to take a look at their
-GitHub readme, you might learn something new!
-
-Just like before, we're going to clone this repository by clicking on the green
-<span style="color: #de77ae;">Code</span> button and copying the URL 
-associated with this repository.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/j.png')
-```
-
-Then, as we did before, go back to RStudio. Go to the 
-<span style="color: #de77ae;">File</span> menu and create a 
-<span style="color: #de77ae;">New Project...</span>, with 
-<span style="color: #de77ae;">Version Control</span>, using 
-<span style="color: #de77ae;">Git</span>. The project should open 
-automatically.
-
-Try generating a report from one of the files.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/k.png')
-```
-
-Hopefully you should generate a report without any problems. Whether you do or 
-not, go back to your collaborators GitHub repository and add an issue. Do this 
-by clicking on the <span style="color: #de77ae;">Issues</span> tab and adding a
-<span style="color: #de77ae;">New Issue</span>.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/l.png')
-```
-
-In the issue you should describe whether or not you were successful, perhaps 
-also including a nice encouraging message!
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/m.png')
-```
-
-If you click on the <span style="color: #de77ae;">Issues</span> tab again, 
-you'll see a list of issues.
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/n.png')
-```
-
-Now wait a bit for everyone to add their issues to your repository. Once they've
-finished, go see what they've written. If any issues need addressed, go ahead and 
-address them.
+**Interacting like this through GitHub to help each other will count as most of
+your engagement marks for the course.**

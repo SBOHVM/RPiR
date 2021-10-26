@@ -38,7 +38,6 @@ you can set \code{debug = TRUE} in the arguments, and it will print some
 check whether your function has any global variables.
 }
 \examples{
-
 growth <- function(latest.df, growth.rate) {
 current.count <- latest.df$count
 growth.num <- current.count * growth.rate

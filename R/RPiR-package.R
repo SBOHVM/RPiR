@@ -54,7 +54,7 @@
 #' @import devtools
 #' @import dplyr
 #' @import ggplot2
-#' @rawNamespace import(gradethis, except = random_praise)
+#' @rawNamespace import(gradethis, except = c(random_encouragement, random_praise))
 #' @import graphics
 #' @import knitr
 #' @import learnr

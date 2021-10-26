@@ -7,8 +7,6 @@
 #' @param package_name a \code{string} corresponding to the name you want to
 #' give your package; this should be your GitHub user name.
 #'
-#' @export
-#'
 dummy_package <- function(package_name) {
 
   if (file.exists(package_name))

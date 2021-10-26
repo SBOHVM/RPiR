@@ -26,7 +26,7 @@ default min to max pop size}
 \item{lty}{(optionally) the line type for the graph, default 1}
 
 \item{col}{(optionally) the colour for all lines,
-default 1:num.populations you can name these c(susceptibles="green", ...)}
+default 1:num.populations you can name these c(susceptibles = "green", ...)}
 
 \item{with.legend}{(optionally) whether to include the legend (TRUE or
 FALSE), default TRUE}
@@ -41,9 +41,8 @@ be used as different lines on the y-axis, with a legend denoting their
 column names.
 }
 \examples{
-
-df <- data.frame(time=0:100, grow=exp((0:100) / 10),
-                 die=exp(seq(10, 0, by = -0.1)))
+df <- data.frame(time = 0:100, grow = exp((0:100) / 10),
+                 die = exp(seq(10, 0, by = -0.1)))
 plot_populations(df, lty = 2, main = "A title")
 
 }

@@ -11,22 +11,21 @@
 #' data frame and will print some debugging information on request.
 #'
 #' @param step_function Function to run a timestep (\code{step_function()})
-#'   which returns a list containing elements \code{updated.pop} with the
-#'   updated population and \code{end.experiment} which is TRUE if the
-#'   experiment has ended (FALSE if not)
+#' which returns a list containing elements \code{updated.pop} with the
+#' updated population and \code{end.experiment} which is TRUE if the
+#' experiment has ended (FALSE if not)
 #' @param initial.pop Initial population data frame with columns corresponding
-#'   to function requirements. This *must* include a \code{time} column so that
-#'   \code{run_simple()} can check whether the \code{end.time} has been reached.
+#' to function requirements. This *must* include a \code{time} column so that
+#' \code{run_simple()} can check whether the \code{end.time} has been reached.
 #' @param end.time End time of simulation
 #' @param ... (optionally) any other arguments for \code{step_function()},
-#'   e.g. parameters or timestep
+#' e.g. parameters or timestep
 #'
 #' @return Data frame containing population history of simulation over time
 #'
 #' @export
 #'
 #' @examples
-#'
 #' growth <- function(latest.df, growth.rate) {
 #' current.count <- latest.df$count
 #' growth.num <- current.count * growth.rate
@@ -37,7 +36,7 @@
 #' list(updated.pop=new.df, end.experiment=finished)
 #' }
 #' df <- data.frame(time=0, count=1)
-#' results <- run_simple(growth, df, 100, growth.rate=0.1)
+#' results <- run_simple(growth, df, 100, growth.rate = 0.1)
 #' plot_populations(results)
 #'
 run_simple <- function(step_function, initial.pop, end.time, ...) {

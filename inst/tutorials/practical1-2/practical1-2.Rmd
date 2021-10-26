@@ -28,7 +28,7 @@ set.seed(123)
 ## Introduction
 
 When we look at our first program (for convenience, 
-<span style="color: #de77ae;">0101-growth-loop.R</span> is printed below),
+<span style="color: #dd1c77;">0101-growth-loop.R</span> is printed below),
 there are several distinct parts to the code, despite its brevity. We first set 
 the initial conditions of the simulation, then we run the simulation itself, and
 finally we plot the output.
@@ -103,7 +103,7 @@ models, it is much easier to do it when the code is well structured.
 
 ## Tasks
 
-Look at <span style="color: #de77ae;">0101-growth-functional.R</span>. The code 
+Look at <span style="color: #dd1c77;">0101-growth-functional.R</span>. The code 
 in the for loop, that is to say inside the curly brackets, describes the way 
 that the population changes from one point in time to the next. This (together 
 with, perhaps, the starting conditions) is what we would be changing if we 
@@ -117,7 +117,7 @@ the current population count from the vector `population.vector` and the value
 of `growth.rate` as **arguments** (function inputs), update the population 
 size, and return it. This is the framework for such a function with comments 
 (try to fill it in, using the for loop in 
-<span style="color: #de77ae;">0101-growth-loop.R</span> as a guide):
+<span style="color: #dd1c77;">0101-growth-loop.R</span> as a guide):
 
 ```{r stepsimplegrowth, exercise = TRUE, exercise.lines = 20}
 #' ### Function: step_simple_growth() 
@@ -383,7 +383,7 @@ strongly recommend using `object <- value` to set variables in your main script
 to make the distinction clear. For example, `current.population` is now 
 an argument of the `step_simple_growth()` function, and so you set its value 
 using `=` inside the function call instead of using `<-` in the main script as 
-we did on line 28 of <span style="color: #de77ae;">0101-growth-functional.r
+we did on line 28 of <span style="color: #dd1c77;">0101-growth-functional.r
 </span>. 
 
 When you are happy with the code and its outputs there is another task. If you 
@@ -393,7 +393,7 @@ argument in the function and the name of the variable in the script, and
 above, this does not affect the running of the code but can be difficult to 
 read and can result in confusion when debugging for example.
 
-Here's the latest version of the code to play with (<span style="color: #de77ae;">0102-growth-functional.R</span>), complete with the 
+Here's the latest version of the code to play with (<span style="color: #dd1c77;">0102-growth-functional.R</span>), complete with the 
 `step_simple_growth()` function:
 
 ```{r laststep, exercise = TRUE, exercise.cap = "0102-growth-functional.R", exercise.lines = 58}
