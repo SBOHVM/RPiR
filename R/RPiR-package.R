@@ -43,7 +43,7 @@
 #' @author
 #' Sonia Mitchell <sonia.mitchell@glasgow.ac.uk> (maintainer) \cr
 #' Richard Reeve <richard.reeve@glasgow.ac.uk>
-#'
+
 #' @name RPiR-package
 #' @aliases RPiR
 #' @docType package
@@ -54,7 +54,7 @@
 #' @import devtools
 #' @import dplyr
 #' @import ggplot2
-#' @rawNamespace import(gradethis, except = c(random_praise, random_encouragement))
+#' @rawNamespace import(gradethis, except = c(random_encouragement, random_praise))
 #' @import graphics
 #' @import knitr
 #' @import learnr
