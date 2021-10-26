@@ -9,7 +9,7 @@ assert_no_globals(test_function, name = deparse1(substitute(test_function)))
 \arguments{
 \item{test_function}{function to check for global variables}
 
-\item{name}{optionally (otherwise taken from test_function) name of function}
+\item{name}{(optional) the name of function as a string}
 }
 \value{
 nothing
@@ -17,4 +17,12 @@ nothing
 \description{
 This function will stop code execution with an error if the function
 passed in has a global variable
+}
+\examples{
+\dontrun{
+broken_function <- function() print(y)
+assert_no_globals(broken_function)
+assert_no_globals(broken_function, name = "the_name_of_my_function")
+}
+
 }

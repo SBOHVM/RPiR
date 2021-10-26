@@ -5,10 +5,17 @@
 #' passed in has a global variable
 #'
 #' @param test_function function to check for global variables
-#' @param name optionally (otherwise taken from test_function) name of function
+#' @param name (optional) the name of function as a string
 #'
 #' @return nothing
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' broken_function <- function() print(y)
+#' assert_no_globals(broken_function)
+#' assert_no_globals(broken_function, name = "the_name_of_my_function")
+#' }
 #'
 assert_no_globals <- function(test_function,
                               name = deparse1(substitute(test_function))) {
