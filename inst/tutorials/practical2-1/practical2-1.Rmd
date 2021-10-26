@@ -22,9 +22,9 @@ set.seed(123)
 
 ## Overview
 
-*In this practical we will look at programming a simple epidemiological model --
-the Susceptible-Infected-Susceptible or SIS model. We will report on the 
-transmission of E. coli O157 in cattle.*
+*In this practical we will write some code to run a simple epidemiological 
+model -- the Susceptible-Infected-Susceptible or SIS model. From these results
+we will report on the transmission of E. coli O157 in cattle.*
 
 ## Background
 
