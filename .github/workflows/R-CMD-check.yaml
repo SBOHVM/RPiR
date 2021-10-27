@@ -133,23 +133,6 @@ jobs:
           rmarkdown::render(rmd_files[i], "html_document")
         shell: Rscript {0}
 
-      - name: Setup keychain
-        if: runner.os == 'macOS'
-        env:
-          GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
-        uses: sinoru/actions-setup-keychain@v1.0
-
-      - name: Add credentials in keychain
-        if: runner.os == 'macOS'
-        env:
-          GITHUB_TOKEN: ${{ secrets.RPIR_DOCS }}
-        run: |
-          echo "\
-          protocol=https
-          host=github.com
-          username=Personal Access Token
-          password=$GITHUB_TOKEN" | git credential-osxkeychain store
-
       - name: Create a build_docs branch and commit to it
         if: runner.os == 'macOS'
         run: |
