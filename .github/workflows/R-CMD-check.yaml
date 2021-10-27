@@ -67,7 +67,7 @@ jobs:
 
       - name: Test whether navbar entries are real
         if: runner.os == 'macOS'
-        run: Rscript -e RPiR/inst/scripts/test_navbar.R
+        run: Rscript RPiR/inst/scripts/test_navbar.R
 
       - name: Move ioslide lectures to docs
         if: runner.os == 'macOS'
