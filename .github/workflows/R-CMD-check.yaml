@@ -3,12 +3,7 @@
 on:
   push:
     branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+      - '*'
 
 name: R-CMD-check
 
@@ -171,15 +166,23 @@ jobs:
       - name: Move ioslide (html) lectures to docs
         if: runner.os == 'macOS'
         run: |
+          # Find files
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
           rmd_files <- all_files[grep(".Rmd", all_files)]
+          # Create directory
           if (!file.exists(file.path("docs", "lectures_html")))
           dir.create(file.path("docs", "lectures_html"), recursive = TRUE)
 
-          for (i in seq_len(length(rmd_files))) {
-          rmarkdown::render(rmd_files[i],
-          output_format = "html_document",
-          output_dir = file.path("docs", "lectures_html"), clean = TRUE)
+          for (file in rmd_files) {
+            # Remove <b> tags
+            rmd_file <- read_lines(file)
+            rmd_file <- rmd_file[-which(grepl("### <b>", rmd_file))]
+            rmd_file <- rmd_file[-which(grepl("### </b>", rmd_file))]
+            write_lines(rmd_file, file)
+            # Write html file
+            rmarkdown::render(file,
+              output_format = "html_document",
+              output_dir = file.path("docs", "lectures_html"), clean = TRUE)
           }
         shell: Rscript {0}
 
