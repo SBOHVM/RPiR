@@ -423,19 +423,19 @@ plot(antigenic.distance ~ num.mutation, data = flu.data)</code></pre>
 library(lme4)
 
 read_flu_data &lt;- function(filename) {
-  #&#39; Load in data from file and process
-  
+  # Load data and process it 
   data &lt;- read.csv(filename)
-  # Some light processing to get into 
-  # correct format
+  
+  # Wrangle data
   #...
+
   data
 }
 
 check_flu_model &lt;- function(model.out) {
-  #&#39; Check model is a good one
-  
+  # Check model
   is.good.model &lt;- #...
+    
   #...
   is.good.model
 }</code></pre>
@@ -443,13 +443,14 @@ check_flu_model &lt;- function(model.out) {
 <pre class="r"><code># Load in our generic helper functions
 source(&quot;helper.R&quot;)
 
-# Load in the data and process it 
+# Load data and process it 
 my.data &lt;- read_flu_data(&quot;my.file.csv&quot;)
 
-# Analyses – linear mixed effect model
-res &lt;- lmer(antigenic.distance ~ num.mutation +
-              (1 | date), data = flu.data)
-
+# Analyses - linear mixed effect model
+res &lt;- lmer(antigenic.distance ~ 
+              num.mutation +
+              (1 | date), 
+            data = flu.data)
 
 # Check model
 if (!check_flu_model(res))
