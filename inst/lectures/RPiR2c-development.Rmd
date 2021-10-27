@@ -90,21 +90,21 @@ library(lme4)
 
 ### <b>
 read_flu_data <- function(filename) {
-  #' Load in data from file and process
-  
+  # Load data and process it 
   data <- read.csv(filename)
-  # Some light processing to get into 
-  # correct format
+  
+  # Wrangle data
   #...
+
   data
 }
 ### </b>
 
 ### <b>
 check_flu_model <- function(model.out) {
-  #' Check model is a good one
-  
+  # Check model
   is.good.model <- #...
+    
   #...
   is.good.model
 }
@@ -117,13 +117,14 @@ script.R
 # Load in our generic helper functions
 source("helper.R")
 
-# Load in the data and process it 
+# Load data and process it 
 my.data <- read_flu_data("my.file.csv")
 
-# Analyses – linear mixed effect model
-res <- lmer(antigenic.distance ~ num.mutation +
-              (1 | date), data = flu.data)
-
+# Analyses - linear mixed effect model
+res <- lmer(antigenic.distance ~ 
+              num.mutation +
+              (1 | date), 
+            data = flu.data)
 
 # Check model
 if (!check_flu_model(res))
