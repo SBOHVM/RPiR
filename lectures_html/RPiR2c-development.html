@@ -395,7 +395,6 @@ plot(antigenic.distance ~ num.mutation, data = flu.data)</code></pre>
 <h2>Structured</h2>
 <pre class="r"><code>library(lme4)
 
-### &lt;b&gt;
 # Function to load in data from file and process
 read_flu_data &lt;- function(filename) {
   #&#39; Load in data from file and process
@@ -405,7 +404,6 @@ read_flu_data &lt;- function(filename) {
   #...
   data
 }
-### &lt;/b&gt;
 
 flu.data &lt;- read_flu_data(&quot;my.file.csv&quot;)
 # Now the analyses – a linear mixed effect model
@@ -424,7 +422,6 @@ plot(antigenic.distance ~ num.mutation, data = flu.data)</code></pre>
 # experiments
 library(lme4)
 
-### &lt;b&gt;
 read_flu_data &lt;- function(filename) {
   #&#39; Load in data from file and process
   
@@ -434,17 +431,14 @@ read_flu_data &lt;- function(filename) {
   #...
   data
 }
-### &lt;/b&gt;
 
-### &lt;b&gt;
 check_flu_model &lt;- function(model.out) {
   #&#39; Check model is a good one
   
   is.good.model &lt;- #...
   #...
   is.good.model
-}
-### &lt;/b&gt;</code></pre>
+}</code></pre>
 <p>script.R</p>
 <pre class="r"><code># Load in our generic helper functions
 source(&quot;helper.R&quot;)

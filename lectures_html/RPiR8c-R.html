@@ -403,56 +403,40 @@ plot(x, y, type=&#39;l&#39;, lty=2)</code></pre>
 plot(x, y, col=&quot;black&quot;)
 plot(x, y, type=&#39;l&#39;, lty=2)</code></pre>
 <p>The extra arguments get passed on to <code>plot.xy()</code> or some other function, which does then the work. It looks a bit like this:</p>
-<pre class="r"><code>### &lt;b&gt;
-plot &lt;- function(x, y, log = &quot;&quot;, ...) {
-### &lt;/b&gt;
+<pre class="r"><code>plot &lt;- function(x, y, log = &quot;&quot;, ...) {
   xlabel &lt;- deparse1(substitute(x))
   ylabel &lt;- deparse1(substitute(y))
   xy &lt;- xy.coords(x, y, xlabel, ylabel, log)
-### &lt;b&gt;
   plot.xy(xy, ...)
-}
-### &lt;/b&gt;</code></pre>
+}</code></pre>
 </div>
 <div id="using-...-to-accept-any-arguments-2" class="section level2">
 <h2>Using <code>...</code> to accept any arguments</h2>
 <p>Here we do the same in <code>plot_populations()</code>:</p>
-<pre class="r"><code>### &lt;b&gt;
-plot_populations &lt;- function(populations, new.graph=TRUE,
+<pre class="r"><code>plot_populations &lt;- function(populations, new.graph=TRUE,
                              ylim=NA, lty=1, col=NA, ...) {
-### &lt;/b&gt;
   # -- lots of other code --
   if (new.graph) {
       # When it&#39;s a new plot, do labels and legends, etc.
-### &lt;b&gt;
       plot(time, this.pop, ylim = ylim, xlab = &quot;time&quot;,
            ylab = &quot;population size&quot;, type = &quot;l&quot;,
            col = line.cols[index], lty = line.ltys[index], ...)
-### &lt;/b&gt;
       # -- more code --
     } else { # Otherwise just draw the lines
-### &lt;b&gt;
       graphics::lines(time, this.pop, col = line.cols[index],
                       lty = line.ltys[index], ...)
-### &lt;/b&gt;
     }
-### &lt;b&gt;
-}
-### &lt;/b&gt;</code></pre>
+}</code></pre>
 </div>
 <div id="using-functions-as-arguments" class="section level2">
 <h2>Using functions as arguments</h2>
-<pre class="r"><code>### &lt;b&gt;
-run_simple &lt;- function(step_function, latest.df, end.time, ...)
-### &lt;/b&gt;
+<pre class="r"><code>run_simple &lt;- function(step_function, latest.df, end.time, ...)
 {
   population.df &lt;- latest.df
   keep.going &lt;- (latest.df$time &lt; end.time)
   while (keep.going)
   {
-### &lt;b&gt;
     data &lt;- step_function(latest.df, ...)
-### &lt;/b&gt;
     latest.df &lt;- data$updated.pop
     population.df &lt;- rbind(population.df, latest.df)
     keep.going &lt;- ((latest.df$time &lt; end.time) &amp;&amp;
@@ -474,7 +458,7 @@ run_simple &lt;- function(step_function, latest.df, end.time, ...)
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
 <pre><code>## [1] 5</code></pre>
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
-<pre><code>## [1] 6</code></pre>
+<pre><code>## [1] 4</code></pre>
 </div>
 </div>
 
