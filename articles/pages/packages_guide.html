@@ -330,7 +330,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R Packages</h1>
             
-            <h4 class="date">October 27 2021</h4>
+            <h4 class="date">October 28 2021</h4>
       
       
       <div class="hidden name"><code>packages_guide.Rmd</code></div>
@@ -368,7 +368,7 @@
 <p><img src="images/packages/7.png" width="100%" style="display: block; margin: auto;"></p>
 <p>In fact, there are a few files we should delete: <span style="color: #de77ae;">R/hello.R</span>, <span style="color: #de77ae;">man/hello.Rd</span> (documentation related to the hello.R file we don’t need), and the <span style="color: #de77ae;">NAMESPACE</span> file in the package root.</p>
 <p><img src="images/packages/8.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Now run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> from the package root. You’ll notice, in the <span style="color: #de77ae;">Git</span> tab, <span style="color: #de77ae;">NAMESPACE</span> has changed from deleted to modified. This is because <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> created a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new file.</p>
+<p>Now run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>. You’ll notice, in the <span style="color: #de77ae;">Git</span> tab, <span style="color: #de77ae;">NAMESPACE</span> has changed from deleted to modified. This is because <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> created a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new file.</p>
 <p><img src="images/packages/9.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
 <div id="package-documentation" class="section level2">
@@ -404,7 +404,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <h2 class="hasAnchor">
 <a href="#functions-and-documentation" class="anchor"></a>Functions and documentation</h2>
 <p>Now I’m going to add a new function (you can add any function you like). Make sure the name of your function is the same as the file you’re writing in and save it in the <span style="color: #de77ae;">R</span> directory. I’ve also added some documentation above the function (details described below).</p>
-<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> in the package root to populate the <span style="color: #de77ae;">NAMESPACE</span> and automatically generate the documentation files in the <span style="color: #de77ae;">man</span> directory. After which you can run <code>?my_plot</code> to look at it.</p>
+<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to populate the <span style="color: #de77ae;">NAMESPACE</span> and automatically generate the documentation files in the <span style="color: #de77ae;">man</span> directory. After which you can run <code>?my_plot</code> to look at it.</p>
 <p><img src="images/packages/12.png" width="100%" style="display: block; margin: auto;"></p>
 <p>The first line is the title.</p>
 <pre><code>#' my_plot</code></pre>
@@ -510,7 +510,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <span class="co">#' </span>
 <span class="co">#' @source \url{http://somewhere.important.com/}</span>
 <span class="st">"mydataset"</span></code></pre></div>
-<p>As usual, we need to run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> in the package root to automatically generate the documentation files and then <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> to install our package.</p>
+<p>As usual, we need to run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to automatically generate the documentation files and then <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> to install our package.</p>
 <p>After which, we can run <code><a href="https://rdrr.io/r/utils/data.html">data(package = "packagename")</a></code> to list all of the data in our package.</p>
 </div>
 <div id="alternative-setup" class="section level2">
@@ -543,7 +543,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
                   NAMESPACE
                   R/
                   man/</code></pre>
-<p>Finally, delete the <span style="color: #de77ae;">NAMESPACE file</span> and run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> from the package root to create a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new file. Also, don’t forget to keep pushing your changes to GitHub.</p>
+<p>Finally, delete the <span style="color: #de77ae;">NAMESPACE file</span> and run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new file. Also, don’t forget to keep pushing your changes to GitHub.</p>
 <p>You can now rejoin the instructions above <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation">here</a>.</p>
 </div>
 <div id="final-thoughts" class="section level2">
@@ -562,7 +562,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <p>Then ask them to run:</p>
 <pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("IBAHCM/packagename")</a></code></pre>
 <p>Go ahead and try to install my package. Try to run the demo.</p>
-<p>Note that if for some reason you can’t install a package using <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github()</a></code>, you can clone a repository as you did <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">here</a> and instead run <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> in the package root, in the usual way.</p>
+<p>Note that if for some reason you can’t install a package using <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github()</a></code>, you can clone a repository as you did <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">here</a> and instead run <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> in the usual way.</p>
 </div>
   </div>
 

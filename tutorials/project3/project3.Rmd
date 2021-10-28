@@ -114,8 +114,8 @@ programming. Whole numbers cannot be correctly represented as decimals without
 small errors creeping in -- so 1 may actually appear as 1.000000000001 -- and 
 testing whether it is then equal to 1 will fail. Instead you should test 
 whether it is sufficiently close to 1 for your purposes. Fortunately, we can do 
-this by saying `if (abs(q-1) < 0.000001)`, say, instead of `if (q==1)`, which 
-will check whether you are within 0.000001 of 1 -- *i.e.* 0.999999 to 1.000001. 
+this by saying `if (abs(q-1) < 0.000001)`, say, instead of `if (q == 1)`, which 
+will check whether you are within 0.000001 of 1 (*i.e.* 0.999999 to 1.000001). 
 I've picked 0.000001, but you can pick another value if it seems better. R 
 actually provides a number for this itself called the "machine 
 epsilon", `.Machine$double.eps`, which is about $10^{-16}$, but it may 

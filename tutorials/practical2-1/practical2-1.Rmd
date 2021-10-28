@@ -41,7 +41,7 @@ $$S(t+1) = S(t) - \beta \times \frac{S(t) \times I(t)}{N} + \sigma \times I(t)$$
 $$I(t+1) = I(t) + \beta \times \frac{S(t) \times I(t)}{N} - \sigma \times I(t)$$
 
 where the total population, $N = S(t) + I(t)$, the sum of the number of
-susceptibles and infected is constant.
+susceptibles and infecteds is constant.
 
 As we said earlier, it is a good idea to use descriptive names in your code to
 avoid confusion, so we will call the two populations `susceptibles` and
@@ -132,7 +132,7 @@ recent) numbers and the parameters using the formulae above; and then
 Run the code in <span style="color: #dd1c77;">0202-run-SIS.R</span>. Remember 
 that the `source()` command means that it automatically loads in 
 <span style="color: #dd1c77;">0202-step-SIS.R</span>, meaning that you 
-needing to load these files yourself. Don't forget to check that
+don't need to load these files yourself. Don't forget to check that
 your function is not using any global variables. Check that you get the same
 results as you saw in the lecture. Adding the argument `col = c("green", "red")` 
 to `plot.populations()` will allow you to change the colours of the (now) two
