@@ -123,7 +123,7 @@ root.
 knitr::include_graphics('images/packages/8.png')
 ```
 
-Now run `devtools::document()` from the package root. You'll notice, in the 
+Now run `devtools::document()`. You'll notice, in the 
 <span style="color: #de77ae;">Git</span> tab, 
 <span style="color: #de77ae;">NAMESPACE</span> has changed from deleted to 
 modified. This is because `devtools::document()` created a new 
@@ -200,7 +200,7 @@ the name of your function is the same as the file you're writing in and save it
 in the <span style="color: #de77ae;">R</span> directory. I've also added
 some documentation above the function (details described below).
 
-We can run `devtools::document()` in the package root to populate the 
+We can run `devtools::document()` to populate the 
 <span style="color: #de77ae;">NAMESPACE</span> and automatically generate 
 the documentation files in the 
 <span style="color: #de77ae;">man</span> directory. After which you can run 
@@ -421,7 +421,7 @@ this:
 "mydataset"
 ```
 
-As usual, we need to run `devtools::document()` in the package root to automatically
+As usual, we need to run `devtools::document()` to automatically
 generate the documentation files and then `devtools::install()` to install our
 package.
 
@@ -495,7 +495,7 @@ packagename/ ---> .gitignore
 ```
 
 Finally, delete the <span style="color: #de77ae;">NAMESPACE file</span> and
-run `devtools::document()` from the package root to create a new 
+run `devtools::document()` to create a new 
 <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and
 recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it 
 will be automatically populated whenever we call `devtools::document()`, which 
@@ -546,4 +546,4 @@ Go ahead and try to install my package. Try to run the demo.
 Note that if for some reason you can't install a package using 
 `install_github()`, you can clone a repository as you did
 [here](https://ibahcm.github.io/RPiR/articles/pages/rstudio.html) and instead 
-run `devtools::install()` in the package root, in the usual way.
+run `devtools::install()` in the usual way.

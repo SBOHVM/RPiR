@@ -54,8 +54,8 @@ transmissions and recoveries that occur in one unit of time. To simulate
 stepping forward in larger of smaller amounts of time we scale the parameters by
 the new time step.
 
-The task now is edit <span style="color: #dd1c77;">0202-run-SIS.R</span> so that
-it is easy to alter the timestep of the simulation -- you can reuse
+The task now is to edit <span style="color: #dd1c77;">0202-run-SIS.R</span> so 
+that it is easy to alter the timestep of the simulation -- you can reuse
 `step_deterministic_SIS()`. All you need to do is to write a new script file
 which creates a new parameter, `timestep`, so that you can scale
 `transmission.rate` and `recovery.rate` to  `ecoli.transmission * timestep` and
