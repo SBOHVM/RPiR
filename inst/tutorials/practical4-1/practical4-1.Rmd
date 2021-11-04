@@ -118,7 +118,7 @@ usethis::edit_git_ignore("project")
 ```
 
 And add the following lines to the end of the
-<span style="color: #dd1c77;">.gitignore</span> file that is opened:
+<span style="color: #dd1c77;">.gitignore</span> file that has opened:
 
 ```{R, eval = FALSE}
 ViewTax.txt
