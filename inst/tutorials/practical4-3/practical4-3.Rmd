@@ -134,7 +134,7 @@ Now you're going to write the R script that will be the demo. The script will be
 measuring several kinds of alpha, beta and gamma diversity, as detailed below.
 But in order to do some work with measures of taxonomic diversity, the taxonomy
 will first need to match the species abundance data from the BCI dataset,
-exactly. Here I'm assuming that you created the package {githubusernameBCI}, and
+exactly. Here I'm assuming that you created the package `githubusernameBCI`, and
 in it `bci_taxa` contains the taxonomy of all BCI species and `bci_2010`
 contains the 2010 BCI census.
 
@@ -147,7 +147,7 @@ rownames(taxonomy) <- taxonomy$GenusSpecies
 taxonomy <- taxonomy[rownames(bci_2010),]
 ```
 
-To create a metacommunity to analyse in the {rdiversity} package, you will need 
+To create a metacommunity to analyse in the `rdiversity` package, you will need 
 to create an object of that type using `metacommunity()`, and then you can 
 calculate, for example, the gamma diversity of the whole metacommunity with the
 function `meta_gamma()` and plot the output with `plot()`:
@@ -174,7 +174,7 @@ results4tax <- meta_gamma(metatax, qs = seq(from = 0, to = 5))
 lines(diversity ~ q, col=2, data = results4tax)
 ```
 
-Finally, to create a metacommunity to analyse in {vegan}, you need to transpose 
+Finally, to create a metacommunity to analyse in `vegan`, you need to transpose 
 the axes of the abundance data matrix:
 
 ```{r eval = FALSE}
@@ -187,10 +187,10 @@ specnumber(abundances, groups = 1)
 
 This loads the dataset and then calculates the species richness of the whole
 metacommunity. **It's important to always use the `abundances` object (created
-above) when using the {vegan} package, and always use the `bci_2010` object when
-using {rdiversity} -- they need the data in opposite formats!** 
+above) when using the `vegan` package, and always use the `bci_2010` object when
+using `rdiversity` -- they need the data in opposite formats!** 
 
-Note the documentation and reference manual for the {vegan} package is available
+Note the documentation and reference manual for the `vegan` package is available
 at https://cran.r-project.org/web/packages/vegan/index.html and the package
 itself is developed on GitHub at https://github.com/vegandevs/vegan.
 
@@ -198,11 +198,11 @@ itself is developed on GitHub at https://github.com/vegandevs/vegan.
 
 *Because we lost a day this week, the material here wasn't fully covered, so is
 optional if you have enough time to look further at the documentation for the
-{rdiversity} and {vegan} packages.*
+`rdiversity` and `vegan` packages.*
 
-First, read the {rdiversity} package documentation and examples. You can find
+First, read the `rdiversity` package documentation and examples. You can find
 this by going to the GitHub repository (https://github.com/boydorr/rdiversity), 
-and clicking on the <span style="color: #1697C0;">docs: rdiversity</span> badge, 
+and clicking on the <span style="color: #dd1c77;">docs: rdiversity</span> badge, 
 or by clicking the link to https://boydorr.github.io/rdiversity.
 
 Then add to the script you have started above to calculate and plot the gamma
@@ -231,7 +231,7 @@ mind that the first two digits of the quadrat name are an x-coordinate, and the
 second two are a y-coordinate, is there any pattern about these distinct areas?
 If so write about it in the report.
 
-A similar option in {vegan} is the function `betadiver()`. Look at the 
+A similar option in `vegan` is the function `betadiver()`. Look at the 
 documentation in R for this function -- you will see that it can calculate a very 
 large range of different beta diversity measures -- and calculate the beta 
 diversities for the subcommunities using the `"j"` Jaccard and `"sor"` Sorensen 

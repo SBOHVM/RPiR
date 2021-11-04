@@ -5,7 +5,8 @@
 #' passed in has a global variable
 #'
 #' @param test_function function to check for global variables
-#' @param name (optional) the name of function as a string
+#' @param name (optional) the name of function as a string -- passed to the
+#' error message
 #'
 #' @return nothing
 #' @export
