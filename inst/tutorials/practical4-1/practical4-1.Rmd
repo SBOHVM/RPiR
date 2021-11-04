@@ -63,8 +63,8 @@ the same problems as the data itself.
 There is a simple(-ish!) solution though. You don't need to carry around your 
 own copy of `ggplot()` or `lmer()` in every script you write, so why should you 
 have to do it with the data? There is one definitive version of `ggplot()` and 
-`lmer()` on your computer, and you just refer to them by loading the {ggplot2} 
-and {lme4} packages using the `library()` function. When these packages get 
+`lmer()` on your computer, and you just refer to them by loading the `ggplot2` 
+and `lme4` packages using the `library()` function. When these packages get 
 updated to fix bugs or extend functionality, you just do it once by installing
 (normally updating) the R package, and then all of your scripts use the new 
 version. So why not turn your data into an R package and do the same?
@@ -78,7 +78,7 @@ during the project work at the end of the course.
 First, create a new package called `githubusernameBCI` (replacing
 `githubusername` with your actual GitHub username) as a git repository
 connected to GitHub as a repo in the `IBAHCM` organisation. Remember that
-a guide to creating packages on GitHub is available on the {RPiR} help pages
+a guide to creating packages on GitHub is available on the `RPiR` help pages
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html) if
 you're not sure what to do.
 
@@ -94,9 +94,9 @@ repo it's hard to undo the error.
 Next, you need to download the Barro Colorado Forest Census Plot Data from the 
 Smithsonian's repository at https://repository.si.edu/handle/10088/20925. 
 Download files 3 and 4, the full census data 
-(<span style="color: #1697C0;">ViewFullTable.zip</span>) and the taxonomic data 
+(<span style="color: #dd1c77;">ViewFullTable.zip</span>) and the taxonomic data 
 on all of the species present 
-(<span style="color: #1697C0;">ViewTax.txt</span>). Now create a folder to
+(<span style="color: #dd1c77;">ViewTax.txt</span>). Now create a folder to
 store these raw data in, and create the files you will use shortly to process
 the data:
 
@@ -106,10 +106,10 @@ usethis::use_data_raw("bci_quadrats")
 usethis::use_data_raw("bci_taxa")
 ```
 
-Now copy the files you have downloaded to the
-<span style="color: #1697C0;">data-raw</span> folder that has just been created
+Copy the files you have downloaded to the
+<span style="color: #dd1c77;">data-raw</span> folder that has just been created
 inside the R package, and unzip the
-<span style="color: #1697C0;">ViewFullTable.zip</span> file into the same
+<span style="color: #dd1c77;">ViewFullTable.zip</span> file into the same
 folder. You can now delete the zip file if you like. Now we need to make sure
 that none of these files make it into your git repo by accident. Run:
 
@@ -118,7 +118,7 @@ usethis::edit_git_ignore("project")
 ```
 
 And add the following lines to the end of the
-<span style="color: #1697C0;">.gitignore</span> file that is opened:
+<span style="color: #dd1c77;">.gitignore</span> file that has opened:
 
 ```{R, eval = FALSE}
 ViewTax.txt
@@ -130,60 +130,58 @@ ViewFullTable.pdf
 ```
 
 Now go to the git pane in RStudio, and make sure that the none of the files you
-just downloaded show up in the pane. Now commit everything and create a suitable
+just downloaded show up in the pane. Commit everything and create a suitable
 commit message for these initial files. Now create a new R file in the
-<span style="color: #1697C0;">data-raw</span> folder. This will be the file you
+<span style="color: #dd1c77;">data-raw</span> folder. This will be the file you
 run to put all of the data into the package. It should contain the following:
 
 ```{R, eval = FALSE}
 # Put the datasets into the package
 library(dplyr)
 
-## Move to the data-raw subfolder to access the raw data
+# Move to the data-raw subfolder to access the raw data
 devtools::wd(".", "data-raw")
 
-## BCI data
+# BCI data
 
-### Load individual BCI records
+# Load individual BCI records
 data <- read.delim(file.path("ViewFullTable", "ViewFullTable.txt"))
 
-### Load BCI taxonomic data, create new species column, and extract species
+# Load BCI taxonomic data, create new species column, and extract species
 taxa <- read.delim("ViewTax.txt") %>%
   mutate(GenusSpecies = as.factor(paste(Genus, SpeciesName))) %>%
   filter(IDLevel == "species")
 
-### Store species counts from 2010 census in package
+# Store species counts from 2010 census in package
 source("bci_2010.R")
 
-### Store quadrat metadata in package
+# Store quadrat metadata in package
 source("bci_quadrats.R")
 
-### Store taxonomic data in package
+# Store taxonomic data in package
 source("bci_taxa.R")
 ```
 
 This will load all of the raw data into R (this will take some time) and run the
 files you have created to process each of them and store them in the package.
-**Don't do this yet! First, you need to edit the processing files
-<span style="color: #1697C0;">bci_2010.R</span>,
-<span style="color: #1697C0;">bci_quadrats.R</span> and
-<span style="color: #1697C0;">bci_taxa.R</span> to do the processing
-correctly. Actually, we provide them for you here!**
+**Don't do this yet! First, you need to edit the processing files (bci_2010.R,
+bci_quadrats.R and bci_taxa.R) to do the processing correctly.** Actually, we 
+provide them for you here!
 
-This is <span style="color: #1697C0;">bci_2010.R</span>:
+This is <span style="color: #dd1c77;">bci_2010.R</span>:
 
 ```{R, eval = FALSE}
 library(dplyr)
 library(reshape2)
 
-# Clean data to remove secondary and dead stems of trees,
-# and species not in taxonomy
+# Clean data to remove secondary and dead stems of trees and species not in
+# taxonomy
 records <- data %>%
   filter(PrimaryStem == "main", Status == "alive", !is.na(QuadratName)) %>%
   filter(GenusSpecies %in% taxa$GenusSpecies) %>%
   select(GenusSpecies, PlotCensusNumber, QuadratName) %>%
-  mutate(col=as.integer(floor(QuadratName/100)),
-         row=as.integer(QuadratName-col*100)) %>%
+  mutate(col = as.integer(floor(QuadratName / 100)),
+         row = as.integer(QuadratName - col * 100)) %>%
   filter(row < 25)
 
 # Extract table at a single timepoint
@@ -203,14 +201,14 @@ It takes the massive Barro Colorado Island (BCI) dataset and extracts only the
 2010 (7th) census and summarises it to extract a matrix of counts of known
 species of living trees in 20m x 20m quadrats across the site.
 
-This is <span style="color: #1697C0;">bci_quadrats.R</span>:
+This is <span style="color: #dd1c77;">bci_quadrats.R</span>:
 
 ```{R, eval = FALSE}
 library(dplyr)
 library(tibble)
 
 # Work out useful information about the quadrats themselves
-## Note: they index from 0 and they are 20m x 20m quadrats
+# Note: they index from 0 and they are 20m x 20m quadrats
 bci_quadrats <- records %>% select(QuadratName, row, col) %>%
   unique %>%
   mutate(x = row * 20, y = col * 20, row = row + 1, col = col + 1) %>%
@@ -225,7 +223,7 @@ usethis::use_data(bci_quadrats, overwrite = TRUE)
 It provides metadata about the quadrats -- where they are within the site -- as
 a tibble (a prettier version of a data frame that the RStudio team have created).
 
-Finally, this is <span style="color: #1697C0;">bci_taxa.R</span>:
+Finally, this is <span style="color: #dd1c77;">bci_taxa.R</span>:
 
 ```{R, eval = FALSE}
 library(dplyr)
@@ -259,8 +257,8 @@ data <- read.delim(file.path("ViewFullTable", "ViewFullTable.txt"))
 ```
 
 Then your computer may have unzipped files differently from mine -- mine has
-created a folder in <span style="color: #1697C0;">data-raw</span>
-called <span style="color: #1697C0;">ViewFullTable</span>, but yours may have
+created a folder in <span style="color: #dd1c77;">data-raw</span>
+called <span style="color: #dd1c77;">ViewFullTable</span>, but yours may have
 just unzipped the files directly into data-raw. In that case, just change the
 line to:
 
@@ -278,18 +276,18 @@ usethis::use_package("xxx")
 ```
 
 to add the `xxx` package to those *imported* by your package in the
-<span style="color: #1697C0;">DESCRIPTION</span> file. See
+<span style="color: #dd1c77;">DESCRIPTION</span> file. See
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies)
 for further details. Commit these changes to the repo too, and push them to
 GitHub.
 
 ## Tasks: documenting the package
 
-First you need to edit the <span style="color: #1697C0;">DESCRIPTION</span> file
+First you need to edit the <span style="color: #dd1c77;">DESCRIPTION</span> file
 (more [here](https://r-pkgs.org/description.html) so that it contains the right
 information about you and the package, and you need to create a documentation
-file for the package in the <span style="color: #1697C0;">R</span> folder so
-that `?BCI` returns a description. You had this in the package for the third
+file for the package in the <span style="color: #dd1c77;">R</span> folder so
+that `?githubusernameBCI` returns a description. You had this in the package for the third
 practical series, but you'll see details on how to do that 
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
 
@@ -336,7 +334,7 @@ https://guides.github.com/features/mastering-markdown/. Note that with markdown
 you don't need to start lines with `#'`.
 
 Second, you need to document the data that you are providing in this package,
-by creating file(s) in the <span style="color: #1697C0;">R</span> folder again.
+by creating file(s) in the <span style="color: #dd1c77;">R</span> folder again.
 You'll find details on how to create the documentation
 [here](https://r-pkgs.org/data.html), or an abbreviated version in our guide
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-data).
@@ -345,14 +343,15 @@ Finally, build the documentation (using `devtools::document()`), and commit all
 of the changes to git.
 
 Make sure throughout the documentation that you credit the real source of the
-data [at the Smithsonian](https://repository.si.edu/handle/10088/20925).
+data as the [Smithsonian](https://repository.si.edu/handle/10088/20925).
 
 ## Running the code
 
 Now you should have a working R data package. Try installing it (using
 `devtools::install()`), restarting R and loading it. Check that the objects you
-have created exist -- you should be able to see them in the `Environment` pane,
-but more simply by just typing:
+have created exist -- you should be able to see them in the 
+<span style="color: #dd1c77;">Environment</span> pane, but more simply by just 
+typing:
 
 ```{R, eval = FALSE}
 library(githubusernameBCI)
