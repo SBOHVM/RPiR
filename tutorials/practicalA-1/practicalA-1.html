@@ -230,8 +230,8 @@ add_one(10)</code></pre>
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fa301e6d360&gt;
-## &lt;environment: 0x7fa3010247f0&gt;</code></pre>
+## &lt;bytecode: 0x7fe0e4217f78&gt;
+## &lt;environment: 0x7fe0e0782320&gt;</code></pre>
 <p>You’ll see that it gives an error. That is because, although you have calculated <code>one.more</code> inside the function, it is discarded when the function ends. This is because variables defined inside functions are <em>local</em> to the function. For there to be a variable in your main script called one.more, you need to define it there. Try adding a line of code between lines 5 and 6 of <em>Exercise 1</em> that just says:</p>
 <pre class="r"><code>one.more &lt;- 20</code></pre>
 <p>Note that the <em>global</em> <code>one.more</code> variable (the one in your main script) is not affected by calling the <code>add_one()</code> function even though it looks like it is updated there.</p>
@@ -273,8 +273,8 @@ add_up(10, 30)</code></pre>
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fa301e6d360&gt;
-## &lt;environment: 0x7fa3018fcd98&gt;</code></pre>
+## &lt;bytecode: 0x7fe0e4217f78&gt;
+## &lt;environment: 0x7fe0e34254d8&gt;</code></pre>
 <p>Rename the function and variables in <em>Exercise 2</em> so that it satisfies my naming rules.</p>
 <p><em>There is much more on how to style your code to make it more consistent <a href="http://adv-r.had.co.nz/Style.html">here</a>. Hadley recommends never using dots, so using underscores to separate words in functions and variables. If you want to do that it’s fine. Don’t use dots in function names though. He has lots of other suggestions about how to write clear code - do have a look at it and try to follow it if you have time.</em></p>
 </div>
@@ -392,8 +392,8 @@ current.value</code></pre>
 ##         .message = final_grade$message, .message_pipe_warning = NULL, 
 ##         .correct = correct, .incorrect = incorrect))
 ## }
-## &lt;bytecode: 0x7fa2fe5e5250&gt;
-## &lt;environment: 0x7fa2fe5e0808&gt;</code></pre>
+## &lt;bytecode: 0x7fe0e1537980&gt;
+## &lt;environment: 0x7fe0e1536470&gt;</code></pre>
 <p>It just runs our <code>add_one()</code> function from earlier five times to update the variable <code>current.value</code> to 5. Change the code so it does this ten times to produce 10.</p>
 <p>Now look at this next piece of code:</p>
 <pre class="r"><code># A function to add one to a number
@@ -436,8 +436,8 @@ current.value</code></pre>
 ##         .message = final_grade$message, .message_pipe_warning = NULL, 
 ##         .correct = correct, .incorrect = incorrect))
 ## }
-## &lt;bytecode: 0x7fa2fe5e5250&gt;
-## &lt;environment: 0x7fa3028092a8&gt;</code></pre>
+## &lt;bytecode: 0x7fe0e1537980&gt;
+## &lt;environment: 0x7fe0e35244b0&gt;</code></pre>
 <p>It does the same thing - it calls <code>add_one()</code> ten times, but it’s much shorter, which generally makes it easier to see what’s going on. Now change the code to call <code>add_one()</code> 100 times. Hopefully you can see that this is really starting to help now!</p>
 <p>And you can probably imagine that if it was any more complicated that just copying and pasting one line it would make it much easier to see that it was doing exactly the same thing each time too.</p>
 <p>Finally, add in the single line <code>print(paste("Loop number", loop))</code> into the loop at the end (between lines 11 and 12) and run it. You’ll now be able see each step of the loop running. We’ll use techniques like this later to check that the loop is doing the right thing.</p>

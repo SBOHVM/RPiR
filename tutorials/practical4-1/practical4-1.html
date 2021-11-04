@@ -173,7 +173,7 @@ usethis::use_data_raw(&quot;bci_quadrats&quot;)
 usethis::use_data_raw(&quot;bci_taxa&quot;)</code></pre>
 <p>Copy the files you have downloaded to the <span style="color: #dd1c77;">data-raw</span> folder that has just been created inside the R package, and unzip the <span style="color: #dd1c77;">ViewFullTable.zip</span> file into the same folder. You can now delete the zip file if you like. Now we need to make sure that none of these files make it into your git repo by accident. Run:</p>
 <pre class="r"><code>usethis::edit_git_ignore(&quot;project&quot;)</code></pre>
-<p>And add the following lines to the end of the <span style="color: #dd1c77;">.gitignore</span> file that is opened:</p>
+<p>And add the following lines to the end of the <span style="color: #dd1c77;">.gitignore</span> file that has opened:</p>
 <pre class="r"><code>ViewTax.txt
 ViewFullTable.zip
 ViewFullTable
