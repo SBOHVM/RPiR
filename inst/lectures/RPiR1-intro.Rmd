@@ -10,12 +10,10 @@ output:
 Lecturers:
 
 - Richard Reeve
-- Sonia Mitchell
 
 Demonstrators:
 
-- Yacob Haddou
-- Jamie Burton
+- Sonia Mitchell
 
 # Communication
 
@@ -23,7 +21,7 @@ Demonstrators:
 
 Please do ask question live in the Zoom classes:
 
- - Mondays 1-5pm, Wednesdays 1-5pm and Fridays 1-4pm until 15th Feb
+ - Mondays 1-5pm, Wednesdays 1-5pm and Fridays 1-4pm until 17th Dec
 
 ## 2. Moodle
 
@@ -39,8 +37,8 @@ discuss issues on the Discussions tab at https://github.com/IBAHCM/RPiR/discussi
 
 ## 4. Email
 
-Feel free to email myself at richard.reeve@glasgow.ac.uk and Sonia at
-sonia.mitchell@glasgow.ac.uk if you want to contact us directly.
+Feel free to email richard.reeve@glasgow.ac.uk if you want to contact us 
+directly.
 
 # Plan for today
 
