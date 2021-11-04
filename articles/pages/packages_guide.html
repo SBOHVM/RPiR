@@ -330,7 +330,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R Packages</h1>
             
-            <h4 class="date">October 28 2021</h4>
+            <h4 class="date">November 04 2021</h4>
       
       
       <div class="hidden name"><code>packages_guide.Rmd</code></div>
@@ -446,7 +446,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <span class="op">}</span></code></pre></div>
 </li>
 <li>
-<p>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file (lines 15-16). This can be automated using <code><a href="https://usethis.r-lib.org/reference/use_package.html">usethis::use_package("ggplot2")</a></code>.</p>
+<p>Add an entry in the <code>Imports</code> field of the <span style="color: #de77ae;">DESCRIPTION</span> file (lines 15-16). This can be automated using <code>usethis::use_package("ggplot2")</code>.</p>
 <p><img src="images/packages/13.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Note that if you need to add a dependency on a package that exists within a GitHub repository, you can use this instead:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -473,12 +473,12 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 </blockquote>
 <p><img src="images/packages/15.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Next, we need to install our package using <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code>.</p>
-<p>After which, we can run <code><a href="https://rdrr.io/r/utils/demo.html">demo(package = "packagename")</a></code> to list all of the demos in our package, or <code><a href="https://rdrr.io/r/utils/demo.html">demo("my_demo", package = "packagename")</a></code> to run the <code>my_demo</code> demo.</p>
+<p>After which, we can run <code>demo(package = "packagename")</code> to list all of the demos in our package, or <code>demo("my_demo", package = "packagename")</code> to run the <code>my_demo</code> demo.</p>
 </div>
 <div id="add-data" class="section level2">
 <h2 class="hasAnchor">
 <a href="#add-data" class="anchor"></a>Add data</h2>
-<p>The next thing we’re going to do is add data to our package. To do this, run <code><a href="https://usethis.r-lib.org/reference/use_data.html">usethis::use_data_raw("BCI")</a></code>. This will create a new directory, called <code>data-raw</code> and within it a file called <span style="color: #de77ae;">BCI.R</span>. We should put our raw, unedited data in this directory. Any code we use to process our data should be written in <span style="color: #de77ae;">BCI.R</span>. The processing file should end up looking something like this:</p>
+<p>The next thing we’re going to do is add data to our package. To do this, run <code>usethis::use_data_raw("BCI")</code>. This will create a new directory, called <code>data-raw</code> and within it a file called <span style="color: #de77ae;">BCI.R</span>. We should put our raw, unedited data in this directory. Any code we use to process our data should be written in <span style="color: #de77ae;">BCI.R</span>. The processing file should end up looking something like this:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## code to prepare `BCI` dataset goes here</span>
 
@@ -511,7 +511,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <span class="co">#' @source \url{http://somewhere.important.com/}</span>
 <span class="st">"mydataset"</span></code></pre></div>
 <p>As usual, we need to run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to automatically generate the documentation files and then <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> to install our package.</p>
-<p>After which, we can run <code><a href="https://rdrr.io/r/utils/data.html">data(package = "packagename")</a></code> to list all of the data in our package.</p>
+<p>After which, we can run <code>data(package = "packagename")</code> to list all of the data in our package.</p>
 </div>
 <div id="alternative-setup" class="section level2">
 <h2 class="hasAnchor">
@@ -522,7 +522,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 </blockquote>
 <p>Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">package names</a> include a dot. In the following example, the name of our repository (and package) is <code>packagename</code>.</p>
 <p>Once you have a repository on GitHub, follow these <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">instructions</a> to clone your repository and add it as a new project in RStudio. Then create the package structure by running:</p>
-<pre><code><a href="https://usethis.r-lib.org/reference/create_package.html">usethis::create_package("structure")</a></code></pre>
+<pre><code>usethis::create_package("structure")</code></pre>
 <p>at which point you’ll get a warning saying you shouldn’t really be nesting RStudio projects inside each other. Ignore that and say yes, you want to continue. You’ll end up with a file structure that looks a bit like this:</p>
 <pre><code>packagename/ ---&gt; .gitignore
                   README.md
@@ -560,7 +560,7 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <a href="#sharing-is-caring" class="anchor"></a>Sharing is caring</h2>
 <p>The only thing left to do now is to share your package with other people. So go ahead and give them access (on the GitHub website, <span style="color: #de77ae;">Settings &gt; Manage access &gt; Invite teams or people</span>).</p>
 <p>Then ask them to run:</p>
-<pre><code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">devtools::install_github("IBAHCM/packagename")</a></code></pre>
+<pre><code>devtools::install_github("IBAHCM/packagename")</code></pre>
 <p>Go ahead and try to install my package. Try to run the demo.</p>
 <p>Note that if for some reason you can’t install a package using <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github()</a></code>, you can clone a repository as you did <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">here</a> and instead run <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> in the usual way.</p>
 </div>
