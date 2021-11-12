@@ -1,4 +1,4 @@
-# Reproducible Programming in R course
+# Reproducible Programming in R course (2020/21)
 
 [![](https://img.shields.io/badge/docs-RPIR-blue)][docs]
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
