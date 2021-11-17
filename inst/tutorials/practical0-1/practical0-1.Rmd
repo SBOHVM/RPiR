@@ -17,20 +17,19 @@ gradethis::gradethis_setup()
 
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>",
+  comment = ">",
   error = TRUE
 )
 set.seed(123)
 ```
 
-
-
-## Flow
+## Control flow
 
 ### Comparisons -- testing for equality and difference
 
-These tests are essential for `while` loops, and other forms of flow control
-such as `if` statements. They allow us to test whether something is true, and
+These tests are essential for `while` loops to determine
+whether to continue through the next iteration of the loop, and other forms of flow control
+such as `if` statements, to determine what to do next. They allow us to test whether something is true, and
 change what lines of code are run depending on the outcome. There are the
 basic tests:
 
@@ -39,32 +38,29 @@ basic tests:
 - `a < b`: is `a` less than `b`?
 - `a >= b`: is `a` greater than or equal to `b`?
 - `a <= b`: is `a` less than or equal to `b`?
-- `a != b`: is `a` different from `b`?
+- `a != b`: is `a` not equal to `b`?
 
 There are then three basic ways of changing or combining the above:
 
-- `(a < b) || (c == d)`: is **either ** `a` less than `b` **or** `c` equal to `d`?
-- `(a < b) && (c == d)`: is **both** `a` less than `b` **and** `c` equal to `d`?
-- `!((a < b) && (c == d))`: is the above **not** `TRUE`? `TRUE` if the above was
-  `FALSE` and vice versa 
+- `(a < b) || (c == d)`: is "`a` less than `b`" **or** "`c` equal to `d`"?
+- `(a < b) && (c == d)`: is "`a` less than `b`" **and** "`c` equal to `d`"?
+- `!((a < b) && (c == d))`: is it **not** `TRUE` that "`a` is less than `b` 
+**and** `c` is equal to `d`"?
 
 Remember to use (lots of!) brackets to ensure you are combining things in the
-right order. These tests can be used in the `while` loops above to determine
-whether to continue through the next iteration of the loop, and in the `if`
-statements below, to determine what to do next.
+right order. 
 
-We introduced these concepts in [Lecture 7a][lecture-7a].
 Comparisons are also [covered in passing][operators-R4DS] in
 R4DS, and by R Coder in a bit more depth [here][operators-rcoder].
 
-### `if (something)` and `if (something) { ... } else { ... }` statements
+### `if` and `if else` statements
 
-The `if` command allow us to perform a test, and if the result is `TRUE` run 
+The `if` command allows us to perform a test, and if the result is `TRUE` run 
 a block of R code (in curly brackets `{ ... }`). Optionally, if the test is
 `FALSE`, a different block of code can be run instead. This allows us to do a
 variety of things. To give a very simple example:
 
-```{R}
+```{r ifstatement, exercise = TRUE}
 if (2 > 1) {
   print("Maths works!")
 }
@@ -73,7 +69,7 @@ if (2 > 1) {
 This prints `"Maths works!"` because the test is `TRUE`, so the code block
 that follows is run. Whereas:
 
-```{R}
+```{r ifstatement-2, exercise = TRUE}
 if (2 >= 5) {
   print("At least 5.")
 } else {
@@ -85,7 +81,7 @@ This prints `"Less than 5."` because the test was false, so R
 continues to the code block after the `else` statement. If there is no `else`
 statement, then no code is run, so:
 
-```{R}
+```{r ifstatement-3, exercise = TRUE}
 if (2 >= 5) {
   print("At least 5.")
 }
@@ -94,7 +90,7 @@ if (2 >= 5) {
 does nothing. We use `if` and `if ... else` statements throughout the helper
 functions and the example code you've been provided with. For instance:
 
-```{R}
+```{r}
 library(codetools)
 library(RPiR)
 
