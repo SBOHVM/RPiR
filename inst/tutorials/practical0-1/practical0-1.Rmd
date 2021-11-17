@@ -146,8 +146,7 @@ control that are well beyond the scope of this course.
 [operators-rcoder]: https://r-coder.com/operators-r
 [if-rcoder]: https://r-coder.com/if-else-r
 
-[lecture-5b]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR5b-R.html
-[lecture-7a]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR7a-R.html
+[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
 
 ## Loops 
 
@@ -222,8 +221,8 @@ that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
 [for-rcoder]: https://r-coder.com/for-loop-r
 [while-rcoder]: https://r-coder.com/while-loop-r
 
-[lecture-5b]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR5b-R.html
-[lecture-6a]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR6a-R.html
+[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
+[lecture-6a]: https://ibahcm.github.io/RPiR/lectures_html/RPiR6a-R.html
 
 ## Functions
 
@@ -297,5 +296,5 @@ functional programming, and continuing for several chapters.
 [functions-advanced-r2]: https://adv-r.hadley.nz/fp.html
 [functions-rcoder]: https://r-coder.com/function-r
 
-[lecture-2c]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR2c-development.html
-[lecture-5b]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR5b-R.html
+[lecture-2c]: https://ibahcm.github.io/RPiR/lectures_html/RPiR2c-development.html
+[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
