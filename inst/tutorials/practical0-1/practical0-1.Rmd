@@ -1,0 +1,300 @@
+---
+title: "Practical 0-1: Recap"
+output:
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Revision of basic concepts.
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
+gradethis::gradethis_setup()
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  error = TRUE
+)
+set.seed(123)
+```
+
+## Loops 
+
+Loops allow you to repeat the same thing again and again. If you are doing
+something more than two or three times, you should instead use a loop to
+avoid having to copy and paste the same code over and over again.
+Since duplicating code risks not only mistyping or not copying correctly, but
+also creating confusion by filling your R scripts with nearly identical 
+chunks of code. There are fundamentally two kinds of loop:
+
+- one where you know exactly how many times the loop will run, for instance 
+  because you're running a chunk of code once for each element of a vector or
+  row or column of a data frame; and
+- one where you do not, because some part of your calculation in each step of
+  the loop will determine whether to continue or to stop.
+
+### `for (...)` loops
+
+`for` loops allow us to repeat something *for* a fixed number of times (*e.g.*
+once per element of a vector, once per row of a data frame, *etc.*). 
+
+They are called as:
+
+```{R}
+greetings <- c("Hello", "Goodbye")
+for (word in greetings) {
+  # body
+}
+```
+
+and after each run through the loop, the variable (here, `word`) is updated with
+the next element (here, in the vector `greetings`). We introduced for loops in 
+week 1 and again in [Lecture 5b][lecture-5b] and Practical
+`practicalA-1`. They were then used from Practical `practical1-1` onwards.
+
+There is a section in R4DS (within a more general chapter on
+[*Iteration*][R4DS-iteration]) that covers [`for` loops][for-R4DS]. For loops
+are also covered by R Coder [here][for-rcoder].
+
+### `while (...)` loops
+
+`while` loops allow us to repeat something *while* a condition is still `TRUE`.
+They are particularly useful when you don't know in advance exactly how many
+times something will be done, but can be used in any situation. Unlike `for`
+loops though, you need to update everything manually each time around:
+
+
+```{R, eval=FALSE}
+test <- some_test()
+while (test) {
+  # Do something
+  test <- update(something)
+}
+```
+
+`test` is checked at the beginning of each iteration, and as long as `test` 
+continues to be
+`TRUE`, the code block inside the curly brackets `{ ... }` is run. Be careful...
+if you don't update `test` inside the curly brackets, your loop will continue 
+forever! However, if (when!) `test` is finally `FALSE`, the loop will end and R
+will continue on to the next line of code after the loop.
+
+We introduced them in [Lecture 6a][lecture-6a],
+and used them from Practical `practical2-4` onwards. There is a
+section in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration])
+that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
+[here][while-rcoder].
+
+[R4DS-iteration]: https://r4ds.had.co.nz/iteration.html
+[for-R4DS]: https://r4ds.had.co.nz/iteration.html#for-loops
+[while-R4DS]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
+[for-rcoder]: https://r-coder.com/for-loop-r
+[while-rcoder]: https://r-coder.com/while-loop-r
+
+[lecture-5b]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR5b-R.html
+[lecture-6a]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR6a-R.html
+
+## Flow
+
+### Comparisons -- testing for equality and difference
+
+These tests are essential for `while` loops, and other forms of flow control
+such as `if` statements. They allow us to test whether something is true, and
+change what lines of code are run depending on the outcome. There are the
+basic tests:
+
+- `a == b`: is `a` equal to `b`? (`TRUE` if this is true, `FALSE` if this is false)
+- `a > b`: is `a` greater than `b`?
+- `a < b`: is `a` less than `b`?
+- `a >= b`: is `a` greater than or equal to `b`?
+- `a <= b`: is `a` less than or equal to `b`?
+- `a != b`: is `a` different from `b`?
+
+There are then three basic ways of changing or combining the above:
+
+- `(a < b) || (c == d)`: is **either ** `a` less than `b` **or** `c` equal to `d`?
+- `(a < b) && (c == d)`: is **both** `a` less than `b` **and** `c` equal to `d`?
+- `!((a < b) && (c == d))`: is the above **not** `TRUE`? `TRUE` if the above was
+  `FALSE` and vice versa 
+
+Remember to use (lots of!) brackets to ensure you are combining things in the
+right order. These tests can be used in the `while` loops above to determine
+whether to continue through the next iteration of the loop, and in the `if`
+statements below, to determine what to do next.
+
+We introduced these concepts in [Lecture 7a][lecture-7a].
+Comparisons are also [covered in passing][operators-R4DS] in
+R4DS, and by R Coder in a bit more depth [here][operators-rcoder].
+
+# `if (something)` and `if (something) { ... } else { ... }` statements
+
+The `if` command allow us to perform a test, and if the result is `TRUE` run 
+a block of R code (in curly brackets `{ ... }`). Optionally, if the test is
+`FALSE`, a different block of code can be run instead. This allows us to do a
+variety of things. To give a very simple example:
+
+```{R}
+if (2 > 1) {
+  print("Maths works!")
+}
+```
+
+This prints `"Maths works!"` because the test is `TRUE`, so the code block
+that follows is run. Whereas:
+
+```{R}
+if (2 >= 5) {
+  print("At least 5.")
+} else {
+  print("Less than 5.")
+}
+```
+
+This prints `"Less than 5."` because the test was false, so R
+continues to the code block after the `else` statement. If there is no `else`
+statement, then no code is run, so:
+
+```{R}
+if (2 >= 5) {
+  print("At least 5.")
+}
+```
+
+does nothing. We use `if` and `if ... else` statements throughout the helper
+functions and the example code you've been provided with. For instance:
+
+```{R}
+library(codetools)
+library(RPiR)
+
+if (length(findGlobals(plot_simple, merge = FALSE)$variables) != 0) {
+  stop("Function plot_simple() may not use global variable(s): ",
+       findGlobals(plot_simple, merge = FALSE)$variables)
+}
+```
+
+This checks whether `length(findGlobals(plot_simple, merge=FALSE)$variables)` is
+non-zero, which is to say whether the `variables` element of what is returned by
+`findGlobals(plot_simple, merge = FALSE)` is not of length zero, *i.e.* whether
+there are any global variables in the function `plot_simple`. If there are, then
+the contents of the curly brackets are run, `stop(...)` is called, and the code
+stops running. In fact, `plot_simple` has no global variables, so the code block
+is not run.
+
+In Practical `practical3-4` we provide a second example of an `if` 
+statement, used to control code execution:
+
+```{R, eval = FALSE}
+if (first.graph) {
+  plot_populations(final.populations,
+                   new.graph = TRUE, 
+                   col = c(susceptibles = "green", infecteds = "red"))
+  first.graph <- FALSE 
+} else {
+  plot_populations(final.populations,
+                   new.graph = FALSE,
+                   col = c(susceptibles = "green", infecteds = "red"))
+}
+```
+
+This code tests whether the variable `first.graph` is `TRUE`. If it is, the
+following code block is run, and it plots a graph into a new graphics window and
+sets `first.graph` to `FALSE`. In the practical, this code is run inside a loop, and
+the next (and every subsequent) time it runs, `first.graph` is already `FALSE`
+so the code block following the `else` statement is run, and a plot is
+superimposed on the existing graphics window.
+
+We introduced these concepts in [Lecture 5b][lecture-5b].
+R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
+consider them too simple, but ironically they have [a chapter in Advanced
+R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
+control that are well beyond the scope of this course.
+
+[operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
+[if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html
+[operators-rcoder]: https://r-coder.com/operators-r
+[if-rcoder]: https://r-coder.com/if-else-r
+
+[lecture-5b]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR5b-R.html
+[lecture-7a]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR7a-R.html
+
+
+## Functions
+
+Just as loops allow you to repeat the same code chunk again and again in one
+place, functions allow you to repeat the same task multiple times, but
+potentially in multiple places on different data. If you have a complex piece
+of code that does a single discrete thing, then you may want to wrap it up
+into a function so that you can refer to it by a simple name and keep the
+script that calls it clear and easy to read.
+
+To quote from [the introduction to R4DS on functions][functions-R4DS]:
+
+> One of the best ways to improve your reach as a data scientist is to write functions. Functions allow you to automate common tasks in a more powerful and general way than copy-and-pasting. Writing a function has three big advantages over using copy-and-paste:
+>
+> 1. You can give a function an evocative name that makes your code easier to understand.
+>
+> 2. As requirements change, you only need to update code in one place, instead of many.
+>
+> 3. You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).
+
+Functions allow us to wrap up a common task into a single line of code,
+irrespective of how complex and long the code chunk is, making our scripts 
+cleaner and easier to read. They allow us to describe what the code is doing 
+(by assigning a name to the function), making our scripts easier to understand. 
+Finally, writing custom functions rather than duplicating code means that there 
+is only a single place that needs to be checked for correctness, rather than 
+having to remember all of the places your duplicated (likely copied and pasted) 
+code exists.
+
+Functions are really easy to write:
+
+```{R}
+add_up <- function(first, second) {
+  first + second
+}
+
+# Add call the function to add 3 to 5!
+add_up(3, 5)
+```
+
+The critical thing to know is that a function takes its arguments
+(here the variables `first` and `second`) and does something to them to calculate
+some result. The result that is output by the function is the last 
+line of code is that is run.
+If you are writing a simple function, this will be the final line before the
+close curly bracket (`}`), here `squared`.
+
+```{R}
+add_and_square <- function(first, second) {
+  # Calculate the result
+  added <- first + second
+  squared <- added * added
+  # And return it
+  squared
+}
+
+# And call the function to add 3 to 5 and square it!
+add_and_square(3, 5)
+```
+
+We introduced functions in [Lecture 2c][lecture-2c] and
+Practical `practicalA-1`and then again in [Lecture 5b][lecture-5b]. 
+They were used starting in Practical `practical1-2`.
+
+Functions are covered in R4DS [here][functions-R4DS] and R Coder covers
+them in some depth [here][functions-rcoder]. Advanced R covers functions in
+enormous detail starting [here][functions-advanced-r2] with an introduction to
+functional programming, and continuing for several chapters.
+
+[functions-R4DS]: https://r4ds.had.co.nz/functions.html
+[functions-advanced-r2]: https://adv-r.hadley.nz/fp.html
+[functions-rcoder]: https://r-coder.com/function-r
+
+[lecture-2c]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR2c-development.html
+[lecture-5b]: https://ibahcm.github.io/RPiR21/lectures_html/RPiR5b-R.html
