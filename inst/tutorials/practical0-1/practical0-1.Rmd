@@ -57,7 +57,7 @@ We introduced these concepts in [Lecture 7a][lecture-7a].
 Comparisons are also [covered in passing][operators-R4DS] in
 R4DS, and by R Coder in a bit more depth [here][operators-rcoder].
 
-# `if (something)` and `if (something) { ... } else { ... }` statements
+### `if (something)` and `if (something) { ... } else { ... }` statements
 
 The `if` command allow us to perform a test, and if the result is `TRUE` run 
 a block of R code (in curly brackets `{ ... }`). Optionally, if the test is
