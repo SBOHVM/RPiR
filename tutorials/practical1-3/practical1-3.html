@@ -186,7 +186,7 @@ step_simple_growth &lt;- function(current.population, growth.rate) {
 ## Note, running a script with just a function in will not output anything</code></pre>
 <p>and the main script (<span style="color: #dd1c77;">0103-run-simple-growth.R</span>) should look something like this:</p>
 <blockquote>
-<p>Note that <code>learnr</code> doesn’t create files, so <code>source</code> doesn’t work here. To avoid an error, we commented out line 2, and instead preloaded <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> into the following code block)</p>
+<p>Note that {learnr} doesn’t create files, so <code>source</code> doesn’t work here. To avoid an error, we commented out line 2, and instead preloaded <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> into the following code block)</p>
 </blockquote>
 <pre class="r"><code>step_simple_growth &lt;- function(current.population, growth.rate) {
   new.additions &lt;- growth.rate * current.population

@@ -163,7 +163,7 @@ pre code {
 </div>
 <div id="section-github" class="section level2">
 <h2>GitHub</h2>
-<p>First you’ll need to create a repository in the IBAHCM organisation on GitHub. You’ll find instructions on how to do this <a href="https://ibahcm.github.io/RPiR/articles/pages/use_github.html">here</a>. Note that you’ll need to do this throughout this course, which is why we’ve kept these instructions separate.</p>
+<p>First you’ll need to create a repository in the IBAHCM organisation on GitHub. You’ll find instructions on how to do this <a href="https://ibahcm.github.io/RPiR/articles/pages/github.html">here</a>. Note that you’ll need to do this throughout this course, which is why we’ve kept these instructions separate.</p>
 <p>After you’ve done that, back in RStudio, load the <code>RPiR</code> package and run the <code>practical_series_one()</code> function. This will populate your working directory – and therefore your RStudio project – with the scripts and functions from Practical Series 1. Remember that the yellow question mark in the <span style="color: #dd1c77;">Status</span> column of the <span style="color: #dd1c77;">Git</span> tab means that these are not currently in your GitHub repository.</p>
 <p><img src="images/a.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>So let’s push them up to GitHub! Check the boxes next to all of the files, the scripts, the functions, and invisible <code>.gitignore</code> file and even the RStudio project file. Then click <span style="color: #dd1c77;">Commit</span>.</p>
@@ -192,7 +192,6 @@ globals &lt;- findGlobals(step_simple_growth, merge = FALSE)$variables
 if (length(globals) != 0) {
   stop(&quot;Function step_simple_growth() may not use global variable(s): &quot;, globals)
 }</code></pre>
-<p>This checks whether <code>length(globals)</code> is non-zero, which is to say whether the <code>variables</code> element of what is returned by <code>findGlobals(step_simple_growth, merge = FALSE)</code> is not of length zero, <em>i.e.</em> whether there are any global variables in the function <code>step_simple_growth</code>. If there are, then the contents of the curly brackets are run, <code>stop(...)</code> is called, and the code stops running. In fact, <code>step_simple_growth</code> has no global variables, so the code block is not run.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
@@ -202,75 +201,49 @@ if (length(globals) != 0) {
 <p>The birth and death model is slightly more complex:</p>
 <p><span class="math display">\[ N(t+1) = N(t) + b \times N(t) - d \times N(t)\]</span></p>
 <p>In RStudio, open <span style="color: #dd1c77;">0106-report.R</span>. This script contains the beginnings of the analysis described above. At the top of the script we have used <code>source()</code> on <span style="color: #dd1c77;">0104-step-growth.R</span> and <span style="color: #dd1c77;">0105-step-birth-death.R</span> to add the <code>step_deterministic_growth()</code> and <code>step_deterministic_birth_death()</code> functions to our global environment. To illustrate this, open the <span style="color: #dd1c77;">Environment</span> tab in RStudio and make sure your workspace is empty. Now run line 12 in <span style="color: #dd1c77;">0106-report.R</span>:</p>
-<pre class="r"><code>source(&quot;0104-step-growth.R&quot;)
-```
-
-You should see that the `step_deterministic_growth()` function has been added
-to your workspace. When we invoke `source()` we are effectively running the 
-contents of the file, which is a useful way to preload functions into our 
-global environment.
-
-We want to compare the models, so we have written some code that first runs a 
-simulation with one model and plots it, and then runs a simulation with the 
-other model and plots that as well. Remember that you can plot a second 
-(or third, etc.) result on top of a first with commands like:</code></pre>
+<pre class="r"><code>source(&quot;0104-step-growth.R&quot;)</code></pre>
+<p>You should see that the <code>step_deterministic_growth()</code> function has been added to your workspace. When we invoke <code>source()</code> we are effectively running the contents of the file, which is a useful way to preload functions into our global environment.</p>
+<p>We want to compare the models, so we have written some code that first runs a simulation with one model and plots it, and then runs a simulation with the other model and plots that as well. Remember that you can plot a second (or third, etc.) result on top of a first with commands like:</p>
 <pre class="r"><code>plot_populations(population.a, col = &quot;black&quot;)
-plot_populations(population.b, new.graph = FALSE, col = &quot;red&quot;)
-```
-
-## Report
-
-For this report, we want something clear and well laid out. You can see
-an example of most of the possible formatting options in 
-&lt;span style=&quot;color: #dd1c77;&quot;&gt;0106-example-notebook.R&lt;/span&gt;. Use an 
-understanding of what you want to describe --
-and formatting from the example file or elsewhere -- to break up your script so 
-that your code and the results and figures are interspersed with a reasonable
-explanation of what is going on.
-
-Your report currently contains:
-
-1. The birth-death model with a single given birth and death rate
-2. The simple growth model with the birth rate as the growth rate
-
-Extend your report to include:
-
-3. The simple growth model with minus the death rate as the (negative) growth
-   rate
-4. The simple growth model with the difference (between the rates in 1) as the 
-   growth rate
-
----
-
-When you try to run your code you should find that the graphs are very likely on
-different scales. You can set the y-axis limits of the second graph to the same 
-as the first by reading off what they are on the first graph, and then plotting
-the second as follows:</code></pre>
-<pre class="r"><code>plot_populations(population.df, ylim = c(0, 20000000000))
-```
-
-Once you&#39;ve done this it should be easier to compare the two (by eye at least).
-
-## Sharing is caring
-
-Now we&#39;re going to try and share our work. To make it a little more interesting,
-edit your `README.md` file. Write a sentence or two about yourself and what you
-hope to get out of this course. Commit your changes and push them to GitHub.
-Then look at your GitHub repository and make sure you can see your changes. 
-
-To share your work, since you created a private (rather than a public) 
-repository, you need to give people permission to see it. So, click on 
-&lt;span style=&quot;color: #dd1c77;&quot;&gt;Settings&lt;/span&gt;, 
-&lt;span style=&quot;color: #dd1c77;&quot;&gt;Manage access&lt;/span&gt;, then 
-&lt;span style=&quot;color: #dd1c77;&quot;&gt;Invite teams or people&lt;/span&gt;.</code></pre>
-<pre><code>## Error: attempt to use zero-length variable name</code></pre>
-<pre><code>## Error: attempt to use zero-length variable name</code></pre>
-<pre><code>## Error: attempt to use zero-length variable name</code></pre>
-<pre><code>## Error: attempt to use zero-length variable name</code></pre>
-<pre><code>## Error: attempt to use zero-length variable name</code></pre>
-<pre><code>## Error: attempt to use zero-length variable name</code></pre>
-<pre><code>## Error: attempt to use zero-length variable name</code></pre>
-
+plot_populations(population.b, new.graph = FALSE, col = &quot;red&quot;)</code></pre>
+</div>
+<div id="section-report" class="section level2">
+<h2>Report</h2>
+<p>For this report, we want something clear and well laid out. You can see an example of most of the possible formatting options in <span style="color: #dd1c77;">0106-example-notebook.R</span>. Use an understanding of what you want to describe – and formatting from the example file or elsewhere – to break up your script so that your code and the results and figures are interspersed with a reasonable explanation of what is going on.</p>
+<p>Your report currently contains:</p>
+<ol style="list-style-type: decimal">
+<li>The birth-death model with a single given birth and death rate</li>
+<li>The simple growth model with the birth rate as the growth rate</li>
+</ol>
+<p>Extend your report to include:</p>
+<ol start="3" style="list-style-type: decimal">
+<li>The simple growth model with minus the death rate as the (negative) growth rate</li>
+<li>The simple growth model with the difference (between the rates in 1) as the growth rate</li>
+</ol>
+<hr />
+<p>When you try to run your code you should find that the graphs are very likely on different scales. You can set the y-axis limits of the second graph to the same as the first by reading off what they are on the first graph, and then plotting the second as follows:</p>
+<pre class="r"><code>plot_populations(population.df, ylim = c(0, 20000000000))</code></pre>
+<p>Once you’ve done this it should be easier to compare the two (by eye at least).</p>
+</div>
+<div id="section-sharing-is-caring" class="section level2">
+<h2>Sharing is caring</h2>
+<p>Now we’re going to try and share our work. To make it a little more interesting, edit your <code>README.md</code> file. Write a sentence or two about yourself and what you hope to get out of this course. Commit your changes and push them to GitHub. Then look at your GitHub repository and make sure you can see your changes.</p>
+<p>To share your work, since you created a private (rather than a public) repository, you need to give people permission to see it. So, click on <span style="color: #dd1c77;">Settings</span>, <span style="color: #dd1c77;">Manage access</span>, then <span style="color: #dd1c77;">Invite teams or people</span>.</p>
+<p><img src="images/f.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Find your group members (everyone in your subgroup) using their GitHub user names. If you can’t find anyone, you may not yet be part of the <code>IBAHCM/rpir</code> team. Make sure <span style="color: #dd1c77;">Read</span> access is selected and click on the big green button to <span style="color: #dd1c77;">Add user to this repository</span>.</p>
+<p><img src="images/g.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Likewise, the other members of your team should have given you access to their repositories. You will likely receive an email notification, but if you don’t you can either search for their repository through the <code>IBAHCM</code> organisation, or go directly to their URL. For example, if I want to find a repository called <code>louisematthews_0106</code>, I’d go to <a href="https://github.com/IBAHCM/louisematthews_0106" class="uri">https://github.com/IBAHCM/louisematthews_0106</a>. Remember to take a look at their GitHub readme, you might learn something new!</p>
+<p>Just like before, we’re going to clone this repository by clicking on the green <span style="color: #dd1c77;">Code</span> button and copying the URL associated with this repository.</p>
+<p><img src="images/j.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Then, as we did before, go back to RStudio. Go to the <span style="color: #dd1c77;">File</span> menu and create a <span style="color: #dd1c77;">New Project…</span>, with <span style="color: #dd1c77;">Version Control</span>, using <span style="color: #dd1c77;">Git</span>. The project should open automatically. You should see the name of the project in the title bar as well as the project list in the top right corner. Try generating a report from <span style="color: #dd1c77;">0106-report.R</span>.</p>
+<p><img src="images/k.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>Hopefully you should generate the report without any problems. Whether you do or not, go back to your collaborators GitHub repository and add an issue. Do this by clicking on the <span style="color: #dd1c77;">Issues</span> tab and adding a <span style="color: #dd1c77;">New Issue</span>.</p>
+<p><img src="images/l.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>In the issue you should describe whether or not you were successful, perhaps also including a nice encouraging message!</p>
+<p><img src="images/m.png" width="100%" style="display: block; margin: auto;" /></p>
+<p>If you click on the <span style="color: #dd1c77;">Issues</span> tab again, you’ll see a list of issues.</p>
+<p><img src="images/n.png" width="100%" style="display: block; margin: auto;" /></p>
+Now wait a bit for everyone to add their issues to your repository. Once they’ve finished, go see what they’ve written. If any issues need addressed, go ahead and address them. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)

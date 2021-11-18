@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 2-2: SIS model</title>
+<title>Practical 2-1: SIS model</title>
 
 <!-- HEAD_CONTENT -->
 
@@ -145,7 +145,7 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical 2-2: SIS model</h1>
+<h1 class="title toc-ignore">Practical 2-1: SIS model</h1>
 
 </div>
 
@@ -170,7 +170,7 @@ pre code {
 </div>
 <div id="section-coding" class="section level3">
 <h3>Coding</h3>
-<p>Create a new R file, using <span style="color: #dd1c77;">File &gt; New &gt; R Script</span>. You should adapt the code from Practical 1-5 (remember you now have a project with all of this code in, and it is easy to have two RStudio sessions so you can copy and refer to earlier code easily), creating 2 files – <span style="color: #dd1c77;">0202-run-SIS.R</span> and <span style="color: #dd1c77;">0202-step-SIS.R</span> – but where in 1-5 the data frame had only a <code>count</code> column, now you will need to have two – <code>susceptibles</code> and <code>infecteds</code>. You <strong>do not</strong> need to have the total population size (<code>N</code>, above) in there, because at every step it is just <code>susceptibles + infecteds</code>. In fact, with no death in this model, it is just constant. You could for instance start things up with:</p>
+<p>Create a new R file, using <span style="color: #dd1c77;">File &gt; New &gt; R Script</span>. You should adapt the code from Practical 1-5 (remember you now have a project with all of this code in, and it is easy to have two RStudio sessions so you can copy and refer to earlier code easily), creating 2 files – <span style="color: #dd1c77;">0201-run-SIS.R</span> and <span style="color: #dd1c77;">0201-step-SIS.R</span> – but where in 1-5 the data frame had only a <code>count</code> column, now you will need to have two – <code>susceptibles</code> and <code>infecteds</code>. You <strong>do not</strong> need to have the total population size (<code>N</code>, above) in there, because at every step it is just <code>susceptibles + infecteds</code>. In fact, with no death in this model, it is just constant. You could for instance start things up with:</p>
 <pre class="r"><code>num.cattle &lt;- 100
 initial.infecteds &lt;- 2
 initial.susceptibles &lt;- num.cattle - initial.infecteds</code></pre>
@@ -192,7 +192,7 @@ initial.susceptibles &lt;- num.cattle - initial.infecteds</code></pre>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
-<p>Run the code in <span style="color: #dd1c77;">0202-run-SIS.R</span>. Remember that the <code>source()</code> command means that it automatically loads in <span style="color: #dd1c77;">0202-step-SIS.R</span>, meaning that you don’t need to load these files yourself. Don’t forget to check that your function is not using any global variables. Check that you get the same results as you saw in the lecture. Adding the argument <code>col = c("green", "red")</code> to <code>plot.populations()</code> will allow you to change the colours of the (now) two populations in the plot to match those from the lecture.</p>
+<p>Run the code in <span style="color: #dd1c77;">0201-run-SIS.R</span>. Remember that the <code>source()</code> command means that it automatically loads in <span style="color: #dd1c77;">0201-step-SIS.R</span>, meaning that you don’t need to load these files yourself. Don’t forget to check that your function is not using any global variables. Check that you get the same results as you saw in the lecture. Adding the argument <code>col = c("green", "red")</code> to <code>plot.populations()</code> will allow you to change the colours of the (now) two populations in the plot to match those from the lecture.</p>
 </div>
 <div id="section-the-science" class="section level2">
 <h2>The science</h2>
