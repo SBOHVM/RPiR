@@ -39,12 +39,12 @@ navbar:
       menu:
       -  text: RPiR1-intro
          href: lectures/RPiR1-intro.html
-#      -  text: RPiR2a-R
-#         href: lectures/RPiR2a-R.html
-#      -  text: RPiR2b-modelling
-#         href: lectures/RPiR2b-modelling.html
-#      -  text: RPiR2c-development
-#         href: lectures/RPiR2c-development.html
+      -  text: RPiR2a-R
+         href: lectures/RPiR2a-R.html
+      -  text: RPiR2b-modelling
+         href: lectures/RPiR2b-modelling.html
+      -  text: RPiR2c-development
+         href: lectures/RPiR2c-development.html
 #      -  text: RPiR4a-git
 #         href: lectures/RPiR4a-git.html
 #      -  text: RPiR4b-modelling
@@ -76,12 +76,12 @@ navbar:
       menu:
       -  text: RPiR1-intro
          href: lectures_html/RPiR1-intro.html
-#      -  text: RPiR2a-R
-#         href: lectures_html/RPiR2a-R.html
-#      -  text: RPiR2b-modelling
-#         href: lectures_html/RPiR2b-modelling.html
-#      -  text: RPiR2c-development
-#         href: lectures_html/RPiR2c-development.html
+      -  text: RPiR2a-R
+         href: lectures_html/RPiR2a-R.html
+      -  text: RPiR2b-modelling
+         href: lectures_html/RPiR2b-modelling.html
+      -  text: RPiR2c-development
+         href: lectures_html/RPiR2c-development.html
 #      -  text: RPiR4a-git
 #         href: lectures_html/RPiR4a-git.html
 #      -  text: RPiR4b-modelling
@@ -107,14 +107,14 @@ navbar:
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
-#      -  text: Practical2-1
-#         href: tutorials/practical2-1/practical2-1.html
-#      -  text: Practical2-2
-#         href: tutorials/practical2-2/practical2-2.html
-#      -  text: Practical2-3
-#         href: tutorials/practical2-3/practical2-3.html
-#      -  text: Practical2-4
-#         href: tutorials/practical2-4/practical2-4.html
+      -  text: Practical2-1
+         href: tutorials/practical2-1/practical2-1.html
+      -  text: Practical2-2
+         href: tutorials/practical2-2/practical2-2.html
+      -  text: Practical2-3
+         href: tutorials/practical2-3/practical2-3.html
+      -  text: Practical2-4
+         href: tutorials/practical2-4/practical2-4.html
 #      -  text: Practical3-1
 #         href: tutorials/practical3-1/practical3-1.html
 #      -  text: Practical3-2
