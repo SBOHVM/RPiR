@@ -261,7 +261,7 @@ repository, you need to give people permission to see it. So, click on
 knitr::include_graphics('images/f.png')
 ```
 
-Find your group members (everyone in your breakout room) using their GitHub 
+Find your group members (everyone in your subgroup) using their GitHub 
 user names. If you can't find anyone, you may not yet be part of the 
 `IBAHCM/rpir` team. Make sure <span style="color: #dd1c77;">Read</span> access 
 is selected and click on the big green button to 
