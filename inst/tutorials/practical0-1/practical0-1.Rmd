@@ -106,6 +106,7 @@ correctly identified as a negative number.
 
 ```{r ifexercise, exercise = TRUE}
 x <- -1
+
 if (___) {
   print("Positive number")
 } else {
@@ -115,6 +116,7 @@ if (___) {
 
 ```{r ifexercise-solution}
 x <- -1
+
 if (x > 0) {
   print("Positive number")
 } else {
@@ -131,6 +133,7 @@ nor negative.
 
 ```{r ifexercise2, exercise = TRUE}
 x <- 0
+
 if (___) {
   print("Positive number")
 } else if (___) {
@@ -141,6 +144,7 @@ if (___) {
 
 ```{r ifexercise2-solution}
 x <- 0
+
 if (x > 0) {
   print("Positive number")
 } else if (x < 0) {
@@ -152,3 +156,58 @@ if (x > 0) {
 ```{r ifexercise2-check}
 grade_this_code()
 ```
+
+Run the following code. There are two errors, try to find them.
+
+```{r ifexercise3, exercise = TRUE}
+x <- 3
+y <- 3
+
+if (x - y) {
+  print("x is less than y")
+} else if (x + y) {
+  print("x is greater than y")
+} else 
+  print("x equals y")
+```
+
+```{r ifexercise3-solution}
+x <- 3
+y <- 3
+
+if (x < y) {
+  print("x is less than y")
+} else if (x > y) {
+  print("y is less than x")
+} else 
+  print("x equals y")
+```
+
+```{r ifexercise3-check}
+grade_this_code()
+```
+
+Now edit the following code chunk so that `This statement is true` is 
+returned.
+
+```{r ifexercise4, exercise = TRUE}
+if (___) {
+  print("This statement is true")
+} else {
+  print("This statement is false")
+}
+```
+
+```{r ifexercise4-solution}
+if (TRUE) {
+  print("This statement is true")
+} else {
+  print("This statement is false")
+}
+```
+
+```{r ifexercise4-check}
+grade_this_code()
+```
+
+
