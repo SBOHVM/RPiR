@@ -105,7 +105,7 @@ of infecteds.
 As with previous exercises, you need to check that everything works correctly --
 that the package installs, and the demos and help files work and you can
 generate reports from the demos -- and then we want you to get a couple of other
-people in your subgroup to check your code and make sure it works for them,
+people in your breakout room to check your code and make sure it works for them,
 and we want you to check other people's code too. We describe how to do this for
 packages in GitHub in Practical 3-1 (also under *Check it works*) if you're
 uncertain.

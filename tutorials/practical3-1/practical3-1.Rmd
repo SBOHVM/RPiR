@@ -485,7 +485,7 @@ To check it works:
 Hopefully you've been making regular pushes to GitHub.
 
 Now just like you did in Practical series 2, add an issue to your repository 
-and ask the people in your subgroup to check your work.
+and ask the people in your breakout room to check your work.
 
 ### 2. Check it works for other people
 

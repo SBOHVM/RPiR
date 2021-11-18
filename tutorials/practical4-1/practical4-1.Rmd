@@ -377,6 +377,6 @@ data frames if you don't load the library.
 
 ## Sharing is caring
 
-Now give your subgroup partners access to the repo, and get them to install
+Now give your breakout room partners access to the repo, and get them to install
 your package using `devtools::install_github("IBAHCM/githubusernameBCI")` (or
 cloning the package and installing it directly if need be) and check it works.
