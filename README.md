@@ -91,11 +91,10 @@ The following core practicals are included in this package:
 
 2. Practical series 2:
 
-   * `practical2-1`: Creating an RStudio project
-   * `practical2-2`: SIS model; Adapting previous code
-   * `practical2-3`: SIS model; Changing the timestep
-   * `practical2-4`: SIS model; Using while() loops
-   * `practical2-5`: SIR model; Adapting previous code
+   * `practical2-1`: SIS model; Adapting previous code
+   * `practical2-2`: SIS model; Changing the timestep
+   * `practical2-3`: SIS model; Using while() loops
+   * `practical2-4`: SIR model; Adapting previous code
 
 3. Practical series 3:
 
