@@ -18,10 +18,10 @@ then click on the red STOP button in RStudio to end the process.
 
 The following tutorials are included in this package:
 \itemize{
-\item 0-1: Introduction to if statements
-\item 0-2: Introduction to for and while loops
-\item 0-3: Introduction to functions
-\item 0-4: Naming of things
+\item 0-1 Introduction to if statements
+\item 0-2 Introduction to for and while loops
+\item 0-3 Introduction to functions
+\item 0-4 Naming of things
 \item 1-1 Exponential growth model; Writing scripts and commenting code
 \item 1-2 Exponential growth model; Writing functions
 \item 1-3 Exponential growth model; Sourcing code
