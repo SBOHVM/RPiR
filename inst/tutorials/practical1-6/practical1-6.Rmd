@@ -213,7 +213,7 @@ plot_populations(population.b, new.graph = FALSE, col = "red")
 
 For this report, we want something clear and well laid out. You can see
 an example of most of the possible formatting options in 
-<span style="color: #dd1c77;">0106-example-notebook.R</span>. Use an 
+<span style="color: #dd1c77;">example-notebook.R</span>. Use an 
 understanding of what you want to describe --
 and formatting from the example file or elsewhere -- to break up your script so 
 that your code and the results and figures are interspersed with a reasonable

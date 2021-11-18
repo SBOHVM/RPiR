@@ -107,16 +107,10 @@ The following core practicals are included in this package:
 
 As well as the following additional practicals:
 
-* `practicalA-1`: Introduction to for loops and functions
-* `practicalA-2`: Tests and more loops
-
-**NB** In Practical 1-6, we refer to the example notebook
-`0200-example-notebook.R`. This can be found on Moodle, but it is also inside
-the package at the location returned by the following command if you prefer:
-
-```{R}
-system.file("dummy_notebook/0200-example-notebook.R", package="RPiR")
-```
+   * `practical0-1`: Introduction to if statements
+   * `practical0-2`: Introduction to for and while loops
+   * `practical0-3`: Introduction to functions
+   * `practical0-4`: Naming of things
 
 [prep]: https://ibahcm.github.io/RPiR/articles/pages/preparation.html
 [docs]: https://ibahcm.github.io/RPiR

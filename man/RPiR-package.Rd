@@ -4,7 +4,7 @@
 \name{RPiR-package}
 \alias{RPiR-package}
 \alias{RPiR}
-\title{Reproducible Programming in R course -}
+\title{Reproducible Programming in R course}
 \description{
 \code{RPiR} is a learnr implementation of the Reproducible Programming
 in R course, developed by the Institute of Biodiversity, Animal Health, and
@@ -18,18 +18,20 @@ then click on the red STOP button in RStudio to end the process.
 
 The following tutorials are included in this package:
 \itemize{
-\item 0-1: Introduction to for loops and functions
+\item 0-1: Introduction to if statements
+\item 0-2: Introduction to for and while loops
+\item 0-3: Introduction to functions
+\item 0-4: Naming of things
 \item 1-1 Exponential growth model; Writing scripts and commenting code
 \item 1-2 Exponential growth model; Writing functions
 \item 1-3 Exponential growth model; Sourcing code
 \item 1-4 Exponential growth model; Generalising and structuring code
 \item 1-5 Births and deaths model; Generalising code
 \item 1-6 Births and deaths model; Writing reports in RStudio
-\item 2-1 Creating an RStudio project
-\item 2-2 SIS model; Adapting previous code
-\item 2-3 SIS model; Changing the timestep
-\item 2-4 SIS model; Using while() loops
-\item 2-5 SIR model; Adapting previous code
+\item 2-1 SIS model; Adapting previous code
+\item 2-2 SIS model; Changing the timestep
+\item 2-3 SIS model; Using while() loops
+\item 2-4 SIR model; Adapting previous code
 \item 3-1 Writing an R package
 \item 3-2 Stochastic population growth model; Using stop()
 \item 3-3 Stochastic births and deaths model; Passing functions as arguments
