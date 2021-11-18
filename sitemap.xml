@@ -64,12 +64,6 @@
     <loc>https://ibahcm.github.io/RPiR//articles/faq.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/flow.html</loc>
-  </url>
-  <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/functions.html</loc>
-  </url>
-  <url>
     <loc>https://ibahcm.github.io/RPiR//articles/pages/github.html</loc>
   </url>
   <url>
@@ -77,9 +71,6 @@
   </url>
   <url>
     <loc>https://ibahcm.github.io/RPiR//articles/pages/install_github.html</loc>
-  </url>
-  <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/loops.html</loc>
   </url>
   <url>
     <loc>https://ibahcm.github.io/RPiR//articles/pages/packages.html</loc>

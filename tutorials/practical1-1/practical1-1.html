@@ -168,8 +168,7 @@ pre code {
 <p><span class="math display">\[N(t+1) = N(t) + \lambda \times N(t)\]</span></p>
 <p>where <span class="math inline">\(N(t)\)</span> is the population size at time <span class="math inline">\(t\)</span>, and <span class="math inline">\(\lambda\)</span> is the growth rate. We want to convert this equation into R code, and run the model of exponential growth in a population, initially with a starting population size of 5, a growth rate of 0.1 per day, and to run it for 20 days.</p>
 <p>We can start by first initialising the population, <span class="math inline">\(N\)</span>, and setting the growth rate parameter (remembering that <span class="math inline">\(\lambda\)</span> is the greek letter written as <code>lambda</code> in English – since R doesn’t understand greek!). Then create a <code>for()</code> loop to repeatedly update the population (20 times in this case), and print out the final answer. If you run this code, it should give you a final population size of 33.6375.</p>
-<div class="tutorial-exercise" data-label="forloop" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>N &lt;- 5
+<pre class="r"><code>N &lt;- 5
 lambda &lt;- 0.1
 days &lt;- seq(from = 1, to = 20)
 
@@ -177,8 +176,7 @@ for (i in days) {
   N &lt;- N + lambda * N
 }
 print(N)</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"Exercise 1"}</script>
-</div>
+<pre><code>## [1] 33.6375</code></pre>
 <p>Try to edit the code above and answer the following questions (hit Start Over to reset the code block before attempting each question).</p>
 <p><div class="panel-heading tutorial-quiz-title">Quiz</div></p>
 <div class="panel panel-default">
@@ -206,8 +204,7 @@ print(N)</code></pre>
 </div>
 </div>
 <p>If we wanted to print out the population at every step rather than just at the end, we would have to put the print statement in the loop as well as updating <code>N</code>. How could we do this? Remember that <code>for()</code> <strong>will repeat all of the</strong> <strong>lines inside the curly brackets</strong> <code>{ ... }</code> <strong>that follow it in every loop</strong>. Try it and see:</p>
-<div class="tutorial-exercise" data-label="printloop" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>N &lt;- 5
+<pre class="r"><code>N &lt;- 5
 lambda &lt;- 0.1
 days &lt;- seq(from = 1, to = 20)
 
@@ -215,11 +212,56 @@ for (i in days) {
   N &lt;- N + lambda * N
 }
 print(N)</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
-</div>
+<pre><code>## [1] 33.6375</code></pre>
+<pre class="r"><code>N &lt;- 5
+lambda &lt;- 0.1
+days &lt;- seq(from = 1, to = 20)
+
+for (i in days) {
+  N &lt;- N + lambda * N
+  print(N)
+}</code></pre>
+<pre><code>## [1] 5.5
+## [1] 6.05
+## [1] 6.655
+## [1] 7.3205
+## [1] 8.05255
+## [1] 8.857805
+## [1] 9.743585
+## [1] 10.71794
+## [1] 11.78974
+## [1] 12.96871
+## [1] 14.26558
+## [1] 15.69214
+## [1] 17.26136
+## [1] 18.98749
+## [1] 20.88624
+## [1] 22.97486
+## [1] 25.27235
+## [1] 27.79959
+## [1] 30.57955
+## [1] 33.6375</code></pre>
 <div id="section-printloop-hint">
 <p><strong>Hint:</strong> Move <code>print(N)</code> into the for loop.</p>
 </div>
+<pre class="r"><code>grade_this_code()</code></pre>
+<pre><code>## function (check_env) 
+## {
+##     check_env[[&quot;.__correct&quot;]] &lt;- correct
+##     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+##     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+##         gradethis.maybe_code_feedback = TRUE), grade_this({
+##         .message &lt;- code_feedback()
+##         if (is.null(.message)) {
+##             pass(get(&quot;.__correct&quot;))
+##         }
+##         fail(get(&quot;.__incorrect&quot;))
+##     })(check_env))
+##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+##     grade
+## }
+## &lt;bytecode: 0x7fb3e4b6d7b0&gt;
+## &lt;environment: 0x7fb3e505c8d8&gt;</code></pre>
 <p>We’ve been working through these exercises with variable names that are hard to remember, and this makes the code harder to follow. Here, just go through the code below and change them for more sensible names. There are lots of options, but for this example you must change them as follows:</p>
 <ul>
 <li><code>N</code> -&gt; <code>population.count</code></li>
@@ -229,8 +271,7 @@ print(N)</code></pre>
 <li><code>i</code> -&gt; <code>day</code></li>
 </ul>
 <p>Hopefully once you’ve changed them you can see that the code is at least a bit easier to read!</p>
-<div class="tutorial-exercise" data-label="changenames" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>N &lt;- 5
+<pre class="r"><code>N &lt;- 5
 lambda &lt;- 0.1
 a &lt;- 1
 e &lt;- 20
@@ -239,16 +280,40 @@ days &lt;- seq(from = a, to = e)
 for (i in days) {
   N &lt;- N + lambda * N
 }</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 2"}</script>
-</div>
+<pre class="r"><code>population.count &lt;- 5
+growth.rate &lt;- 0.1
+first.day &lt;- 1
+last.day &lt;- 20
+days &lt;- seq(from = first.day, to = last.day)
+
+for (day in days) {
+  population.count &lt;- population.count + growth.rate * population.count
+}</code></pre>
+<pre class="r"><code>grade_this_code()</code></pre>
+<pre><code>## function (check_env) 
+## {
+##     check_env[[&quot;.__correct&quot;]] &lt;- correct
+##     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+##     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+##         gradethis.maybe_code_feedback = TRUE), grade_this({
+##         .message &lt;- code_feedback()
+##         if (is.null(.message)) {
+##             pass(get(&quot;.__correct&quot;))
+##         }
+##         fail(get(&quot;.__incorrect&quot;))
+##     })(check_env))
+##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+##     grade
+## }
+## &lt;bytecode: 0x7fb3e4b6d7b0&gt;
+## &lt;environment: 0x7fb3e16a85e8&gt;</code></pre>
 <p>We will further develop your skills in writing and using scripts (and in the next exercise we will learn how to write functions).</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
 <p>We’re now going to start again, but write out our code more clearly. In particular we’re going to name our variables well, so we know what they are, and comment the code (we call it adding documentation) so that we know what the code is doing. Our aim is to write an <strong>R program</strong> to run a difference equation model of an exponentially growing population. We’ll go through how to do this step by step.</p>
 <p>First, some initial documentation. You can put in as little or as much as you like, but we recommend something to describe the aim of the script, and then some details on exactly what is going on.</p>
-<div class="tutorial-exercise" data-label="init" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code>#&#39; ---
+<pre class="r"><code>#&#39; ---
 #&#39; title: &quot;Simple growth difference equation model&quot;
 #&#39; author: &quot;My Full Name&quot;
 #&#39; date: &#39;`r format(Sys.Date(), &quot;%B %d %Y&quot;)`&#39;
@@ -263,8 +328,6 @@ for (i in days) {
 #&#39; First we set up the parameters for the simulation
 
 # Set the growth rate</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"R Markdown header"}</script>
-</div>
 <p>The text at the top, bordered by <code>#' ---</code> is a yaml header, which generates an <strong>R markdown report</strong> header in a special format. If you were writing this script in RStudio, you could generate a report from the <span style="color: #dd1c77;">File</span> menu by selecting <span style="color: #dd1c77;">Compile Report…</span> (we’ll do this later). An html document would pop up in a viewer after a couple of seconds, and a new file should appear in the directory you were working in. The lines below the yaml header, beginning with <code>#'</code> generate text chunks in such a report.</p>
 <p>The text after a <code>#</code> symbol are normal R comments. These are ignored by R, but are there to help you and others to understand your programs. Good commenting is a difficult but important programming skill.</p>
 <p>Now we can continue entering the code. We used <code>lambda</code> when describing the model mathematically but as we said in the previous section, it is good practice to <strong>give things meaningful names</strong> in a computer program, so we are going to use the name <code>growth.rate</code> instead. We have also switched to use the correct values for human demographic growth, rather than the simple numbers we used earlier.</p>
@@ -287,12 +350,34 @@ end.time &lt;- 100</code></pre>
 <pre class="r"><code># Set up the population starting size (at the first timestep)
 population.vector &lt;- initial.count</code></pre>
 <p>At this point, you could <code>print()</code> the initial population size to check the code is working correctly. You should see that <code>population.vector</code> has a value of 7e+09.</p>
-<div class="tutorial-exercise" data-label="printvector" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 3"}</script>
-</div>
+<pre class="r"><code>growth.rate &lt;- 0.015
+initial.count &lt;- 7000000000
+start.time &lt;- 0
+end.time &lt;- 100
+population.vector &lt;- initial.count</code></pre>
+<pre class="r"><code>print(population.vector)</code></pre>
+<pre><code>## [1] 7e+09</code></pre>
 <div id="section-printvector-hint">
 <p><strong>Hint:</strong> Use<code>print()</code> to print the contents of an object to the console.</p>
 </div>
+<pre class="r"><code>grade_this_code()</code></pre>
+<pre><code>## function (check_env) 
+## {
+##     check_env[[&quot;.__correct&quot;]] &lt;- correct
+##     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+##     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+##         gradethis.maybe_code_feedback = TRUE), grade_this({
+##         .message &lt;- code_feedback()
+##         if (is.null(.message)) {
+##             pass(get(&quot;.__correct&quot;))
+##         }
+##         fail(get(&quot;.__incorrect&quot;))
+##     })(check_env))
+##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+##     grade
+## }
+## &lt;bytecode: 0x7fb3e4b6d7b0&gt;
+## &lt;environment: 0x7fb3e240b0b8&gt;</code></pre>
 <p>Now we should specify the sequence of timesteps. Note that there are 10 days if you go from day 0 to day 10, so the first timestep is time 1, not 0:</p>
 <pre class="r"><code># The timesteps that the simulation will run through
 timesteps &lt;- seq(from = start.time + 1, to = end.time)</code></pre>
@@ -310,8 +395,13 @@ for (new.time in timesteps) {
 }</code></pre>
 <p>The variable <code>new.time</code> will count the timesteps from <code>start.time + 1</code> to the <code>end.time</code>. Inside the loop (the bit inside the curly brackets – remembering that curly brackets allow you to repeat multiple lines of commands in a <code>for()</code> loop instead of the just one). The first step on each run through the loop is to extract the <code>current.population</code> size from our <code>population.vector</code> using the <code>tail()</code> command. By default <code>tail(population)</code> would give the last 6 values in the vector, but by specifying a value of 1, we are asking it to return only the last value in the vector. The command <code>head()</code> does the same thing with the first values of a vector. Then we calculate the births, in <code>new.additions</code>. Then we add the births to the existing population to create the population at the next timestep, in <code>next.population</code>. Finally, we update the vector of population values by adding the latest value onto the end of the vector, using the <code>c()</code> command. We then return to the start of the loop until we have completed the timesteps.</p>
 <p>To check what is happening in the loop you could print the timestep, the current population, and the number of new births. If you want to get really fancy try combining these outputs with <code>paste()</code> or <code>paste0()</code>.</p>
-<div class="tutorial-exercise" data-label="population" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code># Now we loop through the time itself (starting at the second timestep)
+<pre class="r"><code>growth.rate &lt;- 0.015
+initial.count &lt;- 7000000000
+start.time &lt;- 0
+end.time &lt;- 100
+population.vector &lt;- initial.count
+timesteps &lt;- seq(from = start.time + 1, to = end.time)</code></pre>
+<pre class="r"><code># Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
   # First extract the current population size
   current.population &lt;- tail(population.vector, 1)
@@ -322,8 +412,6 @@ for (new.time in timesteps) {
   # Add new element onto end of population vector
   population.vector &lt;- c(population.vector, next.population)
 }</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"Exercise 4"}</script>
-</div>
 <div id="section-population-hint">
 <p><strong>Hint:</strong> Use <code>print(new.time)</code> inside the for loop to print the timestep, <code>print(current.population)</code> to print the current population, and <code>print(new.additions)</code> to print the number of new births.</p>
 </div>
@@ -352,8 +440,7 @@ plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></
 <blockquote>
 <p>When running code in R we have the option of selecting the whole program or running selected parts. Doing the latter will help you understand what the program is doing and find errors. When debugging code, adding print statements or comment out lines might also help identify problems. Remember this the next time you get an error.</p>
 </blockquote>
-<div class="tutorial-exercise" data-label="plot" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="42">
-<pre class="text"><code>#&#39; Set up the simulation parameters
+<pre class="r"><code>#&#39; Set up the simulation parameters
 #&#39; --------------------------------
 #&#39; First we set up the parameters for the simulation.
 
@@ -395,34 +482,121 @@ for (new.time in timesteps) {
 
 # Now we can plot the timesteps against the population vector
 plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"0101-growth-loop.R"}</script>
-</div>
+<p><img src="practical1-1_files/figure-html/plot-1.png" width="672" /></p>
 <p>The program generates a vector, <code>population.vector</code>, which you can treat as you would any other piece of data in R. Try the following:</p>
-<div class="tutorial-exercise" data-label="summary" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code># Output a summary of population.vector</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 5"}</script>
-</div>
+<pre class="r"><code># Output a summary of population.vector</code></pre>
+<pre class="r"><code># Print a summary of population.vector
+summary(population.vector)</code></pre>
+<pre><code>##      Min.   1st Qu.    Median      Mean   3rd Qu.      Max. 
+## 7.000e+09 1.016e+10 1.474e+10 1.616e+10 2.138e+10 3.102e+10</code></pre>
 <div id="section-summary-hint">
 <p><strong>Hint:</strong> Read <code>?summary</code></p>
 </div>
-<div class="tutorial-exercise" data-label="head" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code># Output the first 6 elements of population.vector</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 6"}</script>
-</div>
+<pre class="r"><code>grade_this_code()</code></pre>
+<pre><code>## function (check_env) 
+## {
+##     check_env[[&quot;.__correct&quot;]] &lt;- correct
+##     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+##     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+##         gradethis.maybe_code_feedback = TRUE), grade_this({
+##         .message &lt;- code_feedback()
+##         if (is.null(.message)) {
+##             pass(get(&quot;.__correct&quot;))
+##         }
+##         fail(get(&quot;.__incorrect&quot;))
+##     })(check_env))
+##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+##     grade
+## }
+## &lt;bytecode: 0x7fb3e4b6d7b0&gt;
+## &lt;environment: 0x7fb3e2de37a8&gt;</code></pre>
+<pre class="r"><code># Output the first 6 elements of population.vector</code></pre>
 <div id="section-head-hint">
 <p><strong>Hint:</strong> Read <code>?head</code>.</p>
 </div>
-<div class="tutorial-exercise" data-label="head2" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code># Output the first 10 elements of population.vector</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 7"}</script>
-</div>
-<div class="tutorial-exercise" data-label="tail" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
-<pre class="text"><code># Print the last element of population.vector</code></pre>
-<script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 8"}</script>
-</div>
+<pre class="r"><code>grade_result(pass_if(~identical(.result, head(population.vector))))</code></pre>
+<pre><code>## function (check_env) 
+## {
+##     last_value &lt;- check_env$.last_value
+##     env &lt;- learnr_env(envir_prep = check_env$.envir_prep, envir_result = check_env$.envir_result)
+##     final_grade &lt;- legacy_graded(correct = default_correct, message = default_message)
+##     found_grade &lt;- FALSE
+##     for (cond in conditions) {
+##         grade &lt;- evaluate_condition(cond, last_value = last_value, 
+##             env = env)
+##         if (length(grade)) {
+##             final_grade &lt;- grade
+##             found_grade &lt;- TRUE
+##             break
+##         }
+##     }
+##     glue_correct &lt;- glue_correct %||% gradethis_legacy_options$gradethis.glue_correct
+##     glue_incorrect &lt;- glue_incorrect %||% gradethis_legacy_options$gradethis.glue_incorrect
+##     legacy_graded(correct = final_grade$correct, message = glue_message(if (final_grade$correct) 
+##         glue_correct
+##     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
+##         .message = final_grade$message, .message_pipe_warning = NULL, 
+##         .correct = correct, .incorrect = incorrect))
+## }
+## &lt;bytecode: 0x7fb3e2be6a70&gt;
+## &lt;environment: 0x7fb3e23b57c8&gt;</code></pre>
+<pre class="r"><code># Output the first 10 elements of population.vector</code></pre>
+<pre class="r"><code>grade_result(pass_if(~identical(.result, head(population.vector, 10))))</code></pre>
+<pre><code>## function (check_env) 
+## {
+##     last_value &lt;- check_env$.last_value
+##     env &lt;- learnr_env(envir_prep = check_env$.envir_prep, envir_result = check_env$.envir_result)
+##     final_grade &lt;- legacy_graded(correct = default_correct, message = default_message)
+##     found_grade &lt;- FALSE
+##     for (cond in conditions) {
+##         grade &lt;- evaluate_condition(cond, last_value = last_value, 
+##             env = env)
+##         if (length(grade)) {
+##             final_grade &lt;- grade
+##             found_grade &lt;- TRUE
+##             break
+##         }
+##     }
+##     glue_correct &lt;- glue_correct %||% gradethis_legacy_options$gradethis.glue_correct
+##     glue_incorrect &lt;- glue_incorrect %||% gradethis_legacy_options$gradethis.glue_incorrect
+##     legacy_graded(correct = final_grade$correct, message = glue_message(if (final_grade$correct) 
+##         glue_correct
+##     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
+##         .message = final_grade$message, .message_pipe_warning = NULL, 
+##         .correct = correct, .incorrect = incorrect))
+## }
+## &lt;bytecode: 0x7fb3e2be6a70&gt;
+## &lt;environment: 0x7fb3e4850668&gt;</code></pre>
+<pre class="r"><code># Print the last element of population.vector</code></pre>
 <div id="section-tail-hint">
 <p><strong>Hint:</strong> Read <code>?tail</code>.</p>
 </div>
+<pre class="r"><code>grade_result(pass_if(~identical(.result, tail(population.vector, 1))))</code></pre>
+<pre><code>## function (check_env) 
+## {
+##     last_value &lt;- check_env$.last_value
+##     env &lt;- learnr_env(envir_prep = check_env$.envir_prep, envir_result = check_env$.envir_result)
+##     final_grade &lt;- legacy_graded(correct = default_correct, message = default_message)
+##     found_grade &lt;- FALSE
+##     for (cond in conditions) {
+##         grade &lt;- evaluate_condition(cond, last_value = last_value, 
+##             env = env)
+##         if (length(grade)) {
+##             final_grade &lt;- grade
+##             found_grade &lt;- TRUE
+##             break
+##         }
+##     }
+##     glue_correct &lt;- glue_correct %||% gradethis_legacy_options$gradethis.glue_correct
+##     glue_incorrect &lt;- glue_incorrect %||% gradethis_legacy_options$gradethis.glue_incorrect
+##     legacy_graded(correct = final_grade$correct, message = glue_message(if (final_grade$correct) 
+##         glue_correct
+##     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
+##         .message = final_grade$message, .message_pipe_warning = NULL, 
+##         .correct = correct, .incorrect = incorrect))
+## }
+## &lt;bytecode: 0x7fb3e2be6a70&gt;
+## &lt;environment: 0x7fb3e44e0638&gt;</code></pre>
 <p>Run the code for different initial conditions and different growth rates. Test the code using the value of the human population growth rate we used in the lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that you agree with the doubling time we calculated theoretically of ~46 years.</p>
 <p>Finally, create a new project in RStudio - you can do this by selecting <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">New Project…</span>, and then choose <span style="color: #dd1c77;">New Directory</span> &gt; <span style="color: #dd1c77;">New Project</span> and then a name and a location on your computer to save it in, and tick <span style="color: #dd1c77;">Open in new session</span> because your current session is used up by this practical. From now on all of the coding you do will happen in this (or another) new RStudio session. Keep the current one just for running the practicals.</p>
 <p>In the new session, create a new R file, and copy the code in the <span style="color: #dd1c77;">R Markdown header</span> and <span style="color: #dd1c77;">0101-growth-loop.R</span> code sections into it (ignoring duplicates), save it, and generate a report from it. You can do this by clicking on <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">Compile Report…</span>) or you can click on the little notebook icon:</p>
@@ -453,48 +627,6 @@ learnr:::i18n_observe_tutorial_language(input, session)
 session$onSessionEnded(function() {
         learnr:::event_trigger(session, "session_stop")
       })
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-forloop-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-forloop-code-editor`)), session)
-output$`tutorial-exercise-forloop-output` <- renderUI({
-  `tutorial-exercise-forloop-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "forloop", code = "N <- 5\nlambda <- 0.1\ndays <- seq(from = 1, to = 20)\n\nfor (i in days) {\n  N <- N + lambda * N\n}\nprint(N)", 
-        opts = list(label = "\"forloop\"", exercise.cap = "\"Exercise 1\"", 
-            exercise = "TRUE"), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = NULL, solution = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "practical1-1_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "forloop", exercise.cap = "Exercise 1", exercise = TRUE, 
-        code = c("N <- 5", "lambda <- 0.1", "days <- seq(from = 1, to = 20)", 
-        "", "for (i in days) {", "  N <- N + lambda * N", "}", 
-        "print(N)"), out.width.px = 672, out.height.px = 480, 
-        params.src = "forloop, exercise.cap = \"Exercise 1\", exercise=TRUE", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
@@ -576,235 +708,6 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-printloop-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-printloop-code-editor`)), session)
-output$`tutorial-exercise-printloop-output` <- renderUI({
-  `tutorial-exercise-printloop-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "printloop", code = "N <- 5\nlambda <- 0.1\ndays <- seq(from = 1, to = 20)\n\nfor (i in days) {\n  N <- N + lambda * N\n}\nprint(N)", 
-        opts = list(label = "\"printloop\"", exercise = "TRUE"), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = structure("grade_this_code()", chunk_opts = list(
-        label = "printloop-check")), solution = structure(c("N <- 5", 
-    "lambda <- 0.1", "days <- seq(from = 1, to = 20)", "", "for (i in days) {", 
-    "  N <- N + lambda * N", "  print(N)", "}"), chunk_opts = list(
-        label = "printloop-solution")), options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "practical1-1_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "printloop", exercise = TRUE, code = c("N <- 5", 
-        "lambda <- 0.1", "days <- seq(from = 1, to = 20)", "", 
-        "for (i in days) {", "  N <- N + lambda * N", "}", "print(N)"
-        ), out.width.px = 672, out.height.px = 480, params.src = "printloop, exercise = TRUE", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-changenames-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-changenames-code-editor`)), session)
-output$`tutorial-exercise-changenames-output` <- renderUI({
-  `tutorial-exercise-changenames-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "changenames", code = "N <- 5\nlambda <- 0.1\na <- 1\ne <- 20\ndays <- seq(from = a, to = e)\n\nfor (i in days) {\n  N <- N + lambda * N\n}", 
-        opts = list(label = "\"changenames\"", exercise.cap = "\"Exercise 2\"", 
-            exercise = "TRUE"), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = structure("grade_this_code()", chunk_opts = list(
-        label = "changenames-check")), solution = structure(c("population.count <- 5", 
-    "growth.rate <- 0.1", "first.day <- 1", "last.day <- 20", 
-    "days <- seq(from = first.day, to = last.day)", "", "for (day in days) {", 
-    "  population.count <- population.count + growth.rate * population.count", 
-    "}"), chunk_opts = list(label = "changenames-solution")), 
-    options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "practical1-1_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "changenames", exercise.cap = "Exercise 2", exercise = TRUE, 
-        code = c("N <- 5", "lambda <- 0.1", "a <- 1", "e <- 20", 
-        "days <- seq(from = a, to = e)", "", "for (i in days) {", 
-        "  N <- N + lambda * N", "}"), out.width.px = 672, out.height.px = 480, 
-        params.src = "changenames, exercise.cap = \"Exercise 2\", exercise = TRUE", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-init-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-init-code-editor`)), session)
-output$`tutorial-exercise-init-output` <- renderUI({
-  `tutorial-exercise-init-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "init", code = "#' ---\n#' title: \"Simple growth difference equation model\"\n#' author: \"My Full Name\"\n#' date: '`r format(Sys.Date(), \"%B %d %Y\")`'\n#' output: html_document\n#' ---\n\n#' File: 0101-growth-loop.r\n#' ========================\n#' \n#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation\n\n# Set the growth rate", 
-        opts = list(label = "\"init\"", exercise = "TRUE", exercise.cap = "\"R Markdown header\""), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = NULL, solution = NULL, options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "practical1-1_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "init", exercise = TRUE, exercise.cap = "R Markdown header", 
-        code = c("#' ---", "#' title: \"Simple growth difference equation model\"", 
-        "#' author: \"My Full Name\"", "#' date: '`r format(Sys.Date(), \"%B %d %Y\")`'", 
-        "#' output: html_document", "#' ---", "", "#' File: 0101-growth-loop.r", 
-        "#' ========================", "#' ", "#' Set up the simulation parameters", 
-        "#' --------------------------------", "#' First we set up the parameters for the simulation", 
-        "", "# Set the growth rate"), out.width.px = 672, out.height.px = 480, 
-        params.src = "init, exercise = TRUE, exercise.cap = \"R Markdown header\"", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-printvector-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-printvector-code-editor`)), session)
-output$`tutorial-exercise-printvector-output` <- renderUI({
-  `tutorial-exercise-printvector-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = "growth.rate <- 0.015\ninitial.count <- 7000000000\nstart.time <- 0\nend.time <- 100\npopulation.vector <- initial.count", 
-    chunks = list(list(label = "printvector-setup", code = "growth.rate <- 0.015\ninitial.count <- 7000000000\nstart.time <- 0\nend.time <- 100\npopulation.vector <- initial.count", 
-        opts = list(label = "\"printvector-setup\""), engine = "r"), 
-        list(label = "printvector", code = "", opts = list(label = "\"printvector\"", 
-            exercise.cap = "\"Exercise 3\"", exercise = "TRUE"), 
-            engine = "r")), code_check = NULL, error_check = NULL, 
-    check = structure("grade_this_code()", chunk_opts = list(
-        label = "printvector-check")), solution = structure("print(population.vector)", chunk_opts = list(
-        label = "printvector-solution")), options = list(eval = FALSE, 
-        echo = TRUE, results = "markup", tidy = FALSE, tidy.opts = NULL, 
-        collapse = FALSE, prompt = FALSE, comment = NA, highlight = FALSE, 
-        size = "normalsize", background = "#F7F7F7", strip.white = TRUE, 
-        cache = 0, cache.path = "practical1-1_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "printvector", exercise.cap = "Exercise 3", exercise = TRUE, 
-        code = "", out.width.px = 672, out.height.px = 480, params.src = "printvector, exercise.cap = \"Exercise 3\", exercise = TRUE", 
-        fig.num = 0L, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-population-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-population-code-editor`)), session)
-output$`tutorial-exercise-population-output` <- renderUI({
-  `tutorial-exercise-population-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = "growth.rate <- 0.015\ninitial.count <- 7000000000\nstart.time <- 0\nend.time <- 100\npopulation.vector <- initial.count\ntimesteps <- seq(from = start.time + 1, to = end.time)", 
-    chunks = list(list(label = "population-setup", code = "growth.rate <- 0.015\ninitial.count <- 7000000000\nstart.time <- 0\nend.time <- 100\npopulation.vector <- initial.count\ntimesteps <- seq(from = start.time + 1, to = end.time)", 
-        opts = list(label = "\"population-setup\""), engine = "r"), 
-        list(label = "population", code = "# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}", 
-            opts = list(label = "\"population\"", exercise.cap = "\"Exercise 4\"", 
-                exercise = "TRUE"), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = NULL, solution = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "practical1-1_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "population", exercise.cap = "Exercise 4", exercise = TRUE, 
-        code = c("# Now we loop through the time itself (starting at the second timestep)", 
-        "for (new.time in timesteps) {", "  # First extract the current population size", 
-        "  current.population <- tail(population.vector, 1)", 
-        "  # Calculate changes to population (births)", "  new.additions <- growth.rate * current.population", 
-        "  # Calculate population at next timestep", "  next.population <- current.population + new.additions", 
-        "  # Add new element onto end of population vector", 
-        "  population.vector <- c(population.vector, next.population)", 
-        "}"), out.width.px = 672, out.height.px = 480, params.src = "population, exercise.cap = \"Exercise 4\", exercise = TRUE", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "newbirths-1", 
     question = structure("4a. How many new births are there in time step 3?", html = TRUE, class = c("html", 
     "character")), answers = list(structure(list(id = "lnr_ans_e65aede", 
@@ -859,250 +762,9 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     seed = 1408117480.84429, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-plot-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-plot-code-editor`)), session)
-output$`tutorial-exercise-plot-output` <- renderUI({
-  `tutorial-exercise-plot-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = NULL, chunks = list(
-    list(label = "plot", code = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-        opts = list(label = "\"plot\"", exercise = "TRUE", exercise.cap = "\"0101-growth-loop.R\"", 
-            exercise.lines = "42"), engine = "r")), code_check = NULL, 
-    error_check = NULL, check = NULL, solution = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "practical1-1_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "plot", exercise = TRUE, exercise.cap = "0101-growth-loop.R", 
-        exercise.lines = 42, code = c("#' Set up the simulation parameters", 
-        "#' --------------------------------", "#' First we set up the parameters for the simulation.", 
-        "", "# Set the growth rate", "growth.rate <- 0.015", 
-        "", "# Starting population size", "initial.count <- 7000000000", 
-        "", "# And setting times", "start.time <- 0", "end.time <- 100", 
-        "", "#' Run the simplest possible simulation", "#' ------------------------------------", 
-        "#' Then run it so that we can get the output we need", 
-        "", "# Set up the population starting size (at the first timestep)", 
-        "population.vector <- initial.count", "", "# The timesteps that the simulation will run through", 
-        "timesteps <- seq(from = start.time + 1, to = end.time)", 
-        "", "# Now we loop through the time itself (starting at the second timestep)", 
-        "for (new.time in timesteps) {", "  # First extract the current population size", 
-        "  current.population <- tail(population.vector, 1)", 
-        "  # Calculate changes to population (births)", "  new.additions <- growth.rate * current.population", 
-        "  # Calculate population at next timestep", "  next.population <- current.population + new.additions", 
-        "  # Add new element onto end of population vector", 
-        "  population.vector <- c(population.vector, next.population)", 
-        "}", "", "#' Plot the results", "#' ----------------", 
-        "#' And finally we output the results.", "", "# Now we can plot the timesteps against the population vector", 
-        "plot(c(start.time, timesteps), population.vector, type = \"l\")"
-        ), out.width.px = 672, out.height.px = 480, params.src = "plot, exercise = TRUE, exercise.cap = \"0101-growth-loop.R\", exercise.lines = 42", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-summary-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-summary-code-editor`)), session)
-output$`tutorial-exercise-summary-output` <- renderUI({
-  `tutorial-exercise-summary-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-    chunks = list(list(label = "plot", code = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-        opts = list(label = "\"plot\"", exercise = "TRUE", exercise.cap = "\"0101-growth-loop.R\"", 
-            exercise.lines = "42"), engine = "r"), list(label = "summary", 
-        code = "# Output a summary of population.vector\n", opts = list(
-            label = "\"summary\"", exercise.cap = "\"Exercise 5\"", 
-            exercise = "TRUE", exercise.setup = "\"plot\""), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = structure("grade_this_code()", chunk_opts = list(
-        label = "summary-check")), solution = structure(c("# Print a summary of population.vector", 
-    "summary(population.vector)"), chunk_opts = list(label = "summary-solution")), 
-    options = list(eval = FALSE, echo = TRUE, results = "markup", 
-        tidy = FALSE, tidy.opts = NULL, collapse = FALSE, prompt = FALSE, 
-        comment = NA, highlight = FALSE, size = "normalsize", 
-        background = "#F7F7F7", strip.white = TRUE, cache = 0, 
-        cache.path = "practical1-1_cache/html/", cache.vars = NULL, 
-        cache.lazy = TRUE, dependson = NULL, autodep = FALSE, 
-        cache.rebuild = FALSE, fig.keep = "high", fig.show = "asis", 
-        fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "summary", exercise.cap = "Exercise 5", exercise = TRUE, 
-        exercise.setup = "plot", code = c("# Output a summary of population.vector", 
-        ""), out.width.px = 672, out.height.px = 480, params.src = "summary, exercise.cap = \"Exercise 5\", exercise = TRUE, exercise.setup = \"plot\"", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-head-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-head-code-editor`)), session)
-output$`tutorial-exercise-head-output` <- renderUI({
-  `tutorial-exercise-head-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-    chunks = list(list(label = "plot", code = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-        opts = list(label = "\"plot\"", exercise = "TRUE", exercise.cap = "\"0101-growth-loop.R\"", 
-            exercise.lines = "42"), engine = "r"), list(label = "head", 
-        code = "# Output the first 6 elements of population.vector\n", 
-        opts = list(label = "\"head\"", exercise.cap = "\"Exercise 6\"", 
-            exercise = "TRUE", exercise.setup = "\"plot\""), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = structure("grade_result(pass_if(~identical(.result, head(population.vector))))", chunk_opts = list(
-        label = "head-check")), solution = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "practical1-1_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "head", exercise.cap = "Exercise 6", exercise = TRUE, 
-        exercise.setup = "plot", code = c("# Output the first 6 elements of population.vector", 
-        ""), out.width.px = 672, out.height.px = 480, params.src = "head, exercise.cap = \"Exercise 6\", exercise = TRUE, exercise.setup = \"plot\"", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-head2-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-head2-code-editor`)), session)
-output$`tutorial-exercise-head2-output` <- renderUI({
-  `tutorial-exercise-head2-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-    chunks = list(list(label = "plot", code = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-        opts = list(label = "\"plot\"", exercise = "TRUE", exercise.cap = "\"0101-growth-loop.R\"", 
-            exercise.lines = "42"), engine = "r"), list(label = "head2", 
-        code = "# Output the first 10 elements of population.vector\n", 
-        opts = list(label = "\"head2\"", exercise.cap = "\"Exercise 7\"", 
-            exercise = "TRUE", exercise.setup = "\"plot\""), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = structure("grade_result(pass_if(~identical(.result, head(population.vector, 10))))", chunk_opts = list(
-        label = "head2-check")), solution = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "practical1-1_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "head2", exercise.cap = "Exercise 7", exercise = TRUE, 
-        exercise.setup = "plot", code = c("# Output the first 10 elements of population.vector", 
-        ""), out.width.px = 672, out.height.px = 480, params.src = "head2, exercise.cap = \"Exercise 7\", exercise = TRUE, exercise.setup = \"plot\"", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-`tutorial-exercise-tail-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-tail-code-editor`)), session)
-output$`tutorial-exercise-tail-output` <- renderUI({
-  `tutorial-exercise-tail-result`()
-})
-</script>
- 
-<script type="application/shiny-prerendered" data-context="server">
-learnr:::store_exercise_cache(structure(list(global_setup = structure(c("library(learnr)", 
-"tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
-"", "knitr::opts_chunk$set(error = TRUE)", "set.seed(123)"), chunk_opts = list(
-    label = "setup", include = FALSE)), setup = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-    chunks = list(list(label = "plot", code = "#' Set up the simulation parameters\n#' --------------------------------\n#' First we set up the parameters for the simulation.\n\n# Set the growth rate\ngrowth.rate <- 0.015\n\n# Starting population size\ninitial.count <- 7000000000\n\n# And setting times\nstart.time <- 0\nend.time <- 100\n\n#' Run the simplest possible simulation\n#' ------------------------------------\n#' Then run it so that we can get the output we need\n\n# Set up the population starting size (at the first timestep)\npopulation.vector <- initial.count\n\n# The timesteps that the simulation will run through\ntimesteps <- seq(from = start.time + 1, to = end.time)\n\n# Now we loop through the time itself (starting at the second timestep)\nfor (new.time in timesteps) {\n  # First extract the current population size\n  current.population <- tail(population.vector, 1)\n  # Calculate changes to population (births)\n  new.additions <- growth.rate * current.population\n  # Calculate population at next timestep\n  next.population <- current.population + new.additions\n  # Add new element onto end of population vector\n  population.vector <- c(population.vector, next.population)\n}\n\n#' Plot the results\n#' ----------------\n#' And finally we output the results.\n\n# Now we can plot the timesteps against the population vector\nplot(c(start.time, timesteps), population.vector, type = \"l\")", 
-        opts = list(label = "\"plot\"", exercise = "TRUE", exercise.cap = "\"0101-growth-loop.R\"", 
-            exercise.lines = "42"), engine = "r"), list(label = "tail", 
-        code = "# Print the last element of population.vector\n", 
-        opts = list(label = "\"tail\"", exercise.cap = "\"Exercise 8\"", 
-            exercise = "TRUE", exercise.setup = "\"plot\""), 
-        engine = "r")), code_check = NULL, error_check = NULL, 
-    check = structure("grade_result(pass_if(~identical(.result, tail(population.vector, 1))))", chunk_opts = list(
-        label = "tail-check")), solution = NULL, options = list(
-        eval = FALSE, echo = TRUE, results = "markup", tidy = FALSE, 
-        tidy.opts = NULL, collapse = FALSE, prompt = FALSE, comment = NA, 
-        highlight = FALSE, size = "normalsize", background = "#F7F7F7", 
-        strip.white = TRUE, cache = 0, cache.path = "practical1-1_cache/html/", 
-        cache.vars = NULL, cache.lazy = TRUE, dependson = NULL, 
-        autodep = FALSE, cache.rebuild = FALSE, fig.keep = "high", 
-        fig.show = "asis", fig.align = "default", fig.path = "practical1-1_files/figure-html/", 
-        dev = "png", dev.args = NULL, dpi = 192, fig.ext = "png", 
-        fig.width = 7, fig.height = 5, fig.env = "figure", fig.cap = NULL, 
-        fig.scap = NULL, fig.lp = "fig:", fig.subcap = NULL, 
-        fig.pos = "", out.width = 672, out.height = NULL, out.extra = NULL, 
-        fig.retina = 2, external = TRUE, sanitize = FALSE, interval = 1, 
-        aniopts = "controls,loop", warning = TRUE, error = TRUE, 
-        message = TRUE, render = NULL, ref.label = NULL, child = NULL, 
-        engine = "r", split = FALSE, include = TRUE, purl = TRUE, 
-        exercise.reveal_solution = FALSE, exercise.timelimit = 60, 
-        exercise.checker = "function (label = NULL, solution_code = NULL, user_code = NULL, \n    check_code = NULL, envir_result = NULL, evaluate_result = NULL, \n    envir_prep = NULL, last_value = NULL, stage = NULL, ...) \n{\n    (utils::getFromNamespace(\"check_exercise\", \"gradethis\"))(label = label, \n        solution_code = solution_code, user_code = user_code, \n        check_code = check_code, envir_result = envir_result, \n        evaluate_result = evaluate_result, envir_prep = envir_prep, \n        last_value = last_value, stage = stage, ...)\n}", 
-        exercise.error.check.code = "gradethis_error_checker()", 
-        label = "tail", exercise.cap = "Exercise 8", exercise = TRUE, 
-        exercise.setup = "plot", code = c("# Print the last element of population.vector", 
-        ""), out.width.px = 672, out.height.px = 480, params.src = "tail, exercise.cap = \"Exercise 8\", exercise = TRUE, exercise.setup = \"plot\"", 
-        fig.num = 0, exercise.df_print = "default"), engine = "r"), class = "tutorial_exercise"))
-</script>
  <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["5.1.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/fontawesome"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["css/all.css","css/v4-shims.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootbox"]},{"type":"character","attributes":{},"value":["4.4.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/bootbox"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["bootbox.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["idb-keyvalue"]},{"type":"character","attributes":{},"value":["3.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/idb-keyval"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["idb-keyval-iife-compat.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.10.1.9017"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-autocompletion"]},{"type":"character","attributes":{},"value":["0.10.1.9017"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-autocompletion.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-diagnostics"]},{"type":"character","attributes":{},"value":["0.10.1.9017"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-diagnostics.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.2.6"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["1.5.15"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["5.1.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/fontawesome"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["css/all.css","css/v4-shims.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.11"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootbox"]},{"type":"character","attributes":{},"value":["4.4.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/bootbox"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["bootbox.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["idb-keyvalue"]},{"type":"character","attributes":{},"value":["3.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/idb-keyval"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["idb-keyval-iife-compat.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.10.1.9017"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-autocompletion"]},{"type":"character","attributes":{},"value":["0.10.1.9017"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-autocompletion.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial-diagnostics"]},{"type":"character","attributes":{},"value":["0.10.1.9017"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial-diagnostics.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.10.1.9017"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->
