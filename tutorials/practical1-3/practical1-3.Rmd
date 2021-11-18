@@ -84,7 +84,7 @@ and the main script (<span style="color: #dd1c77;">0103-run-simple-growth.R</spa
 should look 
 something like this:
 
-> Note that `learnr` doesn't create files, so `source` doesn't work here. To 
+> Note that {learnr} doesn't create files, so `source` doesn't work here. To 
 avoid an error, we commented out line 2, and instead preloaded
 <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> into the
 following code block)

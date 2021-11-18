@@ -160,7 +160,7 @@ are ignored) that defines what the function does. Because nearly all functions
 need multiple lines to define what they do, we nearly always use `{ ... }` 
 syntax (as with `for()`) to allow us to write multiple commands all as part of 
 the function definition. Remember that **whatever appears last in the function** 
-**definition will be returned to the script that calls it**, in this case 
+**definition will be returned to script that calls it**, in this case 
 `next.population`. 
 
 To make sure that the function is only using the information given to it in its 

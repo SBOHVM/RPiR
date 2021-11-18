@@ -60,7 +60,7 @@ To access course materials, you have two options:
 
 First you'll need to create a repository in the IBAHCM organisation on GitHub.
 You'll find instructions on how to do this
-[here](https://ibahcm.github.io/RPiR/articles/pages/use_github.html). Note that
+[here](https://ibahcm.github.io/RPiR/articles/pages/github.html). Note that
 you'll need to do this throughout this course, which is why we've kept these 
 instructions separate.
 
@@ -161,14 +161,6 @@ if (length(globals) != 0) {
 }
 ```
 
-This checks whether `length(globals)` is non-zero, which is to say whether the
-`variables` element of what is returned by
-`findGlobals(step_simple_growth, merge = FALSE)` is not of length zero, *i.e.* 
-whether there are any global variables in the function `step_simple_growth`. 
-If there are, then the contents of the curly brackets are run, `stop(...)` 
-is called, and the code stops running. In fact, `step_simple_growth` has no 
-global variables, so the code block is not run.
-
 ## Tasks
 
 In this practical, we are going to demonstrate why it's worth dividing up the
@@ -198,7 +190,7 @@ functions to our global environment. To illustrate this, open the
 your workspace is empty. Now run line 12 in 
 <span style="color: #dd1c77;">0106-report.R</span>:
 
-``````{r, eval = FALSE}
+```{r, eval = FALSE}
 source("0104-step-growth.R")
 ```
 
@@ -221,7 +213,7 @@ plot_populations(population.b, new.graph = FALSE, col = "red")
 
 For this report, we want something clear and well laid out. You can see
 an example of most of the possible formatting options in 
-<span style="color: #dd1c77;">0106-example-notebook.R</span>. Use an 
+<span style="color: #dd1c77;">example-notebook.R</span>. Use an 
 understanding of what you want to describe --
 and formatting from the example file or elsewhere -- to break up your script so 
 that your code and the results and figures are interspersed with a reasonable
@@ -269,7 +261,7 @@ repository, you need to give people permission to see it. So, click on
 knitr::include_graphics('images/f.png')
 ```
 
-Find your group members (everyone in your breakout room) using their GitHub 
+Find your group members (everyone in your subgroup) using their GitHub 
 user names. If you can't find anyone, you may not yet be part of the 
 `IBAHCM/rpir` team. Make sure <span style="color: #dd1c77;">Read</span> access 
 is selected and click on the big green button to 
@@ -283,7 +275,7 @@ Likewise, the other members of your team should have given you access to their
 repositories. You will likely receive an email notification, but if you don't
 you can either search for their repository through the `IBAHCM` organisation, 
 or go directly to their URL. For example, if I want to find a repository called 
-`louisematthews_0201`, I'd go to https://github.com/IBAHCM/louisematthews_0201. 
+`louisematthews_0106`, I'd go to https://github.com/IBAHCM/louisematthews_0106. 
 Remember to take a look at their GitHub readme, you might learn something new!
 
 Just like before, we're going to clone this repository by clicking on the green
