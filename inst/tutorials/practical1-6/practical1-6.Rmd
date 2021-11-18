@@ -60,7 +60,7 @@ To access course materials, you have two options:
 
 First you'll need to create a repository in the IBAHCM organisation on GitHub.
 You'll find instructions on how to do this
-[here](https://ibahcm.github.io/RPiR/articles/pages/use_github.html). Note that
+[here](https://ibahcm.github.io/RPiR/articles/pages/github.html). Note that
 you'll need to do this throughout this course, which is why we've kept these 
 instructions separate.
 
@@ -190,7 +190,7 @@ functions to our global environment. To illustrate this, open the
 your workspace is empty. Now run line 12 in 
 <span style="color: #dd1c77;">0106-report.R</span>:
 
-``````{r, eval = FALSE}
+```{r, eval = FALSE}
 source("0104-step-growth.R")
 ```
 
@@ -275,7 +275,7 @@ Likewise, the other members of your team should have given you access to their
 repositories. You will likely receive an email notification, but if you don't
 you can either search for their repository through the `IBAHCM` organisation, 
 or go directly to their URL. For example, if I want to find a repository called 
-`louisematthews_0201`, I'd go to https://github.com/IBAHCM/louisematthews_0201. 
+`louisematthews_0106`, I'd go to https://github.com/IBAHCM/louisematthews_0106. 
 Remember to take a look at their GitHub readme, you might learn something new!
 
 Just like before, we're going to clone this repository by clicking on the green
