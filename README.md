@@ -87,6 +87,7 @@ The following core practicals are included in this package:
    * `practical1-3`: Exponential growth model; Sourcing code
    * `practical1-4`: Exponential growth model; Generalising and structuring code
    * `practical1-5`: Births and deaths model; Generalising code
+   * `practical1-6`: Births and deaths model; Writing reports in RStudio
 
 2. Practical series 2:
 
