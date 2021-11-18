@@ -9,7 +9,8 @@ assert_no_globals(test_function, name = deparse1(substitute(test_function)))
 \arguments{
 \item{test_function}{function to check for global variables}
 
-\item{name}{(optional) the name of function as a string}
+\item{name}{(optional) the name of function as a string -- passed to the
+error message}
 }
 \value{
 nothing
