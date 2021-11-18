@@ -1,5 +1,5 @@
 ---
-title: "Practical 2-4: SIR model"
+title: "Practical 2-5: SIR model"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -32,11 +32,11 @@ $$R(t+1) = R(t) + \sigma \times I(t)$$
 ## Tasks
 
 Your task is to copy and edit the files from the previous practical 
-(<span style="color: #dd1c77;">0203-deterministic-SIS.R</span> and 
-<span style="color: #dd1c77;">0203-run-SIS.R</span>) to produce
+(<span style="color: #dd1c77;">0204-deterministic-SIS.R</span> and 
+<span style="color: #dd1c77;">0204-run-SIS.R</span>) to produce
 the corresponding files 
-<span style="color: #dd1c77;">0204-deterministic-SIR.R</span> and 
-<span style="color: #dd1c77;">0204-run-SIR.R</span> that 
+<span style="color: #dd1c77;">0205-deterministic-SIR.R</span> and 
+<span style="color: #dd1c77;">0205-run-SIR.R</span> that 
 run the SIR model rather than the SIS model. There shouldn't be too many changes 
 that are necessary, though obviously the first is to add a new population (the
 **recovereds**) to the data frame and remember than $N$, the total population size, 
@@ -59,7 +59,7 @@ have to be below 1 to be stable.
 
 ## Running the code
 
-Run the code by running your new file <span style="color: #dd1c77;">0204-run-SIR.R</span>.
+Run the code by running your new file <span style="color: #dd1c77;">0205-run-SIR.R</span>.
 Check that you get the same results as you saw in the lecture for an $R_0$ of 2.
 Adding the argument `col=c("green", "red", "black")` to `plot_populations()`
 will allow you to change the colours of the plot to match those from the lecture.
@@ -98,7 +98,7 @@ then if it's a project you have already downloaded, you should open that
 project in RStudio, go to the Git pane, and click on the **Pull** button to
 get the updates they have pushed to GitHub (there should be a subtle message
 saying that updates are available near the button). If you're checking a new
-person's work, or a new project, refer to the instructions in Practical 2-1.
+person's work, or a new project, refer to the instructions in Practical 2-2.
 Once you've checked that the new code has downloaded, you can then run their
 code and make sure it works. If it does not, just respond in the Issue that they
 opened on GitHub explaining what went wrong (it might help to also do

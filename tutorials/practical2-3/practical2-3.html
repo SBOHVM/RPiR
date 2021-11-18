@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 2-3: SIS model with timesteps</title>
+<title>Practical 2-4: SIS model with timesteps</title>
 
 <!-- HEAD_CONTENT -->
 
@@ -145,7 +145,7 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical 2-3: SIS model with timesteps</h1>
+<h1 class="title toc-ignore">Practical 2-4: SIS model with timesteps</h1>
 
 </div>
 
@@ -160,8 +160,8 @@ pre code {
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>In the previous practical we multiplied the transmission and recovery rates up (or down) to reflect changes in <code>timestep.</code> However, <code>transmission.rate</code> and <code>recovery.rate</code> were not really changing, and we want the code to reflect that rather than abusing it to do something it wasn’t intended to do. Instead add a new argument, <code>timestep</code>, into <code>step_deterministic_SIS()</code> – we could call it <code>timestep_deterministic_SIS()</code>. Rather than submit the product <code>transmission.rate * timestep</code> as an argument to the simulation function, we can now separately pass the real rate parameters and the <code>timestep</code> separately. This <strong>rescaling</strong> is now done within the function <code>timestep_deterministic_SIS()</code> in <span style="color: #dd1c77;">0203-deterministic-SIS.R</span>. We might, for instance, create two new variables, perhaps called <code>effective.transmission.rate</code> and <code>effective.recovery.rate</code> (or something shorter!) inside that function. These new variables are just our original rates rescaled to match the new time scale.</p>
-<p>Now that we have a timestep in the step function, it makes sense to have the time in there too, and that can be updated inside the function. Indeed, the data frame itself that is passed back and forth can have an extra column. This should start in the new report script that you are writing (perhaps <span style="color: #dd1c77;">0203-run-SIS.R</span>), where it will be initialised with all three columns (<code>time</code>, <code>susceptibles</code> and <code>infecteds</code>):</p>
+<p>In the previous practical we multiplied the transmission and recovery rates up (or down) to reflect changes in <code>timestep.</code> However, <code>transmission.rate</code> and <code>recovery.rate</code> were not really changing, and we want the code to reflect that rather than abusing it to do something it wasn’t intended to do. Instead add a new argument, <code>timestep</code>, into <code>step_deterministic_SIS()</code> – we could call it <code>timestep_deterministic_SIS()</code>. Rather than submit the product <code>transmission.rate * timestep</code> as an argument to the simulation function, we can now separately pass the real rate parameters and the <code>timestep</code> separately. This <strong>rescaling</strong> is now done within the function <code>timestep_deterministic_SIS()</code> in <span style="color: #dd1c77;">0204-deterministic-SIS.R</span>. We might, for instance, create two new variables, perhaps called <code>effective.transmission.rate</code> and <code>effective.recovery.rate</code> (or something shorter!) inside that function. These new variables are just our original rates rescaled to match the new time scale.</p>
+<p>Now that we have a timestep in the step function, it makes sense to have the time in there too, and that can be updated inside the function. Indeed, the data frame itself that is passed back and forth can have an extra column. This should start in the new report script that you are writing (perhaps <span style="color: #dd1c77;">0204-run-SIS.R</span>), where it will be initialised with all three columns (<code>time</code>, <code>susceptibles</code> and <code>infecteds</code>):</p>
 <pre class="r"><code>population.df &lt;- data.frame(time = start.time,
                             susceptibles = initial.susceptibles,
                             infecteds = initial.infecteds)</code></pre>
@@ -193,7 +193,7 @@ while (latest.population$time &lt; end.time) {
 </div>
 <div id="section-checking-other-peoples-code" class="section level3">
 <h3>Checking other people’s code</h3>
-<p>Likewise, when you hear from someone else that a repo is available to check, then if it’s a project you have already downloaded, you should open that project in RStudio, go to the Git pane, and click on the <span style="color: #dd1c77;">Pull</span> button to get the updates they have pushed to GitHub (there should be a subtle message saying that updates are available near the button). If you’re checking a new person’s work, or a new project, refer to the instructions in Practical 2-1. Once you’ve checked that the new code has downloaded, you can then run their code and make sure it works. If it does not, just respond in the Issue that they opened on GitHub explaining what went wrong (it might help to also do this in person on Zoom if they are there). If it works, then you also need to respond saying so.</p>
+<p>Likewise, when you hear from someone else that a repo is available to check, then if it’s a project you have already downloaded, you should open that project in RStudio, go to the Git pane, and click on the <span style="color: #dd1c77;">Pull</span> button to get the updates they have pushed to GitHub (there should be a subtle message saying that updates are available near the button). If you’re checking a new person’s work, or a new project, refer to the instructions in Practical 2-2. Once you’ve checked that the new code has downloaded, you can then run their code and make sure it works. If it does not, just respond in the Issue that they opened on GitHub explaining what went wrong (it might help to also do this in person on Zoom if they are there). If it works, then you also need to respond saying so.</p>
 Interacting like this through GitHub to help each other will count as most of your engagement marks for the course. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)

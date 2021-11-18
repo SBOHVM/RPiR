@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 2-2: SIS model</title>
+<title>Practical 2-3: SIS model</title>
 
 <!-- HEAD_CONTENT -->
 
@@ -145,7 +145,7 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical 2-2: SIS model</h1>
+<h1 class="title toc-ignore">Practical 2-3: SIS model</h1>
 
 </div>
 
@@ -160,8 +160,8 @@ pre code {
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>To change the model to handle timesteps, we have to consider that by default, in the previous programs we were using a timestep of 1. In this case – of <em>E. coli</em> transmission in cattle from Practical 2-1 – these are measured in weeks, which means that if our rates were given to us in units of weeks, then we are stepping forward one week at a time. If our rates were given to us per day rather than per week we would be stepping forward day by day. If a rate is given to us in weeks, we could scale it down accordingly to get the rate per day. Or, we could scale it up to get the rate per month. So to change our program to step forward on a different time scale, we scale the parameters. Our parameters (the transmission and recovery rates) will help us determine the number of transmissions and recoveries that occur in one unit of time. To simulate stepping forward in larger of smaller amounts of time we scale the parameters by the new time step.</p>
-<p>The task now is to edit <span style="color: #dd1c77;">0201-run-SIS.R</span> so that it is easy to alter the timestep of the simulation – you can reuse <code>step_deterministic_SIS()</code>. All you need to do is to write a new script file which creates a new parameter, <code>timestep</code>, so that you can scale <code>transmission.rate</code> and <code>recovery.rate</code> to <code>ecoli.transmission * timestep</code> and <code>ecoli.recovery * timestep</code> before passing them to <code>step_deterministic_SIS()</code>. You also need to remember that the vector of <code>timesteps</code> to loop through is now also wrong. Make sure that you adjust it correctly so that it will give the correct times for the plot. You can check it has by looking at <code>population.df$time</code> after you’ve added it in to the data frame and make sure it looks right to you. We can call this new version <span style="color: #dd1c77;"> 0202-test-SIS.R</span>.</p>
+<p>To change the model to handle timesteps, we have to consider that by default, in the previous programs we were using a timestep of 1. In this case – of <em>E. coli</em> transmission in cattle from Practical 2-2 – these are measured in weeks, which means that if our rates were given to us in units of weeks, then we are stepping forward one week at a time. If our rates were given to us per day rather than per week we would be stepping forward day by day. If a rate is given to us in weeks, we could scale it down accordingly to get the rate per day. Or, we could scale it up to get the rate per month. So to change our program to step forward on a different time scale, we scale the parameters. Our parameters (the transmission and recovery rates) will help us determine the number of transmissions and recoveries that occur in one unit of time. To simulate stepping forward in larger of smaller amounts of time we scale the parameters by the new time step.</p>
+<p>The task now is to edit <span style="color: #dd1c77;">0202-run-SIS.R</span> so that it is easy to alter the timestep of the simulation – you can reuse <code>step_deterministic_SIS()</code>. All you need to do is to write a new script file which creates a new parameter, <code>timestep</code>, so that you can scale <code>transmission.rate</code> and <code>recovery.rate</code> to <code>ecoli.transmission * timestep</code> and <code>ecoli.recovery * timestep</code> before passing them to <code>step_deterministic_SIS()</code>. You also need to remember that the vector of <code>timesteps</code> to loop through is now also wrong. Make sure that you adjust it correctly so that it will give the correct times for the plot. You can check it has by looking at <code>population.df$time</code> after you’ve added it in to the data frame and make sure it looks right to you. We can call this new version <span style="color: #dd1c77;"> 0203-test-SIS.R</span>.</p>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
@@ -181,7 +181,7 @@ pre code {
 </div>
 <div id="section-checking-other-peoples-code" class="section level3">
 <h3>Checking other people’s code</h3>
-<p>Likewise, when you hear from someone else that a repo is available to check, then if it’s a project you have already downloaded, you should open that project in RStudio, go to the Git pane, and click on the <strong>Pull</strong> button to get the updates they have pushed to GitHub (there should be a subtle message saying that updates are available near the button). If you’re checking a new person’s work, or a new project, refer to the instructions in Practical 2-1. Once you’ve checked that the new code has downloaded, you can then run their code and make sure it works. If it does not, just respond in the Issue that they opened on GitHub explaining what went wrong (it might help to also do this in person on Zoom if they are there). If it works, then you also need to respond saying so.</p>
+<p>Likewise, when you hear from someone else that a repo is available to check, then if it’s a project you have already downloaded, you should open that project in RStudio, go to the Git pane, and click on the <strong>Pull</strong> button to get the updates they have pushed to GitHub (there should be a subtle message saying that updates are available near the button). If you’re checking a new person’s work, or a new project, refer to the instructions in Practical 2-2. Once you’ve checked that the new code has downloaded, you can then run their code and make sure it works. If it does not, just respond in the Issue that they opened on GitHub explaining what went wrong (it might help to also do this in person on Zoom if they are there). If it works, then you also need to respond saying so.</p>
 Interacting like this through GitHub to help each other will count as most of your engagement marks for the course. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
