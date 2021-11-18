@@ -89,6 +89,18 @@ if (2 >= 5) {
 
 does nothing. 
 
+R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
+consider them too simple, but ironically they have [a chapter in Advanced
+R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
+control that are well beyond the scope of this course.
+
+[operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
+[if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html
+[operators-rcoder]: https://r-coder.com/operators-r
+[if-rcoder]: https://r-coder.com/if-else-r
+
+## Exercises
+
 Now try it yourself. Complete the following code chunk, such that `x` is 
 correctly identified as a negative number.
 
@@ -140,13 +152,3 @@ if (x > 0) {
 ```{r ifexercise2-check}
 grade_this_code()
 ```
-
-R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
-consider them too simple, but ironically they have [a chapter in Advanced
-R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
-control that are well beyond the scope of this course.
-
-[operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
-[if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html
-[operators-rcoder]: https://r-coder.com/operators-r
-[if-rcoder]: https://r-coder.com/if-else-r

@@ -153,38 +153,6 @@ that the loop is doing the right thing.
 what happens outside the loop, so `current.value` is `100` at the end, and not
 still `0`.*
 
-
-
-
-
-
-
-
-Now try the following exercise, combining an `if` statement with a `for` loop to
-print greetings (not `duck`):
-
-```{r forexercise, exercise = TRUE}
-greetings <- c("Hello", "Goodbye", "duck")
-for (word ___) {
-  if (___) {
-    print(___)
-  } 
-}
-```
-
-```{r forexercise-solution}
-greetings <- c("Hello", "Goodbye", "duck")
-for (word in greetings) {
-  if (word != "duck") {
-    print(word)
-  } 
-}
-```
-
-```{r forexercise-check}
-grade_this_code()
-```
-
 There is a section in R4DS (within a more general chapter on
 [*Iteration*][R4DS-iteration]) that covers [`for` loops][for-R4DS]. For loops
 are also covered by R Coder [here][for-rcoder].
@@ -215,6 +183,45 @@ if you don't update `test` inside the curly brackets, your loop will continue
 forever! However, if (when!) `test` is finally `FALSE`, the loop will end and R
 will continue on to the next line of code after the loop.
 
+
+There is a
+section in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration])
+that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
+[here][while-rcoder].
+
+[R4DS-iteration]: https://r4ds.had.co.nz/iteration.html
+[for-R4DS]: https://r4ds.had.co.nz/iteration.html#for-loops
+[while-R4DS]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
+[for-rcoder]: https://r-coder.com/for-loop-r
+[while-rcoder]: https://r-coder.com/while-loop-r
+
+## Exercises
+
+Now try the following exercise, combining an `if` statement with a `for` loop to
+print greetings (not `duck`):
+
+```{r forexercise, exercise = TRUE}
+greetings <- c("Hello", "Goodbye", "duck")
+for (word ___) {
+  if (___) {
+    print(___)
+  } 
+}
+```
+
+```{r forexercise-solution}
+greetings <- c("Hello", "Goodbye", "duck")
+for (word in greetings) {
+  if (word != "duck") {
+    print(word)
+  } 
+}
+```
+
+```{r forexercise-check}
+grade_this_code()
+```
+
 Solve the following problem -- a countdown from 10 to 1. 
 
 ```{r whileexercise, exercise = TRUE}
@@ -244,14 +251,3 @@ while (x > 0) {
 ```{r whileexercise-check}
 grade_this_code()
 ```
-
-There is a
-section in R4DS (within a more general chapter on [*Iteration*][R4DS-iteration])
-that covers [`while` loops][while-R4DS]. While loops are also covered by R Coder
-[here][while-rcoder].
-
-[R4DS-iteration]: https://r4ds.had.co.nz/iteration.html
-[for-R4DS]: https://r4ds.had.co.nz/iteration.html#for-loops
-[while-R4DS]: https://r4ds.had.co.nz/iteration.html#unknown-sequence-length
-[for-rcoder]: https://r-coder.com/for-loop-r
-[while-rcoder]: https://r-coder.com/while-loop-r
