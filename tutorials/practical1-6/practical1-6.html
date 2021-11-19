@@ -192,6 +192,7 @@ globals &lt;- findGlobals(step_simple_growth, merge = FALSE)$variables
 if (length(globals) != 0) {
   stop(&quot;Function step_simple_growth() may not use global variable(s): &quot;, globals)
 }</code></pre>
+<p>This checks whether <code>length(globals)</code> is non-zero, which is to say whether the <code>variables</code> element of what is returned by <code>findGlobals(step_simple_growth, merge = FALSE)</code> is not of length zero, <em>i.e.</em> whether there are any global variables in the function <code>step_simple_growth</code>. If there are, then the contents of the curly brackets are run, <code>stop(...)</code> is called, and the code stops running. In fact, <code>step_simple_growth</code> has no global variables, so the code block is not run.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
