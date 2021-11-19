@@ -103,10 +103,10 @@ jobs:
 
           for (file in rmd_files) {
             # Remove <b> tags
-            rmd_file <- readr::read_lines(file)
-            rmd_file <- rmd_file[-which(grepl("### <b>", rmd_file))]
-            rmd_file <- rmd_file[-which(grepl("### </b>", rmd_file))]
-            readr::write_lines(rmd_file, file)
+           # rmd_file <- readr::read_lines(file)
+           # rmd_file <- rmd_file[-which(grepl("### <b>", rmd_file))]
+           # rmd_file <- rmd_file[-which(grepl("### </b>", rmd_file))]
+           # readr::write_lines(rmd_file, file)
             # Write html file
             rmarkdown::render(file,
               output_format = "html_document",
