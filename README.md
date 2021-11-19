@@ -109,8 +109,7 @@ As well as the following additional practicals:
 
    * `practicalA-1`: Introduction to if statements
    * `practicalA-2`: Introduction to for and while loops
-   * `practicalA-3`: Introduction to functions
-   * `practicalA-4`: Naming of things
+   * `practicalA-3`: Introduction to functions and naming of things
 
 [prep]: https://ibahcm.github.io/RPiR/articles/pages/preparation.html
 [docs]: https://ibahcm.github.io/RPiR

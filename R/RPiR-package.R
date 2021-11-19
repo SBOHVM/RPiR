@@ -32,8 +32,7 @@
 #' \item 4-3 Biodiversity; Adding package functions and documentation
 #' \item A-1 Introduction to if statements
 #' \item A-2 Introduction to for and while loops
-#' \item A-3 Introduction to functions
-#' \item A-4 Naming of things
+#' \item A-3 Introduction to functions and naming of things
 #' }
 #'
 #' For more information go to our GitHub page;
