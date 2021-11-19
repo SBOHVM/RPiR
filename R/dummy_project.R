@@ -5,7 +5,7 @@
 #'
 #' @param project_name a \code{string} corresponding to the name you want to
 #' give your project; this should be your GitHub user name, followed by the
-#' practical number, *e.g.* maryjane_0201
+#' practical number, *e.g.* maryjane_0106
 #'
 dummy_project <- function(project_name) {
 

@@ -7,12 +7,9 @@ output:
 
 ## (Reproducible) Programming in R
 
-Lecturers:
+Who are we?
 
 - Richard Reeve
-
-Demonstrators:
-
 - Sonia Mitchell
 
 # Communication
@@ -25,13 +22,13 @@ Please do ask question live in the Zoom classes:
 
 ## 2. Moodle
 
-The course is officially on Moodle at https://moodle.gla.ac.uk/course/view.php?id=23343 -
+The course is officially on Moodle at https://moodle.gla.ac.uk/course/view.php?id=26231 -
 let me know if you can't access it. All submissions will be through Moodle,
 and lecture recordings and some downloads will be available there. However...
 
 ## 3. GitHub
 
-Once you have GitHub set up we will use it for most of our queries, and the
+Once you have GitHub set up we will use it for all of our queries, and the
 course is available at https://github.com/IBAHCM/RPiR. Please ask for help and
 discuss issues on the Discussions tab at https://github.com/IBAHCM/RPiR/discussions.
 

@@ -45,32 +45,32 @@ navbar:
          href: lectures/RPiR2b-modelling.html
       -  text: RPiR2c-development
          href: lectures/RPiR2c-development.html
-      -  text: RPiR4a-git
-         href: lectures/RPiR4a-git.html
-      -  text: RPiR4b-modelling
-         href: lectures/RPiR4b-modelling.html
-      -  text: RPiR5a-reporting
-         href: lectures/RPiR5a-reporting.html
-      -  text: RPiR5b-R
-         href: lectures/RPiR5b-R.html
-      -  text: RPiR6a-R
-         href: lectures/RPiR6a-R.html
-      -  text: RPiR7a-R
-         href: lectures/RPiR7a-R.html
-      -  text: RPiR8a-packages
-         href: lectures/RPiR8a-packages.html
-      -  text: RPiR8b-randomness (pdf)
-         href: lectures/RPiR8b-randomness.pdf
-      -  text: RPiR8c-R
-         href: lectures/RPiR8c-R.html
-      -  text: RPiR8d-development (pdf)
-         href: lectures/RPiR8d-development.pdf
-      -  text: RPiR12a-programming
-         href: lectures/RPiR12a-programming.html
-      -  text: RPiR12b-data
-         href: lectures/RPiR12b-data.html
-      -  text: RPiR13a-diversity
-         href: lectures/RPiR13a-diversity.html
+#      -  text: RPiR4a-git
+#         href: lectures/RPiR4a-git.html
+#      -  text: RPiR4b-modelling
+#         href: lectures/RPiR4b-modelling.html
+#      -  text: RPiR5a-reporting
+#         href: lectures/RPiR5a-reporting.html
+#      -  text: RPiR5b-R
+#         href: lectures/RPiR5b-R.html
+#      -  text: RPiR6a-R
+#         href: lectures/RPiR6a-R.html
+#      -  text: RPiR7a-R
+#         href: lectures/RPiR7a-R.html
+#      -  text: RPiR8a-packages
+#         href: lectures/RPiR8a-packages.html
+#      -  text: RPiR8b-randomness (pdf)
+#         href: lectures/RPiR8b-randomness.pdf
+#      -  text: RPiR8c-R
+#         href: lectures/RPiR8c-R.html
+#      -  text: RPiR8d-development (pdf)
+#         href: lectures/RPiR8d-development.pdf
+#      -  text: RPiR12a-programming
+#         href: lectures/RPiR12a-programming.html
+#      -  text: RPiR12b-data
+#         href: lectures/RPiR12b-data.html
+#      -  text: RPiR13a-diversity
+#         href: lectures/RPiR13a-diversity.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -82,28 +82,28 @@ navbar:
          href: lectures_html/RPiR2b-modelling.html
       -  text: RPiR2c-development
          href: lectures_html/RPiR2c-development.html
-      -  text: RPiR4a-git
-         href: lectures_html/RPiR4a-git.html
-      -  text: RPiR4b-modelling
-         href: lectures_html/RPiR4b-modelling.html
-      -  text: RPiR5a-reporting
-         href: lectures_html/RPiR5a-reporting.html
-      -  text: RPiR5b-R
-         href: lectures_html/RPiR5b-R.html
-      -  text: RPiR6a-R
-         href: lectures_html/RPiR6a-R.html
-      -  text: RPiR7a-R
-         href: lectures_html/RPiR7a-R.html
-      -  text: RPiR8a-packages
-         href: lectures_html/RPiR8a-packages.html
-      -  text: RPiR8c-R
-         href: lectures_html/RPiR8c-R.html
-      -  text: RPiR12a-programming
-         href: lectures_html/RPiR12a-programming.html
-      -  text: RPiR12b-data
-         href: lectures_html/RPiR12b-data.html
-      -  text: RPiR13a-diversity
-         href: lectures_html/RPiR13a-diversity.html
+#      -  text: RPiR4a-git
+#         href: lectures_html/RPiR4a-git.html
+#      -  text: RPiR4b-modelling
+#         href: lectures_html/RPiR4b-modelling.html
+#      -  text: RPiR5a-reporting
+#         href: lectures_html/RPiR5a-reporting.html
+#      -  text: RPiR5b-R
+#         href: lectures_html/RPiR5b-R.html
+#      -  text: RPiR6a-R
+#         href: lectures_html/RPiR6a-R.html
+#      -  text: RPiR7a-R
+#         href: lectures_html/RPiR7a-R.html
+#      -  text: RPiR8a-packages
+#         href: lectures_html/RPiR8a-packages.html
+#      -  text: RPiR8c-R
+#         href: lectures_html/RPiR8c-R.html
+#      -  text: RPiR12a-programming
+#         href: lectures_html/RPiR12a-programming.html
+#      -  text: RPiR12b-data
+#         href: lectures_html/RPiR12b-data.html
+#      -  text: RPiR13a-diversity
+#         href: lectures_html/RPiR13a-diversity.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -115,36 +115,36 @@ navbar:
          href: tutorials/practical2-3/practical2-3.html
       -  text: Practical2-4
          href: tutorials/practical2-4/practical2-4.html
-      -  text: Practical3-1
-         href: tutorials/practical3-1/practical3-1.html
-      -  text: Practical3-2
-         href: tutorials/practical3-2/practical3-2.html
-      -  text: Practical3-3
-         href: tutorials/practical3-3/practical3-3.html
-      -  text: Practical3-4
-         href: tutorials/practical3-4/practical3-4.html
-      -  text: Practical3-5
-         href: tutorials/practical3-5/practical3-5.html
-      -  text: Practical3-6
-         href: tutorials/practical3-6/practical3-6.html
-      -  text: Practical4-1
-         href: tutorials/practical4-1/practical4-1.html
-      -  text: Practical4-2
-         href: tutorials/practical4-2/practical4-2.html
-      -  text: Practical4-3
-         href: tutorials/practical4-3/practical4-3.html
-      -  text: Project-Intro
-         href: tutorials/project0/project0.html
-      -  text: Project1
-         href: tutorials/project1/project1.html
-      -  text: Project2
-         href: tutorials/project2/project2.html
-      -  text: Project3
-         href: tutorials/project3/project3.html
-      -  text: Project4
-         href: tutorials/project4/project4.html
-      -  text: Project5
-         href: tutorials/project5/project5.html
+#      -  text: Practical3-1
+#         href: tutorials/practical3-1/practical3-1.html
+#      -  text: Practical3-2
+#         href: tutorials/practical3-2/practical3-2.html
+#      -  text: Practical3-3
+#         href: tutorials/practical3-3/practical3-3.html
+#      -  text: Practical3-4
+#         href: tutorials/practical3-4/practical3-4.html
+#      -  text: Practical3-5
+#         href: tutorials/practical3-5/practical3-5.html
+#      -  text: Practical3-6
+#         href: tutorials/practical3-6/practical3-6.html
+#      -  text: Practical4-1
+#         href: tutorials/practical4-1/practical4-1.html
+#      -  text: Practical4-2
+#         href: tutorials/practical4-2/practical4-2.html
+#      -  text: Practical4-3
+#         href: tutorials/practical4-3/practical4-3.html
+#      -  text: Project-Intro
+#         href: tutorials/project0/project0.html
+#      -  text: Project1
+#         href: tutorials/project1/project1.html
+#      -  text: Project2
+#         href: tutorials/project2/project2.html
+#      -  text: Project3
+#         href: tutorials/project3/project3.html
+#      -  text: Project4
+#         href: tutorials/project4/project4.html
+#      -  text: Project5
+#         href: tutorials/project5/project5.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions

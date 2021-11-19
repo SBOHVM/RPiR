@@ -75,8 +75,6 @@ Specifically:
    the second practical series, but it's worth trying out the instructions now
    to check that everything is working.
 2. Then [install the RPiR package][package].
-3. Finally, [install Visual Studio Code and then Live Share][vscode].
-   You will need your GitHub id from the previous step to set this up.
 
 ## Stopping warnings
 

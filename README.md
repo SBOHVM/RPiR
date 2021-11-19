@@ -1,4 +1,4 @@
-# Reproducible Programming in R course (2020/21)
+# Reproducible Programming in R course (2021/22)
 
 [![](https://img.shields.io/badge/docs-RPIR-blue)][docs]
 [![test-build](https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
@@ -91,11 +91,10 @@ The following core practicals are included in this package:
 
 2. Practical series 2:
 
-   * `practical2-1`: Creating an RStudio project
-   * `practical2-2`: SIS model; Adapting previous code
-   * `practical2-3`: SIS model; Changing the timestep
-   * `practical2-4`: SIS model; Using while() loops
-   * `practical2-5`: SIR model; Adapting previous code
+   * `practical2-1`: SIS model; Adapting previous code
+   * `practical2-2`: SIS model; Changing the timestep
+   * `practical2-3`: SIS model; Using while() loops
+   * `practical2-4`: SIR model; Adapting previous code
 
 3. Practical series 3:
 
@@ -108,16 +107,10 @@ The following core practicals are included in this package:
 
 As well as the following additional practicals:
 
-* `practicalA-1`: Introduction to for loops and functions
-* `practicalA-2`: Tests and more loops
-
-**NB** In Practical 1-6, we refer to the example notebook
-`0200-example-notebook.R`. This can be found on Moodle, but it is also inside
-the package at the location returned by the following command if you prefer:
-
-```{R}
-system.file("dummy_notebook/0200-example-notebook.R", package="RPiR")
-```
+   * `practical0-1`: Introduction to if statements
+   * `practical0-2`: Introduction to for and while loops
+   * `practical0-3`: Introduction to functions
+   * `practical0-4`: Naming of things
 
 [prep]: https://ibahcm.github.io/RPiR/articles/pages/preparation.html
 [docs]: https://ibahcm.github.io/RPiR

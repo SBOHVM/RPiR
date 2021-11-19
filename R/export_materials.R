@@ -5,13 +5,16 @@
 #'
 export_materials <- function(materials, type = "exercises") {
   if (type == "exercises") {
-    c(materials[grepl("A.?-", materials)],
-      materials[grepl("1.?-[12345]", materials)],
-      materials[grepl("[234].?-", materials)],
-      materials[grepl("project", materials)])
+    c(materials[grepl("practical[012][a-z]?-", materials)]#,
+#      materials[grepl("practical[34][a-z]?-", materials)],
+#      materials[grepl("project", materials)]
+      )
   } else if (type == "lectures") {
-    unique(c(materials[grepl("[123456789].?-", materials)],
-             materials[grepl("1[0123].?-", materials)]))
+    unique(c(materials[grepl("RPiR[12][a-z]?-", materials)]#,
+#             materials[grepl("RPiR[3456789][a-z]?-", materials)],
+#             materials[grepl("RPiR1[0123][a-z]?-", materials)]
+             )
+           )
   } else {
     stop(paste("Unknown material type:", type))
   }
