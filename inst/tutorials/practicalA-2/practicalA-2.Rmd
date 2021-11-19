@@ -1,5 +1,5 @@
 ---
-title: "Practical 0-2: Loops"
+title: "Practical A-2: Loops"
 output:
   learnr::tutorial:
     theme: lumen
