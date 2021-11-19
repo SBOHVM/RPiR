@@ -11,7 +11,7 @@
 
 
 
-<title>Practical 0-2: Loops</title>
+<title>Practical A-1: If statements</title>
 
 <!-- HEAD_CONTENT -->
 
@@ -145,183 +145,77 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical 0-2: Loops</h1>
+<h1 class="title toc-ignore">Practical A-1: If statements</h1>
 
 </div>
 
 
-<div id="section-loops" class="section level2">
-<h2>Loops</h2>
-<p>Loops allow you to repeat the same thing again and again. If you are doing something more than two or three times, you should instead use a loop to avoid having to copy and paste the same code over and over again. Since duplicating code risks not only mistyping or not copying correctly, but also creating confusion by filling your R scripts with nearly identical chunks of code. There are fundamentally two kinds of loop:</p>
+<div id="section-control-flow" class="section level2">
+<h2>Control flow</h2>
+<div id="section-comparisons-testing-for-equality-and-difference" class="section level3">
+<h3>Comparisons – testing for equality and difference</h3>
+<p>These tests are essential for <code>while</code> loops to determine whether to continue through the next iteration of the loop, and other forms of flow control such as <code>if</code> statements, to determine what to do next. They allow us to test whether something is true, and change what lines of code are run depending on the outcome. There are the basic tests:</p>
 <ul>
-<li>one where you know exactly how many times the loop will run, for instance because you’re running a chunk of code once for each element of a vector or row or column of a data frame; and</li>
-<li>one where you do not, because some part of your calculation in each step of the loop will determine whether to continue or to stop.</li>
+<li><code>a == b</code>: is <code>a</code> equal to <code>b</code>? (<code>TRUE</code> if this is true, <code>FALSE</code> if this is false)</li>
+<li><code>a &gt; b</code>: is <code>a</code> greater than <code>b</code>?</li>
+<li><code>a &lt; b</code>: is <code>a</code> less than <code>b</code>?</li>
+<li><code>a &gt;= b</code>: is <code>a</code> greater than or equal to <code>b</code>?</li>
+<li><code>a &lt;= b</code>: is <code>a</code> less than or equal to <code>b</code>?</li>
+<li><code>a != b</code>: is <code>a</code> not equal to <code>b</code>?</li>
 </ul>
-<div id="section-for-loops" class="section level3">
-<h3><code>for</code> loops</h3>
-<p><code>for</code> loops allow us to repeat something <strong>for</strong> a fixed number of times (<em>e.g.</em> once per element of a vector, once per row of a data frame, <em>etc.</em>).</p>
-<p>A <code>for</code> loop always has the same style:</p>
-<pre class="r"><code>for (one in many) {
-  # Do something
-  
-  # ... exciting code maybe using the variable
-  #     one (but it doesn&#39;t have to) ...
-}</code></pre>
-<p>It looks a bit like a function, but what it does is set the variable <code>one</code> to each of the values in <code>many</code> one at a time, and then does something. Here are two very simple examples to get an idea of what it might do:</p>
-<pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;)
-for (word in greetings) {
-  print(word)
-}
-&gt; [1] &quot;Hello&quot;
-&gt; [1] &quot;Goodbye&quot;</code></pre>
-<p>Try changing the <code>greetings</code> variable. You’ll see that the loop runs once for each word in the <code>greetings</code> vector. We can use this to do something a fixed number of times without necessarily caring about the entries:</p>
-<pre class="r"><code># Make a sequence of 7 numbers from 1 to 7
-times &lt;- seq(from = 1, to = 7) # This is the same as 1:7 or seq(1, 7)
-
-# Print &quot;I&#39;m in a loop&quot; repeatedly
-for (iteration in times) {
-  print(&quot;I&#39;m in a loop&quot;)
-}
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;</code></pre>
-<p>Change the length of the <code>times</code> vector. You’ll see that it prints out the text once for each element in <code>times</code> even though it never looks to see what <code>iteration</code> is (it doesn’t care).</p>
-<p>Now look at this code:</p>
-<pre class="r"><code># A function to add one to a number
-add_one &lt;- function(number)
-  number + 1
-
-# Initialise the value
-current.value &lt;- 0
-
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-
-# Output the updated current.value at the end to see what happened
-current.value
-&gt; [1] 5</code></pre>
-<pre class="r"><code>grade_result(pass_if(~identical(.result, 10)))
-&gt; function (check_env) 
-&gt; {
-&gt;     last_value &lt;- check_env$.last_value
-&gt;     env &lt;- learnr_env(envir_prep = check_env$.envir_prep, envir_result = check_env$.envir_result)
-&gt;     final_grade &lt;- legacy_graded(correct = default_correct, message = default_message)
-&gt;     found_grade &lt;- FALSE
-&gt;     for (cond in conditions) {
-&gt;         grade &lt;- evaluate_condition(cond, last_value = last_value, 
-&gt;             env = env)
-&gt;         if (length(grade)) {
-&gt;             final_grade &lt;- grade
-&gt;             found_grade &lt;- TRUE
-&gt;             break
-&gt;         }
-&gt;     }
-&gt;     glue_correct &lt;- glue_correct %||% gradethis_legacy_options$gradethis.glue_correct
-&gt;     glue_incorrect &lt;- glue_incorrect %||% gradethis_legacy_options$gradethis.glue_incorrect
-&gt;     legacy_graded(correct = final_grade$correct, message = glue_message(if (final_grade$correct) 
-&gt;         glue_correct
-&gt;     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
-&gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
-&gt;         .correct = correct, .incorrect = incorrect))
-&gt; }
-&gt; &lt;bytecode: 0x7f94340a9af8&gt;
-&gt; &lt;environment: 0x7f943406a138&gt;</code></pre>
-<p>It just runs our <code>add_one()</code> function from earlier five times to update the variable <code>current.value</code> to 5. Change the code so it does this ten times to produce 10.</p>
-<p>Now look at this next piece of code:</p>
-<pre class="r"><code># A function to add one to a number
-add_one &lt;- function(number) {
-  number + 1
-}
-
-# Initialise the value
-current.value &lt;- 0
-
-# This now is a loop!
-for (loop in 1:10) {
-  current.value &lt;- add_one(current.value)
-}
-
-# Output the updated current.value at the end to see what happened
-current.value
-&gt; [1] 10</code></pre>
-<pre class="r"><code>grade_result(pass_if(~identical(.result, 100)))
-&gt; function (check_env) 
-&gt; {
-&gt;     last_value &lt;- check_env$.last_value
-&gt;     env &lt;- learnr_env(envir_prep = check_env$.envir_prep, envir_result = check_env$.envir_result)
-&gt;     final_grade &lt;- legacy_graded(correct = default_correct, message = default_message)
-&gt;     found_grade &lt;- FALSE
-&gt;     for (cond in conditions) {
-&gt;         grade &lt;- evaluate_condition(cond, last_value = last_value, 
-&gt;             env = env)
-&gt;         if (length(grade)) {
-&gt;             final_grade &lt;- grade
-&gt;             found_grade &lt;- TRUE
-&gt;             break
-&gt;         }
-&gt;     }
-&gt;     glue_correct &lt;- glue_correct %||% gradethis_legacy_options$gradethis.glue_correct
-&gt;     glue_incorrect &lt;- glue_incorrect %||% gradethis_legacy_options$gradethis.glue_incorrect
-&gt;     legacy_graded(correct = final_grade$correct, message = glue_message(if (final_grade$correct) 
-&gt;         glue_correct
-&gt;     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
-&gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
-&gt;         .correct = correct, .incorrect = incorrect))
-&gt; }
-&gt; &lt;bytecode: 0x7f94340a9af8&gt;
-&gt; &lt;environment: 0x7f9435eec6c0&gt;</code></pre>
-<p>It does the same thing - it calls <code>add_one()</code> ten times, but it’s much shorter, which generally makes it easier to see what’s going on. Now change the code to call <code>add_one()</code> 100 times. Hopefully you can see that this is really starting to help now!</p>
-<p>And you can probably imagine that if it was any more complicated that just copying and pasting one line it would make it much easier to see that it was doing exactly the same thing each time too.</p>
-<p>Finally, add in the single line <code>print(paste("Loop number", loop))</code> into the loop at the end (between lines 11 and 12) and run it. You’ll now be able see each step of the loop running. We’ll use techniques like this later to check that the loop is doing the right thing.</p>
-<p><em>Note also that unlike functions, variables changed in <code>for</code> loops do change what happens outside the loop, so <code>current.value</code> is <code>100</code> at the end, and not still <code>0</code>.</em></p>
-<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#for-loops"><code>for</code> loops</a>. For loops are also covered by R Coder <a href="https://r-coder.com/for-loop-r">here</a>.</p>
+<p>There are then three basic ways of changing or combining the above:</p>
+<ul>
+<li><code>(a &lt; b) || (c == d)</code>: is “<code>a</code> less than <code>b</code>” <strong>or</strong> “<code>c</code> equal to <code>d</code>”?</li>
+<li><code>(a &lt; b) &amp;&amp; (c == d)</code>: is “<code>a</code> less than <code>b</code>” <strong>and</strong> “<code>c</code> equal to <code>d</code>”?</li>
+<li><code>!((a &lt; b) &amp;&amp; (c == d))</code>: is it <strong>not</strong> <code>TRUE</code> that “<code>a</code> is less than <code>b</code> <strong>and</strong> <code>c</code> is equal to <code>d</code>”?</li>
+</ul>
+<p>Remember to use (lots of!) brackets to ensure you are combining things in the right order.</p>
+<p>Comparisons are also <a href="https://r4ds.had.co.nz/transform.html?q=compa#comparisons">covered in passing</a> in R4DS, and by R Coder in a bit more depth <a href="https://r-coder.com/operators-r">here</a>.</p>
 </div>
-<div id="section-while-loops" class="section level3">
-<h3><code>while</code> loops</h3>
-<p><code>while</code> loops allow us to repeat something <strong>while</strong> a condition is still <code>TRUE</code>. They are particularly useful when you don’t know in advance exactly how many times something will be done, but can be used in any situation. Unlike <code>for</code> loops though, you need to update everything manually each time around:</p>
-<pre class="r"><code>x &lt;- 1
-test &lt;- x &lt; 3 
-while (test) {
-  # Do something
-  print(x)
-  # Update x and update test
-  x &lt;- x + 1
-  test &lt;- x &lt; 3 
+<div id="section-if-and-if-else-statements" class="section level3">
+<h3><code>if</code> and <code>if else</code> statements</h3>
+<p>The <code>if</code> command allows us to perform a test, and if the result is <code>TRUE</code> run a block of R code (in curly brackets <code>{ ... }</code>). Optionally, if the test is <code>FALSE</code>, a different block of code can be run instead. This allows us to do a variety of things. To give a very simple example:</p>
+<pre class="r"><code>if (2 &gt; 1) {
+  print(&quot;Maths works!&quot;)
 }
-&gt; [1] 1
-&gt; [1] 2</code></pre>
-<p><code>test</code> is checked at the beginning of each iteration, and as long as <code>test</code> continues to be <code>TRUE</code>, the code block inside the curly brackets <code>{ ... }</code> is run. Be careful… if you don’t update <code>test</code> inside the curly brackets, your loop will continue forever! However, if (when!) <code>test</code> is finally <code>FALSE</code>, the loop will end and R will continue on to the next line of code after the loop.</p>
-<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r">here</a>.</p>
+&gt; [1] &quot;Maths works!&quot;</code></pre>
+<p>This prints <code>"Maths works!"</code> because the test is <code>TRUE</code>, so the code block that follows is run. Whereas:</p>
+<pre class="r"><code>if (2 &gt;= 5) {
+  print(&quot;At least 5.&quot;)
+} else {
+  print(&quot;Less than 5.&quot;)
+}
+&gt; [1] &quot;Less than 5.&quot;</code></pre>
+<p>This prints <code>"Less than 5."</code> because the test was false, so R continues to the code block after the <code>else</code> statement. If there is no <code>else</code> statement, then no code is run, so:</p>
+<pre class="r"><code>if (2 &gt;= 5) {
+  print(&quot;At least 5.&quot;)
+}</code></pre>
+<p>does nothing.</p>
+<p>R Coder covers the basics of <code>if</code> statements <a href="https://r-coder.com/if-else-r">here</a>. R4DS seems to consider them too simple, but ironically they have <a href="https://adv-r.hadley.nz/control-flow.html">a chapter in Advanced R</a>; however, this contains a lot of advanced topics in flow control that are well beyond the scope of this course.</p>
 </div>
 </div>
 <div id="section-exercises" class="section level2">
 <h2>Exercises</h2>
-<p>Now try the following exercise, combining an <code>if</code> statement with a <code>for</code> loop to print greetings (not <code>duck</code>):</p>
-<pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;, &quot;duck&quot;)
-for (word ___) {
-  if (___) {
-    print(___)
-  } 
+<p>Now try it yourself. Complete the following code chunk, such that <code>x</code> is correctly identified as a negative number.</p>
+<pre class="r"><code>x &lt;- -1
+
+if (___) {
+  print(&quot;Positive number&quot;)
+} else {
+  print(&quot;Negative number&quot;)
 }
-&gt; Error: &lt;text&gt;:2:11: unexpected input
-&gt; 1: greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;, &quot;duck&quot;)
-&gt; 2: for (word _
-&gt;              ^</code></pre>
-<pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;, &quot;duck&quot;)
-for (word in greetings) {
-  if (word != &quot;duck&quot;) {
-    print(word)
-  } 
+&gt; Error: &lt;text&gt;:3:5: unexpected input
+&gt; 2: 
+&gt; 3: if (_
+&gt;        ^</code></pre>
+<pre class="r"><code>x &lt;- -1
+
+if (x &gt; 0) {
+  print(&quot;Positive number&quot;)
+} else {
+  print(&quot;Negative number&quot;)
 }
-&gt; [1] &quot;Hello&quot;
-&gt; [1] &quot;Goodbye&quot;</code></pre>
+&gt; [1] &quot;Negative number&quot;</code></pre>
 <pre class="r"><code>grade_this_code()
 &gt; function (check_env) 
 &gt; {
@@ -338,42 +232,30 @@ for (word in greetings) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7f943815fe00&gt;
-&gt; &lt;environment: 0x7f9432a48330&gt;</code></pre>
-<p>Solve the following problem – a countdown from 10 to 1.</p>
-<pre class="r"><code>x &lt;- 10
-while (___) {
-  # Do something
-  print(x)
-  if (x == 1) print(&quot;Blast off!&quot;)
-  
-  # Update test
-  x &lt;- ___
-}
-&gt; Error: &lt;text&gt;:2:8: unexpected input
-&gt; 1: x &lt;- 10
-&gt; 2: while (_
-&gt;           ^</code></pre>
-<pre class="r"><code>x &lt;- 10
-while (x &gt; 0) {
-  # Do something
-  print(x)
-  if (x == 1) print(&quot;Blast off!&quot;)
-  
-  # Update test
-  x &lt;- x - 1
-}
-&gt; [1] 10
-&gt; [1] 9
-&gt; [1] 8
-&gt; [1] 7
-&gt; [1] 6
-&gt; [1] 5
-&gt; [1] 4
-&gt; [1] 3
-&gt; [1] 2
-&gt; [1] 1
-&gt; [1] &quot;Blast off!&quot;</code></pre>
+&gt; &lt;bytecode: 0x7f9bfcf9da30&gt;
+&gt; &lt;environment: 0x7f9bfa531ea0&gt;</code></pre>
+<p>Of course, this statement isn’t entirely accurate, since <code>0</code> is neither positive nor negative.</p>
+<pre class="r"><code>x &lt;- 0
+
+if (___) {
+  print(&quot;Positive number&quot;)
+} else if (___) {
+  print(&quot;Negative number&quot;)
+} else
+  print(&quot;Zero&quot;)
+&gt; Error: &lt;text&gt;:3:5: unexpected input
+&gt; 2: 
+&gt; 3: if (_
+&gt;        ^</code></pre>
+<pre class="r"><code>x &lt;- 0
+
+if (x &gt; 0) {
+  print(&quot;Positive number&quot;)
+} else if (x &lt; 0) {
+  print(&quot;Negative number&quot;)
+} else
+  print(&quot;Zero&quot;)
+&gt; [1] &quot;Zero&quot;</code></pre>
 <pre class="r"><code>grade_this_code()
 &gt; function (check_env) 
 &gt; {
@@ -390,8 +272,80 @@ while (x &gt; 0) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7f943815fe00&gt;
-&gt; &lt;environment: 0x7f9435f38318&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f9bfcf9da30&gt;
+&gt; &lt;environment: 0x7f9bfbb4dc30&gt;</code></pre>
+<p>Run the following code. There are two errors, try to find them.</p>
+<pre class="r"><code>x &lt;- 3
+y &lt;- 3
+
+if (x - y) {
+  print(&quot;x is less than y&quot;)
+} else if (x + y) {
+  print(&quot;x is greater than y&quot;)
+} else 
+  print(&quot;x equals y&quot;)
+&gt; [1] &quot;x is greater than y&quot;</code></pre>
+<pre class="r"><code>x &lt;- 3
+y &lt;- 3
+
+if (x &lt; y) {
+  print(&quot;x is less than y&quot;)
+} else if (x &gt; y) {
+  print(&quot;y is less than x&quot;)
+} else 
+  print(&quot;x equals y&quot;)
+&gt; [1] &quot;x equals y&quot;</code></pre>
+<pre class="r"><code>grade_this_code()
+&gt; function (check_env) 
+&gt; {
+&gt;     check_env[[&quot;.__correct&quot;]] &lt;- correct
+&gt;     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+&gt;     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+&gt;         gradethis.maybe_code_feedback = TRUE), grade_this({
+&gt;         .message &lt;- code_feedback()
+&gt;         if (is.null(.message)) {
+&gt;             pass(get(&quot;.__correct&quot;))
+&gt;         }
+&gt;         fail(get(&quot;.__incorrect&quot;))
+&gt;     })(check_env))
+&gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+&gt;     grade
+&gt; }
+&gt; &lt;bytecode: 0x7f9bfcf9da30&gt;
+&gt; &lt;environment: 0x7f9bf90a15f0&gt;</code></pre>
+<p>Now edit the following code chunk so that <code>This statement is true</code> is returned.</p>
+<pre class="r"><code>if (___) {
+  print(&quot;This statement is true&quot;)
+} else {
+  print(&quot;This statement is false&quot;)
+}
+&gt; Error: &lt;text&gt;:1:5: unexpected input
+&gt; 1: if (_
+&gt;         ^</code></pre>
+<pre class="r"><code>if (TRUE) {
+  print(&quot;This statement is true&quot;)
+} else {
+  print(&quot;This statement is false&quot;)
+}
+&gt; [1] &quot;This statement is true&quot;</code></pre>
+<pre class="r"><code>grade_this_code()
+&gt; function (check_env) 
+&gt; {
+&gt;     check_env[[&quot;.__correct&quot;]] &lt;- correct
+&gt;     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+&gt;     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+&gt;         gradethis.maybe_code_feedback = TRUE), grade_this({
+&gt;         .message &lt;- code_feedback()
+&gt;         if (is.null(.message)) {
+&gt;             pass(get(&quot;.__correct&quot;))
+&gt;         }
+&gt;         fail(get(&quot;.__incorrect&quot;))
+&gt;     })(check_env))
+&gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+&gt;     grade
+&gt; }
+&gt; &lt;bytecode: 0x7f9bfcf9da30&gt;
+&gt; &lt;environment: 0x7f9bf8fa5a48&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
