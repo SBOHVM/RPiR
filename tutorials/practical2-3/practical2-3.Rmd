@@ -1,5 +1,5 @@
 ---
-title: "Practical 2-4: SIS model with timesteps"
+title: "Practical 2-3: SIS model with timesteps"
 output: 
   learnr::tutorial:
     theme: lumen
@@ -44,7 +44,7 @@ new argument, `timestep`, into `step_deterministic_SIS()` -- we could call it
 now separately pass the real rate parameters and the `timestep` separately.
 This **rescaling** is now done within the function
 `timestep_deterministic_SIS()` in
-<span style="color: #dd1c77;">0204-deterministic-SIS.R</span>. We might, for
+<span style="color: #dd1c77;">0203-deterministic-SIS.R</span>. We might, for
 instance, create two new variables, perhaps called `effective.transmission.rate` 
 and `effective.recovery.rate` (or something shorter!) inside that function.
 These new variables are just our original rates rescaled to match the new time
@@ -54,7 +54,7 @@ Now that we have a timestep in the step function, it makes sense to have the
 time in there too, and that can be updated inside the function. Indeed, the data
 frame itself that is passed back and forth can have an extra column. This
 should start in the new report script that you are writing (perhaps
-<span style="color: #dd1c77;">0204-run-SIS.R</span>), where it will be
+<span style="color: #dd1c77;">0203-run-SIS.R</span>), where it will be
 initialised with all three columns (`time`, `susceptibles` and `infecteds`):
 
 ```{r, eval = FALSE}
@@ -125,7 +125,7 @@ project in RStudio, go to the Git pane, and click on the
 <span style="color: #dd1c77;">Pull</span> button to
 get the updates they have pushed to GitHub (there should be a subtle message
 saying that updates are available near the button). If you're checking a new
-person's work, or a new project, refer to the instructions in Practical 2-2.
+person's work, or a new project, refer to the instructions in Practical 2-1.
 Once you've checked that the new code has downloaded, you can then run their
 code and make sure it works. If it does not, just respond in the Issue that they
 opened on GitHub explaining what went wrong (it might help to also do
