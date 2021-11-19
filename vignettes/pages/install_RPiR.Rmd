@@ -165,6 +165,12 @@ install.packages("rlang")
 
 Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
+If that doesn't work after a couple of attempts, then you can try installing the package while ignoring the lock files:
+
+```{r, eval = FALSE}
+install.packages("Rcpp", dependencies = TRUE, INSTALL_opts = '--no-lock')
+```
+
 ### Mac / Linux
 
 If you are on a Mac, it's very
