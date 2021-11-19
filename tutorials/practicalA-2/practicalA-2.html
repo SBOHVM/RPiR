@@ -231,8 +231,8 @@ current.value
 &gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
 &gt;         .correct = correct, .incorrect = incorrect))
 &gt; }
-&gt; &lt;bytecode: 0x7fde58ab5ea8&gt;
-&gt; &lt;environment: 0x7fde58ab0730&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f97eb597cd8&gt;
+&gt; &lt;environment: 0x7f97eb596200&gt;</code></pre>
 <p>It just runs our <code>add_one()</code> function from earlier five times to update the variable <code>current.value</code> to 5. Change the code so it does this ten times to produce 10.</p>
 <p>Now look at this next piece of code:</p>
 <pre class="r"><code># A function to add one to a number
@@ -275,8 +275,8 @@ current.value
 &gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
 &gt;         .correct = correct, .incorrect = incorrect))
 &gt; }
-&gt; &lt;bytecode: 0x7fde58ab5ea8&gt;
-&gt; &lt;environment: 0x7fde5bba7800&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f97eb597cd8&gt;
+&gt; &lt;environment: 0x7f97ef5ed6f0&gt;</code></pre>
 <p>It does the same thing - it calls <code>add_one()</code> ten times, but it’s much shorter, which generally makes it easier to see what’s going on. Now change the code to call <code>add_one()</code> 100 times. Hopefully you can see that this is really starting to help now!</p>
 <p>And you can probably imagine that if it was any more complicated that just copying and pasting one line it would make it much easier to see that it was doing exactly the same thing each time too.</p>
 <p>Finally, add in the single line <code>print(paste("Loop number", loop))</code> into the loop at the end (between lines 11 and 12) and run it. You’ll now be able see each step of the loop running. We’ll use techniques like this later to check that the loop is doing the right thing.</p>
@@ -338,8 +338,8 @@ for (word in greetings) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fde5d857d78&gt;
-&gt; &lt;environment: 0x7fde592050a8&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f97ee475950&gt;
+&gt; &lt;environment: 0x7f97e9fb8820&gt;</code></pre>
 <p>Solve the following problem – a countdown from 10 to 1.</p>
 <pre class="r"><code>x &lt;- 10
 while (___) {
@@ -390,8 +390,8 @@ while (x &gt; 0) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fde5d857d78&gt;
-&gt; &lt;environment: 0x7fde58771a00&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f97ee475950&gt;
+&gt; &lt;environment: 0x7f97ef626b80&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)

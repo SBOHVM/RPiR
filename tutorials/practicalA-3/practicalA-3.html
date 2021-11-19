@@ -227,8 +227,8 @@ one.more
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fde5d857d78&gt;
-&gt; &lt;environment: 0x7fde5bb84b10&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f97ee475950&gt;
+&gt; &lt;environment: 0x7f97ef5c2d48&gt;</code></pre>
 <p>You’ll see that it gives an error. That is because, although you have calculated <code>one.more</code> inside the function, it is discarded when the function ends. This is because variables defined inside functions are <em>local</em> to the function. For there to be a variable in your main script called one.more, you need to define it there. Try adding a line of code between lines 5 and 6 of <em>Exercise 1</em> that just says:</p>
 <pre class="r"><code>one.more &lt;- 20</code></pre>
 <p>Note that the <em>global</em> <code>one.more</code> variable (the one in your main script) is not affected by calling the <code>add_one()</code> function even though it looks like it is updated there.</p>
@@ -270,8 +270,8 @@ add_up(10, 30)
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fde5d857d78&gt;
-&gt; &lt;environment: 0x7fde585bc128&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f97ee475950&gt;
+&gt; &lt;environment: 0x7f97eae34258&gt;</code></pre>
 <p>Rename the function and variables in <em>Exercise 2</em> so that it satisfies my naming rules.</p>
 <p><em>There is much more on how to style your code to make it more consistent <a href="http://adv-r.had.co.nz/Style.html">here</a>. Hadley recommends never using dots, so using underscores to separate words in functions and variables. If you want to do that it’s fine. Don’t use dots in function names though. He has lots of other suggestions about how to write clear code - do have a look at it and try to follow it if you have time.</em></p>
 </div>
@@ -362,8 +362,8 @@ subtract(3, 5)
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fde5d857d78&gt;
-&gt; &lt;environment: 0x7fde58589ee0&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f97ee475950&gt;
+&gt; &lt;environment: 0x7f97eadf0138&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
