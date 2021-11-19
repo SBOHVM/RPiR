@@ -466,10 +466,15 @@ add_up(3, 5)</code></pre>
 </div>
 <div id="functions-3" class="section level2">
 <h2>Functions</h2>
-<pre class="r"><code>add_up &lt;- function(first, second) {
+<pre class="r"><code>### &lt;b&gt;
+add_up &lt;- function(first, second) {
+### &lt;/b&gt;
   result &lt;- first + second
+### &lt;b&gt;
   second - first
-}</code></pre>
+}
+add_up(3, 5) ### &lt;/b&gt;</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
 <div id="functions-4" class="section level2">
 <h2>Functions</h2>
@@ -477,7 +482,9 @@ add_up(3, 5)</code></pre>
   # Calculate the result
   result &lt;- first + second
   # And return it
+### &lt;b&gt;
   result
+### &lt;/b&gt;
 }
 add_up(3, 5)</code></pre>
 <pre><code>[1] 8</code></pre>

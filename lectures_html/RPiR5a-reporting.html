@@ -370,15 +370,19 @@ pre code {
 <pre class="r"><code>#&#39; ---
 #&#39; title: &quot;Comparing a simple growth model with a birth-death model&quot;
 #&#39; author: &quot;Richard Reeve&quot;
+### &lt;b&gt;
 #&#39; date: &#39;`r format(Sys.Date(), &quot;%B %d %Y&quot;)`&#39;
+### &lt;/b&gt;
 #&#39; output: html_document
 #&#39; ---
 #&#39;</code></pre>
 </div>
 <div id="mixed-text-and-code" class="section level2">
 <h2>Mixed text and code</h2>
-<pre class="r"><code>#&#39;
+<pre class="r"><code>### &lt;b&gt;
+#&#39;
 #&#39; Load in the functions that do the work
+### &lt;/b&gt;
 library(RPiR)
 source(&quot;0104-step-growth.R&quot;)
 source(&quot;0105-step-birth-death.R&quot;)</code></pre>
@@ -388,9 +392,13 @@ source(&quot;0105-step-birth-death.R&quot;)</code></pre>
 <pre class="r"><code>#&#39; We are going to compare two population dynamics models:
 #&#39;
 #&#39; 1. A simple growth model
+### &lt;b&gt;
 #&#39;    $$N(t + 1) = \lambda \times N(t) + N(t)$$
+### &lt;/b&gt;
 #&#39; 2. A birth death model
+### &lt;b&gt;
 #&#39;    $$N(t + 1) = b \times N(t) - d \times N(t) + N(t)$$
+### &lt;/b&gt;
 #&#39;</code></pre>
 <p>(note the blank #’ line before the numbered list)</p>
 </div>
@@ -398,17 +406,23 @@ source(&quot;0105-step-birth-death.R&quot;)</code></pre>
 <h2>Descriptive text vs code comments</h2>
 <pre class="r"><code>#&#39; First we set up the simulation parameters for every experiment.
 
+### &lt;b&gt;
 ## Set the birth and death rates
+### &lt;/b&gt;
 birth.rate &lt;- 0.2
 death.rate &lt;- 0.1
 
+### &lt;b&gt;
 ## Starting population size
+### &lt;/b&gt;
 initial.count &lt;- 1</code></pre>
 </div>
 <div id="formatted-text-headers" class="section level2">
 <h2>Formatted text – headers</h2>
-<pre class="r"><code>#&#39;
+<pre class="r"><code>### &lt;b&gt;
+#&#39;
 #&#39; ## Run the full $birth, death$ simulation
+### &lt;/b&gt;
 
 ## Set up the population starting size (at the first timestep)
 population.df1 &lt;- data.frame(count = initial.count)</code></pre>
