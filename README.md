@@ -107,10 +107,9 @@ The following core practicals are included in this package:
 
 As well as the following additional practicals:
 
-   * `practical0-1`: Introduction to if statements
-   * `practical0-2`: Introduction to for and while loops
-   * `practical0-3`: Introduction to functions
-   * `practical0-4`: Naming of things
+   * `practicalA-1`: Introduction to if statements
+   * `practicalA-2`: Introduction to for and while loops
+   * `practicalA-3`: Introduction to functions and naming of things
 
 [prep]: https://ibahcm.github.io/RPiR/articles/pages/preparation.html
 [docs]: https://ibahcm.github.io/RPiR

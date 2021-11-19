@@ -1,5 +1,5 @@
 ---
-title: "Practical A-1: Functions and loops"
+title: "Practical A-1: If statements"
 output:
   learnr::tutorial:
     theme: lumen
@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to write a function and a loop.
+  Revision of basic concepts.
 ---
 
 ```{r setup, include=FALSE}
@@ -15,433 +15,199 @@ library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
 gradethis::gradethis_setup()
 
-knitr::opts_chunk$set(error = TRUE)
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = ">",
+  error = TRUE
+)
 set.seed(123)
 ```
 
-## Overview
+## Control flow
 
-*In this practical you will learn a few basics of writing a `function` to wrap
- up a snippet of code you will use again, and a `for` loop that allows you to do
- the same work multiple times.*
+### Comparisons -- testing for equality and difference
 
-## Introduction
+These tests are essential for `while` loops to determine
+whether to continue through the next iteration of the loop, and other forms of flow control
+such as `if` statements, to determine what to do next. They allow us to test whether something is true, and
+change what lines of code are run depending on the outcome. There are the
+basic tests:
 
-If you need to use the same lines of code more than once, then you probably
-need to do one of two things:
+- `a == b`: is `a` equal to `b`? (`TRUE` if this is true, `FALSE` if this is false)
+- `a > b`: is `a` greater than `b`?
+- `a < b`: is `a` less than `b`?
+- `a >= b`: is `a` greater than or equal to `b`?
+- `a <= b`: is `a` less than or equal to `b`?
+- `a != b`: is `a` not equal to `b`?
 
-1. **If you need to do the same thing multiple times as you solve different
-   problems, then you need to write a function.** Functions are a fundamental
-   building block of nearly all programming languages. You use them all of the
-   time, from plotting figures to building linear models, and it's not that much
-   harder to write entirely new ones from scratch than it is to string a couple
-   together to achieve a more specific goal than any existing function can do on
-   its own.
-2. **If you need to do the same thing over and over again in one place, then
-   you need to write a loop.** The simplest kind of loop is a `for` loop, that
-   says that you need to do a specific series of instructions an exact number
-   of times.
-   
-It may well be that you need to do both (write functions that you then use
-inside loops) - in fact you will very soon - but we'll worry about that in
-a later practical.
+There are then three basic ways of changing or combining the above:
 
-We write both functions and loops to avoid having to copy and paste the same bit
-of code over and over again into multiple different places. As well as being
-deeply inelegant, this is very prone to error when you copy something slightly
-wrong - you miss off a line or a letter, for instance. It is even more annoying
-that if you find there is something wrong with the code you're copying, you have
-to track down everywhere you copied it to and change it in all of these places.
-Almost nobody ever succeeds in doing this right, and **writing functions and
-loops is therefore one of the easiest ways that you can start to make your code
-less likely to have mistakes in it, and therefore make the results of your work
-more likely to be reproducible**.
+- `(a < b) || (c == d)`: is "`a` less than `b`" **or** "`c` equal to `d`"?
+- `(a < b) && (c == d)`: is "`a` less than `b`" **and** "`c` equal to `d`"?
+- `!((a < b) && (c == d))`: is it **not** `TRUE` that "`a` is less than `b` 
+**and** `c` is equal to `d`"?
 
-When you are using functions and loops correctly, you should only have to fix
-the code in one place, and it will automatically be fixed "everywhere", because
-the code is actually only written once, it's just referenced elsewhere.
+Remember to use (lots of!) brackets to ensure you are combining things in the
+right order. 
 
-## Functions
+Comparisons are also [covered in passing][operators-R4DS] in
+R4DS, and by R Coder in a bit more depth [here][operators-rcoder].
 
-It's very easy to write a function. Here we write a single function
-(called `function_name`), that takes one input (we call the inputs to
-functions *arguments*, here there is just one called `argument`). Finally,
-whatever appears last in the function definition will be returned to script
-that calls it, in this case, `result`.
+### `if` and `if else` statements
 
-Every function has one "line" of code after it (comments are ignored) that
-defines what the function does. Because nearly all functions need multiple lines
-to define what they do, we nearly always matching curly brackets - `{ ... }` -
-to allow us to write multiple commands that are all treated as one line by R:
+The `if` command allows us to perform a test, and if the result is `TRUE` run 
+a block of R code (in curly brackets `{ ... }`). Optionally, if the test is
+`FALSE`, a different block of code can be run instead. This allows us to do a
+variety of things. To give a very simple example:
 
-```{r intro1, eval=FALSE}
-function_name <- function(argument) {
-  # Function body
-  
-  # ... exciting code using argument
-  #     to do something useful, and
-  #     producing some result ...
-  result
+```{r ifstatement, exercise = TRUE}
+if (2 > 1) {
+  print("Maths works!")
 }
 ```
 
-Above, we just have dummy code, and it doesn't work. Note that the *function
-body*, the code that gets run when you use the function is wrapped in curly
-brackets `{ ... }` - this makes it possible for the computer to know what is
-supposed to be in the function and what isn't.
+This prints `"Maths works!"` because the test is `TRUE`, so the code block
+that follows is run. Whereas:
 
-Now we can write a couple of very simple functions though that really do
-something (not very exciting!):
-
-```{r simple, exercise.cap = "Example 1", exercise=TRUE}
-add_one <- function(number) {
-  number + 1
+```{r ifstatement-2, exercise = TRUE}
+if (2 >= 5) {
+  print("At least 5.")
+} else {
+  print("Less than 5.")
 }
-
-add_one(10)
 ```
 
-Try running the code block by clicking on *RUN CODE*. Can you see what it does
-yet? Feel free to change the argument from `10` to a different value to make
-sure it works as expected. And change what the function does if you like -
-when you do, change the name though, so it makes sense... it's really important
-for your functions to have good names so it's easy to tell if you're using them
-right. Note that because `add_one(10)` is after you close the curly bracket,
-it's not in the function, it's in your main script.
+This prints `"Less than 5."` because the test was false, so R
+continues to the code block after the `else` statement. If there is no `else`
+statement, then no code is run, so:
 
-The last (and indeed only) line of code in this function is what is returned by
-the function, here just the number plus one. **It's critical that the
-last line of your function has the value you want to return in it.** Normally we
-need to do something more complex in our function - here we make a calculation
-and then return it on the last line (possibly the second most simple thing we
-could do):
-
-```{r multiple, exercise.cap = "Example 2", exercise=TRUE}
-add_one <- function(number) {
-  one.more <- number + 1
-  one.more
+```{r ifstatement-3, exercise = TRUE}
+if (2 >= 5) {
+  print("At least 5.")
 }
-
-add_one(10)
 ```
 
-Check that this does the same job. *Example 1* may seem simpler. However, it's
-usually helpful when writing functions to name the thing that you calculate to
-make it easier to keep track of what's going on. You can then return the
-variable (in *Example 2*, `one.more`) that you have just calculated.
-In *Example 2* you can see something very important about functions for the
-first time. Try running the next example:
+does nothing. 
 
-```{r error, exercise.cap = "Exercise 1", exercise=TRUE}
-add_one <- function(number) {
-  one.more <- number + 1
-  one.more
+R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
+consider them too simple, but ironically they have [a chapter in Advanced
+R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
+control that are well beyond the scope of this course.
+
+[operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
+[if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html
+[operators-rcoder]: https://r-coder.com/operators-r
+[if-rcoder]: https://r-coder.com/if-else-r
+
+## Exercises
+
+Now try it yourself. Complete the following code chunk, such that `x` is 
+correctly identified as a negative number.
+
+```{r ifexercise, exercise = TRUE}
+x <- -1
+
+if (___) {
+  print("Positive number")
+} else {
+  print("Negative number")
 }
-
-add_one(10)
-one.more
 ```
 
-```{r error-solution}
-add_one <- function(number) {
-  one.more <- number + 1
-  one.more
-}
+```{r ifexercise-solution}
+x <- -1
 
-one.more <- 20
-add_one(10)
-one.more
+if (x > 0) {
+  print("Positive number")
+} else {
+  print("Negative number")
+}
 ```
 
-```{r error-check}
+```{r ifexercise-check}
 grade_this_code()
 ```
 
-You'll see that it gives an error. That is because, although you have calculated
-`one.more` inside the function, it is discarded when the function ends. This is
-because variables defined inside functions are *local* to the function.
-For there to be a variable in your main script called one.more, you need to
-define it there. Try adding a line of code between lines 5 and 6 of *Exercise 1*
-that just says:
+Of course, this statement isn't entirely accurate, since `0` is neither positive
+nor negative.
 
-```{r, eval=FALSE}
-one.more <- 20
+```{r ifexercise2, exercise = TRUE}
+x <- 0
+
+if (___) {
+  print("Positive number")
+} else if (___) {
+  print("Negative number")
+} else
+  print("Zero")
 ```
 
-Note that the *global* `one.more` variable (the one in your main script) is not
-affected by calling the `add_one()` function even though it looks like it is
-updated there.
+```{r ifexercise2-solution}
+x <- 0
 
-## Naming of things
-
-### Dots and underscores
-
-You may have noticed that my functions were called
-things like `add_one` (with an underscore), but my variables had names like
-`one.more` (with a dot). This was deliberate. Variables and functions should be
-made up of one or more words (or abbreviations) to make it easy to understand
-what they do. However, it can be hard to read names just stuck together like
-`addtwonumberstogether`, whereas `add_two_numbers_together` is easier.
-However, there are boring reasons to do with how R works why it's a bad idea to
-write R functions with dots in their names (even though many functions in R
-already have dots). As a result, in these practicals, I insist that you don't
-uses dots in function names when you write them.
-
-However, dots are generally okay in variables names, so to make it easy to
-distinguish normal variables from functions, I choose to put dots in variable
-names (as `one.more`). You can do whatever you like.
-
-Here's a function that takes two arguments and adds them together (yes, it
-is just reinventing `+`!):
-
-```{r rename, exercise.cap = "Exercise 2", exercise=TRUE}
-add.up <- function(first, second) {
-  added_together <- first + second
-  added_together
-}
-
-add.up(10, 30)
+if (x > 0) {
+  print("Positive number")
+} else if (x < 0) {
+  print("Negative number")
+} else
+  print("Zero")
 ```
 
-```{r rename-solution}
-add_up <- function(first, second) {
-  added.together <- first + second
-  added.together
-}
-
-add_up(10, 30)
-```
-
-```{r rename-check}
+```{r ifexercise2-check}
 grade_this_code()
 ```
 
-Rename the function and variables in *Exercise 2* so that it satisfies my
-naming rules.
+Run the following code. There are two errors, try to find them.
 
-*There is much more on how to style your code to make it more consistent
-[here](http://adv-r.had.co.nz/Style.html). Hadley recommends never using dots,
-so using underscores to separate words in functions and variables. If you want
-to do that it's fine. Don't use dots in function names though. He has lots of
-other suggestions about how to write clear code - do have a look at it and try
-to follow it if you have time.*
+```{r ifexercise3, exercise = TRUE}
+x <- 3
+y <- 3
 
-### Not reusing names
-
-In *Exercise 1*, we showed that variables used in functions don't affect what
-happens outside the function. Unfortunately, the reverse isn't true. Look at
-this function:
-
-```{r global, exercise.cap = "Exercise 3", exercise=TRUE}
-missing_add <- function(first) {
-  first + second
-}
-
-missing_add(10)
+if (x - y) {
+  print("x is less than y")
+} else if (x + y) {
+  print("x is greater than y")
+} else 
+  print("x equals y")
 ```
 
-This function was intended to be like `add_up()` in *Exercise 2*, but I
-accidentally forgot to add the second argument. Fortunately if you run it, it
-will give an error (try it). However, what happens if you have defined
-a variable called `second` elsewhere in your script? Try adding the following
-at line 4:
+```{r ifexercise3-solution}
+x <- 3
+y <- 3
 
-```{r, eval=FALSE}
-second <- 1
+if (x < y) {
+  print("x is less than y")
+} else if (x > y) {
+  print("y is less than x")
+} else 
+  print("x equals y")
 ```
 
-`missing_add(10)` should no longer give an error, and return `11`. Try changing
-`second` to 2 - `missing_add(10)` should now return `12`. That's not good news -
-what the function does depends on what else you may have done in your script.
-When you call a function it should always do the same if you give it the same
-arguments.
-
-This gets even worse when you account for our ability to misspell things:
-
-```{r misspelling, exercise.cap = "Exercise 3", exercise=TRUE}
-misspelled_add <- function(first, second) {
-  resuIt <- first + second
-  result
-}
-
-result <- -5
-misspelled_add(10, 20)
-misspelled_add(1, 2)
+```{r ifexercise3-check}
+grade_this_code()
 ```
 
-<div id="misspelling-hint">
-**Hint:** If you can't see the problem see how the word `result` is spelled in
-different places.
-</div>
+Now edit the following code chunk so that `This statement is true` is 
+returned.
 
-You should find that `misspelled_add()` gives the wrong answer even though the
-code looks right (if you don't look too closely). This problem can (and does!)
-cause hours of agony to some students every year on this course. As a result,
-we insist on two things in your submitted practicals:
-
-1. You use different variable names in your functions than in your scripts,
-   wherever possible. Sometimes there really only is one sensible name
-   for a variable (maybe `timestep` when describing the increments in your
-   simulation model), and you should be very careful when that happens, but
-   normally there are at least two ways of describing the same idea - often one
-   more general in a function (`birth.rate`) which can be used in multiple
-   contexts, and then specific in your main script each time you use it
-   (`human.annual.birth.rate`, for instance).
-2. You write checks for your functions to make sure they aren't accidentally
-   missing any variables or arguments. There are two tools for this,
-   `findGlobals()` and `checkUsage()` in the `codetools` library.
-
-Try adding the following lines to the end of *Exercise 3*:
-
-```{r, eval=FALSE}
-library(codetools)
-checkUsage(misspelled_add)
-```
-
-You'll see that it reports on the problem that you have probably already
-identified. It can also identify other problems, and we recommend it to you.
-However, it doesn't return anything you can use in your code to allow us to
-automatically reject bad functions, and we'll show you how to do this in a
-later practical. For now just try using this line instead of `checkUsage()`
-above (the `library()` call is the same):
-
-```{r, eval=FALSE}
-findGlobals(misspelled_add, merge = FALSE)
-```
-
-You'll see that it identifies the use of the global variable `result` too
-(if less elegantly). We'll show you how to use this to automatically detect
-problems with variable misnaming in a later exercise, but for now just remember
-that you need to watch out for misspelling very carefully.
-
-*If you're interested, the `findGlobals()` output also tells you why this
-problem exists in R. You'll see that the function `misspelled_add()` needs
-to use three other *global* variables - the functions `{`, `+` and `<-` - to get
-the function to work. As a result of the way R works, functions have to be able
-to see what is going on outside to be able to work at all. Most languages handle
-this more elegantly.*
-
-## Loops
-
-Loops allow you to do the same thing multiple times easily. You *loop* over the
-same bit of code again and again instead of having to copy and paste the code
-multiple times into your script. We'll talk more about different kinds of loops
-in a later practical, but for now we'll focus on the simplest -- something that
-tells you to do something a fixed number of times that you know in advance.
-This is called a `for` loop.
-
-A `for` loop always has the same style:
-
-```{r, eval=FALSE}
-for (one in many) {
-  # Do something
-  
-  # ... exciting code maybe using the variable
-  #     one (but it doesn't have to) ...
+```{r ifexercise4, exercise = TRUE}
+if (___) {
+  print("This statement is true")
+} else {
+  print("This statement is false")
 }
 ```
 
-It looks a bit like a function, but what it does is set the variable `one` to
-each of the values in many one at a time, and then does something. Here are two
-very simple examples to get an idea of what it might do:
-
-```{r simple_loop, exercise.cap = "Example 3", exercise=TRUE}
-words <- c("Hello", "Goodbye")
-for (word in words) {
-  print(word)
+```{r ifexercise4-solution}
+if (TRUE) {
+  print("This statement is true")
+} else {
+  print("This statement is false")
 }
 ```
 
-Try changing the `words` variable. You'll see that the loop runs once for each
-word in the `words` vector. We can use this to do something a fixed number of
-times without necessarily caring about the entries:
-
-```{r times_loop, exercise.cap = "Example 4", exercise=TRUE}
-# Make a sequence of 7 numbers from 1 to 7
-times <- seq(from = 1, to = 7) # This is the same as 1:7 or seq(1, 7)
-
-# Print "I'm in a loop" repeatedly
-for (iteration in times) {
-  print("I'm in a loop")
-}
+```{r ifexercise4-check}
+grade_this_code()
 ```
 
-Change the length of the `times` vector. You'll see that it prints out the
-text once for each element in `times` even though it never looks to see what
-`iteration` is (it doesn't care).
 
-Now look at this code:
-
-```{r no_loop, exercise.cap = "Exercise 4", exercise=TRUE}
-# A function to add one to a number
-add_one <- function(number)
-  number + 1
-
-# Initialise the value
-current.value <- 0
-
-current.value <- add_one(current.value)
-current.value <- add_one(current.value)
-current.value <- add_one(current.value)
-current.value <- add_one(current.value)
-current.value <- add_one(current.value)
-
-# Output the updated current.value at the end to see what happened
-current.value
-```
-
-```{r no_loop-check}
-grade_result(pass_if(~identical(.result, 10)))
-```
-
-It just runs our `add_one()` function from earlier five times to update the
-variable `current.value` to 5. Change the code so it does this ten times to
-produce 10.
-
-Now look at this next piece of code:
-
-```{r with_loop, exercise.cap = "Exercise 5", exercise=TRUE}
-# A function to add one to a number
-add_one <- function(number) {
-  number + 1
-}
-
-# Initialise the value
-current.value <- 0
-
-# This now is a loop!
-for (loop in 1:10) {
-  current.value <- add_one(current.value)
-}
-
-# Output the updated current.value at the end to see what happened
-current.value
-```
-
-```{r with_loop-check}
-grade_result(pass_if(~identical(.result, 100)))
-```
-
-It does the same thing - it calls `add_one()` ten times, but it's much shorter,
-which generally makes it easier to see what's going on. Now change the code
-to call `add_one()` 100 times. Hopefully you can see that this is really
-starting to help now!
-
-And you can probably imagine that if it was any more complicated that just
-copying and pasting one line it would make it much easier to see that it was
-doing exactly the same thing each time too.
-
-Finally, add in the single line `print(paste("Loop number", loop))` into the
-loop at the end (between lines 11 and 12) and run it. You'll now be able see
-each step of the loop running. We'll use techniques like this later to check
-that the loop is doing the right thing.
-
-*Note also that unlike functions, variables changed in `for` loops do change
-what happens outside the loop, so `current.value` is `100` at the end, and not
-still `0`.*
-
-## Conclusion
-
-You've now learnt the basics of functions and loops. You'll be using them
-throughout the rest of the practicals, so do ask for help if anything isn't
-clear.
