@@ -545,4 +545,5 @@ can click on the little notebook icon:
 knitr::include_graphics('images/compile_report.png')
 ```
 
-You won't need to create and submit a project until practical 1-6.
+You can throw away this project after you've finished this exercise. You won't
+need to create and submit a project until practical 1-6.
