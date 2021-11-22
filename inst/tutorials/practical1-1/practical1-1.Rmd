@@ -531,7 +531,7 @@ name and a location on your computer to save it in. You can tick
 <span style="color: #dd1c77;">Open in new session</span>, especially if you
 opened this practical using `run_practical()`, because then your current
 session is used up by this practical. If you used the tutorial pane this won't
-be necessary though.
+be necessary though. However, RStudio will still probably restart your current RStudio session and so may close this tutorial if you don't open in a new session.
 
 In the new project, create a new R file, and copy the code in
 the <span style="color: #dd1c77;">R Markdown header</span>
