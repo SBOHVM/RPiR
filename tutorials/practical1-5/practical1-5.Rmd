@@ -135,7 +135,7 @@ Likewise, we've generated
 <span style="color: #dd1c77;">0105-run-birth-death.R</span> (from
 <span style="color: #dd1c77;">0104-run-growth.R</span>), with added blanks 
 for you to fill in. Again,`source()`
-has been commented out as it won't work in the {learnr} environment. Instead, 
+has been commented out as it won't work in the `learnr` environment. Instead, 
 the necessary files have been preloaded for you. Try to fill in the blanks and
 compare the outputs as you vary the birth and death rates:
 
@@ -154,7 +154,7 @@ step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
 
 ```{r rungrowth, exercise = TRUE, exercise.cap = "0105-run-birth-death.R", exercise.lines = 60}
 library(RPiR)
-# Load the step_simple_growth() function into the global environment (my workspace)
+# Load the step_deterministic_birth_death() function into the global environment (my workspace)
 # Note this next line would be needed if you were running this in RStudio
 # source(___)
 
