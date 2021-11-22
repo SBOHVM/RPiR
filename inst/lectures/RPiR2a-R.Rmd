@@ -227,6 +227,8 @@ http://phdcomics.com/comics/archive.php?comicid=946
 
 ## Starting with...
 
-> - Practical 0.1 - 0.4 ("practical0-x") on if statements, functions and loops
-> - Practical 1.1 - 1.5 ("practical1-x") on population dynamics
+- Practical 1.1 - 1.6 ("practical1-x") on population dynamics
 
+and optionally:
+
+- Practical A.1 - A.3 ("practicalA-x") on if statements, functions and loops
