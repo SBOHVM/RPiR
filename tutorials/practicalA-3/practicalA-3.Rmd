@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Revision of basic concepts.
+  Basics of functions and variable names.
 ---
 
 ```{r setup, include=FALSE}

@@ -152,7 +152,7 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>In this session you will run a simple program in R within a {learnr} tutorial. It will run the difference equation model of exponential growth discussed in the lecture. Then you’ll create an R project and create a report from the code.</p>
+<p>In this session you will run a simple program in R within a <code>learnr</code> tutorial. It will run the difference equation model of exponential growth discussed in the lecture. Then you’ll create an R project and create a report from the code.</p>
 </div>
 <div id="section-introduction" class="section level2">
 <h2>Introduction</h2>
@@ -222,11 +222,11 @@ print(N)</code></pre>
 </div>
 <p>We’ve been working through these exercises with variable names that are hard to remember, and this makes the code harder to follow. Here, just go through the code below and change them for more sensible names. There are lots of options, but for this example you must change them as follows:</p>
 <ul>
-<li><code>N</code> -&gt; <code>population.count</code></li>
-<li><code>lambda</code> -&gt; <code>growth.rate</code></li>
-<li><code>a</code> -&gt; <code>first.day</code></li>
-<li><code>e</code> -&gt; <code>last.day</code></li>
-<li><code>i</code> -&gt; <code>day</code></li>
+<li><code>N</code> <span class="math inline">\(\rightarrow\)</span> <code>population.count</code></li>
+<li><code>lambda</code> <span class="math inline">\(\rightarrow\)</span> <code>growth.rate</code></li>
+<li><code>a</code> <span class="math inline">\(\rightarrow\)</span> <code>first.day</code></li>
+<li><code>e</code> <span class="math inline">\(\rightarrow\)</span> <code>last.day</code></li>
+<li><code>i</code> <span class="math inline">\(\rightarrow\)</span> <code>day</code></li>
 </ul>
 <p>Hopefully once you’ve changed them you can see that the code is at least a bit easier to read!</p>
 <div class="tutorial-exercise" data-label="changenames" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
@@ -424,10 +424,10 @@ plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></
 <p><strong>Hint:</strong> Read <code>?tail</code>.</p>
 </div>
 <p>Run the code for different initial conditions and different growth rates. Test the code using the value of the human population growth rate we used in the lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that you agree with the doubling time we calculated theoretically of ~46 years.</p>
-<p>Finally, create a new project in RStudio - you can do this by selecting <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">New Project…</span>, and then choose <span style="color: #dd1c77;">New Directory</span> &gt; <span style="color: #dd1c77;">New Project</span> and then a name and a location on your computer to save it in, and tick <span style="color: #dd1c77;">Open in new session</span> because your current session is used up by this practical. From now on all of the coding you do will happen in this (or another) new RStudio session. Keep the current one just for running the practicals.</p>
-<p>In the new session, create a new R file, and copy the code in the <span style="color: #dd1c77;">R Markdown header</span> and <span style="color: #dd1c77;">0101-growth-loop.R</span> code sections into it (ignoring duplicates), save it, and generate a report from it. You can do this by clicking on <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">Compile Report…</span>) or you can click on the little notebook icon:</p>
+<p>Finally, create a new project in RStudio - you can do this by selecting <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">New Project…</span>, and then choose <span style="color: #dd1c77;">New Directory</span> &gt; <span style="color: #dd1c77;">New Project</span> and then a name and a location on your computer to save it in. You can tick <span style="color: #dd1c77;">Open in new session</span>, especially if you opened this practical using <code>run_practical()</code>, because then your current session is used up by this practical. If you used the tutorial pane this won’t be necessary though.</p>
+<p>In the new project, create a new R file, and copy the code in the <span style="color: #dd1c77;">R Markdown header</span> and <span style="color: #dd1c77;">0101-growth-loop.R</span> code sections into it (ignoring duplicates), save it, and generate a report from it. You can do this by clicking on <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">Compile Report…</span>) or you can click on the little notebook icon:</p>
 <p><img src="images/compile_report.png" width="60%" style="display: block; margin: auto;" /></p>
-You’ll start generating your own reports in practical 1-6, but you won’t need to submit any till the second practical series. There is more detail on projects in practical 2-1. 
+You won’t need to create and submit a project until practical 1-6. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -524,7 +524,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
-learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "N-2", question = structure("1b. How many days does it take for the population size to grow to 8.05255 <em>(remember to click the &#39;start over&#39; button on the Exercise 1 code block first)<\u002fem>?", html = TRUE, class = c("html", 
+learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "N-2", question = structure("1b. How many days does it take for the population size to grow to 8.05255 <em>(remember to click the &#39;start over&#39; button on the Exercise 1 code block first to reset the starting population to 5)<\u002fem>?", html = TRUE, class = c("html", 
 "character")), answers = list(structure(list(id = "lnr_ans_ba9974", 
     option = "2", value = "2", label = structure("2", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = NULL), class = c("tutorial_question_answer", 
@@ -543,7 +543,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), try_again = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
-    answer = "N-2-answer", question = "N-2"), loading = structure("<strong>Loading:<\u002fstrong> \n1b. How many days does it take for the population size to grow to 8.05255 <em>(remember to click the &#39;start over&#39; button on the Exercise 1 code block first)<\u002fem>?\n<br/><br/><br/>", html = TRUE, class = c("html", 
+    answer = "N-2-answer", question = "N-2"), loading = structure("<strong>Loading:<\u002fstrong> \n1b. How many days does it take for the population size to grow to 8.05255 <em>(remember to click the &#39;start over&#39; button on the Exercise 1 code block first to reset the starting population to 5)<\u002fem>?\n<br/><br/><br/>", html = TRUE, class = c("html", 
 "character")), random_answer_order = FALSE, allow_retry = TRUE, 
     seed = 980572677.043385, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)

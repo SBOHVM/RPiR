@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students edit scripts to make a more complex model.
+  Making a more complex model.
 ---
 
 ```{r setup, include=FALSE}
