@@ -206,7 +206,7 @@ plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
 <p>Look at <span style="color: #dd1c77;">0101-growth-functional.R</span>. The code in the for loop, that is to say inside the curly brackets, describes the way that the population changes from one point in time to the next. This (together with, perhaps, the starting conditions) is what we would be changing if we wanted to explicitly introduce birth and death into the model, or make it a model of disease spread rather than population growth. The rest would remain pretty much the same.</p>
-<p>We want to take this code and put it into its own function at the beginning of the program – we’ll call it <code>step_simple_growth()</code>. It should take the current population count from the vector <code>population.vector</code> and the value of <code>growth.rate</code> as <strong>arguments</strong> (function inputs), update the population size, and return it. This is the framework for such a function with comments (try to fill it in, using the for loop in <span style="color: #dd1c77;">0101-growth-loop.R</span> as a guide):</p>
+<p>We want to take this code and put it into its own function at the beginning of the program – we’ll call it <code>step_simple_growth()</code>. You can learn more about functions in <span style="color: #dd1c77;">Practical A-2</span>. It should take the current population count from the vector <code>population.vector</code> and the value of <code>growth.rate</code> as <strong>arguments</strong> (function inputs), update the population size, and return it. This is the framework for such a function with comments (try to fill it in, using the for loop in <span style="color: #dd1c77;">0101-growth-loop.R</span> as a guide):</p>
 <pre class="r"><code>#&#39; ### Function: step_simple_growth() 
 #&#39; Run one step of a simple deterministic exponential growth model. 
 #&#39;
@@ -253,8 +253,8 @@ step_simple_growth &lt;- function(current.population, growth.rate) {
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fba5bba0e18&gt;
-## &lt;environment: 0x7fba5bb9f678&gt;</code></pre>
+## &lt;bytecode: 0x7f821d5c01f0&gt;
+## &lt;environment: 0x7f821d5c2960&gt;</code></pre>
 <p>The <code>function()</code> command, like <code>for()</code>, has one line of code after it (comments are ignored) that defines what the function does. Because nearly all functions need multiple lines to define what they do, we nearly always use <code>{ ... }</code> syntax (as with <code>for()</code>) to allow us to write multiple commands all as part of the function definition. Remember that <strong>whatever appears last in the function</strong> <strong>definition will be returned to the script that calls it</strong>, in this case <code>next.population</code>.</p>
 <p>To make sure that the function is only using the information given to it in its arguments, we are going to use <code>findGlobals()</code> to check that it does not use any external information (known as <strong>global variables</strong>). To do this we load in the codetools library (you may have to install it first), and then call the <code>findGlobals()</code> function giving it the name of our function, as follows:</p>
 <pre class="r"><code>step_simple_growth &lt;- function(current.population, growth.rate) {
@@ -443,8 +443,8 @@ plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fba5bba0e18&gt;
-## &lt;environment: 0x7fba5b9a7060&gt;</code></pre>
+## &lt;bytecode: 0x7f821d5c01f0&gt;
+## &lt;environment: 0x7f821d0a8358&gt;</code></pre>
 <pre class="r"><code># Within the `for()` loop where the time gets updated the code should be edited
 # to contain the line and an appropriate comment:
 

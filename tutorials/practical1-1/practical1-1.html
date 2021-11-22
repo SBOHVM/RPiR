@@ -167,7 +167,7 @@ pre code {
 <p>We can also use mathematics to describe the behaviour more precisely. In this case:</p>
 <p><span class="math display">\[N(t+1) = N(t) + \lambda \times N(t)\]</span></p>
 <p>where <span class="math inline">\(N(t)\)</span> is the population size at time <span class="math inline">\(t\)</span>, and <span class="math inline">\(\lambda\)</span> is the growth rate. We want to convert this equation into R code, and run the model of exponential growth in a population, initially with a starting population size of 5, a growth rate of 0.1 per day, and to run it for 20 days.</p>
-<p>We can start by first initialising the population, <span class="math inline">\(N\)</span>, and setting the growth rate parameter (remembering that <span class="math inline">\(\lambda\)</span> is the greek letter written as <code>lambda</code> in English – since R doesn’t understand greek!). Then create a <code>for()</code> loop to repeatedly update the population (20 times in this case), and print out the final answer. If you run this code, it should give you a final population size of 33.6375.</p>
+<p>We can start by first initialising the population, <span class="math inline">\(N\)</span>, and setting the growth rate parameter (remembering that <span class="math inline">\(\lambda\)</span> is the greek letter written as <code>lambda</code> in English – since R doesn’t understand greek!). Then create a <code>for()</code> loop to repeatedly update the population (20 times in this case), and print out the final answer. You can learn more about <code>for</code> loops in <span style="color: #dd1c77;">Practical A-4</span>. If you run this code, it should give you a final population size of 33.6375.</p>
 <div class="tutorial-exercise" data-label="forloop" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>N &lt;- 5
 lambda &lt;- 0.1
@@ -228,7 +228,7 @@ print(N)</code></pre>
 <li><code>e</code> <span class="math inline">\(\rightarrow\)</span> <code>last.day</code></li>
 <li><code>i</code> <span class="math inline">\(\rightarrow\)</span> <code>day</code></li>
 </ul>
-<p>Hopefully once you’ve changed them you can see that the code is at least a bit easier to read!</p>
+<p>Hopefully once you’ve changed them you can see that the code is at least a bit easier to read! You can learn more about variable naming in <span style="color: #dd1c77;">Practical A-3</span>.</p>
 <div class="tutorial-exercise" data-label="changenames" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>N &lt;- 5
 lambda &lt;- 0.1
