@@ -7,8 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to separate functions from the main script and source() 
-  them.
+  Separating functions from the main script and using source() between them.
 ---
 
 ```{r setup, include=FALSE}

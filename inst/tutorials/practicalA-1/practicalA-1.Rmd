@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Revision of basic concepts.
+  Basics of control flow - if statements.
 ---
 
 ```{r setup, include=FALSE}
@@ -67,7 +67,7 @@ if (2 > 1) {
 ```
 
 This prints `"Maths works!"` because the test is `TRUE`, so the code block
-that follows is run. Whereas:
+that follows is run. You can try changing the numbers to get a different result. Whereas:
 
 ```{r ifstatement-2, exercise = TRUE}
 if (2 >= 5) {
@@ -78,7 +78,7 @@ if (2 >= 5) {
 ```
 
 This prints `"Less than 5."` because the test was false, so R
-continues to the code block after the `else` statement. If there is no `else`
+continues to the code block after the `else` statement. Again, change the numbers to check you understand how it works. If there is no `else`
 statement, then no code is run, so:
 
 ```{r ifstatement-3, exercise = TRUE}
@@ -129,7 +129,7 @@ grade_this_code()
 ```
 
 Of course, this statement isn't entirely accurate, since `0` is neither positive
-nor negative.
+nor negative. You can fix this by correcting this code:
 
 ```{r ifexercise2, exercise = TRUE}
 x <- 0
@@ -178,7 +178,7 @@ y <- 3
 if (x < y) {
   print("x is less than y")
 } else if (x > y) {
-  print("y is less than x")
+  print("x is greater than y")
 } else 
   print("x equals y")
 ```
@@ -188,7 +188,7 @@ grade_this_code()
 ```
 
 Now edit the following code chunk so that `This statement is true` is 
-returned.
+always returned.
 
 ```{r ifexercise4, exercise = TRUE}
 if (___) {
@@ -197,6 +197,10 @@ if (___) {
   print("This statement is false")
 }
 ```
+
+<div id="ifexercise4-hint">
+**Hint:** The value `TRUE` is always true, so will succeed in a if statement, and the value `FALSE` is always false, so will fail.
+</div>
 
 ```{r ifexercise4-solution}
 if (TRUE) {

@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students expand on previous code.
+  Expanding on previous code.
 ---
 
 ```{r setup, include=FALSE}
@@ -172,7 +172,7 @@ For convenience, we've generated
 <span style="color: #dd1c77;">0104-run-growth.R</span> (from 
 <span style="color: #dd1c77;">0103-run-simple-growth.R</span>) for you to edit. 
 Note that, as before, `source()`
-has been commented out as it won't work in the {learnr} environment. Instead, 
+has been commented out as it won't work in the `learnr` environment. Instead, 
 <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> and 
 <span style="color: #dd1c77;">0104-step-growth.R</span> have been preloaded for
 you:
@@ -299,7 +299,7 @@ library(RPiR)
 ```
 
 Then read in function from the new file (though since we're working in
-the {learnr} environment rather than RStudio you should comment this line out,
+the `learnr` environment rather than RStudio you should comment this line out,
 since the file has been preloaded for you):
 
 ```{r, eval = FALSE}
