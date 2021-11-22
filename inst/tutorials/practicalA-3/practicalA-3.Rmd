@@ -1,5 +1,5 @@
 ---
-title: "Practical A-3: Functions and naming of things"
+title: "Practical A-3: Naming of things"
 output:
   learnr::tutorial:
     theme: lumen
@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Basics of functions and variable names.
+  Basics of variable and function naming and global variables.
 ---
 
 ```{r setup, include=FALSE}
@@ -23,148 +23,11 @@ knitr::opts_chunk$set(
 set.seed(123)
 ```
 
-## Functions
-
-Just as loops allow you to repeat the same code chunk again and again in one
-place, functions allow you to repeat the same task multiple times, but
-potentially in multiple places on different data. If you have a complex piece
-of code that does a single discrete thing, then you may want to wrap it up
-into a function so that you can refer to it by a simple name and keep the
-script that calls it clear and easy to read.
-
-To quote from [the introduction to R4DS on functions][functions-R4DS]:
-
-> One of the best ways to improve your reach as a data scientist is to write functions. Functions allow you to automate common tasks in a more powerful and general way than copy-and-pasting. Writing a function has three big advantages over using copy-and-paste:
->
-> 1. You can give a function an evocative name that makes your code easier to understand.
->
-> 2. As requirements change, you only need to update code in one place, instead of many.
->
-> 3. You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).
-
-Functions allow us to wrap up a common task into a single line of code,
-irrespective of how complex and long the code chunk is, making our scripts 
-cleaner and easier to read. They allow us to describe what the code is doing 
-(by assigning a name to the function), making our scripts easier to understand. 
-Finally, writing custom functions rather than duplicating code means that there 
-is only a single place that needs to be checked for correctness, rather than 
-having to remember all of the places your duplicated (likely copied and pasted) 
-code exists.
-
-It's very easy to write a function. Here we write a single function
-(called `function_name`), that takes one input (we call the inputs to
-functions *arguments*, here there is just one called `argument`). Finally,
-whatever appears last in the function definition will be returned to the script
-that calls it, in this case, `result`.
-
-Every function has one "line" of code after it (comments are ignored) that
-defines what the function does. Because nearly all functions need multiple lines
-to define what they do, we nearly always use matching curly brackets - `{ ... }` -
-to allow us to wrap multiple commands that are all treated as one line by R:
-
-```{r intro1, eval=FALSE}
-function_name <- function(argument) {
-  # Function body
-  
-  # ... exciting code using argument
-  #     to do something useful, and
-  #     producing some result ...
-  result
-}
-```
-
-Above, we just have dummy code, and it doesn't work. Note that the *function
-body*, the code that gets run when you use the function is wrapped in curly
-brackets `{ ... }` - this makes it possible for the computer to know what is
-supposed to be in the function and what isn't.
-
-Now we can write a couple of very simple functions that really do
-something (not very exciting!):
-
-```{r simple, exercise.cap = "Example 1", exercise=TRUE}
-add_one <- function(number) {
-  number + 1
-}
-
-add_one(10)
-```
-
-Try running the code block. Can you see what it does? Feel free to change the 
-argument from `10` to a different value to make
-sure it works as expected. And change what the function does if you like -
-when you do, change the name though, so it makes sense... it's really important
-for your functions to have good names so it's easy to tell if you're using them
-right. Note that because `add_one(10)` is called after you close the curly 
-bracket, it's not considered part of the function, it's in your main script.
-
-The last (and indeed only) line of code in this function is what is returned by
-the function, here just the number plus one. **It's critical that the
-last line of your function has the value you want to return in it.** Normally we
-need to do something more complex in our function - here we make a calculation
-and then return it on the last line (possibly the second simplest thing we
-could do):
-
-```{r multiple, exercise.cap = "Example 2", exercise=TRUE}
-add_one <- function(number) {
-  one.more <- number + 1
-  one.more
-}
-
-add_one(10)
-```
-
-Check that this does the same job. *Example 1* may seem simpler. However, it's
-usually helpful when writing functions to name the thing that you calculate to
-make it easier to keep track of what's going on. You can then return the
-variable (in *Example 2*, `one.more`) that you have just calculated.
-
-Try running the next example:
-
-```{r error, exercise.cap = "Exercise 1", exercise=TRUE}
-add_one <- function(number) {
-  one.more <- number + 1
-  one.more
-}
-
-add_one(10)
-one.more
-```
-
-```{r error-solution}
-add_one <- function(number) {
-  one.more <- number + 1
-  one.more
-}
-
-one.more <- 20
-add_one(10)
-one.more
-```
-
-```{r error-check}
-grade_this_code()
-```
-
-You'll see that it gives an error. That is because, although you have calculated
-`one.more` inside the function, it is discarded when the function ends. This is
-because variables defined inside functions are *local* to the function.
-For there to be a variable in your main script called one.more, you need to
-define it there. Try adding a line of code between lines 5 and 6 of *Exercise 1*
-that just says:
-
-```{r, eval=FALSE}
-one.more <- 20
-```
-
-Note that the *global* `one.more` variable (the one in your main script) is not
-affected by calling the `add_one()` function even though it looks like it is
-updated there.
-
 ## Naming of things
 
 ### Dots and underscores
 
-You may have noticed that my functions were called
+You may have noticed that my functions in A-2 were called
 things like `add_one` (with an underscore), but my variables had names like
 `one.more` (with a dot). This was deliberate. Variables and functions should be
 made up of one or more words (or abbreviations) to make it easy to understand
@@ -317,43 +180,3 @@ functional programming, and continuing for several chapters.
 [functions-R4DS]: https://r4ds.had.co.nz/functions.html
 [functions-advanced-r2]: https://adv-r.hadley.nz/fp.html
 [functions-rcoder]: https://r-coder.com/function-r
-
-## Exercises
-
-Here are a few more examples for you to try. This first example is intended to 
-subtract two numbers, returning the calculated value, whilst also checking 
-whether or not the result is negative. Try to fix the mistake in the code.
-
-```{r, functionexercise, exercise.cap = "Exercise 5", exercise = TRUE}
-subtract <- function(first, second) {
-  # Calculate the result
-  subtracted <- first - second
-  # And return it
-  subtracted
-  # Check whether result is negative
-  if (subtracted < 0) 
-    print("Negative number")
-}
-
-# Call the function to subtract 5 from 3
-subtract(3, 5)
-```
-
-```{r, functionexercise-solution}
-subtract <- function(first, second) {
-  # Calculate the result
-  subtracted <- first - second
-  # Check whether result is negative
-  if (subtracted < 0) 
-    print("Negative number")
-  # And return it
-  subtracted
-}
-
-# Call the function to subtract 5 from 3
-subtract(3, 5)
-```
-
-```{r functionexercise-check}
-grade_this_code()
-```
