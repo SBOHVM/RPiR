@@ -111,7 +111,8 @@ model of disease spread rather than population growth. The rest would remain
 pretty much the same.
 
 We want to take this code and put it into its own function at the beginning of 
-the program -- we'll call it `step_simple_growth()`. It should take 
+the program -- we'll call it `step_simple_growth()`. You can learn more about
+functions in <span style="color: #dd1c77;">Practical A-2</span>. It should take 
 the current population count from the vector `population.vector` and the value 
 of `growth.rate` as **arguments** (function inputs), update the population 
 size, and return it. This is the framework for such a function with comments 
