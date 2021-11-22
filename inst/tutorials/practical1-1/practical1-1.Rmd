@@ -7,10 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to write a script and how to comment their code well. 
-  They learn how to use YAML header blocks and Roxygen2 style comments to 
-  compile a report from an R script, with code and text chunks. They learn 
-  about for() loops and how to use print() statements to check their code.
+  Running code in a learnr tutorial.
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +22,7 @@ set.seed(123)
 
 ## Overview
 
-In this session you will run a simple program in R within a {learnr} tutorial.
+In this session you will run a simple program in R within a `learnr` tutorial.
 It will run the difference equation model of exponential growth discussed in
 the lecture. Then you'll create an R project and create a report from the code.
 
@@ -86,7 +83,7 @@ quiz(caption = "Quiz",
               answer("10"),
               allow_retry = TRUE
      ),
-     question("1b. How many days does it take for the population size to grow to 8.05255 *(remember to click the 'start over' button on the Exercise 1 code block first)*?",
+     question("1b. How many days does it take for the population size to grow to 8.05255 *(remember to click the 'start over' button on the Exercise 1 code block first to reset the starting population to 5)*?",
               answer("2"),
               answer("5", correct = TRUE),
               answer("12"),
@@ -144,11 +141,11 @@ remember, and this makes the code harder to follow. Here, just go through the
 code below and change them for more sensible names. There are lots of options,
 but for this example you must change them as follows:
 
-- `N` -> `population.count`
-- `lambda` -> `growth.rate`
-- `a` -> `first.day`
-- `e` -> `last.day`
-- `i` -> `day`
+- `N` $\rightarrow$ `population.count`
+- `lambda` $\rightarrow$ `growth.rate`
+- `a` $\rightarrow$ `first.day`
+- `e` $\rightarrow$ `last.day`
+- `i` $\rightarrow$ `day`
 
 Hopefully once you've changed them you can see that the code is at least a bit
 easier to read!
@@ -530,13 +527,13 @@ Finally, create a new project in RStudio - you can do this by selecting
 <span style="color: #dd1c77;">File</span> > <span style="color: #dd1c77;">New
 Project...</span>, and then choose <span style="color: #dd1c77;">New
 Directory</span> > <span style="color: #dd1c77;">New Project</span> and then a
-name and a location on your computer to save it in, and tick
-<span style="color: #dd1c77;">Open in new session</span> because your current
-session is used up by this practical. From now on all of the coding you do will
-happen in this (or another) new RStudio session. Keep the current one just for
-running the practicals.
+name and a location on your computer to save it in. You can tick
+<span style="color: #dd1c77;">Open in new session</span>, especially if you
+opened this practical using `run_practical()`, because then your current
+session is used up by this practical. If you used the tutorial pane this won't
+be necessary though.
 
-In the new session, create a new R file, and copy the code in
+In the new project, create a new R file, and copy the code in
 the <span style="color: #dd1c77;">R Markdown header</span>
 and <span style="color: #dd1c77;">0101-growth-loop.R</span> code sections
 into it (ignoring duplicates), save it, and generate a report from it.
@@ -548,6 +545,4 @@ can click on the little notebook icon:
 knitr::include_graphics('images/compile_report.png')
 ```
 
-You'll start generating your own reports in practical 1-6, but you won't need to
-submit any till the second practical series. There is more detail on projects in
-practical 2-1.
+You won't need to create and submit a project until practical 1-6.

@@ -7,8 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Students learn how to write a function and how to differentiate between `<-`
-  and `=` assignment operators.
+  Writing a function.
 ---
 
 ```{r setup, include=FALSE}
