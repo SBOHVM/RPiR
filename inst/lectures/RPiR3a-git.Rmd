@@ -125,8 +125,6 @@ Makes your project / data / code:
 
 <center>![](images/RPiR4a-1.png){ width=80% }</center>
 
-# GitHub demo
-
 # RStudio projects 
 
 ## Why use RStudio projects?
