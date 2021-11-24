@@ -45,9 +45,9 @@ navbar:
          href: lectures/RPiR2b-modelling.html
       -  text: RPiR2c-development
          href: lectures/RPiR2c-development.html
-#      -  text: RPiR3a-git
-#         href: lectures/RPiR3a-git.html
-#      -  text: RPiR3a-modelling
+      -  text: RPiR3a-git
+         href: lectures/RPiR3a-git.html
+#      -  text: RPiR4a-modelling
 #         href: lectures/RPiR4a-modelling.html
 #      -  text: RPiR5a-reporting
 #         href: lectures/RPiR5a-reporting.html
@@ -82,8 +82,8 @@ navbar:
          href: lectures_html/RPiR2b-modelling.html
       -  text: RPiR2c-development
          href: lectures_html/RPiR2c-development.html
-#      -  text: RPiR3a-git
-#         href: lectures_html/RPiR3a-git.html
+      -  text: RPiR3a-git
+         href: lectures_html/RPiR3a-git.html
 #      -  text: RPiR4a-modelling
 #         href: lectures_html/RPiR4a-modelling.html
 #      -  text: RPiR5a-reporting
