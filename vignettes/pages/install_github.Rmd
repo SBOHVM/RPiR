@@ -177,17 +177,20 @@ clipboard.
 Now back in RStudio, run:
 
 ```{r, eval = FALSE}
-usethis::edit_r_environ()
+gitcreds::gitcreds_set()
 ```
 
-This will open up a new file in a new tab in RStudio called 
-<span style="color: #de77ae;">.Renviron</span>. Inside this file, on a new line, 
-type the following, replacing `put_string_here` with the alphanumeric string 
-you copied earlier:
-
-```
-GITHUB_PAT="put_string_here"
-```
-Now save this file (don't run it) and close it. 
+This will prompt you in the RStudio
+<span style="color: #de77ae;">Console</span> tab with "Enter new password or
+token". Paste in the alphanumeric string you copied above.
 
 Now restart RStudio and you're done.
+
+Note that if you have any problems getting RStudio to interact with GitHub, 
+it may be useful to call:
+
+```{r, eval = FALSE}
+usethis::git_sitrep()
+```
+
+for more information.
