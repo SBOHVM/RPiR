@@ -10,8 +10,8 @@ export_materials <- function(materials, type = "exercises") {
 #      materials[grepl("project", materials)]
       )
   } else if (type == "lectures") {
-    unique(c(materials[grepl("RPiR[123][a-z]?-", materials)]#,
-#             materials[grepl("RPiR[456789][a-z]?-", materials)],
+    unique(c(materials[grepl("RPiR[12345][a-z]?-", materials)]#,
+#             materials[grepl("RPiR[6789][a-z]?-", materials)],
 #             materials[grepl("RPiR1[0123][a-z]?-", materials)]
              )
            )
