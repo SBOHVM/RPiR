@@ -19,6 +19,7 @@ Imports:
     docstring,
     dplyr,
     ggplot2,
+    gitcreds,
     gradethis,
     graphics,
     knitr,
