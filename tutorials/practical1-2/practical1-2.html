@@ -253,8 +253,8 @@ step_simple_growth &lt;- function(current.population, growth.rate) {
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fa481f6b7e0&gt;
-## &lt;environment: 0x7fa481f6fd58&gt;</code></pre>
+## &lt;bytecode: 0x7fb6bb413120&gt;
+## &lt;environment: 0x7fb6bb417f00&gt;</code></pre>
 <p>The <code>function()</code> command, like <code>for()</code>, has one line of code after it (comments are ignored) that defines what the function does. Because nearly all functions need multiple lines to define what they do, we nearly always use <code>{ ... }</code> syntax (as with <code>for()</code>) to allow us to write multiple commands all as part of the function definition. Remember that <strong>whatever appears last in the function</strong> <strong>definition will be returned to the script that calls it</strong>, in this case <code>next.population</code>.</p>
 <p>To make sure that the function is only using the information given to it in its arguments, we are going to use <code>findGlobals()</code> to check that it does not use any external information (known as <strong>global variables</strong>). To do this we load in the codetools library (you may have to install it first), and then call the <code>findGlobals()</code> function giving it the name of our function, as follows:</p>
 <pre class="r"><code>step_simple_growth &lt;- function(current.population, growth.rate) {
@@ -443,8 +443,8 @@ plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fa481f6b7e0&gt;
-## &lt;environment: 0x7fa481d466a8&gt;</code></pre>
+## &lt;bytecode: 0x7fb6bb413120&gt;
+## &lt;environment: 0x7fb6baeee130&gt;</code></pre>
 <pre class="r"><code># Within the `for()` loop where the time gets updated the code should be edited
 # to contain the line and an appropriate comment:
 

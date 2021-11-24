@@ -320,11 +320,13 @@
 <p>Copy the alphanumeric string (in the green box) by clicking on the tiny, blue clipboard.</p>
 <p>Now back in RStudio, run:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This will open up a new file in a new tab in RStudio called <span style="color: #de77ae;">.Renviron</span>. Inside this file, on a new line, type the following, replacing <code>put_string_here</code> with the alphanumeric string you copied earlier:</p>
-<pre><code>GITHUB_PAT="put_string_here"</code></pre>
-<p>Now save this file (don’t run it) and close it.</p>
+<code class="sourceCode R"><span class="fu">gitcreds</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/gitcreds/man/gitcreds_get.html">gitcreds_set</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>This will prompt you in the RStudio <span style="color: #de77ae;">Console</span> tab with “Enter new password or token”. Paste in the alphanumeric string you copied above.</p>
 <p>Now restart RStudio and you’re done.</p>
+<p>Note that if you have any problems getting RStudio to interact with GitHub, it may be useful to call:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/git_sitrep.html">git_sitrep</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>for more information.</p>
 </div>
 </div>
 <div class="footnotes">
