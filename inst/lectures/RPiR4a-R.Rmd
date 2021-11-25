@@ -343,17 +343,18 @@ nrow(full)
 rm(list=ls())
 ```
 This clears the environment, but so does generating a report, and `rm()` can
-accidentally delete useful things if it’s used in the wrong place. If you have
-to, you can clear the environment manually using *Session->Clear Workspace*, the
-brush in the Environment tab, or even better use *Session->Restart R* to restart
-everything. Next:
+accidentally delete useful things if it’s used in the wrong place, so *never
+use it*. If you have to clear the environment, you can clear the environment
+manually using *Session->Clear Workspace*, the brush in the Environment tab, or
+even better use *Session->Restart R* to restart everything. Next:
 ```{R, eval=FALSE}
 setwd("c/d") # and more importantly
 setwd("c:\a\b\c\d")
 ```
 This will set the working directory to a fixed place, which is very annoying
-if you ever move your code. Much better to use a Project, so please don't put
-this into your code anywhere.
+if you ever move your code or more importantly if someone else tries to use it.
+Much better to use a Project, so please *never put `setwd()` into your code
+anywhere*.
 
 ## Final comments
 
@@ -363,6 +364,6 @@ install.packages("tibble")
 devtools::install_github("IBAHCM/RPiR")
 ```
 This should be done before you run your code (and later we'll show you how
-t make sure it is done as your code is downloaded), but your scripts should
+to make sure it is done as your code is downloaded), but your scripts should
 not try to install packages themselves. It's enough that loading the library
 will fail if the code is run. It's obvious what to do next if that happens.
