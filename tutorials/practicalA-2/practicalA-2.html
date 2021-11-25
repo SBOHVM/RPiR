@@ -230,8 +230,8 @@ one.more
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fa29b89ea88&gt;
-&gt; &lt;environment: 0x7fa29c127108&gt;</code></pre>
+&gt; &lt;bytecode: 0x7fa99f4cc808&gt;
+&gt; &lt;environment: 0x7fa99ec46858&gt;</code></pre>
 <p>You’ll see that it gives an error. That is because, although you have calculated <code>one.more</code> inside the function, it is discarded when the function ends. This is because variables defined inside functions are <em>local</em> to the function. For there to be a variable in your main script called one.more, you need to define it there. Try adding a line of code between lines 5 and 6 of <em>Exercise 1</em> that just says:</p>
 <pre class="r"><code>one.more &lt;- 20</code></pre>
 <p>Note that the <em>global</em> <code>one.more</code> variable (the one in your main script) is not affected by calling the <code>add_one()</code> function even though it looks like it is updated there.</p>
@@ -282,8 +282,8 @@ subtract(3, 5)
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fa29b89ea88&gt;
-&gt; &lt;environment: 0x7fa297fe8250&gt;</code></pre>
+&gt; &lt;bytecode: 0x7fa99f4cc808&gt;
+&gt; &lt;environment: 0x7fa99e139bc0&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)

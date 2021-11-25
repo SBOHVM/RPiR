@@ -99,16 +99,16 @@ people's code too.
 ### Getting help with your code
 
 Once you're happy with your code, commit your changes using the Git pane in
-RStudio (it's best just to commit the R files for now - not, for instance, any
+RStudio (just commit the R files - not, for instance, any
 html files that were created by generating reports). Don't forget then to push
 the changes to GitHub and check on the website that it contains your new code.
-Notify the partners we have allocated you that you have something for them to
-check. You can do this on Zoom, but please also create an issue in your
-repository asking for their review - you can contact them by tagging them in
-the message with `@theirusername`, and they should receive an email and a
-[notification on the website](https://github.com/notifications). They can then
-respond to this issue, telling you if they had any problems running your version
-of the practical.
+Notify your partners that you have something for them to
+check. If you're not sitting next to them, then you can create an issue in your
+repository asking for their review and/or talk to them on Zoom - you can
+contact them by tagging them in the message with `@theirusername`, and they
+should receive an email and a [notification on the website](https://github.com/notifications).
+They should then create an issue, telling you if they had any problems
+running your version of the practical.
 
 ### Checking other people's code
 
@@ -119,10 +119,9 @@ get the updates they have pushed to GitHub (there should be a subtle message
 saying that updates are available near the button). If you're checking a new
 person's work, or a new project, refer to the instructions in Practical 2-1.
 Once you've checked that the new code has downloaded, you can then run their
-code and make sure it works. If it does not, just respond in the Issue that they
-opened on GitHub explaining what went wrong (it might help to also do
-this in person on Zoom if they are there). If it works, then you also need
-to respond saying so.
+code and make sure it works. Open an issue on GitHub to say if it works, or
+explaining what went wrong if it doesn't (it might help to also do this in
+person or on Zoom if they are there).
 
-Interacting like this through GitHub to help each other will count as most of
+Interacting like this through GitHub to help each other will count as
 your engagement marks for the course.
