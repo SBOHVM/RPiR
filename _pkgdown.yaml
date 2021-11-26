@@ -107,6 +107,8 @@ navbar:
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
+      -  text: Practical1-6
+         href: tutorials/practical1-6/practical1-6.html
       -  text: Practical2-1
          href: tutorials/practical2-1/practical2-1.html
       -  text: Practical2-2
