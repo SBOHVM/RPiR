@@ -70,7 +70,7 @@ the [IBAHCM](https://github.com/IBAHCM) organisation again, as before. Call this
 project `githubusername_series02` (obviously use your real GitHub username!).
 You'll use this single project for all of the exercises in this practical
 series. If you are already in a coding group, then add the specific people that
-need to be added to to your repository on GitHub in **Settings** ->
+need to be added to your repository on GitHub in **Settings** ->
 **Manage access** -> **Add people** and just type in their GitHub
 usernames (no @ sign). Give them read access. If you don't have a group yet,
 ask the instructors which one you should join.
