@@ -156,7 +156,7 @@ step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
 library(RPiR)
 # Load the step_deterministic_birth_death() function into the global environment (my workspace)
 # Note this next line would be needed if you were running this in RStudio
-# source(___)
+# source("0105-step-birth-death.R")
 
 #' Set up the simulation parameters
 #' --------------------------------
