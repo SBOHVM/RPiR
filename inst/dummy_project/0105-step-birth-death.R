@@ -6,9 +6,9 @@
 #' ---
 
 step_deterministic_birth_death <- function(latest, birth.rate, death.rate) {
-  #' A simple determinstic exponential birth-death model
+  #' A simple deterministic exponential birth-death model
   #'
-  #' Run one step of a simple determinstic exponential birth-death model
+  #' Run one step of a simple deterministic exponential birth-death model
   #'
   #' Arguments:
   #'
