@@ -225,8 +225,8 @@ step_deterministic_growth &lt;- function(latest, growth.rate) {
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7f91191c32b8&gt;
-## &lt;environment: 0x7f9117a80108&gt;</code></pre>
+## &lt;bytecode: 0x7f92397d4210&gt;
+## &lt;environment: 0x7f9238670358&gt;</code></pre>
 <p><span style="color: #dd1c77;">0104-step-growth.R</span> should contain the function doing the work in the simulation, <code>step_deterministic_growth()</code>, but with a few improvements to work in terms of a data frame rather than just a vector. So the first thing to do is change the name of the function.</p>
 <p>Next, we’ll rename the argument <code>current.population</code> to <code>latest</code>, being suitably generic to work in all future models even if they are not about population dynamics.</p>
 <p>We are now allowing the populations that are handled within this function to potentially contain several columns corresponding to different sets of individuals. Thus, <code>latest</code> is a data frame that contains a single row containing the latest population size for each of the component populations – in this case just the one, <code>count</code>. Therefore, to perform the update step we need to extract the actual population we are interested in. For this we use the <code>$</code> expression:</p>
@@ -358,8 +358,8 @@ plot_populations(population.df)</code></pre>
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7f91191c32b8&gt;
-## &lt;environment: 0x7f9112c3d800&gt;</code></pre>
+## &lt;bytecode: 0x7f92397d4210&gt;
+## &lt;environment: 0x7f9234e48470&gt;</code></pre>
 <p>At the beginning of the file, we should load the <code>RPiR</code> package, because we’re going to be using the <code>plot_populations()</code> function that it provides, so add that in first:</p>
 <pre class="r"><code>library(RPiR)</code></pre>
 <p>Then read in function from the new file (though since we’re working in the <code>learnr</code> environment rather than RStudio you should comment this line out, since the file has been preloaded for you):</p>
@@ -407,8 +407,8 @@ population.df &lt;- rbind(population.df, updated.population)</code></pre>
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7f91191c32b8&gt;
-## &lt;environment: 0x7f9117aefa78&gt;</code></pre>
+## &lt;bytecode: 0x7f92397d4210&gt;
+## &lt;environment: 0x7f9239168040&gt;</code></pre>
 <p>or go to the <span style="color: #dd1c77;">Help</span> tab in RStudio and type the name into the box next to the magnifying glass.</p>
 <p>As far as the <code>plot_populations()</code> function is concerned, feel free to refer back to this code later to understand better how it works by finding the code on GitHub. Or you can just run the name of the function on its own at an R prompt. We made a simpler (but less powerful) version of the plot function - <code>plot_simple()</code> - that you may find easier to read:</p>
 <pre class="r"><code>library(RPiR)
@@ -442,7 +442,7 @@ plot_simple</code></pre>
 ##             lty = lty[index])
 ##     }
 ## }
-## &lt;bytecode: 0x7f9118bf9e58&gt;
+## &lt;bytecode: 0x7f9237ef89f0&gt;
 ## &lt;environment: namespace:RPiR&gt;</code></pre>
 Many of the helper functions in the course are fairly sophisticated and you will probably have to take on trust for the time being. We will be providing these functions as we go along to allow you to focus on the models being developed – you are welcome to use them yourselves later, but if you use them for real you should spend some time satisfying yourself that they really do what you want. 
 <script type="application/shiny-prerendered" data-context="server-start">
