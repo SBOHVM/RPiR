@@ -55,8 +55,8 @@ navbar:
          href: lectures/RPiR4c-modelling.html
       -  text: RPiR5a-R
          href: lectures/RPiR5a-R.html
-#      -  text: RPiR7a-R
-#         href: lectures/RPiR7a-R.html
+      -  text: RPiR7a-R
+         href: lectures/RPiR7a-R.html
 #      -  text: RPiR8a-packages
 #         href: lectures/RPiR8a-packages.html
 #      -  text: RPiR8b-randomness (pdf)
@@ -92,8 +92,8 @@ navbar:
          href: lectures_html/RPiR4c-modelling.html
       -  text: RPiR5a-R
          href: lectures_html/RPiR5a-R.html
-#      -  text: RPiR7a-R
-#         href: lectures_html/RPiR7a-R.html
+      -  text: RPiR7a-R
+         href: lectures_html/RPiR7a-R.html
 #      -  text: RPiR8a-packages
 #         href: lectures_html/RPiR8a-packages.html
 #      -  text: RPiR8c-R
