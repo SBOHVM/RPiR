@@ -49,7 +49,7 @@ we created this file and named it <span style="color: #dd1c77;">demo/d0302_stoch
 is a copy of the <span style="color: #dd1c77;">d0105_run_birth_death</span> 
 demo, which is a good starting point. In this Practical you will edit this code.
 
-From Practicals 2-4 and 2-5 we have a `while()` loop which runs the simulation,
+From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation,
 *e.g.*
 
 ```{r, eval = FALSE}
@@ -207,7 +207,7 @@ file). Remember that you can run your code by
 2. running it as a demo
 
 ```{r eval = FALSE}
-demo("d0302_stochastic_birth_death", package = "githubusername")
+demo("d0302_stochastic_birth_death", package = "githubusernameSeries03")
 ```
 
 ### 1. Demonstrate stochasticity
