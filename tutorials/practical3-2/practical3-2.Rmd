@@ -54,9 +54,9 @@ From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation,
 
 ```{r, eval = FALSE}
 while (latest.population$time < end.time) {
-  latest.population <- timestep_deterministic_SIR(latest, 
-                                                  transmission.rate, 
-                                                  recovery.rate, 
+  latest.population <- timestep_deterministic_SIS(latest, 
+                                                  ecoli.transmission, 
+                                                  ecoli.recovery, 
                                                   timestep)
   population.df <- rbind(population.df, latest.population)
 }
@@ -71,9 +71,9 @@ over. We suggest doing something like this:
 ```{r, eval = FALSE}
 while (keep.going) {
   data <- timestep_stochastic_birth_death(latest, 
-                                          birth.rate, 
-                                          death.rate, 
-                                          timestep) 
+                                          human.annual.birth, 
+                                          human.annual.death, 
+                                          timestep)
   latest.population <- data$updated.pop
   population.df <- rbind(population.df, latest.population)
   # The experiment may end stochastically or the time may run out 

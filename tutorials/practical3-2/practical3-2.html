@@ -166,18 +166,18 @@ pre code {
 <p>We’ll start by writing the structural code in a new demo file. In Practical 3-1 we created this file and named it <span style="color: #dd1c77;">demo/d0302_stochastic_birth_death.R</span>. Currently, the demo is a copy of the <span style="color: #dd1c77;">d0105_run_birth_death</span> demo, which is a good starting point. In this Practical you will edit this code.</p>
 <p>From Practicals 2-3 and 2-4 we have a <code>while()</code> loop which runs the simulation, <em>e.g.</em></p>
 <pre class="r"><code>while (latest.population$time &lt; end.time) {
-  latest.population &lt;- timestep_deterministic_SIR(latest, 
-                                                  transmission.rate, 
-                                                  recovery.rate, 
+  latest.population &lt;- timestep_deterministic_SIS(latest, 
+                                                  ecoli.transmission, 
+                                                  ecoli.recovery, 
                                                   timestep)
   population.df &lt;- rbind(population.df, latest.population)
 }</code></pre>
 <p>The loop ends when the time runs out. Now, instead, there are two reasons why we might stop the simulation – the time may have run out, or the timestep code may identify that the dynamics are now complete. To achieve this, the timestep code will have to return both the updated population and whether the simulation is over. We suggest doing something like this:</p>
 <pre class="r"><code>while (keep.going) {
   data &lt;- timestep_stochastic_birth_death(latest, 
-                                          birth.rate, 
-                                          death.rate, 
-                                          timestep) 
+                                          human.annual.birth, 
+                                          human.annual.death, 
+                                          timestep)
   latest.population &lt;- data$updated.pop
   population.df &lt;- rbind(population.df, latest.population)
   # The experiment may end stochastically or the time may run out 
