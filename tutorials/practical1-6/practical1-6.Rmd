@@ -36,7 +36,7 @@ you'll need to create a repository in the IBAHCM organisation on GitHub.
 First you'll need to create a repository in the IBAHCM organisation on GitHub.
 You'll find instructions on how to do this
 [here](https://ibahcm.github.io/RPiR/articles/pages/github.html). Call this
-repository `githubusername_series01` (obviously use your real GitHub username!). 
+repository `githubusernameSeries01` (obviously use your real GitHub username!). 
 Note that you'll need to do this throughout this course, which is why we've kept
 these instructions separate.
 
@@ -186,7 +186,7 @@ Now, exchange repository names with your group (everyone in your breakout room).
 You should have access if you're part of the `IBAHCM/rpir` team. Now go find 
 them. Either search through the `IBAHCM` organisation, or go directly to their 
 URL. For example, if I want to find `louisematthews`, I'd go here
-https://github.com/IBAHCM/louisematthews_series01. Remember to take a look at
+https://github.com/IBAHCM/louisematthewsSeries01. Remember to take a look at
 their GitHub readme, you might learn something new!
 
 Just like before, we're going to clone this repository by clicking on the green

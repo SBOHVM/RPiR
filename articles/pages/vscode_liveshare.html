@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.72.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.72.3</span>
       </span>
     </div>
 
@@ -76,6 +78,18 @@
     <li>
       <a href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -117,6 +131,12 @@
     <li>
       <a href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures_html/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -146,14 +166,14 @@
   </ul>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/discussions">
+  <a href="https://github.com/IBAHCM/RPiR/discussions" class="external-link">
     <span class="far fa-comments"></span>
      
     Discussion
   </a>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/">
+  <a href="https://github.com/IBAHCM/RPiR/" class="external-link">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -252,7 +272,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Visual Studio Code and Live Share</h1>
             
-            <h4 class="date">November 29 2021</h4>
+            <h4 data-toc-skip class="date">December 06 2021</h4>
       
       
       <div class="hidden name"><code>vscode_liveshare.Rmd</code></div>
@@ -261,24 +281,24 @@
 
     
     
-<div id="visual-studio-code" class="section level1">
-<h1 class="hasAnchor">
-<a href="#visual-studio-code" class="anchor"></a>Visual Studio Code</h1>
-<p>Visual Studio Code (aka VS Code) is an IDE (Integrated Development Environment) just like RStudio, but designed by Microsoft for multiple languages, not just R. As such, it’s much more advanced than RStudio, but not as well tailored to working in R. We recommend using RStudio for most of your work, but it may be useful occasionally to switch to VS Code, particularly if you want to work together with someone on a single piece of code. You can learn more about using VS Code <a href="https://code.visualstudio.com/learn">here</a>.</p>
-<div id="installing-vs-code" class="section level2">
-<h2 class="hasAnchor">
-<a href="#installing-vs-code" class="anchor"></a>Installing VS Code</h2>
-<p>First, <a href="https://code.visualstudio.com">download and install</a> Visual Studio Code (Note: this is not the same as the Visual Studio IDE, if you happen to have that installed).</p>
+<div class="section level1">
+<h1 id="visual-studio-code">Visual Studio Code<a class="anchor" aria-label="anchor" href="#visual-studio-code"></a>
+</h1>
+<p>Visual Studio Code (aka VS Code) is an IDE (Integrated Development Environment) just like RStudio, but designed by Microsoft for multiple languages, not just R. As such, it’s much more advanced than RStudio, but not as well tailored to working in R. We recommend using RStudio for most of your work, but it may be useful occasionally to switch to VS Code, particularly if you want to work together with someone on a single piece of code. You can learn more about using VS Code <a href="https://code.visualstudio.com/learn" class="external-link">here</a>.</p>
+<div class="section level2">
+<h2 id="installing-vs-code">Installing VS Code<a class="anchor" aria-label="anchor" href="#installing-vs-code"></a>
+</h2>
+<p>First, <a href="https://code.visualstudio.com" class="external-link">download and install</a> Visual Studio Code (Note: this is not the same as the Visual Studio IDE, if you happen to have that installed).</p>
 </div>
 </div>
-<div id="live-share" class="section level1">
-<h1 class="hasAnchor">
-<a href="#live-share" class="anchor"></a>Live Share</h1>
+<div class="section level1">
+<h1 id="live-share">Live Share<a class="anchor" aria-label="anchor" href="#live-share"></a>
+</h1>
 <p>The VS Code Live Share extension provides a great way to collaborate on code whilst working from home. Assuming read/write access is enabled, you and your team mates can edit the same exact code, highlight sections of it, save it, and run it in real-time.</p>
 <p>Just bear in mind that when you edit and run the code, it really happens on whoever’s machine set up the share, which means you won’t have access to any objects that aren’t in their own environment or datasets that aren’t on their machine, and collaborators working with you will have get the files separately later. On the plus side, you don’t have to go into the office and you can access code remotely using your own personalised setup and tools.</p>
-<div id="install-the-extension" class="section level2">
-<h2 class="hasAnchor">
-<a href="#install-the-extension" class="anchor"></a>Install the extension</h2>
+<div class="section level2">
+<h2 id="install-the-extension">Install the extension<a class="anchor" aria-label="anchor" href="#install-the-extension"></a>
+</h2>
 <p>Open up VS Code and install the “Live Share” Microsoft extension from the VS Code marketplace. Exactly what this will look like depends on your platform, but this is on a Mac.</p>
 <p><img src="images/vscode-1-extension-arrow.png" width="100%" style="display: block; margin: auto;"></p>
 <p>While you’re there, if you’re intending to work in R, you may as well install:</p>
@@ -288,9 +308,9 @@
 </ul>
 <p>You need to already have an account on <a href="https://ibahcm.github.io/RPiR/articles/pages/install_github.html">GitHub</a> to use Live Share.</p>
 </div>
-<div id="share-a-session" class="section level2">
-<h2 class="hasAnchor">
-<a href="#share-a-session" class="anchor"></a>Share a session</h2>
+<div class="section level2">
+<h2 id="share-a-session">Share a session<a class="anchor" aria-label="anchor" href="#share-a-session"></a>
+</h2>
 <p>To create a new session, click on “Live Share” in the status bar (at the bottom of the VS Code window). The first time you do this, you’ll be prompted to sign in. Selecting “Sign in with GitHub” will open a link in your browser.</p>
 <p><img src="images/vscode-2-signin-arrow.png" width="100%" style="display: block; margin: auto;"></p>
 <p>“Authorize VisualStudioLiveShare” and accept ALL OF THE THINGS…</p>
@@ -312,7 +332,7 @@
 <li>Click on your name in the status bar and “Stop Collaboration Session”</li>
 <li>Select the “Stop collaboration session” icon in the Live Share panel</li>
 </ul>
-<p>More info <a href="https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode">here</a>.</p>
+<p>More info <a href="https://docs.microsoft.com/en-us/visualstudio/liveshare/use/vscode" class="external-link">here</a>.</p>
 </div>
 </div>
   </div>
@@ -328,11 +348,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -340,6 +362,8 @@
 
   
 
+
+  
 
   </body>
 </html>

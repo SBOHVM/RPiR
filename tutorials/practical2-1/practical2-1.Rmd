@@ -67,7 +67,7 @@ for this practical. Do this following the *how to* instructions on the [GitHub
 documentation pages](https://ibahcm.github.io/RPiR/articles/pages/github.html)
 that you used for the last practical, putting the repository in
 the [IBAHCM](https://github.com/IBAHCM) organisation again, as before. Call this
-project `githubusername_series02` (obviously use your real GitHub username!).
+project `githubusernameSeries02` (obviously use your real GitHub username!).
 You'll use this single project for all of the exercises in this practical
 series. If you are already in a coding group, then add the specific people that
 need to be added to your repository on GitHub in **Settings** ->

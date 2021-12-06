@@ -21,6 +21,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.72.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.72.3</span>
       </span>
     </div>
 
@@ -78,6 +80,18 @@
     <li>
       <a href="lectures/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="lectures/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
+    </li>
+    <li>
+      <a href="lectures/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
+    <li>
+      <a href="lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -119,6 +133,12 @@
     <li>
       <a href="lectures_html/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="lectures_html/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -148,14 +168,14 @@
   </ul>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/discussions">
+  <a href="https://github.com/IBAHCM/RPiR/discussions" class="external-link">
     <span class="far fa-comments"></span>
      
     Discussion
   </a>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/">
+  <a href="https://github.com/IBAHCM/RPiR/" class="external-link">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -251,28 +271,28 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="reproducible-programming-in-r-course-202122" class="section level1">
-<div class="page-header"><h1 class="hasAnchor">
-<a href="#reproducible-programming-in-r-course-202122" class="anchor"></a>Reproducible Programming in R course (2021/22)</h1></div>
+<div class="section level1">
+<div class="page-header"><h1 id="reproducible-programming-in-r-course-202122">Reproducible Programming in R course (2021/22)<a class="anchor" aria-label="anchor" href="#reproducible-programming-in-r-course-202122"></a>
+</h1></div>
 
-<div id="course-preparation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#course-preparation" class="anchor"></a>Course preparation</h2>
+<div class="section level2">
+<h2 id="course-preparation">Course preparation<a class="anchor" aria-label="anchor" href="#course-preparation"></a>
+</h2>
 <p>You’ll need to do a few things before you can start the course. The details are available in the guide section of the <a href="https://ibahcm.github.io/RPiR">docs</a> under <a href="https://ibahcm.github.io/RPiR/articles/pages/preparation.html">Course preparation</a>.</p>
 </div>
-<div id="running-the-course" class="section level2">
-<h2 class="hasAnchor">
-<a href="#running-the-course" class="anchor"></a>Running the course</h2>
+<div class="section level2">
+<h2 id="running-the-course">Running the course<a class="anchor" aria-label="anchor" href="#running-the-course"></a>
+</h2>
 <p>To start the course, load the <code>RPiR</code> package:</p>
-<pre class="{r}"><code><a href="https://rdrr.io/r/base/library.html">library(RPiR)</a></code></pre>
+<pre class="{r}"><code><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span></code></pre>
 <p>You can then see what lectures and practicals are available using:</p>
-<pre class="{r}"><code><a href="reference/available_lectures.html">available_lectures()
-available_practicals()</a></code></pre>
+<pre class="{r}"><code><span class="fu"><a href="reference/available_lectures.html">available_lectures</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu"><a href="reference/available_practicals.html">available_practicals</a></span><span class="op">(</span><span class="op">)</span></code></pre>
 <p>In RStudio, you can also open <em>Preferences…</em>, choose <em>Pane Layout</em>, and tick the box for <em>Tutorial</em> and click <em>OK</em>. Once you have done this, you should find you have a <em>Tutorial</em> pane in RStudio, you can then browse all of the practicals that you have installed there.</p>
 </div>
-<div id="practicals" class="section level2">
-<h2 class="hasAnchor">
-<a href="#practicals" class="anchor"></a>Practicals</h2>
+<div class="section level2">
+<h2 id="practicals">Practicals<a class="anchor" aria-label="anchor" href="#practicals"></a>
+</h2>
 <p><strong>To run a practical</strong>, you can click <em>Start Tutorial</em> from the <em>Tutorial pane</em> in RStudio. You can then run the practical inside that RStudio pane, or click the <em>Show in new window</em> icon in the top left to open it in a larger separate window (you can open multiple practicals simultaneously like this). Alternatively, you can use the <code><a href="reference/run_practical.html">run_practical()</a></code> function in the <em>Console pane</em>. For example, <code>run_practical("practical1-1")</code> will run the first practical of practical series 1.</p>
 <blockquote>
 <p>If you decide to run a practical like this, you will not be able to use the R console until you close it, so we suggest that you open a separate instance of RStudio to run any code, so one RStudio is dedicated to running practicals and lectures.</p>
@@ -283,17 +303,17 @@ available_practicals()</a></code></pre>
 <p><strong>If you are having problems with the practicals running correctly</strong>, try running <code>RPiR:::clean_cached_exercises()</code> in the <em>Console</em> pane to force the practicals to be rebuilt.</p>
 <p>You can also browse the non-interactive practicals on the GitHub website (under <code>Practicals (html)</code>).</p>
 </div>
-<div id="lectures" class="section level2">
-<h2 class="hasAnchor">
-<a href="#lectures" class="anchor"></a>Lectures</h2>
+<div class="section level2">
+<h2 id="lectures">Lectures<a class="anchor" aria-label="anchor" href="#lectures"></a>
+</h2>
 <p><strong>To view lecture slides</strong>, use the <code><a href="reference/run_lecture.html">run_lecture()</a></code> function in RStudio. For example, <code>run_lecture("RPiR1-intro")</code> will show the first lecture slides.</p>
 <p>You can also see the lectures on the <a href="https://ibahcm.github.io/RPiR">GitHub website</a> using the lecture dropdown menus, either as slides (under <code>Lectures (slides)</code>) or as single continuous documents for later reference (under <code>Lectures (html)</code>).</p>
 </div>
-<div id="course-contents" class="section level2">
-<h2 class="hasAnchor">
-<a href="#course-contents" class="anchor"></a>Course contents</h2>
+<div class="section level2">
+<h2 id="course-contents">Course contents<a class="anchor" aria-label="anchor" href="#course-contents"></a>
+</h2>
 <p>The following core practicals are included in this package:</p>
-<ol>
+<ol style="list-style-type: decimal">
 <li>
 <p>Practical series 1:</p>
 <ul>
@@ -359,39 +379,51 @@ available_practicals()</a></code></pre>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
 <li><small>GPL (&gt;= 3) | file <a href="LICENSE-text.html">LICENSE</a></small></li>
 </ul>
 </div>
-<div class="developers">
-<h2>Developers</h2>
+
+
+<div class="citation">
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
-<li>Sonia Mitchell <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0003-1536-2066" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>Richard Reeve <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2589-8091" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html#citation">Citing RPiR</a></li>
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
+<div class="developers">
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
-<li><a href="https://ibahcm.github.io/RPiR"><img src="https://img.shields.io/badge/docs-RPIR-blue"></a></li>
-<li><a href="https://github.com/IBAHCM/RPiR/actions"><img src="https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1" alt="test-build"></a></li>
-<li><a href="https://www.codefactor.io/repository/github/IBAHCM/RPiR"><img src="https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge" alt="CodeFactor"></a></li>
-<li><a href="https://opensource.org/licenses/GPL-3.0"><img src="https://img.shields.io/badge/license-GPL--3+-brightgreen" alt="License: GPL-3.0"></a></li>
+<li>Sonia Mitchell <br><small class="roles"> Maintainer, author </small> <a href="https://orcid.org/0000-0003-1536-2066" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li>Richard Reeve <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2589-8091" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
+
+<div class="dev-status">
+<h2 data-toc-skip>Dev status</h2>
+<ul class="list-unstyled">
+<li><a href="https://ibahcm.github.io/RPiR"><img src="https://img.shields.io/badge/docs-RPIR-blue"></a></li>
+<li><a href="https://github.com/IBAHCM/RPiR/actions" class="external-link"><img src="https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1" alt="test-build"></a></li>
+<li><a href="https://www.codefactor.io/repository/github/IBAHCM/RPiR" class="external-link"><img src="https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge" alt="CodeFactor"></a></li>
+<li><a href="https://opensource.org/licenses/GPL-3.0" class="external-link"><img src="https://img.shields.io/badge/license-GPL--3+-brightgreen" alt="License: GPL-3.0"></a></li>
+</ul>
 </div>
+
+  </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -399,6 +431,8 @@ available_practicals()</a></code></pre>
 
   
 
+
+  
 
   </body>
 </html>

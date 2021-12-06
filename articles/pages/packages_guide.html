@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.72.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.72.3</span>
       </span>
     </div>
 
@@ -76,6 +78,18 @@
     <li>
       <a href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -117,6 +131,12 @@
     <li>
       <a href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures_html/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -146,14 +166,14 @@
   </ul>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/discussions">
+  <a href="https://github.com/IBAHCM/RPiR/discussions" class="external-link">
     <span class="far fa-comments"></span>
      
     Discussion
   </a>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/">
+  <a href="https://github.com/IBAHCM/RPiR/" class="external-link">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -252,7 +272,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>R Packages</h1>
             
-            <h4 class="date">November 29 2021</h4>
+            <h4 data-toc-skip class="date">December 06 2021</h4>
       
       
       <div class="hidden name"><code>packages_guide.Rmd</code></div>
@@ -262,15 +282,15 @@
     
     
 <p><em>R packages</em></p>
-<p>Warning: If for any reason you can’t get <code><a href="https://usethis.r-lib.org/reference/use_github.html">usethis::use_github()</a></code> to work, then skip to the end of the page and follow the <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#alternative-setup">alternative setup</a> instructions.</p>
-<div id="package-structure" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-structure" class="anchor"></a>Package structure</h2>
+<p>Warning: If for any reason you can’t get <code><a href="https://usethis.r-lib.org/reference/use_github.html" class="external-link">usethis::use_github()</a></code> to work, then skip to the end of the page and follow the <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#alternative-setup">alternative setup</a> instructions.</p>
+<div class="section level2">
+<h2 id="package-structure">Package structure<a class="anchor" aria-label="anchor" href="#package-structure"></a>
+</h2>
 <p>The easiest way to create an R package in RStudio is to generate one automatically in the menus, via <span style="color: #de77ae;">File &gt; New project… &gt; New Directory &gt; R Package</span>. Give your package a suitably descriptive name <code>packagename</code>, remembering that it’s good practice for the name of your repository to match the name of your package. It’s important to be aware that the name of a package:</p>
 <blockquote>
-<p>“should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html">ref</a>).</p>
+<p>“should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html" class="external-link">ref</a>).</p>
 </blockquote>
-<p>Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">package names</a> include a dot.</p>
+<p>Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html" class="external-link">package names</a> include a dot.</p>
 <p>Once you’ve picked a good name, check the box next to <span style="color: #de77ae;">Create a git repository</span>, then click on <span style="color: #de77ae;">Create Project</span>.</p>
 <p><img src="images/packages/1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>You should find that (1) a new RStudio project has been created called <span style="color: #de77ae;">packagename</span>, (2) your working directory is now <span style="color: #de77ae;">packagename</span>, and (3) inside this directory are a number of files and directories:</p>
@@ -279,7 +299,7 @@
 <p><img src="images/packages/3.png" width="100%" style="display: block; margin: auto;"></p>
 <p>First, we need to set up a GitHub repository and while there are a number of ways to do this, the easiest way to connect an existing RStudio project to GitHub is by running this:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github.html">use_github</a></span><span class="op">(</span>organisation <span class="op">=</span> <span class="st">"IBAHCM"</span>, private <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_github.html" class="external-link">use_github</a></span><span class="op">(</span>organisation <span class="op">=</span> <span class="st">"IBAHCM"</span>, private <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>This process will automatically edit your <span style="color: #de77ae;">DESCRIPTION</span> file and ask whether it’s OK to commit these changes, so just say yes, and your GitHub repository should open automatically in a window in your browser.</p>
 <p><img src="images/packages/4.png" width="100%" style="display: block; margin: auto;"></p>
 <p>We don’t have a README yet, so click <span style="color: #de77ae;">Add a README</span> and type something nice in your README file (in your browser), then scroll down and <span style="color: #de77ae;">Commit new file</span>. Your GitHub repository should now look something like this:</p>
@@ -290,14 +310,14 @@
 <p><img src="images/packages/7.png" width="100%" style="display: block; margin: auto;"></p>
 <p>In fact, there are a few files we should delete: <span style="color: #de77ae;">R/hello.R</span>, <span style="color: #de77ae;">man/hello.Rd</span> (documentation related to the hello.R file we don’t need), and the <span style="color: #de77ae;">NAMESPACE</span> file in the package root.</p>
 <p><img src="images/packages/8.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Now run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>. You’ll notice, in the <span style="color: #de77ae;">Git</span> tab, <span style="color: #de77ae;">NAMESPACE</span> has changed from deleted to modified. This is because <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> created a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new file.</p>
+<p>Now run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code>. You’ll notice, in the <span style="color: #de77ae;">Git</span> tab, <span style="color: #de77ae;">NAMESPACE</span> has changed from deleted to modified. This is because <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> created a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> to create a new file.</p>
 <p><img src="images/packages/9.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
-<div id="package-documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#package-documentation" class="anchor"></a>Package documentation</h2>
+<div class="section level2">
+<h2 id="package-documentation">Package documentation<a class="anchor" aria-label="anchor" href="#package-documentation"></a>
+</h2>
 <p>Now we’re going to write some documentation for our package. To do this we need to create a new file called <span style="color: #de77ae;">packagename-package.R</span> (replacing <code>packagename</code> with the name of your own package). Save this file in the <span style="color: #de77ae;">R</span> directory.</p>
-<p>Once we’ve finished writing the file, we run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to generate the documentation files and <code>?packagename</code> to load the documentation into RStudio.</p>
+<p>Once we’ve finished writing the file, we run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> to generate the documentation files and <code>?packagename</code> to load the documentation into RStudio.</p>
 <p>As you can see, below:</p>
 <ul>
 <li>The first line is the package title</li>
@@ -313,58 +333,58 @@
 <li>There’s no object to represent the package, so we write <code>NULL</code> (on line 15), but manually label it with the <code>@docType</code>, <code>@name</code>, and <code>@alias</code> tags (lines 11-13).</li>
 </ul>
 <p><img src="images/packages/10.png" width="100%" style="display: block; margin: auto;"></p>
-<p>The next thing we need to do is edit the <span style="color: #de77ae;">DESCRIPTION</span> file, more info <a href="https://r-pkgs.org/description.html">here</a>. Most of this requires following prompts in the template. The only thing I’ve done differently here is combine <span style="color: #de77ae;">Author</span> and <span style="color: #de77ae;">Maintainer</span> into a single entry, <em>i.e.</em></p>
+<p>The next thing we need to do is edit the <span style="color: #de77ae;">DESCRIPTION</span> file, more info <a href="https://r-pkgs.org/description.html" class="external-link">here</a>. Most of this requires following prompts in the template. The only thing I’ve done differently here is combine <span style="color: #de77ae;">Author</span> and <span style="color: #de77ae;">Maintainer</span> into a single entry, <em>i.e.</em></p>
 <pre><code>Author: Who wrote it
 Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <p>has been changed to</p>
-<pre><code>Authors@R: person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
-                  role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066"))</code></pre>
-<p>because it allows us to include more information, more info <a href="https://r-pkgs.org/description.html#author">here</a>.</p>
+<pre><code><span class="va">Authors</span><span class="op">@</span><span class="va">R</span><span class="op">:</span> <span class="fu"><a href="https://rdrr.io/r/utils/person.html" class="external-link">person</a></span><span class="op">(</span><span class="st">"Sonia"</span>, <span class="st">"Mitchell"</span>, email <span class="op">=</span> <span class="st">"sonia.mitchell@glasgow.ac.uk"</span>,
+                  role <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"cre"</span>, <span class="st">"aut"</span><span class="op">)</span>, comment <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>ORCID <span class="op">=</span> <span class="st">"0000-0003-1536-2066"</span><span class="op">)</span><span class="op">)</span></code></pre>
+<p>because it allows us to include more information, more info <a href="https://r-pkgs.org/description.html#author" class="external-link">here</a>.</p>
 <p><img src="images/packages/11.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
-<div id="functions-and-documentation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#functions-and-documentation" class="anchor"></a>Functions and documentation</h2>
+<div class="section level2">
+<h2 id="functions-and-documentation">Functions and documentation<a class="anchor" aria-label="anchor" href="#functions-and-documentation"></a>
+</h2>
 <p>Now I’m going to add a new function (you can add any function you like). Make sure the name of your function is the same as the file you’re writing in and save it in the <span style="color: #de77ae;">R</span> directory. I’ve also added some documentation above the function (details described below).</p>
-<p>We can run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to populate the <span style="color: #de77ae;">NAMESPACE</span> and automatically generate the documentation files in the <span style="color: #de77ae;">man</span> directory. After which you can run <code>?my_plot</code> to look at it.</p>
+<p>We can run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> to populate the <span style="color: #de77ae;">NAMESPACE</span> and automatically generate the documentation files in the <span style="color: #de77ae;">man</span> directory. After which you can run <code>?my_plot</code> to look at it.</p>
 <p><img src="images/packages/12.png" width="100%" style="display: block; margin: auto;"></p>
 <p>The first line is the title.</p>
-<pre><code>#' my_plot</code></pre>
+<pre><code><span class="co">#' my_plot</span></code></pre>
 <p>The next section (separated by a blank line) is the <strong>Description</strong>. The description can continue onto multiple lines so long as you don’t start writing paragraphs with blank lines between them. This is true for all of the following examples.</p>
-<pre><code>#' A very simple plotting function</code></pre>
+<pre><code><span class="co">#' A very simple plotting function</span></code></pre>
 <p><strong>Usage</strong> is generated automatically from the function itself.</p>
 <p>After that everything has been labeled with a tag, so order doesn’t really matter, but the <code>@param</code> tag is used to document the <strong>Arguments</strong>. Note the format here is <code>@param argument description</code>.</p>
-<pre><code>#' @param data \code{data.frame} containing data
-#' @param x column containing x-axis data
-#' @param y column containing y-axis data
-#' @param title \code{string} containing plot title</code></pre>
+<pre><code><span class="co">#' @param data \code{data.frame} containing data</span>
+<span class="co">#' @param x column containing x-axis data</span>
+<span class="co">#' @param y column containing y-axis data</span>
+<span class="co">#' @param title \code{string} containing plot title</span></code></pre>
 <p>The <code>@return</code> tag is used to document the output of the function in the <strong>Value</strong> section.</p>
-<pre><code>#' @return Returns a \code{ggplot} object</code></pre>
+<pre><code><span class="co">#' @return Returns a \code{ggplot} object</span></code></pre>
 <p>The <code>@export</code> tag is used to identify this function as being exported by your package. That is, a function intended to be usable and not internal (a function that cannot be called, but is used internally by other functions).</p>
-<pre><code>#' @export</code></pre>
+<pre><code><span class="co">#' @export</span></code></pre>
 <p>Finally, the <code>@examples</code> tag is used to document the <strong>Examples</strong> section. Note that here, you can use blank lines if you want and as usual, comments are encouraged.</p>
-<pre><code>#' @examples
-#' # Generate data
-#' data &lt;- data.frame(R = 1:5, fun = c(1:5)^2)
-#' # Plot results
-#' my_plot(data, R, fun, "Plot showing how fun increases with R")</code></pre>
+<pre><code><span class="co">#' @examples</span>
+<span class="co">#' # Generate data</span>
+<span class="co">#' data &lt;- data.frame(R = 1:5, fun = c(1:5)^2)</span>
+<span class="co">#' # Plot results</span>
+<span class="co">#' my_plot(data, R, fun, "Plot showing how fun increases with R")</span></code></pre>
 <p>We want to be able to install this function as part of our package, but there’s one thing left to do before we can do that. Our function, <code>my_plot()</code> is dependent on the <code>ggplot2</code> package. That is, <code>my_plot()</code> uses functions from the <code>ggplot2</code> package and therefore needs <code>ggplot2</code> to be installed before it will work. We can configure our package so that this happens automatically.</p>
 </div>
-<div id="add-dependencies" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-dependencies" class="anchor"></a>Add dependencies</h2>
+<div class="section level2">
+<h2 id="add-dependencies">Add dependencies<a class="anchor" aria-label="anchor" href="#add-dependencies"></a>
+</h2>
 <p>As mentioned previously, our <code>my_plot()</code> function is dependent on the <code>ggplot2</code> package and so, we need to add a dependency on <code>ggplot2</code> to our package. To do this we need to do four things.</p>
 <ol style="list-style-type: decimal">
 <li>
 <p>Inside the <code>my_plot()</code> function, we need to explicitly say that <code>ggplot()</code>, <code>aes()</code>, <code>theme_linedraw()</code>, <code>geom_point()</code>, <code>geom_line()</code>, and <code>labs()</code> come from the <code>ggplot2</code> package. This is done by prepending them with <code>ggplot2::</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">my_plot</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span>, <span class="va">x</span>, <span class="va">y</span>, <span class="va">title</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">x</span> <span class="op">}</span><span class="op">}</span>,
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">data</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">x</span> <span class="op">}</span><span class="op">}</span>,
                                      y <span class="op">=</span> <span class="op">{</span><span class="op">{</span> <span class="va">y</span> <span class="op">}</span><span class="op">}</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_linedraw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_linedraw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html" class="external-link">geom_line</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">title</span><span class="op">)</span>
 <span class="op">}</span></code></pre></div>
 </li>
 <li>
@@ -372,18 +392,18 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <p><img src="images/packages/13.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Note that if you need to add a dependency on a package that exists within a GitHub repository, you can use this instead:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html">use_dev_package</a></span><span class="op">(</span><span class="st">"RPiR"</span>, remote <span class="op">=</span> <span class="st">"IBAHCM/RPiR"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_package.html" class="external-link">use_dev_package</a></span><span class="op">(</span><span class="st">"RPiR"</span>, remote <span class="op">=</span> <span class="st">"IBAHCM/RPiR"</span><span class="op">)</span></code></pre></div>
 </li>
 <li>
 <p>Add an <code>@import</code> tag to the <span style="color: #de77ae;">packagename-package.R</span> file (see line 15).</p>
 <p><img src="images/packages/14.png" width="100%" style="display: block; margin: auto;"></p>
 </li>
-<li><p>Run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file from the <code>@import</code> tag in <span style="color: #de77ae;">packagename-package.R</span>. Note that you should never edit <span style="color: #de77ae;">NAMESPACE</span> by hand.</p></li>
+<li><p>Run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> to populate the <span style="color: #de77ae;">NAMESPACE</span> file from the <code>@import</code> tag in <span style="color: #de77ae;">packagename-package.R</span>. Note that you should never edit <span style="color: #de77ae;">NAMESPACE</span> by hand.</p></li>
 </ol>
 </div>
-<div id="add-a-demo" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-a-demo" class="anchor"></a>Add a demo</h2>
+<div class="section level2">
+<h2 id="add-a-demo">Add a demo<a class="anchor" aria-label="anchor" href="#add-a-demo"></a>
+</h2>
 <p>The last thing we’re going to do is add a demo file. To do that we need to add a <span style="color: #de77ae;">demo</span> directory to the package root. This is where the demos live.</p>
 <p>Next we need to create a <span style="color: #de77ae;">00Index</span> file (with no file extension) inside the <span style="color: #de77ae;">demo</span> directory. This file must list the names of the demos installed as part of your package. The file itself should look something like this:</p>
 <pre><code>my_demo   A simple demo
@@ -391,30 +411,30 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <p>Note that each entry should be written on a new line, in a standard format. That is, the name of the demo (it’s filename), followed by (at least) three spaces, followed by a simple description. Also note the empty line at the end of the file.</p>
 <p>Now we’re going to add a demo, which is a standard R file (in this case including a little R markdown).</p>
 <blockquote>
-<p>The important thing to note here is that you no longer need to <code><a href="https://rdrr.io/r/base/source.html">source()</a></code> files, since any functions you need to use can be installed as part of the package.</p>
+<p>The important thing to note here is that you no longer need to <code><a href="https://rdrr.io/r/base/source.html" class="external-link">source()</a></code> files, since any functions you need to use can be installed as part of the package.</p>
 </blockquote>
 <p><img src="images/packages/15.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Next, we need to install our package using <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code>.</p>
+<p>Next, we need to install our package using <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install()</a></code>.</p>
 <p>After which, we can run <code>demo(package = "packagename")</code> to list all of the demos in our package, or <code>demo("my_demo", package = "packagename")</code> to run the <code>my_demo</code> demo.</p>
 </div>
-<div id="add-data" class="section level2">
-<h2 class="hasAnchor">
-<a href="#add-data" class="anchor"></a>Add data</h2>
+<div class="section level2">
+<h2 id="add-data">Add data<a class="anchor" aria-label="anchor" href="#add-data"></a>
+</h2>
 <p>The next thing we’re going to do is add data to our package. To do this, run <code>usethis::use_data_raw("BCI")</code>. This will create a new directory, called <code>data-raw</code> and within it a file called <span style="color: #de77ae;">BCI.R</span>. We should put our raw, unedited data in this directory. Any code we use to process our data should be written in <span style="color: #de77ae;">BCI.R</span>. The processing file should end up looking something like this:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">## code to prepare `BCI` dataset goes here</span>
 
 <span class="co"># Read the data</span>
-<span class="va">raw.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html">read.csv</a></span><span class="op">(</span><span class="st">"data-raw/myrawdata.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="va">raw.data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"data-raw/myrawdata.csv"</span>, header <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co"># Process the data</span>
 <span class="va">BCI</span> <span class="op">&lt;-</span> <span class="fu">some_tidying_process</span><span class="op">(</span><span class="va">raw.data</span><span class="op">)</span>
 
 <span class="co"># Add the data to your package</span>
-<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html">use_data</a></span><span class="op">(</span><span class="va">BCI</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>Next we need to generate the packaged data by running the processing script. The <code><a href="https://usethis.r-lib.org/reference/use_data.html">use_data()</a></code> function will create a <span style="color: #de77ae;">data</span> directory, within which will be an rds file containing our dataset.</p>
+<span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/use_data.html" class="external-link">use_data</a></span><span class="op">(</span><span class="va">BCI</span>, overwrite <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<p>Next we need to generate the packaged data by running the processing script. The <code><a href="https://usethis.r-lib.org/reference/use_data.html" class="external-link">use_data()</a></code> function will create a <span style="color: #de77ae;">data</span> directory, within which will be an rds file containing our dataset.</p>
 <p>The next step is to open our <span style="color: #de77ae;">.gitignore</span> file and add <code>data-raw</code> on a new line to ignore the contents of this directory. The reason being, the contents of <span style="color: #de77ae;">data-raw</span> are not part of the package (installable data exists within your <span style="color: #de77ae;">data</span> directory) and we don’t want to upload these large files to GitHub.</p>
-<p>Next we should document our data (more info <a href="https://r-pkgs.org/data.html">here</a> and <a href="https://kbroman.org/pkg_primer/pages/data.html">here</a>). To do that, we need to create a <span style="color: #de77ae;">data.R</span> file in the <span style="color: #de77ae;">R</span> directory. It should look something like this:</p>
+<p>Next we should document our data (more info <a href="https://r-pkgs.org/data.html" class="external-link">here</a> and <a href="https://kbroman.org/pkg_primer/pages/data.html" class="external-link">here</a>). To do that, we need to create a <span style="color: #de77ae;">data.R</span> file in the <span style="color: #de77ae;">R</span> directory. It should look something like this:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co">#' mydataset</span>
 <span class="co">#' </span>
@@ -432,19 +452,19 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <span class="co">#' </span>
 <span class="co">#' @source \url{http://somewhere.important.com/}</span>
 <span class="st">"mydataset"</span></code></pre></div>
-<p>As usual, we need to run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to automatically generate the documentation files and then <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> to install our package.</p>
+<p>As usual, we need to run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> to automatically generate the documentation files and then <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install()</a></code> to install our package.</p>
 <p>After which, we can run <code>data(package = "packagename")</code> to list all of the data in our package.</p>
 </div>
-<div id="alternative-setup" class="section level2">
-<h2 class="hasAnchor">
-<a href="#alternative-setup" class="anchor"></a>Alternative setup</h2>
-<p>If for any reason you can’t get <code><a href="https://usethis.r-lib.org/reference/use_github.html">usethis::use_github()</a></code> to work, then follow these <a href="https://ibahcm.github.io/RPiR/articles/pages/github.html">instructions</a> to create a repository on GitHub with a <span style="color: #de77ae;">README</span> file. Remember that the name of your repository should match the name of your package and be aware that the name of your package:</p>
+<div class="section level2">
+<h2 id="alternative-setup">Alternative setup<a class="anchor" aria-label="anchor" href="#alternative-setup"></a>
+</h2>
+<p>If for any reason you can’t get <code><a href="https://usethis.r-lib.org/reference/use_github.html" class="external-link">usethis::use_github()</a></code> to work, then follow these <a href="https://ibahcm.github.io/RPiR/articles/pages/github.html">instructions</a> to create a repository on GitHub with a <span style="color: #de77ae;">README</span> file. Remember that the name of your repository should match the name of your package and be aware that the name of your package:</p>
 <blockquote>
-<p>“should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html">ref</a>).</p>
+<p>“should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html" class="external-link">ref</a>).</p>
 </blockquote>
-<p>Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">package names</a> include a dot. In the following example, the name of our repository (and package) is <code>packagename</code>.</p>
+<p>Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html" class="external-link">package names</a> include a dot. In the following example, the name of our repository (and package) is <code>packagename</code>.</p>
 <p>Once you have a repository on GitHub, follow these <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">instructions</a> to clone your repository and add it as a new project in RStudio. Then create the package structure by running:</p>
-<pre><code>usethis::create_package("structure")</code></pre>
+<pre><code><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/create_package.html" class="external-link">create_package</a></span><span class="op">(</span><span class="st">"structure"</span><span class="op">)</span></code></pre>
 <p>at which point you’ll get a warning saying you shouldn’t really be nesting RStudio projects inside each other. Ignore that and say yes, you want to continue. You’ll end up with a file structure that looks a bit like this:</p>
 <pre><code>packagename/ ---&gt; .gitignore
                   README.md
@@ -465,26 +485,26 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
                   NAMESPACE
                   R/
                   man/</code></pre>
-<p>Finally, delete the <span style="color: #de77ae;">NAMESPACE file</span> and run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to create a new file. Also, don’t forget to keep pushing your changes to GitHub.</p>
+<p>Finally, delete the <span style="color: #de77ae;">NAMESPACE file</span> and run <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> to create a new <span style="color: #de77ae;">NAMESPACE</span> file. Why did we just delete and recreate <span style="color: #de77ae;">NAMESPACE</span>? Because from now on, it will be automatically populated whenever we call <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code>, which is only possible if we use <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> to create a new file. Also, don’t forget to keep pushing your changes to GitHub.</p>
 <p>You can now rejoin the instructions above <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation">here</a>.</p>
 </div>
-<div id="final-thoughts" class="section level2">
-<h2 class="hasAnchor">
-<a href="#final-thoughts" class="anchor"></a>Final thoughts</h2>
-<p>If you get stuck and need to troubleshoot your package, try running <code><a href="https://devtools.r-lib.org//reference/check.html">devtools::check()</a></code>. This will build your package in a clean environment and potentially highlight any issues that might be causing problems.</p>
-<p>Whenever you make a change to your package (particularly when you’re pushing to GitHub), you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used in a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>.</p>
+<div class="section level2">
+<h2 id="final-thoughts">Final thoughts<a class="anchor" aria-label="anchor" href="#final-thoughts"></a>
+</h2>
+<p>If you get stuck and need to troubleshoot your package, try running <code><a href="https://devtools.r-lib.org/reference/check.html" class="external-link">devtools::check()</a></code>. This will build your package in a clean environment and potentially highlight any issues that might be causing problems.</p>
+<p>Whenever you make a change to your package (particularly when you’re pushing to GitHub), you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used in a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org" class="external-link">here</a>.</p>
 <p>The version of your package is recorded in the <span style="color: #de77ae;">DESCRIPTION</span> file, like this:</p>
 <pre><code>Version: 0.1.0</code></pre>
 <p>Here, we have added more than enough to warrant increasing version number from <code>0.1.0</code> to <code>0.2.0</code>, so do that now. Remember to push this change to GitHub too.</p>
 </div>
-<div id="sharing-is-caring" class="section level2">
-<h2 class="hasAnchor">
-<a href="#sharing-is-caring" class="anchor"></a>Sharing is caring</h2>
+<div class="section level2">
+<h2 id="sharing-is-caring">Sharing is caring<a class="anchor" aria-label="anchor" href="#sharing-is-caring"></a>
+</h2>
 <p>The only thing left to do now is to share your package with other people. So go ahead and give them access (on the GitHub website, <span style="color: #de77ae;">Settings &gt; Manage access &gt; Invite teams or people</span>).</p>
 <p>Then ask them to run:</p>
-<pre><code>devtools::install_github("IBAHCM/packagename")</code></pre>
+<pre><code><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"IBAHCM/packagename"</span><span class="op">)</span></code></pre>
 <p>Go ahead and try to install my package. Try to run the demo.</p>
-<p>Note that if for some reason you can’t install a package using <code><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github()</a></code>, you can clone a repository as you did <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">here</a> and instead run <code><a href="https://devtools.r-lib.org//reference/install.html">devtools::install()</a></code> in the usual way.</p>
+<p>Note that if for some reason you can’t install a package using <code><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github()</a></code>, you can clone a repository as you did <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">here</a> and instead run <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install()</a></code> in the usual way.</p>
 </div>
   </div>
 
@@ -499,11 +519,13 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -511,6 +533,8 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 
   
 
+
+  
 
   </body>
 </html>

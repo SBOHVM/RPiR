@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.72.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.72.3</span>
       </span>
     </div>
 
@@ -76,6 +78,18 @@
     <li>
       <a href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -117,6 +131,12 @@
     <li>
       <a href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures_html/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -146,14 +166,14 @@
   </ul>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/discussions">
+  <a href="https://github.com/IBAHCM/RPiR/discussions" class="external-link">
     <span class="far fa-comments"></span>
      
     Discussion
   </a>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/">
+  <a href="https://github.com/IBAHCM/RPiR/" class="external-link">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -252,7 +272,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Creating a GitHub repository</h1>
             
-            <h4 class="date">November 29 2021</h4>
+            <h4 data-toc-skip class="date">December 06 2021</h4>
       
       
       <div class="hidden name"><code>github.Rmd</code></div>
@@ -262,12 +282,12 @@
     
     
 <p><em>Whenever you start a new project, you should consider creating a new repository on GitHub. Not only will you then be using version control, but it allows you to collaborate easily with others, as well as organising your workflow. This guide shows you how to create a new repository on GitHub.</em></p>
-<p>To start off, go to the <a href="http://www.github.com/IBAHCM">IBAHCM</a> organisation (on GitHub). During this course, this is where you’ll be creating all of your repositories. Once you’re there, click on the green <span style="color: #de77ae;">New</span> button.</p>
+<p>To start off, go to the <a href="http://www.github.com/IBAHCM" class="external-link">IBAHCM</a> organisation (on GitHub). During this course, this is where you’ll be creating all of your repositories. Once you’re there, click on the green <span style="color: #de77ae;">New</span> button.</p>
 <p><img src="images/use-github-01.png" width="100%" style="display: block; margin: auto;"></p>
 <p>You should always choose a short, descriptive name for your repository. But in this case, to make it easier for us to identify you, please include your name as well as an identifier associated with the practical you’re working on, e.g. <code>githubusername_0201</code>. Make sure you’re creating a <span style="color: #de77ae;">Private</span> repository, check the box to <span style="color: #de77ae;">Initialize this repository with a README</span>, then select <span style="color: #de77ae;">Create repository</span>.</p>
 <p><img src="images/use-github-02.png" width="100%" style="display: block; margin: auto;"></p>
 <blockquote>
-<p>Note that in Practical series 3 you’ll be writing a package… and when doing so it’s good practice for the name of your repository to match the name of your package. It’s important to be aware that the name of a package “should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html">ref</a>). Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html">package</a> names include a dot.</p>
+<p>Note that in Practical series 3 you’ll be writing a package… and when doing so it’s good practice for the name of your repository to match the name of your package. It’s important to be aware that the name of a package “should contain only (ASCII) letters, numbers and dot, have at least two characters and start with a letter and not end in a dot” (<a href="https://cran.r-project.org/doc/manuals/R-exts.html" class="external-link">ref</a>). Though very few <a href="https://cran.r-project.org/web/packages/available_packages_by_name.html" class="external-link">package</a> names include a dot.</p>
 </blockquote>
 <p>Since we’re not working with packages just yet, including an underscore in the name of a repository is perfectly fine. Your GitHub repo should now contain a single <code>README.md</code> file look a bit like this:</p>
 <p><img src="images/use-github-03.png" width="100%" style="display: block; margin: auto;"></p>
@@ -283,11 +303,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -295,6 +317,8 @@
 
   
 
+
+  
 
   </body>
 </html>

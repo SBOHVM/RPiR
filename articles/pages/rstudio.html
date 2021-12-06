@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.72.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.72.3</span>
       </span>
     </div>
 
@@ -76,6 +78,18 @@
     <li>
       <a href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -117,6 +131,12 @@
     <li>
       <a href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures_html/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -146,14 +166,14 @@
   </ul>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/discussions">
+  <a href="https://github.com/IBAHCM/RPiR/discussions" class="external-link">
     <span class="far fa-comments"></span>
      
     Discussion
   </a>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/">
+  <a href="https://github.com/IBAHCM/RPiR/" class="external-link">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -252,7 +272,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>RStudio projects and GitHub</h1>
             
-            <h4 class="date">November 29 2021</h4>
+            <h4 data-toc-skip class="date">December 06 2021</h4>
       
       
       <div class="hidden name"><code>rstudio.Rmd</code></div>
@@ -273,9 +293,9 @@
 <p>Congratulations! You have successfully created a new RStudio project (now with added version control). In the example below, (1) the RStudio project is called <code>soniamitchell_0201</code>, (2) a new directory, <code>soniamitchell_0201</code>, has been created, which is now your working directory, and inside this directory are (3) three files, including a GitHub <code>README.md</code> file (imported from your GitHub repository), an RStudio project file (<code>soniamitchell_0201.Rproj</code>), and an invisible <code>.gitignore</code> file (created by RStudio).</p>
 <p>Note the appearance of a new <span style="color: #de77ae;">Git</span> tab next to <span style="color: #de77ae;">Connections</span>. This is important.</p>
 <p><img src="images/use-github-08.png" width="100%" style="display: block; margin: auto;"></p>
-<div id="using-git-in-rstudio" class="section level2">
-<h2 class="hasAnchor">
-<a href="#using-git-in-rstudio" class="anchor"></a>Using Git in RStudio</h2>
+<div class="section level2">
+<h2 id="using-git-in-rstudio">Using Git in RStudio<a class="anchor" aria-label="anchor" href="#using-git-in-rstudio"></a>
+</h2>
 <p>Compare the contents of your working directory to the files listed in the <span style="color: #de77ae;">Git</span> tab. The <span style="color: #de77ae;">Git</span> tab is a useful tool that shows you how your remote directory (your GitHub repository) differs from your local directory (in this case <code>~/Desktop/Git/soniamitchell_0201</code>). Currently, the <code>README.md</code> file in your local directory is identical to the one in your remote directory. That’s why you can’t see it in the <span style="color: #de77ae;">Git</span> tab. Instead, <code>.gitignore</code> and <code>soniamitchell_0201.Rproj</code> are listed with yellow question marks in the <span style="color: #de77ae;">Status</span> column. What do these icons mean?</p>
 <ul>
 <li>“?” - Files or directories that don’t currently exist in your git repository (you either want to commit these or add them to <code>.gitignore</code>)</li>
@@ -285,7 +305,7 @@
 </ul>
 <p>Open the <code>README.md</code> file by clicking on its filename in the <span style="color: #de77ae;">Files</span> tab. Does this look familiar? (Compare the contents of this file to your repository on GitHub)</p>
 <p><img src="images/use-github-09.png" width="100%" style="display: block; margin: auto;"></p>
-<p>Usually a GitHub README (written in <a href="https://help.github.com/en/github/writing-on-github">GitHub Flavored Markdown</a>) will describe the contents of the GitHub repository or give an example of how to use the contents of said repository. Make some edits to <code>README.md</code> and <strong>save your file</strong>. Note that when we make edits to the README file, its <span style="color: #de77ae;">Status</span> changes to “M”. This means that the file in your local directory is no longer identical to the file in your remote directory (on GitHub). Check the box next to the file you want to commit (<code>README.md</code>), then click <span style="color: #de77ae;">Commit</span>.</p>
+<p>Usually a GitHub README (written in <a href="https://help.github.com/en/github/writing-on-github" class="external-link">GitHub Flavored Markdown</a>) will describe the contents of the GitHub repository or give an example of how to use the contents of said repository. Make some edits to <code>README.md</code> and <strong>save your file</strong>. Note that when we make edits to the README file, its <span style="color: #de77ae;">Status</span> changes to “M”. This means that the file in your local directory is no longer identical to the file in your remote directory (on GitHub). Check the box next to the file you want to commit (<code>README.md</code>), then click <span style="color: #de77ae;">Commit</span>.</p>
 <p><img src="images/use-github-10.png" width="100%" style="display: block; margin: auto;"></p>
 <p>The <span style="color: #de77ae;">RStudio: Review Changes</span> window has opened. Make sure the checkbox is ticked next to <code>README.md</code> and enter a <span style="color: #de77ae;">Commit message</span>. Your message should describe the changes you’ve made to the file you’re uploading. These changes are shown in the lower half of the screen, with deletions and insertions highlighted in red and green, respectively. Click <span style="color: #de77ae;">Commit</span> to stage your changes (preparing to upload to GitHub).</p>
 <p><img src="images/use-github-11.png" width="100%" style="display: block; margin: auto;"></p>
@@ -296,19 +316,19 @@
 <p>Congratulations again! You’ve successfully pushed these changes to GitHub. Go take a look at your GitHub repository and you’ll see that the GitHub README has been updated.</p>
 <p><img src="images/use-github-14.png" width="100%" style="display: block; margin: auto;"></p>
 </div>
-<div id="final-remarks" class="section level2">
-<h2 class="hasAnchor">
-<a href="#final-remarks" class="anchor"></a>Final remarks</h2>
+<div class="section level2">
+<h2 id="final-remarks">Final remarks<a class="anchor" aria-label="anchor" href="#final-remarks"></a>
+</h2>
 <p>RStudio offers integrated version control, which is useful for <strong>daily tasks</strong> such as pushing, pulling, and reviewing changes (click on <span style="color: #de77ae;">Diff</span> in the <span style="color: #de77ae;">Git</span> tab). However, this is just the tip of the iceberg. If you have time, why not take a look at the links below.</p>
 </div>
-<div id="additional-resources" class="section level2">
-<h2 class="hasAnchor">
-<a href="#additional-resources" class="anchor"></a>Additional resources</h2>
+<div class="section level2">
+<h2 id="additional-resources">Additional resources<a class="anchor" aria-label="anchor" href="#additional-resources"></a>
+</h2>
 <ul>
-<li><a href="http://r-pkgs.had.co.nz/git.html">R packages - Git and GitHub, by Hadley Wickham</a></li>
-<li><a href="https://git-scm.com/book/en/v2">Pro Git, by Scott Chacon and Ben Straub</a></li>
-<li><a href="https://kbroman.org/github_tutorial/">git/github guide, by Karl Broman</a></li>
-<li><a href="https://rogerdudler.github.io/git-guide/">git - the simple guide, by Roger Dudler</a></li>
+<li><a href="http://r-pkgs.had.co.nz/git.html" class="external-link">R packages - Git and GitHub, by Hadley Wickham</a></li>
+<li><a href="https://git-scm.com/book/en/v2" class="external-link">Pro Git, by Scott Chacon and Ben Straub</a></li>
+<li><a href="https://kbroman.org/github_tutorial/" class="external-link">git/github guide, by Karl Broman</a></li>
+<li><a href="https://rogerdudler.github.io/git-guide/" class="external-link">git - the simple guide, by Roger Dudler</a></li>
 </ul>
 </div>
   </div>
@@ -324,11 +344,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -336,6 +358,8 @@
 
   
 
+
+  
 
   </body>
 </html>

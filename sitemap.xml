@@ -1,102 +1,120 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://ibahcm.github.io/RPiR//index.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/404.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/RPiR-package.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/assert_no_globals.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/LICENSE.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/available_lectures.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/faq.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/available_practicals.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/index.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/clean_cached_exercises.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/flow.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/cleanup_times.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/functions.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/dummy_package.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/github.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/dummy_project.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/export_materials.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/install_github.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/extract_chunks.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/loops.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/plot_populations.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/packages.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/plot_simple.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/populate_package.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/preparation.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/practical_series_one.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/reference.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/run_integration.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/rstudio.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/run_lecture.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/run_practical.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/authors.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/run_simple.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/index.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//reference/run_simulation.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/RPiR-package.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/faq.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/assert_no_globals.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/flow.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/available_lectures.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/functions.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/available_practicals.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/github.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/clean_cached_exercises.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/install_RPiR.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/cleanup_times.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/install_github.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/dummy_package.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/loops.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/dummy_project.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/packages.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/export_materials.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/packages_guide.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/extract_chunks.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/preparation.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/reference.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/plot_populations.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/rstudio.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/plot_simple.html</loc>
   </url>
   <url>
-    <loc>https://ibahcm.github.io/RPiR//articles/pages/vscode_liveshare.html</loc>
+    <loc>https://ibahcm.github.io/RPiR/reference/populate_package.html</loc>
+  </url>
+  <url>
+    <loc>https://ibahcm.github.io/RPiR/reference/practical_series_one.html</loc>
+  </url>
+  <url>
+    <loc>https://ibahcm.github.io/RPiR/reference/run_integration.html</loc>
+  </url>
+  <url>
+    <loc>https://ibahcm.github.io/RPiR/reference/run_lecture.html</loc>
+  </url>
+  <url>
+    <loc>https://ibahcm.github.io/RPiR/reference/run_practical.html</loc>
+  </url>
+  <url>
+    <loc>https://ibahcm.github.io/RPiR/reference/run_simple.html</loc>
+  </url>
+  <url>
+    <loc>https://ibahcm.github.io/RPiR/reference/run_simulation.html</loc>
   </url>
 </urlset>

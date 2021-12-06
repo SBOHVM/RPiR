@@ -62,8 +62,8 @@ We've changed 7 files and made 68 insertions.
 knitr::include_graphics('images/4.png')
 ```
 
-But we can't push! Oh no! The little green 
-<span style="color: #dd1c77;">Push</span> button is dull and lifeless.
+But we can't push! Oh no! The little green
+[Push]{style="color: #dd1c77;"} button is dull and lifeless.
 
 ```{r, echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/5.png')
@@ -151,8 +151,8 @@ install(
 )
 ```
 
-The default option for the `pkg` argument is `"."`, which corresponds 
-to the current working directory. So, you don't need to specify a file path if 
+The default option for the `pkg` argument is `"."`, which corresponds
+to the current working directory. So, you don't need to specify a file path if
 you're in the working directory of your package (which you are).
 
 >Also note that `devtools::` tells R to look for the `install()` function 
@@ -193,7 +193,7 @@ Practical 1-5), more info [here](https://r-pkgs.org/r.html#code-organising)
 * <span style="color: #dd1c77;">README.md</span>: contains markdown used to 
 generate your GitHub repository readme page, more info 
 [here](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes)
-* <span style="color: #dd1c77;">githubusername.Rproj</span>: an RStudio project 
+* <span style="color: #dd1c77;">githubusernameSeries03.Rproj</span>: an RStudio project 
 file, which is used to make this directory an RStudio project, and can be used 
 as a shortcut for opening this project from your filesystem, more info 
 [here](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects)
@@ -255,7 +255,7 @@ on `RPiR` for you. This was done by:
    ```
    
 2. We then added an `@import` tag in the 
-   <span style="color: #dd1c77;">githubusername-package.R</span> file (located 
+   <span style="color: #dd1c77;">githubusernameSeries03-package.R</span> file (located 
    in the <span style="color: #dd1c77;">R</span> directory):
    ```{r, eval = FALSE}
    #' @import RPiR
@@ -332,7 +332,7 @@ Try running the demo:
 demo(topic = "d0105_run_birth_death", package = "githubusernameSeries03")
 ```
 
-To list all of the demos installed as part of the `githubusername` package, 
+To list all of the demos installed as part of the `githubusernameSeries03` package, 
 run:
 
 ```{r, eval = FALSE}

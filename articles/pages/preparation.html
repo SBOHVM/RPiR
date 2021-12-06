@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,7 +33,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.72.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.72.3</span>
       </span>
     </div>
 
@@ -76,6 +78,18 @@
     <li>
       <a href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
+    <li>
+      <a href="../../lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -117,6 +131,12 @@
     <li>
       <a href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
     </li>
+    <li>
+      <a href="../../lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
+    </li>
+    <li>
+      <a href="../../lectures_html/RPiR8c-R.html">RPiR8c-R</a>
+    </li>
   </ul>
 </li>
 <li class="dropdown">
@@ -146,14 +166,14 @@
   </ul>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/discussions">
+  <a href="https://github.com/IBAHCM/RPiR/discussions" class="external-link">
     <span class="far fa-comments"></span>
      
     Discussion
   </a>
 </li>
 <li>
-  <a href="https://github.com/IBAHCM/RPiR/">
+  <a href="https://github.com/IBAHCM/RPiR/" class="external-link">
     <span class="fab fa-github"></span>
      
     GitHub
@@ -252,7 +272,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Course preparation</h1>
             
-            <h4 class="date">November 29 2021</h4>
+            <h4 data-toc-skip class="date">December 06 2021</h4>
       
       
       <div class="hidden name"><code>preparation.Rmd</code></div>
@@ -261,53 +281,53 @@
 
     
     
-<div id="checking-that-r-and-rstudio-are-up-to-date" class="section level2">
-<h2 class="hasAnchor">
-<a href="#checking-that-r-and-rstudio-are-up-to-date" class="anchor"></a>Checking that R and RStudio are up to date</h2>
+<div class="section level2">
+<h2 id="checking-that-r-and-rstudio-are-up-to-date">Checking that R and RStudio are up to date<a class="anchor" aria-label="anchor" href="#checking-that-r-and-rstudio-are-up-to-date"></a>
+</h2>
 <p>You’ll need to do a few things before we can start the course. First you need to check you have up-to-date versions of R and RStudio. This means that R should be at least version 4. You can check by typing this in R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">version</span><span class="op">$</span><span class="va">major</span> <span class="op">&gt;=</span> <span class="fl">4</span></code></pre></div>
-<p>If this is <code>FALSE</code>, download and install a new version from <a href="https://www.r-project.org" class="uri">https://www.r-project.org</a>. Next install these packages:</p>
+<p>If this is <code>FALSE</code>, download and install a new version from <a href="https://www.r-project.org" class="external-link uri">https://www.r-project.org</a>. Next install these packages:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'devtools'</span>, <span class="st">'rstudioapi'</span>, <span class="st">'rdiversity'</span>, <span class="st">'vegan'</span>, <span class="st">'iNEXT'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'devtools'</span>, <span class="st">'rstudioapi'</span>, <span class="st">'rdiversity'</span>, <span class="st">'vegan'</span>, <span class="st">'iNEXT'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>Then check whether RStudio is up to date:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load the rstudioapi library and check RStudio version</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rstudioapi">rstudioapi</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/isAvailable.html">isAvailable</a></span><span class="op">(</span><span class="st">"1.4"</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/rstudioapi" class="external-link">rstudioapi</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/isAvailable.html" class="external-link">isAvailable</a></span><span class="op">(</span><span class="st">"1.4"</span><span class="op">)</span>
 
 <span class="co"># or just</span>
-<span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/isAvailable.html">isAvailable</a></span><span class="op">(</span><span class="st">"1.4"</span><span class="op">)</span></code></pre></div>
+<span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rstudioapi/man/isAvailable.html" class="external-link">isAvailable</a></span><span class="op">(</span><span class="st">"1.4"</span><span class="op">)</span></code></pre></div>
 <p><strong>NB <code>rstudioapi::xxx()</code> means <em>“find the <code>xxx()</code> function in the <code>rstudioapi</code> package”</em>.</strong></p>
-<p>If <code>FALSE</code>, download and install the latest version of <a href="https://rstudio.com/products/rstudio">RStudio Desktop</a> and check this has worked by running the above again.</p>
+<p>If <code>FALSE</code>, download and install the latest version of <a href="https://rstudio.com/products/rstudio" class="external-link">RStudio Desktop</a> and check this has worked by running the above again.</p>
 <p>Next, check you are now ready to build R packages:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Load the devtools library and check whether compilers are installed</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/">devtools</a></span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel</a></span><span class="op">(</span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html" class="external-link">has_devel</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="co"># or just</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html">has_devel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html" class="external-link">has_devel</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>If this is <code>FALSE</code> or errors, then you will need to follow instructions given by the function or ask for help until this works.</p>
 </div>
-<div id="creating-accounts-and-installation" class="section level2">
-<h2 class="hasAnchor">
-<a href="#creating-accounts-and-installation" class="anchor"></a>Creating accounts and installation</h2>
+<div class="section level2">
+<h2 id="creating-accounts-and-installation">Creating accounts and installation<a class="anchor" aria-label="anchor" href="#creating-accounts-and-installation"></a>
+</h2>
 <p>Once all of the above works, you’re ready to start, so follow the details under the <code>Installation</code> dropdown menu <a href="https://ibahcm.github.io/RPiR">in the documentation for this package</a>. Specifically:</p>
 <ol style="list-style-type: decimal">
 <li>First <a href="https://ibahcm.github.io/RPiR/articles/pages/install_github.html">create an account on GitHub and connect it to RStudio</a>. This will also show you how to create a practice project on github. You’ll use this in the second practical series, but it’s worth trying out the instructions now to check that everything is working.</li>
 <li>Then <a href="https://ibahcm.github.io/RPiR/articles/pages/install_RPiR.html">install the RPiR package</a>.</li>
 </ol>
 </div>
-<div id="stopping-warnings" class="section level2">
-<h2 class="hasAnchor">
-<a href="#stopping-warnings" class="anchor"></a>Stopping warnings</h2>
+<div class="section level2">
+<h2 id="stopping-warnings">Stopping warnings<a class="anchor" aria-label="anchor" href="#stopping-warnings"></a>
+</h2>
 <p>Finally, you will probably find that some warnings are being generated when you load the package. This is a known issue in another package that we can’t currently fix. To stop them, you need to type this in the console:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_profile</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="st">"user"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_profile</a></span><span class="op">(</span>scope <span class="op">=</span> <span class="st">"user"</span><span class="op">)</span></code></pre></div>
 <p>And add this to the file that is opened:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>yaml.eval.expr <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>yaml.eval.expr <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>If you restart R, you should then find that the warnings have been removed.</p>
 </div>
   </div>
@@ -323,11 +343,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Sonia Mitchell, Richard Reeve.</p>
+  <p></p>
+<p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
 </div>
 
       </footer>
@@ -335,6 +357,8 @@
 
   
 
+
+  
 
   </body>
 </html>
