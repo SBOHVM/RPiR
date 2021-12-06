@@ -12,3 +12,4 @@ extract_chunks(filename)
 \description{
 Extract code chunks from a .Rmd file
 }
+\keyword{internal}

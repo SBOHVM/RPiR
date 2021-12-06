@@ -7,6 +7,8 @@
 #' give your project; this should be your GitHub user name, followed by the
 #' practical number, *e.g.* maryjane_0106
 #'
+#'  @keywords internal
+#'
 dummy_project <- function(project_name) {
 
   if (file.exists(project_name))

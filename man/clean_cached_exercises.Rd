@@ -9,3 +9,4 @@ clean_cached_exercises()
 \description{
 clean_cached_exercises
 }
+\keyword{internal}

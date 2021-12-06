@@ -3,6 +3,7 @@
 #' @param materials materials
 #' @param type content type
 #'
+#' @keywords internal
 export_materials <- function(materials, type = "exercises") {
   if (type == "exercises") {
     c(materials[grepl("practical[A123][a-z]?-", materials)]#,

@@ -8,7 +8,9 @@ dummy_package(package_name)
 }
 \arguments{
 \item{package_name}{a \code{string} corresponding to the name you want to
-give your package; this should be your GitHub user name.}
+give your package; this should be your GitHub user name.
+
+ @keywords internal}
 }
 \description{
 This function will create an RStudio project and

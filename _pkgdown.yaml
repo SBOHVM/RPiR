@@ -17,6 +17,7 @@ reference:
   - title: Helper functions
     desc: Functions used in Practical exercises
     contents:
+      - 'assert_no_globals'
       - '`plot_simple`'
       - '`plot_populations`'
       - '`run_simple`'

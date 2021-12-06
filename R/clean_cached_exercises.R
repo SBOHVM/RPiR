@@ -1,5 +1,6 @@
 #' clean_cached_exercises
 #'
+#' @keywords internal
 #'
 clean_cached_exercises <- function() {
   path <- system.file("tutorials", package = "RPiR")
