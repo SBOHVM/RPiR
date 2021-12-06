@@ -71,8 +71,8 @@ over. We suggest doing something like this:
 ```{r, eval = FALSE}
 while (keep.going) {
   data <- timestep_stochastic_birth_death(latest, 
-                                          transmission.rate, 
-                                          recovery.rate, 
+                                          birth.rate, 
+                                          death.rate, 
                                           timestep) 
   latest.population <- data$updated.pop
   population.df <- rbind(population.df, latest.population)
