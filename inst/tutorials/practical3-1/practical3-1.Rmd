@@ -243,7 +243,7 @@ on `RPiR` for you. This was done by:
    <span style="color: #dd1c77;">DESCRIPTION</span> file, *i.e.*
    ```{r, eval = FALSE}
    Imports: 
-   RPiR
+       RPiR
    ```
    
    In this particular case, the `RPiR` package is not available on CRAN, so 
@@ -251,34 +251,38 @@ on `RPiR` for you. This was done by:
    `Imports` field:
    ```{r, eval = FALSE}
    Remotes: 
-    IBAHCM/RPiR
+       IBAHCM/RPiR
    ```
-   
+
 2. We then added an `@import` tag in the 
    <span style="color: #dd1c77;">githubusernameSeries03-package.R</span> file (located 
    in the <span style="color: #dd1c77;">R</span> directory):
    ```{r, eval = FALSE}
    #' @import RPiR
    ```
-   
+
 3. Finally, we used `devtools::document()` to populate the 
    <span style="color: #dd1c77;">NAMESPACE</span> file (which you should never 
    edit by hand).
 
 As well as recording dependencies, the 
 <span style="color: #dd1c77;">DESCRIPTION</span> file contains various metadata
-such as the package `Title`, `Author`, and `Description`. Fill those in now.
+such as the package `Title`, `Author`, and `Description`. **Fill those in now. They will not have been filled in by `RPiR::populate_package()`.**
 
 Note that, whenever you make a change to your package, you should try to get 
 into the habit of changing the version number. This is important because it
 allows you to keep track of which version of the code is being used for a 
 particular analysis. The format is usually **major.minor.patch**, more info
-[here](https://semver.org). After making edits to the 
+[here](https://semver.org). **After making edits to the 
 <span style="color: #dd1c77;">DESCRIPTION</span> 
-file, change the <span style="color: #dd1c77;">Version</span> number to `0.1.0`.
+file, change the <span style="color: #dd1c77;">Version</span> number
+to `0.1.1`.**
 
-Then run `devtools::install()` to permanently install these changes as part of 
-your package.
+**Then run `devtools::install()` to permanently install these changes as part of 
+your package.** At any point you feel appropriate, for instance now(!),
+you may wish to commit the changes you have made. We won't always tell
+you when you should commit changes (nor when you should push then to GitHub) -
+you should think about this for yourself whenever you have made a change to the code.
 
 ### Package documentation
 
