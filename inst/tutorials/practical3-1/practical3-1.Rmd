@@ -481,7 +481,7 @@ To check it works:
 1. Run `demo(package = "githubusernameSeries03")` to check your new demo is
    listed;
 2. Try running your demo with 
-   `demo("d0302_stochastic_birth_death.R", package = "githubusernameSeries03")`;
+   `demo("d0302_stochastic_birth_death", package = "githubusernameSeries03")`;
 3. Run `?timestep_stochastic_birth_death` to check your new function has 
    documentation; and
 4. Compile an html report from the demo to make sure that the report works too.
