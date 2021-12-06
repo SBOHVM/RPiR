@@ -175,8 +175,8 @@ pre code {
 <p>The loop ends when the time runs out. Now, instead, there are two reasons why we might stop the simulation – the time may have run out, or the timestep code may identify that the dynamics are now complete. To achieve this, the timestep code will have to return both the updated population and whether the simulation is over. We suggest doing something like this:</p>
 <pre class="r"><code>while (keep.going) {
   data &lt;- timestep_stochastic_birth_death(latest, 
-                                          transmission.rate, 
-                                          recovery.rate, 
+                                          birth.rate, 
+                                          death.rate, 
                                           timestep) 
   latest.population &lt;- data$updated.pop
   population.df &lt;- rbind(population.df, latest.population)
