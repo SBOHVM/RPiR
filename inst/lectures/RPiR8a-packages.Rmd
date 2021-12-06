@@ -59,4 +59,4 @@ output: ioslides_presentation
   - Update the package version number 
 - Collaborate
   - Push to GitHub
-  - Test your room-mates packages
+  - Test the packages of the other members of your group
