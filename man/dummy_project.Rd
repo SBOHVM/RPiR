@@ -9,11 +9,10 @@ dummy_project(project_name)
 \arguments{
 \item{project_name}{a \code{string} corresponding to the name you want to
 give your project; this should be your GitHub user name, followed by the
-practical number, *e.g.* maryjane_0106
-
- @keywords internal}
+practical number, *e.g.* maryjane_0106}
 }
 \description{
 This function will create an RStudio project and
 populate it with scripts from practical series 1.
 }
+\keyword{internal}
