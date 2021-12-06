@@ -6,7 +6,7 @@ output:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{Version control with GitHub and RStudio}
+    %\VignetteIndexEntry{Creating a GitHub repository}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
