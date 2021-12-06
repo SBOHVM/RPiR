@@ -47,7 +47,7 @@ Some functions don't know what their arguments will be:
 ```{R, eval = FALSE}
 plot(x, y)
 plot(x, y, col="black")
-plot(x, y, type='l', lty=2)
+plot(x, y, type="l", lty=2)
 ```
 
 The extra arguments get passed on to `plot.xy()` or some other function, which
@@ -60,11 +60,11 @@ Some functions don't know what their arguments will be:
 ```{R, eval = FALSE}
 plot(x, y)
 plot(x, y, col="black")
-plot(x, y, type='l', lty=2)
+plot(x, y, type="l", lty=2)
 ```
 
 The extra arguments get passed on to `plot.xy()` or some other function, which
-does then the work. It looks a bit like this:
+then does the work. It looks a bit like this:
 
 ```{r, eval = FALSE}
 ### <b>
