@@ -15,7 +15,7 @@ populate_package <- function(force = FALSE) {
 
   # Remove R/hello.R
   for (file in c("R/hello.R", "man/hello.Rd", "NAMESPACE")) {
-    if (unlink(file) > 0)
+    if (unlink(file) == 0)
       usethis::ui_done(paste("Deleted", usethis::ui_value(file)))
     else
       usethis::ui_oops(paste("Failed to delete", usethis::ui_value(file)))
