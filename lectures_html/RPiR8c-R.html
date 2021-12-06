@@ -393,7 +393,7 @@ increase(value = 5, by = 2)</code></pre>
 <p>Some functions don’t know what their arguments will be:</p>
 <pre class="r"><code>plot(x, y)
 plot(x, y, col=&quot;black&quot;)
-plot(x, y, type=&#39;l&#39;, lty=2)</code></pre>
+plot(x, y, type=&quot;l&quot;, lty=2)</code></pre>
 <p>The extra arguments get passed on to <code>plot.xy()</code> or some other function, which does then the work.</p>
 </div>
 <div id="using-...-to-accept-any-arguments-1" class="section level2">
@@ -401,8 +401,8 @@ plot(x, y, type=&#39;l&#39;, lty=2)</code></pre>
 <p>Some functions don’t know what their arguments will be:</p>
 <pre class="r"><code>plot(x, y)
 plot(x, y, col=&quot;black&quot;)
-plot(x, y, type=&#39;l&#39;, lty=2)</code></pre>
-<p>The extra arguments get passed on to <code>plot.xy()</code> or some other function, which does then the work. It looks a bit like this:</p>
+plot(x, y, type=&quot;l&quot;, lty=2)</code></pre>
+<p>The extra arguments get passed on to <code>plot.xy()</code> or some other function, which then does the work. It looks a bit like this:</p>
 <pre class="r"><code>### &lt;b&gt;
 plot &lt;- function(x, y, log = &quot;&quot;, ...) {
 ### &lt;/b&gt;
@@ -472,7 +472,7 @@ run_simple &lt;- function(step_function, latest.df, end.time, ...)
 <li>How many infections have occurred if there are 50 animals and there is a probability of infection of 0.1 for each one?</li>
 </ul>
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 6</code></pre>
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
 <pre><code>## [1] 5</code></pre>
 </div>

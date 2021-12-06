@@ -3185,7 +3185,7 @@ slide:not(.current) .plotly.html-widget{
           </hgroup>
   </slide>
 
-<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>More on functions</h2></hgroup><article  class="smaller" id="more-on-functions">
+<slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>More on functions</h2></hgroup><article  id="more-on-functions" class="smaller">
 
 </article></slide><slide class=""><hgroup><h2>Useful commands</h2></hgroup><article  id="useful-commands">
 
@@ -3242,7 +3242,7 @@ increase(value = 5, by = 2)</pre>
 
 <pre class = 'prettyprint lang-r'>plot(x, y)
 plot(x, y, col=&quot;black&quot;)
-plot(x, y, type=&#39;l&#39;, lty=2)</pre>
+plot(x, y, type=&quot;l&quot;, lty=2)</pre>
 
 <p>The extra arguments get passed on to <code>plot.xy()</code> or some other function, which does then the work.</p>
 
@@ -3252,9 +3252,9 @@ plot(x, y, type=&#39;l&#39;, lty=2)</pre>
 
 <pre class = 'prettyprint lang-r'>plot(x, y)
 plot(x, y, col=&quot;black&quot;)
-plot(x, y, type=&#39;l&#39;, lty=2)</pre>
+plot(x, y, type=&quot;l&quot;, lty=2)</pre>
 
-<p>The extra arguments get passed on to <code>plot.xy()</code> or some other function, which does then the work. It looks a bit like this:</p>
+<p>The extra arguments get passed on to <code>plot.xy()</code> or some other function, which then does the work. It looks a bit like this:</p>
 
 <pre class = 'prettyprint lang-r'><b>plot &lt;- function(x, y, log = &quot;&quot;, ...) {
 </b>  xlabel &lt;- deparse1(substitute(x))
@@ -3320,7 +3320,7 @@ plot(x, y, type=&#39;l&#39;, lty=2)</pre>
 
 <pre class = 'prettyprint lang-r'>rbinom(1, 50, 0.1)</pre>
 
-<pre >## [1] 1</pre></article></slide>
+<pre >## [1] 7</pre></article></slide>
 
 
   <slide class="backdrop"></slide>
