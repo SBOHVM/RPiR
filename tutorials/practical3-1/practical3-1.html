@@ -242,17 +242,17 @@ RoxygenNote: 7.1.1</code></pre>
 <ol style="list-style-type: decimal">
 <li><p>Adding an entry in the <code>Imports</code> field of the <span style="color: #dd1c77;">DESCRIPTION</span> file, <em>i.e.</em></p>
 <pre class="r"><code>Imports: 
-RPiR</code></pre>
+    RPiR</code></pre>
 <p>In this particular case, the <code>RPiR</code> package is not available on CRAN, so we’ve had to note its location in the <code>Remotes</code> field as well as the <code>Imports</code> field:</p>
 <pre class="r"><code>Remotes: 
- IBAHCM/RPiR</code></pre></li>
+    IBAHCM/RPiR</code></pre></li>
 <li><p>We then added an <code>@import</code> tag in the <span style="color: #dd1c77;">githubusernameSeries03-package.R</span> file (located in the <span style="color: #dd1c77;">R</span> directory):</p>
 <pre class="r"><code>#&#39; @import RPiR</code></pre></li>
 <li><p>Finally, we used <code>devtools::document()</code> to populate the <span style="color: #dd1c77;">NAMESPACE</span> file (which you should never edit by hand).</p></li>
 </ol>
-<p>As well as recording dependencies, the <span style="color: #dd1c77;">DESCRIPTION</span> file contains various metadata such as the package <code>Title</code>, <code>Author</code>, and <code>Description</code>. Fill those in now.</p>
-<p>Note that, whenever you make a change to your package, you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used for a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>. After making edits to the <span style="color: #dd1c77;">DESCRIPTION</span> file, change the <span style="color: #dd1c77;">Version</span> number to <code>0.1.0</code>.</p>
-<p>Then run <code>devtools::install()</code> to permanently install these changes as part of your package.</p>
+<p>As well as recording dependencies, the <span style="color: #dd1c77;">DESCRIPTION</span> file contains various metadata such as the package <code>Title</code>, <code>Author</code>, and <code>Description</code>. <strong>Fill those in now. They will not have been filled in by <code>RPiR::populate_package()</code>.</strong></p>
+<p>Note that, whenever you make a change to your package, you should try to get into the habit of changing the version number. This is important because it allows you to keep track of which version of the code is being used for a particular analysis. The format is usually <strong>major.minor.patch</strong>, more info <a href="https://semver.org">here</a>. <strong>After making edits to the <span style="color: #dd1c77;">DESCRIPTION</span> file, change the <span style="color: #dd1c77;">Version</span> number to <code>0.1.1</code>.</strong></p>
+<p><strong>Then run <code>devtools::install()</code> to permanently install these changes as part of your package.</strong> At any point you feel appropriate, for instance now(!), you may wish to commit the changes you have made. We won’t always tell you when you should commit changes (nor when you should push then to GitHub) - you should think about this for yourself whenever you have made a change to the code.</p>
 </div>
 <div id="section-package-documentation" class="section level3">
 <h3>Package documentation</h3>
