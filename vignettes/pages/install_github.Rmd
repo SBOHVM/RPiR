@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ## Prerequisites
 
 1. Create a GitHub account - go to https://github.com/ and sign up
-   with your university email address
+with your university email address
 2. Verify your account
 3. Go to https://education.github.com, click **Students** and/or 
 **Get benefits for students**, and follow the instructions
@@ -66,61 +66,8 @@ down to the <span style="color: #de77ae;">Installation</span> section, then
 **restart RStudio**.
 
 > Note that having git installed *is different* from installing `libgit2` when
-  you installed the `RPiR` package earlier, so you may have to install git here,
-  even if you fixed the problems earlier!
-
-Now that we're sure `git` is installed, we're going to set up encryption between 
-your computer and GitHub. To do this we need to generate a certificate. Click on 
-<span style="color: #de77ae;">Create RSA Key...</span>
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-02.png')
-```
-
-Now, click <span style="color: #de77ae;">Create</span> to generate your RSA key
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-03.png')
-```
-
-It should look like this
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-04.png')
-```
-
-Now you need to copy your public key and register it with GitHub, so click on 
-<span style="color: #de77ae;">View public key</span>
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-05.png')
-```
-
-.. and copy the key to your clipboard
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-06.png')
-```
-
-Then in GitHub, in your <span style="color: #de77ae;">Personal settings</span>, 
-open the <span style="color: #de77ae;">SSH and GPG keys</span> tab 
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-07.png')
-```
-
-Create a <span style="color: #de77ae;">New SSH key</span>
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-08.png')
-```
-
-Paste the public key that you copied from RStudio into the box and click
-<span style="color: #de77ae;">Add SSH key</span>
-
-```{r echo = FALSE, fig.align = "center", out.width = "100%"}
-knitr::include_graphics('images/install-github-09.png')
-```
+you installed the `RPiR` package earlier, so you may have to install git here,
+even if you fixed the problems earlier!
 
 Now back in RStudio, tell git your user name and email address (these are used 
 to label each commit that you make to GitHub). **Make sure the email address you** 
@@ -132,11 +79,9 @@ If that doesn't work, then install it, and then configure git using it:
 install.packages("usethis") # If need be
 library(usethis)
 
-use_git_config(
-  scope = "user",
-  user.name = "insert_github_username_here",
-  user.email = "insert_email_address_here"
-)
+use_git_config(scope = "user",
+               user.name = "insert_github_username_here",
+               user.email = "insert_email_address_here")
 ```
 
 RStudio will now remember your details, so don't worry about having to enter 
@@ -184,7 +129,15 @@ This will prompt you in the RStudio
 <span style="color: #de77ae;">Console</span> tab with "Enter new password or
 token". Paste in the alphanumeric string you copied above.
 
-Now restart RStudio and you're done.
+Now run:
+
+```{r, eval = FALSE}
+usethis::edit_r_environ()
+```
+
+This will open an .Renviron file in a new tab. Into this file paste 
+`GITHUB=my_github_pat`, replacing `my_github_pat` with the alphanumeric string
+you copied earlier. Now save the file and restart RStudio and you're done.
 
 Note that if you have any problems getting RStudio to interact with GitHub, 
 it may be useful to call:
