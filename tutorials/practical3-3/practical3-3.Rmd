@@ -149,7 +149,7 @@ functionality.
 Run the stochastic birth death model with a birth rate of 0.06, a death rate of 
 0.02, an initial population count of 1, and a timestep of 1. Observe the 
 variability in the outputs. Overlay the deterministic model results on the same 
-plot. You should get something like this:
+plot. **Note that you can't use the `run_simple()` or `run_simulation()` function with the old `step_deterministic_birth_death()` step function because it doesn't know about the `time` column in the data frame or timesteps, so you just need to copy the `for ()` loop from the `d0105...` demo to get the deterministic result.** You should get something like this:
 
 <center>![plot](images/3-3.png)</center>
 

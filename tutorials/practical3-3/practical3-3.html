@@ -223,7 +223,7 @@ run_simple &lt;- function(step_function,
 <h2>Report</h2>
 <div id="section-compare-stochastic-and-deterministic-models" class="section level3">
 <h3>1. Compare stochastic and deterministic models</h3>
-<p>Run the stochastic birth death model with a birth rate of 0.06, a death rate of 0.02, an initial population count of 1, and a timestep of 1. Observe the variability in the outputs. Overlay the deterministic model results on the same plot. You should get something like this:</p>
+<p>Run the stochastic birth death model with a birth rate of 0.06, a death rate of 0.02, an initial population count of 1, and a timestep of 1. Observe the variability in the outputs. Overlay the deterministic model results on the same plot. <strong>Note that you can’t use the <code>run_simple()</code> or <code>run_simulation()</code> function with the old <code>step_deterministic_birth_death()</code> step function because it doesn’t know about the <code>time</code> column in the data frame or timesteps, so you just need to copy the <code>for ()</code> loop from the <code>d0105...</code> demo to get the deterministic result.</strong> You should get something like this:</p>
 <center>
 <img src="images/3-3.png" title="fig:" alt="plot" />
 </center>
