@@ -231,8 +231,8 @@ outputs over a range of different rates / time periods.
 
 If you haven't already, try increasing the value of timestep. What happens? You
 are actually getting impossible numbers (`NA`s) because the probability of
-giving birth has got above 1. You can fix this by using the `stop()` command in
-`timestep_stochastic_birth_death()` to stop running code when the numbers you 
+giving birth has got above 1. You can fix this by using the `stop()` command inside your
+`timestep_stochastic_birth_death()` function to stop running code when the numbers you 
 put in are impossible:
 
 ```{r, eval = FALSE}
@@ -240,7 +240,9 @@ if ((effective.birth.rate >= 1) || (effective.death.rate >= 1))
   stop("Effective rate too high, timestep must be too big")
 ```
 
-Rerun the code and check it stops when appropriate.
+Remember that for this `stop()` command to be effective you have to put the
+test *after* you define the variables you are checking, but *before* you use
+them! Rerun the code and check it stops when appropriate.
 
 ## Check it works
 
