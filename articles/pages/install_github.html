@@ -290,7 +290,7 @@
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Connecting RStudio to GitHub</h1>
             
-            <h4 data-toc-skip class="date">December 07 2021</h4>
+            <h4 data-toc-skip class="date">December 08 2021</h4>
       
       
       <div class="hidden name"><code>install_github.Rmd</code></div>
@@ -360,7 +360,7 @@
 <p>Now run:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html" class="external-link">edit_r_environ</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p>This will open an .Renviron file in a new tab. Into this file paste <code>GITHUB=my_github_pat</code>, replacing <code>my_github_pat</code> with the alphanumeric string you copied earlier. Now save the file and restart RStudio and you’re done.</p>
+<p>This will open an .Renviron file in a new tab. Into this file paste <code>GITHUB_TOKEN=my_github_pat</code>, replacing <code>my_github_pat</code> with the alphanumeric string you copied earlier. Now save the file and restart RStudio and you’re done.</p>
 <p>Note that if you have any problems getting RStudio to interact with GitHub, it may be useful to call:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/git_sitrep.html" class="external-link">git_sitrep</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
