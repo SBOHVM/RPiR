@@ -136,7 +136,7 @@ usethis::edit_r_environ()
 ```
 
 This will open an .Renviron file in a new tab. Into this file paste 
-`GITHUB=my_github_pat`, replacing `my_github_pat` with the alphanumeric string
+`GITHUB_TOKEN=my_github_pat`, replacing `my_github_pat` with the alphanumeric string
 you copied earlier. Now save the file and restart RStudio and you're done.
 
 Note that if you have any problems getting RStudio to interact with GitHub, 
