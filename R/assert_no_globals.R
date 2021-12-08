@@ -2,7 +2,7 @@
 #'
 #' @description
 #' This function will stop code execution with an error if the function
-#' passed in has a global variable
+#' passed in uses a global variable.
 #'
 #' @param test_function function to check for global variables
 #' @param name (optional) the name of function as a string -- passed to the

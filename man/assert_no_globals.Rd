@@ -17,7 +17,7 @@ nothing
 }
 \description{
 This function will stop code execution with an error if the function
-passed in has a global variable
+passed in uses a global variable.
 }
 \examples{
 \dontrun{
