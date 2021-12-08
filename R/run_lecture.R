@@ -1,5 +1,7 @@
 #' run_lecture
 #'
+#' This will run a lecture in the RPiR course.
+#'
 #' @param name Name of the lecture
 #'
 #' @export

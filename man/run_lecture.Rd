@@ -10,5 +10,5 @@ run_lecture(name)
 \item{name}{Name of the lecture}
 }
 \description{
-run_lecture
+This will run a lecture in the RPiR course.
 }
