@@ -252,10 +252,10 @@ pre code {
 </div>
 <div id="section-increase-timestep" class="section level3">
 <h3>3. Increase timestep</h3>
-<p>If you haven’t already, try increasing the value of timestep. What happens? You are actually getting impossible numbers (<code>NA</code>s) because the probability of giving birth has got above 1. You can fix this by using the <code>stop()</code> command in <code>timestep_stochastic_birth_death()</code> to stop running code when the numbers you put in are impossible:</p>
+<p>If you haven’t already, try increasing the value of timestep. What happens? You are actually getting impossible numbers (<code>NA</code>s) because the probability of giving birth has got above 1. You can fix this by using the <code>stop()</code> command inside your <code>timestep_stochastic_birth_death()</code> function to stop running code when the numbers you put in are impossible:</p>
 <pre class="r"><code>if ((effective.birth.rate &gt;= 1) || (effective.death.rate &gt;= 1))
   stop(&quot;Effective rate too high, timestep must be too big&quot;)</code></pre>
-<p>Rerun the code and check it stops when appropriate.</p>
+<p>Remember that for this <code>stop()</code> command to be effective you have to put the test <em>after</em> you define the variables you are checking, but <em>before</em> you use them! Rerun the code and check it stops when appropriate.</p>
 </div>
 </div>
 <div id="section-check-it-works" class="section level2">
