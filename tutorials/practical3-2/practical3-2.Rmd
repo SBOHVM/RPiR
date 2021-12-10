@@ -150,10 +150,10 @@ Then we need to determine whether the experiment is finished. In this case, the
 experiment will only end if the population completely dies out, so:
 
 ```{r, eval = FALSE}
-is.finished <- (the.number.of.individuals.left == 0)
+is.finished <- (____ == 0)
 ```
 
-You just need to work out what `the.number.of.individuals.left` should be...
+You just need to work out what the blank should be...
 
 Finally, we need to return both the updated population and simulation state
 (whether the simulation has ended) from the function. Since a
