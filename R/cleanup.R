@@ -50,7 +50,7 @@
 cleanup_times <- function(populations, are.events, timestep=1,
                           end.time = max(populations$time),
                           times = seq(from = min(populations$time),
-                                    to = end.time, by = timestep)) {
+                                      to = end.time, by = timestep)) {
   if (times[1] < min(populations$time))
     stop("Requested times start before beginning of input data frame")
   new.pops <- populations[FALSE,]
@@ -67,10 +67,10 @@ cleanup_times <- function(populations, are.events, timestep=1,
           (after$time - before$time)
       } else
         # if we are at the end, use last step
-      next.pop <- utils::tail(populations, 1)
-    next.pop$time <- time
-    new.pops <- rbind(new.pops, next.pop)
-    row.names(new.pops) <- NULL
+        next.pop <- utils::tail(populations, 1)
+      next.pop$time <- time
+      new.pops <- rbind(new.pops, next.pop)
+      row.names(new.pops) <- NULL
   }
   new.pops
 }
