@@ -303,8 +303,21 @@
     
     
 <div class="section level1">
-<h1 id="when-to-devtoolsdocument">When to <code>devtools::document()</code>?<a class="anchor" aria-label="anchor" href="#when-to-devtoolsdocument"></a>
+<h1 id="is-your-package-is-ready-to-use">Is your package is ready to use?<a class="anchor" aria-label="anchor" href="#is-your-package-is-ready-to-use"></a>
 </h1>
+<p>There are lots of specific rules around when to run specific commands when you’re editing a package. The simplest one to follow is just to do everything – it is a bit time consuming, but it’s simpler! First restart R, then:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>devtools<span class="op">::</span><span class="kw">document</span>()</span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw">install</span>()</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(____)</span></code></pre></div>
+<p>Then if you’re sure it’s working, stage and commit the changes and push them to github.</p>
+</div>
+<div class="section level1">
+<h1 id="details-of-when-to-run-what">Details of when to run what…<a class="anchor" aria-label="anchor" href="#details-of-when-to-run-what"></a>
+</h1>
+<p>If you want to know the specific details of when you actually need to run the individual commands though, here they are…</p>
+<div class="section level2">
+<h2 id="when-to-devtoolsdocument">When to <code>devtools::document()</code>?<a class="anchor" aria-label="anchor" href="#when-to-devtoolsdocument"></a>
+</h2>
 <p>You should call <code><a href="https://devtools.r-lib.org/reference/document.html" class="external-link">devtools::document()</a></code> when you:</p>
 <ol style="list-style-type: decimal">
 <li>
@@ -329,15 +342,16 @@
 <li>Change the name of a function (this will replace the name of your function in the <em>NAMESPACE</em> file)</li>
 </ol>
 </div>
-<div class="section level1">
-<h1 id="when-to-devtoolsinstall">When to <code>devtools::install()</code>?<a class="anchor" aria-label="anchor" href="#when-to-devtoolsinstall"></a>
-</h1>
+<div class="section level2">
+<h2 id="when-to-devtoolsinstall">When to <code>devtools::install()</code>?<a class="anchor" aria-label="anchor" href="#when-to-devtoolsinstall"></a>
+</h2>
 <p><code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install</a></code> will install all changes to your package (edits to functions, edits to demos, changes to <em>NAMESPACE</em>, and files in the <em>man</em> directory) to your instance of R.</p>
 </div>
-<div class="section level1">
-<h1 id="when-to-library">When to <code>library()</code>?<a class="anchor" aria-label="anchor" href="#when-to-library"></a>
-</h1>
-<p><code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> will load the version of the package currently installed in your instance of R (it doesn’t matter whether you’ve installed it via <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install</a></code>, <code><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">devtools::install_github()</a></code>, or <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code>) .</p>
+<div class="section level2">
+<h2 id="when-to-library">When to <code>library()</code>?<a class="anchor" aria-label="anchor" href="#when-to-library"></a>
+</h2>
+<p><code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> will load the version of the package currently installed in your instance of R (it doesn’t matter whether you’ve installed it via <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install</a></code>, <code><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">devtools::install_github()</a></code>, or <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code>). You need to restart R before calling library though, or you will be stuck with the old version of the package.</p>
+</div>
 </div>
   </div>
 
