@@ -1,0 +1,49 @@
+---
+title: "document(), install(), and library()"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+output:
+  rmarkdown::html_vignette:
+  toc: true
+  toc_depth: 2
+  vignette: >
+    %\VignetteIndexEntry{document(), install(), and library()}
+    %\VignetteEngine{knitr::knitr}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# When to `devtools::document()`?
+
+You should call `devtools::document()` when you: 
+
+1. Edit a function's documentation block (this edits a file in the *man* directory)
+
+    ```
+    #' title
+    #' 
+    #' @param argument description
+    ```
+2. Write a new function with a documentation block (this generates a file in the *man* directory)
+
+> **Note that**: when you call `?function` the help file is generated from the files in the *man* directory, but only when the changes are installed and loaded into R.
+
+3. Edit the *packagename-package.R* file (this generates the package documentation, called via `?packagename` after installing and loading it into R)
+4. Write a new function (this will add the name of your function to the *NAMESPACE* file)
+
+> **Note that**: the *NAMESPACE* file lists the functions that will be included in your package on install as well as any external package dependencies.
+
+5. Change the name of a function (this will replace the name of your function in the *NAMESPACE* file)
+
+# When to `devtools::install()`?
+
+`devtools::install` will install all changes to your package (edits to functions, edits to demos, changes to *NAMESPACE*, and files in the *man* directory) to your instance of R.
+
+# When to `library()`?
+
+`library()` will load the version of the package currently installed in your instance of R (it doesn't matter whether you've installed it via `devtools::install`, `devtools::install_github()`, or `install.packages()`) .
