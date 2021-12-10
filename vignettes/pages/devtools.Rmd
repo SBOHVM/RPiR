@@ -18,7 +18,27 @@ knitr::opts_chunk$set(
 )
 ```
 
-# When to `devtools::document()`?
+# Is your package is ready to use?
+
+There are lots of specific rules around when to run specific commands when
+you're editing a package. The simplest one to follow is just to do everything --
+it is a bit time consuming, but it's simpler! First restart R, then:
+
+```R
+devtools::document()
+devtools::install()
+library(____)
+```
+
+Then if you're sure it's working, stage and commit the changes and push them to
+github.
+
+# Details of when to run what...
+
+If you want to know the specific details of when you actually need to run
+the individual commands though, here they are...
+
+## When to `devtools::document()`?
 
 You should call `devtools::document()` when you: 
 
@@ -40,10 +60,14 @@ You should call `devtools::document()` when you:
 
 5. Change the name of a function (this will replace the name of your function in the *NAMESPACE* file)
 
-# When to `devtools::install()`?
+## When to `devtools::install()`?
 
 `devtools::install` will install all changes to your package (edits to functions, edits to demos, changes to *NAMESPACE*, and files in the *man* directory) to your instance of R.
 
-# When to `library()`?
+## When to `library()`?
 
-`library()` will load the version of the package currently installed in your instance of R (it doesn't matter whether you've installed it via `devtools::install`, `devtools::install_github()`, or `install.packages()`) .
+`library()` will load the version of the package currently installed in your
+instance of R (it doesn't matter whether you've installed it via
+`devtools::install`, `devtools::install_github()`, or `install.packages()`). You
+need to restart R before calling library though, or you will be stuck with the
+old version of the package.
