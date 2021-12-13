@@ -61,8 +61,9 @@ diversity functions that do everything we want.
 
 Add a test in the general diversity function that checks that there is only one
 value of $q$ and `stop()`s if there is more than one -- now we have identified a
-problem in our code, we want to avoid it happening again! You will need to
-rewrite all of your specific functions so they call the new function.
+problem in our code, we want to avoid it happening again! We will stop worrying
+about the specific (e.g. species richness) functions now, as it's boring to keep
+on rewriting them!
 
 ### Function to create a diversity profile from multiple `q`s
 
@@ -70,14 +71,14 @@ Now write a completely new function to calculate a series of diversity measures
 for a vector of values of $q$ given as a second argument (*e.g.* `c(0, 0.1, 3.4, 
 7, 15)` or `0:20`, etc.). In the function, you should just loop over all of the 
 values of $q$ given to it as an argument (just like your original diversity 
-function took one value of $q$ as an argument) and then just call your original 
-function with each value of $q$ (and the population) in turn. We want to reuse 
-our code from the last exercise as much as possible to avoid making new 
-mistakes! It should then combine all of the results and return a vector of 
-diversity measures that corresponds to the vector of values of $q$ that it has 
-been given. Remember that if we have a vector of values (called `Dqs.so.far`), 
-and want to add a new value `Dq` to the end, then we can do that with just 
-`c(Dqs.so.far, Dq)`.
+function took one value of $q$ as an argument) and then just call your
+single-q-value function with each value of $q$ (and the population) in turn. We
+want to reuse our code from the last exercise as much as possible to avoid
+making new mistakes! It should then combine all of the results and return a
+vector of diversity measures that corresponds to the vector of values of $q$
+that it has been given. Remember that if we have a vector of values (called
+`Dqs.so.far`), and want to add a new value `Dq` to the end, then we can do that
+with just `c(Dqs.so.far, Dq)`.
 
 ### Running the code
 
