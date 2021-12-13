@@ -196,9 +196,9 @@ itself is developed on GitHub at https://github.com/vegandevs/vegan.
 
 ### Your own additions -- **this section is optional**
 
-*Because we lost a day this week, the material here wasn't fully covered, so is
-optional if you have enough time to look further at the documentation for the
-`rdiversity` and `vegan` packages.*
+*Because we lost two days from the course, the material here wasn't fully
+covered, so is optional if you have enough time to look further at the
+documentation for the `rdiversity` and `vegan` packages.*
 
 First, read the `rdiversity` package documentation and examples. You can find
 this by going to the GitHub repository (https://github.com/boydorr/rdiversity), 
