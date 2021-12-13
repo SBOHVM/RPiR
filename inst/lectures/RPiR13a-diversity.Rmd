@@ -106,13 +106,11 @@ options(yaml.eval.expr = TRUE)
 ## Deadlines
 
 - Edits to GitHub repos -- as soon as possible, but:
-  - Practical Series 2: Tues 16th
-  - Practical Series 3: Friday 19th
-  - Practical Series 4: Mon 15th
+  - Practical Series 2-4: Wednesday 5th January
     - unless you ask for an extension
 - Project submission
-  - by Monday 1st March, 1pm
-- Marks returned by Monday 22nd March
+  - by Tuesday 25th January, 1pm
+- Marks returned by Tuesday 15th February
 
 ## Package assessment
 
