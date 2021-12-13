@@ -1,4 +1,3 @@
-install.packages(c("testthat", "dplyr"))
 library(testthat)
 library(dplyr)
 
