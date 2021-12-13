@@ -105,6 +105,12 @@ The following core practicals are included in this package:
    * `practical3-5`: Stochastic SIR model
    * `practical3-6`: Comparing mean stochastic and deterministic SIR models
 
+3. Practical series 4:
+
+   * `practical4-1`: Creating an R data package
+   * `practical4-2`: Adding some fucntions to a data package
+   * `practical4-3`: Adding a demo
+
 As well as the following additional practicals:
 
    * `practicalA-1`: Introduction to if statements
