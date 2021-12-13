@@ -6,7 +6,7 @@
 #' @keywords internal
 export_materials <- function(materials, type = "exercises") {
   if (type == "exercises") {
-    c(materials[grepl("practical[A1234][a-z]?-", materials)]#,
+    c(materials[grepl("practical[A1234]-", materials)]#,
 #      materials[grepl("project", materials)]
       )
   } else if (type == "lectures") {
