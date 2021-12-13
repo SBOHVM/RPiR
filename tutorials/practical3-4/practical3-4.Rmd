@@ -113,7 +113,7 @@ transmission rate of 0.3, a recovery rate of 0.1, and 2 initial infecteds from
 a population size of 100. Demonstrate the variability in the results of the 
 stochastic model.
 
-You should also overlay the deterministic results from Practical 2-4. 
+You should also overlay the deterministic results from Practical 2-3. 
 Noting that `run_simulation()` will work with this as well since it 
 automatically detects that it just returns a dataframe, and behaves 
 appropriately:
