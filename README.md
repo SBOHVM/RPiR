@@ -7,7 +7,7 @@
 
 ## Course preparation
 
-You'll need to do a few things before you can start the course.
+There are a few things to do before you can start the course.
 The details are available in the guide section of the
 [docs][docs] under [Course preparation][prep].
 
