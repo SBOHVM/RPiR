@@ -72,8 +72,8 @@ navbar:
          href: lectures/RPiR11b-diversity.pdf
       -  text: RPiR12a-programming
          href: lectures/RPiR12a-programming.html
-#      -  text: RPiR13a-diversity
-#         href: lectures/RPiR13a-diversity.html
+      -  text: RPiR13a-diversity
+         href: lectures/RPiR13a-diversity.html
     - text: "Lectures (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -105,8 +105,8 @@ navbar:
          href: lectures_html/RPiR11a-data.html
       -  text: RPiR12a-programming
          href: lectures_html/RPiR12a-programming.html
-#      -  text: RPiR13a-diversity
-#         href: lectures_html/RPiR13a-diversity.html
+      -  text: RPiR13a-diversity
+         href: lectures_html/RPiR13a-diversity.html
     - text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
@@ -138,18 +138,18 @@ navbar:
          href: tutorials/practical4-2/practical4-2.html
       -  text: Practical4-3
          href: tutorials/practical4-3/practical4-3.html
-#      -  text: Project-Intro
-#         href: tutorials/project0/project0.html
-#      -  text: Project1
-#         href: tutorials/project1/project1.html
-#      -  text: Project2
-#         href: tutorials/project2/project2.html
-#      -  text: Project3
-#         href: tutorials/project3/project3.html
-#      -  text: Project4
-#         href: tutorials/project4/project4.html
-#      -  text: Project5
-#         href: tutorials/project5/project5.html
+      -  text: Project-Intro
+         href: tutorials/project0/project0.html
+      -  text: Project1
+         href: tutorials/project1/project1.html
+      -  text: Project2
+         href: tutorials/project2/project2.html
+      -  text: Project3
+         href: tutorials/project3/project3.html
+      -  text: Project4
+         href: tutorials/project4/project4.html
+      -  text: Project5
+         href: tutorials/project5/project5.html
     - icon: far fa-comments
       text: "Discussion"
       href: https://github.com/IBAHCM/RPiR/discussions
