@@ -120,6 +120,7 @@ options(yaml.eval.expr = TRUE)
     library(help="pkgname")
     demo(package="pkgname")
 ```
+- Can I generate reports from your demos, and how do they look?
 - Is the code well structured and with clear variable names and comments?
 - Is the documentation correct (for package, functions, and text in reports)?
 - Does the code work correctly?
