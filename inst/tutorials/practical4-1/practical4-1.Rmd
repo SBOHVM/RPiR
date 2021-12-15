@@ -279,7 +279,24 @@ to add the `xxx` package to those *imported* by your package in the
 <span style="color: #dd1c77;">DESCRIPTION</span> file. See
 [here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies)
 for further details. Commit these changes to the repo too, and push them to
-GitHub.
+GitHub. **Note that you should not add your own (`githubusernameBCI`) package to
+the package dependencies of `githubusernameBCI`, because it is not a dependency
+of itself! If you have accidentally done this you need to go into the
+`DESCRIPTION` file and delete it from the `Imports:` entry there.**
+
+Finally, if you are going to add a package on GitHub to your dependencies (such
+as our `RPiR` package), you need to use `usethis::use_dev_package()` instead of
+`usethis::use_package()`. You need to know where to find it on GitHub, and then
+use:
+
+```{R, eval = FALSE}
+usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR")
+```
+
+where the `remote` argument is the organisation and repo name. In the project,
+when you are using your own data package in your new project package,
+you will need to do this by calling something like
+`usethis::use_dev_package("githubusernameBCI", remote = "IBAHCM/githubusernameBCI")`.
 
 ## Tasks: documenting the package
 
