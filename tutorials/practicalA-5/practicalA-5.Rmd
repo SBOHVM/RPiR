@@ -1,0 +1,142 @@
+---
+title: "Practical A-5: Nested functions"
+output:
+  learnr::tutorial:
+    theme: lumen
+    includes:
+      in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
+runtime: shiny_prerendered
+description: >
+  Writing functions that call my other functions
+---
+
+```{r setup, include=FALSE}
+library(learnr)
+tutorial_options(exercise.reveal_solution = FALSE)
+gradethis::gradethis_setup()
+
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = ">",
+  error = TRUE
+)
+set.seed(123)
+
+muladdpow <- function(value, m, a, p) {
+  ma <- value * m + a
+  ma ^ p
+}
+
+muladd <- function(value, m, a) {
+  muladdpow(value, m, a, 1)
+}
+
+mul <- function(value, m) {
+  muladd(value, m, 0)
+}
+```
+
+## Introduction
+
+If you have a complex piece of code that does a single discrete thing, then you
+may want to wrap it up into a function so that you can refer to it by a simple
+name and keep the script that calls it clear and easy to read. However, you may
+also want to do simpler versions of that more complex task. You can either
+write a completely separate function to carry out that task -- but that would
+be breaking our guidance about copying code back and forth -- or you can write
+a short and simple function that doesn't do the hard (and duplicated) work
+itself, but instead just calls your more complex function, perhaps with
+simplified arguments.
+
+> Note, you will also see all of this code on GitHub at
+https://github.com/IBAHCM/practicalA5 if you want to look at it there instead,
+or you can install it locally on your computer using
+`devtools::install_github("IBAHCM/practicalA5")` and play with the functions. Or
+you can download it by cloning the git repo at
+`https://github.com/IBAHCM/practicalA5.git`.
+
+## Functions
+
+Imagine we'd written a really cool function that solves a complex task... well,
+here just one that multiple two numbers together, adds a third and then raises
+the result to a power:
+
+```{r intro, exercise.cap = "A complex function", exercise=TRUE}
+muladdpow <- function(value, m, a, p) {
+  ma <- value * m + a
+  ma ^ p
+}
+
+muladdpow(1, 2, 3, 2)
+```
+
+Try running the code block. Play with the arguments and rerun it to see how it
+works. Now try to write a function that uses this function, but only does the
+multiply and add part, so you just get `value * m + a` back at the end:
+
+```{r muladd, exercise.cap = "Exercise 1", exercise=TRUE}
+muladd <- function(value, m, a) {
+  muladdpow(value, m, a, ____)
+}
+
+muladd(2, 3, 4) == 10
+```
+
+```{r muladd-solution}
+muladd <- function(value, m, a) {
+  muladdpow(value, m, a, 1)
+}
+
+muladd(2, 3, 4) == 10
+```
+
+```{r muladd-check}
+grade_this_code()
+```
+
+Then write a function `mul()` that uses `muladd()` but just multiplies two
+numbers together, ignoring the addition:
+
+```{r mul, exercise.cap = "Exercise 2", exercise=TRUE}
+mul <- function(value, m) {
+  muladd(____)
+}
+
+mul(2, 3) == 6
+```
+
+```{r mul-solution}
+mul <- function(value, m) {
+  muladd(value, m, 0)
+}
+
+mul(2, 3) == 6
+```
+
+```{r mul-check}
+grade_this_code()
+```
+
+Finally, write a function `tripler() that uses `mul()` but always multiples by
+three:
+
+```{r three, exercise.cap = "Exercise 3", exercise=TRUE}
+tripler <- function(value) {
+  ____
+}
+
+tripler(2) == 6
+```
+
+```{r three-solution}
+tripler <- function(value) {
+  mul(value, 3)
+}
+
+tripler(2) == 6
+```
+
+```{r three-check}
+grade_this_code()
+```
+

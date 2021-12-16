@@ -1,5 +1,5 @@
 ---
-title: "Practical A-1: If statements"
+title: "Practical A-1: If statements and comparisons"
 output:
   learnr::tutorial:
     theme: lumen
@@ -87,17 +87,49 @@ if (2 >= 5) {
 }
 ```
 
-does nothing. 
-
-R Coder covers the basics of `if` statements [here][if-rcoder]. R4DS seems to
-consider them too simple, but ironically they have [a chapter in Advanced
-R][if-advanced-r2]; however, this contains a lot of advanced topics in flow
-control that are well beyond the scope of this course.
+does nothing. R Coder covers the basics of `if` statements [here][if-rcoder].
+R4DS seems to consider them too simple, but ironically they have [a chapter in
+Advanced R][if-advanced-r2]; however, this contains a lot of advanced topics in
+flow control that are well beyond the scope of this course.
 
 [operators-R4DS]: https://r4ds.had.co.nz/transform.html?q=compa#comparisons
 [if-advanced-r2]: https://adv-r.hadley.nz/control-flow.html
 [operators-rcoder]: https://r-coder.com/operators-r
 [if-rcoder]: https://r-coder.com/if-else-r
+
+## More complex comparisons
+
+Finally note that, when you are doing comparisons, if you have a
+vector then then any comparisons happen multiple times:
+
+```{r ifstatement-vector, exercise = TRUE}
+4 > 5
+
+6 > 5
+
+c(2, 4, 6, 3, 1) > 5
+```
+
+You should be able to see that single numbers give single answers, but a vector
+gives one answer per element of the vector, so you end with a vector of the same
+size, but with `TRUE`s and `FALSE`s in it. This can be very useful sometimes.
+Consider for instance how you ask *"Which of these numbers are greater than 0?"*:
+
+```{r ifstatement-some, exercise = TRUE}
+numbers <- c(-2, 4, 6, -3, 0)
+numbers > 0
+numbers[numbers > 0]
+```
+
+Or just *"How many of these numbers are greater or equal to than 4?"*:
+
+```{r ifstatement-howmany, exercise = TRUE}
+numbers <- c(-2, 4, 6, -3, 0)
+sum(numbers >= 4)
+```
+
+It turns out that `TRUE` counts as `1` and `FALSE` counts as '0' in R, so adding
+up the booleans just gives you the number of `TRUE`s.
 
 ## Exercises
 
@@ -214,4 +246,19 @@ if (TRUE) {
 grade_this_code()
 ```
 
+Finally, edit this code so that it returns how many of the elements of the
+vector `numbers` are greater than zero:
 
+```{r greater, exercise = TRUE}
+numbers <- c(0, 0, 0, 1, 0, 10, 3, 0)
+sum(numbers ____)
+```
+
+```{r greater-solution}
+numbers <- c(0, 0, 0, 1, 0, 10, 3, 0)
+sum(numbers > 0)
+```
+
+```{r greater-check}
+grade_this_code()
+```

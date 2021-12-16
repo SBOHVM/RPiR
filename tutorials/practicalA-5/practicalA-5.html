@@ -11,7 +11,7 @@
 
 
 
-<title>Practical A-4: Loops</title>
+<title>Practical A-5: Nested functions</title>
 
 <!-- HEAD_CONTENT -->
 
@@ -145,184 +145,44 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical A-4: Loops</h1>
+<h1 class="title toc-ignore">Practical A-5: Nested functions</h1>
 
 </div>
 
 
-<div id="section-loops" class="section level2">
-<h2>Loops</h2>
-<p>Loops allow you to repeat the same thing again and again. If you are doing something more than two or three times, you should instead use a loop to avoid having to copy and paste the same code over and over again. Since duplicating code risks not only mistyping or not copying correctly, but also creating confusion by filling your R scripts with nearly identical chunks of code. There are fundamentally two kinds of loop:</p>
-<ul>
-<li>one where you know exactly how many times the loop will run, for instance because you’re running a chunk of code once for each element of a vector or row or column of a data frame; and</li>
-<li>one where you do not, because some part of your calculation in each step of the loop will determine whether to continue or to stop.</li>
-</ul>
-<div id="section-for-loops" class="section level3">
-<h3><code>for</code> loops</h3>
-<p><code>for</code> loops allow us to repeat something <strong>for</strong> a fixed number of times (<em>e.g.</em> once per element of a vector, once per row of a data frame, <em>etc.</em>).</p>
-<p>A <code>for</code> loop always has the same style:</p>
-<pre class="r"><code>for (one in many) {
-  # Do something
-  
-  # ... exciting code maybe using the variable
-  #     one (but it doesn&#39;t have to) ...
-}</code></pre>
-<p>It looks a bit like a function, but what it does is set the variable <code>one</code> to each of the values in <code>many</code> one at a time, and then does something. Here are two very simple examples to get an idea of what it might do:</p>
-<pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;)
-for (word in greetings) {
-  print(word)
-}
-&gt; [1] &quot;Hello&quot;
-&gt; [1] &quot;Goodbye&quot;</code></pre>
-<p>Try changing the <code>greetings</code> variable. You’ll see that the loop runs once for each word in the <code>greetings</code> vector. We can use this to do something a fixed number of times without necessarily caring about the entries:</p>
-<pre class="r"><code># Make a sequence of 7 numbers from 1 to 7
-times &lt;- seq(from = 1, to = 7) # This is the same as 1:7 or seq(1, 7)
-
-# Print &quot;I&#39;m in a loop&quot; repeatedly
-for (iteration in times) {
-  print(&quot;I&#39;m in a loop&quot;)
-}
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;
-&gt; [1] &quot;I&#39;m in a loop&quot;</code></pre>
-<p>Change the length of the <code>times</code> vector. You’ll see that it prints out the text once for each element in <code>times</code> even though it never looks to see what <code>iteration</code> is (it doesn’t care).</p>
-<p>Now look at this code:</p>
-<pre class="r"><code># A function to add one to a number
-add_one &lt;- function(number)
-  number + 1
-
-# Initialise the value
-current.value &lt;- 0
-
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-current.value &lt;- add_one(current.value)
-
-# Output the updated current.value at the end to see what happened
-current.value
-&gt; [1] 5</code></pre>
-<pre class="r"><code>grade_result(pass_if(~identical(.result, 10)))
-&gt; function (check_env) 
-&gt; {
-&gt;     last_value &lt;- check_env$.last_value
-&gt;     env &lt;- learnr_env(envir_prep = check_env$.envir_prep, envir_result = check_env$.envir_result)
-&gt;     final_grade &lt;- legacy_graded(correct = default_correct, message = default_message)
-&gt;     found_grade &lt;- FALSE
-&gt;     for (cond in conditions) {
-&gt;         grade &lt;- evaluate_condition(cond, last_value = last_value, 
-&gt;             env = env)
-&gt;         if (length(grade)) {
-&gt;             final_grade &lt;- grade
-&gt;             found_grade &lt;- TRUE
-&gt;             break
-&gt;         }
-&gt;     }
-&gt;     glue_correct &lt;- glue_correct %||% gradethis_legacy_options$gradethis.glue_correct
-&gt;     glue_incorrect &lt;- glue_incorrect %||% gradethis_legacy_options$gradethis.glue_incorrect
-&gt;     legacy_graded(correct = final_grade$correct, message = glue_message(if (final_grade$correct) 
-&gt;         glue_correct
-&gt;     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
-&gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
-&gt;         .correct = correct, .incorrect = incorrect))
-&gt; }
-&gt; &lt;bytecode: 0x7ff58f45d7a8&gt;
-&gt; &lt;environment: 0x7ff58f45f2a0&gt;</code></pre>
-<p>It just runs our <code>add_one()</code> function from earlier five times to update the variable <code>current.value</code> to 5. Change the code so it does this ten times to produce 10.</p>
-<p>Now look at this next piece of code:</p>
-<pre class="r"><code># A function to add one to a number
-add_one &lt;- function(number) {
-  number + 1
-}
-
-# Initialise the value
-current.value &lt;- 0
-
-# This now is a loop!
-for (loop in 1:10) {
-  current.value &lt;- add_one(current.value)
-}
-
-# Output the updated current.value at the end to see what happened
-current.value
-&gt; [1] 10</code></pre>
-<pre class="r"><code>grade_result(pass_if(~identical(.result, 100)))
-&gt; function (check_env) 
-&gt; {
-&gt;     last_value &lt;- check_env$.last_value
-&gt;     env &lt;- learnr_env(envir_prep = check_env$.envir_prep, envir_result = check_env$.envir_result)
-&gt;     final_grade &lt;- legacy_graded(correct = default_correct, message = default_message)
-&gt;     found_grade &lt;- FALSE
-&gt;     for (cond in conditions) {
-&gt;         grade &lt;- evaluate_condition(cond, last_value = last_value, 
-&gt;             env = env)
-&gt;         if (length(grade)) {
-&gt;             final_grade &lt;- grade
-&gt;             found_grade &lt;- TRUE
-&gt;             break
-&gt;         }
-&gt;     }
-&gt;     glue_correct &lt;- glue_correct %||% gradethis_legacy_options$gradethis.glue_correct
-&gt;     glue_incorrect &lt;- glue_incorrect %||% gradethis_legacy_options$gradethis.glue_incorrect
-&gt;     legacy_graded(correct = final_grade$correct, message = glue_message(if (final_grade$correct) 
-&gt;         glue_correct
-&gt;     else glue_incorrect, .is_match = found_grade, .is_correct = final_grade$correct, 
-&gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
-&gt;         .correct = correct, .incorrect = incorrect))
-&gt; }
-&gt; &lt;bytecode: 0x7ff58f45d7a8&gt;
-&gt; &lt;environment: 0x7ff58b6f1c20&gt;</code></pre>
-<p>It does the same thing - it calls <code>add_one()</code> ten times, but it’s much shorter, which generally makes it easier to see what’s going on. Now change the code to call <code>add_one()</code> 100 times. Hopefully you can see that this is really starting to help now!</p>
-<p>And you can probably imagine that if it was any more complicated that just copying and pasting one line it would make it much easier to see that it was doing exactly the same thing each time too.</p>
-<p>Finally, add in the single line <code>print(paste("Loop number", loop))</code> into the loop at the end (between lines 11 and 12) and run it. You’ll now be able see each step of the loop running. We’ll use techniques like this later to check that the loop is doing the right thing.</p>
-<p><em>Note also that unlike functions, variables changed in <code>for</code> loops do change what happens outside the loop, so <code>current.value</code> is <code>100</code> at the end, and not still <code>0</code>.</em></p>
-<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#for-loops"><code>for</code> loops</a>. For loops are also covered by R Coder <a href="https://r-coder.com/for-loop-r">here</a>.</p>
+<div id="section-introduction" class="section level2">
+<h2>Introduction</h2>
+<p>If you have a complex piece of code that does a single discrete thing, then you may want to wrap it up into a function so that you can refer to it by a simple name and keep the script that calls it clear and easy to read. However, you may also want to do simpler versions of that more complex task. You can either write a completely separate function to carry out that task – but that would be breaking our guidance about copying code back and forth – or you can write a short and simple function that doesn’t do the hard (and duplicated) work itself, but instead just calls your more complex function, perhaps with simplified arguments.</p>
+<blockquote>
+<p>Note, you will also see all of this code on GitHub at <a href="https://github.com/IBAHCM/practicalA5" class="uri">https://github.com/IBAHCM/practicalA5</a> if you want to look at it there instead, or you can install it locally on your computer using <code>devtools::install_github("IBAHCM/practicalA5")</code> and play with the functions. Or you can download it by cloning the git repo at <code>https://github.com/IBAHCM/practicalA5.git</code>.</p>
+</blockquote>
 </div>
-<div id="section-while-loops" class="section level3">
-<h3><code>while</code> loops</h3>
-<p><code>while</code> loops allow us to repeat something <strong>while</strong> a condition is still <code>TRUE</code>. They are particularly useful when you don’t know in advance exactly how many times something will be done, but can be used in any situation. Unlike <code>for</code> loops though, you need to update everything manually each time around:</p>
-<pre class="r"><code>x &lt;- 1
-test &lt;- x &lt; 3 
-while (test) {
-  # Do something
-  print(x)
-  # Update x and update test
-  x &lt;- x + 1
-  test &lt;- x &lt; 3 
+<div id="section-functions" class="section level2">
+<h2>Functions</h2>
+<p>Imagine we’d written a really cool function that solves a complex task… well, here just one that multiple two numbers together, adds a third and then raises the result to a power:</p>
+<pre class="r"><code>muladdpow &lt;- function(value, m, a, p) {
+  ma &lt;- value * m + a
+  ma ^ p
 }
-&gt; [1] 1
-&gt; [1] 2</code></pre>
-<p><code>test</code> is checked at the beginning of each iteration, and as long as <code>test</code> continues to be <code>TRUE</code>, the code block inside the curly brackets <code>{ ... }</code> is run. The test after the <code>while</code> statement acts exactly like a <code>if</code> statement that we looked at in A-1, except that it is run repeatedly until it is <code>FALSE</code>, so refer back to there to remind you how <code>if</code> and tests work.</p>
-<p>Be careful though… if you don’t update <code>test</code> inside the curly brackets, your loop will continue forever! However, if (when!) <code>test</code> is finally <code>FALSE</code>, the loop will end and R will continue on to the next line of code after the loop.</p>
-<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r">here</a>.</p>
-</div>
-</div>
-<div id="section-exercises" class="section level2">
-<h2>Exercises</h2>
-<p>Now try the following exercise, combining an <code>if</code> statement with a <code>for</code> loop to print greetings (not <code>duck</code>):</p>
-<pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;, &quot;duck&quot;)
-for (word ___) {
-  if (___) {
-    print(___)
-  } 
+
+muladdpow(1, 2, 3, 2)
+&gt; [1] 25</code></pre>
+<p>Try running the code block. Play with the arguments and rerun it to see how it works. Now try to write a function that uses this function, but only does the multiply and add part, so you just get <code>value * m + a</code> back at the end:</p>
+<pre class="r"><code>muladd &lt;- function(value, m, a) {
+  muladdpow(value, m, a, ____)
 }
-&gt; Error: &lt;text&gt;:2:11: unexpected input
-&gt; 1: greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;, &quot;duck&quot;)
-&gt; 2: for (word _
-&gt;              ^</code></pre>
-<pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;, &quot;duck&quot;)
-for (word in greetings) {
-  if (word != &quot;duck&quot;) {
-    print(word)
-  } 
+
+muladd(2, 3, 4) == 10
+&gt; Error: &lt;text&gt;:2:26: unexpected input
+&gt; 1: muladd &lt;- function(value, m, a) {
+&gt; 2:   muladdpow(value, m, a, _
+&gt;                             ^</code></pre>
+<pre class="r"><code>muladd &lt;- function(value, m, a) {
+  muladdpow(value, m, a, 1)
 }
-&gt; [1] &quot;Hello&quot;
-&gt; [1] &quot;Goodbye&quot;</code></pre>
+
+muladd(2, 3, 4) == 10
+&gt; [1] TRUE</code></pre>
 <pre class="r"><code>grade_this_code()
 &gt; function (check_env) 
 &gt; {
@@ -340,41 +200,23 @@ for (word in greetings) {
 &gt;     grade
 &gt; }
 &gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
-&gt; &lt;environment: 0x7ff58c4a6808&gt;</code></pre>
-<p>Solve the following problem – a countdown from 10 to 1.</p>
-<pre class="r"><code>x &lt;- 10
-while (___) {
-  # Do something
-  print(x)
-  if (x == 1) print(&quot;Blast off!&quot;)
-  
-  # Update test
-  x &lt;- ___
+&gt; &lt;environment: 0x7ff590cdabe8&gt;</code></pre>
+<p>Then write a function <code>mul()</code> that uses <code>muladd()</code> but just multiplies two numbers together, ignoring the addition:</p>
+<pre class="r"><code>mul &lt;- function(value, m) {
+  muladd(____)
 }
-&gt; Error: &lt;text&gt;:2:8: unexpected input
-&gt; 1: x &lt;- 10
-&gt; 2: while (_
-&gt;           ^</code></pre>
-<pre class="r"><code>x &lt;- 10
-while (x &gt; 0) {
-  # Do something
-  print(x)
-  if (x == 1) print(&quot;Blast off!&quot;)
-  
-  # Update test
-  x &lt;- x - 1
+
+mul(2, 3) == 6
+&gt; Error: &lt;text&gt;:2:10: unexpected input
+&gt; 1: mul &lt;- function(value, m) {
+&gt; 2:   muladd(_
+&gt;             ^</code></pre>
+<pre class="r"><code>mul &lt;- function(value, m) {
+  muladd(value, m, 0)
 }
-&gt; [1] 10
-&gt; [1] 9
-&gt; [1] 8
-&gt; [1] 7
-&gt; [1] 6
-&gt; [1] 5
-&gt; [1] 4
-&gt; [1] 3
-&gt; [1] 2
-&gt; [1] 1
-&gt; [1] &quot;Blast off!&quot;</code></pre>
+
+mul(2, 3) == 6
+&gt; [1] TRUE</code></pre>
 <pre class="r"><code>grade_this_code()
 &gt; function (check_env) 
 &gt; {
@@ -392,7 +234,41 @@ while (x &gt; 0) {
 &gt;     grade
 &gt; }
 &gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
-&gt; &lt;environment: 0x7ff58b087750&gt;</code></pre>
+&gt; &lt;environment: 0x7ff58e6e9a20&gt;</code></pre>
+<p>Finally, write a function <code>tripler() that uses</code>mul()` but always multiples by three:</p>
+<pre class="r"><code>tripler &lt;- function(value) {
+  ____
+}
+
+tripler(2) == 6
+&gt; Error: &lt;text&gt;:2:3: unexpected input
+&gt; 1: tripler &lt;- function(value) {
+&gt; 2:   _
+&gt;      ^</code></pre>
+<pre class="r"><code>tripler &lt;- function(value) {
+  mul(value, 3)
+}
+
+tripler(2) == 6
+&gt; [1] TRUE</code></pre>
+<pre class="r"><code>grade_this_code()
+&gt; function (check_env) 
+&gt; {
+&gt;     check_env[[&quot;.__correct&quot;]] &lt;- correct
+&gt;     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+&gt;     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+&gt;         gradethis.maybe_code_feedback = TRUE), grade_this({
+&gt;         .message &lt;- code_feedback()
+&gt;         if (is.null(.message)) {
+&gt;             pass(get(&quot;.__correct&quot;))
+&gt;         }
+&gt;         fail(get(&quot;.__incorrect&quot;))
+&gt;     })(check_env))
+&gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+&gt;     grade
+&gt; }
+&gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
+&gt; &lt;environment: 0x7ff591fcdcf8&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -405,6 +281,19 @@ knitr::opts_chunk$set(
   error = TRUE
 )
 set.seed(123)
+
+muladdpow <- function(value, m, a, p) {
+  ma <- value * m + a
+  ma ^ p
+}
+
+muladd <- function(value, m, a) {
+  muladdpow(value, m, a, 1)
+}
+
+mul <- function(value, m) {
+  muladd(value, m, 0)
+}
 </script>
  <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">

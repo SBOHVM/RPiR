@@ -11,7 +11,7 @@
 
 
 
-<title>Practical A-1: If statements</title>
+<title>Practical A-1: If statements and comparisons</title>
 
 <!-- HEAD_CONTENT -->
 
@@ -145,7 +145,7 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical A-1: If statements</h1>
+<h1 class="title toc-ignore">Practical A-1: If statements and comparisons</h1>
 
 </div>
 
@@ -190,9 +190,31 @@ pre code {
 <pre class="r"><code>if (2 &gt;= 5) {
   print(&quot;At least 5.&quot;)
 }</code></pre>
-<p>does nothing.</p>
-<p>R Coder covers the basics of <code>if</code> statements <a href="https://r-coder.com/if-else-r">here</a>. R4DS seems to consider them too simple, but ironically they have <a href="https://adv-r.hadley.nz/control-flow.html">a chapter in Advanced R</a>; however, this contains a lot of advanced topics in flow control that are well beyond the scope of this course.</p>
+<p>does nothing. R Coder covers the basics of <code>if</code> statements <a href="https://r-coder.com/if-else-r">here</a>. R4DS seems to consider them too simple, but ironically they have <a href="https://adv-r.hadley.nz/control-flow.html">a chapter in Advanced R</a>; however, this contains a lot of advanced topics in flow control that are well beyond the scope of this course.</p>
 </div>
+</div>
+<div id="section-more-complex-comparisons" class="section level2">
+<h2>More complex comparisons</h2>
+<p>Finally note that, when you are doing comparisons, if you have a vector then then any comparisons happen multiple times:</p>
+<pre class="r"><code>4 &gt; 5
+&gt; [1] FALSE
+
+6 &gt; 5
+&gt; [1] TRUE
+
+c(2, 4, 6, 3, 1) &gt; 5
+&gt; [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
+<p>You should be able to see that single numbers give single answers, but a vector gives one answer per element of the vector, so you end with a vector of the same size, but with <code>TRUE</code>s and <code>FALSE</code>s in it. This can be very useful sometimes. Consider for instance how you ask <em>“Which of these numbers are greater than 0?”</em>:</p>
+<pre class="r"><code>numbers &lt;- c(-2, 4, 6, -3, 0)
+numbers &gt; 0
+&gt; [1] FALSE  TRUE  TRUE FALSE FALSE
+numbers[numbers &gt; 0]
+&gt; [1] 4 6</code></pre>
+<p>Or just <em>“How many of these numbers are greater or equal to than 4?”</em>:</p>
+<pre class="r"><code>numbers &lt;- c(-2, 4, 6, -3, 0)
+sum(numbers &gt;= 4)
+&gt; [1] 2</code></pre>
+<p>It turns out that <code>TRUE</code> counts as <code>1</code> and <code>FALSE</code> counts as ‘0’ in R, so adding up the booleans just gives you the number of <code>TRUE</code>s.</p>
 </div>
 <div id="section-exercises" class="section level2">
 <h2>Exercises</h2>
@@ -232,8 +254,8 @@ if (x &gt; 0) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc2d3ce7788&gt;
-&gt; &lt;environment: 0x7fc2d6920038&gt;</code></pre>
+&gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
+&gt; &lt;environment: 0x7ff58d044be0&gt;</code></pre>
 <p>Of course, this statement isn’t entirely accurate, since <code>0</code> is neither positive nor negative. You can fix this by correcting this code:</p>
 <pre class="r"><code>x &lt;- 0
 
@@ -272,8 +294,8 @@ if (x &gt; 0) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc2d3ce7788&gt;
-&gt; &lt;environment: 0x7fc2d6d54ba8&gt;</code></pre>
+&gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
+&gt; &lt;environment: 0x7ff58c3e0b80&gt;</code></pre>
 <p>Run the following code. There are two errors, try to find them.</p>
 <pre class="r"><code>x &lt;- 3
 y &lt;- 3
@@ -311,8 +333,8 @@ if (x &lt; y) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc2d3ce7788&gt;
-&gt; &lt;environment: 0x7fc2d711e9b0&gt;</code></pre>
+&gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
+&gt; &lt;environment: 0x7ff58850b078&gt;</code></pre>
 <p>Now edit the following code chunk so that <code>This statement is true</code> is always returned.</p>
 <pre class="r"><code>if (___) {
   print(&quot;This statement is true&quot;)
@@ -347,8 +369,36 @@ if (x &lt; y) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc2d3ce7788&gt;
-&gt; &lt;environment: 0x7fc2d7a23e10&gt;</code></pre>
+&gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
+&gt; &lt;environment: 0x7ff58e582ec0&gt;</code></pre>
+<p>Finally, edit this code so that it returns how many of the elements of the vector <code>numbers</code> are greater than zero:</p>
+<pre class="r"><code>numbers &lt;- c(0, 0, 0, 1, 0, 10, 3, 0)
+sum(numbers ____)
+&gt; Error: &lt;text&gt;:2:13: unexpected input
+&gt; 1: numbers &lt;- c(0, 0, 0, 1, 0, 10, 3, 0)
+&gt; 2: sum(numbers _
+&gt;                ^</code></pre>
+<pre class="r"><code>numbers &lt;- c(0, 0, 0, 1, 0, 10, 3, 0)
+sum(numbers &gt; 0)
+&gt; [1] 3</code></pre>
+<pre class="r"><code>grade_this_code()
+&gt; function (check_env) 
+&gt; {
+&gt;     check_env[[&quot;.__correct&quot;]] &lt;- correct
+&gt;     check_env[[&quot;.__incorrect&quot;]] &lt;- incorrect
+&gt;     grade &lt;- with_options(list(gradethis.allow_partial_matching = allow_partial_matching, 
+&gt;         gradethis.maybe_code_feedback = TRUE), grade_this({
+&gt;         .message &lt;- code_feedback()
+&gt;         if (is.null(.message)) {
+&gt;             pass(get(&quot;.__correct&quot;))
+&gt;         }
+&gt;         fail(get(&quot;.__incorrect&quot;))
+&gt;     })(check_env))
+&gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
+&gt;     grade
+&gt; }
+&gt; &lt;bytecode: 0x7ff58d3dd9c0&gt;
+&gt; &lt;environment: 0x7ff5900e2200&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
