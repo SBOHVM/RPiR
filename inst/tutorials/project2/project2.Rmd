@@ -77,11 +77,29 @@ themselves.
 Now write two more new functions to calculate species richness and Simpson 
 diversity that do almost no work themselves, but instead just call this first 
 function to do the work with the right arguments, and then transform the
-results if necessary as detailed above -- this is just like 
-`plot_populations()` in the `RPiR` package, which does some work and then 
-calls `plot()`, or `cleanup_timesteps()`, which calls `cleanup_times()`, 
-rather than calculating the values directly in the function like you did in
-Project 1. Note the functions you write here should produce exactly the same
+results if necessary as detailed above.
+
+> You can see an example of creating functions that call other function you have
+written in Practical A-5, or the repository
+[IBAHCM/practicalA5](https://github.com/IBAHCM/practicalA5). Here you can see
+the general function
+[`muladdpow()`](https://github.com/IBAHCM/practicalA5/blob/master/R/muladdpow.R),
+which multiples two numbers together, adds a third and then raises the result to
+a power. This is obviously a bit of a silly function for this demostration, but
+we use it to create a simpler function,
+[`muladd()`](https://github.com/IBAHCM/practicalA5/blob/master/R/muladd.R),
+which uses `muladdpow()` but sets the power to 1 to create a function that just
+multiples two numbers together and then adds a third. Finally, we create two
+even simpler functions
+[`mul()`](https://github.com/IBAHCM/practicalA5/blob/master/R/mul.R)
+and [`add()`](https://github.com/IBAHCM/practicalA5/blob/master/R/add.R), which
+use `muladd()` to just multiply and add respectively. You can look at the
+code for this online or try it out with `devtools::install_github("IBAHCM/practicalA5")`.
+
+You will need to write your species richnes and Simpson diversity functions like
+these functions above, so that rather than calculating the values directly in
+the function like you did in Project 1, they call your general diversity
+function. Note the functions you write here should produce exactly the same
 answers as the functions you wrote in the previous exercise when called with 
 the same argument.
 
@@ -99,7 +117,7 @@ richness (if not, then well done though!). This is probably because you are not
 looking only at the non-zero species abundances. If so, rewrite your code to 
 exclude zeros from the proportions.
 
-*Hint:* remember that `a[a < 3]` will return those elements of a vector a which 
+> *Hint:* remember that `a[a < 3]` will return those elements of a vector a which 
 are less than 3.
 
 Note that here, and throughout these exercises, if you want to -- it's not
