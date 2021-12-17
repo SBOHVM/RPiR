@@ -167,7 +167,9 @@ pre code {
 <p>We are taking the data from the 2010 census – the true abundances for the whole site can be calculated as follows:</p>
 <pre class="r"><code>library(githubusernameBCI) 
 tree.pop &lt;- rowSums(bci_2010)</code></pre>
+<blockquote>
 <p>Note that if you don’t want to use your own BCI package, you can use ours instead. It’s available as <code>soniamitchellBCI</code> in the IBAHCM organisation on GitHub just like yours. Either way you should install the package you are using by running <code>devtools:install_github()</code>, and then add it to your <code>githubusernameDiversity</code> package dependencies by running <code>usethis::use_dev_package()</code> appropriately.</p>
+</blockquote>
 <p>The total counts of trees of different species in this forest plot are now available in the variable <code>tree.pop</code>. We can then do some simple extraction of information from the full species counts:</p>
 <pre class="r"><code>species.names &lt;- names(tree.pop) 
 num.sp &lt;- length(tree.pop) 
