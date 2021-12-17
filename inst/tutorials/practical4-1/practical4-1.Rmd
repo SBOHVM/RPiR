@@ -164,8 +164,8 @@ source("bci_taxa.R")
 
 This will load all of the raw data into R (this will take some time) and run the
 files you have created to process each of them and store them in the package.
-**Don't do this yet! First, you need to edit the processing files (bci_2010.R,
-bci_quadrats.R and bci_taxa.R) to do the processing correctly.** Actually, we 
+**Don't do this yet! First, you need to edit the processing files (`bci_2010.R`,
+`bci_quadrats.R` and `bci_taxa.R`) to do the processing correctly.** Actually, we 
 provide them for you here!
 
 This is <span style="color: #dd1c77;">bci_2010.R</span>:
@@ -221,7 +221,11 @@ usethis::use_data(bci_quadrats, overwrite = TRUE)
 ```
 
 It provides metadata about the quadrats -- where they are within the site -- as
-a tibble (a prettier version of a data frame that the RStudio team have created).
+a tibble (a prettier version of a data frame that the RStudio team have
+created). Specifically, the `bci_quadrats` data frame translates the column
+names in `bci_2010` into actually rows and columns in a grid or `(x,y)`
+coordinates in metres in case you want to be able to display where the quadrats
+are physically.
 
 Finally, this is <span style="color: #dd1c77;">bci_taxa.R</span>:
 
