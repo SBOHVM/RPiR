@@ -105,18 +105,28 @@ The following core practicals are included in this package:
    * `practical3-5`: Stochastic SIR model
    * `practical3-6`: Comparing mean stochastic and deterministic SIR models
 
-3. Practical series 4:
+4. Practical series 4:
 
    * `practical4-1`: Creating an R data package
    * `practical4-2`: Adding some fucntions to a data package
    * `practical4-3`: Adding a demo
+   
+5. Project:
+
+   * `project0`: Setting up the project repo
+   * `project1`: Creating species richness and Simpson diversity functions
+   * `project2`: Creating a general diversity function
+   * `project3`: Adding in code to cope with Shannon entropy and Berger-Parker
+   * `project4`: Adjusting the diversity function to handle multiple values of q
+   * `project5`: Extending the work to examine properties of subsampled data
 
 As well as the following additional practicals:
 
-   * `practicalA-1`: Introduction to if statements
+   * `practicalA-1`: Introduction to if statements and comparisons
    * `practicalA-2`: Introduction to functions
    * `practicalA-3`: Naming of things
    * `practicalA-4`: Introduction to for and while loops
+   * `practicalA-5`: Nested functions
 
 [prep]: https://ibahcm.github.io/RPiR/articles/pages/preparation.html
 [docs]: https://ibahcm.github.io/RPiR
