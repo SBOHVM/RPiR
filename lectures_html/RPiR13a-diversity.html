@@ -499,12 +499,6 @@ pre code {
 <li><code>lines()</code></li>
 </ul>
 </div>
-<div id="stopping-warnings" class="section level2">
-<h2>Stopping warnings</h2>
-<pre class="r"><code>usethis::edit_r_profile(scope = &quot;user&quot;)</code></pre>
-<p>And add this to the file that is opened:</p>
-<pre class="r"><code>options(yaml.eval.expr = TRUE)</code></pre>
-</div>
 <div id="deadlines" class="section level2">
 <h2>Deadlines</h2>
 <ul>
@@ -527,9 +521,11 @@ pre code {
 <ul>
 <li>Does the package work (installs, docs, functions, demos and dependencies)?</li>
 </ul>
-<pre class="r"><code>    library(pkgname)
+<pre class="r"><code>    devtools::install_github(&quot;IBAHCM/pkgname&quot;)
+    library(pkgname)
     library(help=&quot;pkgname&quot;)
-    demo(package=&quot;pkgname&quot;)</code></pre>
+    demo(package=&quot;pkgname&quot;)
+    ?pkgname</code></pre>
 <ul>
 <li>Can I generate reports from your demos, and how do they look?</li>
 <li>Is the code well structured and with clear variable names and comments?</li>

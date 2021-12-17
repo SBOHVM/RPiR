@@ -3360,14 +3360,6 @@ slide:not(.current) .plotly.html-widget{
 <li><code>lines()</code></li>
 </ul>
 
-</article></slide><slide class=""><hgroup><h2>Stopping warnings</h2></hgroup><article  id="stopping-warnings">
-
-<pre class = 'prettyprint lang-r'>usethis::edit_r_profile(scope = &quot;user&quot;)</pre>
-
-<p>And add this to the file that is opened:</p>
-
-<pre class = 'prettyprint lang-r'>options(yaml.eval.expr = TRUE)</pre>
-
 </article></slide><slide class=""><hgroup><h2>Deadlines</h2></hgroup><article  id="deadlines">
 
 <ul>
@@ -3394,9 +3386,11 @@ slide:not(.current) .plotly.html-widget{
 <li>Does the package work (installs, docs, functions, demos and dependencies)?</li>
 </ul>
 
-<pre class = 'prettyprint lang-r'>    library(pkgname)
+<pre class = 'prettyprint lang-r'>    devtools::install_github(&quot;IBAHCM/pkgname&quot;)
+    library(pkgname)
     library(help=&quot;pkgname&quot;)
-    demo(package=&quot;pkgname&quot;)</pre>
+    demo(package=&quot;pkgname&quot;)
+    ?pkgname</pre>
 
 <ul>
 <li>Can I generate reports from your demos, and how do they look?</li>
