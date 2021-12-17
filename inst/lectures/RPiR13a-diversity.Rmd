@@ -91,18 +91,6 @@ Covers all of these measures.
 - `Inf` is how we say infinity in R
 - `lines()`
 
-## Stopping warnings
-
-```{R, eval = FALSE}
-usethis::edit_r_profile(scope = "user")
-```
-
-And add this to the file that is opened:
-
-```{R, eval = FALSE}
-options(yaml.eval.expr = TRUE)
-```
-
 ## Deadlines
 
 - Edits to GitHub repos -- as soon as possible, but:
@@ -116,9 +104,11 @@ options(yaml.eval.expr = TRUE)
 
 - Does the package work (installs, docs, functions, demos and dependencies)?
 ```{R, eval = FALSE}
+    devtools::install_github("IBAHCM/pkgname")
     library(pkgname)
     library(help="pkgname")
     demo(package="pkgname")
+    ?pkgname
 ```
 - Can I generate reports from your demos, and how do they look?
 - Is the code well structured and with clear variable names and comments?
