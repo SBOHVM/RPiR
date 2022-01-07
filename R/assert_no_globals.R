@@ -1,6 +1,5 @@
-#' assert_no_globals
+#' Assert that a function contains no global variables
 #'
-#' @description
 #' This function will stop code execution with an error if the function
 #' passed in uses a global variable.
 #'
@@ -20,10 +19,14 @@
 #'
 assert_no_globals <- function(test_function,
                               name = deparse1(substitute(test_function))) {
+
   globals <- codetools::findGlobals(test_function, merge = FALSE)$variables
+  message <- paste0("Function ", name, "() may not use global variable(s): ",
+                    globals)
+
   if (length(globals) != 0) {
-    stop(paste0("Function ", name,
-                "() may not use global variable(s): ", globals))
+    stop(message)
   }
+
   NULL
 }

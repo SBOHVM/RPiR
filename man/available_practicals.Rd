@@ -2,7 +2,7 @@
 % Please edit documentation in R/available_practicals.R
 \name{available_practicals}
 \alias{available_practicals}
-\title{available_practicals}
+\title{List currently available practicals}
 \usage{
 available_practicals(verbose = FALSE)
 }
@@ -10,5 +10,9 @@ available_practicals(verbose = FALSE)
 \item{verbose}{Add the description text if TRUE (default FALSE)}
 }
 \description{
-available_practicals
+This function lists all currently available lectures.
+}
+\examples{
+available_lectures()
+
 }

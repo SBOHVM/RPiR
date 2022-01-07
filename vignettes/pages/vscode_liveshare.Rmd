@@ -1,12 +1,12 @@
 ---
-title: "Visual Studio Code and Live Share"
+title: "VS Code Live Share"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 output:
   rmarkdown::html_vignette:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{Visual Studio Code and Live Share}
+    %\VignetteIndexEntry{VS Code Live Share}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -18,7 +18,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Visual Studio Code
+*Set up Live Share in Visual Studio Code*
+
+## Visual Studio Code
 
 Visual Studio Code (aka VS Code) is an IDE (Integrated Development Environment)
 just like RStudio, but designed by Microsoft for multiple languages, not just R.
@@ -28,13 +30,13 @@ useful occasionally to switch to VS Code, particularly if you want to work
 together with someone on a single piece of code. You can learn more about using
 VS Code [here](https://code.visualstudio.com/learn).
 
-## Installing VS Code
+### Installing VS Code
 
 First, [download and install](https://code.visualstudio.com) Visual Studio
 Code (Note: this is not the same as the Visual Studio IDE, if you
 happen to have that installed).
 
-# Live Share
+## Live Share
 
 The VS Code Live Share extension provides a great way to collaborate on code
 whilst working from home. Assuming read/write access is enabled, you and your
@@ -48,7 +50,7 @@ machine, and collaborators working with you will have get the files separately
 later. On the plus side, you don't have to go into the office and you can
 access code remotely using your own personalised setup and tools.
 
-## Install the extension
+### Install the extension
 
 Open up VS Code and install the "Live Share" Microsoft extension from the 
 VS Code marketplace. Exactly what this will look like depends on your platform,
@@ -65,7 +67,7 @@ While you're there, if you're intending to work in R, you may as well install:
 
 You need to already have an account on [GitHub][github] to use Live Share.
 
-## Share a session
+### Share a session
 
 To create a new session, click on "Live Share" in the status bar (at the
 bottom of the VS Code window). The first time you do this, you'll be prompted 

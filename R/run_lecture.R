@@ -1,10 +1,15 @@
-#' run_lecture
+#' Run lecture
 #'
-#' This will run a lecture in the RPiR course.
+#' This function runs a lecture from the RPiR course.
 #'
 #' @param name Name of the lecture
 #'
 #' @export
+#'
+#' @examples
+#' \dontrun{
+#' run_lecture("RPiR1-intro")
+#' }
 #'
 run_lecture <- function(name) {
   tmp <- system.file(file.path("lectures", paste0(name, ".Rmd")), package = "RPiR")

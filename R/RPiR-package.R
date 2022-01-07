@@ -58,6 +58,7 @@
 #' @import ggplot2
 #' @rawNamespace import(gradethis, except = c(random_encouragement, random_praise))
 #' @import graphics
+#' @import here
 #' @import knitr
 #' @import learnr
 #' @import rlang

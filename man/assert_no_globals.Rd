@@ -2,7 +2,7 @@
 % Please edit documentation in R/assert_no_globals.R
 \name{assert_no_globals}
 \alias{assert_no_globals}
-\title{assert_no_globals}
+\title{Assert that a function contains no global variables}
 \usage{
 assert_no_globals(test_function, name = deparse1(substitute(test_function)))
 }

@@ -2,10 +2,14 @@
 % Please edit documentation in R/available_lectures.R
 \name{available_lectures}
 \alias{available_lectures}
-\title{available_lectures}
+\title{List currently available lectures}
 \usage{
 available_lectures()
 }
 \description{
-available_lectures
+This function lists all currently available lectures.
+}
+\examples{
+available_lectures()
+
 }

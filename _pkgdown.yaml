@@ -1,8 +1,10 @@
 title: RPiR
 url: https://ibahcm.github.io/RPiR/
+
 template:
-  params:
-    bootswatch: lumen
+  bootstrap: 5
+  bootswatch: journal
+
 reference:
   - title: Lecture slides
     desc: View lecture slides in RStudio
@@ -32,166 +34,183 @@ reference:
     contents:
       - '`run_integration`'
       - '`RPiR-package`'
+
 navbar:
-  type: inverse
-  left:
-    - text: "Lectures (slides)"
+  structure:
+    left: [lecture_slides, lecture_html, practicals, R, guides, installation]
+    right: [RPiR, discussion, github]
+
+  # type: inverse
+  components:
+    lecture_slides:
+      text: Lectures (slides)
       icon: fas fa-chalkboard-teacher
       menu:
-      -  text: RPiR1-intro
-         href: lectures/RPiR1-intro.html
-      -  text: RPiR2a-R
-         href: lectures/RPiR2a-R.html
-      -  text: RPiR2b-modelling
-         href: lectures/RPiR2b-modelling.html
-      -  text: RPiR2c-development
-         href: lectures/RPiR2c-development.html
-      -  text: RPiR3a-git
-         href: lectures/RPiR3a-git.html
-      -  text: RPiR4a-R
-         href: lectures/RPiR4a-R.html
-      -  text: RPiR4b-reporting
-         href: lectures/RPiR4b-reporting.html
-      -  text: RPiR4c-modelling
-         href: lectures/RPiR4c-modelling.html
-      -  text: RPiR5a-R
-         href: lectures/RPiR5a-R.html
-      -  text: RPiR7a-R
-         href: lectures/RPiR7a-R.html
-      -  text: RPiR8a-packages
-         href: lectures/RPiR8a-packages.html
-      -  text: RPiR8b-randomness (pdf)
-         href: lectures/RPiR8b-randomness.pdf
-      -  text: RPiR8c-R
-         href: lectures/RPiR8c-R.html
-      -  text: RPiR8d-development (pdf)
-         href: lectures/RPiR8d-development.pdf
-      -  text: RPiR11a-data
-         href: lectures/RPiR11a-data.html
-      -  text: RPiR11b-diversity (pdf)
-         href: lectures/RPiR11b-diversity.pdf
-      -  text: RPiR12a-programming
-         href: lectures/RPiR12a-programming.html
-      -  text: RPiR13a-diversity
-         href: lectures/RPiR13a-diversity.html
-    - text: "Lectures (html)"
+      - text: RPiR1-intro
+        href: lectures/RPiR1-intro.html
+      - text: RPiR2a-R
+        href: lectures/RPiR2a-R.html
+      - text: RPiR2b-modelling
+        href: lectures/RPiR2b-modelling.html
+      - text: RPiR2c-development
+        href: lectures/RPiR2c-development.html
+      - text: RPiR3a-git
+        href: lectures/RPiR3a-git.html
+      - text: RPiR4a-R
+        href: lectures/RPiR4a-R.html
+      - text: RPiR4b-reporting
+        href: lectures/RPiR4b-reporting.html
+      - text: RPiR4c-modelling
+        href: lectures/RPiR4c-modelling.html
+      - text: RPiR5a-R
+        href: lectures/RPiR5a-R.html
+      - text: RPiR7a-R
+        href: lectures/RPiR7a-R.html
+      - text: RPiR8a-packages
+        href: lectures/RPiR8a-packages.html
+      - text: RPiR8b-randomness (pdf)
+        href: lectures/RPiR8b-randomness.pdf
+      - text: RPiR8c-R
+        href: lectures/RPiR8c-R.html
+      - text: RPiR8d-development (pdf)
+        href: lectures/RPiR8d-development.pdf
+      - text: RPiR11a-data
+        href: lectures/RPiR11a-data.html
+      - text: RPiR11b-diversity (pdf)
+        href: lectures/RPiR11b-diversity.pdf
+      - text: RPiR12a-programming
+        href: lectures/RPiR12a-programming.html
+      - text: RPiR13a-diversity
+        href: lectures/RPiR13a-diversity.html
+
+    lecture_html:
+      text: Lectures (html)
       icon: fas fa-chalkboard-teacher
       menu:
-      -  text: RPiR1-intro
-         href: lectures_html/RPiR1-intro.html
-      -  text: RPiR2a-R
-         href: lectures_html/RPiR2a-R.html
-      -  text: RPiR2b-modelling
-         href: lectures_html/RPiR2b-modelling.html
-      -  text: RPiR2c-development
-         href: lectures_html/RPiR2c-development.html
-      -  text: RPiR3a-git
-         href: lectures_html/RPiR3a-git.html
-      -  text: RPiR4a-R
-         href: lectures_html/RPiR4a-R.html
-      -  text: RPiR4b-reporting
-         href: lectures_html/RPiR4b-reporting.html
-      -  text: RPiR4c-modelling
-         href: lectures_html/RPiR4c-modelling.html
-      -  text: RPiR5a-R
-         href: lectures_html/RPiR5a-R.html
-      -  text: RPiR7a-R
-         href: lectures_html/RPiR7a-R.html
-      -  text: RPiR8a-packages
-         href: lectures_html/RPiR8a-packages.html
-      -  text: RPiR8c-R
-         href: lectures_html/RPiR8c-R.html
-      -  text: RPiR11a-data
-         href: lectures_html/RPiR11a-data.html
-      -  text: RPiR12a-programming
-         href: lectures_html/RPiR12a-programming.html
-      -  text: RPiR13a-diversity
-         href: lectures_html/RPiR13a-diversity.html
-    - text: "Practicals (html)"
+      - text: RPiR1-intro
+        href: lectures_html/RPiR1-intro.html
+      - text: RPiR2a-R
+        href: lectures_html/RPiR2a-R.html
+      - text: RPiR2b-modelling
+        href: lectures_html/RPiR2b-modelling.html
+      - text: RPiR2c-development
+        href: lectures_html/RPiR2c-development.html
+      - text: RPiR3a-git
+        href: lectures_html/RPiR3a-git.html
+      - text: RPiR4a-R
+        href: lectures_html/RPiR4a-R.html
+      - text: RPiR4b-reporting
+        href: lectures_html/RPiR4b-reporting.html
+      - text: RPiR4c-modelling
+        href: lectures_html/RPiR4c-modelling.html
+      - text: RPiR5a-R
+        href: lectures_html/RPiR5a-R.html
+      - text: RPiR7a-R
+        href: lectures_html/RPiR7a-R.html
+      - text: RPiR8a-packages
+        href: lectures_html/RPiR8a-packages.html
+      - text: RPiR8c-R
+        href: lectures_html/RPiR8c-R.html
+      - text: RPiR11a-data
+        href: lectures_html/RPiR11a-data.html
+      - text: RPiR12a-programming
+        href: lectures_html/RPiR12a-programming.html
+      - text: RPiR13a-diversity
+        href: lectures_html/RPiR13a-diversity.html
+
+    practicals:
+      text: "Practicals (html)"
       icon: fas fa-chalkboard-teacher
       menu:
-      -  text: Practical1-6
-         href: tutorials/practical1-6/practical1-6.html
-      -  text: Practical2-1
-         href: tutorials/practical2-1/practical2-1.html
-      -  text: Practical2-2
-         href: tutorials/practical2-2/practical2-2.html
-      -  text: Practical2-3
-         href: tutorials/practical2-3/practical2-3.html
-      -  text: Practical2-4
-         href: tutorials/practical2-4/practical2-4.html
-      -  text: Practical3-1
-         href: tutorials/practical3-1/practical3-1.html
-      -  text: Practical3-2
-         href: tutorials/practical3-2/practical3-2.html
-      -  text: Practical3-3
-         href: tutorials/practical3-3/practical3-3.html
-      -  text: Practical3-4
-         href: tutorials/practical3-4/practical3-4.html
-      -  text: Practical3-5
-         href: tutorials/practical3-5/practical3-5.html
-      -  text: Practical3-6
-         href: tutorials/practical3-6/practical3-6.html
-      -  text: Practical4-1
-         href: tutorials/practical4-1/practical4-1.html
-      -  text: Practical4-2
-         href: tutorials/practical4-2/practical4-2.html
-      -  text: Practical4-3
-         href: tutorials/practical4-3/practical4-3.html
-      -  text: Project-Intro
-         href: tutorials/project0/project0.html
-      -  text: Project1
-         href: tutorials/project1/project1.html
-      -  text: Project2
-         href: tutorials/project2/project2.html
-      -  text: Project3
-         href: tutorials/project3/project3.html
-      -  text: Project4
-         href: tutorials/project4/project4.html
-      -  text: Project5
-         href: tutorials/project5/project5.html
-    - icon: far fa-comments
-      text: "Discussion"
+      - text: Practical1-6
+        href: tutorials/practical1-6/practical1-6.html
+      - text: Practical2-1
+        href: tutorials/practical2-1/practical2-1.html
+      - text: Practical2-2
+        href: tutorials/practical2-2/practical2-2.html
+      - text: Practical2-3
+        href: tutorials/practical2-3/practical2-3.html
+      - text: Practical2-4
+        href: tutorials/practical2-4/practical2-4.html
+      - text: Practical3-1
+        href: tutorials/practical3-1/practical3-1.html
+      - text: Practical3-2
+        href: tutorials/practical3-2/practical3-2.html
+      - text: Practical3-3
+        href: tutorials/practical3-3/practical3-3.html
+      - text: Practical3-4
+        href: tutorials/practical3-4/practical3-4.html
+      - text: Practical3-5
+        href: tutorials/practical3-5/practical3-5.html
+      - text: Practical3-6
+        href: tutorials/practical3-6/practical3-6.html
+      - text: Practical4-1
+        href: tutorials/practical4-1/practical4-1.html
+      - text: Practical4-2
+        href: tutorials/practical4-2/practical4-2.html
+      - text: Practical4-3
+        href: tutorials/practical4-3/practical4-3.html
+      - text: Project-Intro
+        href: tutorials/project0/project0.html
+      - text: Project1
+        href: tutorials/project1/project1.html
+      - text: Project2
+        href: tutorials/project2/project2.html
+      - text: Project3
+        href: tutorials/project3/project3.html
+      - text: Project4
+        href: tutorials/project4/project4.html
+      - text: Project5
+        href: tutorials/project5/project5.html
+
+    RPiR:
+      icon: fab fa-earlybirds
+      href: reference/index.html
+
+    R:
+      text: R
+      icon: fas fa-laptop-code
+      menu:
+      - text: Loops -- for / while
+        href: articles/pages/loops.html
+      - text: Flow control -- if / else and comparisons
+        href: articles/pages/flow.html
+      - text: Functions
+        href: articles/pages/functions.html
+      - text: document(), install(), and library()
+        href: articles/pages/devtools.html
+      - text: Tips and tricks
+        href: articles/pages/tips.html
+
+    guides:
+      text: Guides
+      icon: far fa-file-alt
+      menu:
+      - text: Course preparation - R
+        href: articles/pages/preparation.html
+      - text: Course preparation - GitHub
+        href: articles/pages/install_github.html
+      - text: Course preparation - RPiR
+        href: articles/pages/install_RPiR.html
+      - text: GitHub repositories
+        href: articles/pages/github.html
+      - text: RStudio projects and GitHub
+        href: articles/pages/rstudio.html
+      - text: Create an R Package
+        href: articles/pages/packages_guide.html
+      - text: Reference - R Packages
+        href: articles/pages/packages.html
+      - text: Reference - R Notebook
+        href: articles/pages/notebooks.html
+      - text: Reference - General
+        href: articles/pages/reference.html
+      - text: VS Code Live Share
+        href: articles/pages/vscode_liveshare.html
+
+    discussion:
+      icon: far fa-comments
       href: https://github.com/IBAHCM/RPiR/discussions
-    - icon: fab fa-github
-      text: "GitHub"
+
+    github:
+      icon: fab fa-github
       href: https://github.com/IBAHCM/RPiR/
-    - text: "Reference"
-      icon: far fa-file-code
-      menu:
-      -  text: "RPiR function reference"
-         href: reference/index.html
-      -  text: "Reference materials"
-         href: articles/pages/reference.html
-      -  text: "Specific techniques"
-         menu:
-         -  text: "Loops -- for / while"
-            href: articles/pages/loops.html
-         -  text: "Flow control -- if / else and comparisons"
-            href: articles/pages/flow.html
-         -  text: "Functions"
-            href: articles/pages/functions.html
-         -  text: "R Packages"
-            href: articles/pages/packages.html
-         -  text: "document(), install(), and library()"
-            href: articles/pages/devtools.html
-    - text: "Guides"
-      icon: far fa-file
-      menu:
-      -  text: "Course preparation"
-         href: articles/pages/preparation.html
-      -  text: "Create a repository on GitHub"
-         href: articles/pages/github.html
-      -  text: "RStudio projects and GitHub"
-         href: articles/pages/rstudio.html
-      -  text: "R Packages"
-         href: articles/pages/packages_guide.html
-    - text: "Installation"
-      icon: far fa-file
-      menu:
-      -  text: github
-         href: articles/pages/install_github.html
-      -  text: package
-         href: articles/pages/install_RPiR.html
-      -  text: vscode
-         href: articles/pages/vscode_liveshare.html

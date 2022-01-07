@@ -1,8 +1,13 @@
-#' available_practicals
+#' List currently available practicals
+#'
+#' This function lists all currently available lectures.
 #'
 #' @param verbose Add the description text if TRUE (default FALSE)
 #'
 #' @export
+#'
+#' @examples
+#' available_lectures()
 #'
 available_practicals <- function(verbose = FALSE) {
   path <- system.file("tutorials", package = "RPiR")
