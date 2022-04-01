@@ -7,7 +7,7 @@ output:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{faq}
+    %\VignetteIndexEntry{Frequently Asked Questions}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---

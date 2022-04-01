@@ -60,7 +60,7 @@ jobs:
       - name: Build Docs
         if: runner.os == 'macOS'
         run: |
-          install.packages("rsconnect")
+          install.packages("rsconnect", repo="http://cran.rstudio.com/")
           install.packages("pkgdown")
           pkgdown::build_site()
         shell: Rscript {0}
