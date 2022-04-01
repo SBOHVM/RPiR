@@ -1,12 +1,12 @@
 ---
-title: "R Packages"
+title: "Create an R Package"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 output:
   rmarkdown::html_vignette:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{R Packages}
+    %\VignetteIndexEntry{Create an R Package}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+
+*R package reference materials*
 
 # Some reassurance!
 

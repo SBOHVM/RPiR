@@ -1,6 +1,11 @@
-#' available_lectures
+#' List currently available lectures
+#'
+#' This function lists all currently available lectures.
 #'
 #' @export
+#'
+#' @examples
+#' available_lectures()
 #'
 available_lectures <- function() {
   path <- system.file("lectures", package = "RPiR")

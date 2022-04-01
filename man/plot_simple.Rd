@@ -39,7 +39,7 @@ column names. See plot_populations() above for a more sophisticated plotting
 function.
 }
 \examples{
-df <- data.frame(time = 0:100, grow=exp((0:100) / 10),
+df <- data.frame(time = 0:100, grow = exp((0:100) / 10),
                  die = exp(seq(10, 0, by = -0.1)))
 plot_simple(df, lty = c(2, 3))
 

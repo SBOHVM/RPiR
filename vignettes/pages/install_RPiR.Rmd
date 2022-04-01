@@ -1,12 +1,12 @@
 ---
-title: "Install RPiR"
+title: "Course preparation - RPiR"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{Install RPiR}
+    %\VignetteIndexEntry{Course preparation - RPiR}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -18,9 +18,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Installation
+*Install the RPiR package*
 
-You need to install this *Reproducible Programming in R* (RPiR) package to carry
+You need to install the Reproducible Programming in R (RPiR) package to carry
 out the exercises for this course.
 
 ## Instructions
@@ -29,14 +29,14 @@ First, make sure that the `devtools` package is installed by
 calling `library(devtools)`. If that doesn't work, then install it:
 
 ```{r, eval = FALSE}
-install.packages("devtools") # If need be
-library(devtools)
+install.packages("devtools")
 ```
 
 Because the `RPiR` package is hosted on github, we need to use `install_github`
 (from the `devtools` package):
 
 ```{r, eval = FALSE}
+library(devtools)
 install_github("IBAHCM/RPiR")
 ```
 
@@ -53,13 +53,13 @@ Which would you like to update?
 6: backports (1.1.4 -> 1.1.5) [CRAN]
 ```
 
-**press 1**.. and if you're asked:
+<span style="color: #de77ae;">press 1</span>.. and if you're asked:
 
 ```
 Do you want to install from sources the package which needs compilation?
 ```
 
-say **yes**.
+say <span style="color: #de77ae;">no</span>.
 
 If this has worked, you should be able to load the `RPiR` package by typing:
 
@@ -88,7 +88,7 @@ knitr::include_graphics('images/install-RPiR-restart.png')
 
 then just say no to restarting it the second time. 
 
-### non-zero exit status
+### Non-zero exit status
 
 ```
 Warning in install.packages :
@@ -105,9 +105,7 @@ install.packages("rlang")
 
 Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
-### Windows
-
-#### Rtools is required to build R packages but is not currently installed...
+### Rtools is required to build R packages but is not currently installed...
 
 ```
 WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:
@@ -131,7 +129,7 @@ install.packages("rlang")
 
 Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
-#### cannot remove prior installation...
+### Cannot remove prior installation...
 
 ```
 "Error in install.packages : cannot remove prior installation of package ‘rlang’ "
@@ -147,7 +145,7 @@ install.packages("rlang")
 
 Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
 
-#### Try removing ‘C:\.../00LOCK’
+### Try removing ‘C:\.../00LOCK’
 
 ```
 package ‘rlang’ successfully unpacked and MD5 sums checked

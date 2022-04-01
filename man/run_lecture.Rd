@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_lecture.R
 \name{run_lecture}
 \alias{run_lecture}
-\title{run_lecture}
+\title{Run lecture}
 \usage{
 run_lecture(name)
 }
@@ -10,5 +10,11 @@ run_lecture(name)
 \item{name}{Name of the lecture}
 }
 \description{
-This will run a lecture in the RPiR course.
+This function runs a lecture from the RPiR course.
+}
+\examples{
+\dontrun{
+run_lecture("RPiR1-intro")
+}
+
 }

@@ -1,12 +1,12 @@
 ---
-title: "Creating a GitHub repository"
+title: "GitHub repositories"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 output:
   rmarkdown::html_vignette:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{Creating a GitHub repository}
+    %\VignetteIndexEntry{GitHub repositories}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -18,10 +18,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-*Whenever you start a new project, you should consider creating a new repository
+*Create a GitHub repository*
+
+Whenever you start a new project, you should consider creating a new repository
 on GitHub. Not only will you then be using version control, but it allows you 
 to collaborate easily with others, as well as organising your workflow. This 
-guide shows you how to create a new repository on GitHub.*
+guide shows you how to create a new repository on GitHub.
 
 To start off, go to the [IBAHCM](http://www.github.com/IBAHCM) organisation
 (on GitHub). During this course, this is where you'll be creating all of your 

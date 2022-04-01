@@ -8,8 +8,8 @@
 ## Course preparation
 
 There are a few things to do before you can start the course.
-The details are available in the guide section of the
-[docs][docs] under [Course preparation][prep].
+The details are available in the Guides section of the
+[website][docs] under Course preparation.
 
 ## Running the course
 
@@ -39,7 +39,7 @@ click the *Show in new window* icon in the top left to open it in a larger
 separate window (you can open multiple practicals simultaneously like this).
 Alternatively, you can use the `run_practical()` function in the *Console
 pane*. For example, `run_practical("practical1-1")` will run the first
-practical of practical series 1.
+practical of practical series 1. 
 
 > If you decide to run a practical like this, you will not be able to use the R
   console until you close it, so we suggest that you open a separate instance of
@@ -72,7 +72,7 @@ You can also browse the non-interactive practicals on the GitHub website
 **To view lecture slides**, use the `run_lecture()` function in RStudio. For
 example, `run_lecture("RPiR1-intro")` will show the first lecture slides.
 
-You can also see the lectures on the [GitHub website][docs] using the lecture
+You can also see the lectures on the course [website][docs] using the lecture
 dropdown menus, either as slides (under `Lectures (slides)`) or as single
 continuous documents for later reference (under `Lectures (html)`).
 

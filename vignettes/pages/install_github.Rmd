@@ -1,12 +1,12 @@
 ---
-title: "Connecting RStudio to GitHub"
+title: "Course preparation - GitHub"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 output:
   rmarkdown::html_vignette:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{Connecting RStudio to GitHub}
+    %\VignetteIndexEntry{Course preparation - GitHub}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -18,11 +18,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# GitHub
+*Create an account on GitHub and connect it to RStudio*
 
-*for RStudio*
-
-## Prerequisites
+## Create a GitHub account
 
 1. Create a GitHub account - go to https://github.com/ and sign up
 with your university email address
@@ -30,28 +28,26 @@ with your university email address
 3. Go to https://education.github.com, click **Students** and/or 
 **Get benefits for students**, and follow the instructions
 
-### Possible problems
+### Potential problems
 
 If you already have a GitHub account, then try registering it as an education
-account using the same link. We *think* that it won't be critical for this
-course that you are registered with the education pack, so if you can't, we'll
-leave it for now. *Please do remember though in case anything crops up later.*
-However, you will receive emails for the course on the email address you are
-registered with here, so if you already have an account be aware of this. You
-can change the email address GitHub uses on your profile if you need to.
+account using the same link. You will receive emails for the course on the 
+email address you are registered with here, so if you already have an account 
+be aware of this. You can change the email address GitHub uses on your profile 
+if you need to.
 
 ## Ask to be added to the IBAHCM GitHub organisation
 
-Go to the Discussion section of the [RPiR](https://github.com/IBAHCM/RPiR)
+Go to the Discussion section of the [RPiR][RPiR]
 repository on GitHub, and create a new discussion (category *Registration*)^[The
-direct link is [here](https://github.com/IBAHCM/RPiR/discussions/new) if you
+direct link is [here][registration] if you
 can't find it.]. Simply ask to be added to the organisation. Once we've added
 you, we'll respond and you should accept the invitation and acknowledge that you
 have successfully joined. This discussion section on the R package is where we
 will hold discussions and answer questions during the course, so you may want to
 bookmark it.
 
-## Meanwhile, set git and GitHub up with RStudio
+## Set up git and GitHub with RStudio
 
 In RStudio, open <span style="color: #de77ae;">RStudio > Preferences</span> 
 (or <span style="color: #de77ae;">Tools > Global Options</span> if you're using 
@@ -60,9 +56,9 @@ ensure that <span style="color: #de77ae;">Enable version control interface
 for RStudio projects</span> is checked. 
 
 While you're here, make sure you have a <span style="color: #de77ae;">git 
-executable</span>. If this box is empty, you need to install `git`. Go
-[here](https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN) and scroll 
-down to the <span style="color: #de77ae;">Installation</span> section, then 
+executable</span>. If this box is empty, you need to install `git`. To do that, 
+go [here][rstudio] and scroll down to the
+ <span style="color: #de77ae;">Installation</span> section, then 
 **restart RStudio**.
 
 > Note that having git installed *is different* from installing `libgit2` when
@@ -71,9 +67,9 @@ even if you fixed the problems earlier!
 
 Now back in RStudio, tell git your user name and email address (these are used 
 to label each commit that you make to GitHub). **Make sure the email address you** 
-**enter here is the same as the one that you registered on GitHub**. First, make
-sure that the `usethis` package is installed by calling `library(usethis)`.
-If that doesn't work, then install it, and then configure git using it:
+**enter here is the same as the one that you registered on GitHub**. First, 
+load in the `usethis` package by calling `library(usethis)` (if that doesn't
+work, install it first). Then configure git using:
 
 ```{r, eval = FALSE}
 install.packages("usethis") # If need be
@@ -93,9 +89,9 @@ following (this will only work on a Mac):
 git config --global --list
 ```
 
-## Add a PAT
+## Add a Personal Access Token (PAT)
 
-Now in RStudio, run:
+In RStudio, run:
 
 ```{r, eval = FALSE}
 usethis::create_github_token()
@@ -147,3 +143,7 @@ usethis::git_sitrep()
 ```
 
 for more information.
+
+[RPiR]: https://github.com/IBAHCM/RPiR
+[registration]: https://github.com/IBAHCM/RPiR/discussions/categories/general/new
+[rstudio]: https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN

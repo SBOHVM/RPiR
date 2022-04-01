@@ -1,12 +1,12 @@
 ---
-title: "Reference materials"
+title: "Reference - General"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 output:
   rmarkdown::html_vignette:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{Reference materials}
+    %\VignetteIndexEntry{Reference - General}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -18,7 +18,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-# British Ecological Society
+*Various reference materials*
+
+## British Ecological Society
 
 The [British Ecological Society (BES)][BES] is the oldest ecological society in
 the world, and one of the largest. It publishes [several excellent
@@ -31,7 +33,7 @@ As part of the course, **we require you to read the following guides**:
 - [Reproducible Code][BES-repro]
 - [Data Management][BES-data]
 
-# Hadley Wickham
+## Hadley Wickham
 
 [Hadley Wickham][hadley-wickham] is the Chief Scientist at RStudio. He created
 the original `ggplot` library for his PhD. These days his
@@ -55,16 +57,16 @@ long for you to read in their entirety. Nonetheless keep them for future
 reference, as they contain an enormous amount of knowledge about R in a
 (relatively!) compact form.
 
-# Assorted other materials
+## Assorted other materials
 
-## Understanding, avoiding and fixing errors in your code
+### Understanding, avoiding and fixing errors in your code
 
 As part of the course, **we require you to watch [this
 keynote][rstudioconf2020-jb]** from rstudio::conf 2020 by [Jenny
 Bryan][jenny-bryan] of RStudio. It is an excellent keynote on errors in R and
 how to identify and fix them.
 
-## Git and GitHub in R and RStudio
+### Git and GitHub in R and RStudio
 
 Git is a very complex tool -- it is used to manage the development of the whole
 Linux kernel! -- so we cover only the most basic aspects of it. As well as the
@@ -74,7 +76,7 @@ more detail than our abbreviated materials, and is a good reference if you are
 confused or want to do something complicated. She also gave [a talk on this
 topic][rstudioconf2017-jb] at rstudio::conf 2017.
 
-## Reproducible (and generally good) coding practices
+### Reproducible (and generally good) coding practices
 
 There are many materials on reproducible research, including the BES guide
 mentioned above. For background, we recommend watching [this short
@@ -83,7 +85,7 @@ article on sharing code][nature-repro] and [this guide on good coding
 practices][dataist-coding]. None of this was written specifically for R
 programmers, but there are useful tips for everyone (and some specific to R).
 
-## R cheatsheets
+### R cheatsheets
 
 RStudio and other contributors provide a variety of [cheatsheets][rstudio-cheat]
 that summarise functionality of a variety of different topics in R, including
@@ -91,7 +93,7 @@ markdown in reports, on RStudio itself, and everything from Base R to package
 development to parallel computing in R. **The main cheatsheets can be found
 in RStudio under** <span style="color: #de77ae;">Help > Cheatsheets</span>.
 
-## R Markdown
+### R Markdown
 
 R Markdown allows you to generate reports from your R code or, as RStudio puts it,
 to *"turn your analyses into high quality documents, reports, presentations and
@@ -115,13 +117,13 @@ Particularly useful for you here are the instructions in *Happy Git and GitHub
 for the useR* for [changing R Markdown into R scripts][rmd-to-r] of the kind you
 will be generating in these exercises.
 
-## R Coder
+### R Coder
 
 The [Learn R section][rcoder-learnr] of this website provides explanations for a
 lot of common techniques that you use during this course in the *Programming*
 section. If you are confused by our explanations, you may find this useful.
 
-## R coding style
+### R coding style
 
 Version 1 of Advanced R provides [a style guide][style-advanced-r]. In version
 2, this has been replaced by the [tidyverse][tidyverse] [style

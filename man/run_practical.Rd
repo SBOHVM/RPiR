@@ -2,7 +2,7 @@
 % Please edit documentation in R/run_practical.R
 \name{run_practical}
 \alias{run_practical}
-\title{run_practical}
+\title{Run practical}
 \usage{
 run_practical(name)
 }
@@ -10,5 +10,11 @@ run_practical(name)
 \item{name}{Name of the practical}
 }
 \description{
-run_practical
+This function runs a lecture from the RPiR course.
+}
+\examples{
+\dontrun{
+run_practical("practical1-1")
+}
+
 }

@@ -3,12 +3,13 @@ Type: Package
 Title: Reproducible Programming in R
 Version: 0.75.1
 Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
-                  role = c("cre", "aut"), comment = c(ORCID = "0000-0003-1536-2066")),
+                  role = c("cre", "aut"), 
+                  comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
                   role = c("aut"), comment = c(ORCID = "0000-0003-2589-8091")))
-Description: Reproducible Programming in R course at IBAHCM, University of Glasgow.
-    This package provides learnr exercises and lectures for the course as well as
-    functionality to help with the exercises.
+Description: Reproducible Programming in R course at IBAHCM, University of 
+    Glasgow. This package provides {learnr} exercises and lectures for the  
+    course as well as functionality to help with the exercises.
 License: GPL (>= 3) | file LICENSE
 Imports:
     codetools,
@@ -22,7 +23,8 @@ Imports:
     gitcreds,
     gradethis,
     graphics,
-    knitr,
+    here,
+    knitr (>= 1.35),
     learnr,
     magrittr,
     rlang,
@@ -36,7 +38,6 @@ Imports:
 Suggests:
     testthat
 Remotes: 
-    rstudio/learnr,
     rstudio/gradethis
 Encoding: UTF-8
 LazyData: true

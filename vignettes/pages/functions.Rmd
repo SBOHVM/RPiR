@@ -59,6 +59,7 @@ The critical thing to know is that a function takes its arguments
 (here the variables `first` and `second`) and does something to them to calculate
 some result. The result that is output by the function is the last 
 line of code is that is run.
+
 If you are writing a simple function, this will be the final line before the
 close curly bracket (`}`), here `squared`.
 
@@ -75,17 +76,13 @@ add_and_square <- function(first, second) {
 add_and_square(3, 5)
 ```
 
-We introduced functions in [Lecture 2c][lecture-2c] and
-Practical `practicalA-1`and then again in [Lecture 5b][lecture-5b]. 
-They were used starting in Practical `practical1-2`.
+We introduced functions in Lecture 2c and Practical A-1, and then again in 
+Lecture 5b. They were used starting in Practical 1-2.
 
 Functions are covered in R4DS [here][functions-R4DS] and R Coder covers
 them in some depth [here][functions-rcoder]. Advanced R covers functions in
 enormous detail starting [here][functions-advanced-r2] with an introduction to
 functional programming, and continuing for several chapters.
-
-[lecture-2c]: https://ibahcm.github.io/RPiR/lectures_html/RPiR2c-development.html
-[lecture-5b]: https://ibahcm.github.io/RPiR/lectures_html/RPiR5b-R.html
 
 [functions-R4DS]: https://r4ds.had.co.nz/functions.html
 [functions-advanced-r2]: https://adv-r.hadley.nz/fp.html

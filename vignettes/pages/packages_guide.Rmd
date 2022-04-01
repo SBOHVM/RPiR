@@ -1,12 +1,12 @@
 ---
-title: "R Packages"
+title: "Reference - R Packages"
 date: '`r format(Sys.Date(), "%B %d %Y")`'
 output:
   rmarkdown::html_vignette:
   toc: true
   toc_depth: 2
   vignette: >
-    %\VignetteIndexEntry{R Packages}
+    %\VignetteIndexEntry{Reference - R Packages}
     %\VignetteEngine{knitr::knitr}
     %\VignetteEncoding{UTF-8}
 ---
@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-*R packages*
+*Create an R package*
 
 Warning: If for any reason you can't get `usethis::use_github()` to work, then
 skip to the end of the page and follow the 

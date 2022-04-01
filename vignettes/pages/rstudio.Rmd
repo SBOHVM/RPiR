@@ -18,6 +18,10 @@ knitr::opts_chunk$set(
 )
 ```
 
+*Use git in RStudio*
+
+## Connect your GitHub repository to an RStudio project
+
 This guide assumes you have a GitHub repository all set up. If you need help
 doing that, there's another guide 
 [here](https://ibahcm.github.io/RPiR/articles/pages/github.html) that will take you through it. 
@@ -76,7 +80,7 @@ important.
 knitr::include_graphics('images/use-github-08.png')
 ```
 
-## Using Git in RStudio
+## How to use Git in RStudio
 
 Compare the contents of your working directory to the files listed in the
 <span style="color: #de77ae;">Git</span> tab. The 

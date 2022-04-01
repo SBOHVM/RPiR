@@ -1,0 +1,263 @@
+---
+title: "Tips and tricks"
+date: '`r format(Sys.Date(), "%B %d %Y")`'
+output:
+  rmarkdown::html_vignette:
+  toc: true
+  toc_depth: 2
+  vignette: >
+    %\VignetteIndexEntry{Tips and tricks}
+    %\VignetteEncoding{UTF-8}
+    %\VignetteEngine{knitr::knitr}
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## General
+
+-   Keyboard shortcuts:
+
+    +-------------+-----------------------------+--------------------------+
+    | Description | Mac                         | Windows                  |
+    +=============+=============================+==========================+
+    | Run lines   | `Command + Enter`           | `Ctrl + Enter`           |
+    | of code     |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | (Un)comment | `Command + Shift + C`       | `Ctrl + Shift + C`       |
+    | lines of    |                             |                          |
+    | code        |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | Insert a    | `Command + Shift + R`       | `Ctrl + Shift + R`       |
+    | foldable    |                             |                          |
+    | comments    |                             |                          |
+    | section     |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | Reindent    | `Command + I`               | `Ctrl + I`               |
+    | lines of    |                             |                          |
+    | code        |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | Reformat    | `Command + Shift + A`       | `Ctrl + Shift + A`       |
+    | lines of    |                             |                          |
+    | code        |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | Attempt     | `Tab`                       | `Tab`                    |
+    | code        |                             |                          |
+    | completion  |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | Clear the   | `Control + L`               | `Ctrl + L`               |
+    | console     |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | Insert an   | `Alt + -`                   | `Alt + -`                |
+    | assignment  |                             |                          | 
+    | operator,   |                             |                          | 
+    | `<-`        |                             |                          | 
+    +-------------+-----------------------------+--------------------------+
+    | Insert a    | `Command + Shift + M`       | `Ctrl + Shift + M`       |
+    | pipe        |                             |                          |
+    | operator,   |                             |                          |
+    | `%>%`       |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+    | Rename a    | `Command + Shift + M + Alt` | `Ctrl + Shift + M + Alt` |
+    | variable    |                             |                          |
+    | in scope    |                             |                          |
+    +-------------+-----------------------------+--------------------------+
+
+    > **Note:** If you are running R 4.1+ you can switch to the native
+    > pipe operator, `|>`. To do this to to Preferences \> Code and
+    > check the box "Use native pipe operator".
+
+    > **Note also:** An easy way to remember the Rename in scope shortcut is 
+    > `Pipe + Alt`.
+
+-   To encapsulate text in quotes or brackets, highlight the text, then
+    type `"` or `(`.
+
+-   To generate code used to recreate an object:
+
+    ```{r}
+    x <- data.frame(a = 2, b = 4)
+    y <- dput(x)
+    y
+    ```
+
+## Writing loops
+
+-   To generate a sequence of numbers to iterate over:
+
+    ```{r}
+    data <- c(1, 33, 100, 102)
+    seq_along(data)
+    ```
+
+    alternatively:
+
+    ```{r}
+    data <- data.frame(a = 1:3, b = 4:6)
+    seq_len(nrow(data))
+    ```
+
+-   To print a counter to the console:
+
+    ```{r}
+    for (i in 1:3) {
+      cat("\n", i)
+    }
+    ```
+
+    > **Note:** `\n` moves the "print head" to a new line, whereas `\r`
+    > will move it back to the start of the same line.
+
+## Command history
+
+-   Keyboard shortcuts (from the console):
+
+    +------------------------+----------------------+--------------------+
+    | Description            | Mac                  | Windows            |
+    +========================+======================+====================+
+    | Cycle through previous | `Up arrow`           |                    |
+    | commands               |                      |                    |
+    +------------------------+----------------------+--------------------+
+    | Show previous commands | `Command + Up arrow` |                    |
+    +------------------------+----------------------+--------------------+
+    | Auto-complete commands | `Control + R`        |                    |  
+    | (from previous)        |                      |                    |
+    +------------------------+----------------------+--------------------+
+    
+## Writing functions
+
+-   To generate a function skeleton as a code snippet, type `fun` then
+    hit tab and return (to select the snippet):
+
+    ```{r}
+    name <- function(variables) {
+
+    }
+    ```
+
+    Keep hitting tab to move from `name` to `variables` to the `body` of
+    the function.
+    
+-   Function extraction -- to turn a chunk of code into a function, highlight
+    a chunk of code, then press `Control + Alt + X` on Mac (or Windows) and
+    enter a suitable function name when prompted. In doing so, this:
+
+    ```{r, eval = FALSE}
+    x * y
+    ```
+
+    turns into this:
+
+    ```{r}
+    multiply <- function(x, y) {
+    x * y
+    }
+    ```
+
+    > **Note:** You can make your own custom code snippets in Tools > Global 
+    > Options > Code and clicking Edit Snippets in the Snippets section.
+
+## Graphics
+
+-   To generate a sequence of evenly spaced values (useful when manually
+    defining axis breaks in `ggplot2`):
+
+    ```{r}
+    x <- c(0, 0.001, 1, 8)
+    pretty(x)
+    ```
+
+-   To list the names of built in colours:
+
+    ```{r}
+    x <- colors()
+    head(x)
+    ```
+
+## Packages
+
+-   Keyboard shortcuts:
+
+    +------------------+-----------------------+------------------------+
+    | Description      | Mac                   | Windows                |
+    +==================+=======================+========================+
+    | Document package | `Command + Shift + D` | `Ctrl + Shift + D`     |
+    +------------------+-----------------------+------------------------+
+
+## Search
+
+-   To select the path of a file in your current directory, hit Tab
+    inside of:
+
+    ```{r, eval = FALSE}
+    ""
+    ```
+
+-   To locate files relative to your project root, after installing the
+    `here` package:
+
+    ```{r}
+    library(here)
+    here("R", "assert_no_globals.R")
+    ```
+
+-   Keyboard shortcuts:
+
+    +-------------------------+-----------------------+--------------------+
+    | Description             | Mac                   | Windows            |
+    +=========================+=======================+====================+
+    | Find files / functions  | `Control + .`         | `Ctrl + .`         |
+    +-------------------------+-----------------------+--------------------+
+    | Search all files in a   | `Command + Shift + F` |                    |
+    | directory / project     |                       |                    |
+    +-------------------------+-----------------------+--------------------+
+
+## Miscellaneous
+
+-   Keyboard shortcuts:
+
+    +-----------------------+-------------------------+--------------------+
+    | Description           | Mac                     | Windows            |
+    +=======================+=========================+====================+
+    | Show command palette  | `Command + Shift + P`   | `Ctrl + Shift + P` |
+    +-----------------------+-------------------------+--------------------+
+    | Keyboard shortcut     | `Alt + Shift + K`       |                    |
+    | reference             |                         |                    |
+    +-----------------------+-------------------------+--------------------+
+    | Zoom in on an RStudio | `Control + Shift + 1-4` |                    |
+    | panel                 |                         |                    |
+    +-----------------------+-------------------------+--------------------+
+    
+-   To find RMarkdown cheat sheets in RStudio, go to Help \> Cheat
+    Sheets \> R Markdown Reference Guide. You can also find cheat sheets
+    for `dplyr`, `ggplot2`, and `devtools` here.
+
+-   To automatically load packages on startup / restarting R:
+
+    1.  Create an `.Rprofile` file in your project root
+    2.  Fill it with anything you want loaded on startup
+
+    > Note that you should not use this to load in packages used in your
+    > analyses, such as `dplyr` or `ggplot2`.
+
+    A useful example might be:
+
+    ```{r}
+    library(devtools, quietly = TRUE)
+    ```
+
+    However, you can also populate it with any helper functions you
+    might regularly use, or even R fortunes.
+
+-   To generate an R fortune, after installing `fortunes`:
+
+    ```{r, eval = FALSE}
+    fortune()
+    ```
