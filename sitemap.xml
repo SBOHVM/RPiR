@@ -16,6 +16,9 @@
     <loc>https://ibahcm.github.io/RPiR/articles/index.html</loc>
   </url>
   <url>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/debugging.html</loc>
+  </url>
+  <url>
     <loc>https://ibahcm.github.io/RPiR/articles/pages/devtools.html</loc>
   </url>
   <url>
@@ -37,6 +40,9 @@
     <loc>https://ibahcm.github.io/RPiR/articles/pages/loops.html</loc>
   </url>
   <url>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/notebooks.html</loc>
+  </url>
+  <url>
     <loc>https://ibahcm.github.io/RPiR/articles/pages/packages.html</loc>
   </url>
   <url>
@@ -50,6 +56,9 @@
   </url>
   <url>
     <loc>https://ibahcm.github.io/RPiR/articles/pages/rstudio.html</loc>
+  </url>
+  <url>
+    <loc>https://ibahcm.github.io/RPiR/articles/pages/tips.html</loc>
   </url>
   <url>
     <loc>https://ibahcm.github.io/RPiR/articles/pages/vscode_liveshare.html</loc>

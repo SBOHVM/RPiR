@@ -3077,6 +3077,10 @@ if (document.readyState !== "loading" &&
       display: list-item;
     }
 
+    details > summary > p:only-child {
+      display: inline;
+    }
+
     slides > slide {
       -webkit-transition: all 0.4s ease-in-out;
       -moz-transition: all 0.4s ease-in-out;
@@ -3124,7 +3128,7 @@ slide:not(.current) .plotly.html-widget{
 
 <slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>What???</h2></hgroup><article  id="what">
 
-</article></slide><slide class=""><hgroup><h2>What is a package?</h2></hgroup><article  id="what-is-a-package" class="flexbox vcenter">
+</article></slide><slide class=""><hgroup><h2>What is a package?</h2></hgroup><article  class="flexbox vcenter" id="what-is-a-package">
 
 <p><code>install.packages()</code></p>
 
@@ -3166,7 +3170,7 @@ slide:not(.current) .plotly.html-widget{
 
 </center>
 
-</article></slide><slide class=""><hgroup><h2>To keep your code consistent</h2></hgroup><article  id="to-keep-your-code-consistent" class="flexbox vcenter">
+</article></slide><slide class=""><hgroup><h2>To keep your code consistent</h2></hgroup><article  class="flexbox vcenter" id="to-keep-your-code-consistent">
 
 <center>
 
@@ -3176,7 +3180,7 @@ slide:not(.current) .plotly.html-widget{
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>How???</h2></hgroup><article  id="how">
 
-</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  id="section" class="flexbox vcenter">
+</article></slide><slide class=""><hgroup><h2></h2></hgroup><article  class="flexbox vcenter" id="section">
 
 <center>
 
@@ -3186,7 +3190,7 @@ slide:not(.current) .plotly.html-widget{
 
 </article></slide><slide class="segue dark nobackground level1"><hgroup class = 'auto-fadein'><h2>What you’re going to do</h2></hgroup><article  id="what-youre-going-to-do">
 
-</article></slide><slide class=""><hgroup><h2>Practical 3-1</h2></hgroup><article  id="practical-3-1" class="smaller">
+</article></slide><slide class=""><hgroup><h2>Practical 3-1</h2></hgroup><article  class="smaller" id="practical-3-1">
 
 <ul>
 <li>Create a package

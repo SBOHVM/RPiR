@@ -241,6 +241,7 @@ if (window.hljs) {
 
 
 
+
 <style type="text/css">
 .main-container {
   max-width: 940px;
@@ -261,6 +262,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -472,7 +476,7 @@ run_simple &lt;- function(step_function, latest.df, end.time, ...)
 <li>How many infections have occurred if there are 50 animals and there is a probability of infection of 0.1 for each one?</li>
 </ul>
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
-<pre><code>## [1] 1</code></pre>
+<pre><code>## [1] 6</code></pre>
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
 <pre><code>## [1] 3</code></pre>
 </div>

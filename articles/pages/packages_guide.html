@@ -4,353 +4,197 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>R Packages • RPiR</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/lumen/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../../bootstrap-toc.css">
-<script src="../../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="RPiR">
+<title>Reference - R Packages • RPiR</title>
+<script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
+<script src="../../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../../pkgdown.css" rel="stylesheet">
-<script src="../../pkgdown.js"></script><meta property="og:title" content="R Packages">
+<!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Reference - R Packages">
 <meta property="og:description" content="RPiR">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body data-spy="scroll" data-target="#toc">
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
     
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../../index.html">RPiR</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.75.1</span>
-      </span>
-    </div>
+    <nav class="navbar fixed-top navbar-light navbar-expand-lg bg-light"><div class="container">
+    
+    <a class="navbar-brand me-2" href="../../index.html">RPiR</a>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-chalkboard-teacher"></span>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.75.1</small>
+
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--lectures-slides-">
+    <span class="fas fa fas fa-chalkboard-teacher"></span>
      
     Lectures (slides)
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../../lectures/RPiR1-intro.html">RPiR1-intro</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR2a-R.html">RPiR2a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR2b-modelling.html">RPiR2b-modelling</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR2c-development.html">RPiR2c-development</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR3a-git.html">RPiR3a-git</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR4a-R.html">RPiR4a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR4b-reporting.html">RPiR4b-reporting</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR4c-modelling.html">RPiR4c-modelling</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR5a-R.html">RPiR5a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR8a-packages.html">RPiR8a-packages</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR8c-R.html">RPiR8c-R</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR11a-data.html">RPiR11a-data</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR11b-diversity.pdf">RPiR11b-diversity (pdf)</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR12a-programming.html">RPiR12a-programming</a>
-    </li>
-    <li>
-      <a href="../../lectures/RPiR13a-diversity.html">RPiR13a-diversity</a>
-    </li>
-  </ul>
+  <div class="dropdown-menu" aria-labelledby="dropdown--lectures-slides-">
+    <a class="dropdown-item" href="../../lectures/RPiR1-intro.html">RPiR1-intro</a>
+    <a class="dropdown-item" href="../../lectures/RPiR2a-R.html">RPiR2a-R</a>
+    <a class="dropdown-item" href="../../lectures/RPiR2b-modelling.html">RPiR2b-modelling</a>
+    <a class="dropdown-item" href="../../lectures/RPiR2c-development.html">RPiR2c-development</a>
+    <a class="dropdown-item" href="../../lectures/RPiR3a-git.html">RPiR3a-git</a>
+    <a class="dropdown-item" href="../../lectures/RPiR4a-R.html">RPiR4a-R</a>
+    <a class="dropdown-item" href="../../lectures/RPiR4b-reporting.html">RPiR4b-reporting</a>
+    <a class="dropdown-item" href="../../lectures/RPiR4c-modelling.html">RPiR4c-modelling</a>
+    <a class="dropdown-item" href="../../lectures/RPiR5a-R.html">RPiR5a-R</a>
+    <a class="dropdown-item" href="../../lectures/RPiR7a-R.html">RPiR7a-R</a>
+    <a class="dropdown-item" href="../../lectures/RPiR8a-packages.html">RPiR8a-packages</a>
+    <a class="dropdown-item" href="../../lectures/RPiR8b-randomness.pdf">RPiR8b-randomness (pdf)</a>
+    <a class="dropdown-item" href="../../lectures/RPiR8c-R.html">RPiR8c-R</a>
+    <a class="dropdown-item" href="../../lectures/RPiR8d-development.pdf">RPiR8d-development (pdf)</a>
+    <a class="dropdown-item" href="../../lectures/RPiR11a-data.html">RPiR11a-data</a>
+    <a class="dropdown-item" href="../../lectures/RPiR11b-diversity.pdf">RPiR11b-diversity (pdf)</a>
+    <a class="dropdown-item" href="../../lectures/RPiR12a-programming.html">RPiR12a-programming</a>
+    <a class="dropdown-item" href="../../lectures/RPiR13a-diversity.html">RPiR13a-diversity</a>
+  </div>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-chalkboard-teacher"></span>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--lectures-html-">
+    <span class="fas fa fas fa-chalkboard-teacher"></span>
      
     Lectures (html)
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../../lectures_html/RPiR1-intro.html">RPiR1-intro</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR2a-R.html">RPiR2a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR2b-modelling.html">RPiR2b-modelling</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR2c-development.html">RPiR2c-development</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR3a-git.html">RPiR3a-git</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR4a-R.html">RPiR4a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR4b-reporting.html">RPiR4b-reporting</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR4c-modelling.html">RPiR4c-modelling</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR5a-R.html">RPiR5a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR8c-R.html">RPiR8c-R</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR11a-data.html">RPiR11a-data</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR12a-programming.html">RPiR12a-programming</a>
-    </li>
-    <li>
-      <a href="../../lectures_html/RPiR13a-diversity.html">RPiR13a-diversity</a>
-    </li>
-  </ul>
+  <div class="dropdown-menu" aria-labelledby="dropdown--lectures-html-">
+    <a class="dropdown-item" href="../../lectures_html/RPiR1-intro.html">RPiR1-intro</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR2a-R.html">RPiR2a-R</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR2b-modelling.html">RPiR2b-modelling</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR2c-development.html">RPiR2c-development</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR3a-git.html">RPiR3a-git</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR4a-R.html">RPiR4a-R</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR4b-reporting.html">RPiR4b-reporting</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR4c-modelling.html">RPiR4c-modelling</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR5a-R.html">RPiR5a-R</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR7a-R.html">RPiR7a-R</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR8a-packages.html">RPiR8a-packages</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR8c-R.html">RPiR8c-R</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR11a-data.html">RPiR11a-data</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR12a-programming.html">RPiR12a-programming</a>
+    <a class="dropdown-item" href="../../lectures_html/RPiR13a-diversity.html">RPiR13a-diversity</a>
+  </div>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="fas fa-chalkboard-teacher"></span>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--practicals-html-">
+    <span class="fas fa fas fa-chalkboard-teacher"></span>
      
     Practicals (html)
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../../tutorials/practical1-6/practical1-6.html">Practical1-6</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical2-1/practical2-1.html">Practical2-1</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical2-2/practical2-2.html">Practical2-2</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical2-3/practical2-3.html">Practical2-3</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical2-4/practical2-4.html">Practical2-4</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical3-1/practical3-1.html">Practical3-1</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical3-2/practical3-2.html">Practical3-2</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical3-3/practical3-3.html">Practical3-3</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical3-4/practical3-4.html">Practical3-4</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical3-5/practical3-5.html">Practical3-5</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical3-6/practical3-6.html">Practical3-6</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical4-1/practical4-1.html">Practical4-1</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical4-2/practical4-2.html">Practical4-2</a>
-    </li>
-    <li>
-      <a href="../../tutorials/practical4-3/practical4-3.html">Practical4-3</a>
-    </li>
-    <li>
-      <a href="../../tutorials/project0/project0.html">Project-Intro</a>
-    </li>
-    <li>
-      <a href="../../tutorials/project1/project1.html">Project1</a>
-    </li>
-    <li>
-      <a href="../../tutorials/project2/project2.html">Project2</a>
-    </li>
-    <li>
-      <a href="../../tutorials/project3/project3.html">Project3</a>
-    </li>
-    <li>
-      <a href="../../tutorials/project4/project4.html">Project4</a>
-    </li>
-    <li>
-      <a href="../../tutorials/project5/project5.html">Project5</a>
-    </li>
-  </ul>
+  <div class="dropdown-menu" aria-labelledby="dropdown--practicals-html-">
+    <a class="dropdown-item" href="../../tutorials/practical1-6/practical1-6.html">Practical1-6</a>
+    <a class="dropdown-item" href="../../tutorials/practical2-1/practical2-1.html">Practical2-1</a>
+    <a class="dropdown-item" href="../../tutorials/practical2-2/practical2-2.html">Practical2-2</a>
+    <a class="dropdown-item" href="../../tutorials/practical2-3/practical2-3.html">Practical2-3</a>
+    <a class="dropdown-item" href="../../tutorials/practical2-4/practical2-4.html">Practical2-4</a>
+    <a class="dropdown-item" href="../../tutorials/practical3-1/practical3-1.html">Practical3-1</a>
+    <a class="dropdown-item" href="../../tutorials/practical3-2/practical3-2.html">Practical3-2</a>
+    <a class="dropdown-item" href="../../tutorials/practical3-3/practical3-3.html">Practical3-3</a>
+    <a class="dropdown-item" href="../../tutorials/practical3-4/practical3-4.html">Practical3-4</a>
+    <a class="dropdown-item" href="../../tutorials/practical3-5/practical3-5.html">Practical3-5</a>
+    <a class="dropdown-item" href="../../tutorials/practical3-6/practical3-6.html">Practical3-6</a>
+    <a class="dropdown-item" href="../../tutorials/practical4-1/practical4-1.html">Practical4-1</a>
+    <a class="dropdown-item" href="../../tutorials/practical4-2/practical4-2.html">Practical4-2</a>
+    <a class="dropdown-item" href="../../tutorials/practical4-3/practical4-3.html">Practical4-3</a>
+    <a class="dropdown-item" href="../../tutorials/project0/project0.html">Project-Intro</a>
+    <a class="dropdown-item" href="../../tutorials/project1/project1.html">Project1</a>
+    <a class="dropdown-item" href="../../tutorials/project2/project2.html">Project2</a>
+    <a class="dropdown-item" href="../../tutorials/project3/project3.html">Project3</a>
+    <a class="dropdown-item" href="../../tutorials/project4/project4.html">Project4</a>
+    <a class="dropdown-item" href="../../tutorials/project5/project5.html">Project5</a>
+  </div>
 </li>
-<li>
-  <a href="https://github.com/IBAHCM/RPiR/discussions" class="external-link">
-    <span class="far fa-comments"></span>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--r">
+    <span class="fas fa fas fa-laptop-code"></span>
      
-    Discussion
+    R
   </a>
+  <div class="dropdown-menu" aria-labelledby="dropdown--r">
+    <a class="dropdown-item" href="../../articles/pages/loops.html">Loops -- for / while</a>
+    <a class="dropdown-item" href="../../articles/pages/flow.html">Flow control -- if / else and comparisons</a>
+    <a class="dropdown-item" href="../../articles/pages/functions.html">Functions</a>
+    <a class="dropdown-item" href="../../articles/pages/devtools.html">document(), install(), and library()</a>
+    <a class="dropdown-item" href="../../articles/debugging.html">Debugging</a>
+    <a class="dropdown-item" href="../../articles/pages/tips.html">Tips and tricks</a>
+  </div>
 </li>
-<li>
-  <a href="https://github.com/IBAHCM/RPiR/" class="external-link">
-    <span class="fab fa-github"></span>
-     
-    GitHub
-  </a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="far fa-file-code"></span>
-     
-    Reference
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../../reference/index.html">RPiR function reference</a>
-    </li>
-    <li>
-      <a href="../../articles/pages/reference.html">Reference materials</a>
-    </li>
-    <li class="dropdown-submenu">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Specific techniques</a>
-      <ul class="dropdown-menu" role="menu">
-<li>
-          <a href="../../articles/pages/loops.html">Loops -- for / while</a>
-        </li>
-        <li>
-          <a href="../../articles/pages/flow.html">Flow control -- if / else and comparisons</a>
-        </li>
-        <li>
-          <a href="../../articles/pages/functions.html">Functions</a>
-        </li>
-        <li>
-          <a href="../../articles/pages/packages.html">R Packages</a>
-        </li>
-        <li>
-          <a href="../../articles/pages/devtools.html">document(), install(), and library()</a>
-        </li>
-      </ul>
-</li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="far fa-file"></span>
+<li class="active nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown--guides">
+    <span class="far fa far fa-file-alt"></span>
      
     Guides
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../../articles/pages/preparation.html">Course preparation</a>
-    </li>
-    <li>
-      <a href="../../articles/pages/github.html">Create a repository on GitHub</a>
-    </li>
-    <li>
-      <a href="../../articles/pages/rstudio.html">RStudio projects and GitHub</a>
-    </li>
-    <li>
-      <a href="../../articles/pages/packages_guide.html">R Packages</a>
-    </li>
-  </ul>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    <span class="far fa-file"></span>
-     
-    Installation
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../../articles/pages/install_github.html">github</a>
-    </li>
-    <li>
-      <a href="../../articles/pages/install_RPiR.html">package</a>
-    </li>
-    <li>
-      <a href="../../articles/pages/vscode_liveshare.html">vscode</a>
-    </li>
-  </ul>
+  <div class="dropdown-menu" aria-labelledby="dropdown--guides">
+    <a class="dropdown-item" href="../../articles/pages/preparation.html">Course preparation - R</a>
+    <a class="dropdown-item" href="../../articles/pages/install_github.html">Course preparation - GitHub</a>
+    <a class="dropdown-item" href="../../articles/pages/install_RPiR.html">Course preparation - RPiR</a>
+    <a class="dropdown-item" href="../../articles/pages/github.html">GitHub repositories</a>
+    <a class="dropdown-item" href="../../articles/pages/rstudio.html">RStudio projects and GitHub</a>
+    <a class="dropdown-item" href="../../articles/pages/packages_guide.html">Create an R Package</a>
+    <a class="dropdown-item" href="../../articles/pages/packages.html">Reference - R Packages</a>
+    <a class="dropdown-item" href="../../articles/pages/notebooks.html">Reference - R Notebook</a>
+    <a class="dropdown-item" href="../../articles/pages/reference.html">Reference - General</a>
+    <a class="dropdown-item" href="../../articles/pages/vscode_liveshare.html">VS Code Live Share</a>
+  </div>
 </li>
       </ul>
-<ul class="nav navbar-nav navbar-right"></ul>
+<form class="form-inline my-2 my-lg-0" role="search">
+        <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../../search.json" id="search-input" placeholder="Search for" autocomplete="off">
+</form>
+
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="nav-link" href="../../reference/index.html">
+    <span class="fab fa fab fa-earlybirds"></span>
+     
+  </a>
+</li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/IBAHCM/RPiR/discussions">
+    <span class="far fa far fa-comments"></span>
+     
+  </a>
+</li>
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/IBAHCM/RPiR/">
+    <span class="fab fa fab fa-github"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
-<!--/.nav-collapse -->
+
+    
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><script src="packages_guide_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>R Packages</h1>
+
+<script src="packages_guide_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+  <main id="main"><div class="page-header">
+      <img src="" class="logo" alt=""><h1>Reference - R Packages</h1>
             
-            <h4 data-toc-skip class="date">January 06 2022</h4>
+            <h4 data-toc-skip class="date">April 01 2022</h4>
       
       
-      <div class="hidden name"><code>packages_guide.Rmd</code></div>
-
+      <div class="d-none name"><code>packages_guide.Rmd</code></div>
     </div>
 
     
     
-<p><em>R packages</em></p>
+<p><em>Create an R package</em></p>
 <p>Warning: If for any reason you can’t get <code><a href="https://usethis.r-lib.org/reference/use_github.html" class="external-link">usethis::use_github()</a></code> to work, then skip to the end of the page and follow the <a href="https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#alternative-setup">alternative setup</a> instructions.</p>
 <div class="section level2">
 <h2 id="package-structure">Package structure<a class="anchor" aria-label="anchor" href="#package-structure"></a>
@@ -575,33 +419,26 @@ Maintainer: The package maintainer &lt;yourself@somewhere.net&gt;</code></pre>
 <p>Go ahead and try to install my package. Try to run the demo.</p>
 <p>Note that if for some reason you can’t install a package using <code><a href="https://devtools.r-lib.org/reference/remote-reexports.html" class="external-link">install_github()</a></code>, you can clone a repository as you did <a href="https://ibahcm.github.io/RPiR/articles/pages/rstudio.html">here</a> and instead run <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install()</a></code> in the usual way.</p>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
+    <footer><div class="pkgdown-footer-left">
   <p></p>
 <p>Developed by Sonia Mitchell, Richard Reeve.</p>
 </div>
 
-<div class="pkgdown">
+<div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
   
-
 
   
 

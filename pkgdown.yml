@@ -1,8 +1,9 @@
 pandoc: 2.7.3
-pkgdown: 2.0.1
+pkgdown: 2.0.2
 pkgdown_sha: ~
 articles:
   faq: faq.html
+  debugging: pages/debugging.html
   devtools: pages/devtools.html
   flow: pages/flow.html
   functions: pages/functions.html
@@ -10,13 +11,15 @@ articles:
   install_RPiR: pages/install_RPiR.html
   install_github: pages/install_github.html
   loops: pages/loops.html
+  notebooks: pages/notebooks.html
   packages: pages/packages.html
   packages_guide: pages/packages_guide.html
   preparation: pages/preparation.html
   reference: pages/reference.html
   rstudio: pages/rstudio.html
+  tips: pages/tips.html
   vscode_liveshare: pages/vscode_liveshare.html
-last_built: 2022-01-06T22:19Z
+last_built: 2022-04-01T12:06Z
 urls:
   reference: https://ibahcm.github.io/RPiR/reference
   article: https://ibahcm.github.io/RPiR/articles
