@@ -133,10 +133,10 @@ Some text followed by an empty line, then a list.
 `+` or `*`)
 2. Write an equation by encapsulating an expression in `$`
 3. For instance:
-- $D = x^2$
-- $E = sin(q)$
+   - $D = x^2$
+   - $E = sin(q)$
 4. Note that you need an indent to make a sub-list
-a. Like this!
+   a. Like this!
 
 More text after an empty line.
 :::

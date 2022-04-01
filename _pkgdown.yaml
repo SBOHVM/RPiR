@@ -179,6 +179,8 @@ navbar:
         href: articles/pages/functions.html
       - text: document(), install(), and library()
         href: articles/pages/devtools.html
+      - text: Debugging
+        href: articles/debugging.html
       - text: Tips and tricks
         href: articles/pages/tips.html
 

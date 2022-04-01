@@ -44,11 +44,12 @@
 #' A list: second level header
 #' ---------------------------
 
-#' 1. Lists are started by numbers (note that any number will do) or -, + or *
-#' 1. Write an equation using $ lhs = rhs $ with no space after the first $
+#' 1. Lists are started by numbers (note that any number will do) or `-`,
+#'    `+` or `*`
+#' 1. Write an equation by encapsulating an expression in `$`
 #' 1. For instance:
-#'      - $D = sin(q)$
-#'      - $E = sin(q/10)$
+#'      - `$D = sin(q)$` results in $D = sin(q)$; and
+#'      - `$E = sin(q/10)$` gives $E = sin(q/10)$
 #' 4. Note that you need three tabs to have a sub-list as above.
 #'
 
@@ -56,9 +57,12 @@
 
 x <- 2
 y <- (3 + x)^2
-## R comments just appear as normal
+
+# R comments just appear as normal
+
 y
-## Note that outputs appear with ## before them for some reason!
+
+# but outputs appear with ## before them.
 
 #' Comments can also include R, so $y = (3+x)^2$ =
 {{y}}
@@ -66,6 +70,7 @@ y
 
 #'
 #' ### Now some simple figures: third level header
+
 q <- 0:100
 D <- sin(q)
 plot(q, D)
@@ -73,9 +78,11 @@ plot(q, D)
 #' ### And a sub-figure of a specific size
 #'
 #+ fig.width=5, fig.height=5, fig.cap="Figure 2: some sine curves"
+
 E <- sin(q/10)
 plot(q, E, type='l')
 lines(q, D, col=2, lty=2)
+
 #' Sadly, figure and other options are poorly documented,
 #' but we've provided some help sheets if you want to use them (not compulsory!)
 #'
@@ -88,9 +95,11 @@ x = rnorm(n)
 mean(x)
 var(x)
 
-## Here we calculate a couple of simple equations using the data
-## We want to stop writing out the strange ## code before outputs
+# Here we calculate a couple of simple equations using the data
+# We want to stop writing out the strange ## code before outputs
+
 #+ comment=""
+
 sum(x) / n
 sum((x - mean(x))^2) / (n - 1)
 
@@ -113,5 +122,5 @@ sum((x - mean(x))^2) / (n - 1)
 #' [here](https://en.wikipedia.org/wiki/Help:Displaying_a_formula#Formatting_using_TeX).
 #'
 
-## Note that the uncommented output stops after the next text block
+# Note that the uncommented output stops after the next text block
 mean(x) / var(x)
