@@ -149,55 +149,148 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this practical we will write some code to run a simple epidemiological model – the Susceptible-Infected-Susceptible or SIS model. From these results we will report on the transmission of E. coli O157 in cattle.</em></p>
+<p><em>In this practical we will write some code to run a simple
+epidemiological model – the Susceptible-Infected-Susceptible or SIS
+model. From these results we will report on the transmission of E. coli
+O157 in cattle.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>We have now built a simple population dynamics model, but the framework we are using is capable of handling much more. We will start with the simplest model of infectious disease dynamics – the SIS model – that we covered in the epidemiology lecture.</p>
-<p>The SIS model requires two populations (of susceptible and infected animals) to replace the single population we have used so far. Susceptibles, <span class="math inline">\(S\)</span>, and infecteds, <span class="math inline">\(I\)</span>, are updated as follows:</p>
-<p><span class="math display">\[S(t+1) = S(t) - \beta \times \frac{S(t) \times I(t)}{N} + \sigma \times I(t)\]</span> <span class="math display">\[I(t+1) = I(t) + \beta \times \frac{S(t) \times I(t)}{N} - \sigma \times I(t)\]</span></p>
-<p>where the total population, <span class="math inline">\(N = S(t) + I(t)\)</span>, the sum of the number of susceptibles and infecteds is constant.</p>
-<p>As we said earlier, it is a good idea to use descriptive names in your code to avoid confusion, so we will call the two populations <code>susceptibles</code> and <code>infecteds</code> - these will be the column names in your data frame. The two epidemiological parameters are <span class="math inline">\(\beta\)</span> (beta, the transmission rate) and <span class="math inline">\(\sigma\)</span> (sigma, the recovery rate) – these Greek letters are almost universally used as the names of basic transmission and recovery rates in epidemiology. However, unless you’re doing a lot of epidemiology, this isn’t obvious. In any event, in our function definition we will give them descriptive names again, calling them generically <code>transmission.rate</code> and <code>recovery.rate</code> in the function definition, and in the script we will be more specific and call them <code>ecoli.transmission</code> and <code>ecoli.recovery</code> since this is the disease we are going to be modelling (it also avoids reusing the same variable names). The reason we’re doing it this way round is that the function can work for any disease model, but the script is specifically for <em>E Coli</em>.</p>
+<p>We have now built a simple population dynamics model, but the
+framework we are using is capable of handling much more. We will start
+with the simplest model of infectious disease dynamics – the SIS model –
+that we covered in the epidemiology lecture.</p>
+<p>The SIS model requires two populations (of susceptible and infected
+animals) to replace the single population we have used so far.
+Susceptibles, <span class="math inline">\(S\)</span>, and infecteds,
+<span class="math inline">\(I\)</span>, are updated as follows:</p>
+<p><span class="math display">\[S(t+1) = S(t) - \beta \times \frac{S(t)
+\times I(t)}{N} + \sigma \times I(t)\]</span> <span
+class="math display">\[I(t+1) = I(t) + \beta \times \frac{S(t) \times
+I(t)}{N} - \sigma \times I(t)\]</span></p>
+<p>where the total population, <span class="math inline">\(N = S(t) +
+I(t)\)</span>, the sum of the number of susceptibles and infecteds is
+constant.</p>
+<p>As we said earlier, it is a good idea to use descriptive names in
+your code to avoid confusion, so we will call the two populations
+<code>susceptibles</code> and <code>infecteds</code> - these will be the
+column names in your data frame. The two epidemiological parameters are
+<span class="math inline">\(\beta\)</span> (beta, the transmission rate)
+and <span class="math inline">\(\sigma\)</span> (sigma, the recovery
+rate) – these Greek letters are almost universally used as the names of
+basic transmission and recovery rates in epidemiology. However, unless
+you’re doing a lot of epidemiology, this isn’t obvious. In any event, in
+our function definition we will give them descriptive names again,
+calling them generically <code>transmission.rate</code> and
+<code>recovery.rate</code> in the function definition, and in the script
+we will be more specific and call them <code>ecoli.transmission</code>
+and <code>ecoli.recovery</code> since this is the disease we are going
+to be modelling (it also avoids reusing the same variable names). The
+reason we’re doing it this way round is that the function can work for
+any disease model, but the script is specifically for <em>E
+Coli</em>.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
 <div id="section-technical-setup" class="section level3">
 <h3>Technical setup</h3>
-<p>The first thing to do is to create a new GitHub repository and RStudio project for this practical. Do this following the <em>how to</em> instructions on the <a href="https://sbohvm.github.io/RPiR/articles/pages/github.html">GitHub documentation pages</a> that you used for the last practical, putting the repository in the <a href="https://github.com/SBOHVM">SBOHVM</a> organisation again, as before. Call this project <code>githubusernameSeries02</code> (obviously use your real GitHub username!). You’ll use this single project for all of the exercises in this practical series. If you are already in a coding group, then add the specific people that need to be added to your repository on GitHub in <strong>Settings</strong> -&gt; <strong>Manage access</strong> -&gt; <strong>Add people</strong> and just type in their GitHub usernames (no @ sign). Give them read access. If you don’t have a group yet, ask the instructors which one you should join.</p>
+<p>The first thing to do is to create a new GitHub repository and
+RStudio project for this practical. Do this following the <em>how
+to</em> instructions on the <a
+href="https://sbohvm.github.io/RPiR/articles/pages/github.html">GitHub
+documentation pages</a> that you used for the last practical, putting
+the repository in the <a href="https://github.com/SBOHVM">SBOHVM</a>
+organisation again, as before. Call this project
+<code>githubusernameSeries02</code> (obviously use your real GitHub
+username!). You’ll use this single project for all of the exercises in
+this practical series. If you are already in a coding group, then add
+the specific people that need to be added to your repository on GitHub
+in <strong>Settings</strong> -&gt; <strong>Manage access</strong> -&gt;
+<strong>Add people</strong> and just type in their GitHub usernames (no
+@ sign). Give them read access. If you don’t have a group yet, ask the
+instructors which one you should join.</p>
 </div>
 <div id="section-coding" class="section level3">
 <h3>Coding</h3>
-<p>Create a new R file, using <span style="color: #dd1c77;">File &gt; New &gt; R Script</span>. You should adapt the code from Practical 1-5 (remember you now have a project with all of this code in, and it is easy to have two RStudio sessions so you can copy and refer to earlier code easily), creating 2 files – <span style="color: #dd1c77;">0201-run-SIS.R</span> and <span style="color: #dd1c77;">0201-step-SIS.R</span> – but where in 1-5 the data frame had only a <code>count</code> column, now you will need to have two – <code>susceptibles</code> and <code>infecteds</code>. You <strong>do not</strong> need to have the total population size (<code>N</code>, above) in there, because at every step it is just <code>susceptibles + infecteds</code>. In fact, with no death in this model, it is just constant. You could for instance start things up with:</p>
+<p>Create a new R file, using <span style="color: #dd1c77;">File &gt;
+New &gt; R Script</span>. You should adapt the code from Practical 1-5
+(remember you now have a project with all of this code in, and it is
+easy to have two RStudio sessions so you can copy and refer to earlier
+code easily), creating 2 files – <span
+style="color: #dd1c77;">0201-run-SIS.R</span> and <span
+style="color: #dd1c77;">0201-step-SIS.R</span> – but where in 1-5 the
+data frame had only a <code>count</code> column, now you will need to
+have two – <code>susceptibles</code> and <code>infecteds</code>. You
+<strong>do not</strong> need to have the total population size
+(<code>N</code>, above) in there, because at every step it is just
+<code>susceptibles + infecteds</code>. In fact, with no death in this
+model, it is just constant. You could for instance start things up
+with:</p>
 <pre class="r"><code>num.cattle &lt;- 100
 initial.infecteds &lt;- 2
 initial.susceptibles &lt;- num.cattle - initial.infecteds</code></pre>
-<p>This allows us to easily keep the things we want to fixed, in this case the total population size, while allowing us to vary the things we are investigating. Writing the code to make this as easy as possible makes it harder to make mistakes, and that is always a good thing!</p>
-<p>Once we’ve done that, we can create the data frame with those values – this is the initial state of the population when we start the simulation:</p>
+<p>This allows us to easily keep the things we want to fixed, in this
+case the total population size, while allowing us to vary the things we
+are investigating. Writing the code to make this as easy as possible
+makes it harder to make mistakes, and that is always a good thing!</p>
+<p>Once we’ve done that, we can create the data frame with those values
+– this is the initial state of the population when we start the
+simulation:</p>
 <pre class="r"><code>herd.df &lt;- data.frame(susceptibles = initial.susceptibles,
                       infecteds = initial.infecteds)</code></pre>
-<p>Then we call the new step function with the current population and the parameters:</p>
+<p>Then we call the new step function with the current population and
+the parameters:</p>
 <pre class="r"><code>next.population &lt;- step_deterministic_SIS(latest = tail(herd.df, 1), 
                                           transmission.rate = ecoli.transmission,
                                           recovery.rate = ecoli.recovery)</code></pre>
-<p>If you are finding writing this code difficult, just ask, but remember that your function should:</p>
+<p>If you are finding writing this code difficult, just ask, but
+remember that your function should:</p>
 <ul>
-<li>take in a data frame with the latest population sizes and the parameters of the model;</li>
-<li>calculate the next numbers of susceptibles and infecteds from the latest (most recent) numbers and the parameters using the formulae above; and then</li>
-<li>return a data frame with these updated values to the main script.</li>
+<li>take in a data frame with the latest population sizes and the
+parameters of the model;</li>
+<li>calculate the next numbers of susceptibles and infecteds from the
+latest (most recent) numbers and the parameters using the formulae
+above; and then</li>
+<li>return a data frame with these updated values to the main
+script.</li>
 </ul>
 </div>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
-<p>Run the code in <span style="color: #dd1c77;">0201-run-SIS.R</span>. Remember that the <code>source()</code> command means that it automatically loads in <span style="color: #dd1c77;">0201-step-SIS.R</span>, meaning that you don’t need to load these files yourself. Don’t forget to check that your function is not using any global variables. Check that you get the same results as you saw in the lecture. Adding the argument <code>col = c("green", "red")</code> to <code>plot.populations()</code> will allow you to change the colours of the (now) two populations in the plot to match those from the lecture.</p>
+<p>Run the code in <span style="color: #dd1c77;">0201-run-SIS.R</span>.
+Remember that the <code>source()</code> command means that it
+automatically loads in <span
+style="color: #dd1c77;">0201-step-SIS.R</span>, meaning that you don’t
+need to load these files yourself. Don’t forget to check that your
+function is not using any global variables. Check that you get the same
+results as you saw in the lecture. Adding the argument
+<code>col = c("green", "red")</code> to <code>plot.populations()</code>
+will allow you to change the colours of the (now) two populations in the
+plot to match those from the lecture.</p>
 </div>
 <div id="section-the-science" class="section level2">
 <h2>The science</h2>
-<p>Remember from the lecture that the <strong>basic reproduction number</strong>, <span class="math inline">\(R_0\)</span>, is given by</p>
+<p>Remember from the lecture that the <strong>basic reproduction
+number</strong>, <span class="math inline">\(R_0\)</span>, is given
+by</p>
 <p><span class="math display">\[R_0 = \frac{\beta}{\sigma}\]</span></p>
-<p>By changing the transmission rate, <span class="math inline">\(\beta\)</span>, try running simulations for different values of <span class="math inline">\(R_0\)</span>. What happens when <span class="math inline">\(R_0 &gt; 1\)</span> and when <span class="math inline">\(R_0 &lt; 1\)</span>? Run the simulations for different values of the transmission rate (as suggested in the table below) with the default value of the recovery rate, <span class="math inline">\(\sigma\)</span>, set to <span class="math inline">\(\frac{1}{3}\)</span>. Calculate and record the corresponding value of <span class="math inline">\(R_0\)</span> using the formula, which we can rewrite as:</p>
+<p>By changing the transmission rate, <span
+class="math inline">\(\beta\)</span>, try running simulations for
+different values of <span class="math inline">\(R_0\)</span>. What
+happens when <span class="math inline">\(R_0 &gt; 1\)</span> and when
+<span class="math inline">\(R_0 &lt; 1\)</span>? Run the simulations for
+different values of the transmission rate (as suggested in the table
+below) with the default value of the recovery rate, <span
+class="math inline">\(\sigma\)</span>, set to <span
+class="math inline">\(\frac{1}{3}\)</span>. Calculate and record the
+corresponding value of <span class="math inline">\(R_0\)</span> using
+the formula, which we can rewrite as:</p>
 <pre class="r"><code>R0 &lt;- ecoli.transmission / ecoli.recovery</code></pre>
-<p>Either using your plots or by asking R to print out the data frame <code>population</code> work out the proportion of the population susceptible at equilibrium and compare it with the value of <span class="math inline">\(\frac{1}{R_0}\)</span>.</p>
+<p>Either using your plots or by asking R to print out the data frame
+<code>population</code> work out the proportion of the population
+susceptible at equilibrium and compare it with the value of <span
+class="math inline">\(\frac{1}{R_0}\)</span>.</p>
 <table>
 <colgroup>
 <col width="20%" />
@@ -207,10 +300,14 @@ initial.susceptibles &lt;- num.cattle - initial.infecteds</code></pre>
 </colgroup>
 <thead>
 <tr class="header">
-<th align="center">Transmission <br> rate, <span class="math inline">\(\beta\)</span></th>
-<th align="center">Basic reproduction number, <span class="math inline">\(R_0\)</span></th>
-<th align="center">Proportion susceptible <br> at equilibrium, <span class="math inline">\(\frac{S}{N}\)</span></th>
-<th align="center">Inverse <span class="math inline">\(R_0\)</span>, <br> <span class="math inline">\(\frac{1}{R_0}\)</span></th>
+<th align="center">Transmission <br> rate, <span
+class="math inline">\(\beta\)</span></th>
+<th align="center">Basic reproduction number, <span
+class="math inline">\(R_0\)</span></th>
+<th align="center">Proportion susceptible <br> at equilibrium, <span
+class="math inline">\(\frac{S}{N}\)</span></th>
+<th align="center">Inverse <span class="math inline">\(R_0\)</span>,
+<br> <span class="math inline">\(\frac{1}{R_0}\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -240,24 +337,66 @@ initial.susceptibles &lt;- num.cattle - initial.infecteds</code></pre>
 </tr>
 </tbody>
 </table>
-<p>Remember that throughout this series of exercises, the total population size, <span class="math inline">\(N\)</span> is fixed, but can be easily calculated from the different parts of the population so you never need to pass it as an argument or store it in the data frame.</p>
+<p>Remember that throughout this series of exercises, the total
+population size, <span class="math inline">\(N\)</span> is fixed, but
+can be easily calculated from the different parts of the population so
+you never need to pass it as an argument or store it in the data
+frame.</p>
 </div>
 <div id="section-report" class="section level2">
 <h2>Report</h2>
-<p>Adapt your script to generate a report which shows you running the model with at least a couple of different transmission rates and calculating different values for <span class="math inline">\(R_0\)</span> from the results with some explanation of what’s going on. You should also submit a table in Word or Excel with the above values filled in – just save it in the project folder. In particular for <em>E. coli O157</em> infections in cattle, for timesteps in weeks, the recovery rate is about <span class="math inline">\(\frac{1}{3}\)</span> and the transmission rate is 1.</p>
-<p>Optionally, try putting the table into the report (possibly using the <code>kable()</code> function in the <code>knitr</code> package). However, the table itself (in any form) is sufficient for assessment.</p>
+<p>Adapt your script to generate a report which shows you running the
+model with at least a couple of different transmission rates and
+calculating different values for <span
+class="math inline">\(R_0\)</span> from the results with some
+explanation of what’s going on. You should also submit a table in Word
+or Excel with the above values filled in – just save it in the project
+folder. In particular for <em>E. coli O157</em> infections in cattle,
+for timesteps in weeks, the recovery rate is about <span
+class="math inline">\(\frac{1}{3}\)</span> and the transmission rate is
+1.</p>
+<p>Optionally, try putting the table into the report (possibly using the
+<code>kable()</code> function in the <code>knitr</code> package).
+However, the table itself (in any form) is sufficient for
+assessment.</p>
 </div>
 <div id="section-github" class="section level2">
 <h2>GitHub</h2>
-<p>In this exercise, we want you to get a couple of other people to check your code and make sure it works for them, and we want you to check other people’s code too.</p>
+<p>In this exercise, we want you to get a couple of other people to
+check your code and make sure it works for them, and we want you to
+check other people’s code too.</p>
 <div id="section-getting-help-with-your-code" class="section level3">
 <h3>Getting help with your code</h3>
-<p>Once you’re happy with your code, commit your changes using the Git pane in RStudio (just commit the R files - not, for instance, any html files that were created by generating reports, though you may decide to commit a spreadsheet with the table in as well). Don’t forget then to push the changes to GitHub and check on the website that it contains your new code. Notify the partners we have allocated you that you have something for them to check. If you’re not sitting next to them, then you can create an issue in your repository asking for their review and/or talk to them on Zoom - you can contact them by tagging them in the message with <code>@theirusername</code>, and they should receive an email and a <a href="https://github.com/notifications">notification on the website</a>. They should then create an issue, telling you if they had any problems running your version of the practical.</p>
+<p>Once you’re happy with your code, commit your changes using the Git
+pane in RStudio (just commit the R files - not, for instance, any html
+files that were created by generating reports, though you may decide to
+commit a spreadsheet with the table in as well). Don’t forget then to
+push the changes to GitHub and check on the website that it contains
+your new code. Notify the partners we have allocated you that you have
+something for them to check. If you’re not sitting next to them, then
+you can create an issue in your repository asking for their review
+and/or talk to them on Zoom - you can contact them by tagging them in
+the message with <code>@theirusername</code>, and they should receive an
+email and a <a href="https://github.com/notifications">notification on
+the website</a>. They should then create an issue, telling you if they
+had any problems running your version of the practical.</p>
 </div>
 <div id="section-checking-other-peoples-code" class="section level3">
 <h3>Checking other people’s code</h3>
-<p>Likewise, when you hear from someone else that a repo is available to check, then open it using <span style="color: #dd1c77;">File &gt; New Project…</span>, then <em>Version Control</em>, <em>Git</em>, and then put in the URL from GitHub and tick <code>Open in New Session</code>. In the new RStudio session that is opened, you can then run their code and make sure it works. If it does not, just respond in the Issue that they opened on GitHub explaining what went wrong (though it might be easier to do this in person on Zoom if they are there). If it works, then you also need to respond saying so. If you have already checked their repo once already, then see the instructions in 2-2 for how to update your copy of it.</p>
-<p><strong>Interacting like this through GitHub to help each other will count as your engagement marks for the course.</strong> 
+<p>Likewise, when you hear from someone else that a repo is available to
+check, then open it using <span style="color: #dd1c77;">File &gt; New
+Project…</span>, then <em>Version Control</em>, <em>Git</em>, and then
+put in the URL from GitHub and tick <code>Open in New Session</code>. In
+the new RStudio session that is opened, you can then run their code and
+make sure it works. If it does not, just respond in the Issue that they
+opened on GitHub explaining what went wrong (though it might be easier
+to do this in person on Zoom if they are there). If it works, then you
+also need to respond saying so. If you have already checked their repo
+once already, then see the instructions in 2-2 for how to update your
+copy of it.</p>
+<p><strong>Interacting like this through GitHub to help each other will
+count as your engagement marks for the course.</strong>
+
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 
@@ -269,7 +408,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

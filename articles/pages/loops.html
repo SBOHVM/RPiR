@@ -182,7 +182,8 @@
 
 
 
-<script src="loops_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Loops</h1>
             
@@ -194,38 +195,68 @@
 
     
     
-<p>Loops allow you to repeat the same thing again and again. If you are doing something more than two or three times, you should instead use a loop to avoid having to copy and paste the same code over and over again. Since duplicating code risks not only mistyping or not copying correctly, but also of creating confusion by filling your R scripts with nearly identical chunks of code. There are fundamentally two kinds of loop:</p>
+<p>Loops allow you to repeat the same thing again and again. If you are
+doing something more than two or three times, you should instead use a
+loop to avoid having to copy and paste the same code over and over
+again. Since duplicating code risks not only mistyping or not copying
+correctly, but also of creating confusion by filling your R scripts with
+nearly identical chunks of code. There are fundamentally two kinds of
+loop:</p>
 <ul>
-<li>one where you know exactly how many times the loop will run, for instance because you’re running a chunk of code once for each element of a vector or row or column of a data frame; and</li>
-<li>one where you do not, because some part of your calculation in each step of the loop will determine whether to continue or to stop.</li>
+<li>one where you know exactly how many times the loop will run, for
+instance because you’re running a chunk of code once for each element of
+a vector or row or column of a data frame; and</li>
+<li>one where you do not, because some part of your calculation in each
+step of the loop will determine whether to continue or to stop.</li>
 </ul>
 <div class="section level2">
 <h2 id="for-----loops">
 <code>for (...)</code> loops<a class="anchor" aria-label="anchor" href="#for-----loops"></a>
 </h2>
-<p><code>for</code> loops allow us to repeat something <em>for</em> a fixed number of times (<em>e.g.</em> once per element of a vector, once per row of a data frame, <em>etc.</em>).</p>
+<p><code>for</code> loops allow us to repeat something <em>for</em> a
+fixed number of times (<em>e.g.</em> once per element of a vector, once
+per row of a data frame, <em>etc.</em>).</p>
 <p>They are called as:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">greetings</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Hello"</span>, <span class="st">"Goodbye"</span><span class="op">)</span></span>
 <span><span class="kw">for</span> <span class="op">(</span><span class="va">word</span> <span class="kw">in</span> <span class="va">greetings</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># body</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>and after each run through the loop, the variable (here <code>word</code>) is updated with the next element (here, in the vector <code>greetings</code>). We introduced for loops in week 1 and again in Lecture 5b and Practical A-1. They were then used from Practical 1-1 onwards.</p>
-<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html" class="external-link"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#for-loops" class="external-link">for loops</a>. For loops are also covered by R Coder <a href="https://r-coder.com/for-loop-r" class="external-link">here</a>.</p>
+<p>and after each run through the loop, the variable (here
+<code>word</code>) is updated with the next element (here, in the vector
+<code>greetings</code>). We introduced for loops in week 1 and again in
+Lecture 5b and Practical A-1. They were then used from Practical 1-1
+onwards.</p>
+<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html" class="external-link"><em>Iteration</em></a>)
+that covers <a href="https://r4ds.had.co.nz/iteration.html#for-loops" class="external-link">for loops</a>.
+For loops are also covered by R Coder <a href="https://r-coder.com/for-loop-r" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="while-----loops">
 <code>while (...)</code> loops<a class="anchor" aria-label="anchor" href="#while-----loops"></a>
 </h2>
-<p><code>while</code> loops allows us to repeat something <em>while</em> a condition is still <code>TRUE</code>. They are particularly useful when you don’t know in advance exactly how many times something will be done, but can be used in any situation. Unlike <code>for</code> loops though, you need to update everything manually each time around:</p>
+<p><code>while</code> loops allows us to repeat something <em>while</em>
+a condition is still <code>TRUE</code>. They are particularly useful
+when you don’t know in advance exactly how many times something will be
+done, but can be used in any situation. Unlike <code>for</code> loops
+though, you need to update everything manually each time around:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">test</span> <span class="op">&lt;-</span> <span class="fu">some_test</span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="kw">while</span> <span class="op">(</span><span class="va">test</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Do something</span></span>
 <span>  <span class="va">test</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/update.html" class="external-link">update</a></span><span class="op">(</span><span class="va">something</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p><code>test</code> is checked at the beginning of each iteration, and as long as <code>test</code> continues to be <code>TRUE</code>, the code block inside the curly brackets <code>{ ... }</code> is run. Be careful… if you don’t update <code>test</code> inside the curly brackets, your loop will continue forever! However, if (when!) <code>test</code> is finally <code>FALSE</code>, the loop will end and R will continue on to the next line of code after the loop.</p>
-<p>We introduced them in Lecture 6a, and used them from practical2-4 onwards. There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html" class="external-link"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length" class="external-link"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r" class="external-link">here</a>.</p>
+<p><code>test</code> is checked at the beginning of each iteration, and
+as long as <code>test</code> continues to be <code>TRUE</code>, the code
+block inside the curly brackets <code>{ ... }</code> is run. Be careful…
+if you don’t update <code>test</code> inside the curly brackets, your
+loop will continue forever! However, if (when!) <code>test</code> is
+finally <code>FALSE</code>, the loop will end and R will continue on to
+the next line of code after the loop.</p>
+<p>We introduced them in Lecture 6a, and used them from practical2-4
+onwards. There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html" class="external-link"><em>Iteration</em></a>)
+that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length" class="external-link"><code>while</code>
+loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r" class="external-link">here</a>.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

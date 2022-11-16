@@ -149,24 +149,77 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this session we will start to think ahead about what kind of framework we will need when we move on to more complex models. We will build this framework (using data frames) in the context of our existing exponential growth model, and we will separate out another potentially complex element of the code – the plotting function – where we can refine it separately from the functionally important simulation code.</em></p>
+<p><em>In this session we will start to think ahead about what kind of
+framework we will need when we move on to more complex models. We will
+build this framework (using data frames) in the context of our existing
+exponential growth model, and we will separate out another potentially
+complex element of the code – the plotting function – where we can
+refine it separately from the functionally important simulation
+code.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>Our current model of growth of a population is held in the function <code>step_simple_growth()</code>, which has only one parameter (<code>growth.rate</code>) and one group of individuals (<code>current.population</code>). You could easily consider the amount of code and commenting that has gone into updating the latter with the former overkill.</p>
-<p>However, we are developing this code knowing that we are going to be moving on to significantly more complex models with multiple parameters (<em>e.g.</em> infection rate, recovery rate), and multiple groups (<em>e.g.</em> susceptible and infected individuals), more complex ways of updating the population structure (of which more later), and more sophisticated ways of displaying the results.</p>
-<p>With that in mind we are going to see how to make some of the structures in the code more general by introducing <strong>data frames</strong>, which are just R’s way of representing a table of data. Although the advantages of this are somewhat limited at the moment, they will be hopefully be clear when we move on to the epidemiological models.</p>
+<p>Our current model of growth of a population is held in the function
+<code>step_simple_growth()</code>, which has only one parameter
+(<code>growth.rate</code>) and one group of individuals
+(<code>current.population</code>). You could easily consider the amount
+of code and commenting that has gone into updating the latter with the
+former overkill.</p>
+<p>However, we are developing this code knowing that we are going to be
+moving on to significantly more complex models with multiple parameters
+(<em>e.g.</em> infection rate, recovery rate), and multiple groups
+(<em>e.g.</em> susceptible and infected individuals), more complex ways
+of updating the population structure (of which more later), and more
+sophisticated ways of displaying the results.</p>
+<p>With that in mind we are going to see how to make some of the
+structures in the code more general by introducing <strong>data
+frames</strong>, which are just R’s way of representing a table of data.
+Although the advantages of this are somewhat limited at the moment, they
+will be hopefully be clear when we move on to the epidemiological
+models.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>The task for this practical is to replace the vector <code>population.vector</code> with a one-column <strong>data frame</strong> named <code>population.df</code> with column name <code>count</code>. We want to end up with a population update function (which we have now called <code>step_deterministic_growth()</code> for consistency with later programs) that takes in a data frame containing the current population count and the <code>growth.rate</code> parameter and outputs a data frame containing the updated count. Rewrite the code throughout so that it uses a data frame instead of a vector – we have called these files <span style="color: #dd1c77;">0104-run-growth.R</span> and <span style="color: #dd1c77;">0104-step-growth.R</span>. Remember to use <code>data.frame()</code> to create a data frame and <code>rbind()</code> to append one onto another.</p>
-<p>So that we don’t need to worry about how to plot the outputs, we have provided a function called <code>plot_populations()</code> in the <code>RPiR</code> package which will take a data frame with any number of population columns and a single corresponding <code>time</code> column and plot them together in different colours with a legend indicating which line corresponds to which population. The RPiR package contains the function, so you will need to call <code>library(RPiR)</code> to load it. In order to use it you will need to add a column called <code>time</code> into your data frame with the times in it and then call:</p>
+<p>The task for this practical is to replace the vector
+<code>population.vector</code> with a one-column <strong>data
+frame</strong> named <code>population.df</code> with column name
+<code>count</code>. We want to end up with a population update function
+(which we have now called <code>step_deterministic_growth()</code> for
+consistency with later programs) that takes in a data frame containing
+the current population count and the <code>growth.rate</code> parameter
+and outputs a data frame containing the updated count. Rewrite the code
+throughout so that it uses a data frame instead of a vector – we have
+called these files <span
+style="color: #dd1c77;">0104-run-growth.R</span> and <span
+style="color: #dd1c77;">0104-step-growth.R</span>. Remember to use
+<code>data.frame()</code> to create a data frame and
+<code>rbind()</code> to append one onto another.</p>
+<p>So that we don’t need to worry about how to plot the outputs, we have
+provided a function called <code>plot_populations()</code> in the
+<code>RPiR</code> package which will take a data frame with any number
+of population columns and a single corresponding <code>time</code>
+column and plot them together in different colours with a legend
+indicating which line corresponds to which population. The RPiR package
+contains the function, so you will need to call
+<code>library(RPiR)</code> to load it. In order to use it you will need
+to add a column called <code>time</code> into your data frame with the
+times in it and then call:</p>
 <pre class="r"><code>plot_populations(population.df)</code></pre>
-<p>We will therefore be breaking the code into three sections <span style="color: #dd1c77;">0104-run-growth.R</span>, <span style="color: #dd1c77;">0104-step-growth.R</span> and the RPiR package which handle the mechanics, the model and the display respectively.</p>
-<p>We’ll start by working on the function, then go on to change the main script later.</p>
-<div id="section-changes-needed-to-update-0103-step-simple-growth.r-to-0104-step-growth.r" class="section level4">
-<h4>Changes needed to update 0103-step-simple-growth.R to 0104-step-growth.R</h4>
-<p>We’ve generated <span style="color: #dd1c77;">0104-step-growth.R</span> (from <span style="color: #dd1c77;">0103-step-simple-growth.R</span>) for you to edit:</p>
+<p>We will therefore be breaking the code into three sections <span
+style="color: #dd1c77;">0104-run-growth.R</span>, <span
+style="color: #dd1c77;">0104-step-growth.R</span> and the RPiR package
+which handle the mechanics, the model and the display respectively.</p>
+<p>We’ll start by working on the function, then go on to change the main
+script later.</p>
+<div
+id="section-changes-needed-to-update-0103-step-simple-growth.r-to-0104-step-growth.r"
+class="section level4">
+<h4>Changes needed to update 0103-step-simple-growth.R to
+0104-step-growth.R</h4>
+<p>We’ve generated <span
+style="color: #dd1c77;">0104-step-growth.R</span> (from <span
+style="color: #dd1c77;">0103-step-simple-growth.R</span>) for you to
+edit:</p>
 <pre class="r"><code>#&#39; ### Function: step_simple_growth() 
 #&#39; Run one step of a simple deterministic exponential growth model. 
 #&#39;
@@ -186,7 +239,8 @@ step_simple_growth &lt;- function(current.population, growth.rate) {
   next.population
 }</code></pre>
 <div id="section-step_deterministic_growth-hint">
-<p><strong>Hint:</strong> See the text below for details of how to do this.</p>
+<p><strong>Hint:</strong> See the text below for details of how to do
+this.</p>
 </div>
 <pre class="r"><code>#&#39; ### Function: step_deterministic_growth() 
 #&#39; Run one step of a simple deterministic exponential growth model. 
@@ -236,20 +290,49 @@ step_deterministic_growth &lt;- function(latest, growth.rate) {
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fc3830fca00&gt;
-## &lt;environment: 0x7fc37e34e930&gt;</code></pre>
-<p><span style="color: #dd1c77;">0104-step-growth.R</span> should contain the function doing the work in the simulation, <code>step_deterministic_growth()</code>, but with a few improvements to work in terms of a data frame rather than just a vector. So the first thing to do is change the name of the function.</p>
-<p>Next, we’ll rename the argument <code>current.population</code> to <code>latest</code>, being suitably generic to work in all future models even if they are not about population dynamics.</p>
-<p>We are now allowing the populations that are handled within this function to potentially contain several columns corresponding to different sets of individuals. Thus, <code>latest</code> is a data frame that contains a single row containing the latest population size for each of the component populations – in this case just the one, <code>count</code>. Therefore, to perform the update step we need to extract the actual population we are interested in. For this we use the <code>$</code> expression:</p>
+## &lt;bytecode: 0x7f899deef748&gt;
+## &lt;environment: 0x7f89a1716498&gt;</code></pre>
+<p><span style="color: #dd1c77;">0104-step-growth.R</span> should
+contain the function doing the work in the simulation,
+<code>step_deterministic_growth()</code>, but with a few improvements to
+work in terms of a data frame rather than just a vector. So the first
+thing to do is change the name of the function.</p>
+<p>Next, we’ll rename the argument <code>current.population</code> to
+<code>latest</code>, being suitably generic to work in all future models
+even if they are not about population dynamics.</p>
+<p>We are now allowing the populations that are handled within this
+function to potentially contain several columns corresponding to
+different sets of individuals. Thus, <code>latest</code> is a data frame
+that contains a single row containing the latest population size for
+each of the component populations – in this case just the one,
+<code>count</code>. Therefore, to perform the update step we need to
+extract the actual population we are interested in. For this we use the
+<code>$</code> expression:</p>
 <pre class="r"><code>new.additions &lt;- growth.rate * latest$count </code></pre>
-<p>In general if we have a data frame called <code>my.frame</code> then <code>my.frame$first.col</code> will give us the column called <code>first.col</code>. So in our example (although we only have one column) we want to extract the column called count from the data frame called latest with the expression <code>latest$count</code> and use its value for the update step.</p>
+<p>In general if we have a data frame called <code>my.frame</code> then
+<code>my.frame$first.col</code> will give us the column called
+<code>first.col</code>. So in our example (although we only have one
+column) we want to extract the column called count from the data frame
+called latest with the expression <code>latest$count</code> and use its
+value for the update step.</p>
 <p>Finally, the function should return a data frame, like this:</p>
 <pre class="r"><code>data.frame(count = next.count) </code></pre>
-<p>which will be assigned to whatever variable in the main script we choose, in this case <code>updated.population</code>.</p>
+<p>which will be assigned to whatever variable in the main script we
+choose, in this case <code>updated.population</code>.</p>
 </div>
-<div id="section-changes-needed-to-update-0103-run-simple-growth.r-to-0104-run-growth.r" class="section level4">
-<h4>Changes needed to update 0103-run-simple-growth.R to 0104-run-growth.R</h4>
-<p>For convenience, we’ve generated <span style="color: #dd1c77;">0104-run-growth.R</span> (from <span style="color: #dd1c77;">0103-run-simple-growth.R</span>) for you to edit. Note that, as before, <code>source()</code> has been commented out as it won’t work in the <code>learnr</code> environment. Instead, <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> and <span style="color: #dd1c77;">0104-step-growth.R</span> have been preloaded for you:</p>
+<div
+id="section-changes-needed-to-update-0103-run-simple-growth.r-to-0104-run-growth.r"
+class="section level4">
+<h4>Changes needed to update 0103-run-simple-growth.R to
+0104-run-growth.R</h4>
+<p>For convenience, we’ve generated <span
+style="color: #dd1c77;">0104-run-growth.R</span> (from <span
+style="color: #dd1c77;">0103-run-simple-growth.R</span>) for you to
+edit. Note that, as before, <code>source()</code> has been commented out
+as it won’t work in the <code>learnr</code> environment. Instead, <span
+style="color: #dd1c77;">0103-step-simple-growth-function.R</span> and
+<span style="color: #dd1c77;">0104-step-growth.R</span> have been
+preloaded for you:</p>
 <pre class="r"><code>library(RPiR)
 
 step_simple_growth &lt;- function(current.population, growth.rate) {
@@ -383,34 +466,92 @@ plot_populations(population.df)</code></pre>
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fc3830fca00&gt;
-## &lt;environment: 0x7fc381bf2e80&gt;</code></pre>
-<p>At the beginning of the file, we should load the <code>RPiR</code> package, because we’re going to be using the <code>plot_populations()</code> function that it provides, so add that in first:</p>
+## &lt;bytecode: 0x7f899deef748&gt;
+## &lt;environment: 0x7f89a5e9b090&gt;</code></pre>
+<p>At the beginning of the file, we should load the <code>RPiR</code>
+package, because we’re going to be using the
+<code>plot_populations()</code> function that it provides, so add that
+in first:</p>
 <pre class="r"><code>library(RPiR)</code></pre>
-<p>Then read in function from the new file (though since we’re working in the <code>learnr</code> environment rather than RStudio you should comment this line out, since the file has been preloaded for you):</p>
+<p>Then read in function from the new file (though since we’re working
+in the <code>learnr</code> environment rather than RStudio you should
+comment this line out, since the file has been preloaded for you):</p>
 <pre class="r"><code>source(&quot;0104-step-growth.R&quot;)</code></pre>
-<p>With that done, the biggest change throughout <span style="color: #dd1c77;">0104-run-growth.R</span> (and <span style="color: #dd1c77;">0104-step-growth.R</span>) is that the population is now defined in terms of a data frame rather than as a vector. So setting it up will happen like this:</p>
+<p>With that done, the biggest change throughout <span
+style="color: #dd1c77;">0104-run-growth.R</span> (and <span
+style="color: #dd1c77;">0104-step-growth.R</span>) is that the
+population is now defined in terms of a data frame rather than as a
+vector. So setting it up will happen like this:</p>
 <pre class="r"><code>population.df &lt;- data.frame(count = initial.count)</code></pre>
-<p>A data frame is just R’s ways of referring to a table of data, so whereas our vector approach in the previous code would allow us to have a single list of values, the data frame will allow us to have several columns of data. Whilst this isn’t necessary for this piece of code the approach will be very useful when we are handling multiple populations (for example susceptible, infected and recovered individuals in an epidemiological model).</p>
-<p>Now we want to send the latest row of the data frame to the function <code>step_deterministic_growth()</code>, which we will define below. It turns out we do that exactly the same way (using <code>tail()</code>) as we did with vectors. Notice that we have changed the name of the first parameter to something generic which will work in all future models even if they are not about population dynamics.</p>
+<p>A data frame is just R’s ways of referring to a table of data, so
+whereas our vector approach in the previous code would allow us to have
+a single list of values, the data frame will allow us to have several
+columns of data. Whilst this isn’t necessary for this piece of code the
+approach will be very useful when we are handling multiple populations
+(for example susceptible, infected and recovered individuals in an
+epidemiological model).</p>
+<p>Now we want to send the latest row of the data frame to the function
+<code>step_deterministic_growth()</code>, which we will define below. It
+turns out we do that exactly the same way (using <code>tail()</code>) as
+we did with vectors. Notice that we have changed the name of the first
+parameter to something generic which will work in all future models even
+if they are not about population dynamics.</p>
 <pre class="r"><code>updated.population &lt;- step_deterministic_growth(latest = tail(population.df, 1),
                                                 growth.rate = human.annual.growth) 
 population.df &lt;- rbind(population.df, updated.population)</code></pre>
-<p>The second line is slightly different, however. <code>rbind()</code> binds – appends – the rows of a second data frame (<code>updated.population</code>) after the end of the last row of the first data frame (<code>population.df</code>). The two data frames must have the same columns for this to work, or they wouldn’t fit: in this case they will both have to have one column called <code>count</code>, so our function will need to return a data frame with just that column in it when we write it below. You will get a clearer idea of how the data frames work once we start on the epidemiological models with multiple populations, so don’t worry if it isn’t currently clear.</p>
-<p>At the end of your new <span style="color: #dd1c77;">0104-run-growth.R</span> file, rather than use R’s basic plot command plot as we did previously, we have now used a function <code>plot_populations()</code>, which is defined inside the <code>RPiR</code> library. The job of this function is to take a data frame with any number of population columns and a single corresponding <code>time</code> column and plot them together in different colours with a legend indicating which line corresponds to which population. It will allow us to ignore the plotting details for the moment.</p>
-<p>In order to use it you will first need to delete the current <code>plot()</code> command at the end of your new file, and instead add a column onto your data frame with the times in and use <code>plot_populations()</code> on this updated data frame. As the <code>timesteps</code> vector is missing the start time of the simulation, the column you need to add to the data frame is actually <code>c(start.time, timesteps)</code>:</p>
+<p>The second line is slightly different, however. <code>rbind()</code>
+binds – appends – the rows of a second data frame
+(<code>updated.population</code>) after the end of the last row of the
+first data frame (<code>population.df</code>). The two data frames must
+have the same columns for this to work, or they wouldn’t fit: in this
+case they will both have to have one column called <code>count</code>,
+so our function will need to return a data frame with just that column
+in it when we write it below. You will get a clearer idea of how the
+data frames work once we start on the epidemiological models with
+multiple populations, so don’t worry if it isn’t currently clear.</p>
+<p>At the end of your new <span
+style="color: #dd1c77;">0104-run-growth.R</span> file, rather than use
+R’s basic plot command plot as we did previously, we have now used a
+function <code>plot_populations()</code>, which is defined inside the
+<code>RPiR</code> library. The job of this function is to take a data
+frame with any number of population columns and a single corresponding
+<code>time</code> column and plot them together in different colours
+with a legend indicating which line corresponds to which population. It
+will allow us to ignore the plotting details for the moment.</p>
+<p>In order to use it you will first need to delete the current
+<code>plot()</code> command at the end of your new file, and instead add
+a column onto your data frame with the times in and use
+<code>plot_populations()</code> on this updated data frame. As the
+<code>timesteps</code> vector is missing the start time of the
+simulation, the column you need to add to the data frame is actually
+<code>c(start.time, timesteps)</code>:</p>
 <pre class="r"><code>population.df$time &lt;- c(start.time, timesteps)</code></pre>
 <p>Then you will call:</p>
 <pre class="r"><code>plot_populations(population.df)</code></pre>
 </div>
 <div id="section-additional-tasks" class="section level4">
 <h4>Additional tasks</h4>
-<p>Again, the code should produce the same output as the previous three practicals, but perhaps with a slightly prettier and clearer display. Try, for instance, generating a second result with different initial parameters and then plot the results using:</p>
+<p>Again, the code should produce the same output as the previous three
+practicals, but perhaps with a slightly prettier and clearer display.
+Try, for instance, generating a second result with different initial
+parameters and then plot the results using:</p>
 <pre class="r"><code>plot_populations(population.df, new.graph = FALSE, col = &quot;red&quot;)</code></pre>
-<p>The extra argument <code>col</code> sets the colour of the line in the plot – “red”, “blue”, etc.; or you could use <code>lty</code> to set the type of line – solid, dash, dot, etc. – by using numbers (1 is solid, 2, 3, <em>etc.</em>). Note that <code>plot_populations()</code> also has a help file, which you can access by typing <code>?plot_populations</code>:</p>
+<p>The extra argument <code>col</code> sets the colour of the line in
+the plot – “red”, “blue”, etc.; or you could use <code>lty</code> to set
+the type of line – solid, dash, dot, etc. – by using numbers (1 is
+solid, 2, 3, <em>etc.</em>). Note that <code>plot_populations()</code>
+also has a help file, which you can access by typing
+<code>?plot_populations</code>:</p>
 <pre class="r"><code>library(RPiR)</code></pre>
 <pre class="r"><code>?plot_populations</code></pre>
-<p>This documentation is available, since <code>plot_populations()</code> was installed as part of {RPiR}. When functions are loaded using <code>source()</code>, rather than being installed, then the only documentation is that in the file itself. Occasionally, you might come across a function that won’t let you ask for help using the <code>?</code> syntax – <code>?for</code>, <code>?function</code> and a couple of others. In that case you can use the <code>help()</code> function instead.</p>
+<p>This documentation is available, since
+<code>plot_populations()</code> was installed as part of {RPiR}. When
+functions are loaded using <code>source()</code>, rather than being
+installed, then the only documentation is that in the file itself.
+Occasionally, you might come across a function that won’t let you ask
+for help using the <code>?</code> syntax – <code>?for</code>,
+<code>?function</code> and a couple of others. In that case you can use
+the <code>help()</code> function instead.</p>
 <pre class="r"><code># Access the help for the &quot;function&quot; command</code></pre>
 <div id="section-function_help-hint">
 <p><strong>Hint:</strong> Try using <code>help("___")</code>.</p>
@@ -446,10 +587,16 @@ population.df &lt;- rbind(population.df, updated.population)</code></pre>
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fc3830fca00&gt;
-## &lt;environment: 0x7fc38a06ef28&gt;</code></pre>
-<p>or go to the <span style="color: #dd1c77;">Help</span> tab in RStudio and type the name into the box next to the magnifying glass.</p>
-<p>As far as the <code>plot_populations()</code> function is concerned, feel free to refer back to this code later to understand better how it works by finding the code on GitHub. Or you can just run the name of the function on its own at an R prompt. We made a simpler (but less powerful) version of the plot function - <code>plot_simple()</code> - that you may find easier to read:</p>
+## &lt;bytecode: 0x7f899deef748&gt;
+## &lt;environment: 0x7f89a7a30138&gt;</code></pre>
+<p>or go to the <span style="color: #dd1c77;">Help</span> tab in RStudio
+and type the name into the box next to the magnifying glass.</p>
+<p>As far as the <code>plot_populations()</code> function is concerned,
+feel free to refer back to this code later to understand better how it
+works by finding the code on GitHub. Or you can just run the name of the
+function on its own at an R prompt. We made a simpler (but less
+powerful) version of the plot function - <code>plot_simple()</code> -
+that you may find easier to read:</p>
 <pre class="r"><code>library(RPiR)
 plot_simple</code></pre>
 <pre><code>## function (populations, new.graph = TRUE, xlim, ylim, lty = 1, 
@@ -481,9 +628,14 @@ plot_simple</code></pre>
 ##             lty = lty[index])
 ##     }
 ## }
-## &lt;bytecode: 0x7fc388a37158&gt;
+## &lt;bytecode: 0x7f89a63d7568&gt;
 ## &lt;environment: namespace:RPiR&gt;</code></pre>
-<p>Many of the helper functions in the course are fairly sophisticated and you will probably have to take on trust for the time being. We will be providing these functions as we go along to allow you to focus on the models being developed – you are welcome to use them yourselves later, but if you use them for real you should spend some time satisfying yourself that they really do what you want. 
+<p>Many of the helper functions in the course are fairly sophisticated
+and you will probably have to take on trust for the time being. We will
+be providing these functions as we go along to allow you to focus on the
+models being developed – you are welcome to use them yourselves later,
+but if you use them for real you should spend some time satisfying
+yourself that they really do what you want. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -495,7 +647,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

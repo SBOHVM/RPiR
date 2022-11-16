@@ -149,14 +149,31 @@ pre code {
 
 <div id="section-introduction" class="section level2">
 <h2>Introduction</h2>
-<p>If you have a complex piece of code that does a single discrete thing, then you may want to wrap it up into a function so that you can refer to it by a simple name and keep the script that calls it clear and easy to read. However, you may also want to do simpler versions of that more complex task. You can either write a completely separate function to carry out that task – but that would be breaking our guidance about copying code back and forth – or you can write a short and simple function that doesn’t do the hard (and duplicated) work itself, but instead just calls your more complex function, perhaps with simplified arguments.</p>
+<p>If you have a complex piece of code that does a single discrete
+thing, then you may want to wrap it up into a function so that you can
+refer to it by a simple name and keep the script that calls it clear and
+easy to read. However, you may also want to do simpler versions of that
+more complex task. You can either write a completely separate function
+to carry out that task – but that would be breaking our guidance about
+copying code back and forth – or you can write a short and simple
+function that doesn’t do the hard (and duplicated) work itself, but
+instead just calls your more complex function, perhaps with simplified
+arguments.</p>
 <blockquote>
-<p>Note, you will also see all of this code on GitHub at <a href="https://github.com/SBOHVM/practicalA5" class="uri">https://github.com/SBOHVM/practicalA5</a> if you want to look at it there instead, or you can install it locally on your computer using <code>devtools::install_github("SBOHVM/practicalA5")</code> and play with the functions. Or you can download it by cloning the git repo at <code>https://github.com/SBOHVM/practicalA5.git</code>.</p>
+<p>Note, you will also see all of this code on GitHub at <a
+href="https://github.com/SBOHVM/practicalA5"
+class="uri">https://github.com/SBOHVM/practicalA5</a> if you want to
+look at it there instead, or you can install it locally on your computer
+using <code>devtools::install_github("SBOHVM/practicalA5")</code> and
+play with the functions. Or you can download it by cloning the git repo
+at <code>https://github.com/SBOHVM/practicalA5.git</code>.</p>
 </blockquote>
 </div>
 <div id="section-functions" class="section level2">
 <h2>Functions</h2>
-<p>Imagine we’d written a really cool function that solves a complex task… well, here just one that multiple two numbers together, adds a third and then raises the result to a power:</p>
+<p>Imagine we’d written a really cool function that solves a complex
+task… well, here just one that multiple two numbers together, adds a
+third and then raises the result to a power:</p>
 <pre class="r"><code>muladdpow &lt;- function(value, m, a, p) {
   ma &lt;- value * m + a
   ma ^ p
@@ -164,7 +181,10 @@ pre code {
 
 muladdpow(1, 2, 3, 2)
 &gt; [1] 25</code></pre>
-<p>Try running the code block. Play with the arguments and rerun it to see how it works. Now try to write a function that uses this function, but only does the multiply and add part, so you just get <code>value * m + a</code> back at the end:</p>
+<p>Try running the code block. Play with the arguments and rerun it to
+see how it works. Now try to write a function that uses this function,
+but only does the multiply and add part, so you just get
+<code>value * m + a</code> back at the end:</p>
 <pre class="r"><code>muladd &lt;- function(value, m, a) {
   muladdpow(value, m, a, ____)
 }
@@ -210,9 +230,11 @@ muladd(2, 3, 4) == 10
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc38582ecf8&gt;</code></pre>
-<p>Then write a function <code>mul()</code> that uses <code>muladd()</code> but just multiplies two numbers together, ignoring the addition:</p>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a906f740&gt;</code></pre>
+<p>Then write a function <code>mul()</code> that uses
+<code>muladd()</code> but just multiplies two numbers together, ignoring
+the addition:</p>
 <pre class="r"><code>mul &lt;- function(value, m) {
   muladd(____)
 }
@@ -258,9 +280,10 @@ mul(2, 3) == 6
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc3882e6870&gt;</code></pre>
-<p>Finally, write a function <code>tripler() that uses</code>mul()` but always multiples by three:</p>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a338c0f8&gt;</code></pre>
+<p>Finally, write a function <code>tripler() that uses</code>mul()` but
+always multiples by three:</p>
 <pre class="r"><code>tripler &lt;- function(value) {
   ____
 }
@@ -306,8 +329,8 @@ tripler(2) == 6
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc387eef180&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a06ddd30&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -337,7 +360,7 @@ mul <- function(value, m) {
 
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

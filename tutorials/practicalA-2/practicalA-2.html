@@ -149,22 +149,50 @@ pre code {
 
 <div id="section-introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Functions allow you to repeat the same task multiple times, but potentially in multiple places on different data. If you have a complex piece of code that does a single discrete thing, then you may want to wrap it up into a function so that you can refer to it by a simple name and keep the script that calls it clear and easy to read.</p>
-<p>To quote from <a href="https://r4ds.had.co.nz/functions.html">the introduction to R4DS on functions</a>:</p>
+<p>Functions allow you to repeat the same task multiple times, but
+potentially in multiple places on different data. If you have a complex
+piece of code that does a single discrete thing, then you may want to
+wrap it up into a function so that you can refer to it by a simple name
+and keep the script that calls it clear and easy to read.</p>
+<p>To quote from <a href="https://r4ds.had.co.nz/functions.html">the
+introduction to R4DS on functions</a>:</p>
 <blockquote>
-<p>One of the best ways to improve your reach as a data scientist is to write functions. Functions allow you to automate common tasks in a more powerful and general way than copy-and-pasting. Writing a function has three big advantages over using copy-and-paste:</p>
+<p>One of the best ways to improve your reach as a data scientist is to
+write functions. Functions allow you to automate common tasks in a more
+powerful and general way than copy-and-pasting. Writing a function has
+three big advantages over using copy-and-paste:</p>
 <ol style="list-style-type: decimal">
-<li><p>You can give a function an evocative name that makes your code easier to understand.</p></li>
-<li><p>As requirements change, you only need to update code in one place, instead of many.</p></li>
-<li><p>You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).</p></li>
+<li><p>You can give a function an evocative name that makes your code
+easier to understand.</p></li>
+<li><p>As requirements change, you only need to update code in one
+place, instead of many.</p></li>
+<li><p>You eliminate the chance of making incidental mistakes when you
+copy and paste (i.e. updating a variable name in one place, but not in
+another).</p></li>
 </ol>
 </blockquote>
-<p>Functions allow us to wrap up a common task into a single line of code, irrespective of how complex and long the code chunk is, making our scripts cleaner and easier to read. They allow us to describe what the code is doing (by assigning a name to the function), making our scripts easier to understand. Finally, writing custom functions rather than duplicating code means that there is only a single place that needs to be checked for correctness, rather than having to remember all of the places your duplicated (likely copied and pasted) code exists.</p>
+<p>Functions allow us to wrap up a common task into a single line of
+code, irrespective of how complex and long the code chunk is, making our
+scripts cleaner and easier to read. They allow us to describe what the
+code is doing (by assigning a name to the function), making our scripts
+easier to understand. Finally, writing custom functions rather than
+duplicating code means that there is only a single place that needs to
+be checked for correctness, rather than having to remember all of the
+places your duplicated (likely copied and pasted) code exists.</p>
 </div>
 <div id="section-functions" class="section level2">
 <h2>Functions</h2>
-<p>It’s very easy to write a function. Here we write a single function (called <code>function_name</code>), that takes one input (we call the inputs to functions <em>arguments</em>, here there is just one called <code>argument</code>). Finally, whatever appears last in the function definition will be returned to the script that calls it, in this case, <code>result</code>.</p>
-<p>Every function has one “line” of code after it (comments are ignored) that defines what the function does. Because nearly all functions need multiple lines to define what they do, we nearly always use matching curly brackets - <code>{ ... }</code> - to allow us to wrap multiple commands that are all treated as one line by R:</p>
+<p>It’s very easy to write a function. Here we write a single function
+(called <code>function_name</code>), that takes one input (we call the
+inputs to functions <em>arguments</em>, here there is just one called
+<code>argument</code>). Finally, whatever appears last in the function
+definition will be returned to the script that calls it, in this case,
+<code>result</code>.</p>
+<p>Every function has one “line” of code after it (comments are ignored)
+that defines what the function does. Because nearly all functions need
+multiple lines to define what they do, we nearly always use matching
+curly brackets - <code>{ ... }</code> - to allow us to wrap multiple
+commands that are all treated as one line by R:</p>
 <pre class="r"><code>function_name &lt;- function(argument) {
   # Function body
   
@@ -173,16 +201,33 @@ pre code {
   #     producing some result ...
   result
 }</code></pre>
-<p>Above, we just have dummy code, and it doesn’t work. Note that the <em>function body</em>, the code that gets run when you use the function is wrapped in curly brackets <code>{ ... }</code> - this makes it possible for the computer to know what is supposed to be in the function and what isn’t.</p>
-<p>Now we can write a couple of very simple functions that really do something (not very exciting!):</p>
+<p>Above, we just have dummy code, and it doesn’t work. Note that the
+<em>function body</em>, the code that gets run when you use the function
+is wrapped in curly brackets <code>{ ... }</code> - this makes it
+possible for the computer to know what is supposed to be in the function
+and what isn’t.</p>
+<p>Now we can write a couple of very simple functions that really do
+something (not very exciting!):</p>
 <pre class="r"><code>add_one &lt;- function(number) {
   number + 1
 }
 
 add_one(10)
 &gt; [1] 11</code></pre>
-<p>Try running the code block. Can you see what it does? Feel free to change the argument from <code>10</code> to a different value to make sure it works as expected. And change what the function does if you like - when you do, change the name though, so it makes sense… it’s really important for your functions to have good names so it’s easy to tell if you’re using them right. Note that because <code>add_one(10)</code> is called after you close the curly bracket, it’s not considered part of the function, it’s in your main script.</p>
-<p>The last (and indeed only) line of code in this function is what is returned by the function, here just the number plus one. <strong>It’s critical that the last line of your function has the value you want to return in it.</strong> Normally we need to do something more complex in our function - here we make a calculation and then return it on the last line (possibly the second simplest thing we could do):</p>
+<p>Try running the code block. Can you see what it does? Feel free to
+change the argument from <code>10</code> to a different value to make
+sure it works as expected. And change what the function does if you like
+- when you do, change the name though, so it makes sense… it’s really
+important for your functions to have good names so it’s easy to tell if
+you’re using them right. Note that because <code>add_one(10)</code> is
+called after you close the curly bracket, it’s not considered part of
+the function, it’s in your main script.</p>
+<p>The last (and indeed only) line of code in this function is what is
+returned by the function, here just the number plus one. <strong>It’s
+critical that the last line of your function has the value you want to
+return in it.</strong> Normally we need to do something more complex in
+our function - here we make a calculation and then return it on the last
+line (possibly the second simplest thing we could do):</p>
 <pre class="r"><code>add_one &lt;- function(number) {
   one.more &lt;- number + 1
   one.more
@@ -190,7 +235,11 @@ add_one(10)
 
 add_one(10)
 &gt; [1] 11</code></pre>
-<p>Check that this does the same job. <em>Example 1</em> may seem simpler. However, it’s usually helpful when writing functions to name the thing that you calculate to make it easier to keep track of what’s going on. You can then return the variable (in <em>Example 2</em>, <code>one.more</code>) that you have just calculated.</p>
+<p>Check that this does the same job. <em>Example 1</em> may seem
+simpler. However, it’s usually helpful when writing functions to name
+the thing that you calculate to make it easier to keep track of what’s
+going on. You can then return the variable (in <em>Example 2</em>,
+<code>one.more</code>) that you have just calculated.</p>
 <p>Try running the next code chunk:</p>
 <pre class="r"><code>add_one &lt;- function(number) {
   one.more &lt;- number + 1
@@ -241,15 +290,26 @@ one.more
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc387eb8a38&gt;</code></pre>
-<p>You’ll see that it gives an error. That is because, although you have calculated <code>one.more</code> inside the function, it is discarded when the function ends. This is because variables defined inside functions are <em>local</em> to the function. For there to be a variable in your main script called one.more, you need to define it there. Try adding a line of code between lines 5 and 6 of <em>Exercise 1</em> that just says:</p>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a1fd6550&gt;</code></pre>
+<p>You’ll see that it gives an error. That is because, although you have
+calculated <code>one.more</code> inside the function, it is discarded
+when the function ends. This is because variables defined inside
+functions are <em>local</em> to the function. For there to be a variable
+in your main script called one.more, you need to define it there. Try
+adding a line of code between lines 5 and 6 of <em>Exercise 1</em> that
+just says:</p>
 <pre class="r"><code>one.more &lt;- 20</code></pre>
-<p>Note that the <em>global</em> <code>one.more</code> variable (the one in your main script) is not affected by calling the <code>add_one()</code> function even though it looks like it is updated there.</p>
+<p>Note that the <em>global</em> <code>one.more</code> variable (the one
+in your main script) is not affected by calling the
+<code>add_one()</code> function even though it looks like it is updated
+there.</p>
 </div>
 <div id="section-exercise" class="section level2">
 <h2>Exercise</h2>
-<p>This function is intended to subtract two numbers, returning the calculated value, whilst also checking whether or not the result is negative. Try to fix the mistake in the code.</p>
+<p>This function is intended to subtract two numbers, returning the
+calculated value, whilst also checking whether or not the result is
+negative. Try to fix the mistake in the code.</p>
 <pre class="r"><code>subtract &lt;- function(first, second) {
   # Calculate the result
   subtracted &lt;- first - second
@@ -307,8 +367,8 @@ subtract(3, 5)
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc3892ca048&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f899d821448&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -325,7 +385,7 @@ set.seed(123)
 
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

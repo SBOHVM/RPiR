@@ -142,57 +142,98 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical A-1: If statements and comparisons</h1>
+<h1 class="title toc-ignore">Practical A-1: If statements and
+comparisons</h1>
 
 </div>
 
 
 <div id="section-control-flow" class="section level2">
 <h2>Control flow</h2>
-<div id="section-comparisons-testing-for-equality-and-difference" class="section level3">
+<div id="section-comparisons-testing-for-equality-and-difference"
+class="section level3">
 <h3>Comparisons – testing for equality and difference</h3>
-<p>These tests are essential for <code>while</code> loops to determine whether to continue through the next iteration of the loop, and other forms of flow control such as <code>if</code> statements, to determine what to do next. They allow us to test whether something is true, and change what lines of code are run depending on the outcome. There are the basic tests:</p>
+<p>These tests are essential for <code>while</code> loops to determine
+whether to continue through the next iteration of the loop, and other
+forms of flow control such as <code>if</code> statements, to determine
+what to do next. They allow us to test whether something is true, and
+change what lines of code are run depending on the outcome. There are
+the basic tests:</p>
 <ul>
-<li><code>a == b</code>: is <code>a</code> equal to <code>b</code>? (<code>TRUE</code> if this is true, <code>FALSE</code> if this is false)</li>
-<li><code>a &gt; b</code>: is <code>a</code> greater than <code>b</code>?</li>
-<li><code>a &lt; b</code>: is <code>a</code> less than <code>b</code>?</li>
-<li><code>a &gt;= b</code>: is <code>a</code> greater than or equal to <code>b</code>?</li>
-<li><code>a &lt;= b</code>: is <code>a</code> less than or equal to <code>b</code>?</li>
-<li><code>a != b</code>: is <code>a</code> not equal to <code>b</code>?</li>
+<li><code>a == b</code>: is <code>a</code> equal to <code>b</code>?
+(<code>TRUE</code> if this is true, <code>FALSE</code> if this is
+false)</li>
+<li><code>a &gt; b</code>: is <code>a</code> greater than
+<code>b</code>?</li>
+<li><code>a &lt; b</code>: is <code>a</code> less than
+<code>b</code>?</li>
+<li><code>a &gt;= b</code>: is <code>a</code> greater than or equal to
+<code>b</code>?</li>
+<li><code>a &lt;= b</code>: is <code>a</code> less than or equal to
+<code>b</code>?</li>
+<li><code>a != b</code>: is <code>a</code> not equal to
+<code>b</code>?</li>
 </ul>
-<p>There are then three basic ways of changing or combining the above:</p>
+<p>There are then three basic ways of changing or combining the
+above:</p>
 <ul>
-<li><code>(a &lt; b) || (c == d)</code>: is “<code>a</code> less than <code>b</code>” <strong>or</strong> “<code>c</code> equal to <code>d</code>”?</li>
-<li><code>(a &lt; b) &amp;&amp; (c == d)</code>: is “<code>a</code> less than <code>b</code>” <strong>and</strong> “<code>c</code> equal to <code>d</code>”?</li>
-<li><code>!((a &lt; b) &amp;&amp; (c == d))</code>: is it <strong>not</strong> <code>TRUE</code> that “<code>a</code> is less than <code>b</code> <strong>and</strong> <code>c</code> is equal to <code>d</code>”?</li>
+<li><code>(a &lt; b) || (c == d)</code>: is “<code>a</code> less than
+<code>b</code>” <strong>or</strong> “<code>c</code> equal to
+<code>d</code>”?</li>
+<li><code>(a &lt; b) &amp;&amp; (c == d)</code>: is “<code>a</code> less
+than <code>b</code>” <strong>and</strong> “<code>c</code> equal to
+<code>d</code>”?</li>
+<li><code>!((a &lt; b) &amp;&amp; (c == d))</code>: is it
+<strong>not</strong> <code>TRUE</code> that “<code>a</code> is less than
+<code>b</code> <strong>and</strong> <code>c</code> is equal to
+<code>d</code>”?</li>
 </ul>
-<p>Remember to use (lots of!) brackets to ensure you are combining things in the right order.</p>
-<p>Comparisons are also <a href="https://r4ds.had.co.nz/transform.html?q=compa#comparisons">covered in passing</a> in R4DS, and by R Coder in a bit more depth <a href="https://r-coder.com/operators-r">here</a>.</p>
+<p>Remember to use (lots of!) brackets to ensure you are combining
+things in the right order.</p>
+<p>Comparisons are also <a
+href="https://r4ds.had.co.nz/transform.html?q=compa#comparisons">covered
+in passing</a> in R4DS, and by R Coder in a bit more depth <a
+href="https://r-coder.com/operators-r">here</a>.</p>
 </div>
 <div id="section-if-and-if-else-statements" class="section level3">
 <h3><code>if</code> and <code>if else</code> statements</h3>
-<p>The <code>if</code> command allows us to perform a test, and if the result is <code>TRUE</code> run a block of R code (in curly brackets <code>{ ... }</code>). Optionally, if the test is <code>FALSE</code>, a different block of code can be run instead. This allows us to do a variety of things. To give a very simple example:</p>
+<p>The <code>if</code> command allows us to perform a test, and if the
+result is <code>TRUE</code> run a block of R code (in curly brackets
+<code>{ ... }</code>). Optionally, if the test is <code>FALSE</code>, a
+different block of code can be run instead. This allows us to do a
+variety of things. To give a very simple example:</p>
 <pre class="r"><code>if (2 &gt; 1) {
   print(&quot;Maths works!&quot;)
 }
 &gt; [1] &quot;Maths works!&quot;</code></pre>
-<p>This prints <code>"Maths works!"</code> because the test is <code>TRUE</code>, so the code block that follows is run. You can try changing the numbers to get a different result. Whereas:</p>
+<p>This prints <code>"Maths works!"</code> because the test is
+<code>TRUE</code>, so the code block that follows is run. You can try
+changing the numbers to get a different result. Whereas:</p>
 <pre class="r"><code>if (2 &gt;= 5) {
   print(&quot;At least 5.&quot;)
 } else {
   print(&quot;Less than 5.&quot;)
 }
 &gt; [1] &quot;Less than 5.&quot;</code></pre>
-<p>This prints <code>"Less than 5."</code> because the test was false, so R continues to the code block after the <code>else</code> statement. Again, change the numbers to check you understand how it works. If there is no <code>else</code> statement, then no code is run, so:</p>
+<p>This prints <code>"Less than 5."</code> because the test was false,
+so R continues to the code block after the <code>else</code> statement.
+Again, change the numbers to check you understand how it works. If there
+is no <code>else</code> statement, then no code is run, so:</p>
 <pre class="r"><code>if (2 &gt;= 5) {
   print(&quot;At least 5.&quot;)
 }</code></pre>
-<p>does nothing. R Coder covers the basics of <code>if</code> statements <a href="https://r-coder.com/if-else-r">here</a>. R4DS seems to consider them too simple, but ironically they have <a href="https://adv-r.hadley.nz/control-flow.html">a chapter in Advanced R</a>; however, this contains a lot of advanced topics in flow control that are well beyond the scope of this course.</p>
+<p>does nothing. R Coder covers the basics of <code>if</code> statements
+<a href="https://r-coder.com/if-else-r">here</a>. R4DS seems to consider
+them too simple, but ironically they have <a
+href="https://adv-r.hadley.nz/control-flow.html">a chapter in Advanced
+R</a>; however, this contains a lot of advanced topics in flow control
+that are well beyond the scope of this course.</p>
 </div>
 </div>
 <div id="section-more-complex-comparisons" class="section level2">
 <h2>More complex comparisons</h2>
-<p>Finally note that, when you are doing comparisons, if you have a vector then then any comparisons happen multiple times:</p>
+<p>Finally note that, when you are doing comparisons, if you have a
+vector then then any comparisons happen multiple times:</p>
 <pre class="r"><code>4 &gt; 5
 &gt; [1] FALSE
 
@@ -201,21 +242,30 @@ pre code {
 
 c(2, 4, 6, 3, 1) &gt; 5
 &gt; [1] FALSE FALSE  TRUE FALSE FALSE</code></pre>
-<p>You should be able to see that single numbers give single answers, but a vector gives one answer per element of the vector, so you end with a vector of the same size, but with <code>TRUE</code>s and <code>FALSE</code>s in it. This can be very useful sometimes. Consider for instance how you ask <em>“Which of these numbers are greater than 0?”</em>:</p>
+<p>You should be able to see that single numbers give single answers,
+but a vector gives one answer per element of the vector, so you end with
+a vector of the same size, but with <code>TRUE</code>s and
+<code>FALSE</code>s in it. This can be very useful sometimes. Consider
+for instance how you ask <em>“Which of these numbers are greater than
+0?”</em>:</p>
 <pre class="r"><code>numbers &lt;- c(-2, 4, 6, -3, 0)
 numbers &gt; 0
 &gt; [1] FALSE  TRUE  TRUE FALSE FALSE
 numbers[numbers &gt; 0]
 &gt; [1] 4 6</code></pre>
-<p>Or just <em>“How many of these numbers are greater or equal to than 4?”</em>:</p>
+<p>Or just <em>“How many of these numbers are greater or equal to than
+4?”</em>:</p>
 <pre class="r"><code>numbers &lt;- c(-2, 4, 6, -3, 0)
 sum(numbers &gt;= 4)
 &gt; [1] 2</code></pre>
-<p>It turns out that <code>TRUE</code> counts as <code>1</code> and <code>FALSE</code> counts as ‘0’ in R, so adding up the booleans just gives you the number of <code>TRUE</code>s.</p>
+<p>It turns out that <code>TRUE</code> counts as <code>1</code> and
+<code>FALSE</code> counts as ‘0’ in R, so adding up the booleans just
+gives you the number of <code>TRUE</code>s.</p>
 </div>
 <div id="section-exercises" class="section level2">
 <h2>Exercises</h2>
-<p>Now try it yourself. Complete the following code chunk, such that <code>x</code> is correctly identified as a negative number.</p>
+<p>Now try it yourself. Complete the following code chunk, such that
+<code>x</code> is correctly identified as a negative number.</p>
 <pre class="r"><code>x &lt;- -1
 
 if (___) {
@@ -265,9 +315,11 @@ if (x &gt; 0) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc387fef2a8&gt;</code></pre>
-<p>Of course, this statement isn’t entirely accurate, since <code>0</code> is neither positive nor negative. You can fix this by correcting this code:</p>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a52e3238&gt;</code></pre>
+<p>Of course, this statement isn’t entirely accurate, since
+<code>0</code> is neither positive nor negative. You can fix this by
+correcting this code:</p>
 <pre class="r"><code>x &lt;- 0
 
 if (___) {
@@ -319,8 +371,8 @@ if (x &gt; 0) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc38aad2230&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a5790320&gt;</code></pre>
 <p>Run the following code. There are two errors, try to find them.</p>
 <pre class="r"><code>x &lt;- 3
 y &lt;- 3
@@ -372,9 +424,10 @@ if (x &lt; y) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc385cc62f8&gt;</code></pre>
-<p>Now edit the following code chunk so that <code>This statement is true</code> is always returned.</p>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a27463e8&gt;</code></pre>
+<p>Now edit the following code chunk so that
+<code>This statement is true</code> is always returned.</p>
 <pre class="r"><code>if (___) {
   print(&quot;This statement is true&quot;)
 } else {
@@ -384,7 +437,9 @@ if (x &lt; y) {
 &gt; 1: if (__
 &gt;          ^</code></pre>
 <div id="section-ifexercise4-hint">
-<p><strong>Hint:</strong> The value <code>TRUE</code> is always true, so will succeed in a if statement, and the value <code>FALSE</code> is always false, so will fail.</p>
+<p><strong>Hint:</strong> The value <code>TRUE</code> is always true, so
+will succeed in a if statement, and the value <code>FALSE</code> is
+always false, so will fail.</p>
 </div>
 <pre class="r"><code>if (TRUE) {
   print(&quot;This statement is true&quot;)
@@ -422,9 +477,10 @@ if (x &lt; y) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc38343a380&gt;</code></pre>
-<p>Finally, edit this code so that it returns how many of the elements of the vector <code>numbers</code> are greater than zero:</p>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a6817350&gt;</code></pre>
+<p>Finally, edit this code so that it returns how many of the elements
+of the vector <code>numbers</code> are greater than zero:</p>
 <pre class="r"><code>numbers &lt;- c(0, 0, 0, 1, 0, 10, 3, 0)
 sum(numbers ____)
 &gt; Error: &lt;text&gt;:2:13: unexpected input
@@ -464,8 +520,8 @@ sum(numbers &gt; 0)
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc37ee25178&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a6a8a5c0&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -482,7 +538,7 @@ set.seed(123)
 
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

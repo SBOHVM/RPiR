@@ -151,9 +151,23 @@ pre code {
 <h2>Naming of things</h2>
 <div id="section-dots-and-underscores" class="section level3">
 <h3>Dots and underscores</h3>
-<p>You may have noticed that my functions in A-2 were called things like <code>add_one</code> (with an underscore), but my variables had names like <code>one.more</code> (with a dot). This was deliberate. Variables and functions should be made up of one or more words (or abbreviations) to make it easy to understand what they do. However, it can be hard to read names just stuck together like <code>addtwonumberstogether</code>, whereas <code>add_two_numbers_together</code> is easier. However, there are boring reasons to do with how R works why it’s a bad idea to write R functions with dots in their names (even though many functions in R already have dots). As a result, in these practicals, I insist that you don’t uses dots in function names when you write them.</p>
-<p>However, dots are generally okay in variables names, so to make it easy to distinguish normal variables from functions, I choose to put dots in variable names (as <code>one.more</code>). You can do whatever you like.</p>
-<p>Here’s a function that takes two arguments and adds them together (yes, it is just reinventing <code>+</code>!):</p>
+<p>You may have noticed that my functions in A-2 were called things like
+<code>add_one</code> (with an underscore), but my variables had names
+like <code>one.more</code> (with a dot). This was deliberate. Variables
+and functions should be made up of one or more words (or abbreviations)
+to make it easy to understand what they do. However, it can be hard to
+read names just stuck together like <code>addtwonumberstogether</code>,
+whereas <code>add_two_numbers_together</code> is easier. However, there
+are boring reasons to do with how R works why it’s a bad idea to write R
+functions with dots in their names (even though many functions in R
+already have dots). As a result, in these practicals, I insist that you
+don’t uses dots in function names when you write them.</p>
+<p>However, dots are generally okay in variables names, so to make it
+easy to distinguish normal variables from functions, I choose to put
+dots in variable names (as <code>one.more</code>). You can do whatever
+you like.</p>
+<p>Here’s a function that takes two arguments and adds them together
+(yes, it is just reinventing <code>+</code>!):</p>
 <pre class="r"><code>add.up &lt;- function(first, second) {
   added_together &lt;- first + second
   added_together
@@ -198,24 +212,44 @@ add_up(10, 30)
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc383d55ea0&gt;</code></pre>
-<p>Rename the function and variables in <em>Exercise 2</em> so that it satisfies my naming rules.</p>
-<p><em>There is much more on how to style your code to make it more consistent <a href="http://adv-r.had.co.nz/Style.html">here</a>. Hadley recommends never using dots, so using underscores to separate words in functions and variables. If you want to do that it’s fine. Don’t use dots in function names though. He has lots of other suggestions about how to write clear code - do have a look at it and try to follow it if you have time.</em></p>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a694add8&gt;</code></pre>
+<p>Rename the function and variables in <em>Exercise 2</em> so that it
+satisfies my naming rules.</p>
+<p><em>There is much more on how to style your code to make it more
+consistent <a href="http://adv-r.had.co.nz/Style.html">here</a>. Hadley
+recommends never using dots, so using underscores to separate words in
+functions and variables. If you want to do that it’s fine. Don’t use
+dots in function names though. He has lots of other suggestions about
+how to write clear code - do have a look at it and try to follow it if
+you have time.</em></p>
 </div>
 <div id="section-not-reusing-names" class="section level3">
 <h3>Not reusing names</h3>
-<p>In <em>Exercise 1</em>, we showed that variables used in functions don’t affect what happens outside the function. Unfortunately, the reverse isn’t true. Look at this function:</p>
+<p>In <em>Exercise 1</em>, we showed that variables used in functions
+don’t affect what happens outside the function. Unfortunately, the
+reverse isn’t true. Look at this function:</p>
 <pre class="r"><code>missing_add &lt;- function(first) {
   first + second
 }
 
 missing_add(10)
 &gt; Error in missing_add(10): object &#39;second&#39; not found</code></pre>
-<p>This function was intended to be like <code>add_up()</code> in <em>Exercise 2</em>, but I accidentally forgot to add the second argument. Fortunately if you run it, it will give an error (try it). However, what happens if you have defined a variable called <code>second</code> elsewhere in your script? Try adding the following at line 4:</p>
+<p>This function was intended to be like <code>add_up()</code> in
+<em>Exercise 2</em>, but I accidentally forgot to add the second
+argument. Fortunately if you run it, it will give an error (try it).
+However, what happens if you have defined a variable called
+<code>second</code> elsewhere in your script? Try adding the following
+at line 4:</p>
 <pre class="r"><code>second &lt;- 1</code></pre>
-<p><code>missing_add(10)</code> should no longer give an error, and return <code>11</code>. Try changing <code>second</code> to 2 - <code>missing_add(10)</code> should now return <code>12</code>. That’s not good news - what the function does depends on what else you may have done in your script. When you call a function it should always do the same if you give it the same arguments.</p>
-<p>This gets even worse when you account for our ability to misspell things:</p>
+<p><code>missing_add(10)</code> should no longer give an error, and
+return <code>11</code>. Try changing <code>second</code> to 2 -
+<code>missing_add(10)</code> should now return <code>12</code>. That’s
+not good news - what the function does depends on what else you may have
+done in your script. When you call a function it should always do the
+same if you give it the same arguments.</p>
+<p>This gets even worse when you account for our ability to misspell
+things:</p>
 <pre class="r"><code>misspelled_add &lt;- function(first, second) {
   resuIt &lt;- first + second
   result
@@ -227,21 +261,58 @@ misspelled_add(10, 20)
 misspelled_add(1, 2)
 &gt; [1] -5</code></pre>
 <div id="section-misspelling-hint">
-<p><strong>Hint:</strong> If you can’t see the problem see how the word <code>result</code> is spelled in different places.</p>
+<p><strong>Hint:</strong> If you can’t see the problem see how the word
+<code>result</code> is spelled in different places.</p>
 </div>
-<p>You should find that <code>misspelled_add()</code> gives the wrong answer even though the code looks right (if you don’t look too closely). This problem can (and does!) cause hours of agony to some students every year on this course. As a result, we insist on two things in your submitted practicals:</p>
+<p>You should find that <code>misspelled_add()</code> gives the wrong
+answer even though the code looks right (if you don’t look too closely).
+This problem can (and does!) cause hours of agony to some students every
+year on this course. As a result, we insist on two things in your
+submitted practicals:</p>
 <ol style="list-style-type: decimal">
-<li>You use different variable names in your functions than in your scripts, wherever possible. Sometimes there really only is one sensible name for a variable (maybe <code>timestep</code> when describing the increments in your simulation model), and you should be very careful when that happens, but normally there are at least two ways of describing the same idea - often one more general in a function (<code>birth.rate</code>) which can be used in multiple contexts, and then specific in your main script each time you use it (<code>human.annual.birth.rate</code>, for instance).</li>
-<li>You write checks for your functions to make sure they aren’t accidentally missing any variables or arguments. There are two tools for this, <code>findGlobals()</code> and <code>checkUsage()</code> in the <code>codetools</code> library.</li>
+<li>You use different variable names in your functions than in your
+scripts, wherever possible. Sometimes there really only is one sensible
+name for a variable (maybe <code>timestep</code> when describing the
+increments in your simulation model), and you should be very careful
+when that happens, but normally there are at least two ways of
+describing the same idea - often one more general in a function
+(<code>birth.rate</code>) which can be used in multiple contexts, and
+then specific in your main script each time you use it
+(<code>human.annual.birth.rate</code>, for instance).</li>
+<li>You write checks for your functions to make sure they aren’t
+accidentally missing any variables or arguments. There are two tools for
+this, <code>findGlobals()</code> and <code>checkUsage()</code> in the
+<code>codetools</code> library.</li>
 </ol>
 <p>Try adding the following lines to the end of <em>Exercise 4</em>:</p>
 <pre class="r"><code>library(codetools)
 checkUsage(misspelled_add)</code></pre>
-<p>You’ll see that it reports on the problem that you have probably already identified. It can also identify other problems, and we recommend it to you. However, it doesn’t return anything you can use in your code to allow us to automatically reject bad functions, and we’ll show you how to do this in a later practical. For now just try using this line instead of <code>checkUsage()</code> above (the <code>library()</code> call is the same):</p>
+<p>You’ll see that it reports on the problem that you have probably
+already identified. It can also identify other problems, and we
+recommend it to you. However, it doesn’t return anything you can use in
+your code to allow us to automatically reject bad functions, and we’ll
+show you how to do this in a later practical. For now just try using
+this line instead of <code>checkUsage()</code> above (the
+<code>library()</code> call is the same):</p>
 <pre class="r"><code>findGlobals(misspelled_add, merge = FALSE)</code></pre>
-<p>You’ll see that it identifies the use of the global variable <code>result</code> too (if less elegantly). We’ll show you how to use this to automatically detect problems with variable misnaming in a later exercise, but for now just remember that you need to watch out for misspelling very carefully.</p>
-<p><em>If you’re interested, the <code>findGlobals()</code> output also tells you why this problem exists in R. You’ll see that the function <code>misspelled_add()</code> needs to use three other </em>global* variables - the functions <code>{</code>, <code>+</code> and <code>&lt;-</code> - to get the function to work. As a result of the way R works, functions have to be able to see what is going on outside to be able to work at all. Most languages handle this more elegantly.*</p>
-<p>Functions are covered in R4DS <a href="https://r4ds.had.co.nz/functions.html">here</a> and R Coder covers them in some depth <a href="https://r-coder.com/function-r">here</a>. Advanced R covers functions in enormous detail starting <a href="https://adv-r.hadley.nz/fp.html">here</a> with an introduction to functional programming, and continuing for several chapters.</p>
+<p>You’ll see that it identifies the use of the global variable
+<code>result</code> too (if less elegantly). We’ll show you how to use
+this to automatically detect problems with variable misnaming in a later
+exercise, but for now just remember that you need to watch out for
+misspelling very carefully.</p>
+<p><em>If you’re interested, the <code>findGlobals()</code> output also
+tells you why this problem exists in R. You’ll see that the function
+<code>misspelled_add()</code> needs to use three other </em>global*
+variables - the functions <code>{</code>, <code>+</code> and
+<code>&lt;-</code> - to get the function to work. As a result of the way
+R works, functions have to be able to see what is going on outside to be
+able to work at all. Most languages handle this more elegantly.*</p>
+<p>Functions are covered in R4DS <a
+href="https://r4ds.had.co.nz/functions.html">here</a> and R Coder covers
+them in some depth <a href="https://r-coder.com/function-r">here</a>.
+Advanced R covers functions in enormous detail starting <a
+href="https://adv-r.hadley.nz/fp.html">here</a> with an introduction to
+functional programming, and continuing for several chapters.</p>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -258,7 +329,7 @@ set.seed(123)
 
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

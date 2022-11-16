@@ -182,7 +182,8 @@
 
 
 
-<script src="debugging_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Debugging</h1>
             
@@ -194,26 +195,47 @@
 
     
     
-<p>This page explains how to debug your code. There are many ways in which this can be done, so we’ve split them into levels ranging from basic to more advanced methods.</p>
+<p>This page explains how to debug your code. There are many ways in
+which this can be done, so we’ve split them into levels ranging from
+basic to more advanced methods.</p>
 <div class="section level2">
 <h2 id="level-1---check-for-typos">Level 1 - Check for typos<a class="anchor" aria-label="anchor" href="#level-1---check-for-typos"></a>
 </h2>
-<p>Read the error or warning message carefully and try to decipher it.</p>
+<p>Read the error or warning message carefully and try to decipher
+it.</p>
 <ul>
 <li>Have you seen it before?</li>
-<li>Are there any recognizable function or object names that might give you a clue as to what is causing the error?</li>
-<li>Are there any spelling mistakes in your code that might be causing a problem? Check the names of your functions, arguments, and objects.</li>
-<li>Does your function transform an object that is neither created earlier in the function nor passed as an argument?</li>
-<li>Do you have mismatching brackets, missing commas, or other strange symbols that shouldn’t be there?</li>
-<li>Have you tried doing an internet search? If you’re lucky, someone else might have had a similar problem and posted on Stack Overflow.</li>
+<li>Are there any recognizable function or object names that might give
+you a clue as to what is causing the error?</li>
+<li>Are there any spelling mistakes in your code that might be causing a
+problem? Check the names of your functions, arguments, and objects.</li>
+<li>Does your function transform an object that is neither created
+earlier in the function nor passed as an argument?</li>
+<li>Do you have mismatching brackets, missing commas, or other strange
+symbols that shouldn’t be there?</li>
+<li>Have you tried doing an internet search? If you’re lucky, someone
+else might have had a similar problem and posted on Stack Overflow.</li>
 </ul>
 </div>
 <div class="section level2">
 <h2 id="level-2---tracking-the-error">Level 2 - Tracking the error<a class="anchor" aria-label="anchor" href="#level-2---tracking-the-error"></a>
 </h2>
-<p>If the problem is not immediately obvious from the error statement or a search for typos, you try running through the code line by line, or inserting <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> statements.</p>
-<p>If your code / function is short, it can be helpful to run the code line by line, viewing constructed objects as you go and confirming they match what is expected. This can be done by highlighting individual objects or lines of code and pressing <code>Command</code> + <code>Enter</code> on a Mac (<code>Ctrl</code> + <code>Enter</code> on Windows).</p>
-<p>If your code is more complex – if you have a number of functions that call on each other for example – then running your code line by line might be too confusing. In this case you might want to try inserting <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> or <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code> statements at key points in your code. This is especially useful if you have some idea where the error is occurring! This can be done by calling <code><a href="https://rdrr.io/r/base/traceback.html" class="external-link">traceback()</a></code> immediately after an error occurs.</p>
+<p>If the problem is not immediately obvious from the error statement or
+a search for typos, you try running through the code line by line, or
+inserting <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> statements.</p>
+<p>If your code / function is short, it can be helpful to run the code
+line by line, viewing constructed objects as you go and confirming they
+match what is expected. This can be done by highlighting individual
+objects or lines of code and pressing <code>Command</code> +
+<code>Enter</code> on a Mac (<code>Ctrl</code> + <code>Enter</code> on
+Windows).</p>
+<p>If your code is more complex – if you have a number of functions that
+call on each other for example – then running your code line by line
+might be too confusing. In this case you might want to try inserting
+<code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> or <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code> statements at key points in
+your code. This is especially useful if you have some idea where the
+error is occurring! This can be done by calling <code><a href="https://rdrr.io/r/base/traceback.html" class="external-link">traceback()</a></code>
+immediately after an error occurs.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span></span>
 <span><span class="va">b</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">a</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
@@ -223,7 +245,9 @@
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/traceback.html" class="external-link">traceback</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## No traceback available</span></span></code></pre>
-<p>This function prints a list of functions (calls) that have lead to the error being triggered. This list is called the call stack (or stack trace).</p>
+<p>This function prints a list of functions (calls) that have lead to
+the error being triggered. This list is called the call stack (or stack
+trace).</p>
 </div>
 <div class="section level2">
 <h2 id="level-3---browsing-the-error">Level 3 - Browsing the error<a class="anchor" aria-label="anchor" href="#level-3---browsing-the-error"></a>
@@ -233,9 +257,11 @@
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
 </h2>
-<p>For each problem, try copying the code into an instance of RStudio and work from there. Accompanying solutions are provided in a separate tab.</p>
+<p>For each problem, try copying the code into an instance of RStudio
+and work from there. Accompanying solutions are provided in a separate
+tab.</p>
 <div class="section level3 tabset">
-<h3 id="error-could-not-find-function">Error: could not find function<a class="anchor" aria-label="anchor" href="#error-could-not-find-function"></a>
+<h3 class="tabset" id="error-could-not-find-function">Error: could not find function<a class="anchor" aria-label="anchor" href="#error-could-not-find-function"></a>
 </h3>
 
 
@@ -248,55 +274,59 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem" role="tabpanel" aria-labelledby="problem-tab">
 
-<p>Define a <code>calculate()</code> function, which calls <code>add2()</code> and <code>multiplyby8()</code> to perform the following calculation:</p>
+<p>Define a <code>calculate()</code> function, which calls
+<code>add2()</code> and <code>multiplyby8()</code> to perform the
+following calculation:</p>
 <p><span class="math display">\[y = 8(x + 2)\]</span></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>multiplyby8 &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  value <span class="op">*</span><span class="st"> </span><span class="dv">8</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>multiplyby8 <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>  value <span class="sc">*</span> <span class="dv">8</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a>}</span>
 <span id="cb5-4"><a href="#cb5-4"></a></span>
-<span id="cb5-5"><a href="#cb5-5"></a>add2 &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
-<span id="cb5-6"><a href="#cb5-6"></a>  result &lt;-<span class="st"> </span>value <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a>  <span class="kw">multiplby8</span>(result)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>add2 <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
+<span id="cb5-6"><a href="#cb5-6"></a>  result <span class="ot">&lt;-</span> value <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="fu">multiplby8</span>(result)</span>
 <span id="cb5-8"><a href="#cb5-8"></a>}</span>
 <span id="cb5-9"><a href="#cb5-9"></a></span>
-<span id="cb5-10"><a href="#cb5-10"></a>calculate &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
-<span id="cb5-11"><a href="#cb5-11"></a>  <span class="kw">add2</span>(value)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>calculate <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
+<span id="cb5-11"><a href="#cb5-11"></a>  <span class="fu">add2</span>(value)</span>
 <span id="cb5-12"><a href="#cb5-12"></a>}</span>
 <span id="cb5-13"><a href="#cb5-13"></a></span>
-<span id="cb5-14"><a href="#cb5-14"></a><span class="kw">calculate</span>(<span class="dv">2</span>)</span></code></pre></div>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="fu">calculate</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## Error in multiplby8(result): could not find function "multiplby8"</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints" role="tabpanel" aria-labelledby="hints-tab">
 
-<p>In this problem, R couldn’t find the function <code>multiplby8()</code>:</p>
+<p>In this problem, R couldn’t find the function
+<code>multiplby8()</code>:</p>
 <pre><code><span><span class="co">## Error in multiplby8(result): could not find function "multiplby8"</span></span></code></pre>
-<p>The function <code>calculate()</code> calls <code>add2()</code>, which itself calls <code>multiplby8()</code>, which doesn’t exist!</p>
+<p>The function <code>calculate()</code> calls <code>add2()</code>,
+which itself calls <code>multiplby8()</code>, which doesn’t exist!</p>
 </div>
 <div class="tab-pane" id="solution" role="tabpanel" aria-labelledby="solution-tab">
 
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>multiplyby8 &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
-<span id="cb8-2"><a href="#cb8-2"></a>  value <span class="op">*</span><span class="st"> </span><span class="dv">8</span></span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>multiplyby8 <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  value <span class="sc">*</span> <span class="dv">8</span></span>
 <span id="cb8-3"><a href="#cb8-3"></a>}</span>
 <span id="cb8-4"><a href="#cb8-4"></a></span>
-<span id="cb8-5"><a href="#cb8-5"></a>add2 &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
-<span id="cb8-6"><a href="#cb8-6"></a>  result &lt;-<span class="st"> </span>value <span class="op">+</span><span class="st"> </span><span class="dv">2</span></span>
-<span id="cb8-7"><a href="#cb8-7"></a>  <span class="kw">multiplyby8</span>(result)   <span class="co"># fix the typo here!</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>add2 <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  result <span class="ot">&lt;-</span> value <span class="sc">+</span> <span class="dv">2</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="fu">multiplyby8</span>(result)   <span class="co"># fix the typo here!</span></span>
 <span id="cb8-8"><a href="#cb8-8"></a>}</span>
 <span id="cb8-9"><a href="#cb8-9"></a></span>
-<span id="cb8-10"><a href="#cb8-10"></a>calculate &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
-<span id="cb8-11"><a href="#cb8-11"></a>  <span class="kw">add2</span>(value)</span>
+<span id="cb8-10"><a href="#cb8-10"></a>calculate <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
+<span id="cb8-11"><a href="#cb8-11"></a>  <span class="fu">add2</span>(value)</span>
 <span id="cb8-12"><a href="#cb8-12"></a>}</span>
 <span id="cb8-13"><a href="#cb8-13"></a></span>
-<span id="cb8-14"><a href="#cb8-14"></a><span class="kw">calculate</span>(<span class="dv">2</span>)</span></code></pre></div>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="fu">calculate</span>(<span class="dv">2</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## [1] 32</span></span></code></pre>
 </div>
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section"></h3>
+<h3 class="unnumbered" id="section"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="error-unexpected-in">Error: Unexpected ‘}’ in<a class="anchor" aria-label="anchor" href="#error-unexpected-in"></a>
+<h3 class="tabset" id="error-unexpected-in">Error: Unexpected ‘}’ in<a class="anchor" aria-label="anchor" href="#error-unexpected-in"></a>
 </h3>
 
 
@@ -309,31 +339,32 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-1" role="tabpanel" aria-labelledby="problem-1-tab">
 
-<p>The <code>cats()</code> function determines cat vocalisations based on their age.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>cats &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">"Cady"</span>, <span class="st">"Kitten"</span>, <span class="st">"Cleo"</span>),</span>
-<span id="cb10-2"><a href="#cb10-2"></a>                   <span class="dt">age =</span> <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">3</span>))</span>
+<p>The <code>cats()</code> function determines cat vocalisations based
+on their age.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Cady"</span>, <span class="st">"Kitten"</span>, <span class="st">"Cleo"</span>),</span>
+<span id="cb10-2"><a href="#cb10-2"></a>                   <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">3</span>))</span>
 <span id="cb10-3"><a href="#cb10-3"></a></span>
-<span id="cb10-4"><a href="#cb10-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
 <span id="cb10-5"><a href="#cb10-5"></a>  </span>
-<span id="cb10-6"><a href="#cb10-6"></a>  cat &lt;-<span class="st"> </span>cats[i, ]</span>
+<span id="cb10-6"><a href="#cb10-6"></a>  cat <span class="ot">&lt;-</span> cats[i, ]</span>
 <span id="cb10-7"><a href="#cb10-7"></a>  </span>
-<span id="cb10-8"><a href="#cb10-8"></a>  <span class="cf">if</span> (cat<span class="op">$</span>age <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) {</span>
+<span id="cb10-8"><a href="#cb10-8"></a>  <span class="cf">if</span> (cat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
 <span id="cb10-9"><a href="#cb10-9"></a>    </span>
-<span id="cb10-10"><a href="#cb10-10"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">seq_len</span>(cat<span class="op">$</span>age)) {</span>
-<span id="cb10-11"><a href="#cb10-11"></a>      meows &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">"Meeooooww!"</span>, cat<span class="op">$</span>age)</span>
+<span id="cb10-10"><a href="#cb10-10"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq_len</span>(cat<span class="sc">$</span>age)) {</span>
+<span id="cb10-11"><a href="#cb10-11"></a>      meows <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"Meeooooww!"</span>, cat<span class="sc">$</span>age)</span>
 <span id="cb10-12"><a href="#cb10-12"></a>    }</span>
 <span id="cb10-13"><a href="#cb10-13"></a>    </span>
 <span id="cb10-14"><a href="#cb10-14"></a>  }</span>
-<span id="cb10-15"><a href="#cb10-15"></a>     msg &lt;-<span class="st"> </span><span class="kw">paste</span>(cat<span class="op">$</span>name, <span class="st">"Meeooooww!"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15"></a>     msg <span class="ot">&lt;-</span> <span class="fu">paste</span>(cat<span class="sc">$</span>name, <span class="st">"Meeooooww!"</span>)</span>
 <span id="cb10-16"><a href="#cb10-16"></a>  }</span>
 <span id="cb10-17"><a href="#cb10-17"></a>    </span>
 <span id="cb10-18"><a href="#cb10-18"></a> <span class="er">}</span> <span class="cf">else</span> {</span>
 <span id="cb10-19"><a href="#cb10-19"></a>    </span>
-<span id="cb10-20"><a href="#cb10-20"></a>   msg &lt;-<span class="st"> </span><span class="kw">paste</span>(cat<span class="op">$</span>name, <span class="st">"Pew! Pew!"</span>)</span>
+<span id="cb10-20"><a href="#cb10-20"></a>   msg <span class="ot">&lt;-</span> <span class="fu">paste</span>(cat<span class="sc">$</span>name, <span class="st">"Pew! Pew!"</span>)</span>
 <span id="cb10-21"><a href="#cb10-21"></a> </span>
 <span id="cb10-22"><a href="#cb10-22"></a> }</span>
 <span id="cb10-23"><a href="#cb10-23"></a></span>
-<span id="cb10-24"><a href="#cb10-24"></a>  <span class="kw">print</span>(msg)</span>
+<span id="cb10-24"><a href="#cb10-24"></a>  <span class="fu">print</span>(msg)</span>
 <span id="cb10-25"><a href="#cb10-25"></a></span>
 <span id="cb10-26"><a href="#cb10-26"></a><span class="er">}</span></span></code></pre></div>
 <pre><code><span><span class="co">## Error: &lt;text&gt;:18:2: unexpected '}'</span></span>
@@ -347,30 +378,39 @@
 <span><span class="co">## 17:     </span></span>
 <span><span class="co">## 18:  }</span></span>
 <span><span class="co">##      ^</span></span></code></pre>
-<p>There are too many brackets here. It’s easier to see which opening and closing brackets match by highlighting the lines (or pressing <code>Command</code> + <code>A</code> on a Mac / <code>Ctrl</code> + <code>A</code> on Windows), then using the Reindent Lines shortcut (in the menu bar, select Code, then Reindent Lines; or pressing <code>Command</code> + <code>I</code> on a Mac / <code>Ctrl</code> + <code>I</code> on Windows).</p>
+<p>There are too many brackets here. It’s easier to see which opening
+and closing brackets match by highlighting the lines (or pressing
+<code>Command</code> + <code>A</code> on a Mac / <code>Ctrl</code> +
+<code>A</code> on Windows), then using the Reindent Lines shortcut (in
+the menu bar, select Code, then Reindent Lines; or pressing
+<code>Command</code> + <code>I</code> on a Mac / <code>Ctrl</code> +
+<code>I</code> on Windows).</p>
 <p>There are two extra curly brackets on lines 10 and 12.</p>
-<p>To make the code easier to read, even more curly brackets can be removed. Since both the contents of the <code>for</code> loop and the contents of the <code>else</code> statement comprise only a single line.</p>
+<p>To make the code easier to read, even more curly brackets can be
+removed. Since both the contents of the <code>for</code> loop and the
+contents of the <code>else</code> statement comprise only a single
+line.</p>
 </div>
 <div class="tab-pane" id="solution-1" role="tabpanel" aria-labelledby="solution-1-tab">
 
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>cats &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">name =</span> <span class="kw">c</span>(<span class="st">"Cady"</span>, <span class="st">"Kitten"</span>, <span class="st">"Cleo"</span>),</span>
-<span id="cb13-2"><a href="#cb13-2"></a>                   <span class="dt">age =</span> <span class="kw">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">3</span>))</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>cats <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"Cady"</span>, <span class="st">"Kitten"</span>, <span class="st">"Cleo"</span>),</span>
+<span id="cb13-2"><a href="#cb13-2"></a>                   <span class="at">age =</span> <span class="fu">c</span>(<span class="dv">15</span>, <span class="dv">14</span>, <span class="dv">3</span>))</span>
 <span id="cb13-3"><a href="#cb13-3"></a></span>
-<span id="cb13-4"><a href="#cb13-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>) {</span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
 <span id="cb13-5"><a href="#cb13-5"></a>  </span>
-<span id="cb13-6"><a href="#cb13-6"></a>  cat &lt;-<span class="st"> </span>cats[i, ]</span>
+<span id="cb13-6"><a href="#cb13-6"></a>  cat <span class="ot">&lt;-</span> cats[i, ]</span>
 <span id="cb13-7"><a href="#cb13-7"></a>  </span>
-<span id="cb13-8"><a href="#cb13-8"></a>  <span class="cf">if</span> (cat<span class="op">$</span>age <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) {</span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="cf">if</span> (cat<span class="sc">$</span>age <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
 <span id="cb13-9"><a href="#cb13-9"></a>    </span>
-<span id="cb13-10"><a href="#cb13-10"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="kw">seq_len</span>(cat<span class="op">$</span>age)) </span>
-<span id="cb13-11"><a href="#cb13-11"></a>      meows &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="st">"Meeooooww!"</span>, cat<span class="op">$</span>age)</span>
+<span id="cb13-10"><a href="#cb13-10"></a>    <span class="cf">for</span> (j <span class="cf">in</span> <span class="fu">seq_len</span>(cat<span class="sc">$</span>age)) </span>
+<span id="cb13-11"><a href="#cb13-11"></a>      meows <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="st">"Meeooooww!"</span>, cat<span class="sc">$</span>age)</span>
 <span id="cb13-12"><a href="#cb13-12"></a>    </span>
-<span id="cb13-13"><a href="#cb13-13"></a>    msg &lt;-<span class="st"> </span><span class="kw">paste</span>(cat<span class="op">$</span>name, <span class="st">"Meeooooww!"</span>)</span>
+<span id="cb13-13"><a href="#cb13-13"></a>    msg <span class="ot">&lt;-</span> <span class="fu">paste</span>(cat<span class="sc">$</span>name, <span class="st">"Meeooooww!"</span>)</span>
 <span id="cb13-14"><a href="#cb13-14"></a>    </span>
 <span id="cb13-15"><a href="#cb13-15"></a>  } <span class="cf">else</span> </span>
-<span id="cb13-16"><a href="#cb13-16"></a>    msg &lt;-<span class="st"> </span><span class="kw">paste</span>(cat<span class="op">$</span>name, <span class="st">"Pew! Pew!"</span>)</span>
+<span id="cb13-16"><a href="#cb13-16"></a>    msg <span class="ot">&lt;-</span> <span class="fu">paste</span>(cat<span class="sc">$</span>name, <span class="st">"Pew! Pew!"</span>)</span>
 <span id="cb13-17"><a href="#cb13-17"></a>  </span>
-<span id="cb13-18"><a href="#cb13-18"></a>  <span class="kw">print</span>(msg)</span>
+<span id="cb13-18"><a href="#cb13-18"></a>  <span class="fu">print</span>(msg)</span>
 <span id="cb13-19"><a href="#cb13-19"></a>  </span>
 <span id="cb13-20"><a href="#cb13-20"></a>}</span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Cady Meeooooww!"</span></span>
@@ -380,10 +420,10 @@
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-1"></h3>
+<h3 class="unnumbered" id="section-1"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="error-unexpected-in-1">Error: unexpected ‘=’ in<a class="anchor" aria-label="anchor" href="#error-unexpected-in-1"></a>
+<h3 class="tabset" id="error-unexpected-in-1">Error: unexpected ‘=’ in<a class="anchor" aria-label="anchor" href="#error-unexpected-in-1"></a>
 </h3>
 
 
@@ -396,31 +436,32 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-2" role="tabpanel" aria-labelledby="problem-2-tab">
 
-<p>Define a <code>countdown()</code> function, which counts down from a number before printing “Blast off!” to the console.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>countdown &lt;-<span class="st"> </span><span class="cf">function</span>(number) {</span>
+<p>Define a <code>countdown()</code> function, which counts down from a
+number before printing “Blast off!” to the console.</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>countdown <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
 <span id="cb15-2"><a href="#cb15-2"></a>  </span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="cf">if</span> (number <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb15-3"><a href="#cb15-3"></a>  <span class="cf">if</span> (number <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
 <span id="cb15-4"><a href="#cb15-4"></a>    </span>
-<span id="cb15-5"><a href="#cb15-5"></a>    <span class="kw">stop</span>(<span class="st">"Can't countdown from a negative time."</span>)</span>
+<span id="cb15-5"><a href="#cb15-5"></a>    <span class="fu">stop</span>(<span class="st">"Can't countdown from a negative time."</span>)</span>
 <span id="cb15-6"><a href="#cb15-6"></a>    </span>
 <span id="cb15-7"><a href="#cb15-7"></a>  } <span class="cf">else</span> {</span>
 <span id="cb15-8"><a href="#cb15-8"></a>    </span>
-<span id="cb15-9"><a href="#cb15-9"></a>    timestep &lt;-<span class="st"> </span>number</span>
+<span id="cb15-9"><a href="#cb15-9"></a>    timestep <span class="ot">&lt;-</span> number</span>
 <span id="cb15-10"><a href="#cb15-10"></a>    </span>
-<span id="cb15-11"><a href="#cb15-11"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>number) {</span>
-<span id="cb15-12"><a href="#cb15-12"></a>      <span class="kw">print</span>(timestep)</span>
-<span id="cb15-13"><a href="#cb15-13"></a>      timestep &lt;-<span class="st"> </span>timestep <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb15-14"><a href="#cb15-14"></a>      <span class="kw">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb15-11"><a href="#cb15-11"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>number) {</span>
+<span id="cb15-12"><a href="#cb15-12"></a>      <span class="fu">print</span>(timestep)</span>
+<span id="cb15-13"><a href="#cb15-13"></a>      timestep <span class="ot">&lt;-</span> timestep <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb15-14"><a href="#cb15-14"></a>      <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
 <span id="cb15-15"><a href="#cb15-15"></a>      </span>
-<span id="cb15-16"><a href="#cb15-16"></a>      <span class="cf">if</span> (<span class="dt">timestep =</span> <span class="dv">0</span>) </span>
-<span id="cb15-17"><a href="#cb15-17"></a>        <span class="kw">print</span>(<span class="st">"Blast off!"</span>)</span>
+<span id="cb15-16"><a href="#cb15-16"></a>      <span class="cf">if</span> (<span class="at">timestep =</span> <span class="dv">0</span>) </span>
+<span id="cb15-17"><a href="#cb15-17"></a>        <span class="fu">print</span>(<span class="st">"Blast off!"</span>)</span>
 <span id="cb15-18"><a href="#cb15-18"></a>    }</span>
 <span id="cb15-19"><a href="#cb15-19"></a>    </span>
 <span id="cb15-20"><a href="#cb15-20"></a>  }</span>
 <span id="cb15-21"><a href="#cb15-21"></a>  </span>
 <span id="cb15-22"><a href="#cb15-22"></a>}</span>
 <span id="cb15-23"><a href="#cb15-23"></a></span>
-<span id="cb15-24"><a href="#cb15-24"></a><span class="kw">countdown</span>(<span class="dv">3</span>)</span></code></pre></div>
+<span id="cb15-24"><a href="#cb15-24"></a><span class="fu">countdown</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## Error: &lt;text&gt;:16:20: unexpected '='</span></span>
 <span><span class="co">## 15:       </span></span>
 <span><span class="co">## 16:       if (timestep =</span></span>
@@ -433,35 +474,43 @@
 <span><span class="co">## 15:       </span></span>
 <span><span class="co">## 16:       if (timestep =</span></span>
 <span><span class="co">##                        ^</span></span></code></pre>
-<p>Here, the code stops after hitting the first error. That’s because of the way this website is generated. In RStudio, a number of <code>unexpected '}' in ...</code> errors follow this. The number of errors here might seem intimidating, but the important thing to note is that after we fix the first one, the remaining three will cease to occur. It’s very important, therefore, to tackle errors in sequence.</p>
-<p>So, returning to the unexpected <code>=</code>… the only <code>=</code> can be found on line 19. Now, recall that <code>if</code> statements are always followed by a condition. That is, a conditional test that results in <code>TRUE</code> or <code>FALSE</code>.</p>
+<p>Here, the code stops after hitting the first error. That’s because of
+the way this website is generated. In RStudio, a number of
+<code>unexpected '}' in ...</code> errors follow this. The number of
+errors here might seem intimidating, but the important thing to note is
+that after we fix the first one, the remaining three will cease to
+occur. It’s very important, therefore, to tackle errors in sequence.</p>
+<p>So, returning to the unexpected <code>=</code>… the only
+<code>=</code> can be found on line 19. Now, recall that <code>if</code>
+statements are always followed by a condition. That is, a conditional
+test that results in <code>TRUE</code> or <code>FALSE</code>.</p>
 </div>
 <div class="tab-pane" id="solution-2" role="tabpanel" aria-labelledby="solution-2-tab">
 
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>countdown &lt;-<span class="st"> </span><span class="cf">function</span>(number) {</span>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a>countdown <span class="ot">&lt;-</span> <span class="cf">function</span>(number) {</span>
 <span id="cb18-2"><a href="#cb18-2"></a>  </span>
-<span id="cb18-3"><a href="#cb18-3"></a>  <span class="cf">if</span> (number <span class="op">&lt;</span><span class="st"> </span><span class="dv">0</span>) {</span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="cf">if</span> (number <span class="sc">&lt;</span> <span class="dv">0</span>) {</span>
 <span id="cb18-4"><a href="#cb18-4"></a>    </span>
-<span id="cb18-5"><a href="#cb18-5"></a>    <span class="kw">stop</span>(<span class="st">"Can't countdown from a negative time."</span>)</span>
+<span id="cb18-5"><a href="#cb18-5"></a>    <span class="fu">stop</span>(<span class="st">"Can't countdown from a negative time."</span>)</span>
 <span id="cb18-6"><a href="#cb18-6"></a>    </span>
 <span id="cb18-7"><a href="#cb18-7"></a>  } <span class="cf">else</span> {</span>
 <span id="cb18-8"><a href="#cb18-8"></a>    </span>
-<span id="cb18-9"><a href="#cb18-9"></a>    timestep &lt;-<span class="st"> </span>number</span>
+<span id="cb18-9"><a href="#cb18-9"></a>    timestep <span class="ot">&lt;-</span> number</span>
 <span id="cb18-10"><a href="#cb18-10"></a>    </span>
-<span id="cb18-11"><a href="#cb18-11"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="op">:</span>number) {</span>
-<span id="cb18-12"><a href="#cb18-12"></a>      <span class="kw">print</span>(timestep)</span>
-<span id="cb18-13"><a href="#cb18-13"></a>      timestep &lt;-<span class="st"> </span>timestep <span class="op">-</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb18-14"><a href="#cb18-14"></a>      <span class="kw">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>number) {</span>
+<span id="cb18-12"><a href="#cb18-12"></a>      <span class="fu">print</span>(timestep)</span>
+<span id="cb18-13"><a href="#cb18-13"></a>      timestep <span class="ot">&lt;-</span> timestep <span class="sc">-</span> <span class="dv">1</span></span>
+<span id="cb18-14"><a href="#cb18-14"></a>      <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
 <span id="cb18-15"><a href="#cb18-15"></a>      </span>
-<span id="cb18-16"><a href="#cb18-16"></a>      <span class="cf">if</span> (timestep <span class="op">==</span><span class="st"> </span><span class="dv">0</span>)   <span class="co"># fix conditional test</span></span>
-<span id="cb18-17"><a href="#cb18-17"></a>        <span class="kw">print</span>(<span class="st">"Blast off!"</span>)</span>
+<span id="cb18-16"><a href="#cb18-16"></a>      <span class="cf">if</span> (timestep <span class="sc">==</span> <span class="dv">0</span>)   <span class="co"># fix conditional test</span></span>
+<span id="cb18-17"><a href="#cb18-17"></a>        <span class="fu">print</span>(<span class="st">"Blast off!"</span>)</span>
 <span id="cb18-18"><a href="#cb18-18"></a>    }</span>
 <span id="cb18-19"><a href="#cb18-19"></a>    </span>
 <span id="cb18-20"><a href="#cb18-20"></a>  }</span>
 <span id="cb18-21"><a href="#cb18-21"></a>  </span>
 <span id="cb18-22"><a href="#cb18-22"></a>}</span>
 <span id="cb18-23"><a href="#cb18-23"></a></span>
-<span id="cb18-24"><a href="#cb18-24"></a><span class="kw">countdown</span>(<span class="dv">3</span>)</span></code></pre></div>
+<span id="cb18-24"><a href="#cb18-24"></a><span class="fu">countdown</span>(<span class="dv">3</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## [1] 3</span></span>
 <span><span class="co">## [1] 2</span></span>
 <span><span class="co">## [1] 1</span></span>
@@ -470,10 +519,10 @@
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-2"></h3>
+<h3 class="unnumbered" id="section-2"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="error-object-not-found">Error: object not found<a class="anchor" aria-label="anchor" href="#error-object-not-found"></a>
+<h3 class="tabset" id="error-object-not-found">Error: object not found<a class="anchor" aria-label="anchor" href="#error-object-not-found"></a>
 </h3>
 
 
@@ -486,39 +535,45 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-3" role="tabpanel" aria-labelledby="problem-3-tab">
 
-<p>Given an acceleration from a point of rest and a time of travel, calculate the displacement of an object using Newton’s second equation of motion:</p>
+<p>Given an acceleration from a point of rest and a time of travel,
+calculate the displacement of an object using Newton’s second equation
+of motion:</p>
 <p><span class="math display">\[s = ut + \frac{1}{2}at^2\]</span></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>displacement &lt;-<span class="st"> </span><span class="cf">function</span>(acceleration, time) {</span>
-<span id="cb20-2"><a href="#cb20-2"></a>  starting_speed &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb20-3"><a href="#cb20-3"></a>  initial_velocity <span class="op">*</span><span class="st"> </span>time <span class="op">+</span><span class="st"> </span>(<span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>acceleration <span class="op">*</span><span class="st"> </span>(time <span class="op">^</span><span class="st"> </span><span class="dv">2</span>))</span>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>displacement <span class="ot">&lt;-</span> <span class="cf">function</span>(acceleration, time) {</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  starting_speed <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a>  initial_velocity <span class="sc">*</span> time <span class="sc">+</span> (<span class="fl">0.5</span> <span class="sc">*</span> acceleration <span class="sc">*</span> (time <span class="sc">^</span> <span class="dv">2</span>))</span>
 <span id="cb20-4"><a href="#cb20-4"></a>}</span>
 <span id="cb20-5"><a href="#cb20-5"></a></span>
-<span id="cb20-6"><a href="#cb20-6"></a><span class="kw">displacement</span>(<span class="dv">10</span>, <span class="dv">18</span>)</span></code></pre></div>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="fu">displacement</span>(<span class="dv">10</span>, <span class="dv">18</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## Error in displacement(10, 18): object 'initial_velocity' not found</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-3" role="tabpanel" aria-labelledby="hints-3-tab">
 
-<p>Here, an error is generated on line 3 when R tries to multiply <code>initial_velocity</code> by <code>time</code>, but can’t find an <code>initial_velocity</code> object:</p>
+<p>Here, an error is generated on line 3 when R tries to multiply
+<code>initial_velocity</code> by <code>time</code>, but can’t find an
+<code>initial_velocity</code> object:</p>
 <pre><code><span><span class="co">## Error in displacement(10, 18): object 'initial_velocity' not found</span></span></code></pre>
-<p>If an object is not defined earlier in the function, then it must be passed as an argument. It can’t just magically appear out of thin air!</p>
+<p>If an object is not defined earlier in the function, then it must be
+passed as an argument. It can’t just magically appear out of thin
+air!</p>
 </div>
 <div class="tab-pane" id="solution-3" role="tabpanel" aria-labelledby="solution-3-tab">
 
-<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>displacement &lt;-<span class="st"> </span><span class="cf">function</span>(acceleration, time) {</span>
-<span id="cb23-2"><a href="#cb23-2"></a>  initial_velocity &lt;-<span class="st"> </span><span class="dv">0</span>   <span class="co"># initialise the object here!</span></span>
-<span id="cb23-3"><a href="#cb23-3"></a>  initial_velocity <span class="op">*</span><span class="st"> </span>time <span class="op">+</span><span class="st"> </span>(<span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>acceleration <span class="op">*</span><span class="st"> </span>(time <span class="op">^</span><span class="st"> </span><span class="dv">2</span>))</span>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>displacement <span class="ot">&lt;-</span> <span class="cf">function</span>(acceleration, time) {</span>
+<span id="cb23-2"><a href="#cb23-2"></a>  initial_velocity <span class="ot">&lt;-</span> <span class="dv">0</span>   <span class="co"># initialise the object here!</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  initial_velocity <span class="sc">*</span> time <span class="sc">+</span> (<span class="fl">0.5</span> <span class="sc">*</span> acceleration <span class="sc">*</span> (time <span class="sc">^</span> <span class="dv">2</span>))</span>
 <span id="cb23-4"><a href="#cb23-4"></a>}</span>
 <span id="cb23-5"><a href="#cb23-5"></a></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="kw">displacement</span>(<span class="dv">10</span>, <span class="dv">18</span>)</span></code></pre></div>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="fu">displacement</span>(<span class="dv">10</span>, <span class="dv">18</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## [1] 1620</span></span></code></pre>
 </div>
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-3"></h3>
+<h3 class="unnumbered" id="section-3"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="error-missing-value-where-truefalse-needed">Error: missing value where TRUE/FALSE needed<a class="anchor" aria-label="anchor" href="#error-missing-value-where-truefalse-needed"></a>
+<h3 class="tabset" id="error-missing-value-where-truefalse-needed">Error: missing value where TRUE/FALSE needed<a class="anchor" aria-label="anchor" href="#error-missing-value-where-truefalse-needed"></a>
 </h3>
 
 
@@ -531,26 +586,28 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-4" role="tabpanel" aria-labelledby="problem-4-tab">
 
-<p>The <code>checker()</code> function checks whether a number is big (greater than 10) or small (less than or equal to 10) and prints out a descriptive statement to the console.</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>checker &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
+<p>The <code>checker()</code> function checks whether a number is big
+(greater than 10) or small (less than or equal to 10) and prints out a
+descriptive statement to the console.</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a>checker <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
 <span id="cb25-2"><a href="#cb25-2"></a>  </span>
-<span id="cb25-3"><a href="#cb25-3"></a>  <span class="cf">if</span> (value <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) {</span>
+<span id="cb25-3"><a href="#cb25-3"></a>  <span class="cf">if</span> (value <span class="sc">&gt;</span> <span class="dv">10</span>) {</span>
 <span id="cb25-4"><a href="#cb25-4"></a>    </span>
-<span id="cb25-5"><a href="#cb25-5"></a>    <span class="kw">print</span>(<span class="st">"Big number"</span>)</span>
+<span id="cb25-5"><a href="#cb25-5"></a>    <span class="fu">print</span>(<span class="st">"Big number"</span>)</span>
 <span id="cb25-6"><a href="#cb25-6"></a>    </span>
 <span id="cb25-7"><a href="#cb25-7"></a>  } <span class="cf">else</span> {</span>
 <span id="cb25-8"><a href="#cb25-8"></a>    </span>
-<span id="cb25-9"><a href="#cb25-9"></a>    <span class="kw">print</span>(<span class="st">"Small number"</span>)</span>
+<span id="cb25-9"><a href="#cb25-9"></a>    <span class="fu">print</span>(<span class="st">"Small number"</span>)</span>
 <span id="cb25-10"><a href="#cb25-10"></a>    </span>
 <span id="cb25-11"><a href="#cb25-11"></a>  }</span>
 <span id="cb25-12"><a href="#cb25-12"></a>  </span>
 <span id="cb25-13"><a href="#cb25-13"></a>}</span>
 <span id="cb25-14"><a href="#cb25-14"></a></span>
-<span id="cb25-15"><a href="#cb25-15"></a>items &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">2</span>, <span class="dv">8</span>, <span class="ot">NA</span>, <span class="dv">32</span>)</span>
+<span id="cb25-15"><a href="#cb25-15"></a>items <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>, <span class="dv">8</span>, <span class="cn">NA</span>, <span class="dv">32</span>)</span>
 <span id="cb25-16"><a href="#cb25-16"></a></span>
 <span id="cb25-17"><a href="#cb25-17"></a><span class="cf">for</span> (i <span class="cf">in</span> items) {</span>
 <span id="cb25-18"><a href="#cb25-18"></a>  </span>
-<span id="cb25-19"><a href="#cb25-19"></a>  <span class="kw">checker</span>(i)</span>
+<span id="cb25-19"><a href="#cb25-19"></a>  <span class="fu">checker</span>(i)</span>
 <span id="cb25-20"><a href="#cb25-20"></a></span>
 <span id="cb25-21"><a href="#cb25-21"></a>}</span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Small number"</span></span>
@@ -559,38 +616,47 @@
 </div>
 <div class="tab-pane" id="hints-4" role="tabpanel" aria-labelledby="hints-4-tab">
 
-<p>Here, R is returning an error on the third iteration of the <code>for</code> loop:</p>
+<p>Here, R is returning an error on the third iteration of the
+<code>for</code> loop:</p>
 <pre><code><span><span class="co">## [1] "Small number"</span></span>
 <span><span class="co">## [1] "Small number"</span></span></code></pre>
 <pre><code><span><span class="co">## Error in if (value &gt; 10) {: missing value where TRUE/FALSE needed</span></span></code></pre>
-<p>There if an error in <code>if (value &gt; 10)</code> because a <code>TRUE/FALSE</code> value is expected. In this case, <code>checker()</code> is trying to determine whether the <code>value</code>, <code>NA</code>, is greater than 10. Since <code>NA &gt; 10</code> returns <code>NA</code> and <code>if</code> <code>else</code> statements only accept boolean values, an error is generated.</p>
+<p>There if an error in <code>if (value &gt; 10)</code> because a
+<code>TRUE/FALSE</code> value is expected. In this case,
+<code>checker()</code> is trying to determine whether the
+<code>value</code>, <code>NA</code>, is greater than 10. Since
+<code>NA &gt; 10</code> returns <code>NA</code> and <code>if</code>
+<code>else</code> statements only accept boolean values, an error is
+generated.</p>
 </div>
 <div class="tab-pane" id="solution-4" role="tabpanel" aria-labelledby="solution-4-tab">
 
-<p>The solution here is to either remove <code>NA</code> from the <code>items</code> vector or check for non-numeric values in the function.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>checker &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
+<p>The solution here is to either remove <code>NA</code> from the
+<code>items</code> vector or check for non-numeric values in the
+function.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a>checker <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
 <span id="cb30-2"><a href="#cb30-2"></a>  </span>
-<span id="cb30-3"><a href="#cb30-3"></a>  <span class="cf">if</span> (<span class="op">!</span><span class="kw">is.numeric</span>(value)) {   <span class="co"># check for</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="cf">if</span> (<span class="sc">!</span><span class="fu">is.numeric</span>(value)) {   <span class="co"># check for</span></span>
 <span id="cb30-4"><a href="#cb30-4"></a>    </span>
-<span id="cb30-5"><a href="#cb30-5"></a>    <span class="kw">print</span>(<span class="st">"Not a number"</span>)     <span class="co"># non-numeric</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>    <span class="fu">print</span>(<span class="st">"Not a number"</span>)     <span class="co"># non-numeric</span></span>
 <span id="cb30-6"><a href="#cb30-6"></a>    </span>
-<span id="cb30-7"><a href="#cb30-7"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="op">&gt;</span><span class="st"> </span><span class="dv">10</span>) {    <span class="co"># values here!</span></span>
+<span id="cb30-7"><a href="#cb30-7"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="sc">&gt;</span> <span class="dv">10</span>) {    <span class="co"># values here!</span></span>
 <span id="cb30-8"><a href="#cb30-8"></a>    </span>
-<span id="cb30-9"><a href="#cb30-9"></a>    <span class="kw">print</span>(<span class="st">"Big number"</span>)</span>
+<span id="cb30-9"><a href="#cb30-9"></a>    <span class="fu">print</span>(<span class="st">"Big number"</span>)</span>
 <span id="cb30-10"><a href="#cb30-10"></a>    </span>
 <span id="cb30-11"><a href="#cb30-11"></a>  } <span class="cf">else</span> {</span>
 <span id="cb30-12"><a href="#cb30-12"></a>    </span>
-<span id="cb30-13"><a href="#cb30-13"></a>    <span class="kw">print</span>(<span class="st">"Small number"</span>)</span>
+<span id="cb30-13"><a href="#cb30-13"></a>    <span class="fu">print</span>(<span class="st">"Small number"</span>)</span>
 <span id="cb30-14"><a href="#cb30-14"></a>    </span>
 <span id="cb30-15"><a href="#cb30-15"></a>  }</span>
 <span id="cb30-16"><a href="#cb30-16"></a>  </span>
 <span id="cb30-17"><a href="#cb30-17"></a>}</span>
 <span id="cb30-18"><a href="#cb30-18"></a></span>
-<span id="cb30-19"><a href="#cb30-19"></a>items &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dv">2</span>, <span class="dv">8</span>, <span class="ot">NA</span>, <span class="dv">32</span>)</span>
+<span id="cb30-19"><a href="#cb30-19"></a>items <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="dv">2</span>, <span class="dv">8</span>, <span class="cn">NA</span>, <span class="dv">32</span>)</span>
 <span id="cb30-20"><a href="#cb30-20"></a></span>
 <span id="cb30-21"><a href="#cb30-21"></a><span class="cf">for</span> (i <span class="cf">in</span> items) {</span>
 <span id="cb30-22"><a href="#cb30-22"></a>  </span>
-<span id="cb30-23"><a href="#cb30-23"></a>  <span class="kw">checker</span>(i)</span>
+<span id="cb30-23"><a href="#cb30-23"></a>  <span class="fu">checker</span>(i)</span>
 <span id="cb30-24"><a href="#cb30-24"></a></span>
 <span id="cb30-25"><a href="#cb30-25"></a>}</span></code></pre></div>
 <pre><code><span><span class="co">## [1] "Small number"</span></span>
@@ -601,10 +667,11 @@
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-4"></h3>
+<h3 class="unnumbered" id="section-4"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="warning-the-condition-has-length-1-and-only-the-first-element-will-be-used">Warning: the condition has length &gt; 1 and only the first element will be used<a class="anchor" aria-label="anchor" href="#warning-the-condition-has-length-1-and-only-the-first-element-will-be-used"></a>
+<h3 class="tabset" id="warning-the-condition-has-length-1-and-only-the-first-element-will-be-used">Warning: the condition has length &gt; 1 and only the
+first element will be used<a class="anchor" aria-label="anchor" href="#warning-the-condition-has-length-1-and-only-the-first-element-will-be-used"></a>
 </h3>
 
 
@@ -617,77 +684,94 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-5" role="tabpanel" aria-labelledby="problem-5-tab">
 
-<p>The function <code>explode()</code> takes a number between 0 and 11, otherwise <code>NA</code> is returned. Values between 0 and 10 are incremented by 1, whereas 11 is reset to 0.</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>explode &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
+<p>The function <code>explode()</code> takes a number between 0 and 11,
+otherwise <code>NA</code> is returned. Values between 0 and 10 are
+incremented by 1, whereas 11 is reset to 0.</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a>explode <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
 <span id="cb32-2"><a href="#cb32-2"></a>  </span>
-<span id="cb32-3"><a href="#cb32-3"></a>  <span class="cf">if</span> (value <span class="op">&gt;</span><span class="st"> </span><span class="dv">11</span>) {</span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="cf">if</span> (value <span class="sc">&gt;</span> <span class="dv">11</span>) {</span>
 <span id="cb32-4"><a href="#cb32-4"></a>    </span>
-<span id="cb32-5"><a href="#cb32-5"></a>    output &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb32-5"><a href="#cb32-5"></a>    output <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb32-6"><a href="#cb32-6"></a>    </span>
-<span id="cb32-7"><a href="#cb32-7"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="op">==</span><span class="st"> </span><span class="dv">11</span>) {</span>
+<span id="cb32-7"><a href="#cb32-7"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="sc">==</span> <span class="dv">11</span>) {</span>
 <span id="cb32-8"><a href="#cb32-8"></a>    </span>
-<span id="cb32-9"><a href="#cb32-9"></a>    output &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb32-9"><a href="#cb32-9"></a>    output <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb32-10"><a href="#cb32-10"></a>    </span>
 <span id="cb32-11"><a href="#cb32-11"></a>  } <span class="cf">else</span> {</span>
 <span id="cb32-12"><a href="#cb32-12"></a>    </span>
-<span id="cb32-13"><a href="#cb32-13"></a>    output &lt;-<span class="st"> </span>value <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb32-13"><a href="#cb32-13"></a>    output <span class="ot">&lt;-</span> value <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb32-14"><a href="#cb32-14"></a>  </span>
 <span id="cb32-15"><a href="#cb32-15"></a>  }</span>
 <span id="cb32-16"><a href="#cb32-16"></a>  </span>
 <span id="cb32-17"><a href="#cb32-17"></a>  output</span>
 <span id="cb32-18"><a href="#cb32-18"></a>}</span>
 <span id="cb32-19"><a href="#cb32-19"></a></span>
-<span id="cb32-20"><a href="#cb32-20"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">27</span>, <span class="dv">15</span>)</span>
-<span id="cb32-21"><a href="#cb32-21"></a><span class="kw">explode</span>(vector)</span></code></pre></div>
+<span id="cb32-20"><a href="#cb32-20"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">27</span>, <span class="dv">15</span>)</span>
+<span id="cb32-21"><a href="#cb32-21"></a><span class="fu">explode</span>(vector)</span></code></pre></div>
 <pre><code><span><span class="co">## Error in if (value &gt; 11) {: the condition has length &gt; 1</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-5" role="tabpanel" aria-labelledby="hints-5-tab">
 
-<p>Here we have a warning that has been triggered by <code>if (value &gt; 11)</code>. In this case, it’s particularly dangerous because a <code>Warning</code> doesn’t stop your code like an <code>Error</code> does, and here, erroneous values are returned!</p>
+<p>Here we have a warning that has been triggered by
+<code>if (value &gt; 11)</code>. In this case, it’s particularly
+dangerous because a <code>Warning</code> doesn’t stop your code like an
+<code>Error</code> does, and here, erroneous values are returned!</p>
 <pre><code><span><span class="co">## Error in if (value &gt; 11) {: the condition has length &gt; 1</span></span></code></pre>
-<p>The warnings are triggered on lines 3 and 7, where <code>vector</code> (a five element vector) is passed into <code>explode()</code> as the <code>value</code> argument.</p>
-<p>The problem is that the condition (<code>if (condition)</code>) must have a length of 1 and therefore only the first element of the vector is being used in the comparison. That is, <code>value</code> is input as <code>c(2, 4, 11, 27, 15)</code>, but the condition <code>value &gt; 11</code> tests on 2, returning <code>FALSE</code>. Then the condition <code>value == 11</code> tests on 2, again returning <code>FALSE</code>. So then <code>output &lt;- value + 1</code> returns <code>c(3, 5, 12, 28, 16)</code>.</p>
+<p>The warnings are triggered on lines 3 and 7, where
+<code>vector</code> (a five element vector) is passed into
+<code>explode()</code> as the <code>value</code> argument.</p>
+<p>The problem is that the condition (<code>if (condition)</code>) must
+have a length of 1 and therefore only the first element of the vector is
+being used in the comparison. That is, <code>value</code> is input as
+<code>c(2, 4, 11, 27, 15)</code>, but the condition
+<code>value &gt; 11</code> tests on 2, returning <code>FALSE</code>.
+Then the condition <code>value == 11</code> tests on 2, again returning
+<code>FALSE</code>. So then <code>output &lt;- value + 1</code> returns
+<code>c(3, 5, 12, 28, 16)</code>.</p>
 </div>
 <div class="tab-pane" id="solution-5" role="tabpanel" aria-labelledby="solution-5-tab">
 
-<p>The solution here is to either (1) ensure the function can only take a single input value; or (2) wrap the <code>if</code> <code>else</code> statements in a for loop, so that each element of the vector can be checked and transformed individually. Here we do the former:</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>explode &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
+<p>The solution here is to either (1) ensure the function can only take
+a single input value; or (2) wrap the <code>if</code> <code>else</code>
+statements in a for loop, so that each element of the vector can be
+checked and transformed individually. Here we do the former:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>explode <span class="ot">&lt;-</span> <span class="cf">function</span>(value) {</span>
 <span id="cb35-2"><a href="#cb35-2"></a>  </span>
-<span id="cb35-3"><a href="#cb35-3"></a>  <span class="cf">if</span> (<span class="kw">length</span>(value) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)                   <span class="co"># add a check</span></span>
-<span id="cb35-4"><a href="#cb35-4"></a>    <span class="kw">stop</span>(<span class="st">"Input must be a single value"</span>)   <span class="co"># here</span></span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="cf">if</span> (<span class="fu">length</span>(value) <span class="sc">&gt;</span> <span class="dv">1</span>)                   <span class="co"># add a check</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>    <span class="fu">stop</span>(<span class="st">"Input must be a single value"</span>)   <span class="co"># here</span></span>
 <span id="cb35-5"><a href="#cb35-5"></a>  </span>
-<span id="cb35-6"><a href="#cb35-6"></a>  <span class="cf">if</span> (value <span class="op">&gt;</span><span class="st"> </span><span class="dv">11</span>) {</span>
+<span id="cb35-6"><a href="#cb35-6"></a>  <span class="cf">if</span> (value <span class="sc">&gt;</span> <span class="dv">11</span>) {</span>
 <span id="cb35-7"><a href="#cb35-7"></a>    </span>
-<span id="cb35-8"><a href="#cb35-8"></a>    output &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb35-8"><a href="#cb35-8"></a>    output <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb35-9"><a href="#cb35-9"></a>    </span>
-<span id="cb35-10"><a href="#cb35-10"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="op">==</span><span class="st"> </span><span class="dv">11</span>) {</span>
+<span id="cb35-10"><a href="#cb35-10"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="sc">==</span> <span class="dv">11</span>) {</span>
 <span id="cb35-11"><a href="#cb35-11"></a>    </span>
-<span id="cb35-12"><a href="#cb35-12"></a>    output &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb35-12"><a href="#cb35-12"></a>    output <span class="ot">&lt;-</span> <span class="dv">0</span></span>
 <span id="cb35-13"><a href="#cb35-13"></a>    </span>
 <span id="cb35-14"><a href="#cb35-14"></a>  } <span class="cf">else</span> {</span>
 <span id="cb35-15"><a href="#cb35-15"></a>    </span>
-<span id="cb35-16"><a href="#cb35-16"></a>    output &lt;-<span class="st"> </span>value <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb35-16"><a href="#cb35-16"></a>    output <span class="ot">&lt;-</span> value <span class="sc">+</span> <span class="dv">1</span></span>
 <span id="cb35-17"><a href="#cb35-17"></a>  </span>
 <span id="cb35-18"><a href="#cb35-18"></a>  }</span>
 <span id="cb35-19"><a href="#cb35-19"></a>  </span>
 <span id="cb35-20"><a href="#cb35-20"></a>  output</span>
 <span id="cb35-21"><a href="#cb35-21"></a>}</span>
 <span id="cb35-22"><a href="#cb35-22"></a></span>
-<span id="cb35-23"><a href="#cb35-23"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">27</span>, <span class="dv">15</span>)</span>
+<span id="cb35-23"><a href="#cb35-23"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">27</span>, <span class="dv">15</span>)</span>
 <span id="cb35-24"><a href="#cb35-24"></a></span>
 <span id="cb35-25"><a href="#cb35-25"></a><span class="cf">for</span> (i <span class="cf">in</span> vector) {                        <span class="co"># and loop</span></span>
 <span id="cb35-26"><a href="#cb35-26"></a>  </span>
-<span id="cb35-27"><a href="#cb35-27"></a>  <span class="kw">explode</span>(i)                               <span class="co"># through the</span></span>
+<span id="cb35-27"><a href="#cb35-27"></a>  <span class="fu">explode</span>(i)                               <span class="co"># through the</span></span>
 <span id="cb35-28"><a href="#cb35-28"></a>  </span>
 <span id="cb35-29"><a href="#cb35-29"></a>}                                          <span class="co"># vector here</span></span></code></pre></div>
 </div>
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-5"></h3>
+<h3 class="unnumbered" id="section-5"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="error-unexpected-symbol-in">Error: unexpected symbol in<a class="anchor" aria-label="anchor" href="#error-unexpected-symbol-in"></a>
+<h3 class="tabset" id="error-unexpected-symbol-in">Error: unexpected symbol in<a class="anchor" aria-label="anchor" href="#error-unexpected-symbol-in"></a>
 </h3>
 
 
@@ -700,17 +784,18 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-6" role="tabpanel" aria-labelledby="problem-6-tab">
 
-<p>The <code>quadratic()</code> function is used to solve quadratic equations.</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</span>
+<p>The <code>quadratic()</code> function is used to solve quadratic
+equations.</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>quadratic <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b, c) {</span>
 <span id="cb36-2"><a href="#cb36-2"></a>  </span>
-<span id="cb36-3"><a href="#cb36-3"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>4ac)</span>
-<span id="cb36-4"><a href="#cb36-4"></a>  solution1 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span>2a</span>
-<span id="cb36-5"><a href="#cb36-5"></a>  solution2 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span>2a</span>
-<span id="cb36-6"><a href="#cb36-6"></a>  <span class="kw">list</span>(solution1 solution2)</span>
+<span id="cb36-3"><a href="#cb36-3"></a>  root <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> 4ac)</span>
+<span id="cb36-4"><a href="#cb36-4"></a>  solution1 <span class="ot">&lt;-</span> <span class="sc">-</span>b <span class="sc">+</span> root <span class="sc">/</span> 2a</span>
+<span id="cb36-5"><a href="#cb36-5"></a>  solution2 <span class="ot">&lt;-</span> <span class="sc">-</span>b <span class="sc">-</span> root <span class="sc">/</span> 2a</span>
+<span id="cb36-6"><a href="#cb36-6"></a>  <span class="fu">list</span>(solution1 solution2)</span>
 <span id="cb36-7"><a href="#cb36-7"></a>  </span>
 <span id="cb36-8"><a href="#cb36-8"></a>}</span>
 <span id="cb36-9"><a href="#cb36-9"></a></span>
-<span id="cb36-10"><a href="#cb36-10"></a><span class="kw">quadratic</span>(<span class="dv">1</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
+<span id="cb36-10"><a href="#cb36-10"></a><span class="fu">quadratic</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">6</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## Error: &lt;text&gt;:3:23: unexpected symbol</span></span>
 <span><span class="co">## 2:   </span></span>
 <span><span class="co">## 3:   root &lt;- sqrt(b^2 - 4ac</span></span>
@@ -722,21 +807,30 @@
 <span><span class="co">## 2:   </span></span>
 <span><span class="co">## 3:   root &lt;- sqrt(b^2 - 4ac</span></span>
 <span><span class="co">##                          ^</span></span></code></pre>
-<p>An unexpected symbol can often be avoided by keeping good code hygiene and making sure everything is neat and tidy. A good way to do this is to make good use of white space (blank lines between sections of code) as well as making a habit of selecting all of your code (<code>Command</code> + <code>A</code> on Mac / <code>Ctrl</code> + <code>A</code> on Windows), then reindenting your lines (<code>Command</code> + <code>I</code> on Mac / <code>Ctrl</code> + <code>I</code> on Windows).</p>
-<p>In this case, that won’t help because each error occurs on a single line. There are 4 syntax errors – errors in the grammar of code – in total, see if you can find them all.</p>
+<p>An unexpected symbol can often be avoided by keeping good code
+hygiene and making sure everything is neat and tidy. A good way to do
+this is to make good use of white space (blank lines between sections of
+code) as well as making a habit of selecting all of your code
+(<code>Command</code> + <code>A</code> on Mac / <code>Ctrl</code> +
+<code>A</code> on Windows), then reindenting your lines
+(<code>Command</code> + <code>I</code> on Mac / <code>Ctrl</code> +
+<code>I</code> on Windows).</p>
+<p>In this case, that won’t help because each error occurs on a single
+line. There are 4 syntax errors – errors in the grammar of code – in
+total, see if you can find them all.</p>
 </div>
 <div class="tab-pane" id="solution-6" role="tabpanel" aria-labelledby="solution-6-tab">
 
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</span>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>quadratic <span class="ot">&lt;-</span> <span class="cf">function</span>(a, b, c) {</span>
 <span id="cb39-2"><a href="#cb39-2"></a>  </span>
-<span id="cb39-3"><a href="#cb39-3"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>a <span class="op">*</span><span class="st"> </span>c)    <span class="co"># here,</span></span>
-<span id="cb39-4"><a href="#cb39-4"></a>  solution1 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a   <span class="co"># here,</span></span>
-<span id="cb39-5"><a href="#cb39-5"></a>  solution2 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a   <span class="co"># here,</span></span>
-<span id="cb39-6"><a href="#cb39-6"></a>  <span class="kw">list</span>(solution1, solution2)       <span class="co"># and here!</span></span>
+<span id="cb39-3"><a href="#cb39-3"></a>  root <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(b<span class="sc">^</span><span class="dv">2</span> <span class="sc">-</span> <span class="dv">4</span> <span class="sc">*</span> a <span class="sc">*</span> c)    <span class="co"># here,</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>  solution1 <span class="ot">&lt;-</span> <span class="sc">-</span>b <span class="sc">+</span> root <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> a   <span class="co"># here,</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>  solution2 <span class="ot">&lt;-</span> <span class="sc">-</span>b <span class="sc">-</span> root <span class="sc">/</span> <span class="dv">2</span> <span class="sc">*</span> a   <span class="co"># here,</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a>  <span class="fu">list</span>(solution1, solution2)       <span class="co"># and here!</span></span>
 <span id="cb39-7"><a href="#cb39-7"></a>  </span>
 <span id="cb39-8"><a href="#cb39-8"></a>}</span>
 <span id="cb39-9"><a href="#cb39-9"></a></span>
-<span id="cb39-10"><a href="#cb39-10"></a><span class="kw">quadratic</span>(<span class="dv">1</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
+<span id="cb39-10"><a href="#cb39-10"></a><span class="fu">quadratic</span>(<span class="dv">1</span>, <span class="sc">-</span><span class="dv">5</span>, <span class="dv">6</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## [[1]]</span></span>
 <span><span class="co">## [1] 5.5</span></span>
 <span><span class="co">## </span></span>
@@ -746,10 +840,10 @@
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-6"></h3>
+<h3 class="unnumbered" id="section-6"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="error-replacement-has-data-has">Error: replacement has, data has<a class="anchor" aria-label="anchor" href="#error-replacement-has-data-has"></a>
+<h3 class="tabset" id="error-replacement-has-data-has">Error: replacement has, data has<a class="anchor" aria-label="anchor" href="#error-replacement-has-data-has"></a>
 </h3>
 
 
@@ -762,35 +856,38 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-7" role="tabpanel" aria-labelledby="problem-7-tab">
 
-<p>There are no functions here. We only wish to add a new column to a dataframe.</p>
-<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
+<p>There are no functions here. We only wish to add a new column to a
+dataframe.</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">colour =</span> <span class="fu">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
 <span id="cb41-2"><a href="#cb41-2"></a>                              <span class="st">"candyfloss pink"</span>, <span class="st">"quite a nice brown"</span>), </span>
-<span id="cb41-3"><a href="#cb41-3"></a>                   <span class="dt">number =</span> <span class="kw">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
+<span id="cb41-3"><a href="#cb41-3"></a>                   <span class="at">number =</span> <span class="fu">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
 <span id="cb41-4"><a href="#cb41-4"></a></span>
-<span id="cb41-5"><a href="#cb41-5"></a>data<span class="op">$</span>time &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">2</span>)</span></code></pre></div>
+<span id="cb41-5"><a href="#cb41-5"></a>data<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">2</span>)</span></code></pre></div>
 <pre><code><span><span class="co">## Error in `$&lt;-.data.frame`(`*tmp*`, time, value = c(0, 2, 4, 6, 8)): replacement has 5 rows, data has 6</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-7" role="tabpanel" aria-labelledby="hints-7-tab">
 
 <p>This error is a little difficult to read:</p>
 <pre><code><span><span class="co">## Error in `$&lt;-.data.frame`(`*tmp*`, time, value = c(0, 2, 4, 6, 8)): replacement has 5 rows, data has 6</span></span></code></pre>
-<p>The key point to note here is that the replacement has 5 rows but the data has 6… and the replacement here is <code>time</code>.</p>
+<p>The key point to note here is that the replacement has 5 rows but the
+data has 6… and the replacement here is <code>time</code>.</p>
 </div>
 <div class="tab-pane" id="solution-7" role="tabpanel" aria-labelledby="solution-7-tab">
 
-<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">colour =</span> <span class="fu">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
 <span id="cb44-2"><a href="#cb44-2"></a>                              <span class="st">"candyfloss pink"</span>, <span class="st">"quite a nice brown"</span>), </span>
-<span id="cb44-3"><a href="#cb44-3"></a>                   <span class="dt">number =</span> <span class="kw">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
+<span id="cb44-3"><a href="#cb44-3"></a>                   <span class="at">number =</span> <span class="fu">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
 <span id="cb44-4"><a href="#cb44-4"></a></span>
-<span id="cb44-5"><a href="#cb44-5"></a>data<span class="op">$</span>time &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="fl">1.67</span>)</span></code></pre></div>
+<span id="cb44-5"><a href="#cb44-5"></a>data<span class="sc">$</span>time <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="fl">1.67</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-7"></h3>
+<h3 class="unnumbered" id="section-7"></h3>
 </div>
 <div class="section level3 tabset">
-<h3 id="error-object-of-type-closure-is-not-subsettable">Error: object of type ‘closure’ is not subsettable<a class="anchor" aria-label="anchor" href="#error-object-of-type-closure-is-not-subsettable"></a>
+<h3 class="tabset" id="error-object-of-type-closure-is-not-subsettable">Error: object of type ‘closure’ is not
+subsettable<a class="anchor" aria-label="anchor" href="#error-object-of-type-closure-is-not-subsettable"></a>
 </h3>
 
 
@@ -803,54 +900,59 @@
 <div class="tab-content">
 <div class="active  tab-pane" id="problem-8" role="tabpanel" aria-labelledby="problem-8-tab">
 
-<p>The <code><a href="https://rdrr.io/r/base/force.html" class="external-link">force()</a></code> function calculates Newton’s second law of motion.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>force &lt;-<span class="st"> </span><span class="cf">function</span>(mass, acceleration) {</span>
+<p>The <code><a href="https://rdrr.io/r/base/force.html" class="external-link">force()</a></code> function calculates Newton’s second law of
+motion.</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>force <span class="ot">&lt;-</span> <span class="cf">function</span>(mass, acceleration) {</span>
 <span id="cb45-2"><a href="#cb45-2"></a>  </span>
-<span id="cb45-3"><a href="#cb45-3"></a>  mass <span class="op">*</span><span class="st"> </span>acceleration</span>
+<span id="cb45-3"><a href="#cb45-3"></a>  mass <span class="sc">*</span> acceleration</span>
 <span id="cb45-4"><a href="#cb45-4"></a>  </span>
 <span id="cb45-5"><a href="#cb45-5"></a>}</span>
 <span id="cb45-6"><a href="#cb45-6"></a></span>
-<span id="cb45-7"><a href="#cb45-7"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mass =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="dt">acceleration =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
+<span id="cb45-7"><a href="#cb45-7"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mass =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="at">acceleration =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
 <span id="cb45-8"><a href="#cb45-8"></a></span>
-<span id="cb45-9"><a href="#cb45-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">nrow</span>(dat))) {</span>
+<span id="cb45-9"><a href="#cb45-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(dat))) {</span>
 <span id="cb45-10"><a href="#cb45-10"></a>  </span>
-<span id="cb45-11"><a href="#cb45-11"></a>  mean[i] &lt;-<span class="st"> </span><span class="kw">force</span>(dat<span class="op">$</span>mass[i], dat<span class="op">$</span>acceleration[i])</span>
+<span id="cb45-11"><a href="#cb45-11"></a>  mean[i] <span class="ot">&lt;-</span> <span class="fu">force</span>(dat<span class="sc">$</span>mass[i], dat<span class="sc">$</span>acceleration[i])</span>
 <span id="cb45-12"><a href="#cb45-12"></a>  </span>
 <span id="cb45-13"><a href="#cb45-13"></a>}</span></code></pre></div>
 <pre><code><span><span class="co">## Error in mean[i] &lt;- force(dat$mass[i], dat$acceleration[i]): object of type 'closure' is not subsettable</span></span></code></pre>
 <div class="sourceCode" id="cb47"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>mean</span></code></pre></div>
 <pre><code><span><span class="co">## function (x, ...) </span></span>
 <span><span class="co">## UseMethod("mean")</span></span>
-<span><span class="co">## &lt;bytecode: 0x7f8c91e792b8&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x7fe9497adf28&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:base&gt;</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-8" role="tabpanel" aria-labelledby="hints-8-tab">
 
-<p>This is a tricky one that might require an internet search (for Stack Overflow) to solve.</p>
-<p>Reading the error message, we know that the error is triggered on line 11 by <code>mean[i] &lt;- force(dat$mass[i], dat$acceleration[i])</code>:</p>
+<p>This is a tricky one that might require an internet search (for Stack
+Overflow) to solve.</p>
+<p>Reading the error message, we know that the error is triggered on
+line 11 by
+<code>mean[i] &lt;- force(dat$mass[i], dat$acceleration[i])</code>:</p>
 <pre><code><span><span class="co">## Error in mean[i] &lt;- force(dat$mass[i], dat$acceleration[i]): object of type 'closure' is not subsettable</span></span></code></pre>
 <pre><code><span><span class="co">## function (x, ...) </span></span>
 <span><span class="co">## UseMethod("mean")</span></span>
-<span><span class="co">## &lt;bytecode: 0x7f8c91e792b8&gt;</span></span>
+<span><span class="co">## &lt;bytecode: 0x7fe9497adf28&gt;</span></span>
 <span><span class="co">## &lt;environment: namespace:base&gt;</span></span></code></pre>
-<p>The problem is that “object of type ‘closure’ is not subsettable”. What does this mean?</p>
+<p>The problem is that “object of type ‘closure’ is not subsettable”.
+What does this mean?</p>
 </div>
 <div class="tab-pane" id="solution-8" role="tabpanel" aria-labelledby="solution-8-tab">
 
-<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>force &lt;-<span class="st"> </span><span class="cf">function</span>(mass, acceleration) {</span>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>force <span class="ot">&lt;-</span> <span class="cf">function</span>(mass, acceleration) {</span>
 <span id="cb51-2"><a href="#cb51-2"></a>  </span>
-<span id="cb51-3"><a href="#cb51-3"></a>  mass <span class="op">*</span><span class="st"> </span>acceleration</span>
+<span id="cb51-3"><a href="#cb51-3"></a>  mass <span class="sc">*</span> acceleration</span>
 <span id="cb51-4"><a href="#cb51-4"></a>  </span>
 <span id="cb51-5"><a href="#cb51-5"></a>}</span>
 <span id="cb51-6"><a href="#cb51-6"></a></span>
-<span id="cb51-7"><a href="#cb51-7"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mass =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="dt">acceleration =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
+<span id="cb51-7"><a href="#cb51-7"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">mass =</span> <span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="at">acceleration =</span> <span class="fu">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
 <span id="cb51-8"><a href="#cb51-8"></a></span>
-<span id="cb51-9"><a href="#cb51-9"></a>results &lt;-<span class="st"> </span><span class="kw">c</span>()   <span class="co"># define results object first and don't give an object</span></span>
+<span id="cb51-9"><a href="#cb51-9"></a>results <span class="ot">&lt;-</span> <span class="fu">c</span>()   <span class="co"># define results object first and don't give an object</span></span>
 <span id="cb51-10"><a href="#cb51-10"></a>                 <span class="co"># the same name as a function!</span></span>
 <span id="cb51-11"><a href="#cb51-11"></a></span>
-<span id="cb51-12"><a href="#cb51-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">nrow</span>(dat))) {</span>
+<span id="cb51-12"><a href="#cb51-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="fu">seq_len</span>(<span class="fu">nrow</span>(dat))) {</span>
 <span id="cb51-13"><a href="#cb51-13"></a>  </span>
-<span id="cb51-14"><a href="#cb51-14"></a>  results[i] &lt;-<span class="st"> </span><span class="kw">force</span>(dat<span class="op">$</span>mass[i], dat<span class="op">$</span>acceleration[i])</span>
+<span id="cb51-14"><a href="#cb51-14"></a>  results[i] <span class="ot">&lt;-</span> <span class="fu">force</span>(dat<span class="sc">$</span>mass[i], dat<span class="sc">$</span>acceleration[i])</span>
 <span id="cb51-15"><a href="#cb51-15"></a>  </span>
 <span id="cb51-16"><a href="#cb51-16"></a>}</span>
 <span id="cb51-17"><a href="#cb51-17"></a></span>
@@ -860,7 +962,7 @@
 </div>
 </div>
 <div class="section level3 unnumbered">
-<h3 id="section-8"></h3>
+<h3 class="unnumbered" id="section-8"></h3>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

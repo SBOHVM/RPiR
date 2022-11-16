@@ -182,7 +182,8 @@
 
 
 
-<script src="functions_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Functions</h1>
             
@@ -194,17 +195,38 @@
 
     
     
-<p>Just as loops allow you to repeat the same code chunk again and again in one place, functions allow you to repeat the same task multiple times, but potentially in multiple places on different data. If you have a complex piece of code that does a single discrete thing, then you may want to wrap it up into a function so that you can refer to it by a simple name and keep the script that calls it clear and easy to read.</p>
-<p>To quote from <a href="https://r4ds.had.co.nz/functions.html" class="external-link">the introduction to R4DS on functions</a>:</p>
+<p>Just as loops allow you to repeat the same code chunk again and again
+in one place, functions allow you to repeat the same task multiple
+times, but potentially in multiple places on different data. If you have
+a complex piece of code that does a single discrete thing, then you may
+want to wrap it up into a function so that you can refer to it by a
+simple name and keep the script that calls it clear and easy to
+read.</p>
+<p>To quote from <a href="https://r4ds.had.co.nz/functions.html" class="external-link">the
+introduction to R4DS on functions</a>:</p>
 <blockquote>
-<p>One of the best ways to improve your reach as a data scientist is to write functions. Functions allow you to automate common tasks in a more powerful and general way than copy-and-pasting. Writing a function has three big advantages over using copy-and-paste:</p>
+<p>One of the best ways to improve your reach as a data scientist is to
+write functions. Functions allow you to automate common tasks in a more
+powerful and general way than copy-and-pasting. Writing a function has
+three big advantages over using copy-and-paste:</p>
 <ol style="list-style-type: decimal">
-<li><p>You can give a function an evocative name that makes your code easier to understand.</p></li>
-<li><p>As requirements change, you only need to update code in one place, instead of many.</p></li>
-<li><p>You eliminate the chance of making incidental mistakes when you copy and paste (i.e. updating a variable name in one place, but not in another).</p></li>
+<li><p>You can give a function an evocative name that makes your code
+easier to understand.</p></li>
+<li><p>As requirements change, you only need to update code in one
+place, instead of many.</p></li>
+<li><p>You eliminate the chance of making incidental mistakes when you
+copy and paste (i.e. updating a variable name in one place, but not in
+another).</p></li>
 </ol>
 </blockquote>
-<p>Functions allow us to wrap up a common task into a single line of code, irrespective of how complex and long the code chunk is, making our scripts cleaner and easier to read. They allow us to describe what the code is doing (by assigning a name to the function), making our scripts easier to understand. Finally, writing custom functions rather than duplicating code means that there is only a single place that needs to be checked for correctness, rather than having to remember all of the places your duplicated (likely copied and pasted) code exists.</p>
+<p>Functions allow us to wrap up a common task into a single line of
+code, irrespective of how complex and long the code chunk is, making our
+scripts cleaner and easier to read. They allow us to describe what the
+code is doing (by assigning a name to the function), making our scripts
+easier to understand. Finally, writing custom functions rather than
+duplicating code means that there is only a single place that needs to
+be checked for correctness, rather than having to remember all of the
+places your duplicated (likely copied and pasted) code exists.</p>
 <p>Functions are really easy to write:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">add_up</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">first</span>, <span class="va">second</span><span class="op">)</span> <span class="op">{</span></span>
@@ -214,8 +236,13 @@
 <span><span class="co"># Add call the function to add 3 to 5!</span></span>
 <span><span class="fu">add_up</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 8</span></span></code></pre></div>
-<p>The critical thing to know is that a function takes its arguments (here the variables <code>first</code> and <code>second</code>) and does something to them to calculate some result. The result that is output by the function is the last line of code is that is run.</p>
-<p>If you are writing a simple function, this will be the final line before the close curly bracket (<code>}</code>), here <code>squared</code>.</p>
+<p>The critical thing to know is that a function takes its arguments
+(here the variables <code>first</code> and <code>second</code>) and does
+something to them to calculate some result. The result that is output by
+the function is the last line of code is that is run.</p>
+<p>If you are writing a simple function, this will be the final line
+before the close curly bracket (<code>}</code>), here
+<code>squared</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">add_and_square</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">first</span>, <span class="va">second</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="co"># Calculate the result</span></span>
@@ -228,8 +255,12 @@
 <span><span class="co"># And call the function to add 3 to 5 and square it!</span></span>
 <span><span class="fu">add_and_square</span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] 64</span></span></code></pre></div>
-<p>We introduced functions in Lecture 2c and Practical A-1, and then again in Lecture 5b. They were used starting in Practical 1-2.</p>
-<p>Functions are covered in R4DS <a href="https://r4ds.had.co.nz/functions.html" class="external-link">here</a> and R Coder covers them in some depth <a href="https://r-coder.com/function-r" class="external-link">here</a>. Advanced R covers functions in enormous detail starting <a href="https://adv-r.hadley.nz/fp.html" class="external-link">here</a> with an introduction to functional programming, and continuing for several chapters.</p>
+<p>We introduced functions in Lecture 2c and Practical A-1, and then
+again in Lecture 5b. They were used starting in Practical 1-2.</p>
+<p>Functions are covered in R4DS <a href="https://r4ds.had.co.nz/functions.html" class="external-link">here</a> and R Coder covers
+them in some depth <a href="https://r-coder.com/function-r" class="external-link">here</a>.
+Advanced R covers functions in enormous detail starting <a href="https://adv-r.hadley.nz/fp.html" class="external-link">here</a> with an introduction to
+functional programming, and continuing for several chapters.</p>
   </main>
 </div>
 

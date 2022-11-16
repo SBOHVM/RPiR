@@ -149,18 +149,39 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this session you will make it easier to reuse your code by placing functions in separate files, so that they can be referred to directly without having to be copied and pasted from file to file – a potentially error-strewn pastime.</em></p>
+<p><em>In this session you will make it easier to reuse your code by
+placing functions in separate files, so that they can be referred to
+directly without having to be copied and pasted from file to file – a
+potentially error-strewn pastime.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>Breaking down the program into separate files is an important habit to get into. It makes the code less prone to error in the longer term and easier to debug because by creating independent units we are creating generic pieces of code that we can re-use over and over again in other programs. Not only is reusing code by copying and pasting code from one file to another inherently dangerous as you may accidentally copy the wrong piece of code, but if a mistake is identified at a later date there may be several places where the mistake has been copied to and you may not remember them all, causing avoidable mistakes further down the line.</p>
+<p>Breaking down the program into separate files is an important habit
+to get into. It makes the code less prone to error in the longer term
+and easier to debug because by creating independent units we are
+creating generic pieces of code that we can re-use over and over again
+in other programs. Not only is reusing code by copying and pasting code
+from one file to another inherently dangerous as you may accidentally
+copy the wrong piece of code, but if a mistake is identified at a later
+date there may be several places where the mistake has been copied to
+and you may not remember them all, causing avoidable mistakes further
+down the line.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>We can turn the single program from the previous practical into two pieces of code by putting the <code>step_simple_growth()</code> function into a separate file, and reading that file in the original script using the <code>source()</code> function. We have called the new file containing the function <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span>, so we will use the command:</p>
+<p>We can turn the single program from the previous practical into two
+pieces of code by putting the <code>step_simple_growth()</code> function
+into a separate file, and reading that file in the original script using
+the <code>source()</code> function. We have called the new file
+containing the function <span
+style="color: #dd1c77;">0103-step-simple-growth-function.R</span>, so we
+will use the command:</p>
 <pre class="r"><code>source(&quot;0103-step-simple-growth-function.R&quot;)</code></pre>
-<p>to tell the main script (the R program) that it needs to look in <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> for code.</p>
-<p>The function documentation should be in the function file now and not in the main script, like this:</p>
+<p>to tell the main script (the R program) that it needs to look in
+<span style="color: #dd1c77;">0103-step-simple-growth-function.R</span>
+for code.</p>
+<p>The function documentation should be in the function file now and not
+in the main script, like this:</p>
 <pre class="r"><code>#&#39; ### Function: step_simple_growth() 
 #&#39; Run one step of a simple deterministic exponential growth model. 
 #&#39;
@@ -181,9 +202,15 @@ step_simple_growth &lt;- function(current.population, growth.rate) {
 }
 
 ## Note, running a script with just a function in will not output anything</code></pre>
-<p>and the main script (<span style="color: #dd1c77;">0103-run-simple-growth.R</span>) should look something like this:</p>
+<p>and the main script (<span
+style="color: #dd1c77;">0103-run-simple-growth.R</span>) should look
+something like this:</p>
 <blockquote>
-<p>Note that <code>learnr</code> doesn’t create files, so <code>source</code> doesn’t work here. To avoid an error, we commented out line 2, and instead preloaded <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> into the following code block)</p>
+<p>Note that <code>learnr</code> doesn’t create files, so
+<code>source</code> doesn’t work here. To avoid an error, we commented
+out line 2, and instead preloaded <span
+style="color: #dd1c77;">0103-step-simple-growth-function.R</span> into
+the following code block)</p>
 </blockquote>
 <pre class="r"><code>step_simple_growth &lt;- function(current.population, growth.rate) {
   new.additions &lt;- growth.rate * current.population
@@ -234,7 +261,20 @@ for (new.time in timesteps) {
 # Now we can plot the timesteps against the population vector
 plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></pre>
 <p><img src="practical1-3_files/figure-html/main-1.png" width="672" /></p>
-<p>When we run the code, we don’t even need to open the file <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span>, we just run the main script (<span style="color: #dd1c77;">0103-run-simple-growth.R</span>) making sure that we have specified <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> as a <code>source()</code> in it. Its contents (the <code>step_simple_growth()</code> function) are safely packaged away unless we want to edit them. <span style="color: #dd1c77;">0103-run-simple-growth.R</span> and <span style="color: #dd1c77;">0103-step-simple-growth-function.R</span> together do <strong>exactly</strong> what <span style="color: #dd1c77;">0102-growth-functional.R</span> did. 
+<p>When we run the code, we don’t even need to open the file <span
+style="color: #dd1c77;">0103-step-simple-growth-function.R</span>, we
+just run the main script (<span
+style="color: #dd1c77;">0103-run-simple-growth.R</span>) making sure
+that we have specified <span
+style="color: #dd1c77;">0103-step-simple-growth-function.R</span> as a
+<code>source()</code> in it. Its contents (the
+<code>step_simple_growth()</code> function) are safely packaged away
+unless we want to edit them. <span
+style="color: #dd1c77;">0103-run-simple-growth.R</span> and <span
+style="color: #dd1c77;">0103-step-simple-growth-function.R</span>
+together do <strong>exactly</strong> what <span
+style="color: #dd1c77;">0102-growth-functional.R</span> did.
+
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -246,7 +286,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

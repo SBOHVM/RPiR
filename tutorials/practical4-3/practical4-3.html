@@ -149,51 +149,154 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this session you will take the biodiversity data package you have created and write a demo that calculates a variety of diversity measures on the data.</em></p>
+<p><em>In this session you will take the biodiversity data package you
+have created and write a demo that calculates a variety of diversity
+measures on the data.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>Now you have a package with your data in it, we can easily run analyses, simply starting each analysis script with the R command <code>library(githubusernameBCI)</code>.</p>
-<p>There are an enormous number of different ways of measuring diversity, to the extent that diversity itself has been declared a “non-concept” in the past (by Hurlbert, 1971), but nowadays they fit broadly within Whittaker’s framework of three basic types of diversity: alpha, beta and gamma diversity.</p>
+<p>Now you have a package with your data in it, we can easily run
+analyses, simply starting each analysis script with the R command
+<code>library(githubusernameBCI)</code>.</p>
+<p>There are an enormous number of different ways of measuring
+diversity, to the extent that diversity itself has been declared a
+“non-concept” in the past (by Hurlbert, 1971), but nowadays they fit
+broadly within Whittaker’s framework of three basic types of diversity:
+alpha, beta and gamma diversity.</p>
 <ul>
-<li>Gamma diversity is the diversity of a metacommunity, the whole area being studied, whether that is an ecosystem or a single study site;</li>
-<li>Alpha diversity is the average diversity of the subcommunities that together comprise the metacommunity. The metacommunity can either be broken up into subcommunities spatially in the case of a landscape formed of several habitats, or temporally in the case of time series data from a single site;</li>
-<li>Beta diversity is some measure of the differences between these subcommunities. This is the most variable in definition of the three types of measure, and includes such concepts as turnover of species along a transect in space or time, the effective number of distinct subcommunities in a metacommunity, the average distinctiveness of the constituent subcommunities, and many other related concepts. Tuomisto (2010) has made a brave attempt to make sense of these different meanings.</li>
+<li>Gamma diversity is the diversity of a metacommunity, the whole area
+being studied, whether that is an ecosystem or a single study site;</li>
+<li>Alpha diversity is the average diversity of the subcommunities that
+together comprise the metacommunity. The metacommunity can either be
+broken up into subcommunities spatially in the case of a landscape
+formed of several habitats, or temporally in the case of time series
+data from a single site;</li>
+<li>Beta diversity is some measure of the differences between these
+subcommunities. This is the most variable in definition of the three
+types of measure, and includes such concepts as turnover of species
+along a transect in space or time, the effective number of distinct
+subcommunities in a metacommunity, the average distinctiveness of the
+constituent subcommunities, and many other related concepts. Tuomisto
+(2010) has made a brave attempt to make sense of these different
+meanings.</li>
 </ul>
-<p>All of these types of diversity can be measured in several different ways. The standard approach is often called “species diversity”, where we treat all species as distinct and all of our measures of alpha and gamma diversity are counting in terms of <strong>effective numbers of species</strong>. However, we often need to consider similarity between species, and this results in a wide variety of measures, from closely related ones such as counts of “distinct species” (species that are taxonomically unrelated) or “distinct evolutionary histories” (species that have no common ancestor in a phylogeny), to ones that are more peripherally connected such as “distinct functional groups” (species that are functionally distinct). Leinster and Cobbold (2012) have developed a framework for working with all of these types of similarity consistently. Because beta diversity measures are comparing subcommunities, they are generally unitless (measuring fractions or percentages) or are measured in terms of numbers of subcommunities; how similar two subcommunities are seen to be still entirely depends on the type of similarity though, resulting in, for instance a count of “the effective number of phylogenetically / functionally / taxonomically distinct subcommunities”. The relationship between alpha, beta and gamma has been the source of many arguments – see, for example, Whittaker (1972), Jost (2007) and Reeve et al. (2016).</p>
-<p>Finally, I used the phrase “effective number” several times above. At one extreme, when we disregard abundance and just look at presence-absence data, we measure “species richness” by simply counting the number of species present; at the opposite extreme, we have measures such as Berger-Parker which only look at dominance of the most abundant species. In between, we find measures such as Simpson and Shannon, where we weight our counting of species by their abundance. For instance, Shannon entropy is a measure of the “surprise” or uncertainty expected from the next observation, which is low if there are few species or one is dominant, but high when many are equally abundant. In all cases, the highest diversity is achieved when all species are equally abundant (and completely distinct, when we are considering similarity). We therefore talk about the “effective number of species” as:</p>
+<p>All of these types of diversity can be measured in several different
+ways. The standard approach is often called “species diversity”, where
+we treat all species as distinct and all of our measures of alpha and
+gamma diversity are counting in terms of <strong>effective numbers of
+species</strong>. However, we often need to consider similarity between
+species, and this results in a wide variety of measures, from closely
+related ones such as counts of “distinct species” (species that are
+taxonomically unrelated) or “distinct evolutionary histories” (species
+that have no common ancestor in a phylogeny), to ones that are more
+peripherally connected such as “distinct functional groups” (species
+that are functionally distinct). Leinster and Cobbold (2012) have
+developed a framework for working with all of these types of similarity
+consistently. Because beta diversity measures are comparing
+subcommunities, they are generally unitless (measuring fractions or
+percentages) or are measured in terms of numbers of subcommunities; how
+similar two subcommunities are seen to be still entirely depends on the
+type of similarity though, resulting in, for instance a count of “the
+effective number of phylogenetically / functionally / taxonomically
+distinct subcommunities”. The relationship between alpha, beta and gamma
+has been the source of many arguments – see, for example, Whittaker
+(1972), Jost (2007) and Reeve et al. (2016).</p>
+<p>Finally, I used the phrase “effective number” several times above. At
+one extreme, when we disregard abundance and just look at
+presence-absence data, we measure “species richness” by simply counting
+the number of species present; at the opposite extreme, we have measures
+such as Berger-Parker which only look at dominance of the most abundant
+species. In between, we find measures such as Simpson and Shannon, where
+we weight our counting of species by their abundance. For instance,
+Shannon entropy is a measure of the “surprise” or uncertainty expected
+from the next observation, which is low if there are few species or one
+is dominant, but high when many are equally abundant. In all cases, the
+highest diversity is achieved when all species are equally abundant (and
+completely distinct, when we are considering similarity). We therefore
+talk about the “effective number of species” as:</p>
 <blockquote>
-<p>the number of completely distinct, equally abundant species that would give us the same value of diversity as the observed community.</p>
+<p>the number of completely distinct, equally abundant species that
+would give us the same value of diversity as the observed community.</p>
 </blockquote>
-<p>This acts as a reference to allow fair comparisons to be made. In the case of species richness, this is just the richness itself, but for instance in the case of Shannon entropy, the <em>effective numbers equivalent</em> is in fact the exponential of the entropy. For diversity measures that work in terms of these effective numbers, the extent to which we weight by abundance is determined by a parameter <span class="math inline">\(q\)</span>, which varies from 0, where relative abundance is ignored and only presence-absence is considered, to <span class="math inline">\(\infty\)</span>, where we only consider the most abundant species. This standard for dealing with diversities as effective numbers, while far from universal, has now been pursued for over 40 years and is broadly accepted – originally by Hill (1973), and subsequently, for instance, by Jost (2007), Leinster and Cobbold (2012), and Reeve et al. (2016).</p>
+<p>This acts as a reference to allow fair comparisons to be made. In the
+case of species richness, this is just the richness itself, but for
+instance in the case of Shannon entropy, the <em>effective numbers
+equivalent</em> is in fact the exponential of the entropy. For diversity
+measures that work in terms of these effective numbers, the extent to
+which we weight by abundance is determined by a parameter <span
+class="math inline">\(q\)</span>, which varies from 0, where relative
+abundance is ignored and only presence-absence is considered, to <span
+class="math inline">\(\infty\)</span>, where we only consider the most
+abundant species. This standard for dealing with diversities as
+effective numbers, while far from universal, has now been pursued for
+over 40 years and is broadly accepted – originally by Hill (1973), and
+subsequently, for instance, by Jost (2007), Leinster and Cobbold (2012),
+and Reeve et al. (2016).</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
 <div id="section-setting-up-r" class="section level3">
 <h3>Setting up R</h3>
-<p>First, remember as you add in <code>library(xxx)</code> calls into your demo, you’ll need to add them in as dependencies to the package using <code>usethis::use_package("xxx")</code>, otherwise other people may not be able to run the demo. To test the demo as you go along you may also need to install the packages in advance using <code>install.packages("xxx")</code>.</p>
+<p>First, remember as you add in <code>library(xxx)</code> calls into
+your demo, you’ll need to add them in as dependencies to the package
+using <code>usethis::use_package("xxx")</code>, otherwise other people
+may not be able to run the demo. To test the demo as you go along you
+may also need to install the packages in advance using
+<code>install.packages("xxx")</code>.</p>
 </div>
 <div id="section-create-the-demo-files" class="section level3">
 <h3>Create the demo files</h3>
-<p>As in the last practical series, we’re going to create a <strong>demo</strong> inside the package. In the <span style="color: #dd1c77;">Files</span> tab, you may need to create a new <span style="color: #dd1c77;">demo</span> folder. Then create an R script in that folder to contain your demo, call it <span style="color: #dd1c77;">diversity-of-BCI.R</span>. Note in general you just have to make sure the name of the script has <strong>no spaces in it</strong>. Then (again, as before) create a new text file also in that folder called <span style="color: #dd1c77;">00Index</span>, with <strong>no file extension</strong> to contain the list of the demos in your package. As you should know by now, each demo you create is entered into one line of this file with the demo name followed by a one-line description. For example, here, the demo file <span style="color: #dd1c77;">diversity-of-BCI.R</span> would have a line like:</p>
+<p>As in the last practical series, we’re going to create a
+<strong>demo</strong> inside the package. In the <span
+style="color: #dd1c77;">Files</span> tab, you may need to create a new
+<span style="color: #dd1c77;">demo</span> folder. Then create an R
+script in that folder to contain your demo, call it <span
+style="color: #dd1c77;">diversity-of-BCI.R</span>. Note in general you
+just have to make sure the name of the script has <strong>no spaces in
+it</strong>. Then (again, as before) create a new text file also in that
+folder called <span style="color: #dd1c77;">00Index</span>, with
+<strong>no file extension</strong> to contain the list of the demos in
+your package. As you should know by now, each demo you create is entered
+into one line of this file with the demo name followed by a one-line
+description. For example, here, the demo file <span
+style="color: #dd1c77;">diversity-of-BCI.R</span> would have a line
+like:</p>
 <pre><code>diversity-of-BCI    Showing the diversity of the BCI forest plot.</code></pre>
-<p>For more details on how to create a demo go <a href="https://r-pkgs.org/misc.html#demo">here</a>.</p>
+<p>For more details on how to create a demo go <a
+href="https://r-pkgs.org/misc.html#demo">here</a>.</p>
 </div>
 <div id="section-create-the-demo-itself" class="section level3">
 <h3>Create the demo itself</h3>
-<p>Now you’re going to write the R script that will be the demo. The script will be measuring several kinds of alpha, beta and gamma diversity, as detailed below. But in order to do some work with measures of taxonomic diversity, the taxonomy will first need to match the species abundance data from the BCI dataset, exactly. Here I’m assuming that you created the package <code>githubusernameBCI</code>, and in it <code>bci_taxa</code> contains the taxonomy of all BCI species and <code>bci_2010</code> contains the 2010 BCI census.</p>
+<p>Now you’re going to write the R script that will be the demo. The
+script will be measuring several kinds of alpha, beta and gamma
+diversity, as detailed below. But in order to do some work with measures
+of taxonomic diversity, the taxonomy will first need to match the
+species abundance data from the BCI dataset, exactly. Here I’m assuming
+that you created the package <code>githubusernameBCI</code>, and in it
+<code>bci_taxa</code> contains the taxonomy of all BCI species and
+<code>bci_2010</code> contains the 2010 BCI census.</p>
 <pre class="r"><code>library(githubusernameBCI)
 # Make a copy of the taxonomy as a data frame
 taxonomy &lt;- as.data.frame(bci_taxa)
 # Make sure the species are ordered correctly
 rownames(taxonomy) &lt;- taxonomy$GenusSpecies
 taxonomy &lt;- taxonomy[rownames(bci_2010),]</code></pre>
-<p>To create a metacommunity to analyse in the <code>rdiversity</code> package, you will need to create an object of that type using <code>metacommunity()</code>, and then you can calculate, for example, the gamma diversity of the whole metacommunity with the function <code>meta_gamma()</code> and plot the output with <code>plot()</code>:</p>
+<p>To create a metacommunity to analyse in the <code>rdiversity</code>
+package, you will need to create an object of that type using
+<code>metacommunity()</code>, and then you can calculate, for example,
+the gamma diversity of the whole metacommunity with the function
+<code>meta_gamma()</code> and plot the output with
+<code>plot()</code>:</p>
 <pre class="r"><code>library(rdiversity)
 meta &lt;- metacommunity(bci_2010)
 results &lt;- meta_gamma(meta, qs = seq(from = 0, to = 5)) 
 plot(diversity ~ q, type = &quot;l&quot;, data = results)</code></pre>
-<p>To create a metacommunity that takes account of the similarity between species, you need to input the similarity as a second argument to <code>metacommunity()</code>. First use <code>tax2dist()</code> to create a distance matrix from a taxonomy, then use <code>dist2sim()</code> to create a similarity matrix from the distance matrix:</p>
+<p>To create a metacommunity that takes account of the similarity
+between species, you need to input the similarity as a second argument
+to <code>metacommunity()</code>. First use <code>tax2dist()</code> to
+create a distance matrix from a taxonomy, then use
+<code>dist2sim()</code> to create a similarity matrix from the distance
+matrix:</p>
 <pre class="r"><code>library(magrittr)
 taxSim &lt;- taxonomy %&gt;%
   tax2dist(c(GenusSpecies=0, Genus=1, Family=2, Other=3)) %&gt;%
@@ -201,35 +304,108 @@ taxSim &lt;- taxonomy %&gt;%
 metatax &lt;- metacommunity(bci_2010, taxSim)
 results4tax &lt;- meta_gamma(metatax, qs = seq(from = 0, to = 5)) 
 lines(diversity ~ q, col=2, data = results4tax)</code></pre>
-<p>Finally, to create a metacommunity to analyse in <code>vegan</code>, you need to transpose the axes of the abundance data matrix:</p>
+<p>Finally, to create a metacommunity to analyse in <code>vegan</code>,
+you need to transpose the axes of the abundance data matrix:</p>
 <pre class="r"><code>library(vegan)
 # Swap rows and columns 
 abundances &lt;- t(bci_2010)
 # Calculate species richness (gamma diversity)
 specnumber(abundances, groups = 1) </code></pre>
-<p>This loads the dataset and then calculates the species richness of the whole metacommunity. <strong>It’s important to always use the <code>abundances</code> object (created above) when using the <code>vegan</code> package, and always use the <code>bci_2010</code> object when using <code>rdiversity</code> – they need the data in opposite formats!</strong></p>
-<p>Note the documentation and reference manual for the <code>vegan</code> package is available at <a href="https://cran.r-project.org/web/packages/vegan/index.html" class="uri">https://cran.r-project.org/web/packages/vegan/index.html</a> and the package itself is developed on GitHub at <a href="https://github.com/vegandevs/vegan" class="uri">https://github.com/vegandevs/vegan</a>.</p>
+<p>This loads the dataset and then calculates the species richness of
+the whole metacommunity. <strong>It’s important to always use the
+<code>abundances</code> object (created above) when using the
+<code>vegan</code> package, and always use the <code>bci_2010</code>
+object when using <code>rdiversity</code> – they need the data in
+opposite formats!</strong></p>
+<p>Note the documentation and reference manual for the
+<code>vegan</code> package is available at <a
+href="https://cran.r-project.org/web/packages/vegan/index.html"
+class="uri">https://cran.r-project.org/web/packages/vegan/index.html</a>
+and the package itself is developed on GitHub at <a
+href="https://github.com/vegandevs/vegan"
+class="uri">https://github.com/vegandevs/vegan</a>.</p>
 </div>
-<div id="section-your-own-additions-this-section-is-optional" class="section level3">
+<div id="section-your-own-additions-this-section-is-optional"
+class="section level3">
 <h3>Your own additions – <strong>this section is optional</strong></h3>
-<p><em>Because we lost two days from the course, the material here wasn’t fully covered, so is optional if you have enough time to look further at the documentation for the <code>rdiversity</code> and <code>vegan</code> packages.</em></p>
-<p>First, read the <code>rdiversity</code> package documentation and examples. You can find this by going to the GitHub repository (<a href="https://github.com/boydorr/rdiversity" class="uri">https://github.com/boydorr/rdiversity</a>), and clicking on the <span style="color: #dd1c77;">docs: rdiversity</span> badge, or by clicking the link to <a href="https://boydorr.github.io/rdiversity" class="uri">https://boydorr.github.io/rdiversity</a>.</p>
-<p>Then add to the script you have started above to calculate and plot the gamma diversity and the normalised alpha diversity for the 2010 BCI census, for a range of values of <span class="math inline">\(q\)</span>, say <code>qs = 0:5</code>; individuals of the same species have a taxonomic distance of zero and each species is taxonomically distinct. Then repeat these calculations using taxonomic similarity, showing that there are fewer taxonomically distinct species than there are species. Then do this again counting the effective number of genera and families. Note that this can be achieved by using <code>tax2dist()</code> with <code>c(GenusSpecies=0, Genus=0, Family=1, Other=1)</code> and <code>c(GenusSpecies=0, Genus=0, Family=0, Other=1)</code>, respectively – these distance measurements say that two species in the same genus (or family) are zero distance apart, just like two individuals in the same species. As a result, the diversity measures following these instructions will simply count in effective numbers of genera or families, respectively, rather than species.</p>
-<p>Moving on to beta diversity, we now want to find out which quadrats in the BCI study site are the most distinct. We can measure the average distinctiveness of all of the quadrats in the plot using <code>raw_meta_beta()</code>, but you can also ask for the distinctiveness of every quadrat individually using <code>raw_sub_beta()</code>. Calculate that for a single value of <span class="math inline">\(q\)</span>, say <code>qs=1</code>, and show a histogram of the distinctivenesses (the diversity column) of the subcommunities. Sort the data frame by distinctiveness and output just the highest values. Bearing in mind that the first two digits of the quadrat name are an x-coordinate, and the second two are a y-coordinate, is there any pattern about these distinct areas? If so write about it in the report.</p>
-<p>A similar option in <code>vegan</code> is the function <code>betadiver()</code>. Look at the documentation in R for this function – you will see that it can calculate a very large range of different beta diversity measures – and calculate the beta diversities for the subcommunities using the <code>"j"</code> Jaccard and <code>"sor"</code> Sorensen similarity measures. This function calculates pairwise similarities between the quadrats as <code>dist</code> objects. You can convert these to a matrix and then calculate the average similarities to all of the quadrats by using <code>as.matrix()</code> and then <code>rowMeans()</code>. You should be able to show that some of the identified quadrats (with the lowest average similarity to the other quadrats) are the same, even though the exact beta diversity measure, and indeed even its direction, is different.</p>
-<p>Remember to add some text chunks into the report to describe the results for when you compile a report rather than run the demo. Now reinstall the package and make sure the demo runs successfully too. Don’t forget to delete any html files that have been generated and don’t commit them to the repo.</p>
+<p><em>Because we lost two days from the course, the material here
+wasn’t fully covered, so is optional if you have enough time to look
+further at the documentation for the <code>rdiversity</code> and
+<code>vegan</code> packages.</em></p>
+<p>First, read the <code>rdiversity</code> package documentation and
+examples. You can find this by going to the GitHub repository (<a
+href="https://github.com/boydorr/rdiversity"
+class="uri">https://github.com/boydorr/rdiversity</a>), and clicking on
+the <span style="color: #dd1c77;">docs: rdiversity</span> badge, or by
+clicking the link to <a href="https://boydorr.github.io/rdiversity"
+class="uri">https://boydorr.github.io/rdiversity</a>.</p>
+<p>Then add to the script you have started above to calculate and plot
+the gamma diversity and the normalised alpha diversity for the 2010 BCI
+census, for a range of values of <span class="math inline">\(q\)</span>,
+say <code>qs = 0:5</code>; individuals of the same species have a
+taxonomic distance of zero and each species is taxonomically distinct.
+Then repeat these calculations using taxonomic similarity, showing that
+there are fewer taxonomically distinct species than there are species.
+Then do this again counting the effective number of genera and families.
+Note that this can be achieved by using <code>tax2dist()</code> with
+<code>c(GenusSpecies=0, Genus=0, Family=1, Other=1)</code> and
+<code>c(GenusSpecies=0, Genus=0, Family=0, Other=1)</code>, respectively
+– these distance measurements say that two species in the same genus (or
+family) are zero distance apart, just like two individuals in the same
+species. As a result, the diversity measures following these
+instructions will simply count in effective numbers of genera or
+families, respectively, rather than species.</p>
+<p>Moving on to beta diversity, we now want to find out which quadrats
+in the BCI study site are the most distinct. We can measure the average
+distinctiveness of all of the quadrats in the plot using
+<code>raw_meta_beta()</code>, but you can also ask for the
+distinctiveness of every quadrat individually using
+<code>raw_sub_beta()</code>. Calculate that for a single value of <span
+class="math inline">\(q\)</span>, say <code>qs=1</code>, and show a
+histogram of the distinctivenesses (the diversity column) of the
+subcommunities. Sort the data frame by distinctiveness and output just
+the highest values. Bearing in mind that the first two digits of the
+quadrat name are an x-coordinate, and the second two are a y-coordinate,
+is there any pattern about these distinct areas? If so write about it in
+the report.</p>
+<p>A similar option in <code>vegan</code> is the function
+<code>betadiver()</code>. Look at the documentation in R for this
+function – you will see that it can calculate a very large range of
+different beta diversity measures – and calculate the beta diversities
+for the subcommunities using the <code>"j"</code> Jaccard and
+<code>"sor"</code> Sorensen similarity measures. This function
+calculates pairwise similarities between the quadrats as
+<code>dist</code> objects. You can convert these to a matrix and then
+calculate the average similarities to all of the quadrats by using
+<code>as.matrix()</code> and then <code>rowMeans()</code>. You should be
+able to show that some of the identified quadrats (with the lowest
+average similarity to the other quadrats) are the same, even though the
+exact beta diversity measure, and indeed even its direction, is
+different.</p>
+<p>Remember to add some text chunks into the report to describe the
+results for when you compile a report rather than run the demo. Now
+reinstall the package and make sure the demo runs successfully too.
+Don’t forget to delete any html files that have been generated and don’t
+commit them to the repo.</p>
 </div>
 </div>
 <div id="section-checking-each-others-packages" class="section level2">
 <h2>Checking each others’ packages</h2>
-<p>Now push all of your changes to GitHub and check each other’s packages to make sure the demo works.</p>
-<div id="section-a-note-on-generating-a-report-from-a-demo" class="section level3">
+<p>Now push all of your changes to GitHub and check each other’s
+packages to make sure the demo works.</p>
+<div id="section-a-note-on-generating-a-report-from-a-demo"
+class="section level3">
 <h3>A note on generating a report from a demo</h3>
-<p>If you’ve installed a package directly using <code>devtools::install_github()</code> you can still generate a report from the demo as follows without cloning the repo:</p>
+<p>If you’ve installed a package directly using
+<code>devtools::install_github()</code> you can still generate a report
+from the demo as follows without cloning the repo:</p>
 <pre class="r"><code>rmarkdown::render(system.file(&quot;demo&quot;, &quot;diversity-of-BCI.R&quot;, 
                               package = &quot;mypartnersBCIpackage&quot;),
                   output_dir = &quot;.&quot;)</code></pre>
-<p>The report will be saved to the base folder of your current project (or whatever your current working directory is). Check that it looks okay by opening it in a web browser (and delete the html file afterwards). 
+<p>The report will be saved to the base folder of your current project
+(or whatever your current working directory is). Check that it looks
+okay by opening it in a web browser (and delete the html file
+afterwards). 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 
@@ -239,7 +415,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

@@ -149,37 +149,104 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this practical we will take our SIS model and extend it to produce the Susceptible-Infected-Recovered or SIR model. In this instance we’ll use the parameters for foot-and- mouth disease, a highly infectious disease of ruminants – in this case cattle.</em></p>
+<p><em>In this practical we will take our SIS model and extend it to
+produce the Susceptible-Infected-Recovered or SIR model. In this
+instance we’ll use the parameters for foot-and- mouth disease, a highly
+infectious disease of ruminants – in this case cattle.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>The SIR model in difference equation form is given by the following equations:</p>
-<p><span class="math display">\[S(t+1) = S(t) - \beta \times \frac{S(t) \times I(t)}{N}\]</span> <span class="math display">\[I(t+1) = I(t) + \beta \times \frac{S(t) \times I(t)}{N} - \sigma \times I(t)\]</span> <span class="math display">\[R(t+1) = R(t) + \sigma \times I(t)\]</span></p>
+<p>The SIR model in difference equation form is given by the following
+equations:</p>
+<p><span class="math display">\[S(t+1) = S(t) - \beta \times \frac{S(t)
+\times I(t)}{N}\]</span> <span class="math display">\[I(t+1) = I(t) +
+\beta \times \frac{S(t) \times I(t)}{N} - \sigma \times I(t)\]</span>
+<span class="math display">\[R(t+1) = R(t) + \sigma \times
+I(t)\]</span></p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>Your task is to copy and edit the files from the previous practical (<span style="color: #dd1c77;">0203-deterministic-SIS.R</span> and <span style="color: #dd1c77;">0203-run-SIS.R</span>) to produce the corresponding files <span style="color: #dd1c77;">0204-deterministic-SIR.R</span> and <span style="color: #dd1c77;">0204-run-SIR.R</span> that run the SIR model rather than the SIS model. There shouldn’t be too many changes that are necessary, though obviously the first is to add a new population (the <strong>recovereds</strong>) to the data frame and remember than <span class="math inline">\(N\)</span>, the total population size, now includes the recovereds too. Also remember that if you change the name of the function, for example from <code>timestep_deterministic_SIS()</code> to <code>timestep_deterministic_SIR()</code> you need to change it in both files.</p>
-<p>Because foot-and-mouth disease (FMD) is so transmissible that the disease flashes through a herd very quickly, to model it we normally deal with farms rather than individual animals when we are thinking about transmission and recovery, so an “individual” is actually a farm in the model. This makes no difference to your code, but may change your choice of some variable names. You’ll therefore need to know the transmission and recovery rates of farms, and very roughly, running in timesteps of weeks again, we can use a transmission rate of 2 and a recovery rate of 1/2. Note that with such high transmission and recovery rates, you’ll find the outbreak finishes very quickly, so you should find that the end time of the simulation can be quite short, and you should find that the timestep will have to be below 1 to be stable.</p>
+<p>Your task is to copy and edit the files from the previous practical
+(<span style="color: #dd1c77;">0203-deterministic-SIS.R</span> and <span
+style="color: #dd1c77;">0203-run-SIS.R</span>) to produce the
+corresponding files <span
+style="color: #dd1c77;">0204-deterministic-SIR.R</span> and <span
+style="color: #dd1c77;">0204-run-SIR.R</span> that run the SIR model
+rather than the SIS model. There shouldn’t be too many changes that are
+necessary, though obviously the first is to add a new population (the
+<strong>recovereds</strong>) to the data frame and remember than <span
+class="math inline">\(N\)</span>, the total population size, now
+includes the recovereds too. Also remember that if you change the name
+of the function, for example from
+<code>timestep_deterministic_SIS()</code> to
+<code>timestep_deterministic_SIR()</code> you need to change it in both
+files.</p>
+<p>Because foot-and-mouth disease (FMD) is so transmissible that the
+disease flashes through a herd very quickly, to model it we normally
+deal with farms rather than individual animals when we are thinking
+about transmission and recovery, so an “individual” is actually a farm
+in the model. This makes no difference to your code, but may change your
+choice of some variable names. You’ll therefore need to know the
+transmission and recovery rates of farms, and very roughly, running in
+timesteps of weeks again, we can use a transmission rate of 2 and a
+recovery rate of 1/2. Note that with such high transmission and recovery
+rates, you’ll find the outbreak finishes very quickly, so you should
+find that the end time of the simulation can be quite short, and you
+should find that the timestep will have to be below 1 to be stable.</p>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
-<p>Run the code by running your new file <span style="color: #dd1c77;">0204-run-SIR.R</span>. Check that you get the same results as you saw in the lecture for an <span class="math inline">\(R_0\)</span> of 2. Adding the argument <code>col=c("green", "red", "black")</code> to <code>plot_populations()</code> will allow you to change the colours of the plot to match those from the lecture.</p>
+<p>Run the code by running your new file <span
+style="color: #dd1c77;">0204-run-SIR.R</span>. Check that you get the
+same results as you saw in the lecture for an <span
+class="math inline">\(R_0\)</span> of 2. Adding the argument
+<code>col=c("green", "red", "black")</code> to
+<code>plot_populations()</code> will allow you to change the colours of
+the plot to match those from the lecture.</p>
 </div>
 <div id="section-report" class="section level2">
 <h2>Report</h2>
-<p>Create a report showing farm-to-farm transmission of FMD, displaying the output of its SIR model in a figure. You could for instance show how that differs from an SIS model with the same <span class="math inline">\(R_0\)</span>, or another SIR model with a different <span class="math inline">\(R_0\)</span>.</p>
+<p>Create a report showing farm-to-farm transmission of FMD, displaying
+the output of its SIR model in a figure. You could for instance show how
+that differs from an SIS model with the same <span
+class="math inline">\(R_0\)</span>, or another SIR model with a
+different <span class="math inline">\(R_0\)</span>.</p>
 </div>
 <div id="section-github" class="section level2">
 <h2>GitHub</h2>
-<p>As with the other exercises, we want you to get a couple of other people to check your code and make sure it works for them, and we want you to check other people’s code too.</p>
+<p>As with the other exercises, we want you to get a couple of other
+people to check your code and make sure it works for them, and we want
+you to check other people’s code too.</p>
 <div id="section-getting-help-with-your-code" class="section level3">
 <h3>Getting help with your code</h3>
-<p>Once you’re happy with your code, commit your changes using the Git pane in RStudio (just commit the R files - not, for instance, any html files that were created by generating reports). Don’t forget then to push the changes to GitHub and check on the website that it contains your new code. Notify your partners that you have something for them to check. If you’re not sitting next to them, then you can create an issue in your repository asking for their review and/or talk to them on Zoom - you can contact them by tagging them in the message with <code>@theirusername</code>, and they should receive an email and a <a href="https://github.com/notifications">notification on the website</a>. They should then create an issue, telling you if they had any problems running your version of the practical.</p>
+<p>Once you’re happy with your code, commit your changes using the Git
+pane in RStudio (just commit the R files - not, for instance, any html
+files that were created by generating reports). Don’t forget then to
+push the changes to GitHub and check on the website that it contains
+your new code. Notify your partners that you have something for them to
+check. If you’re not sitting next to them, then you can create an issue
+in your repository asking for their review and/or talk to them on Zoom -
+you can contact them by tagging them in the message with
+<code>@theirusername</code>, and they should receive an email and a <a
+href="https://github.com/notifications">notification on the website</a>.
+They should then create an issue, telling you if they had any problems
+running your version of the practical.</p>
 </div>
 <div id="section-checking-other-peoples-code" class="section level3">
 <h3>Checking other people’s code</h3>
-<p>Likewise, when you hear from someone else that a repo is available to check, then if it’s a project you have already downloaded, you should open that project in RStudio, go to the Git pane, and click on the <strong>Pull</strong> button to get the updates they have pushed to GitHub (there should be a subtle message saying that updates are available near the button). If you’re checking a new person’s work, or a new project, refer to the instructions in Practical 2-1. Once you’ve checked that the new code has downloaded, you can then run their code and make sure it works. Open an issue on GitHub to say if it works, or explaining what went wrong if it doesn’t (it might help to also do this in person or on Zoom if they are there).</p>
-<p>Interacting like this through GitHub to help each other will count as your engagement marks for the course. 
+<p>Likewise, when you hear from someone else that a repo is available to
+check, then if it’s a project you have already downloaded, you should
+open that project in RStudio, go to the Git pane, and click on the
+<strong>Pull</strong> button to get the updates they have pushed to
+GitHub (there should be a subtle message saying that updates are
+available near the button). If you’re checking a new person’s work, or a
+new project, refer to the instructions in Practical 2-1. Once you’ve
+checked that the new code has downloaded, you can then run their code
+and make sure it works. Open an issue on GitHub to say if it works, or
+explaining what went wrong if it doesn’t (it might help to also do this
+in person or on Zoom if they are there).</p>
+<p>Interacting like this through GitHub to help each other will count as
+your engagement marks for the course. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 
@@ -189,7 +256,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

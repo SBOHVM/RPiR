@@ -142,30 +142,57 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical 1-1: Exponential growth model</h1>
+<h1 class="title toc-ignore">Practical 1-1: Exponential growth
+model</h1>
 
 </div>
 
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>In this session you will run a simple program in R within a <code>learnr</code> tutorial. It will run the difference equation model of exponential growth discussed in the lecture. Then you’ll create an R project and create a report from the code.</p>
+<p>In this session you will run a simple program in R within a
+<code>learnr</code> tutorial. It will run the difference equation model
+of exponential growth discussed in the lecture. Then you’ll create an R
+project and create a report from the code.</p>
 </div>
 <div id="section-introduction" class="section level2">
 <h2>Introduction</h2>
-<p>Suppose we want to model the growth of a population in R. We will use the exponential growth model that we talked about in the lecture, and describe it as a <strong>difference equation</strong>, so that we are updating the population in discrete steps. In words, the behaviour of the model could be described as something like:</p>
+<p>Suppose we want to model the growth of a population in R. We will use
+the exponential growth model that we talked about in the lecture, and
+describe it as a <strong>difference equation</strong>, so that we are
+updating the population in discrete steps. In words, the behaviour of
+the model could be described as something like:</p>
 <blockquote>
-<p>The change in population size is the growth rate times the current population size</p>
+<p>The change in population size is the growth rate times the current
+population size</p>
 </blockquote>
-<p>Or, if we wanted to write this out more fully (though possibly less elegantly!), we might say:</p>
+<p>Or, if we wanted to write this out more fully (though possibly less
+elegantly!), we might say:</p>
 <blockquote>
-<p>The population size at the next time point is the current population size plus the growth rate times the current population size.</p>
+<p>The population size at the next time point is the current population
+size plus the growth rate times the current population size.</p>
 </blockquote>
-<p>We can also use mathematics to describe the behaviour more precisely. In this case:</p>
-<p><span class="math display">\[N(t+1) = N(t) + \lambda \times N(t)\]</span></p>
-<p>where <span class="math inline">\(N(t)\)</span> is the population size at time <span class="math inline">\(t\)</span>, and <span class="math inline">\(\lambda\)</span> is the growth rate. We want to convert this equation into R code, and run the model of exponential growth in a population, initially with a starting population size of 5, a growth rate of 0.1 per day, and to run it for 20 days.</p>
-<p>We can start by first initialising the population, <span class="math inline">\(N\)</span>, and setting the growth rate parameter (remembering that <span class="math inline">\(\lambda\)</span> is the greek letter written as <code>lambda</code> in English – since R doesn’t understand greek!). Then create a <code>for()</code> loop to repeatedly update the population (20 times in this case), and print out the final answer. You can learn more about <code>for</code> loops in <span style="color: #dd1c77;">Practical A-4</span>. If you run this code, it should give you a final population size of 33.6375.</p>
-<div class="tutorial-exercise" data-label="forloop" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>We can also use mathematics to describe the behaviour more precisely.
+In this case:</p>
+<p><span class="math display">\[N(t+1) = N(t) + \lambda \times
+N(t)\]</span></p>
+<p>where <span class="math inline">\(N(t)\)</span> is the population
+size at time <span class="math inline">\(t\)</span>, and <span
+class="math inline">\(\lambda\)</span> is the growth rate. We want to
+convert this equation into R code, and run the model of exponential
+growth in a population, initially with a starting population size of 5,
+a growth rate of 0.1 per day, and to run it for 20 days.</p>
+<p>We can start by first initialising the population, <span
+class="math inline">\(N\)</span>, and setting the growth rate parameter
+(remembering that <span class="math inline">\(\lambda\)</span> is the
+greek letter written as <code>lambda</code> in English – since R doesn’t
+understand greek!). Then create a <code>for()</code> loop to repeatedly
+update the population (20 times in this case), and print out the final
+answer. You can learn more about <code>for</code> loops in <span
+style="color: #dd1c77;">Practical A-4</span>. If you run this code, it
+should give you a final population size of 33.6375.</p>
+<div class="tutorial-exercise" data-label="forloop" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>N &lt;- 5
 lambda &lt;- 0.1
 days &lt;- seq(from = 1, to = 20)
@@ -176,7 +203,8 @@ for (i in days) {
 print(N)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"Exercise 1"}</script>
 </div>
-<p>Try to edit the code above and answer the following questions (hit Start Over to reset the code block before attempting each question).</p>
+<p>Try to edit the code above and answer the following questions (hit
+Start Over to reset the code block before attempting each question).</p>
 <div class="panel-heading tutorial-quiz-title">Quiz</div>
 <div class="panel panel-default tutorial-question-container">
 <div data-label="N-1" class="tutorial-question panel-body">
@@ -202,8 +230,15 @@ print(N)</code></pre>
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
-<p>If we wanted to print out the population at every step rather than just at the end, we would have to put the print statement in the loop as well as updating <code>N</code>. How could we do this? Remember that <code>for()</code> <strong>will repeat all of the</strong> <strong>lines inside the curly brackets</strong> <code>{ ... }</code> <strong>that follow it in every loop</strong>. Try it and see:</p>
-<div class="tutorial-exercise" data-label="printloop" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>If we wanted to print out the population at every step rather than
+just at the end, we would have to put the print statement in the loop as
+well as updating <code>N</code>. How could we do this? Remember that
+<code>for()</code> <strong>will repeat all of the</strong> <strong>lines
+inside the curly brackets</strong> <code>{ ... }</code> <strong>that
+follow it in every loop</strong>. Try it and see:</p>
+<div class="tutorial-exercise" data-label="printloop"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0">
 <pre class="text"><code>N &lt;- 5
 lambda &lt;- 0.1
 days &lt;- seq(from = 1, to = 20)
@@ -215,18 +250,32 @@ print(N)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"<span data-i18n=\"text.enginecap\" data-i18n-opts=\"{&quot;engine&quot;:&quot;R&quot;}\">R Code<\/span>"}</script>
 </div>
 <div id="section-printloop-hint">
-<p><strong>Hint:</strong> Move <code>print(N)</code> into the for loop.</p>
+<p><strong>Hint:</strong> Move <code>print(N)</code> into the for
+loop.</p>
 </div>
-<p>We’ve been working through these exercises with variable names that are hard to remember, and this makes the code harder to follow. Here, just go through the code below and change them for more sensible names. There are lots of options, but for this example you must change them as follows:</p>
+<p>We’ve been working through these exercises with variable names that
+are hard to remember, and this makes the code harder to follow. Here,
+just go through the code below and change them for more sensible names.
+There are lots of options, but for this example you must change them as
+follows:</p>
 <ul>
-<li><code>N</code> <span class="math inline">\(\rightarrow\)</span> <code>population.count</code></li>
-<li><code>lambda</code> <span class="math inline">\(\rightarrow\)</span> <code>growth.rate</code></li>
-<li><code>a</code> <span class="math inline">\(\rightarrow\)</span> <code>first.day</code></li>
-<li><code>e</code> <span class="math inline">\(\rightarrow\)</span> <code>last.day</code></li>
-<li><code>i</code> <span class="math inline">\(\rightarrow\)</span> <code>day</code></li>
+<li><code>N</code> <span class="math inline">\(\rightarrow\)</span>
+<code>population.count</code></li>
+<li><code>lambda</code> <span class="math inline">\(\rightarrow\)</span>
+<code>growth.rate</code></li>
+<li><code>a</code> <span class="math inline">\(\rightarrow\)</span>
+<code>first.day</code></li>
+<li><code>e</code> <span class="math inline">\(\rightarrow\)</span>
+<code>last.day</code></li>
+<li><code>i</code> <span class="math inline">\(\rightarrow\)</span>
+<code>day</code></li>
 </ul>
-<p>Hopefully once you’ve changed them you can see that the code is at least a bit easier to read! You can learn more about variable naming in <span style="color: #dd1c77;">Practical A-3</span>.</p>
-<div class="tutorial-exercise" data-label="changenames" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>Hopefully once you’ve changed them you can see that the code is at
+least a bit easier to read! You can learn more about variable naming in
+<span style="color: #dd1c77;">Practical A-3</span>.</p>
+<div class="tutorial-exercise" data-label="changenames"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0">
 <pre class="text"><code>N &lt;- 5
 lambda &lt;- 0.1
 a &lt;- 1
@@ -238,13 +287,22 @@ for (i in days) {
 }</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 2"}</script>
 </div>
-<p>We will further develop your skills in writing and using scripts (and in the next exercise we will learn how to write functions).</p>
+<p>We will further develop your skills in writing and using scripts (and
+in the next exercise we will learn how to write functions).</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>We’re now going to start again, but write out our code more clearly. In particular we’re going to name our variables well, so we know what they are, and comment the code (we call it adding documentation) so that we know what the code is doing. Our aim is to write an <strong>R program</strong> to run a difference equation model of an exponentially growing population. We’ll go through how to do this step by step.</p>
-<p>First, some initial documentation. You can put in as little or as much as you like, but we recommend something to describe the aim of the script, and then some details on exactly what is going on.</p>
-<div class="tutorial-exercise" data-label="init" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>We’re now going to start again, but write out our code more clearly.
+In particular we’re going to name our variables well, so we know what
+they are, and comment the code (we call it adding documentation) so that
+we know what the code is doing. Our aim is to write an <strong>R
+program</strong> to run a difference equation model of an exponentially
+growing population. We’ll go through how to do this step by step.</p>
+<p>First, some initial documentation. You can put in as little or as
+much as you like, but we recommend something to describe the aim of the
+script, and then some details on exactly what is going on.</p>
+<div class="tutorial-exercise" data-label="init" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code>#&#39; ---
 #&#39; title: &quot;Simple growth difference equation model&quot;
 #&#39; author: &quot;My Full Name&quot;
@@ -262,35 +320,69 @@ for (i in days) {
 # Set the growth rate</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"R Markdown header"}</script>
 </div>
-<p>The text at the top, bordered by <code>#' ---</code> is a yaml header, which generates an <strong>R markdown report</strong> header in a special format. If you were writing this script in RStudio, you could generate a report from the <span style="color: #dd1c77;">File</span> menu by selecting <span style="color: #dd1c77;">Compile Report…</span> (we’ll do this later). An html document would pop up in a viewer after a couple of seconds, and a new file should appear in the directory you were working in. The lines below the yaml header, beginning with <code>#'</code> generate text chunks in such a report.</p>
-<p>The text after a <code>#</code> symbol are normal R comments. These are ignored by R, but are there to help you and others to understand your programs. Good commenting is a difficult but important programming skill.</p>
-<p>Now we can continue entering the code. We used <code>lambda</code> when describing the model mathematically but as we said in the previous section, it is good practice to <strong>give things meaningful names</strong> in a computer program, so we are going to use the name <code>growth.rate</code> instead. We have also switched to use the correct values for human demographic growth, rather than the simple numbers we used earlier.</p>
+<p>The text at the top, bordered by <code>#' ---</code> is a yaml
+header, which generates an <strong>R markdown report</strong> header in
+a special format. If you were writing this script in RStudio, you could
+generate a report from the <span style="color: #dd1c77;">File</span>
+menu by selecting <span style="color: #dd1c77;">Compile Report…</span>
+(we’ll do this later). An html document would pop up in a viewer after a
+couple of seconds, and a new file should appear in the directory you
+were working in. The lines below the yaml header, beginning with
+<code>#'</code> generate text chunks in such a report.</p>
+<p>The text after a <code>#</code> symbol are normal R comments. These
+are ignored by R, but are there to help you and others to understand
+your programs. Good commenting is a difficult but important programming
+skill.</p>
+<p>Now we can continue entering the code. We used <code>lambda</code>
+when describing the model mathematically but as we said in the previous
+section, it is good practice to <strong>give things meaningful
+names</strong> in a computer program, so we are going to use the name
+<code>growth.rate</code> instead. We have also switched to use the
+correct values for human demographic growth, rather than the simple
+numbers we used earlier.</p>
 <pre class="r"><code>growth.rate &lt;- 0.015
 
 # Starting population size
 initial.count &lt;- 7000000000</code></pre>
 <blockquote>
-<p>Note that a dot is a valid part of an object name in R – though not in all programming languages – spaces and arithmetic symbols (<em>e.g.</em> the minus sign) are not.</p>
+<p>Note that a dot is a valid part of an object name in R – though not
+in all programming languages – spaces and arithmetic symbols
+(<em>e.g.</em> the minus sign) are not.</p>
 </blockquote>
 <p>Now we should set the start and end times for the simulation:</p>
 <pre class="r"><code># And setting times
 start.time &lt;- 0
 end.time &lt;- 100</code></pre>
-<p>and having specified these parameters we can start entering the comments and code that describe the simulation:</p>
+<p>and having specified these parameters we can start entering the
+comments and code that describe the simulation:</p>
 <pre class="r"><code>#&#39; Run the simplest possible simulation
 #&#39; ------------------------------------
 #&#39; Then run it so that we can get the output we need</code></pre>
-<p>Note again the use of <code>#'</code>. Since we’ve chosen to write this in R markdown, <strong>this will define a section in our report</strong>. Our simple model earlier only gave us the final population size, but we want to be able to plot the population size against time so we want to store each new population size as it is generated. To do this we initialise an object called <code>population.vector</code> whose entries will be the population size at successive times.</p>
+<p>Note again the use of <code>#'</code>. Since we’ve chosen to write
+this in R markdown, <strong>this will define a section in our
+report</strong>. Our simple model earlier only gave us the final
+population size, but we want to be able to plot the population size
+against time so we want to store each new population size as it is
+generated. To do this we initialise an object called
+<code>population.vector</code> whose entries will be the population size
+at successive times.</p>
 <pre class="r"><code># Set up the population starting size (at the first timestep)
 population.vector &lt;- initial.count</code></pre>
-<p>At this point, you could <code>print()</code> the initial population size to check the code is working correctly. You should see that <code>population.vector</code> has a value of 7e+09.</p>
-<div class="tutorial-exercise" data-label="printvector" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>At this point, you could <code>print()</code> the initial population
+size to check the code is working correctly. You should see that
+<code>population.vector</code> has a value of 7e+09.</p>
+<div class="tutorial-exercise" data-label="printvector"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0">
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 3"}</script>
 </div>
 <div id="section-printvector-hint">
-<p><strong>Hint:</strong> Use<code>print()</code> to print the contents of an object to the console.</p>
+<p><strong>Hint:</strong> Use<code>print()</code> to print the contents
+of an object to the console.</p>
 </div>
-<p>Now we should specify the sequence of timesteps. Note that there are 10 days if you go from day 0 to day 10, so the first timestep is time 1, not 0:</p>
+<p>Now we should specify the sequence of timesteps. Note that there are
+10 days if you go from day 0 to day 10, so the first timestep is time 1,
+not 0:</p>
 <pre class="r"><code># The timesteps that the simulation will run through
 timesteps &lt;- seq(from = start.time + 1, to = end.time)</code></pre>
 <p>and then we can start the main loop:</p>
@@ -305,9 +397,31 @@ for (new.time in timesteps) {
   # Add new element onto end of population vector
   population.vector &lt;- c(population.vector, next.population)
 }</code></pre>
-<p>The variable <code>new.time</code> will count the timesteps from <code>start.time + 1</code> to the <code>end.time</code>. Inside the loop (the bit inside the curly brackets – remembering that curly brackets allow you to repeat multiple lines of commands in a <code>for()</code> loop instead of the just one). The first step on each run through the loop is to extract the <code>current.population</code> size from our <code>population.vector</code> using the <code>tail()</code> command. By default <code>tail(population)</code> would give the last 6 values in the vector, but by specifying a value of 1, we are asking it to return only the last value in the vector. The command <code>head()</code> does the same thing with the first values of a vector. Then we calculate the births, in <code>new.additions</code>. Then we add the births to the existing population to create the population at the next timestep, in <code>next.population</code>. Finally, we update the vector of population values by adding the latest value onto the end of the vector, using the <code>c()</code> command. We then return to the start of the loop until we have completed the timesteps.</p>
-<p>To check what is happening in the loop you could print the timestep, the current population, and the number of new births. If you want to get really fancy try combining these outputs with <code>paste()</code> or <code>paste0()</code>.</p>
-<div class="tutorial-exercise" data-label="population" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>The variable <code>new.time</code> will count the timesteps from
+<code>start.time + 1</code> to the <code>end.time</code>. Inside the
+loop (the bit inside the curly brackets – remembering that curly
+brackets allow you to repeat multiple lines of commands in a
+<code>for()</code> loop instead of the just one). The first step on each
+run through the loop is to extract the <code>current.population</code>
+size from our <code>population.vector</code> using the
+<code>tail()</code> command. By default <code>tail(population)</code>
+would give the last 6 values in the vector, but by specifying a value of
+1, we are asking it to return only the last value in the vector. The
+command <code>head()</code> does the same thing with the first values of
+a vector. Then we calculate the births, in <code>new.additions</code>.
+Then we add the births to the existing population to create the
+population at the next timestep, in <code>next.population</code>.
+Finally, we update the vector of population values by adding the latest
+value onto the end of the vector, using the <code>c()</code> command. We
+then return to the start of the loop until we have completed the
+timesteps.</p>
+<p>To check what is happening in the loop you could print the timestep,
+the current population, and the number of new births. If you want to get
+really fancy try combining these outputs with <code>paste()</code> or
+<code>paste0()</code>.</p>
+<div class="tutorial-exercise" data-label="population"
+data-completion="1" data-diagnostics="1" data-startover="1"
+data-lines="0">
 <pre class="text"><code># Now we loop through the time itself (starting at the second timestep)
 for (new.time in timesteps) {
   # First extract the current population size
@@ -322,7 +436,10 @@ for (new.time in timesteps) {
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"Exercise 4"}</script>
 </div>
 <div id="section-population-hint">
-<p><strong>Hint:</strong> Use <code>print(new.time)</code> inside the for loop to print the timestep, <code>print(current.population)</code> to print the current population, and <code>print(new.additions)</code> to print the number of new births.</p>
+<p><strong>Hint:</strong> Use <code>print(new.time)</code> inside the
+for loop to print the timestep, <code>print(current.population)</code>
+to print the current population, and <code>print(new.additions)</code>
+to print the number of new births.</p>
 </div>
 <p>Try and answer the following questions:</p>
 <div class="panel-heading tutorial-quiz-title">Quiz</div>
@@ -342,14 +459,30 @@ for (new.time in timesteps) {
 <script>if (Tutorial.triggerMathJax) Tutorial.triggerMathJax()</script>
 </div>
 </div>
-<p>When we have completed the timesteps we exit the loop and plot our results. Here we will plot the values of <code>population.vector</code> against the values of another vector of times. Note that these vectors need to be the same length, so the command <code>c(start.time, timesteps)</code> is used to append the vector of timesteps which started at 1 onto the initial timepoint, 0.</p>
+<p>When we have completed the timesteps we exit the loop and plot our
+results. Here we will plot the values of <code>population.vector</code>
+against the values of another vector of times. Note that these vectors
+need to be the same length, so the command
+<code>c(start.time, timesteps)</code> is used to append the vector of
+timesteps which started at 1 onto the initial timepoint, 0.</p>
 <pre class="r"><code># Now we can plot the timesteps against the population vector
 plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></pre>
-<p>Now we have a complete program, which should show the growth of the human population from 7 billion and generate a plot showing how population varies with time. So that we can reference it later, we’ve named it <span style="color: #dd1c77;">0101-growth-loop.R</span> (check the header of the code block below). Try running the code now. Try to make sure you understand how everything works by adding print statements or commenting out different sections if necessary.</p>
+<p>Now we have a complete program, which should show the growth of the
+human population from 7 billion and generate a plot showing how
+population varies with time. So that we can reference it later, we’ve
+named it <span style="color: #dd1c77;">0101-growth-loop.R</span> (check
+the header of the code block below). Try running the code now. Try to
+make sure you understand how everything works by adding print statements
+or commenting out different sections if necessary.</p>
 <blockquote>
-<p>When running code in R we have the option of selecting the whole program or running selected parts. Doing the latter will help you understand what the program is doing and find errors. When debugging code, adding print statements or comment out lines might also help identify problems. Remember this the next time you get an error.</p>
+<p>When running code in R we have the option of selecting the whole
+program or running selected parts. Doing the latter will help you
+understand what the program is doing and find errors. When debugging
+code, adding print statements or comment out lines might also help
+identify problems. Remember this the next time you get an error.</p>
 </blockquote>
-<div class="tutorial-exercise" data-label="plot" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="42">
+<div class="tutorial-exercise" data-label="plot" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="42">
 <pre class="text"><code>#&#39; Set up the simulation parameters
 #&#39; --------------------------------
 #&#39; First we set up the parameters for the simulation.
@@ -394,37 +527,66 @@ for (new.time in timesteps) {
 plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":false,"caption":"0101-growth-loop.R"}</script>
 </div>
-<p>The program generates a vector, <code>population.vector</code>, which you can treat as you would any other piece of data in R. Try the following:</p>
-<div class="tutorial-exercise" data-label="summary" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<p>The program generates a vector, <code>population.vector</code>, which
+you can treat as you would any other piece of data in R. Try the
+following:</p>
+<div class="tutorial-exercise" data-label="summary" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code># Output a summary of population.vector</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 5"}</script>
 </div>
 <div id="section-summary-hint">
 <p><strong>Hint:</strong> Read <code>?summary</code></p>
 </div>
-<div class="tutorial-exercise" data-label="head" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div class="tutorial-exercise" data-label="head" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code># Output the first 6 elements of population.vector</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 6"}</script>
 </div>
 <div id="section-head-hint">
 <p><strong>Hint:</strong> Read <code>?head</code>.</p>
 </div>
-<div class="tutorial-exercise" data-label="head2" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div class="tutorial-exercise" data-label="head2" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code># Output the first 10 elements of population.vector</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 7"}</script>
 </div>
-<div class="tutorial-exercise" data-label="tail" data-completion="1" data-diagnostics="1" data-startover="1" data-lines="0">
+<div class="tutorial-exercise" data-label="tail" data-completion="1"
+data-diagnostics="1" data-startover="1" data-lines="0">
 <pre class="text"><code># Print the last element of population.vector</code></pre>
 <script type="application/json" data-ui-opts="1">{"engine":"r","has_checker":true,"caption":"Exercise 8"}</script>
 </div>
 <div id="section-tail-hint">
 <p><strong>Hint:</strong> Read <code>?tail</code>.</p>
 </div>
-<p>Run the code for different initial conditions and different growth rates. Test the code using the value of the human population growth rate we used in the lecture (1.5% or 0.015 per year). By looking at the values on a plot, check that you agree with the doubling time we calculated theoretically of ~46 years.</p>
-<p>Finally, create a new project in RStudio - you can do this by selecting <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">New Project…</span>, and then choose <span style="color: #dd1c77;">New Directory</span> &gt; <span style="color: #dd1c77;">New Project</span> and then a name and a location on your computer to save it in. You can tick <span style="color: #dd1c77;">Open in new session</span>, especially if you opened this practical using <code>run_practical()</code>, because then your current session is used up by this practical. If you used the tutorial pane this won’t be necessary though. However, RStudio will still probably restart your current RStudio session and so may close this tutorial if you don’t open in a new session.</p>
-<p>In the new project, create a new R file, and copy the code in the <span style="color: #dd1c77;">R Markdown header</span> and <span style="color: #dd1c77;">0101-growth-loop.R</span> code sections into it (ignoring duplicates), save it, and generate a report from it. You can do this by clicking on <span style="color: #dd1c77;">File</span> &gt; <span style="color: #dd1c77;">Compile Report…</span>) or you can click on the little notebook icon:</p>
+<p>Run the code for different initial conditions and different growth
+rates. Test the code using the value of the human population growth rate
+we used in the lecture (1.5% or 0.015 per year). By looking at the
+values on a plot, check that you agree with the doubling time we
+calculated theoretically of ~46 years.</p>
+<p>Finally, create a new project in RStudio - you can do this by
+selecting <span style="color: #dd1c77;">File</span> &gt; <span
+style="color: #dd1c77;">New Project…</span>, and then choose <span
+style="color: #dd1c77;">New Directory</span> &gt; <span
+style="color: #dd1c77;">New Project</span> and then a name and a
+location on your computer to save it in. You can tick <span
+style="color: #dd1c77;">Open in new session</span>, especially if you
+opened this practical using <code>run_practical()</code>, because then
+your current session is used up by this practical. If you used the
+tutorial pane this won’t be necessary though. However, RStudio will
+still probably restart your current RStudio session and so may close
+this tutorial if you don’t open in a new session.</p>
+<p>In the new project, create a new R file, and copy the code in the
+<span style="color: #dd1c77;">R Markdown header</span> and <span
+style="color: #dd1c77;">0101-growth-loop.R</span> code sections into it
+(ignoring duplicates), save it, and generate a report from it. You can
+do this by clicking on <span style="color: #dd1c77;">File</span> &gt;
+<span style="color: #dd1c77;">Compile Report…</span>) or you can click
+on the little notebook icon:</p>
 <p><img src="images/compile_report.png" width="60%" style="display: block; margin: auto;" /></p>
-<p>You can throw away this project after you’ve finished this exercise. You won’t need to create and submit a project until practical 1-6. 
+<p>You can throw away this project after you’ve finished this exercise.
+You won’t need to create and submit a project until practical 1-6.
+
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -437,7 +599,8 @@ set.seed(123)
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::register_http_handlers(session, metadata = NULL)
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::prepare_tutorial_state(session)
 </script>
@@ -445,7 +608,8 @@ learnr:::prepare_tutorial_state(session)
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::i18n_observe_tutorial_language(input, session)
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 session$onSessionEnded(function() {
         learnr:::event_trigger(session, "session_stop")
@@ -458,7 +622,8 @@ output$`tutorial-exercise-forloop-output` <- renderUI({
   `tutorial-exercise-forloop-result`()
 })
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::store_exercise_cache(structure(list(label = "forloop", global_setup = structure(c("library(learnr)", 
 "tutorial_options(exercise.reveal_solution = FALSE)", "gradethis::gradethis_setup()", 
@@ -521,7 +686,8 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "N-2", question = structure("1b. How many days does it take for the population size to grow to 8.05255 <em>(remember to click the ‘start over’ button on the Exercise 1 code block first to reset the starting population to 5)<\u002fem>?", html = TRUE, class = c("html", 
 "character")), answers = list(structure(list(id = "lnr_ans_ba9974", 
@@ -573,7 +739,8 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-printloop-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-printloop-code-editor`)), session)
 output$`tutorial-exercise-printloop-output` <- renderUI({
@@ -619,7 +786,8 @@ learnr:::store_exercise_cache(structure(list(label = "printloop", global_setup =
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-changenames-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-changenames-code-editor`)), session)
 output$`tutorial-exercise-changenames-output` <- renderUI({
@@ -668,7 +836,8 @@ learnr:::store_exercise_cache(structure(list(label = "changenames", global_setup
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-init-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-init-code-editor`)), session)
 output$`tutorial-exercise-init-output` <- renderUI({
@@ -714,7 +883,8 @@ learnr:::store_exercise_cache(structure(list(label = "init", global_setup = stru
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-printvector-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-printvector-code-editor`)), session)
 output$`tutorial-exercise-printvector-output` <- renderUI({
@@ -758,7 +928,8 @@ learnr:::store_exercise_cache(structure(list(label = "printvector", global_setup
         fig.num = 0L, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-population-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-population-code-editor`)), session)
 output$`tutorial-exercise-population-output` <- renderUI({
@@ -808,7 +979,8 @@ learnr:::store_exercise_cache(structure(list(label = "population", global_setup 
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "newbirths-1", 
     question = structure("4a. How many new births are there in time step 3?", html = TRUE, class = c("html", 
@@ -862,7 +1034,8 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
     seed = 1408117480.84429, options = list()), class = c("learnr_radio", 
 "tutorial_question")), session = session)
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-plot-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-plot-code-editor`)), session)
 output$`tutorial-exercise-plot-output` <- renderUI({
@@ -923,7 +1096,8 @@ learnr:::store_exercise_cache(structure(list(label = "plot", global_setup = stru
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-summary-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-summary-code-editor`)), session)
 output$`tutorial-exercise-summary-output` <- renderUI({
@@ -971,7 +1145,8 @@ learnr:::store_exercise_cache(structure(list(label = "summary", global_setup = s
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-head-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-head-code-editor`)), session)
 output$`tutorial-exercise-head-output` <- renderUI({
@@ -1018,7 +1193,8 @@ learnr:::store_exercise_cache(structure(list(label = "head", global_setup = stru
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-head2-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-head2-code-editor`)), session)
 output$`tutorial-exercise-head2-output` <- renderUI({
@@ -1065,7 +1241,8 @@ learnr:::store_exercise_cache(structure(list(label = "head2", global_setup = str
         fig.num = 0, exercise.df_print = "default"), engine = "r", 
     version = "4"), class = c("r", "tutorial_exercise")))
 </script>
- 
+
+
 <script type="application/shiny-prerendered" data-context="server">
 `tutorial-exercise-tail-result` <- learnr:::setup_exercise_handler(reactive(req(input$`tutorial-exercise-tail-code-editor`)), session)
 output$`tutorial-exercise-tail-output` <- renderUI({
@@ -1115,7 +1292,7 @@ learnr:::store_exercise_cache(structure(list(label = "tail", global_setup = stru
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["5.1.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/fontawesome"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["css/all.css","css/v4-shims.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootbox"]},{"type":"character","attributes":{},"value":["5.5.2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/bootbox"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["bootbox.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["idb-keyvalue"]},{"type":"character","attributes":{},"value":["3.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/idb-keyval"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["idb-keyval-iife-compat.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.11.2.9000"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["font-awesome"]},{"type":"character","attributes":{},"value":["5.1.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/fontawesome"]}]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["css/all.css","css/v4-shims.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootbox"]},{"type":"character","attributes":{},"value":["5.5.2"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/bootbox"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["bootbox.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["idb-keyvalue"]},{"type":"character","attributes":{},"value":["3.2.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/idb-keyval"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["idb-keyval-iife-compat.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["tutorial"]},{"type":"character","attributes":{},"value":["0.11.2.9000"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/tutorial"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tutorial.js"]},{"type":"character","attributes":{},"value":["tutorial.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["ace"]},{"type":"character","attributes":{},"value":["1.10.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/ace"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["ace.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["clipboardjs"]},{"type":"character","attributes":{},"value":["2.0.10"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/clipboardjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["clipboard.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["learnr"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.11.2.9000"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

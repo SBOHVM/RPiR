@@ -149,35 +149,115 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this session you will take some classic biodiversity data and turn it into an R package.</em></p>
+<p><em>In this session you will take some classic biodiversity data and
+turn it into an R package.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>When we think about biodiversity data, we generally think about the hypothesis we are testing, how we are going to collect the data, and how we need to analyse it to investigate that hypothesis. Little thought is usually given to how to store the data. This is a mistake! Large amounts of hard work in the field can be wasted by mistakes in storage. After regular backups so you don’t physically lose your data <em>(if you’re not doing this, then you should stop whatever you’re doing and fix that now!)</em>, the next important thing to consider is whether you are <strong>definitely</strong>, <strong>always</strong> using the most up-to-date, error-free copy of your dataset when you carry out analyses.</p>
-<p>If your data is stored in one or more csv files or excel spreadsheets, you need to read that file into R. For that you need to know where it is. If you only have one copy of it on your computer, and you update that when you clean the data or add new records, then that is a single point of failure. If you accidentally make incorrect edits or delete the file, then you are entirely dependent on backups to recover from your mistakes (assuming you followed the instructions above and have a backup!).</p>
-<p>If, on the other hand, you create a new file every time you update the data, then all of your R scripts that do analyses on the data now have to refer to the new file, or you will need to copy the new data file to the projects where you are doing the analysis. If you don’t do either of these everywhere you are working on the data, one or more of your analyses may be using an out of date version of the data, and silently give incorrect answers.</p>
-<p>Even if your behaviour is perfect, and you never make mistakes with your data, then it is usually necessary to do some processing to the data before carrying out the analyses. This may be as simple as changing some of the column names in your tables so they are easier to work with in R (no spaces, for instance), some cleaning of the data to remove missing data, or some significant processing to turn records that are easy to collect into data that is easy to analyse. Such a script, just like the data, needs to be updated, and the code needs to be present wherever you carry out an analysis. It therefore suffers from exactly the same problems as the data itself.</p>
-<p>There is a simple(-ish!) solution though. You don’t need to carry around your own copy of <code>ggplot()</code> or <code>lmer()</code> in every script you write, so why should you have to do it with the data? There is one definitive version of <code>ggplot()</code> and <code>lmer()</code> on your computer, and you just refer to them by loading the <code>ggplot2</code> and <code>lme4</code> packages using the <code>library()</code> function. When these packages get updated to fix bugs or extend functionality, you just do it once by installing (normally updating) the R package, and then all of your scripts use the new version. So why not turn your data into an R package and do the same?</p>
-<p>You’ll go through the process of creating a package, processing data, inserting the data into the package, and building the package so that you can use it during the project work at the end of the course.</p>
+<p>When we think about biodiversity data, we generally think about the
+hypothesis we are testing, how we are going to collect the data, and how
+we need to analyse it to investigate that hypothesis. Little thought is
+usually given to how to store the data. This is a mistake! Large amounts
+of hard work in the field can be wasted by mistakes in storage. After
+regular backups so you don’t physically lose your data <em>(if you’re
+not doing this, then you should stop whatever you’re doing and fix that
+now!)</em>, the next important thing to consider is whether you are
+<strong>definitely</strong>, <strong>always</strong> using the most
+up-to-date, error-free copy of your dataset when you carry out
+analyses.</p>
+<p>If your data is stored in one or more csv files or excel
+spreadsheets, you need to read that file into R. For that you need to
+know where it is. If you only have one copy of it on your computer, and
+you update that when you clean the data or add new records, then that is
+a single point of failure. If you accidentally make incorrect edits or
+delete the file, then you are entirely dependent on backups to recover
+from your mistakes (assuming you followed the instructions above and
+have a backup!).</p>
+<p>If, on the other hand, you create a new file every time you update
+the data, then all of your R scripts that do analyses on the data now
+have to refer to the new file, or you will need to copy the new data
+file to the projects where you are doing the analysis. If you don’t do
+either of these everywhere you are working on the data, one or more of
+your analyses may be using an out of date version of the data, and
+silently give incorrect answers.</p>
+<p>Even if your behaviour is perfect, and you never make mistakes with
+your data, then it is usually necessary to do some processing to the
+data before carrying out the analyses. This may be as simple as changing
+some of the column names in your tables so they are easier to work with
+in R (no spaces, for instance), some cleaning of the data to remove
+missing data, or some significant processing to turn records that are
+easy to collect into data that is easy to analyse. Such a script, just
+like the data, needs to be updated, and the code needs to be present
+wherever you carry out an analysis. It therefore suffers from exactly
+the same problems as the data itself.</p>
+<p>There is a simple(-ish!) solution though. You don’t need to carry
+around your own copy of <code>ggplot()</code> or <code>lmer()</code> in
+every script you write, so why should you have to do it with the data?
+There is one definitive version of <code>ggplot()</code> and
+<code>lmer()</code> on your computer, and you just refer to them by
+loading the <code>ggplot2</code> and <code>lme4</code> packages using
+the <code>library()</code> function. When these packages get updated to
+fix bugs or extend functionality, you just do it once by installing
+(normally updating) the R package, and then all of your scripts use the
+new version. So why not turn your data into an R package and do the
+same?</p>
+<p>You’ll go through the process of creating a package, processing data,
+inserting the data into the package, and building the package so that
+you can use it during the project work at the end of the course.</p>
 </div>
 <div id="section-tasks-storing-the-data" class="section level2">
 <h2>Tasks: storing the data</h2>
-<p>First, create a new package called <code>githubusernameBCI</code> (replacing <code>githubusername</code> with your actual GitHub username) as a git repository connected to GitHub as a repo in the <code>SBOHVM</code> organisation. Remember that a guide to creating packages on GitHub is available on the <code>RPiR</code> help pages <a href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html">here</a> if you’re not sure what to do.</p>
-<p>Generally, you would want to store the raw data from your work in the git repository so everything is archived and version controlled on GitHub. However, in this work, the dataset is not yours, and it’s so big it easily exceeds file limits for storage in GitHub. So, <strong>under no circumstances</strong> commit the raw records to your git repository – it’s far too big. We’ll show you how to ignore it so that you don’t do this by mistake shortly, but just bear this in mind now so you ensure that you don’t – the moment you commit a file like this into a repo it’s hard to undo the error.</p>
-<p>Next, you need to download the Barro Colorado Forest Census Plot Data from the Smithsonian’s repository at <a href="https://repository.si.edu/handle/10088/20925" class="uri">https://repository.si.edu/handle/10088/20925</a>. Download files 3 and 4, the full census data (<span style="color: #dd1c77;">ViewFullTable.zip</span>) and the taxonomic data on all of the species present (<span style="color: #dd1c77;">ViewTax.txt</span>). Now create a folder to store these raw data in, and create the files you will use shortly to process the data:</p>
+<p>First, create a new package called <code>githubusernameBCI</code>
+(replacing <code>githubusername</code> with your actual GitHub username)
+as a git repository connected to GitHub as a repo in the
+<code>SBOHVM</code> organisation. Remember that a guide to creating
+packages on GitHub is available on the <code>RPiR</code> help pages <a
+href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html">here</a>
+if you’re not sure what to do.</p>
+<p>Generally, you would want to store the raw data from your work in the
+git repository so everything is archived and version controlled on
+GitHub. However, in this work, the dataset is not yours, and it’s so big
+it easily exceeds file limits for storage in GitHub. So, <strong>under
+no circumstances</strong> commit the raw records to your git repository
+– it’s far too big. We’ll show you how to ignore it so that you don’t do
+this by mistake shortly, but just bear this in mind now so you ensure
+that you don’t – the moment you commit a file like this into a repo it’s
+hard to undo the error.</p>
+<p>Next, you need to download the Barro Colorado Forest Census Plot Data
+from the Smithsonian’s repository at <a
+href="https://repository.si.edu/handle/10088/20925"
+class="uri">https://repository.si.edu/handle/10088/20925</a>. Download
+files 3 and 4, the full census data (<span
+style="color: #dd1c77;">ViewFullTable.zip</span>) and the taxonomic data
+on all of the species present (<span
+style="color: #dd1c77;">ViewTax.txt</span>). Now create a folder to
+store these raw data in, and create the files you will use shortly to
+process the data:</p>
 <pre class="r"><code>usethis::use_data_raw(&quot;bci_2010&quot;)
 usethis::use_data_raw(&quot;bci_quadrats&quot;)
 usethis::use_data_raw(&quot;bci_taxa&quot;)</code></pre>
-<p>Copy the files you have downloaded to the <span style="color: #dd1c77;">data-raw</span> folder that has just been created inside the R package, and unzip the <span style="color: #dd1c77;">ViewFullTable.zip</span> file into the same folder. You can now delete the zip file if you like. Now we need to make sure that none of these files make it into your git repo by accident. Run:</p>
+<p>Copy the files you have downloaded to the <span
+style="color: #dd1c77;">data-raw</span> folder that has just been
+created inside the R package, and unzip the <span
+style="color: #dd1c77;">ViewFullTable.zip</span> file into the same
+folder. You can now delete the zip file if you like. Now we need to make
+sure that none of these files make it into your git repo by accident.
+Run:</p>
 <pre class="r"><code>usethis::edit_git_ignore(&quot;project&quot;)</code></pre>
-<p>And add the following lines to the end of the <span style="color: #dd1c77;">.gitignore</span> file that has opened:</p>
+<p>And add the following lines to the end of the <span
+style="color: #dd1c77;">.gitignore</span> file that has opened:</p>
 <pre class="r"><code>ViewTax.txt
 ViewFullTable.zip
 ViewFullTable
 TSMAttributes.txt
 ViewFullTable.txt
 ViewFullTable.pdf</code></pre>
-<p>Now go to the git pane in RStudio, and make sure that the none of the files you just downloaded show up in the pane. Commit everything and create a suitable commit message for these initial files. Now create a new R file in the <span style="color: #dd1c77;">data-raw</span> folder. This will be the file you run to put all of the data into the package. It should contain the following:</p>
+<p>Now go to the git pane in RStudio, and make sure that the none of the
+files you just downloaded show up in the pane. Commit everything and
+create a suitable commit message for these initial files. Now create a
+new R file in the <span style="color: #dd1c77;">data-raw</span> folder.
+This will be the file you run to put all of the data into the package.
+It should contain the following:</p>
 <pre class="r"><code># Put the datasets into the package
 library(dplyr)
 
@@ -202,7 +282,13 @@ source(&quot;bci_quadrats.R&quot;)
 
 # Store taxonomic data in package
 source(&quot;bci_taxa.R&quot;)</code></pre>
-<p>This will load all of the raw data into R (this will take some time) and run the files you have created to process each of them and store them in the package. <strong>Don’t do this yet! First, you need to edit the processing files (<code>bci_2010.R</code>, <code>bci_quadrats.R</code> and <code>bci_taxa.R</code>) to do the processing correctly.</strong> Actually, we provide them for you here!</p>
+<p>This will load all of the raw data into R (this will take some time)
+and run the files you have created to process each of them and store
+them in the package. <strong>Don’t do this yet! First, you need to edit
+the processing files (<code>bci_2010.R</code>,
+<code>bci_quadrats.R</code> and <code>bci_taxa.R</code>) to do the
+processing correctly.</strong> Actually, we provide them for you
+here!</p>
 <p>This is <span style="color: #dd1c77;">bci_2010.R</span>:</p>
 <pre class="r"><code>library(dplyr)
 library(reshape2)
@@ -228,7 +314,10 @@ colnames(bci_2010) &lt;- sprintf(&quot;Q.%04d&quot;, as.integer(colnames(bci_201
 
 # Store in package
 usethis::use_data(bci_2010, overwrite = TRUE)</code></pre>
-<p>It takes the massive Barro Colorado Island (BCI) dataset and extracts only the 2010 (7th) census and summarises it to extract a matrix of counts of known species of living trees in 20m x 20m quadrats across the site.</p>
+<p>It takes the massive Barro Colorado Island (BCI) dataset and extracts
+only the 2010 (7th) census and summarises it to extract a matrix of
+counts of known species of living trees in 20m x 20m quadrats across the
+site.</p>
 <p>This is <span style="color: #dd1c77;">bci_quadrats.R</span>:</p>
 <pre class="r"><code>library(dplyr)
 library(tibble)
@@ -244,7 +333,13 @@ bci_quadrats &lt;- records %&gt;% select(QuadratName, row, col) %&gt;%
 
 # Store in package
 usethis::use_data(bci_quadrats, overwrite = TRUE)</code></pre>
-<p>It provides metadata about the quadrats – where they are within the site – as a tibble (a prettier version of a data frame that the RStudio team have created). Specifically, the <code>bci_quadrats</code> data frame translates the column names in <code>bci_2010</code> into actually rows and columns in a grid or <code>(x,y)</code> coordinates in metres in case you want to be able to display where the quadrats are physically.</p>
+<p>It provides metadata about the quadrats – where they are within the
+site – as a tibble (a prettier version of a data frame that the RStudio
+team have created). Specifically, the <code>bci_quadrats</code> data
+frame translates the column names in <code>bci_2010</code> into actually
+rows and columns in a grid or <code>(x,y)</code> coordinates in metres
+in case you want to be able to display where the quadrats are
+physically.</p>
 <p>Finally, this is <span style="color: #dd1c77;">bci_taxa.R</span>:</p>
 <pre class="r"><code>library(dplyr)
 library(tibble)
@@ -257,28 +352,76 @@ bci_taxa &lt;- taxa %&gt;% filter(IDLevel == &quot;species&quot;) %&gt;%
 
 # Store in package
 usethis::use_data(bci_taxa, overwrite = TRUE)</code></pre>
-<p>This will turn the huge data frame containing all of the taxonomic records of the site into a tibble called <code>bci_taxa</code>, which just contains the species name (<code>GenusSpecies</code>), genus (<code>Genus</code>) and family (<code>Family</code>) of each living tree species on Barro Colorado Island (BCI) and stores it in the package.</p>
+<p>This will turn the huge data frame containing all of the taxonomic
+records of the site into a tibble called <code>bci_taxa</code>, which
+just contains the species name (<code>GenusSpecies</code>), genus
+(<code>Genus</code>) and family (<code>Family</code>) of each living
+tree species on Barro Colorado Island (BCI) and stores it in the
+package.</p>
 <p>Finally you need to do three things:</p>
 <ol style="list-style-type: decimal">
 <li>Commit all of the scripts that you have just created</li>
-<li>Run the script that you created to generate the data files and commit them</li>
-<li>Add in all of the packages you are using as dependencies of this package</li>
+<li>Run the script that you created to generate the data files and
+commit them</li>
+<li>Add in all of the packages you are using as dependencies of this
+package</li>
 </ol>
-<p>If you have a problem in step 2, with an error about a file missing here:</p>
+<p>If you have a problem in step 2, with an error about a file missing
+here:</p>
 <pre class="r"><code>data &lt;- read.delim(file.path(&quot;ViewFullTable&quot;, &quot;ViewFullTable.txt&quot;))</code></pre>
-<p>Then your computer may have unzipped files differently from mine – mine has created a folder in <span style="color: #dd1c77;">data-raw</span> called <span style="color: #dd1c77;">ViewFullTable</span>, but yours may have just unzipped the files directly into data-raw. In that case, just change the line to:</p>
+<p>Then your computer may have unzipped files differently from mine –
+mine has created a folder in <span
+style="color: #dd1c77;">data-raw</span> called <span
+style="color: #dd1c77;">ViewFullTable</span>, but yours may have just
+unzipped the files directly into data-raw. In that case, just change the
+line to:</p>
 <pre class="r"><code>data &lt;- read.delim(&quot;ViewFullTable.txt&quot;)</code></pre>
-<p>Step 3 is (hopefully!) easy, and it is something you are going to have to keep up to date as you develop any package – you need to check which libraries you load using <code>library(xxx)</code> in any script or demo, and which libraries you use by qualifying function calls with <code>xxx::function_name()</code>. You then need to run:</p>
+<p>Step 3 is (hopefully!) easy, and it is something you are going to
+have to keep up to date as you develop any package – you need to check
+which libraries you load using <code>library(xxx)</code> in any script
+or demo, and which libraries you use by qualifying function calls with
+<code>xxx::function_name()</code>. You then need to run:</p>
 <pre class="r"><code>usethis::use_package(&quot;xxx&quot;)</code></pre>
-<p>to add the <code>xxx</code> package to those <em>imported</em> by your package in the <span style="color: #dd1c77;">DESCRIPTION</span> file. See <a href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a> for further details. Commit these changes to the repo too, and push them to GitHub. <strong>Note that you should not add your own (<code>githubusernameBCI</code>) package to the package dependencies of <code>githubusernameBCI</code>, because it is not a dependency of itself! If you have accidentally done this you need to go into the <code>DESCRIPTION</code> file and delete it from the <code>Imports:</code> entry there.</strong></p>
-<p>Finally, if you are going to add a package on GitHub to your dependencies (such as our <code>RPiR</code> package), you need to use <code>usethis::use_dev_package()</code> instead of <code>usethis::use_package()</code>. You need to know where to find it on GitHub, and then use:</p>
+<p>to add the <code>xxx</code> package to those <em>imported</em> by
+your package in the <span style="color: #dd1c77;">DESCRIPTION</span>
+file. See <a
+href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">here</a>
+for further details. Commit these changes to the repo too, and push them
+to GitHub. <strong>Note that you should not add your own
+(<code>githubusernameBCI</code>) package to the package dependencies of
+<code>githubusernameBCI</code>, because it is not a dependency of
+itself! If you have accidentally done this you need to go into the
+<code>DESCRIPTION</code> file and delete it from the
+<code>Imports:</code> entry there.</strong></p>
+<p>Finally, if you are going to add a package on GitHub to your
+dependencies (such as our <code>RPiR</code> package), you need to use
+<code>usethis::use_dev_package()</code> instead of
+<code>usethis::use_package()</code>. You need to know where to find it
+on GitHub, and then use:</p>
 <pre class="r"><code>usethis::use_dev_package(&quot;RPiR&quot;, remote = &quot;SBOHVM/RPiR&quot;)</code></pre>
-<p>where the <code>remote</code> argument is the organisation and repo name. In the project, when you are using your own data package in your new project package, you will need to do this by calling something like <code>usethis::use_dev_package("githubusernameBCI", remote = "SBOHVM/githubusernameBCI")</code>.</p>
+<p>where the <code>remote</code> argument is the organisation and repo
+name. In the project, when you are using your own data package in your
+new project package, you will need to do this by calling something like
+<code>usethis::use_dev_package("githubusernameBCI", remote = "SBOHVM/githubusernameBCI")</code>.</p>
 </div>
 <div id="section-tasks-documenting-the-package" class="section level2">
 <h2>Tasks: documenting the package</h2>
-<p>First you need to edit the <span style="color: #dd1c77;">DESCRIPTION</span> file (more <a href="https://r-pkgs.org/description.html">here</a> so that it contains the right information about you and the package, and you need to create a documentation file for the package in the <span style="color: #dd1c77;">R</span> folder so that <code>?githubusernameBCI</code> returns a description. You had this in the package for the third practical series, but you’ll see details on how to do that <a href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation">here</a>.</p>
-<p>Create a new file in the <span style="color: #dd1c77;">R</span> folder – I’m going to call it <span style="color: #dd1c77;">githubusernameBCI-package.R</span> because the convention is packagename-package.R. Then describe your package (most easily lifted from the <span style="color: #dd1c77;">DESCRIPTION</span> file):</p>
+<p>First you need to edit the <span
+style="color: #dd1c77;">DESCRIPTION</span> file (more <a
+href="https://r-pkgs.org/description.html">here</a> so that it contains
+the right information about you and the package, and you need to create
+a documentation file for the package in the <span
+style="color: #dd1c77;">R</span> folder so that
+<code>?githubusernameBCI</code> returns a description. You had this in
+the package for the third practical series, but you’ll see details on
+how to do that <a
+href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation">here</a>.</p>
+<p>Create a new file in the <span style="color: #dd1c77;">R</span>
+folder – I’m going to call it <span
+style="color: #dd1c77;">githubusernameBCI-package.R</span> because the
+convention is packagename-package.R. Then describe your package (most
+easily lifted from the <span style="color: #dd1c77;">DESCRIPTION</span>
+file):</p>
 <pre class="r"><code>#&#39; Barro Colorado Island data package 
 #&#39;
 #&#39; Package to hold the BCI data (or whatever) -- maybe also mention something
@@ -293,28 +436,76 @@ usethis::use_data(bci_taxa, overwrite = TRUE)</code></pre>
 #&#39; @docType package 
 #&#39;
 NULL</code></pre>
-<p>There are a few things going on here that you should notice for making packages in the future. The first is that you need to say what your package is called – here I have given it two names <code>githubusernameBCI-package</code> and an alias of just <code>githubusernameBCI</code>, which you do with the <code>@aliases</code> command. Secondly, the <code>NULL</code> at the end of the file is included when there is no object associated with this documentation, which is the case here, since this file contains the package documentation, as defined explicitly in the <code>@docType</code> tag (more info <a href="http://r-pkgs.had.co.nz/man.html#man-packages">here</a>). Finally, if you are using any packages in any of your functions, you may want to import them into your package here. This is done using <code>@import</code> – see more <a href="http://r-pkgs.had.co.nz/namespace.html">here</a>. You can then put the same, or a similar, package description into the <span style="color: #dd1c77;">README.md</span> file in the package so that people going to GitHub will see what the package that you have created does without having to install it. Note that GitHub README pages use a special type of markdown called Git Flavored Markdown; more information can be found here <a href="https://docs.github.com/en/free-pro-team@latest/github/writing-on-github" class="uri">https://docs.github.com/en/free-pro-team@latest/github/writing-on-github</a> with more general documentation here <a href="https://guides.github.com/features/mastering-markdown/" class="uri">https://guides.github.com/features/mastering-markdown/</a>. Note that with markdown you don’t need to start lines with <code>#'</code>.</p>
-<p>Second, you need to document the data that you are providing in this package, by creating file(s) in the <span style="color: #dd1c77;">R</span> folder again. You’ll find details on how to create the documentation <a href="https://r-pkgs.org/data.html">here</a>, or an abbreviated version in our guide <a href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-data">here</a>.</p>
-<p>Finally, build the documentation (using <code>devtools::document()</code>), and commit all of the changes to git.</p>
-<p>Make sure throughout the documentation that you credit the real source of the data as the <a href="https://repository.si.edu/handle/10088/20925">Smithsonian</a>.</p>
+<p>There are a few things going on here that you should notice for
+making packages in the future. The first is that you need to say what
+your package is called – here I have given it two names
+<code>githubusernameBCI-package</code> and an alias of just
+<code>githubusernameBCI</code>, which you do with the
+<code>@aliases</code> command. Secondly, the <code>NULL</code> at the
+end of the file is included when there is no object associated with this
+documentation, which is the case here, since this file contains the
+package documentation, as defined explicitly in the
+<code>@docType</code> tag (more info <a
+href="http://r-pkgs.had.co.nz/man.html#man-packages">here</a>). Finally,
+if you are using any packages in any of your functions, you may want to
+import them into your package here. This is done using
+<code>@import</code> – see more <a
+href="http://r-pkgs.had.co.nz/namespace.html">here</a>. You can then put
+the same, or a similar, package description into the <span
+style="color: #dd1c77;">README.md</span> file in the package so that
+people going to GitHub will see what the package that you have created
+does without having to install it. Note that GitHub README pages use a
+special type of markdown called Git Flavored Markdown; more information
+can be found here <a
+href="https://docs.github.com/en/free-pro-team@latest/github/writing-on-github"
+class="uri">https://docs.github.com/en/free-pro-team@latest/github/writing-on-github</a>
+with more general documentation here <a
+href="https://guides.github.com/features/mastering-markdown/"
+class="uri">https://guides.github.com/features/mastering-markdown/</a>.
+Note that with markdown you don’t need to start lines with
+<code>#'</code>.</p>
+<p>Second, you need to document the data that you are providing in this
+package, by creating file(s) in the <span
+style="color: #dd1c77;">R</span> folder again. You’ll find details on
+how to create the documentation <a
+href="https://r-pkgs.org/data.html">here</a>, or an abbreviated version
+in our guide <a
+href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-data">here</a>.</p>
+<p>Finally, build the documentation (using
+<code>devtools::document()</code>), and commit all of the changes to
+git.</p>
+<p>Make sure throughout the documentation that you credit the real
+source of the data as the <a
+href="https://repository.si.edu/handle/10088/20925">Smithsonian</a>.</p>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
-<p>Now you should have a working R data package. Try installing it (using <code>devtools::install()</code>), restarting R and loading it. Check that the objects you have created exist – you should be able to see them in the <span style="color: #dd1c77;">Environment</span> pane, but more simply by just typing:</p>
+<p>Now you should have a working R data package. Try installing it
+(using <code>devtools::install()</code>), restarting R and loading it.
+Check that the objects you have created exist – you should be able to
+see them in the <span style="color: #dd1c77;">Environment</span> pane,
+but more simply by just typing:</p>
 <pre class="r"><code>library(githubusernameBCI)
 bci_taxa
 bci_quadrats
 bci_2010</code></pre>
-<p>You should (hopefully!) find that all of the objects exist, though you may be surprised to find that they appear to be normal data frames instead of tibbles. This actually isn’t true, and if you run:</p>
+<p>You should (hopefully!) find that all of the objects exist, though
+you may be surprised to find that they appear to be normal data frames
+instead of tibbles. This actually isn’t true, and if you run:</p>
 <pre class="r"><code>library(githubusernameBCI)
 library(tibble)
 bci_taxa
 bci_quadrats</code></pre>
-<p>You’ll see that they are tibbles. Tibbles automatically fall back to being data frames if you don’t load the library.</p>
+<p>You’ll see that they are tibbles. Tibbles automatically fall back to
+being data frames if you don’t load the library.</p>
 </div>
 <div id="section-sharing-is-caring" class="section level2">
 <h2>Sharing is caring</h2>
-<p>Now give your subgroup partners access to the repo, and get them to install your package using <code>devtools::install_github("SBOHVM/githubusernameBCI")</code> (or cloning the package and installing it directly if need be) and check it works. 
+<p>Now give your subgroup partners access to the repo, and get them to
+install your package using
+<code>devtools::install_github("SBOHVM/githubusernameBCI")</code> (or
+cloning the package and installing it directly if need be) and check it
+works. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
  
@@ -324,7 +515,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

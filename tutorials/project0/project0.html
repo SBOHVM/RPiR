@@ -149,50 +149,125 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>In this series of practicals you will develop the code to calculate diversity measures. You will have to choose the names of functions and variables in your code for yourself, and structure it appropriately, though some small amounts of guidance will be given.</p>
-<p>Remember that these practicals constitute the “project” part of the course, which constitutes 33% of the marks, so well-structured and well-commented code, documented functions and demos that also generate clear reports of the results, are very important. Any of the in-course exercises that you decide to continue to work on after the end of the course should be completed in your own time.</p>
+<p>In this series of practicals you will develop the code to calculate
+diversity measures. You will have to choose the names of functions and
+variables in your code for yourself, and structure it appropriately,
+though some small amounts of guidance will be given.</p>
+<p>Remember that these practicals constitute the “project” part of the
+course, which constitutes 33% of the marks, so well-structured and
+well-commented code, documented functions and demos that also generate
+clear reports of the results, are very important. Any of the in-course
+exercises that you decide to continue to work on after the end of the
+course should be completed in your own time.</p>
 </div>
 <div id="section-r-packages-and-github" class="section level2">
 <h2>R packages and GitHub</h2>
-<p><strong>Your work must be written as an R package using git and pushed to a GitHub repository in the SBOHVM organisation as the last two practical series.</strong> Please make your repository private and for this project don’t add anyone as collaborators – this project is done on your own to assess how much you have learned on the course. You must commit a change at least at the end of each exercise (<em>i.e.</em> Projects 0, 1, 2, 3, 4 and 5) with sensible commit messages stating what you have just done. You are welcome to do more commits if this is useful to you, and it’s completely okay (and indeed normal) if you go back to earlier exercises and make further edits and commit them after completing later exercises.</p>
+<p><strong>Your work must be written as an R package using git and
+pushed to a GitHub repository in the SBOHVM organisation as the last two
+practical series.</strong> Please make your repository private and for
+this project don’t add anyone as collaborators – this project is done on
+your own to assess how much you have learned on the course. You must
+commit a change at least at the end of each exercise (<em>i.e.</em>
+Projects 0, 1, 2, 3, 4 and 5) with sensible commit messages stating what
+you have just done. You are welcome to do more commits if this is useful
+to you, and it’s completely okay (and indeed normal) if you go back to
+earlier exercises and make further edits and commit them after
+completing later exercises.</p>
 <p>Remember a few things:</p>
 <ul>
-<li>Libraries you use in your package (for example the data package) should be correctly added to your package as dependencies;</li>
-<li>Functions should be kept in the <span style="color: #dd1c77;">R</span> folder inside the package and documented so that the documentation is available through R’s help system;</li>
-<li>Scripts for each project exercise should be stored in the <span style="color: #dd1c77;">demo</span> folder. They should be available to run through the <code>demo()</code> function when we install the package, <strong>and</strong> we should be able to compile them into a report which will contain code and text blocks (and whatever else you wish) that tidily explains what is happening in the script.</li>
+<li>Libraries you use in your package (for example the data package)
+should be correctly added to your package as dependencies;</li>
+<li>Functions should be kept in the <span
+style="color: #dd1c77;">R</span> folder inside the package and
+documented so that the documentation is available through R’s help
+system;</li>
+<li>Scripts for each project exercise should be stored in the <span
+style="color: #dd1c77;">demo</span> folder. They should be available to
+run through the <code>demo()</code> function when we install the
+package, <strong>and</strong> we should be able to compile them into a
+report which will contain code and text blocks (and whatever else you
+wish) that tidily explains what is happening in the script.</li>
 </ul>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
 <ol style="list-style-type: decimal">
-<li>Create an initial empty R package called <strong>githubusernameDiversity</strong> in RStudio that uses git and is connected to a private repository in the SBOHVM organisation;
+<li>Create an initial empty R package called
+<strong>githubusernameDiversity</strong> in RStudio that uses git and is
+connected to a private repository in the SBOHVM organisation;
 <ul>
-<li>You will use this package for all of your remaining work in this project</li>
+<li>You will use this package for all of your remaining work in this
+project</li>
 </ul></li>
-<li>Update the <span style="color: #dd1c77;">DESCRIPTION</span> file with the correct information about yourself and the package;</li>
-<li>Create a help file for the package in the <span style="color: #dd1c77;">R</span> folder, and run <code>devtools::document()</code> and <code>devtools::install()</code> to make sure that the documentation works when you call <code>?githubusernameDiversity</code> at the console once you have loaded the library by calling <code>library(githubusernameDiversity)</code>;
+<li>Update the <span style="color: #dd1c77;">DESCRIPTION</span> file
+with the correct information about yourself and the package;</li>
+<li>Create a help file for the package in the <span
+style="color: #dd1c77;">R</span> folder, and run
+<code>devtools::document()</code> and <code>devtools::install()</code>
+to make sure that the documentation works when you call
+<code>?githubusernameDiversity</code> at the console once you have
+loaded the library by calling
+<code>library(githubusernameDiversity)</code>;
 <ul>
-<li>Remember you will have to do this again every time you edit a function or demo in the package in subsequent exercises</li>
+<li>Remember you will have to do this again every time you edit a
+function or demo in the package in subsequent exercises</li>
 </ul></li>
-<li>Add your data package as a dependency of the package (or mine if you’re using it instead) – the <code>usethis::use_dev_package()</code> function will add the correct entries to the <span style="color: #dd1c77;">DESCRIPTION</span> file, just like the <code>usethis::use_package()</code> function adds in normal (CRAN) packages;
+<li>Add your data package as a dependency of the package (or mine if
+you’re using it instead) – the <code>usethis::use_dev_package()</code>
+function will add the correct entries to the <span
+style="color: #dd1c77;">DESCRIPTION</span> file, just like the
+<code>usethis::use_package()</code> function adds in normal (CRAN)
+packages;
 <ul>
-<li>Remember to do this with any subsequent packages that you decide to use later in the project</li>
+<li>Remember to do this with any subsequent packages that you decide to
+use later in the project</li>
 </ul></li>
-<li>Import your data package into the package by adding the <code>@import</code> command to the package’s help file in the <span style="color: #dd1c77;">R</span> folder that you made in step 3, above;</li>
-<li>Add a license. It’s completely up to you what license you use. We probably recommend using the MIT license as it is very permissive in terms of other people reusing your work later for something as (relatively!) unimportant as these exercises. You can add the MIT license to your package by running <code>usethis::use_mit_license()</code> in your console, and you can investigate other licenses more broadly at <a href="https://choosealicense.com" class="uri">https://choosealicense.com</a>, and how to select them for your package at <a href="https://usethis.r-lib.org/reference/licenses.html" class="uri">https://usethis.r-lib.org/reference/licenses.html</a>.</li>
+<li>Import your data package into the package by adding the
+<code>@import</code> command to the package’s help file in the <span
+style="color: #dd1c77;">R</span> folder that you made in step 3,
+above;</li>
+<li>Add a license. It’s completely up to you what license you use. We
+probably recommend using the MIT license as it is very permissive in
+terms of other people reusing your work later for something as
+(relatively!) unimportant as these exercises. You can add the MIT
+license to your package by running
+<code>usethis::use_mit_license()</code> in your console, and you can
+investigate other licenses more broadly at <a
+href="https://choosealicense.com"
+class="uri">https://choosealicense.com</a>, and how to select them for
+your package at <a
+href="https://usethis.r-lib.org/reference/licenses.html"
+class="uri">https://usethis.r-lib.org/reference/licenses.html</a>.</li>
 <li>Commit these changes and push them to GitHub.</li>
 </ol>
-<p>You will need to much of this again in subsequent project exercises, for instance every time you need to add a new package dependency into your package.</p>
+<p>You will need to much of this again in subsequent project exercises,
+for instance every time you need to add a new package dependency into
+your package.</p>
 <div id="section-adding-dependencies" class="section level3">
 <h3>Adding dependencies</h3>
-<p>A quick note on adding dependencies to your package, though this is also covered in the packaging guide on the <a href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">RPiR website</a>.</p>
-<p>Note that for adding dependencies to your package, if you run this in the console:</p>
+<p>A quick note on adding dependencies to your package, though this is
+also covered in the packaging guide on the <a
+href="https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies">RPiR
+website</a>.</p>
+<p>Note that for adding dependencies to your package, if you run this in
+the console:</p>
 <pre class="r"><code>usethis::use_package(&quot;ggplot2&quot;)
 usethis::use_dev_package(&quot;RPiR&quot;, remote = &quot;SBOHVM/RPiR&quot;)</code></pre>
-<p>it edits your <span style="color: #dd1c77;">DESCRIPTION</span> file to add the CRAN <code>ggplot2</code> package to your package’s dependencies and the <code>RPiR</code> package in the SBOHVM organisation on GitHub to your package’s dependencies as a package in development on GitHub. You may need to have already installed development packages in RStudio first to get this second command to work (using <code>devtools::install_github("SBOHVM/RPiR")</code> or <code>devtools::install()</code> locally). If you then add the following to the documentation in the <span style="color: #dd1c77;">R</span> folder, this will mark the functions and data in those packages as usable by functions in your package:</p>
+<p>it edits your <span style="color: #dd1c77;">DESCRIPTION</span> file
+to add the CRAN <code>ggplot2</code> package to your package’s
+dependencies and the <code>RPiR</code> package in the SBOHVM
+organisation on GitHub to your package’s dependencies as a package in
+development on GitHub. You may need to have already installed
+development packages in RStudio first to get this second command to work
+(using <code>devtools::install_github("SBOHVM/RPiR")</code> or
+<code>devtools::install()</code> locally). If you then add the following
+to the documentation in the <span style="color: #dd1c77;">R</span>
+folder, this will mark the functions and data in those packages as
+usable by functions in your package:</p>
 <pre class="r"><code>#&#39; @import ggplot2
 #&#39; @import RPiR</code></pre>
-<p><strong>NB I am not suggesting you necessarily want to do this with these specific packages.</strong> 
+<p><strong>NB I am not suggesting you necessarily want to do this with
+these specific packages.</strong> 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -204,7 +279,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

@@ -182,7 +182,8 @@
 
 
 
-<script src="install_RPiR_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Course preparation - RPiR</h1>
             
@@ -195,14 +196,19 @@
     
     
 <p><em>Install the RPiR package</em></p>
-<p>You need to install the Reproducible Programming in R (RPiR) package to carry out the exercises for this course.</p>
+<p>You need to install the Reproducible Programming in R (RPiR) package
+to carry out the exercises for this course.</p>
 <div class="section level2">
 <h2 id="instructions">Instructions<a class="anchor" aria-label="anchor" href="#instructions"></a>
 </h2>
-<p>First, make sure that the <code>devtools</code> package is installed by calling <code><a href="https://devtools.r-lib.org/" class="external-link">library(devtools)</a></code>. If that doesn’t work, then install it:</p>
+<p>First, make sure that the <code>devtools</code> package is installed
+by calling <code><a href="https://devtools.r-lib.org/" class="external-link">library(devtools)</a></code>. If that doesn’t work, then
+install it:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span></code></pre></div>
-<p>Because the <code>RPiR</code> package is hosted on github, we need to use <code>install_github</code> (from the <code>devtools</code> package):</p>
+<p>Because the <code>RPiR</code> package is hosted on github, we need to
+use <code>install_github</code> (from the <code>devtools</code>
+package):</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://devtools.r-lib.org/" class="external-link">devtools</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"SBOHVM/RPiR"</span><span class="op">)</span></span></code></pre></div>
@@ -215,19 +221,28 @@ Which would you like to update?
 4: plyr      (1.8.4 -&gt; 1.8.5) [CRAN]
 5: cli       (1.1.0 -&gt; 2.0.0) [CRAN]
 6: backports (1.1.4 -&gt; 1.1.5) [CRAN]</code></pre>
-<p><span style="color: #de77ae;">press 1</span>.. and if you’re asked:</p>
+<p><span style="color: #de77ae;">press 1</span>.. and if you’re
+asked:</p>
 <pre><code>Do you want to install from sources the package which needs compilation?</code></pre>
 <p>say <span style="color: #de77ae;">no</span>.</p>
-<p>If this has worked, you should be able to load the <code>RPiR</code> package by typing:</p>
+<p>If this has worked, you should be able to load the <code>RPiR</code>
+package by typing:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="potential-problems">Potential problems<a class="anchor" aria-label="anchor" href="#potential-problems"></a>
 </h2>
-<p>If this didn’t work, you have probably got an installation issue. The installation details should be printed in your RStudio Console and can help you troubleshoot the error.</p>
-<p>Quite often restarting R (<span style="color: #de77ae;">Session &gt; Restart R</span>) can solve your problem. Just remember that once you’ve restarted R, you’ll need to call <code><a href="https://devtools.r-lib.org/" class="external-link">library(devtools)</a></code> again to load it back into RStudio.</p>
-<p>Also, if you find you’re stuck in a loop (perhaps after installing <code>fansi</code>), and R is asking if you’d like to restart over and over again (because the package is already loaded):</p>
+<p>If this didn’t work, you have probably got an installation issue. The
+installation details should be printed in your RStudio Console and can
+help you troubleshoot the error.</p>
+<p>Quite often restarting R (<span style="color: #de77ae;">Session &gt;
+Restart R</span>) can solve your problem. Just remember that once you’ve
+restarted R, you’ll need to call <code><a href="https://devtools.r-lib.org/" class="external-link">library(devtools)</a></code> again to
+load it back into RStudio.</p>
+<p>Also, if you find you’re stuck in a loop (perhaps after installing
+<code>fansi</code>), and R is asking if you’d like to restart over and
+over again (because the package is already loaded):</p>
 <p><img src="images/install-RPiR-restart.png" width="40%" style="display: block; margin: auto;"></p>
 <p>then just say no to restarting it the second time.</p>
 <div class="section level3">
@@ -235,31 +250,43 @@ Which would you like to update?
 </h3>
 <pre><code>Warning in install.packages :
   installation of package ‘rlang’ had non-zero exit status</code></pre>
-<p>Try restarting R (<span style="color: #de77ae;">Session &gt; Restart R</span>) and reinstalling whatever package had non-zero exit status (zero is success, so non-zero is a failed install), in this case <code>rlang</code>:</p>
+<p>Try restarting R (<span style="color: #de77ae;">Session &gt; Restart
+R</span>) and reinstalling whatever package had non-zero exit status
+(zero is success, so non-zero is a failed install), in this case
+<code>rlang</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rlang"</span><span class="op">)</span></span></code></pre></div>
-<p>Assuming this worked, restart R again(!), and re-run <code>install_github("SBOHVM/RPiR")</code>.</p>
+<p>Assuming this worked, restart R again(!), and re-run
+<code>install_github("SBOHVM/RPiR")</code>.</p>
 </div>
 <div class="section level3">
-<h3 id="rtools-is-required-to-build-r-packages-but-is-not-currently-installed">Rtools is required to build R packages but is not currently installed…<a class="anchor" aria-label="anchor" href="#rtools-is-required-to-build-r-packages-but-is-not-currently-installed"></a>
+<h3 id="rtools-is-required-to-build-r-packages-but-is-not-currently-installed">Rtools is required to build R packages but is not currently
+installed…<a class="anchor" aria-label="anchor" href="#rtools-is-required-to-build-r-packages-but-is-not-currently-installed"></a>
 </h3>
 <pre><code>WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:</code></pre>
 <p>Go here to download and install <a href="https://cran.r-project.org/bin/windows/Rtools/" class="external-link">Rtools</a>.</p>
-<p>This might also be associated with a package install error, such as:</p>
+<p>This might also be associated with a package install error, such
+as:</p>
 <pre><code>namespace ‘rlang’ 0.4.0 is already loaded, but &gt;= 0.4.1 is required</code></pre>
-<p>In which case you should reinstall whatever package had the problem, in this case the <code>rlang</code> package:</p>
+<p>In which case you should reinstall whatever package had the problem,
+in this case the <code>rlang</code> package:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rlang"</span><span class="op">)</span></span></code></pre></div>
-<p>Assuming this worked, restart R again(!), and re-run <code>install_github("SBOHVM/RPiR")</code>.</p>
+<p>Assuming this worked, restart R again(!), and re-run
+<code>install_github("SBOHVM/RPiR")</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="cannot-remove-prior-installation">Cannot remove prior installation…<a class="anchor" aria-label="anchor" href="#cannot-remove-prior-installation"></a>
 </h3>
 <pre><code><span><span class="st">"Error in install.packages : cannot remove prior installation of package ‘rlang’ "</span></span></code></pre>
-<p>For any <code>cannot remove prior installation</code> error, try restarting R (<span style="color: #de77ae;">Session &gt; Restart R</span>) and reinstalling whatever package Windows couldn’t remove, in this case <code>rlang</code>:</p>
+<p>For any <code>cannot remove prior installation</code> error, try
+restarting R (<span style="color: #de77ae;">Session &gt; Restart
+R</span>) and reinstalling whatever package Windows couldn’t remove, in
+this case <code>rlang</code>:</p>
 <div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rlang"</span><span class="op">)</span></span></code></pre></div>
-<p>Assuming this worked, restart R again(!), and re-run <code>install_github("SBOHVM/RPiR")</code>.</p>
+<p>Assuming this worked, restart R again(!), and re-run
+<code>install_github("SBOHVM/RPiR")</code>.</p>
 </div>
 <div class="section level3">
 <h3 id="try-removing-c---00lock">Try removing ‘C:.../00LOCK’<a class="anchor" aria-label="anchor" href="#try-removing-c---00lock"></a>
@@ -267,20 +294,32 @@ Which would you like to update?
 <pre><code>package ‘rlang’ successfully unpacked and MD5 sums checked
 Error in install.packages : ERROR: failed to lock directory ‘C:\Users\User\Documents\R\win-library\3.6’ for modifying
 Try removing ‘C:\Users\User\Documents\R\win-library\3.6/00LOCK’</code></pre>
-<p>For this one, you need to find the <span style="color: #de77ae;">00LOCK</span> file and delete it. Then try installing whatever package was being unpacked, in this case <code>rlang</code>:</p>
+<p>For this one, you need to find the <span style="color: #de77ae;">00LOCK</span> file and delete it. Then try
+installing whatever package was being unpacked, in this case
+<code>rlang</code>:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"rlang"</span><span class="op">)</span></span></code></pre></div>
-<p>Assuming this worked, restart R again(!), and re-run <code>install_github("SBOHVM/RPiR")</code>.</p>
-<p>If that doesn’t work after a couple of attempts, then you can try installing the package while ignoring the lock files:</p>
+<p>Assuming this worked, restart R again(!), and re-run
+<code>install_github("SBOHVM/RPiR")</code>.</p>
+<p>If that doesn’t work after a couple of attempts, then you can try
+installing the package while ignoring the lock files:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"Rcpp"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, INSTALL_opts <span class="op">=</span> <span class="st">'--no-lock'</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="mac-linux">Mac / Linux<a class="anchor" aria-label="anchor" href="#mac-linux"></a>
 </h3>
-<p>If you are on a Mac, it’s very likely you got an error because you need to have <code>libgit2</code> installed. If so, then you probably also need to install Homebrew - follow the instructions on <a href="https://brew.sh" class="external-link uri">https://brew.sh</a> to do this. Once Homebrew is installed, you can install <code>libgit2</code> using Homebrew by opening the Terminal app and then typing:</p>
+<p>If you are on a Mac, it’s very likely you got an error because you
+need to have <code>libgit2</code> installed. If so, then you probably
+also need to install Homebrew - follow the instructions on <a href="https://brew.sh" class="external-link uri">https://brew.sh</a> to do this. Once
+Homebrew is installed, you can install <code>libgit2</code> using
+Homebrew by opening the Terminal app and then typing:</p>
 <pre><code>brew install libgit2</code></pre>
-<p>The same may happen on Linux, and you will need to use the distribution’s package manager to install either <code>libgit2-dev</code> or <code>libgit2-devel</code>, depending on whether you are on Debian/Ubuntu or Fedora/CentOS/RHEL, respectively.</p>
+<p>The same may happen on Linux, and you will need to use the
+distribution’s package manager to install either
+<code>libgit2-dev</code> or <code>libgit2-devel</code>, depending on
+whether you are on Debian/Ubuntu or Fedora/CentOS/RHEL,
+respectively.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

@@ -149,14 +149,25 @@ pre code {
 
 <div id="section-loops" class="section level2">
 <h2>Loops</h2>
-<p>Loops allow you to repeat the same thing again and again. If you are doing something more than two or three times, you should instead use a loop to avoid having to copy and paste the same code over and over again. Since duplicating code risks not only mistyping or not copying correctly, but also creating confusion by filling your R scripts with nearly identical chunks of code. There are fundamentally two kinds of loop:</p>
+<p>Loops allow you to repeat the same thing again and again. If you are
+doing something more than two or three times, you should instead use a
+loop to avoid having to copy and paste the same code over and over
+again. Since duplicating code risks not only mistyping or not copying
+correctly, but also creating confusion by filling your R scripts with
+nearly identical chunks of code. There are fundamentally two kinds of
+loop:</p>
 <ul>
-<li>one where you know exactly how many times the loop will run, for instance because you’re running a chunk of code once for each element of a vector or row or column of a data frame; and</li>
-<li>one where you do not, because some part of your calculation in each step of the loop will determine whether to continue or to stop.</li>
+<li>one where you know exactly how many times the loop will run, for
+instance because you’re running a chunk of code once for each element of
+a vector or row or column of a data frame; and</li>
+<li>one where you do not, because some part of your calculation in each
+step of the loop will determine whether to continue or to stop.</li>
 </ul>
 <div id="section-for-loops" class="section level3">
 <h3><code>for</code> loops</h3>
-<p><code>for</code> loops allow us to repeat something <strong>for</strong> a fixed number of times (<em>e.g.</em> once per element of a vector, once per row of a data frame, <em>etc.</em>).</p>
+<p><code>for</code> loops allow us to repeat something
+<strong>for</strong> a fixed number of times (<em>e.g.</em> once per
+element of a vector, once per row of a data frame, <em>etc.</em>).</p>
 <p>A <code>for</code> loop always has the same style:</p>
 <pre class="r"><code>for (one in many) {
   # Do something
@@ -164,14 +175,20 @@ pre code {
   # ... exciting code maybe using the variable
   #     one (but it doesn&#39;t have to) ...
 }</code></pre>
-<p>It looks a bit like a function, but what it does is set the variable <code>one</code> to each of the values in <code>many</code> one at a time, and then does something. Here are two very simple examples to get an idea of what it might do:</p>
+<p>It looks a bit like a function, but what it does is set the variable
+<code>one</code> to each of the values in <code>many</code> one at a
+time, and then does something. Here are two very simple examples to get
+an idea of what it might do:</p>
 <pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;)
 for (word in greetings) {
   print(word)
 }
 &gt; [1] &quot;Hello&quot;
 &gt; [1] &quot;Goodbye&quot;</code></pre>
-<p>Try changing the <code>greetings</code> variable. You’ll see that the loop runs once for each word in the <code>greetings</code> vector. We can use this to do something a fixed number of times without necessarily caring about the entries:</p>
+<p>Try changing the <code>greetings</code> variable. You’ll see that the
+loop runs once for each word in the <code>greetings</code> vector. We
+can use this to do something a fixed number of times without necessarily
+caring about the entries:</p>
 <pre class="r"><code># Make a sequence of 7 numbers from 1 to 7
 times &lt;- seq(from = 1, to = 7) # This is the same as 1:7 or seq(1, 7)
 
@@ -186,7 +203,10 @@ for (iteration in times) {
 &gt; [1] &quot;I&#39;m in a loop&quot;
 &gt; [1] &quot;I&#39;m in a loop&quot;
 &gt; [1] &quot;I&#39;m in a loop&quot;</code></pre>
-<p>Change the length of the <code>times</code> vector. You’ll see that it prints out the text once for each element in <code>times</code> even though it never looks to see what <code>iteration</code> is (it doesn’t care).</p>
+<p>Change the length of the <code>times</code> vector. You’ll see that
+it prints out the text once for each element in <code>times</code> even
+though it never looks to see what <code>iteration</code> is (it doesn’t
+care).</p>
 <p>Now look at this code:</p>
 <pre class="r"><code># A function to add one to a number
 add_one &lt;- function(number)
@@ -228,9 +248,11 @@ current.value
 &gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
 &gt;         .correct = correct, .incorrect = incorrect))
 &gt; }
-&gt; &lt;bytecode: 0x7fc389100c50&gt;
-&gt; &lt;environment: 0x7fc389102748&gt;</code></pre>
-<p>It just runs our <code>add_one()</code> function from earlier five times to update the variable <code>current.value</code> to 5. Change the code so it does this ten times to produce 10.</p>
+&gt; &lt;bytecode: 0x7f89a036c3b8&gt;
+&gt; &lt;environment: 0x7f89a036ad58&gt;</code></pre>
+<p>It just runs our <code>add_one()</code> function from earlier five
+times to update the variable <code>current.value</code> to 5. Change the
+code so it does this ten times to produce 10.</p>
 <p>Now look at this next piece of code:</p>
 <pre class="r"><code># A function to add one to a number
 add_one &lt;- function(number) {
@@ -272,17 +294,39 @@ current.value
 &gt;         .message = final_grade$message, .message_pipe_warning = NULL, 
 &gt;         .correct = correct, .incorrect = incorrect))
 &gt; }
-&gt; &lt;bytecode: 0x7fc389100c50&gt;
-&gt; &lt;environment: 0x7fc38a083f58&gt;</code></pre>
-<p>It does the same thing - it calls <code>add_one()</code> ten times, but it’s much shorter, which generally makes it easier to see what’s going on. Now change the code to call <code>add_one()</code> 100 times. Hopefully you can see that this is really starting to help now!</p>
-<p>And you can probably imagine that if it was any more complicated that just copying and pasting one line it would make it much easier to see that it was doing exactly the same thing each time too.</p>
-<p>Finally, add in the single line <code>print(paste("Loop number", loop))</code> into the loop at the end (between lines 11 and 12) and run it. You’ll now be able see each step of the loop running. We’ll use techniques like this later to check that the loop is doing the right thing.</p>
-<p><em>Note also that unlike functions, variables changed in <code>for</code> loops do change what happens outside the loop, so <code>current.value</code> is <code>100</code> at the end, and not still <code>0</code>.</em></p>
-<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#for-loops"><code>for</code> loops</a>. For loops are also covered by R Coder <a href="https://r-coder.com/for-loop-r">here</a>.</p>
+&gt; &lt;bytecode: 0x7f89a036c3b8&gt;
+&gt; &lt;environment: 0x7f89a5478550&gt;</code></pre>
+<p>It does the same thing - it calls <code>add_one()</code> ten times,
+but it’s much shorter, which generally makes it easier to see what’s
+going on. Now change the code to call <code>add_one()</code> 100 times.
+Hopefully you can see that this is really starting to help now!</p>
+<p>And you can probably imagine that if it was any more complicated that
+just copying and pasting one line it would make it much easier to see
+that it was doing exactly the same thing each time too.</p>
+<p>Finally, add in the single line
+<code>print(paste("Loop number", loop))</code> into the loop at the end
+(between lines 11 and 12) and run it. You’ll now be able see each step
+of the loop running. We’ll use techniques like this later to check that
+the loop is doing the right thing.</p>
+<p><em>Note also that unlike functions, variables changed in
+<code>for</code> loops do change what happens outside the loop, so
+<code>current.value</code> is <code>100</code> at the end, and not still
+<code>0</code>.</em></p>
+<p>There is a section in R4DS (within a more general chapter on <a
+href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>)
+that covers <a
+href="https://r4ds.had.co.nz/iteration.html#for-loops"><code>for</code>
+loops</a>. For loops are also covered by R Coder <a
+href="https://r-coder.com/for-loop-r">here</a>.</p>
 </div>
 <div id="section-while-loops" class="section level3">
 <h3><code>while</code> loops</h3>
-<p><code>while</code> loops allow us to repeat something <strong>while</strong> a condition is still <code>TRUE</code>. They are particularly useful when you don’t know in advance exactly how many times something will be done, but can be used in any situation. Unlike <code>for</code> loops though, you need to update everything manually each time around:</p>
+<p><code>while</code> loops allow us to repeat something
+<strong>while</strong> a condition is still <code>TRUE</code>. They are
+particularly useful when you don’t know in advance exactly how many
+times something will be done, but can be used in any situation. Unlike
+<code>for</code> loops though, you need to update everything manually
+each time around:</p>
 <pre class="r"><code>x &lt;- 1
 test &lt;- x &lt; 3 
 while (test) {
@@ -294,14 +338,30 @@ while (test) {
 }
 &gt; [1] 1
 &gt; [1] 2</code></pre>
-<p><code>test</code> is checked at the beginning of each iteration, and as long as <code>test</code> continues to be <code>TRUE</code>, the code block inside the curly brackets <code>{ ... }</code> is run. The test after the <code>while</code> statement acts exactly like a <code>if</code> statement that we looked at in A-1, except that it is run repeatedly until it is <code>FALSE</code>, so refer back to there to remind you how <code>if</code> and tests work.</p>
-<p>Be careful though… if you don’t update <code>test</code> inside the curly brackets, your loop will continue forever! However, if (when!) <code>test</code> is finally <code>FALSE</code>, the loop will end and R will continue on to the next line of code after the loop.</p>
-<p>There is a section in R4DS (within a more general chapter on <a href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>) that covers <a href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code> loops</a>. While loops are also covered by R Coder <a href="https://r-coder.com/while-loop-r">here</a>.</p>
+<p><code>test</code> is checked at the beginning of each iteration, and
+as long as <code>test</code> continues to be <code>TRUE</code>, the code
+block inside the curly brackets <code>{ ... }</code> is run. The test
+after the <code>while</code> statement acts exactly like a
+<code>if</code> statement that we looked at in A-1, except that it is
+run repeatedly until it is <code>FALSE</code>, so refer back to there to
+remind you how <code>if</code> and tests work.</p>
+<p>Be careful though… if you don’t update <code>test</code> inside the
+curly brackets, your loop will continue forever! However, if (when!)
+<code>test</code> is finally <code>FALSE</code>, the loop will end and R
+will continue on to the next line of code after the loop.</p>
+<p>There is a section in R4DS (within a more general chapter on <a
+href="https://r4ds.had.co.nz/iteration.html"><em>Iteration</em></a>)
+that covers <a
+href="https://r4ds.had.co.nz/iteration.html#unknown-sequence-length"><code>while</code>
+loops</a>. While loops are also covered by R Coder <a
+href="https://r-coder.com/while-loop-r">here</a>.</p>
 </div>
 </div>
 <div id="section-exercises" class="section level2">
 <h2>Exercises</h2>
-<p>Now try the following exercise, combining an <code>if</code> statement with a <code>for</code> loop to print greetings (not <code>duck</code>):</p>
+<p>Now try the following exercise, combining an <code>if</code>
+statement with a <code>for</code> loop to print greetings (not
+<code>duck</code>):</p>
 <pre class="r"><code>greetings &lt;- c(&quot;Hello&quot;, &quot;Goodbye&quot;, &quot;duck&quot;)
 for (word ___) {
   if (___) {
@@ -350,8 +410,8 @@ for (word in greetings) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc38ae3ead0&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a2555ce8&gt;</code></pre>
 <p>Solve the following problem – a countdown from 10 to 1.</p>
 <pre class="r"><code>x &lt;- 10
 while (___) {
@@ -416,8 +476,8 @@ while (x &gt; 0) {
 &gt;     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 &gt;     grade
 &gt; }
-&gt; &lt;bytecode: 0x7fc3830fca00&gt;
-&gt; &lt;environment: 0x7fc383f67390&gt;</code></pre>
+&gt; &lt;bytecode: 0x7f899deef748&gt;
+&gt; &lt;environment: 0x7f89a6a274a0&gt;</code></pre>
 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
@@ -434,7 +494,7 @@ set.seed(123)
 
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

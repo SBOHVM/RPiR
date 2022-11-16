@@ -1,4 +1,4 @@
-pandoc: 2.7.3
+pandoc: 2.19.2
 pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
@@ -19,7 +19,7 @@ articles:
   rstudio: pages/rstudio.html
   tips: pages/tips.html
   vscode_liveshare: pages/vscode_liveshare.html
-last_built: 2022-11-16T22:10Z
+last_built: 2022-11-16T22:24Z
 urls:
   reference: https://sbohvm.github.io/RPiR/reference
   article: https://sbohvm.github.io/RPiR/articles

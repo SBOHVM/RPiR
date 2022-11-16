@@ -142,27 +142,79 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Project 3: Shannon entropy and the Berger-Parker index</h1>
+<h1 class="title toc-ignore">Project 3: Shannon entropy and the
+Berger-Parker index</h1>
 
 </div>
 
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>We are now going to look at two special cases, where the equation we used before needs to be adapted – Shannon entropy, which is <span class="math inline">\(\log(D_1)\)</span>, and the Berger-Parker index, which is <span class="math inline">\(\frac{1}{D_\infty}\)</span>, and adapt the code to cope with these.</p>
-<p><span class="math display">\[D_1 = \prod_{i \in \{1 \dots N_S, p_i \neq 0\}} p_i^{-p_i}\]</span></p>
-<p><span class="math display">\[D_\infty = \frac{1}{\max_i p_i}\]</span></p>
+<p>We are now going to look at two special cases, where the equation we
+used before needs to be adapted – Shannon entropy, which is <span
+class="math inline">\(\log(D_1)\)</span>, and the Berger-Parker index,
+which is <span class="math inline">\(\frac{1}{D_\infty}\)</span>, and
+adapt the code to cope with these.</p>
+<p><span class="math display">\[D_1 = \prod_{i \in \{1 \dots N_S, p_i
+\neq 0\}} p_i^{-p_i}\]</span></p>
+<p><span class="math display">\[D_\infty = \frac{1}{\max_i
+p_i}\]</span></p>
 <div id="section-background" class="section level3">
 <h3>Background</h3>
-<p><strong>Shannon entropy</strong> is an extremely well-known mathematical measure of the information content of a set of data. It is used here as a measure of “surprise” – how surprising the species of the next individual observed in a sequence is likely to be. Where there is only 1 species, each observation is the same, and there is no surprise. However, when there are lots of species that are all equally abundant (we are ignoring how well mixed the population is), every encounter is likely to surprise us.</p>
-<p>The <strong>Berger-Parker</strong> index simply tells us how dominant the most abundant species is. It ignores everything else. The lower the index, the less dominant the most abundant species is, and so the more other species are also observed.</p>
+<p><strong>Shannon entropy</strong> is an extremely well-known
+mathematical measure of the information content of a set of data. It is
+used here as a measure of “surprise” – how surprising the species of the
+next individual observed in a sequence is likely to be. Where there is
+only 1 species, each observation is the same, and there is no surprise.
+However, when there are lots of species that are all equally abundant
+(we are ignoring how well mixed the population is), every encounter is
+likely to surprise us.</p>
+<p>The <strong>Berger-Parker</strong> index simply tells us how dominant
+the most abundant species is. It ignores everything else. The lower the
+index, the less dominant the most abundant species is, and so the more
+other species are also observed.</p>
 </div>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>You may want to copy your existing function code from Project 2 as a starting point for this exercise. If you do, remember that you need different function names in this exercise so that they don’t conflict.</p>
-<p>You will be writing a function to calculate diversity, and then two functions to calculate species richness and Simpson diversity from it as you did in Project 2. Then you need to write two new very simple functions which calculate the Shannon entropy and the Berger-Parker index, using the generic function you created above and <strong>not</strong> by calculating them from scratch (they will also need the small amount of additional calculation – <strong>Shannon entropy is actually <span class="math inline">\(\log(D_1)\)</span></strong> and <strong>Berger-Parker is <span class="math inline">\(\frac{1}{D_\infty}\)</span></strong> – as detailed above in the overview). You will probably find that the functions as written do not work! You may choose to test what the results should be again by comparing the outputs from the generic function at <span class="math inline">\(q=1\)</span> and <span class="math inline">\(q=\infty\)</span> (infinity, written as <code>Inf</code> in R) to matching results from the <code>rdiversity</code> package.</p>
-<p>You should see that the generic function from Project 2 produces very different answers for a value of <span class="math inline">\(q = 1\)</span> and a value near 1 (say <span class="math inline">\(q = 0.99\)</span> or <span class="math inline">\(q = 1.01\)</span>), and similarly for <span class="math inline">\(q = \infty\)</span> and a reasonably large number (say <span class="math inline">\(q = 20\)</span> or <span class="math inline">\(q = 30\)</span>). In fact, you should actually get errors for exactly 1 and <span class="math inline">\(\infty\)</span>, though you may in fact just produce the wrong answers (that are inconsistent with “nearby” numbers). In the former case, this is because we calculate <span class="math inline">\(\frac{1}{0}\)</span> in the equation (which is not a number), and in the latter we have a rounding error and end up calculating <span class="math inline">\(0^0\)</span> instead of <span class="math inline">\(0.000001^{0.000001}\)</span> which turn out to be very different numbers.</p>
+<p>You may want to copy your existing function code from Project 2 as a
+starting point for this exercise. If you do, remember that you need
+different function names in this exercise so that they don’t
+conflict.</p>
+<p>You will be writing a function to calculate diversity, and then two
+functions to calculate species richness and Simpson diversity from it as
+you did in Project 2. Then you need to write two new very simple
+functions which calculate the Shannon entropy and the Berger-Parker
+index, using the generic function you created above and
+<strong>not</strong> by calculating them from scratch (they will also
+need the small amount of additional calculation – <strong>Shannon
+entropy is actually <span
+class="math inline">\(\log(D_1)\)</span></strong> and
+<strong>Berger-Parker is <span
+class="math inline">\(\frac{1}{D_\infty}\)</span></strong> – as detailed
+above in the overview). You will probably find that the functions as
+written do not work! You may choose to test what the results should be
+again by comparing the outputs from the generic function at <span
+class="math inline">\(q=1\)</span> and <span
+class="math inline">\(q=\infty\)</span> (infinity, written as
+<code>Inf</code> in R) to matching results from the
+<code>rdiversity</code> package.</p>
+<p>You should see that the generic function from Project 2 produces very
+different answers for a value of <span class="math inline">\(q =
+1\)</span> and a value near 1 (say <span class="math inline">\(q =
+0.99\)</span> or <span class="math inline">\(q = 1.01\)</span>), and
+similarly for <span class="math inline">\(q = \infty\)</span> and a
+reasonably large number (say <span class="math inline">\(q = 20\)</span>
+or <span class="math inline">\(q = 30\)</span>). In fact, you should
+actually get errors for exactly 1 and <span
+class="math inline">\(\infty\)</span>, though you may in fact just
+produce the wrong answers (that are inconsistent with “nearby” numbers).
+In the former case, this is because we calculate <span
+class="math inline">\(\frac{1}{0}\)</span> in the equation (which is not
+a number), and in the latter we have a rounding error and end up
+calculating <span class="math inline">\(0^0\)</span> instead of <span
+class="math inline">\(0.000001^{0.000001}\)</span> which turn out to be
+very different numbers.</p>
 <p>You will need to rewrite the general function using:</p>
 <pre class="r"><code>if (some_test) {
   # do something
@@ -171,22 +223,66 @@ pre code {
 } else {
   # a third thing
 }</code></pre>
-<p>So that it checks for these two specific values of <span class="math inline">\(q\)</span>, and instead use the following two equations:</p>
-<p><span class="math display">\[D_1 = \exp(-\sum(p \times \log(p)))\]</span> which is to say <code>exp(-sum(p * log(p)))</code> in R, where <code>p</code> is the vector of non-zero species proportions.</p>
-<p><span class="math display">\[D_\infty = \frac{1}{\max(p)}\]</span> which is just <code>1/max(p)</code> in R. You should to end up writing the updated general function and the four specific functions that call this new updated function to calculate the four measures of diversity we have discussed so far.</p>
+<p>So that it checks for these two specific values of <span
+class="math inline">\(q\)</span>, and instead use the following two
+equations:</p>
+<p><span class="math display">\[D_1 = \exp(-\sum(p \times
+\log(p)))\]</span> which is to say <code>exp(-sum(p * log(p)))</code> in
+R, where <code>p</code> is the vector of non-zero species
+proportions.</p>
+<p><span class="math display">\[D_\infty = \frac{1}{\max(p)}\]</span>
+which is just <code>1/max(p)</code> in R. You should to end up writing
+the updated general function and the four specific functions that call
+this new updated function to calculate the four measures of diversity we
+have discussed so far.</p>
 <div id="section-running-the-code" class="section level3">
 <h3>Running the code</h3>
-<p>Run the two new functions again to make sure there are no errors, and also make sure that the generic function now gives the same (or very similar) results for 1 and 1.01, and for 20 and <span class="math inline">\(\infty\)</span>.</p>
+<p>Run the two new functions again to make sure there are no errors, and
+also make sure that the generic function now gives the same (or very
+similar) results for 1 and 1.01, and for 20 and <span
+class="math inline">\(\infty\)</span>.</p>
 </div>
-<div id="section-testing-for-equality-to-exact-values" class="section level3">
+<div id="section-testing-for-equality-to-exact-values"
+class="section level3">
 <h3>Testing for equality to exact values</h3>
-<p><strong>NB</strong> It is just possible that you may find a problem with the code still not giving you the correct answer when <span class="math inline">\(q=1\)</span>. You can test for <span class="math inline">\(q\)</span> being infinity by just by comparing the value to <code>Inf</code>, but this doesn’t work reliably for other numbers – what goes wrong is a rounding error that is very common in computer programming. Whole numbers cannot be correctly represented as decimals without small errors creeping in – so 1 may actually appear as 1.000000000001 – and testing whether it is then equal to 1 will fail. Instead you should test whether it is sufficiently close to 1 for your purposes. Fortunately, we can do this by saying <code>if (abs(q-1) &lt; 0.000001)</code>, say, instead of <code>if (q == 1)</code>, which will check whether you are within 0.000001 of 1 (<em>i.e.</em> 0.999999 to 1.000001). I’ve picked 0.000001, but you can pick another value if it seems better. R actually provides a number for this itself called the “machine epsilon”, <code>.Machine$double.eps</code>, which is about <span class="math inline">\(10^{-16}\)</span>, but it may be too small for our purposes. People often use <code>sqrt(.Machine$double.eps)</code> as a compromise (about <span class="math inline">\(10^{-8}\)</span>). I honestly don’t know why except that it looks quite technical, but feel free to use it if you like!</p>
+<p><strong>NB</strong> It is just possible that you may find a problem
+with the code still not giving you the correct answer when <span
+class="math inline">\(q=1\)</span>. You can test for <span
+class="math inline">\(q\)</span> being infinity by just by comparing the
+value to <code>Inf</code>, but this doesn’t work reliably for other
+numbers – what goes wrong is a rounding error that is very common in
+computer programming. Whole numbers cannot be correctly represented as
+decimals without small errors creeping in – so 1 may actually appear as
+1.000000000001 – and testing whether it is then equal to 1 will fail.
+Instead you should test whether it is sufficiently close to 1 for your
+purposes. Fortunately, we can do this by saying
+<code>if (abs(q-1) &lt; 0.000001)</code>, say, instead of
+<code>if (q == 1)</code>, which will check whether you are within
+0.000001 of 1 (<em>i.e.</em> 0.999999 to 1.000001). I’ve picked
+0.000001, but you can pick another value if it seems better. R actually
+provides a number for this itself called the “machine epsilon”,
+<code>.Machine$double.eps</code>, which is about <span
+class="math inline">\(10^{-16}\)</span>, but it may be too small for our
+purposes. People often use <code>sqrt(.Machine$double.eps)</code> as a
+compromise (about <span class="math inline">\(10^{-8}\)</span>). I
+honestly don’t know why except that it looks quite technical, but feel
+free to use it if you like!</p>
 </div>
 </div>
 <div id="section-demo" class="section level2">
 <h2>Demo</h2>
-<p>Now write a demo that loads in this new functionality and then calculates the four diversity measures we have discussed for each dataset.</p>
-<p>The demo should then call the general function directly (not the 4 specific functions) and just calculate the general diversity measures for the datasets provided with <span class="math inline">\(q = 0\)</span>, 1, 2, and <span class="math inline">\(\infty\)</span> (remember, these correspond to the 4 individual diversity measures we have investigated so far). Do you see a progression in the values you observe within each set of population counts as <span class="math inline">\(q\)</span> increases? Comment on this in the report. 
+<p>Now write a demo that loads in this new functionality and then
+calculates the four diversity measures we have discussed for each
+dataset.</p>
+<p>The demo should then call the general function directly (not the 4
+specific functions) and just calculate the general diversity measures
+for the datasets provided with <span class="math inline">\(q =
+0\)</span>, 1, 2, and <span class="math inline">\(\infty\)</span>
+(remember, these correspond to the 4 individual diversity measures we
+have investigated so far). Do you see a progression in the values you
+observe within each set of population counts as <span
+class="math inline">\(q\)</span> increases? Comment on this in the
+report. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -198,7 +294,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

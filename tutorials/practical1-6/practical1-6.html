@@ -142,78 +142,185 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical 1-6: Generating a repo on GitHub and use it in RStudio</h1>
+<h1 class="title toc-ignore">Practical 1-6: Generating a repo on GitHub
+and use it in RStudio</h1>
 
 </div>
 
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this practical we will look at GitHub and RStudio projects as a means to organise your workflow.</em></p>
+<p><em>In this practical we will look at GitHub and RStudio projects as
+a means to organise your workflow.</em></p>
 <hr />
-<p>Note that from here on out you will be working in RStudio. First, however, you’ll need to create a repository in the SBOHVM organisation on GitHub.</p>
+<p>Note that from here on out you will be working in RStudio. First,
+however, you’ll need to create a repository in the SBOHVM organisation
+on GitHub.</p>
 </div>
 <div id="section-github" class="section level2">
 <h2>GitHub</h2>
-<p>First you’ll need to create a repository in the SBOHVM organisation on GitHub. You’ll find instructions on how to do this <a href="https://sbohvm.github.io/RPiR/articles/pages/github.html">here</a>. Call this repository <code>githubusernameSeries01</code> (obviously use your real GitHub username!). Note that you’ll need to do this throughout this course, which is why we’ve kept these instructions separate.</p>
+<p>First you’ll need to create a repository in the SBOHVM organisation
+on GitHub. You’ll find instructions on how to do this <a
+href="https://sbohvm.github.io/RPiR/articles/pages/github.html">here</a>.
+Call this repository <code>githubusernameSeries01</code> (obviously use
+your real GitHub username!). Note that you’ll need to do this throughout
+this course, which is why we’ve kept these instructions separate.</p>
 </div>
 <div id="section-rstudio" class="section level2">
 <h2>RStudio</h2>
-<p>After you’ve done that, back in RStudio, create a new project linked to that repository using the instructions <a href="https://sbohvm.github.io/RPiR/articles/pages/rstudio.html">here</a>. Load the <code>RPiR</code> package and run the <code>practical_series_one()</code> function. This will populate your working directory – and therefore your RStudio project and git repository – with the scripts and functions from Practical Series 1. Remember that the yellow question mark in the <span style="color: #dd1c77;">Status</span> column of the <span style="color: #dd1c77;">Git</span> tab means that these are not currently in your GitHub repository.</p>
+<p>After you’ve done that, back in RStudio, create a new project linked
+to that repository using the instructions <a
+href="https://sbohvm.github.io/RPiR/articles/pages/rstudio.html">here</a>.
+Load the <code>RPiR</code> package and run the
+<code>practical_series_one()</code> function. This will populate your
+working directory – and therefore your RStudio project and git
+repository – with the scripts and functions from Practical Series 1.
+Remember that the yellow question mark in the <span
+style="color: #dd1c77;">Status</span> column of the <span
+style="color: #dd1c77;">Git</span> tab means that these are not
+currently in your GitHub repository.</p>
 <p><img src="images/a.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>So let’s push them up to GitHub! Check the boxes next to all of the files, the scripts, the functions, and invisible <code>.gitignore</code> file and even the RStudio project file. Then click <span style="color: #dd1c77;">Commit</span>.</p>
+<p>So let’s push them up to GitHub! Check the boxes next to all of the
+files, the scripts, the functions, and invisible <code>.gitignore</code>
+file and even the RStudio project file. Then click <span
+style="color: #dd1c77;">Commit</span>.</p>
 <p><img src="images/b.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Write a suitably descriptive message and <span style="color: #dd1c77;">Commit</span> the files.</p>
+<p>Write a suitably descriptive message and <span
+style="color: #dd1c77;">Commit</span> the files.</p>
 <p><img src="images/c.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>A new window should open with a summary of your actions, stating your commit message and telling you that 11 files changed and 513 insertions were made.</p>
+<p>A new window should open with a summary of your actions, stating your
+commit message and telling you that 11 files changed and 513 insertions
+were made.</p>
 <p><img src="images/d.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Now go to your GitHub repository. Are the files there? What did we forget to do? Don’t forget that pressing <span style="color: #dd1c77;">Commit</span> isn’t enough. When you commit your files, you’re packaging them up ready to go. You still have to <span style="color: #dd1c77;">Push</span> them to GitHub. Do that now and make sure they appear in your repository.</p>
+<p>Now go to your GitHub repository. Are the files there? What did we
+forget to do? Don’t forget that pressing <span
+style="color: #dd1c77;">Commit</span> isn’t enough. When you commit your
+files, you’re packaging them up ready to go. You still have to <span
+style="color: #dd1c77;">Push</span> them to GitHub. Do that now and make
+sure they appear in your repository.</p>
 <p><img src="images/e.png" width="100%" style="display: block; margin: auto;" /></p>
 </div>
 <div id="section-a-clean-start" class="section level2">
 <h2>A clean start</h2>
-<p>Sometimes you can find that something you have done before in R can interfere with what you are now doing – though if you’ve written all of your code correctly, then obviously(!) this should never happen. It is useful then to know that you can clear what is held in R’s memory using <code>rm(list = ls())</code>. This will cause all of the variables and functions in your <strong>global environment</strong> to disappear (<em>e.g.</em> if you type <code>human.annual.growth</code> in the R console it should tell you that the object is “not found”). As a fundamental rule however:</p>
+<p>Sometimes you can find that something you have done before in R can
+interfere with what you are now doing – though if you’ve written all of
+your code correctly, then obviously(!) this should never happen. It is
+useful then to know that you can clear what is held in R’s memory using
+<code>rm(list = ls())</code>. This will cause all of the variables and
+functions in your <strong>global environment</strong> to disappear
+(<em>e.g.</em> if you type <code>human.annual.growth</code> in the R
+console it should tell you that the object is “not found”). As a
+fundamental rule however:</p>
 <blockquote>
-<p>you should never hardcode <code>rm(list = ls())</code> into any of your scripts and we recommend that you never use it at all.</p>
+<p>you should never hardcode <code>rm(list = ls())</code> into any of
+your scripts and we recommend that you never use it at all.</p>
 </blockquote>
-<p>It’s generally a sign your code isn’t written well if it can be affected by something before it. Instead, you can clear your workspace by clicking the brush in the <span style="color: #dd1c77;">Environment</span> tab in RStudio (or <span style="color: #dd1c77;">Session &gt; Clear Workspace…</span> in the menus).</p>
-<p>However, generally it’s easier to Restart R. This is much safer and more final. You can do it in RStudio via <span style="color: #dd1c77;">Session &gt; Restart R</span> in the menus: it is far more effective than clearing just the workspace as it resets everything, while leaving RStudio itself unaffected. Remember that once you have done this you may have to set the working directory to the correct folder, and you will certainly have to start running your code again completely from the beginning.</p>
-<p>Note that, when you generate a report from the script file, they are always generated from a new, clean, version of R. So this is a very important final check that all of your code is working correctly – it’s as if you did restart R without actually wiping everything in your current R console - but only if you read it and check it looks right!</p>
+<p>It’s generally a sign your code isn’t written well if it can be
+affected by something before it. Instead, you can clear your workspace
+by clicking the brush in the <span
+style="color: #dd1c77;">Environment</span> tab in RStudio (or <span
+style="color: #dd1c77;">Session &gt; Clear Workspace…</span> in the
+menus).</p>
+<p>However, generally it’s easier to Restart R. This is much safer and
+more final. You can do it in RStudio via <span
+style="color: #dd1c77;">Session &gt; Restart R</span> in the menus: it
+is far more effective than clearing just the workspace as it resets
+everything, while leaving RStudio itself unaffected. Remember that once
+you have done this you may have to set the working directory to the
+correct folder, and you will certainly have to start running your code
+again completely from the beginning.</p>
+<p>Note that, when you generate a report from the script file, they are
+always generated from a new, clean, version of R. So this is a very
+important final check that all of your code is working correctly – it’s
+as if you did restart R without actually wiping everything in your
+current R console - but only if you read it and check it looks
+right!</p>
 <div id="section-global-variables" class="section level3">
 <h3>Global variables</h3>
-<p>The other check we strongly encourage you to do is to check that your function does not use any global variables by using <code>findGlobals()</code>.</p>
-<p>You should also generate a report for any function files you create. If you want to, you can put the <code>findGlobals()</code> check into this function file (which will run the check when you generate the report for that file) so it doesn’t clutter up the main script itself. But this is only useful if you generate a report from the function file! To solve this, you can make it so the report will fail to generate for that script when global variables are used with the following code snippets:</p>
+<p>The other check we strongly encourage you to do is to check that your
+function does not use any global variables by using
+<code>findGlobals()</code>.</p>
+<p>You should also generate a report for any function files you create.
+If you want to, you can put the <code>findGlobals()</code> check into
+this function file (which will run the check when you generate the
+report for that file) so it doesn’t clutter up the main script itself.
+But this is only useful if you generate a report from the function file!
+To solve this, you can make it so the report will fail to generate for
+that script when global variables are used with the following code
+snippets:</p>
 <pre class="r"><code># Now check that function doesn&#39;t have any global variables.
 library(codetools)
 globals &lt;- findGlobals(step_simple_growth, merge = FALSE)$variables 
 if (length(globals) != 0) {
   stop(&quot;Function step_simple_growth() may not use global variable(s): &quot;, globals)
 }</code></pre>
-<p>This checks whether <code>length(globals)</code> is non-zero, which is to say whether the <code>variables</code> element of what is returned by <code>findGlobals(step_simple_growth, merge = FALSE)</code> is not of length zero, <em>i.e.</em> whether there are any global variables in the function <code>step_simple_growth</code>. If there are, then the contents of the curly brackets are run, <code>stop(...)</code> is called, and the code stops running. In fact, <code>step_simple_growth</code> has no global variables, so the code block is not run.</p>
+<p>This checks whether <code>length(globals)</code> is non-zero, which
+is to say whether the <code>variables</code> element of what is returned
+by <code>findGlobals(step_simple_growth, merge = FALSE)</code> is not of
+length zero, <em>i.e.</em> whether there are any global variables in the
+function <code>step_simple_growth</code>. If there are, then the
+contents of the curly brackets are run, <code>stop(...)</code> is
+called, and the code stops running. In fact,
+<code>step_simple_growth</code> has no global variables, so the code
+block is not run.</p>
 </div>
 </div>
 <div id="section-sharing-is-caring" class="section level2">
 <h2>Sharing is caring</h2>
-<p>Now we’re going to try and share our work. To make it a little more interesting, edit your <code>README.md</code> file. Write a sentence or two about yourself and what you hope to get out of this course. Commit your changes and push them to GitHub. Then look at your GitHub repository and make sure you can see your changes.</p>
-<p>To share your work, since you created a private (rather than a public) repository, you need to give people permission to see it. So, click on <span style="color: #de77ae;">Settings</span>, <span style="color: #de77ae;">Manage access</span>, then <span style="color: #de77ae;">Add teams</span>.</p>
+<p>Now we’re going to try and share our work. To make it a little more
+interesting, edit your <code>README.md</code> file. Write a sentence or
+two about yourself and what you hope to get out of this course. Commit
+your changes and push them to GitHub. Then look at your GitHub
+repository and make sure you can see your changes.</p>
+<p>To share your work, since you created a private (rather than a
+public) repository, you need to give people permission to see it. So,
+click on <span style="color: #de77ae;">Settings</span>, <span
+style="color: #de77ae;">Manage access</span>, then <span
+style="color: #de77ae;">Add teams</span>.</p>
 <p><img src="images/f.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Find the <code>SBOHVM/rpir22</code> team (that’s you guys) - by searching for <code>rpir22</code>. Make sure <span style="color: #de77ae;">Read</span> access is selected and <span style="color: #de77ae;">Add SBOHVM/rpir22 to this repository</span>.</p>
+<p>Find the <code>SBOHVM/rpir22</code> team (that’s you guys) - by
+searching for <code>rpir22</code>. Make sure <span
+style="color: #de77ae;">Read</span> access is selected and <span
+style="color: #de77ae;">Add SBOHVM/rpir22 to this repository</span>.</p>
 <p><img src="images/h.png" width="100%" style="display: block; margin: auto;" /></p>
 <p>It should look like this:</p>
 <p><img src="images/i.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Now, exchange repository names with your group (everyone in your breakout room). You should have access if you’re part of the <code>SBOHVM/rpir</code> team. Now go find them. Either search through the <code>SBOHVM</code> organisation, or go directly to their URL. For example, if I want to find <code>louisematthews</code>, I’d go here <a href="https://github.com/SBOHVM/louisematthewsSeries01" class="uri">https://github.com/SBOHVM/louisematthewsSeries01</a>. Remember to take a look at their GitHub readme, you might learn something new!</p>
-<p>Just like before, we’re going to clone this repository by clicking on the green <span style="color: #de77ae;">Code</span> button and copying the URL associated with this repository.</p>
+<p>Now, exchange repository names with your group (everyone in your
+breakout room). You should have access if you’re part of the
+<code>SBOHVM/rpir</code> team. Now go find them. Either search through
+the <code>SBOHVM</code> organisation, or go directly to their URL. For
+example, if I want to find <code>louisematthews</code>, I’d go here <a
+href="https://github.com/SBOHVM/louisematthewsSeries01"
+class="uri">https://github.com/SBOHVM/louisematthewsSeries01</a>.
+Remember to take a look at their GitHub readme, you might learn
+something new!</p>
+<p>Just like before, we’re going to clone this repository by clicking on
+the green <span style="color: #de77ae;">Code</span> button and copying
+the URL associated with this repository.</p>
 <p><img src="images/j.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Then, as we did before, go back to RStudio. Go to the <span style="color: #de77ae;">File</span> menu and create a <span style="color: #de77ae;">New Project…</span>, with <span style="color: #de77ae;">Version Control</span>, using <span style="color: #de77ae;">Git</span>. The project should open automatically.</p>
+<p>Then, as we did before, go back to RStudio. Go to the <span
+style="color: #de77ae;">File</span> menu and create a <span
+style="color: #de77ae;">New Project…</span>, with <span
+style="color: #de77ae;">Version Control</span>, using <span
+style="color: #de77ae;">Git</span>. The project should open
+automatically.</p>
 <p>Try generating a report from one of the files.</p>
 <p><img src="images/k.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Hopefully you should generate a report without any problems. Whether you do or not, go back to your collaborators GitHub repository and add an issue. Do this by clicking on the <span style="color: #de77ae;">Issues</span> tab and adding a <span style="color: #de77ae;">New Issue</span>.</p>
+<p>Hopefully you should generate a report without any problems. Whether
+you do or not, go back to your collaborators GitHub repository and add
+an issue. Do this by clicking on the <span
+style="color: #de77ae;">Issues</span> tab and adding a <span
+style="color: #de77ae;">New Issue</span>.</p>
 <p><img src="images/l.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>In the issue you should describe whether or not you were successful, perhaps also including a nice encouraging message!</p>
+<p>In the issue you should describe whether or not you were successful,
+perhaps also including a nice encouraging message!</p>
 <p><img src="images/m.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>If you click on the <span style="color: #de77ae;">Issues</span> tab again, you’ll see a list of issues.</p>
+<p>If you click on the <span style="color: #de77ae;">Issues</span> tab
+again, you’ll see a list of issues.</p>
 <p><img src="images/n.png" width="100%" style="display: block; margin: auto;" /></p>
-<p>Now wait a bit for everyone to add their issues to your repository. Once they’ve finished, go see what they’ve written. If any issues need addressed, go ahead and address them. 
+<p>Now wait a bit for everyone to add their issues to your repository.
+Once they’ve finished, go see what they’ve written. If any issues need
+addressed, go ahead and address them. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -225,7 +332,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

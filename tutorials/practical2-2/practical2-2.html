@@ -149,37 +149,120 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this practical we will examine the effect of changing the time step on the model outputs. Remember that in the lecture we said that we increase the accuracy of simulations when we use small time steps, and we reduce the accuracy (but speed up the simulation) when we use large time steps.</em></p>
+<p><em>In this practical we will examine the effect of changing the time
+step on the model outputs. Remember that in the lecture we said that we
+increase the accuracy of simulations when we use small time steps, and
+we reduce the accuracy (but speed up the simulation) when we use large
+time steps.</em></p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>So far, we have written code to model difference equations, where events happen at fixed intervals. For some biological populations such as insects reproducing on an annual cycle this framework is very appropriate. However, in general we are interested in events that could happen at any point, and importantly once an event has happened it can affect the rate at which new events happen – for instance, when the first infected animal in a large population succeeds in infecting a second, the rate of infection approximately doubles. If we use large time steps we may miss this effect of changing transmission rates between one time step and the next, whereas if we use very small timesteps, we will be accurate but many steps will contain no events, thus wasting computational time. In this practical we will see that the size of the time step affects our model.</p>
+<p>So far, we have written code to model difference equations, where
+events happen at fixed intervals. For some biological populations such
+as insects reproducing on an annual cycle this framework is very
+appropriate. However, in general we are interested in events that could
+happen at any point, and importantly once an event has happened it can
+affect the rate at which new events happen – for instance, when the
+first infected animal in a large population succeeds in infecting a
+second, the rate of infection approximately doubles. If we use large
+time steps we may miss this effect of changing transmission rates
+between one time step and the next, whereas if we use very small
+timesteps, we will be accurate but many steps will contain no events,
+thus wasting computational time. In this practical we will see that the
+size of the time step affects our model.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>To change the model to handle timesteps, we have to consider that by default, in the previous programs we were using a timestep of 1. In this case – of <em>E. coli</em> transmission in cattle from Practical 2-1 – these are measured in weeks, which means that if our rates were given to us in units of weeks, then we are stepping forward one week at a time. If our rates were given to us per day rather than per week we would be stepping forward day by day. If a rate is given to us in weeks, we could scale it down accordingly to get the rate per day. Or, we could scale it up to get the rate per month. So to change our program to step forward on a different time scale, we scale the parameters. Our parameters (the transmission and recovery rates) will help us determine the number of transmissions and recoveries that occur in one unit of time. To simulate stepping forward in larger of smaller amounts of time we scale the parameters by the new time step.</p>
-<p>The task now is to edit <span style="color: #dd1c77;">0201-run-SIS.R</span> so that it is easy to alter the timestep of the simulation – you can reuse <code>step_deterministic_SIS()</code>. All you need to do is to write a new script file which creates a new parameter, <code>timestep</code>, so that you can scale <code>transmission.rate</code> and <code>recovery.rate</code> to <code>ecoli.transmission * timestep</code> and <code>ecoli.recovery * timestep</code> before passing them to <code>step_deterministic_SIS()</code>. You also need to remember that the vector of <code>timesteps</code> to loop through is now also wrong. Make sure that you adjust it correctly so that it will give the correct times for the plot. You can check it has by looking at <code>population.df$time</code> after you’ve added it in to the data frame and make sure it looks right to you. We can call this new version <span style="color: #dd1c77;"> 0202-test-SIS.R</span>.</p>
+<p>To change the model to handle timesteps, we have to consider that by
+default, in the previous programs we were using a timestep of 1. In this
+case – of <em>E. coli</em> transmission in cattle from Practical 2-1 –
+these are measured in weeks, which means that if our rates were given to
+us in units of weeks, then we are stepping forward one week at a time.
+If our rates were given to us per day rather than per week we would be
+stepping forward day by day. If a rate is given to us in weeks, we could
+scale it down accordingly to get the rate per day. Or, we could scale it
+up to get the rate per month. So to change our program to step forward
+on a different time scale, we scale the parameters. Our parameters (the
+transmission and recovery rates) will help us determine the number of
+transmissions and recoveries that occur in one unit of time. To simulate
+stepping forward in larger of smaller amounts of time we scale the
+parameters by the new time step.</p>
+<p>The task now is to edit <span
+style="color: #dd1c77;">0201-run-SIS.R</span> so that it is easy to
+alter the timestep of the simulation – you can reuse
+<code>step_deterministic_SIS()</code>. All you need to do is to write a
+new script file which creates a new parameter, <code>timestep</code>, so
+that you can scale <code>transmission.rate</code> and
+<code>recovery.rate</code> to <code>ecoli.transmission * timestep</code>
+and <code>ecoli.recovery * timestep</code> before passing them to
+<code>step_deterministic_SIS()</code>. You also need to remember that
+the vector of <code>timesteps</code> to loop through is now also wrong.
+Make sure that you adjust it correctly so that it will give the correct
+times for the plot. You can check it has by looking at
+<code>population.df$time</code> after you’ve added it in to the data
+frame and make sure it looks right to you. We can call this new version
+<span style="color: #dd1c77;"> 0202-test-SIS.R</span>.</p>
 </div>
 <div id="section-running-the-code" class="section level2">
 <h2>Running the code</h2>
-<p><code>timestep</code> does not need to be a whole number, and it can be less than 1. Start running your programming with a <code>timestep</code> of 1, and then try reducing it to 0.1 and then compare your outputs. If they appear unchanged it means the first timestep was small enough to produce an accurate output. Remember you can plot multiple graphs on top of each other to make it easier to directly compare timesteps.</p>
-<p>Once you’ve satisfied yourself that the simulation is currently accurate, find out by how much you can increase the timestep safely before the simulation becomes inaccurate. Running this code with a <code>timestep</code> of 3 or 5 means that we are stepping forward in chunks of time that are 3 or 5 times larger than our default time step. Note that if you don’t use the parameters from <em>E. coli</em> transmission in cattle, the values of the timestep at which is all goes wrong may be different, so we recommend sticking with those values.</p>
+<p><code>timestep</code> does not need to be a whole number, and it can
+be less than 1. Start running your programming with a
+<code>timestep</code> of 1, and then try reducing it to 0.1 and then
+compare your outputs. If they appear unchanged it means the first
+timestep was small enough to produce an accurate output. Remember you
+can plot multiple graphs on top of each other to make it easier to
+directly compare timesteps.</p>
+<p>Once you’ve satisfied yourself that the simulation is currently
+accurate, find out by how much you can increase the timestep safely
+before the simulation becomes inaccurate. Running this code with a
+<code>timestep</code> of 3 or 5 means that we are stepping forward in
+chunks of time that are 3 or 5 times larger than our default time step.
+Note that if you don’t use the parameters from <em>E. coli</em>
+transmission in cattle, the values of the timestep at which is all goes
+wrong may be different, so we recommend sticking with those values.</p>
 </div>
 <div id="section-report" class="section level2">
 <h2>Report</h2>
-<p>Demonstrate the instabilities at high timesteps in a report, with some text explaining when things break down and the simulation is no longer reliable, and when, conversely, there is no advantage to reducing the timesteps further.</p>
+<p>Demonstrate the instabilities at high timesteps in a report, with
+some text explaining when things break down and the simulation is no
+longer reliable, and when, conversely, there is no advantage to reducing
+the timesteps further.</p>
 </div>
 <div id="section-github" class="section level2">
 <h2>GitHub</h2>
-<p>As with the other exercises, we want you to get a couple of other people to check your code and make sure it works for them, and we want you to check other people’s code too.</p>
+<p>As with the other exercises, we want you to get a couple of other
+people to check your code and make sure it works for them, and we want
+you to check other people’s code too.</p>
 <div id="section-getting-help-with-your-code" class="section level3">
 <h3>Getting help with your code</h3>
-<p>Once you’re happy with your code, commit your changes using the Git pane in RStudio (just commit the R files - not, for instance, any html files that were created by generating reports). Don’t forget then to push the changes to GitHub and check on the website that it contains your new code. Notify your partners that you have something for them to check. If you’re not sitting next to them, then you can create an issue in your repository asking for their review and/or talk to them on Zoom - you can contact them by tagging them in the message with <code>@theirusername</code>, and they should receive an email and a <a href="https://github.com/notifications">notification on the website</a>. They should then create an issue, telling you if they had any problems running your version of the practical.</p>
+<p>Once you’re happy with your code, commit your changes using the Git
+pane in RStudio (just commit the R files - not, for instance, any html
+files that were created by generating reports). Don’t forget then to
+push the changes to GitHub and check on the website that it contains
+your new code. Notify your partners that you have something for them to
+check. If you’re not sitting next to them, then you can create an issue
+in your repository asking for their review and/or talk to them on Zoom -
+you can contact them by tagging them in the message with
+<code>@theirusername</code>, and they should receive an email and a <a
+href="https://github.com/notifications">notification on the website</a>.
+They should then create an issue, telling you if they had any problems
+running your version of the practical.</p>
 </div>
 <div id="section-checking-other-peoples-code" class="section level3">
 <h3>Checking other people’s code</h3>
-<p>Likewise, when you hear from someone else that a repo is available to check, then if it’s a project you have already downloaded, you should open that project in RStudio, go to the Git pane, and click on the <strong>Pull</strong> button to get the updates they have pushed to GitHub (there should be a subtle message saying that updates are available near the button). If you’re checking a new person’s work, or a new project, refer to the instructions in Practical 2-1. Once you’ve checked that the new code has downloaded, you can then run their code and make sure it works. Open an issue on GitHub to say if it works, or explaining what went wrong if it doesn’t (it might help to also do this in person or on Zoom if they are there).</p>
-<p>Interacting like this through GitHub to help each other will count as your engagement marks for the course. 
+<p>Likewise, when you hear from someone else that a repo is available to
+check, then if it’s a project you have already downloaded, you should
+open that project in RStudio, go to the Git pane, and click on the
+<strong>Pull</strong> button to get the updates they have pushed to
+GitHub (there should be a subtle message saying that updates are
+available near the button). If you’re checking a new person’s work, or a
+new project, refer to the instructions in Practical 2-1. Once you’ve
+checked that the new code has downloaded, you can then run their code
+and make sure it works. Open an issue on GitHub to say if it works, or
+explaining what went wrong if it doesn’t (it might help to also do this
+in person or on Zoom if they are there).</p>
+<p>Interacting like this through GitHub to help each other will count as
+your engagement marks for the course. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 
@@ -189,7 +272,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

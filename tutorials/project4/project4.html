@@ -149,32 +149,102 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>At the end of the last practical we looked at the diversity of a population using a variety of different diversity measures. We now want to be able to do that more easily so that we can examine the diversity profile of a population.</p>
+<p>At the end of the last practical we looked at the diversity of a
+population using a variety of different diversity measures. We now want
+to be able to do that more easily so that we can examine the diversity
+profile of a population.</p>
 <div id="section-background" class="section level3">
 <h3>Background</h3>
-<p>Instead of looking at individual diversity measures, we can instead look at the <strong>diversity profile</strong> of a population. This is a plot of the effective number of species against <span class="math inline">\(q\)</span>, the parameter of this family of diversity measures. You should have observed in the previous exercise that the effective number of species drops as <span class="math inline">\(q\)</span> increases, and you may remember that I said that this is because <span class="math inline">\(q\)</span> is a measure of how much we care about evenness of the species abundances. At <span class="math inline">\(q = 0\)</span>, we don’t care at all, and the rarest species counts as much as the most common; at <span class="math inline">\(q = \infty\)</span> we care only about evenness, and not about the actual number of species present. When we plot <span class="math inline">\(D_q\)</span> against <span class="math inline">\(q\)</span>, profiles which drop away quickly are indicative of uneven distributions of species, whereas profiles which are less sensitive to <span class="math inline">\(q\)</span> show more evenly distributed species (none much more abundant than any other).</p>
+<p>Instead of looking at individual diversity measures, we can instead
+look at the <strong>diversity profile</strong> of a population. This is
+a plot of the effective number of species against <span
+class="math inline">\(q\)</span>, the parameter of this family of
+diversity measures. You should have observed in the previous exercise
+that the effective number of species drops as <span
+class="math inline">\(q\)</span> increases, and you may remember that I
+said that this is because <span class="math inline">\(q\)</span> is a
+measure of how much we care about evenness of the species abundances. At
+<span class="math inline">\(q = 0\)</span>, we don’t care at all, and
+the rarest species counts as much as the most common; at <span
+class="math inline">\(q = \infty\)</span> we care only about evenness,
+and not about the actual number of species present. When we plot <span
+class="math inline">\(D_q\)</span> against <span
+class="math inline">\(q\)</span>, profiles which drop away quickly are
+indicative of uneven distributions of species, whereas profiles which
+are less sensitive to <span class="math inline">\(q\)</span> show more
+evenly distributed species (none much more abundant than any other).</p>
 </div>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>We want to plot <span class="math inline">\(D_q\)</span> against <span class="math inline">\(q\)</span> for a variety of values of <span class="math inline">\(q\)</span> – say from 0 to 10 in small steps. First call your general diversity function with a vector of values for <span class="math inline">\(q\)</span> instead of a single value. You will probably get a warning message, and in any event you will only get a single result, whereas you wanted a result for each value of <span class="math inline">\(q\)</span>. This is because the raise-to-the-power function <code>^</code> does not understand that you want to raise each species proportion to the first power, then each to the second power, and so on in turn and instead raises the first proportion to the first power, the second to the second, and so on. Instead we need to write a loop to iterate over the different values of <span class="math inline">\(q\)</span>.</p>
-<p>First, you probably want to copy your existing functions again. You will edit these functions (renaming them as you go along) to create final, definitive diversity functions that do everything we want.</p>
-<div id="section-final-diversity-functions-for-a-single-value-of-q" class="section level3">
+<p>We want to plot <span class="math inline">\(D_q\)</span> against
+<span class="math inline">\(q\)</span> for a variety of values of <span
+class="math inline">\(q\)</span> – say from 0 to 10 in small steps.
+First call your general diversity function with a vector of values for
+<span class="math inline">\(q\)</span> instead of a single value. You
+will probably get a warning message, and in any event you will only get
+a single result, whereas you wanted a result for each value of <span
+class="math inline">\(q\)</span>. This is because the raise-to-the-power
+function <code>^</code> does not understand that you want to raise each
+species proportion to the first power, then each to the second power,
+and so on in turn and instead raises the first proportion to the first
+power, the second to the second, and so on. Instead we need to write a
+loop to iterate over the different values of <span
+class="math inline">\(q\)</span>.</p>
+<p>First, you probably want to copy your existing functions again. You
+will edit these functions (renaming them as you go along) to create
+final, definitive diversity functions that do everything we want.</p>
+<div id="section-final-diversity-functions-for-a-single-value-of-q"
+class="section level3">
 <h3>Final diversity functions for a single value of <code>q</code></h3>
-<p>Add a test in the general diversity function that checks that there is only one value of <span class="math inline">\(q\)</span> and <code>stop()</code>s if there is more than one – now we have identified a problem in our code, we want to avoid it happening again! We will stop worrying about the specific (e.g. species richness) functions now, as it’s boring to keep on rewriting them!</p>
+<p>Add a test in the general diversity function that checks that there
+is only one value of <span class="math inline">\(q\)</span> and
+<code>stop()</code>s if there is more than one – now we have identified
+a problem in our code, we want to avoid it happening again! We will stop
+worrying about the specific (e.g. species richness) functions now, as
+it’s boring to keep on rewriting them!</p>
 </div>
-<div id="section-function-to-create-a-diversity-profile-from-multiple-qs" class="section level3">
-<h3>Function to create a diversity profile from multiple <code>q</code>s</h3>
-<p>Now write a completely new function to calculate a series of diversity measures for a vector of values of <span class="math inline">\(q\)</span> given as a second argument (<em>e.g.</em> <code>c(0, 0.1, 3.4,  7, 15)</code> or <code>0:20</code>, etc.). In the function, you should just loop over all of the values of <span class="math inline">\(q\)</span> given to it as an argument (just like your original diversity function took one value of <span class="math inline">\(q\)</span> as an argument) and then just call your single-q-value function with each value of <span class="math inline">\(q\)</span> (and the population) in turn. We want to reuse our code from the last exercise as much as possible to avoid making new mistakes! It should then combine all of the results and return a vector of diversity measures that corresponds to the vector of values of <span class="math inline">\(q\)</span> that it has been given. Remember that if we have a vector of values (called <code>Dqs.so.far</code>), and want to add a new value <code>Dq</code> to the end, then we can do that with just <code>c(Dqs.so.far, Dq)</code>.</p>
+<div
+id="section-function-to-create-a-diversity-profile-from-multiple-qs"
+class="section level3">
+<h3>Function to create a diversity profile from multiple
+<code>q</code>s</h3>
+<p>Now write a completely new function to calculate a series of
+diversity measures for a vector of values of <span
+class="math inline">\(q\)</span> given as a second argument
+(<em>e.g.</em> <code>c(0, 0.1, 3.4,  7, 15)</code> or <code>0:20</code>,
+etc.). In the function, you should just loop over all of the values of
+<span class="math inline">\(q\)</span> given to it as an argument (just
+like your original diversity function took one value of <span
+class="math inline">\(q\)</span> as an argument) and then just call your
+single-q-value function with each value of <span
+class="math inline">\(q\)</span> (and the population) in turn. We want
+to reuse our code from the last exercise as much as possible to avoid
+making new mistakes! It should then combine all of the results and
+return a vector of diversity measures that corresponds to the vector of
+values of <span class="math inline">\(q\)</span> that it has been given.
+Remember that if we have a vector of values (called
+<code>Dqs.so.far</code>), and want to add a new value <code>Dq</code> to
+the end, then we can do that with just
+<code>c(Dqs.so.far, Dq)</code>.</p>
 </div>
 <div id="section-running-the-code" class="section level3">
 <h3>Running the code</h3>
-<p>Check that the first diversity function now correctly rejects more than one value of <span class="math inline">\(q\)</span>. Then calculate the diversity profiles of the datasets, and plot them all on a graph. You can display however you like, but in the simplest case you can use <code>plot(qs, Dqs)</code> for the first graph, and <code>lines(qs, Dqs)</code> for subsequent graphs while changing the colours (<code>col=</code>) or line types (<code>lty=</code>), <em>etc</em>.</p>
+<p>Check that the first diversity function now correctly rejects more
+than one value of <span class="math inline">\(q\)</span>. Then calculate
+the diversity profiles of the datasets, and plot them all on a graph.
+You can display however you like, but in the simplest case you can use
+<code>plot(qs, Dqs)</code> for the first graph, and
+<code>lines(qs, Dqs)</code> for subsequent graphs while changing the
+colours (<code>col=</code>) or line types (<code>lty=</code>),
+<em>etc</em>.</p>
 </div>
 </div>
 <div id="section-demo" class="section level2">
 <h2>Demo</h2>
-<p>Write a demo that calculates diversity profiles for each dataset, plots them against each other, and comments on the differences between the results. 
+<p>Write a demo that calculates diversity profiles for each dataset,
+plots them against each other, and comments on the differences between
+the results. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -186,7 +256,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

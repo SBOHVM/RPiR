@@ -142,62 +142,172 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Project 2: A general measure of diversity</h1>
+<h1 class="title toc-ignore">Project 2: A general measure of
+diversity</h1>
 
 </div>
 
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>There is a general series of measures of diversity, which is defined as follows:</p>
-<p><span class="math display">\[D_q = \left( \sum_{i \in \{1 \dots N_S, p_i \neq 0\}} p_i^q \right)^{\frac{1}{1-q}}\]</span></p>
-<p>where <span class="math inline">\(N_s\)</span> is the number of species that we have observed at least one of, and <span class="math inline">\(p_i\)</span> is the proportion of individuals that are in the <span class="math inline">\(i^{th}\)</span> species. <span class="math inline">\(D_q\)</span> is then the <span class="math inline">\(q^{th}\)</span> diversity measure.</p>
-<p>We can translate this general measure easily into more specific measures (such as the ones we looked at in Project 1), by setting <span class="math inline">\(q\)</span> to different values. In this exercise, we will write a function to calculate this general diversity measure, and then rewrite the specific functions so they use the general one.</p>
+<p>There is a general series of measures of diversity, which is defined
+as follows:</p>
+<p><span class="math display">\[D_q = \left( \sum_{i \in \{1 \dots N_S,
+p_i \neq 0\}} p_i^q \right)^{\frac{1}{1-q}}\]</span></p>
+<p>where <span class="math inline">\(N_s\)</span> is the number of
+species that we have observed at least one of, and <span
+class="math inline">\(p_i\)</span> is the proportion of individuals that
+are in the <span class="math inline">\(i^{th}\)</span> species. <span
+class="math inline">\(D_q\)</span> is then the <span
+class="math inline">\(q^{th}\)</span> diversity measure.</p>
+<p>We can translate this general measure easily into more specific
+measures (such as the ones we looked at in Project 1), by setting <span
+class="math inline">\(q\)</span> to different values. In this exercise,
+we will write a function to calculate this general diversity measure,
+and then rewrite the specific functions so they use the general one.</p>
 <div id="section-background" class="section level3">
 <h3>Background</h3>
-<p>Hill developed a unifying series of diversity measures in 1973 that were closely related to most existing measures (Hill, M. O., 1973. Diversity and evenness: a unifying notation and its consequences. <em>Ecology</em>, 54, 427–432) but had a firm mathematical footing, being based on a measure called the Rényi Entropy (A. Rényi, 1961. On measures of information and entropy. <em>Proceedings of the 4th Berkeley Symposium on Mathematics, Statistics and Probability 1960</em>, pp. 547-561). These have been slightly adapted into the equation above by Lou Jost (Jost, L., 2006. Entropy and diversity. <em>Oikos</em>, 113, 363-375) to give a series of measures of the <strong>effective number of species</strong>. You are very likely to be unfamiliar with at least some of the notation in the equation. That’s fine – it says:</p>
+<p>Hill developed a unifying series of diversity measures in 1973 that
+were closely related to most existing measures (Hill, M. O., 1973.
+Diversity and evenness: a unifying notation and its consequences.
+<em>Ecology</em>, 54, 427–432) but had a firm mathematical footing,
+being based on a measure called the Rényi Entropy (A. Rényi, 1961. On
+measures of information and entropy. <em>Proceedings of the 4th Berkeley
+Symposium on Mathematics, Statistics and Probability 1960</em>,
+pp. 547-561). These have been slightly adapted into the equation above
+by Lou Jost (Jost, L., 2006. Entropy and diversity. <em>Oikos</em>, 113,
+363-375) to give a series of measures of the <strong>effective number of
+species</strong>. You are very likely to be unfamiliar with at least
+some of the notation in the equation. That’s fine – it says:</p>
 <blockquote>
-<p>“For the <span class="math inline">\(q^{th}\)</span> diversity measure, take the non-zero species proportions (note – proportions, so they all sum to 1, not counts), and raise them each (individually) to the power <span class="math inline">\(q\)</span>. Then add all of the results together, and finally raise the sum to the power <span class="math inline">\(\frac{1}{1-q}\)</span>.”</p>
+<p>“For the <span class="math inline">\(q^{th}\)</span> diversity
+measure, take the non-zero species proportions (note – proportions, so
+they all sum to 1, not counts), and raise them each (individually) to
+the power <span class="math inline">\(q\)</span>. Then add all of the
+results together, and finally raise the sum to the power <span
+class="math inline">\(\frac{1}{1-q}\)</span>.”</p>
 </blockquote>
-<p>This measure always gives a result between 1 and <span class="math inline">\(N_s\)</span>, where <span class="math inline">\(N_s\)</span> is the total number of species. Where one species completely dominates and the others are not observed we will see “effectively” only 1 species, and where all species are exactly equally abundant, we will count them all equally, and effectively see the full <span class="math inline">\(N_s\)</span> species. Other species distributions will fall somewhere in between. The species richness of a population is <span class="math inline">\(D_0\)</span>, and the Simpson diversity of a population is <span class="math inline">\(\frac{1}{D_2}\)</span>.</p>
+<p>This measure always gives a result between 1 and <span
+class="math inline">\(N_s\)</span>, where <span
+class="math inline">\(N_s\)</span> is the total number of species. Where
+one species completely dominates and the others are not observed we will
+see “effectively” only 1 species, and where all species are exactly
+equally abundant, we will count them all equally, and effectively see
+the full <span class="math inline">\(N_s\)</span> species. Other species
+distributions will fall somewhere in between. The species richness of a
+population is <span class="math inline">\(D_0\)</span>, and the Simpson
+diversity of a population is <span
+class="math inline">\(\frac{1}{D_2}\)</span>.</p>
 </div>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
 <div id="section-a-diversity-function" class="section level3">
 <h3>A diversity function</h3>
-<p>Write a function that takes a set of population counts and a value <span class="math inline">\(q\)</span> as arguments and calculates the <span class="math inline">\(q^{th}\)</span> diversity measure of the counts. Remember that the equation described above uses the species proportions, not the counts themselves.</p>
+<p>Write a function that takes a set of population counts and a value
+<span class="math inline">\(q\)</span> as arguments and calculates the
+<span class="math inline">\(q^{th}\)</span> diversity measure of the
+counts. Remember that the equation described above uses the species
+proportions, not the counts themselves.</p>
 </div>
-<div id="section-new-species-richness-and-simpson-diversity-functions" class="section level3">
+<div id="section-new-species-richness-and-simpson-diversity-functions"
+class="section level3">
 <h3>New species richness and Simpson diversity functions</h3>
-<p>Now write two more new functions to calculate species richness and Simpson diversity that do almost no work themselves, but instead just call this first function to do the work with the right arguments, and then transform the results if necessary as detailed above.</p>
+<p>Now write two more new functions to calculate species richness and
+Simpson diversity that do almost no work themselves, but instead just
+call this first function to do the work with the right arguments, and
+then transform the results if necessary as detailed above.</p>
 <blockquote>
-<p>You can see an example of creating functions that call other function you have written in Practical A-5, or the repository <a href="https://github.com/SBOHVM/practicalA5">SBOHVM/practicalA5</a>. Here you can see the general function <a href="https://github.com/SBOHVM/practicalA5/blob/master/R/muladdpow.R"><code>muladdpow()</code></a>, which multiples two numbers together, adds a third and then raises the result to a power. This is obviously a bit of a silly function for this demostration, but we use it to create a simpler function, <a href="https://github.com/SBOHVM/practicalA5/blob/master/R/muladd.R"><code>muladd()</code></a>, which uses <code>muladdpow()</code> but sets the power to 1 to create a function that just multiples two numbers together and then adds a third. Finally, we create two even simpler functions <a href="https://github.com/SBOHVM/practicalA5/blob/master/R/mul.R"><code>mul()</code></a> and <a href="https://github.com/SBOHVM/practicalA5/blob/master/R/add.R"><code>add()</code></a>, which use <code>muladd()</code> to just multiply and add respectively. You can look at the code for this online or try it out with <code>devtools::install_github("SBOHVM/practicalA5")</code>.</p>
+<p>You can see an example of creating functions that call other function
+you have written in Practical A-5, or the repository <a
+href="https://github.com/SBOHVM/practicalA5">SBOHVM/practicalA5</a>.
+Here you can see the general function <a
+href="https://github.com/SBOHVM/practicalA5/blob/master/R/muladdpow.R"><code>muladdpow()</code></a>,
+which multiples two numbers together, adds a third and then raises the
+result to a power. This is obviously a bit of a silly function for this
+demostration, but we use it to create a simpler function, <a
+href="https://github.com/SBOHVM/practicalA5/blob/master/R/muladd.R"><code>muladd()</code></a>,
+which uses <code>muladdpow()</code> but sets the power to 1 to create a
+function that just multiples two numbers together and then adds a third.
+Finally, we create two even simpler functions <a
+href="https://github.com/SBOHVM/practicalA5/blob/master/R/mul.R"><code>mul()</code></a>
+and <a
+href="https://github.com/SBOHVM/practicalA5/blob/master/R/add.R"><code>add()</code></a>,
+which use <code>muladd()</code> to just multiply and add respectively.
+You can look at the code for this online or try it out with
+<code>devtools::install_github("SBOHVM/practicalA5")</code>.</p>
 </blockquote>
-<p>You will need to write your species richnes and Simpson diversity functions like these functions above, so that rather than calculating the values directly in the function like you did in Project 1, they call your general diversity function. Note the functions you write here should produce exactly the same answers as the functions you wrote in the previous exercise when called with the same argument.</p>
+<p>You will need to write your species richnes and Simpson diversity
+functions like these functions above, so that rather than calculating
+the values directly in the function like you did in Project 1, they call
+your general diversity function. Note the functions you write here
+should produce exactly the same answers as the functions you wrote in
+the previous exercise when called with the same argument.</p>
 </div>
 <div id="section-running-the-code" class="section level3">
 <h3>Running the code</h3>
-<p>Run the three functions on the populations provided and check that your results are identical to the original functions (though the diversity of <code>rand.pop</code>, <code>quadrat.pop</code> and <code>quadrat10.pop</code> will only be the same if you use the same random set of values / run them at the same time!). Remember that to run both sets of functions in the same script you will need to make sure that the functions have different names or they will overwrite one another.</p>
-<p>You will almost certainly find that <code>one.pop</code> now has a different species richness (if not, then well done though!). This is probably because you are not looking only at the non-zero species abundances. If so, rewrite your code to exclude zeros from the proportions.</p>
+<p>Run the three functions on the populations provided and check that
+your results are identical to the original functions (though the
+diversity of <code>rand.pop</code>, <code>quadrat.pop</code> and
+<code>quadrat10.pop</code> will only be the same if you use the same
+random set of values / run them at the same time!). Remember that to run
+both sets of functions in the same script you will need to make sure
+that the functions have different names or they will overwrite one
+another.</p>
+<p>You will almost certainly find that <code>one.pop</code> now has a
+different species richness (if not, then well done though!). This is
+probably because you are not looking only at the non-zero species
+abundances. If so, rewrite your code to exclude zeros from the
+proportions.</p>
 <blockquote>
-<p><em>Hint:</em> remember that <code>a[a &lt; 3]</code> will return those elements of a vector a which are less than 3.</p>
+<p><em>Hint:</em> remember that <code>a[a &lt; 3]</code> will return
+those elements of a vector a which are less than 3.</p>
 </blockquote>
-<p>Note that here, and throughout these exercises, if you want to – it’s not compulsory – you can check the values of the diversity function itself by loading in the <code>rdiversity</code> library, and then creating a metacommunity from a population and calculating its metacommunity gamma diversity with the right values of the <code>qs</code> argument.</p>
+<p>Note that here, and throughout these exercises, if you want to – it’s
+not compulsory – you can check the values of the diversity function
+itself by loading in the <code>rdiversity</code> library, and then
+creating a metacommunity from a population and calculating its
+metacommunity gamma diversity with the right values of the
+<code>qs</code> argument.</p>
 </div>
 </div>
 <div id="section-demo" class="section level2">
 <h2>Demo</h2>
-<p>Write a demo that loads your package (and therefore the functions you’ve written from both Project 1 and this exercise) and shows that each set of functions generate the same results for <span class="math inline">\(q = 0\)</span> (Species richness) and <span class="math inline">\(q = 2\)</span> (Simpson diversity). Your demo will probably need to start with the same block of code that the last demo did, so that it generates the same populations. You can just copy it from one demo to the next (or you may come up with a cleverer way of dealing with this problem).</p>
-<p>Again, your function code should be documented, so remember to build the documentation for the package.</p>
+<p>Write a demo that loads your package (and therefore the functions
+you’ve written from both Project 1 and this exercise) and shows that
+each set of functions generate the same results for <span
+class="math inline">\(q = 0\)</span> (Species richness) and <span
+class="math inline">\(q = 2\)</span> (Simpson diversity). Your demo will
+probably need to start with the same block of code that the last demo
+did, so that it generates the same populations. You can just copy it
+from one demo to the next (or you may come up with a cleverer way of
+dealing with this problem).</p>
+<p>Again, your function code should be documented, so remember to build
+the documentation for the package.</p>
 <div id="section-using-brackets" class="section level3">
 <h3>Using brackets</h3>
-<p><strong>Important note:</strong> Please remember the order of calculations (<em>i.e.</em> BODMAS – Brackets, Orders, Division / Multiplication, Addition / Subtraction). If you do things in the wrong order you could get any of these:</p>
+<p><strong>Important note:</strong> Please remember the order of
+calculations (<em>i.e.</em> BODMAS – Brackets, Orders, Division /
+Multiplication, Addition / Subtraction). If you do things in the wrong
+order you could get any of these:</p>
 <p><span class="math display">\[
-a^{\frac{b}{c+d}} \neq \frac{a^b}{c}+d \neq \frac{a^b}{c+d} \neq a^{\frac{b}{c}}+d \neq a^{\frac{b}{c}+d}
+a^{\frac{b}{c+d}} \neq \frac{a^b}{c}+d \neq \frac{a^b}{c+d} \neq
+a^{\frac{b}{c}}+d \neq a^{\frac{b}{c}+d}
 \]</span></p>
-<p>Generally, if you have an equation then do the things that are grouped most tightly together first (within clusters or brackets do the raising to the power first, then the multiplication and division, then the addition and subtraction). So for <span class="math inline">\(a^{\frac{b}{c+d}}\)</span>, you calculate <span class="math inline">\(c+d\)</span> because they are on a line of their own, then <span class="math inline">\(\frac{b}{c+d}\)</span> because they cluster together, and only then <span class="math inline">\(a^{\frac{b}{c+d}}\)</span>. Or you can just use brackets in the right places to do it all in one go, like this: <span class="math inline">\(a^{\left( \frac{b}{(c+d)} \right)}\)</span>.</p>
-<p>If in doubt, check it by calculating the intermediate bits by hand or with a calculator and then compare it with your final answer. 
+<p>Generally, if you have an equation then do the things that are
+grouped most tightly together first (within clusters or brackets do the
+raising to the power first, then the multiplication and division, then
+the addition and subtraction). So for <span
+class="math inline">\(a^{\frac{b}{c+d}}\)</span>, you calculate <span
+class="math inline">\(c+d\)</span> because they are on a line of their
+own, then <span class="math inline">\(\frac{b}{c+d}\)</span> because
+they cluster together, and only then <span
+class="math inline">\(a^{\frac{b}{c+d}}\)</span>. Or you can just use
+brackets in the right places to do it all in one go, like this: <span
+class="math inline">\(a^{\left( \frac{b}{(c+d)} \right)}\)</span>.</p>
+<p>If in doubt, check it by calculating the intermediate bits by hand or
+with a calculator and then compare it with your final answer.
+
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -209,7 +319,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

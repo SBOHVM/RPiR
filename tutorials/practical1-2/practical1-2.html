@@ -149,11 +149,18 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p><em>In this session you will break the program 0101-growth-loop.R into two conceptually distinct parts – moving the code implementing how the population behaves into a function, thus separating it from the mechanics of running the simulation and plotting the results.</em></p>
+<p><em>In this session you will break the program 0101-growth-loop.R
+into two conceptually distinct parts – moving the code implementing how
+the population behaves into a function, thus separating it from the
+mechanics of running the simulation and plotting the results.</em></p>
 </div>
 <div id="section-introduction" class="section level2">
 <h2>Introduction</h2>
-<p>When we look at our first program (for convenience, <span style="color: #dd1c77;">0101-growth-loop.R</span> is printed below), there are several distinct parts to the code, despite its brevity. We first set the initial conditions of the simulation, then we run the simulation itself, and finally we plot the output.</p>
+<p>When we look at our first program (for convenience, <span
+style="color: #dd1c77;">0101-growth-loop.R</span> is printed below),
+there are several distinct parts to the code, despite its brevity. We
+first set the initial conditions of the simulation, then we run the
+simulation itself, and finally we plot the output.</p>
 <pre class="r"><code>#&#39; Set up the simulation parameters
 #&#39; --------------------------------
 #&#39; First we set up the parameters for the simulation.
@@ -197,13 +204,52 @@ for (new.time in timesteps) {
 # Now we can plot the timesteps against the population vector
 plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></pre>
 <p><img src="practical1-2_files/figure-html/plot-1.png" width="672" /></p>
-<p>Inside the simulation, we have the mechanics of iterating over the timesteps and keeping track of the results, and there is the implementation of the growth model itself, which occurs inside the curly brackets. Obviously in this case none of these four steps are very complex (and you indeed might decide there are fewer – or even more – that are actually important), but as we develop more complex models some or all of them will become more complicated, and if they are all written out in one continuous piece of code it will become harder and harder to work out where one part ends and another begins, and how we need to change the code if we want, for instance, to change the underlying model of population growth, but not change the technique used for simulation or the plots produced, in the same way as you might wish this paragraph had been broken into sentences instead of running on seemingly for ever!</p>
-<p>What we need to do is to introduce exactly the computing equivalent of punctuation and sentence/paragraph structure into the code. We introduce this partly by <strong>commenting the code</strong> well, which we have already started to do, but mostly by <strong>separating out conceptually distinct parts of the code into</strong> <strong>separate functions</strong>. This process will continue through the whole course as we identify reusable pieces of code that we can get right once, and then (hopefully) never have to worry about again. This often turns out to be more of an aspiration than reality, but nonetheless, when we do want to improve specific parts of our models, it is much easier to do it when the code is well structured.</p>
+<p>Inside the simulation, we have the mechanics of iterating over the
+timesteps and keeping track of the results, and there is the
+implementation of the growth model itself, which occurs inside the curly
+brackets. Obviously in this case none of these four steps are very
+complex (and you indeed might decide there are fewer – or even more –
+that are actually important), but as we develop more complex models some
+or all of them will become more complicated, and if they are all written
+out in one continuous piece of code it will become harder and harder to
+work out where one part ends and another begins, and how we need to
+change the code if we want, for instance, to change the underlying model
+of population growth, but not change the technique used for simulation
+or the plots produced, in the same way as you might wish this paragraph
+had been broken into sentences instead of running on seemingly for
+ever!</p>
+<p>What we need to do is to introduce exactly the computing equivalent
+of punctuation and sentence/paragraph structure into the code. We
+introduce this partly by <strong>commenting the code</strong> well,
+which we have already started to do, but mostly by <strong>separating
+out conceptually distinct parts of the code into</strong>
+<strong>separate functions</strong>. This process will continue through
+the whole course as we identify reusable pieces of code that we can get
+right once, and then (hopefully) never have to worry about again. This
+often turns out to be more of an aspiration than reality, but
+nonetheless, when we do want to improve specific parts of our models, it
+is much easier to do it when the code is well structured.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>Look at <span style="color: #dd1c77;">0101-growth-functional.R</span>. The code in the for loop, that is to say inside the curly brackets, describes the way that the population changes from one point in time to the next. This (together with, perhaps, the starting conditions) is what we would be changing if we wanted to explicitly introduce birth and death into the model, or make it a model of disease spread rather than population growth. The rest would remain pretty much the same.</p>
-<p>We want to take this code and put it into its own function at the beginning of the program – we’ll call it <code>step_simple_growth()</code>. You can learn more about functions in <span style="color: #dd1c77;">Practical A-2</span>. It should take the current population count from the vector <code>population.vector</code> and the value of <code>growth.rate</code> as <strong>arguments</strong> (function inputs), update the population size, and return it. This is the framework for such a function with comments (try to fill it in, using the for loop in <span style="color: #dd1c77;">0101-growth-loop.R</span> as a guide):</p>
+<p>Look at <span
+style="color: #dd1c77;">0101-growth-functional.R</span>. The code in the
+for loop, that is to say inside the curly brackets, describes the way
+that the population changes from one point in time to the next. This
+(together with, perhaps, the starting conditions) is what we would be
+changing if we wanted to explicitly introduce birth and death into the
+model, or make it a model of disease spread rather than population
+growth. The rest would remain pretty much the same.</p>
+<p>We want to take this code and put it into its own function at the
+beginning of the program – we’ll call it
+<code>step_simple_growth()</code>. You can learn more about functions in
+<span style="color: #dd1c77;">Practical A-2</span>. It should take the
+current population count from the vector <code>population.vector</code>
+and the value of <code>growth.rate</code> as <strong>arguments</strong>
+(function inputs), update the population size, and return it. This is
+the framework for such a function with comments (try to fill it in,
+using the for loop in <span
+style="color: #dd1c77;">0101-growth-loop.R</span> as a guide):</p>
 <pre class="r"><code>#&#39; ### Function: step_simple_growth() 
 #&#39; Run one step of a simple deterministic exponential growth model. 
 #&#39;
@@ -264,10 +310,24 @@ step_simple_growth &lt;- function(current.population, growth.rate) {
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fc3830fca00&gt;
-## &lt;environment: 0x7fc3815b46a8&gt;</code></pre>
-<p>The <code>function()</code> command, like <code>for()</code>, has one line of code after it (comments are ignored) that defines what the function does. Because nearly all functions need multiple lines to define what they do, we nearly always use <code>{ ... }</code> syntax (as with <code>for()</code>) to allow us to write multiple commands all as part of the function definition. Remember that <strong>whatever appears last in the function</strong> <strong>definition will be returned to the script that calls it</strong>, in this case <code>next.population</code>.</p>
-<p>To make sure that the function is only using the information given to it in its arguments, we are going to use <code>findGlobals()</code> to check that it does not use any external information (known as <strong>global variables</strong>). To do this we load in the codetools library (you may have to install it first), and then call the <code>findGlobals()</code> function giving it the name of our function, as follows:</p>
+## &lt;bytecode: 0x7f899deef748&gt;
+## &lt;environment: 0x7f899def4e40&gt;</code></pre>
+<p>The <code>function()</code> command, like <code>for()</code>, has one
+line of code after it (comments are ignored) that defines what the
+function does. Because nearly all functions need multiple lines to
+define what they do, we nearly always use <code>{ ... }</code> syntax
+(as with <code>for()</code>) to allow us to write multiple commands all
+as part of the function definition. Remember that <strong>whatever
+appears last in the function</strong> <strong>definition will be
+returned to the script that calls it</strong>, in this case
+<code>next.population</code>.</p>
+<p>To make sure that the function is only using the information given to
+it in its arguments, we are going to use <code>findGlobals()</code> to
+check that it does not use any external information (known as
+<strong>global variables</strong>). To do this we load in the codetools
+library (you may have to install it first), and then call the
+<code>findGlobals()</code> function giving it the name of our function,
+as follows:</p>
 <pre class="r"><code>step_simple_growth &lt;- function(current.population, growth.rate) {
   new.additions &lt;- growth.rate * current.population
   next.population &lt;- current.population + new.additions
@@ -280,9 +340,27 @@ findGlobals(step_simple_growth, merge=FALSE)</code></pre>
 ## 
 ## $variables
 ## character(0)</code></pre>
-<p>This will return some built in functionality of R which your function uses under “functions”, and then hopefully nothing under variables (it actually says <code>character(0)</code>, which is code speak for “exit success”).</p>
-<p>Note that the objects <code>new.additions</code> and <code>next.population</code> remain internal to the function <code>step_simple_growth()</code> and have no effect on the main script. <strong>Objects within a function exist seperately from those in the main script and only exist for the length of time the function is run</strong> (see <code>my_function()</code> below). We could call them <code>x</code> and <code>y</code> if we wanted to, it doesn’t matter. What is important, is the name that we assign to the output of the function in the main script, which in this case (as we shall shortly see) is also <code>next.population</code>. This reuse of names is slightly confusing, but doesn’t affect the running of the code. For clarity, however, we’ll rename these objects later (don’t worry about them right now).</p>
-<p>Try playing with the following code chunk. Add a print statement inside <code>my_function()</code>, then add a print statement after calling <code>my_function()</code> in the main script, and compare the value of <code>x</code>. Make sure you understand what is happening.</p>
+<p>This will return some built in functionality of R which your function
+uses under “functions”, and then hopefully nothing under variables (it
+actually says <code>character(0)</code>, which is code speak for “exit
+success”).</p>
+<p>Note that the objects <code>new.additions</code> and
+<code>next.population</code> remain internal to the function
+<code>step_simple_growth()</code> and have no effect on the main script.
+<strong>Objects within a function exist seperately from those in the
+main script and only exist for the length of time the function is
+run</strong> (see <code>my_function()</code> below). We could call them
+<code>x</code> and <code>y</code> if we wanted to, it doesn’t matter.
+What is important, is the name that we assign to the output of the
+function in the main script, which in this case (as we shall shortly
+see) is also <code>next.population</code>. This reuse of names is
+slightly confusing, but doesn’t affect the running of the code. For
+clarity, however, we’ll rename these objects later (don’t worry about
+them right now).</p>
+<p>Try playing with the following code chunk. Add a print statement
+inside <code>my_function()</code>, then add a print statement after
+calling <code>my_function()</code> in the main script, and compare the
+value of <code>x</code>. Make sure you understand what is happening.</p>
 <pre class="r"><code># Simple function that adds 1 to an input
 my_function &lt;- function(input) {
   x &lt;- input + 1
@@ -317,7 +395,15 @@ my_function(x)</code></pre>
 <pre><code>## [1] 11</code></pre>
 <pre class="r"><code>print(x)</code></pre>
 <pre><code>## [1] 10</code></pre>
-<p>Having now defined the <code>step_simple_growth()</code> function, the code should proceed much as before but rather than have a chunk of code inside the loop we can just assign the output of the function <code>step_simple_growth()</code> to the <code>next.population</code> object (replacing the first three lines of code in the <code>for()</code> loop with one line of code). Try it now and then run the code again, comparing the plotted outputs to check that your new code works exactly as the old version did (but structured in a better style):</p>
+<p>Having now defined the <code>step_simple_growth()</code> function,
+the code should proceed much as before but rather than have a chunk of
+code inside the loop we can just assign the output of the function
+<code>step_simple_growth()</code> to the <code>next.population</code>
+object (replacing the first three lines of code in the
+<code>for()</code> loop with one line of code). Try it now and then run
+the code again, comparing the plotted outputs to check that your new
+code works exactly as the old version did (but structured in a better
+style):</p>
 <pre class="r"><code>#&#39; ### Function: step_simple_growth() 
 #&#39; Run one step of a simple deterministic exponential growth model. 
 #&#39;
@@ -468,16 +554,33 @@ plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></
 ##     class(grade) &lt;- c(&quot;gradethis_graded_this_code&quot;, class(grade))
 ##     grade
 ## }
-## &lt;bytecode: 0x7fc3830fca00&gt;
-## &lt;environment: 0x7fc3832ae968&gt;</code></pre>
+## &lt;bytecode: 0x7f899deef748&gt;
+## &lt;environment: 0x7f89a1d12f50&gt;</code></pre>
 <pre class="r"><code># Within the `for()` loop where the time gets updated the code should be edited
 # to contain the line and an appropriate comment:
 
 next.population &lt;- step_simple_growth(current.population = tail(population.vector, 1), 
                                       growth.rate = growth.rate)</code></pre>
-<p>Note that we always set arguments to functions with <code>argument = value</code>, and we strongly recommend using <code>object &lt;- value</code> to set variables in your main script to make the distinction clear. For example, <code>current.population</code> is now an argument of the <code>step_simple_growth()</code> function, and so you set its value using <code>=</code> inside the function call instead of using <code>&lt;-</code> in the main script as we did on line 28 of <span style="color: #dd1c77;">0101-growth-functional.r </span>.</p>
-<p>When you are happy with the code and its outputs there is another task. If you look at the whole code, you will see that <code>growth.rate</code> is both the name of the argument in the function and the name of the variable in the script, and <code>next.population</code> is used in the function and in the main script. As we said above, this does not affect the running of the code but can be difficult to read and can result in confusion when debugging for example.</p>
-<p>Here’s the latest version of the code to play with (<span style="color: #dd1c77;">0102-growth-functional.R</span>), complete with the <code>step_simple_growth()</code> function:</p>
+<p>Note that we always set arguments to functions with
+<code>argument = value</code>, and we strongly recommend using
+<code>object &lt;- value</code> to set variables in your main script to
+make the distinction clear. For example, <code>current.population</code>
+is now an argument of the <code>step_simple_growth()</code> function,
+and so you set its value using <code>=</code> inside the function call
+instead of using <code>&lt;-</code> in the main script as we did on line
+28 of <span style="color: #dd1c77;">0101-growth-functional.r
+</span>.</p>
+<p>When you are happy with the code and its outputs there is another
+task. If you look at the whole code, you will see that
+<code>growth.rate</code> is both the name of the argument in the
+function and the name of the variable in the script, and
+<code>next.population</code> is used in the function and in the main
+script. As we said above, this does not affect the running of the code
+but can be difficult to read and can result in confusion when debugging
+for example.</p>
+<p>Here’s the latest version of the code to play with (<span
+style="color: #dd1c77;">0102-growth-functional.R</span>), complete with
+the <code>step_simple_growth()</code> function:</p>
 <pre class="r"><code>#&#39; ### Function: step_simple_growth() 
 #&#39; Run one step of a simple deterministic exponential growth model. 
 #&#39;
@@ -537,10 +640,45 @@ for (new.time in timesteps) {
 # Now we can plot the timesteps against the population vector
 plot(c(start.time, timesteps), population.vector, type = &quot;l&quot;)</code></pre>
 <p><img src="practical1-2_files/figure-html/laststep-1.png" width="672" /></p>
-<p>Find all the instances of <code>growth.rate</code> and replace them with <code>my.rate</code> in the <code>step_simple_growth()</code> function (lines 11-18), then run the code. What happens? You should get an error. It will tell you that you have an unused argument, <code>growth.rate</code> when you call <code>step_simple_growth()</code>. This is because when you call the function (lines 47-48), you set its <code>growth.rate</code> argument to the main script’s value of <code>growth.rate</code>, but the function now only has an argument called <code>my.rate</code> (line 11). To fix this, we can change the call to <code>step_simple_growth()</code> to say <code>my.rate = growth.rate</code> (line 48), remembering to . Now rerun the code and check it works.</p>
-<p>Now do the same with <code>next.population</code>, replacing it <strong>just in the function</strong> with <code>my.population</code>, or something sensible, then run the code. What happens? You should find that the model runs exactly as before this time. This is because none of the names of objects being used in the function matter – even if their values are being returned to the main script. Object names and values are thrown away when the function finishes. Only the objects in the main script are retained. The only thing that matters is that object names are used consistently within the function, and when you call the function in the main script.</p>
-<p>We need to use meaningful names to remind us what we are doing, but it can be confusing and cause subtle errors if we use the same variable names in many different places, even when they seem to refer to the same things. This is one of the reasons why we use <code>findGlobals()</code> to check for global variables being used in functions. If we never reused names in different bits of code we would not have to check this. For the time being (and the rest of this practical series), make sure that no argument names in the main script accidentally match names in functions (it’s okay for variable names in different functions to match). You can relax this requirement in the real world, but it is best to be over-cautious for the time being.</p>
-<p>For this practical, we are working with the human population in the script, so in the following exercises we’ll change the <code>growth.rate</code> variable (in the main script) to <code>human.annual.growth</code>, and change <code>next.population</code> (in the main script) to <code>updated.human.population</code>. 
+<p>Find all the instances of <code>growth.rate</code> and replace them
+with <code>my.rate</code> in the <code>step_simple_growth()</code>
+function (lines 11-18), then run the code. What happens? You should get
+an error. It will tell you that you have an unused argument,
+<code>growth.rate</code> when you call
+<code>step_simple_growth()</code>. This is because when you call the
+function (lines 47-48), you set its <code>growth.rate</code> argument to
+the main script’s value of <code>growth.rate</code>, but the function
+now only has an argument called <code>my.rate</code> (line 11). To fix
+this, we can change the call to <code>step_simple_growth()</code> to say
+<code>my.rate = growth.rate</code> (line 48), remembering to . Now rerun
+the code and check it works.</p>
+<p>Now do the same with <code>next.population</code>, replacing it
+<strong>just in the function</strong> with <code>my.population</code>,
+or something sensible, then run the code. What happens? You should find
+that the model runs exactly as before this time. This is because none of
+the names of objects being used in the function matter – even if their
+values are being returned to the main script. Object names and values
+are thrown away when the function finishes. Only the objects in the main
+script are retained. The only thing that matters is that object names
+are used consistently within the function, and when you call the
+function in the main script.</p>
+<p>We need to use meaningful names to remind us what we are doing, but
+it can be confusing and cause subtle errors if we use the same variable
+names in many different places, even when they seem to refer to the same
+things. This is one of the reasons why we use <code>findGlobals()</code>
+to check for global variables being used in functions. If we never
+reused names in different bits of code we would not have to check this.
+For the time being (and the rest of this practical series), make sure
+that no argument names in the main script accidentally match names in
+functions (it’s okay for variable names in different functions to
+match). You can relax this requirement in the real world, but it is best
+to be over-cautious for the time being.</p>
+<p>For this practical, we are working with the human population in the
+script, so in the following exercises we’ll change the
+<code>growth.rate</code> variable (in the main script) to
+<code>human.annual.growth</code>, and change
+<code>next.population</code> (in the main script) to
+<code>updated.human.population</code>. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -552,7 +690,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

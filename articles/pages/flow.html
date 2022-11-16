@@ -182,7 +182,8 @@
 
 
 
-<script src="flow_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Flow control</h1>
             
@@ -197,44 +198,72 @@
 <div class="section level2">
 <h2 id="comparisons-testing-for-equality-and-difference">Comparisons – testing for equality and difference<a class="anchor" aria-label="anchor" href="#comparisons-testing-for-equality-and-difference"></a>
 </h2>
-<p>These tests are essential for <code>while</code> loops, and other forms of flow control such as <code>if</code> statements. They allow us to test whether something is true, and change what lines of code are run depending on the outcome. There are the basic tests:</p>
+<p>These tests are essential for <code>while</code> loops, and other
+forms of flow control such as <code>if</code> statements. They allow us
+to test whether something is true, and change what lines of code are run
+depending on the outcome. There are the basic tests:</p>
 <ul>
 <li>
-<code>a == b</code>: is <code>a</code> equal to <code>b</code>? (<code>TRUE</code> if this is true, <code>FALSE</code> if this is false)</li>
+<code>a == b</code>: is <code>a</code> equal to <code>b</code>?
+(<code>TRUE</code> if this is true, <code>FALSE</code> if this is
+false)</li>
 <li>
-<code>a &gt; b</code>: is <code>a</code> greater than <code>b</code>?</li>
+<code>a &gt; b</code>: is <code>a</code> greater than
+<code>b</code>?</li>
 <li>
-<code>a &lt; b</code>: is <code>a</code> less than <code>b</code>?</li>
+<code>a &lt; b</code>: is <code>a</code> less than
+<code>b</code>?</li>
 <li>
-<code>a &gt;= b</code>: is <code>a</code> greater than or equal to <code>b</code>?</li>
+<code>a &gt;= b</code>: is <code>a</code> greater than or equal to
+<code>b</code>?</li>
 <li>
-<code>a &lt;= b</code>: is <code>a</code> less than or equal to <code>b</code>?</li>
+<code>a &lt;= b</code>: is <code>a</code> less than or equal to
+<code>b</code>?</li>
 <li>
-<code>a != b</code>: is <code>a</code> different from <code>b</code>?</li>
+<code>a != b</code>: is <code>a</code> different from
+<code>b</code>?</li>
 </ul>
-<p>There are then three basic ways of changing or combining the above:</p>
+<p>There are then three basic ways of changing or combining the
+above:</p>
 <ul>
 <li>
-<code>(a &lt; b) || (c == d)</code>: is <strong>either </strong> <code>a</code> less than <code>b</code> <strong>or</strong> <code>c</code> equal to <code>d</code>?</li>
+<code>(a &lt; b) || (c == d)</code>: is <strong>either </strong>
+<code>a</code> less than <code>b</code> <strong>or</strong>
+<code>c</code> equal to <code>d</code>?</li>
 <li>
-<code>(a &lt; b) &amp;&amp; (c == d)</code>: is <strong>both</strong> <code>a</code> less than <code>b</code> <strong>and</strong> <code>c</code> equal to <code>d</code>?</li>
+<code>(a &lt; b) &amp;&amp; (c == d)</code>: is
+<strong>both</strong> <code>a</code> less than <code>b</code>
+<strong>and</strong> <code>c</code> equal to <code>d</code>?</li>
 <li>
-<code>!((a &lt; b) &amp;&amp; (c == d))</code>: is the above <strong>not</strong> <code>TRUE</code>? <code>TRUE</code> if the above was <code>FALSE</code> and vice versa</li>
+<code>!((a &lt; b) &amp;&amp; (c == d))</code>: is the above
+<strong>not</strong> <code>TRUE</code>? <code>TRUE</code> if the above
+was <code>FALSE</code> and vice versa</li>
 </ul>
-<p>Remember to use (lots of!) brackets to ensure you are combining things in the right order. These tests can be used in the <code>while</code> loops above to determine whether to continue through the next iteration of the loop, and in the <code>if</code> statements below, to determine what to do next.</p>
-<p>We introduced these concepts in Lecture 7a. Comparisons are also <a href="https://r4ds.had.co.nz/transform.html?q=compa#comparisons" class="external-link">covered in passing</a> in R4DS, and by R Coder in a bit more depth <a href="https://r-coder.com/operators-r" class="external-link">here</a>.</p>
+<p>Remember to use (lots of!) brackets to ensure you are combining
+things in the right order. These tests can be used in the
+<code>while</code> loops above to determine whether to continue through
+the next iteration of the loop, and in the <code>if</code> statements
+below, to determine what to do next.</p>
+<p>We introduced these concepts in Lecture 7a. Comparisons are also <a href="https://r4ds.had.co.nz/transform.html?q=compa#comparisons" class="external-link">covered
+in passing</a> in R4DS, and by R Coder in a bit more depth <a href="https://r-coder.com/operators-r" class="external-link">here</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="if-something-and-if-something-----else-----statements">
-<code>if (something)</code> and <code>if (something) { ... } else { ... }</code> statements<a class="anchor" aria-label="anchor" href="#if-something-and-if-something-----else-----statements"></a>
+<code>if (something)</code> and
+<code>if (something) { ... } else { ... }</code> statements<a class="anchor" aria-label="anchor" href="#if-something-and-if-something-----else-----statements"></a>
 </h2>
-<p>The <code>if</code> command allow us to perform a test, and if the result is <code>TRUE</code> run a block of R code (in curly brackets <code>{ ... }</code>). Optionally, if the test is <code>FALSE</code>, a different block of code can be run instead. This allows us to do a variety of things. To give a very simple example:</p>
+<p>The <code>if</code> command allow us to perform a test, and if the
+result is <code>TRUE</code> run a block of R code (in curly brackets
+<code>{ ... }</code>). Optionally, if the test is <code>FALSE</code>, a
+different block of code can be run instead. This allows us to do a
+variety of things. To give a very simple example:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Maths works!"</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="co">#&gt; [1] "Maths works!"</span></span></code></pre></div>
-<p>This prints <code>"Maths works!"</code> because the test is <code>TRUE</code>, so the code block that follows is run. Whereas:</p>
+<p>This prints <code>"Maths works!"</code> because the test is
+<code>TRUE</code>, so the code block that follows is run. Whereas:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"At least 5."</span><span class="op">)</span></span>
@@ -242,12 +271,16 @@
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Less than 5."</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span><span class="co">#&gt; [1] "Less than 5."</span></span></code></pre></div>
-<p>This prints <code>"Less than 5."</code> because the test was false, so R continues to the code block after the <code>else</code> statement. If there is no <code>else</code> statement, then no code is run, so:</p>
+<p>This prints <code>"Less than 5."</code> because the test was false,
+so R continues to the code block after the <code>else</code> statement.
+If there is no <code>else</code> statement, then no code is run, so:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"At least 5."</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>does nothing. We use <code>if</code> and <code>if ... else</code> statements throughout the helper functions and the example code you’ve been provided with. For instance:</p>
+<p>does nothing. We use <code>if</code> and <code>if ... else</code>
+statements throughout the helper functions and the example code you’ve
+been provided with. For instance:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gitlab.com/luke-tierney/codetools" class="external-link">codetools</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span></span>
@@ -256,8 +289,17 @@
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Function plot_simple() may not use global variable(s): "</span>,</span>
 <span>       <span class="fu"><a href="https://rdrr.io/pkg/codetools/man/findGlobals.html" class="external-link">findGlobals</a></span><span class="op">(</span><span class="va">plot_simple</span>, merge <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">variables</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>This checks whether <code>length(findGlobals(plot_simple, merge=FALSE)$variables)</code> is non-zero, which is to say whether the <code>variables</code> element of what is returned by <code>findGlobals(plot_simple, merge = FALSE)</code> is not of length zero, <em>i.e.</em> whether there are any global variables in the function <code>plot_simple</code>. If there are, then the contents of the curly brackets are run, <code>stop(...)</code> is called, and the code stops running. In fact, <code>plot_simple</code> has no global variables, so the code block is not run.</p>
-<p>In Practical 3-4 we provide a second example of an <code>if</code> statement, used to control code execution:</p>
+<p>This checks whether
+<code>length(findGlobals(plot_simple, merge=FALSE)$variables)</code> is
+non-zero, which is to say whether the <code>variables</code> element of
+what is returned by <code>findGlobals(plot_simple, merge = FALSE)</code>
+is not of length zero, <em>i.e.</em> whether there are any global
+variables in the function <code>plot_simple</code>. If there are, then
+the contents of the curly brackets are run, <code>stop(...)</code> is
+called, and the code stops running. In fact, <code>plot_simple</code>
+has no global variables, so the code block is not run.</p>
+<p>In Practical 3-4 we provide a second example of an <code>if</code>
+statement, used to control code execution:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">first.graph</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">final.populations</span>,</span>
@@ -269,8 +311,19 @@
 <span>                   new.graph <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>                   col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>susceptibles <span class="op">=</span> <span class="st">"green"</span>, infecteds <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
-<p>This code tests whether the variable <code>first.graph</code> is <code>TRUE</code>. If it is, the following code block is run, and it plots a graph into a new graphics window and sets <code>first.graph</code> to <code>FALSE</code>. In the practical, this code is run inside a loop, and the next (and every subsequent) time it runs, <code>first.graph</code> is already <code>FALSE</code> so the code block following the <code>else</code> statement is run, and a plot is superimposed on the existing graphics window.</p>
-<p>We introduced these concepts in Lecture 5b. R Coder covers the basics of <code>if</code> statements <a href="https://r-coder.com/if-else-r" class="external-link">here</a>. R4DS seems to consider them too simple, but ironically they have <a href="https://adv-r.hadley.nz/control-flow.html" class="external-link">a chapter in Advanced R</a>; however, this contains a lot of advanced topics in flow control that are well beyond the scope of this course.</p>
+<p>This code tests whether the variable <code>first.graph</code> is
+<code>TRUE</code>. If it is, the following code block is run, and it
+plots a graph into a new graphics window and sets
+<code>first.graph</code> to <code>FALSE</code>. In the practical, this
+code is run inside a loop, and the next (and every subsequent) time it
+runs, <code>first.graph</code> is already <code>FALSE</code> so the code
+block following the <code>else</code> statement is run, and a plot is
+superimposed on the existing graphics window.</p>
+<p>We introduced these concepts in Lecture 5b. R Coder covers the basics
+of <code>if</code> statements <a href="https://r-coder.com/if-else-r" class="external-link">here</a>. R4DS seems to consider
+them too simple, but ironically they have <a href="https://adv-r.hadley.nz/control-flow.html" class="external-link">a chapter in Advanced
+R</a>; however, this contains a lot of advanced topics in flow control
+that are well beyond the scope of this course.</p>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
     </nav></aside>

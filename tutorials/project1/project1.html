@@ -142,37 +142,79 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Project 1: Species richness and Simpson diversity</h1>
+<h1 class="title toc-ignore">Project 1: Species richness and Simpson
+diversity</h1>
 
 </div>
 
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>In this series of practicals you will develop the code to calculate a few diversity measures. In this first exercise we will calculate the species richness and Simpson diversity of a population.</p>
+<p>In this series of practicals you will develop the code to calculate a
+few diversity measures. In this first exercise we will calculate the
+species richness and Simpson diversity of a population.</p>
 <div id="section-background" class="section level3">
 <h3>Background</h3>
-<p>R provides us with many built-in datasets, but sadly none of them are counts of species abundances, so you will use the famous Barro Colorado Island dataset, a 30+ year study of a 50-hectare forest plot in Panama. We will use the number of trees in the study site in 2010, which you have access to from the package you developed in Practical Series 4.</p>
-<p>You will also construct a couple of fake datasets that you will use for comparison. Calculating the diversity of these populations (remembering that there are many, in fact a continuum of, diversity measures) will tell us how many observed species there are – the species richness – and give us measures of how evenly distributed the trees are amongst the tree species (the evenness of the species distribution) by various measures. <strong>Species richness</strong> is a very commonly used measure of diversity, which simply <strong>counts the number of non-zero species abundances</strong>; <strong>Simpson diversity</strong> is also commonly used: it simply <strong>calculates the species proportions from the counts (so the total sums to 1), squares them all individually, and add them all together</strong> – it tells us (amongst other things) how likely two randomly chosen individuals are to be from the same species.</p>
+<p>R provides us with many built-in datasets, but sadly none of them are
+counts of species abundances, so you will use the famous Barro Colorado
+Island dataset, a 30+ year study of a 50-hectare forest plot in Panama.
+We will use the number of trees in the study site in 2010, which you
+have access to from the package you developed in Practical Series 4.</p>
+<p>You will also construct a couple of fake datasets that you will use
+for comparison. Calculating the diversity of these populations
+(remembering that there are many, in fact a continuum of, diversity
+measures) will tell us how many observed species there are – the species
+richness – and give us measures of how evenly distributed the trees are
+amongst the tree species (the evenness of the species distribution) by
+various measures. <strong>Species richness</strong> is a very commonly
+used measure of diversity, which simply <strong>counts the number of
+non-zero species abundances</strong>; <strong>Simpson diversity</strong>
+is also commonly used: it simply <strong>calculates the species
+proportions from the counts (so the total sums to 1), squares them all
+individually, and add them all together</strong> – it tells us (amongst
+other things) how likely two randomly chosen individuals are to be from
+the same species.</p>
 </div>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>This project will be written in the <strong>githubusernameDiversity</strong> package that you set up in the last exercise, with functions being saved in the <span style="color: #dd1c77;">R</span> folder and documented so that they work with the standard R help system, and scripts being saved as demos in the <span style="color: #dd1c77;">demo</span> folder so that they can be run using the <code>demo()</code> function or compiled into reports to read the results with suitable reporting explaining what is happening. In each project exercise you will have to write some functions and (most likely) one script. <em>So now create a demo script for this project and add an entry for it in the <span style="color: #dd1c77;">00Index</span> file in the same folder.</em></p>
+<p>This project will be written in the
+<strong>githubusernameDiversity</strong> package that you set up in the
+last exercise, with functions being saved in the <span
+style="color: #dd1c77;">R</span> folder and documented so that they work
+with the standard R help system, and scripts being saved as demos in the
+<span style="color: #dd1c77;">demo</span> folder so that they can be run
+using the <code>demo()</code> function or compiled into reports to read
+the results with suitable reporting explaining what is happening. In
+each project exercise you will have to write some functions and (most
+likely) one script. <em>So now create a demo script for this project and
+add an entry for it in the <span style="color: #dd1c77;">00Index</span>
+file in the same folder.</em></p>
 <div id="section-the-study-populations" class="section level3">
 <h3>The study populations</h3>
-<p>We are taking the data from the 2010 census – the true abundances for the whole site can be calculated as follows:</p>
+<p>We are taking the data from the 2010 census – the true abundances for
+the whole site can be calculated as follows:</p>
 <pre class="r"><code>library(githubusernameBCI) 
 tree.pop &lt;- rowSums(bci_2010)</code></pre>
 <blockquote>
-<p>Note that if you don’t want to use your own BCI package, you can use ours instead. It’s available as <code>soniamitchellBCI</code> in the SBOHVM organisation on GitHub just like yours. Either way you should install the package you are using by running <code>devtools::install_github()</code>, and then add it to your <code>githubusernameDiversity</code> package dependencies by running <code>usethis::use_dev_package()</code> appropriately.</p>
+<p>Note that if you don’t want to use your own BCI package, you can use
+ours instead. It’s available as <code>soniamitchellBCI</code> in the
+SBOHVM organisation on GitHub just like yours. Either way you should
+install the package you are using by running
+<code>devtools::install_github()</code>, and then add it to your
+<code>githubusernameDiversity</code> package dependencies by running
+<code>usethis::use_dev_package()</code> appropriately.</p>
 </blockquote>
-<p>The total counts of trees of different species in this forest plot are now available in the variable <code>tree.pop</code>. We can then do some simple extraction of information from the full species counts:</p>
+<p>The total counts of trees of different species in this forest plot
+are now available in the variable <code>tree.pop</code>. We can then do
+some simple extraction of information from the full species counts:</p>
 <pre class="r"><code>species.names &lt;- names(tree.pop) 
 num.sp &lt;- length(tree.pop) 
 num.trees &lt;- sum(tree.pop) 
 mean.trees &lt;- mean(tree.pop)</code></pre>
-<p>The next two lines sample a single random quadrat and sum up 10 random quadrats, and store the results in <code>quadrat.pop</code> and <code>quadrat10.pop</code>, respectively:</p>
+<p>The next two lines sample a single random quadrat and sum up 10
+random quadrats, and store the results in <code>quadrat.pop</code> and
+<code>quadrat10.pop</code>, respectively:</p>
 <pre class="r"><code>quadrat.pop &lt;- rowSums(sample_by_subcommunities(bci_2010, 1)) 
 quadrat10.pop &lt;- rowSums(sample_by_subcommunities(bci_2010, 10))</code></pre>
 <p>You will also use a handful of fake datasets for comparison:</p>
@@ -182,31 +224,72 @@ mixed.pop &lt;- (1:num.sp) / sum(1:num.sp) * num.trees
 even.pop &lt;- rep(mean.trees, num.sp)
 rand.pop &lt;- as.vector(rmultinom(1, num.trees, rep(1 / num.sp, num.sp)))
 rand50.pop &lt;- as.vector(rmultinom(1, round(num.trees / 50), rep(1 / num.sp, num.sp)))</code></pre>
-<p>Remember that <code>rep(x, size)</code> repeats <code>x</code>, <code>size</code> times to make a vector of length <code>size</code>, and <code>rmultinom()</code> draws from the <strong>multinomial distribution</strong>, in this case, <code>rand.pop</code> is a population of 222,715 individuals drawn from 299 species, each equally abundant (<span class="math inline">\(\frac{1}{299}\)</span>). Note that <code>rmultinom()</code> is is in the <code>stats</code> package, so you need to add this to the dependencies of your package now. We won’t tell you about any future dependencies you need to add, but note that you can check what package a function is in by looking in the help file for the function:</p>
+<p>Remember that <code>rep(x, size)</code> repeats <code>x</code>,
+<code>size</code> times to make a vector of length <code>size</code>,
+and <code>rmultinom()</code> draws from the <strong>multinomial
+distribution</strong>, in this case, <code>rand.pop</code> is a
+population of 222,715 individuals drawn from 299 species, each equally
+abundant (<span class="math inline">\(\frac{1}{299}\)</span>). Note that
+<code>rmultinom()</code> is is in the <code>stats</code> package, so you
+need to add this to the dependencies of your package now. We won’t tell
+you about any future dependencies you need to add, but note that you can
+check what package a function is in by looking in the help file for the
+function:</p>
 <pre class="r"><code>?rmultinom</code></pre>
-<p>If you run this in the console, the <strong>Multinom {stats}</strong> in the top left of the help page tells you that this function is in the <code>stats</code> package.</p>
+<p>If you run this in the console, the <strong>Multinom {stats}</strong>
+in the top left of the help page tells you that this function is in the
+<code>stats</code> package.</p>
 </div>
 <div id="section-a-species-richness-function" class="section level3">
 <h3>A species richness function</h3>
-<p>Then write and document a function that takes a vector of abundances like the data above as an argument and calculates the species richness from it. Remember that the species richness is the number of species whose abundance is not zero. The name of this function should start with the letters <code>p1_</code>, so if you decide to call it <code>species_richness()</code>, you should actually call it <code>p1_species_richness()</code>. This is because you will be making a series of similar functions throughout the project, so they will need to be called <code>p1_species_richness()</code>, <code>p2_species_richness()</code>, <code>p3_species_richness()</code>, <em>etc.</em> to distinguish them.</p>
-<p><em>Hint:</em> Applying a test to a vector of numbers, will apply the test to all of the numbers in the vector and produce a vector of booleans (<code>TRUE</code> or <code>FALSE</code>) values, so:</p>
+<p>Then write and document a function that takes a vector of abundances
+like the data above as an argument and calculates the species richness
+from it. Remember that the species richness is the number of species
+whose abundance is not zero. The name of this function should start with
+the letters <code>p1_</code>, so if you decide to call it
+<code>species_richness()</code>, you should actually call it
+<code>p1_species_richness()</code>. This is because you will be making a
+series of similar functions throughout the project, so they will need to
+be called <code>p1_species_richness()</code>,
+<code>p2_species_richness()</code>, <code>p3_species_richness()</code>,
+<em>etc.</em> to distinguish them.</p>
+<p><em>Hint:</em> Applying a test to a vector of numbers, will apply the
+test to all of the numbers in the vector and produce a vector of
+booleans (<code>TRUE</code> or <code>FALSE</code>) values, so:</p>
 <pre class="r"><code>c(1, 3, 5, 7) &gt; 4</code></pre>
 <pre><code>[1] FALSE FALSE  TRUE  TRUE</code></pre>
-<p>1 and 3 are not <code>&gt; 4</code> and 5 and 7 are. And then <code>sum()</code> will count the number of <code>TRUE</code>s in such a vector of booleans. So:</p>
+<p>1 and 3 are not <code>&gt; 4</code> and 5 and 7 are. And then
+<code>sum()</code> will count the number of <code>TRUE</code>s in such a
+vector of booleans. So:</p>
 <pre class="r"><code>over4s &lt;- (c(1, 3, 5, 7) &gt; 4)
 sum(over4s)</code></pre>
 <pre><code>[1] 2</code></pre>
-<p>If you think about it, you should be able to see how to use these two ideas to count the number of non-zero abundances in a population. You can see more about this in Practical A-1.</p>
+<p>If you think about it, you should be able to see how to use these two
+ideas to count the number of non-zero abundances in a population. You
+can see more about this in Practical A-1.</p>
 </div>
 <div id="section-a-simpson-diversity-function" class="section level3">
 <h3>A Simpson diversity function</h3>
-<p>Then write and document a second function that will calculate the Simpson diversity of the population, remembering, first, that this measure works with the relative proportions of the species not the total counts and, second, that we can do calculations with the whole vector at once.</p>
+<p>Then write and document a second function that will calculate the
+Simpson diversity of the population, remembering, first, that this
+measure works with the relative proportions of the species not the total
+counts and, second, that we can do calculations with the whole vector at
+once.</p>
 </div>
 <div id="section-running-the-code" class="section level3">
 <h3>Running the code</h3>
-<p>Look at the values in the nine population vectors – you could try sorting them using <code>sort(x.pop)</code> and plotting them using <code>plot(sort(x.pop))</code>, <code>barplot(sort(x.pop))</code> (or something more attractive?) to get a clearer idea of what they look like – and decide which you think have the richest species diversity.</p>
-<p>Run the two functions on the populations provided as see whether the results of the two diversity measures agree with your assessments. Note that a lower value means a higher diversity for the Simpson diversity measure.</p>
-<p><strong>NB</strong> Remember that to make the functions you have written accessible to your demo, you need to document and install them:</p>
+<p>Look at the values in the nine population vectors – you could try
+sorting them using <code>sort(x.pop)</code> and plotting them using
+<code>plot(sort(x.pop))</code>, <code>barplot(sort(x.pop))</code> (or
+something more attractive?) to get a clearer idea of what they look like
+– and decide which you think have the richest species diversity.</p>
+<p>Run the two functions on the populations provided as see whether the
+results of the two diversity measures agree with your assessments. Note
+that a lower value means a higher diversity for the Simpson diversity
+measure.</p>
+<p><strong>NB</strong> Remember that to make the functions you have
+written accessible to your demo, you need to document and install
+them:</p>
 <pre class="r"><code>devtools::document()
 devtools::install()
 library(githubusernameDiversity)
@@ -218,11 +301,29 @@ demo(package = &quot;githubusernameDiversity&quot;)</code></pre>
 </div>
 <div id="section-demo" class="section level2">
 <h2>Demo</h2>
-<p>Edit the demo that you have started above so that it loads in the functions (by calling <code>library(githubusernameDiversity)</code>), reads in the BCI data, and generates a report that shows some kind of plot of each of the series of counts and then calculates their species richness and Simpson diversity. Check that your functions also generate appropriate help files (<em>e.g.</em> <code>?p1_species_richness</code>).</p>
-<p>Remember to commit the code once you are happy before moving on to the next exercise – you can always come back later and make further commits if you realise you need to change something. I won’t remind you about this in subsequent exercises.</p>
+<p>Edit the demo that you have started above so that it loads in the
+functions (by calling <code>library(githubusernameDiversity)</code>),
+reads in the BCI data, and generates a report that shows some kind of
+plot of each of the series of counts and then calculates their species
+richness and Simpson diversity. Check that your functions also generate
+appropriate help files (<em>e.g.</em>
+<code>?p1_species_richness</code>).</p>
+<p>Remember to commit the code once you are happy before moving on to
+the next exercise – you can always come back later and make further
+commits if you realise you need to change something. I won’t remind you
+about this in subsequent exercises.</p>
 <div id="section-note-on-function-names" class="section level3">
 <h3>Note on function names</h3>
-<p>As we said above, note that you will often need to refer back to functions in later exercises (as you did in the practicals) and you will be writing several very similar functions in successive exercises. You will need to make sure they do not have identical names or you won’t be able to call them all. The simplest way of doing this might be to label them by the project exercise number and call them <code>p1_species_richness</code>, <code>p2_species_richness</code>, <em>etc.</em> depending on what exercise you are in, but you are welcome to find a more elegant solution – anything that distinguishes them is fine. 
+<p>As we said above, note that you will often need to refer back to
+functions in later exercises (as you did in the practicals) and you will
+be writing several very similar functions in successive exercises. You
+will need to make sure they do not have identical names or you won’t be
+able to call them all. The simplest way of doing this might be to label
+them by the project exercise number and call them
+<code>p1_species_richness</code>, <code>p2_species_richness</code>,
+<em>etc.</em> depending on what exercise you are in, but you are welcome
+to find a more elegant solution – anything that distinguishes them is
+fine. 
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 tutorial_options(exercise.reveal_solution = FALSE)
@@ -234,7 +335,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

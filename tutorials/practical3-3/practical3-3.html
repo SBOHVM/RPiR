@@ -142,25 +142,43 @@ pre code {
 
 
 
-<h1 class="title toc-ignore">Practical 3-3: Stochastic birth-death model</h1>
+<h1 class="title toc-ignore">Practical 3-3: Stochastic birth-death
+model</h1>
 
 </div>
 
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>In this practical you will see how we can make the code for the stochastic birth-death model safer, simpler, and more reusable.</p>
+<p>In this practical you will see how we can make the code for the
+stochastic birth-death model safer, simpler, and more reusable.</p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>When running stochastic simulations we often want to run multiple simulations and compare outputs easily. In this practical we will learn how to efficiently plot multiple outputs on the same graph, and use a new set of functions contained within the <span style="color: #1697C0;">SBOHVM/RPiR</span> package on GitHub.</p>
+<p>When running stochastic simulations we often want to run multiple
+simulations and compare outputs easily. In this practical we will learn
+how to efficiently plot multiple outputs on the same graph, and use a
+new set of functions contained within the <span
+style="color: #1697C0;">SBOHVM/RPiR</span> package on GitHub.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>In the previous practical your script repeated a section of code to overlay multiple outputs on the same plot. We recommended that you use a <code>for</code> loop to solve this problem, since <em>copying and pasting identical code is bad practice</em> and can easily introduce mistakes. In this practical, we’re going to attempt to improve our code further by separating the simulation functionality from the model more cleanly.</p>
+<p>In the previous practical your script repeated a section of code to
+overlay multiple outputs on the same plot. We recommended that you use a
+<code>for</code> loop to solve this problem, since <em>copying and
+pasting identical code is bad practice</em> and can easily introduce
+mistakes. In this practical, we’re going to attempt to improve our code
+further by separating the simulation functionality from the model more
+cleanly.</p>
 <div id="section-look-at-run_simple" class="section level3">
 <h3>Look at <code>run_simple()</code></h3>
-<p>Take a look at the new function <code>run_simple()</code> online. Go to <span style="color: #1697C0;"><a href="https://github.com/SBOHVM/RPiR" class="uri">https://github.com/SBOHVM/RPiR</a></span>, open on the <span style="color: #1697C0;">R</span> folder, and find the file called <span style="color: #1697C0;">run_simple.R</span>. It should look something like this:</p>
+<p>Take a look at the new function <code>run_simple()</code> online. Go
+to <span style="color: #1697C0;"><a
+href="https://github.com/SBOHVM/RPiR"
+class="uri">https://github.com/SBOHVM/RPiR</a></span>, open on the <span
+style="color: #1697C0;">R</span> folder, and find the file called <span
+style="color: #1697C0;">run_simple.R</span>. It should look something
+like this:</p>
 <pre class="r"><code>#&#39; @title Simplest code to run a simulation loop 
 #&#39;
 #&#39; @description
@@ -197,43 +215,109 @@ run_simple &lt;- function(step_function,
   row.names(population.df) &lt;- NULL 
   population.df
 }</code></pre>
-<p>The purpose of this new function is to separate out the simulation functionality from the model, and to simplify and automate the running of multiple stochastic simulations. If you look closely you can see that the function <code>run_simple()</code> does the job we described in the previous practical. It is set up in terms of the generically named <code>step_function</code> argument, which in the case of the current model would be the <code>timestep_stochastic_birth_death()</code> function. Note however, that <code>step_function</code> requires the function name without brackets since here we are passing the function itself, rather than calling it:</p>
+<p>The purpose of this new function is to separate out the simulation
+functionality from the model, and to simplify and automate the running
+of multiple stochastic simulations. If you look closely you can see that
+the function <code>run_simple()</code> does the job we described in the
+previous practical. It is set up in terms of the generically named
+<code>step_function</code> argument, which in the case of the current
+model would be the <code>timestep_stochastic_birth_death()</code>
+function. Note however, that <code>step_function</code> requires the
+function name without brackets since here we are passing the function
+itself, rather than calling it:</p>
 <pre class="r"><code>final.populations &lt;- run_simple(timestep_stochastic_birth_death,
                                 initial.populations, 
                                 end.time,
                                 birth.rate = some.specific.birth.rate,
                                 death.rate = some.specific.death.rate,
                                 timestep = short.timestep)</code></pre>
-<p>There are two things going on here that we haven’t seen before: (1) We’re passing the step function as an argument to the <code>run_simple()</code> function. This just happens like any other argument being passed, you pass in the function, it gets assigned to the <code>step_function</code> argument – remember that we can call it anything inside a function – and then <code>step_function</code> gets used just like <code>initial.pop</code> and all of the other arguments. (2) the argument <code>...</code>. This is a way of saying “and there will be other arguments I don’t want to (or can’t) specify”. You will find this in lots of R code (see <code>?plot</code> for example). For us, the point is that <em>each step function will need different parameters</em> <em>passed to it, and we don’t know what they are in advance</em>. Instead we just pass them through:</p>
+<p>There are two things going on here that we haven’t seen before: (1)
+We’re passing the step function as an argument to the
+<code>run_simple()</code> function. This just happens like any other
+argument being passed, you pass in the function, it gets assigned to the
+<code>step_function</code> argument – remember that we can call it
+anything inside a function – and then <code>step_function</code> gets
+used just like <code>initial.pop</code> and all of the other arguments.
+(2) the argument <code>...</code>. This is a way of saying “and there
+will be other arguments I don’t want to (or can’t) specify”. You will
+find this in lots of R code (see <code>?plot</code> for example). For
+us, the point is that <em>each step function will need different
+parameters</em> <em>passed to it, and we don’t know what they are in
+advance</em>. Instead we just pass them through:</p>
 <pre class="r"><code>data &lt;- step_function(initial.pop, ...)</code></pre>
 <blockquote>
-<p>Any arguments after the three fixed arguments of <code>run_simple()</code> <em>must be named</em> – since they will be <em>blindly</em> passed straight through to the step function (via the <code>...</code>).</p>
+<p>Any arguments after the three fixed arguments of
+<code>run_simple()</code> <em>must be named</em> – since they will be
+<em>blindly</em> passed straight through to the step function (via the
+<code>...</code>).</p>
 </blockquote>
 </div>
 <div id="section-write-a-demo" class="section level3">
 <h3>Write a demo</h3>
-<p>Now write a new demo called <span style="color: #dd1c77;">d0303_run_birth_death</span> using <code>run_simple()</code> to replace the whole simulation loop in the earlier code. This should make the code in <span style="color: #dd1c77;">d0302_stochastic_birth_death</span> more compact, and will also make it much less prone to error, as we’ve isolated 10 more lines of code that we never need to write (or copy and paste) again.</p>
-<p>If you encounter any problems, <code>RPiR</code> has a function, <code>run_simulation()</code>, that does some additional checking and reporting if you set an additional argument <code>debug = TRUE</code>, which may help you identify what’s going wrong. We’ve mostly suggested using <code>run_simple()</code> here as it’s significantly easier to follow what’s going on in the function, but in future exercises, it’s better to use <code>run_simulation()</code> for everything as it has some other additional functionality.</p>
+<p>Now write a new demo called <span
+style="color: #dd1c77;">d0303_run_birth_death</span> using
+<code>run_simple()</code> to replace the whole simulation loop in the
+earlier code. This should make the code in <span
+style="color: #dd1c77;">d0302_stochastic_birth_death</span> more
+compact, and will also make it much less prone to error, as we’ve
+isolated 10 more lines of code that we never need to write (or copy and
+paste) again.</p>
+<p>If you encounter any problems, <code>RPiR</code> has a function,
+<code>run_simulation()</code>, that does some additional checking and
+reporting if you set an additional argument <code>debug = TRUE</code>,
+which may help you identify what’s going wrong. We’ve mostly suggested
+using <code>run_simple()</code> here as it’s significantly easier to
+follow what’s going on in the function, but in future exercises, it’s
+better to use <code>run_simulation()</code> for everything as it has
+some other additional functionality.</p>
 </div>
 </div>
 <div id="section-report" class="section level2">
 <h2>Report</h2>
-<div id="section-compare-stochastic-and-deterministic-models" class="section level3">
+<div id="section-compare-stochastic-and-deterministic-models"
+class="section level3">
 <h3>1. Compare stochastic and deterministic models</h3>
-<p>Run the stochastic birth death model with a birth rate of 0.06, a death rate of 0.02, an initial population count of 1, and a timestep of 1. Observe the variability in the outputs. Overlay the deterministic model results on the same plot. <strong>Note that you can’t use the <code>run_simple()</code> or <code>run_simulation()</code> function with the old <code>step_deterministic_birth_death()</code> step function because it doesn’t know about the <code>time</code> column in the data frame or timesteps, so you just need to copy the <code>for ()</code> loop from the <code>d0105...</code> demo to get the deterministic result.</strong> You should get something like this:</p>
+<p>Run the stochastic birth death model with a birth rate of 0.06, a
+death rate of 0.02, an initial population count of 1, and a timestep of
+1. Observe the variability in the outputs. Overlay the deterministic
+model results on the same plot. <strong>Note that you can’t use the
+<code>run_simple()</code> or <code>run_simulation()</code> function with
+the old <code>step_deterministic_birth_death()</code> step function
+because it doesn’t know about the <code>time</code> column in the data
+frame or timesteps, so you just need to copy the <code>for ()</code>
+loop from the <code>d0105...</code> demo to get the deterministic
+result.</strong> You should get something like this:</p>
 <center>
-<img src="images/3-3.png" title="fig:" alt="plot" />
+<div class="figure">
+<img src="images/3-3.png" alt="" />
+<p class="caption">plot</p>
+</div>
 </center>
 </div>
-<div id="section-increase-the-initial-population-size" class="section level3">
+<div id="section-increase-the-initial-population-size"
+class="section level3">
 <h3>2. Increase the initial population size</h3>
-<p>What happens to the variability as you increase the initial population size? You may want to adjust the scale of the y-axis to see what happens at larger population sizes. To automate this, you can set the y-axis upper limit to <span class="math inline">\(100 \times\)</span> <code>initial.count</code> by setting <code>ylim = c(0, 100 * initial.count)</code>. Report these results in your demo.</p>
+<p>What happens to the variability as you increase the initial
+population size? You may want to adjust the scale of the y-axis to see
+what happens at larger population sizes. To automate this, you can set
+the y-axis upper limit to <span class="math inline">\(100
+\times\)</span> <code>initial.count</code> by setting
+<code>ylim = c(0, 100 * initial.count)</code>. Report these results in
+your demo.</p>
 </div>
 </div>
 <div id="section-check-it-works" class="section level2">
 <h2>Check it works</h2>
-<p>As with previous exercises, you need to check that everything works correctly – that the package installs, and the demos and help files work and you can generate reports from the demos – and then we want you to get a couple of other people in your subgroup to check your code and make sure it works for them, and we want you to check other people’s code too. We describe how to do this for packages in GitHub in Practical 3-1 (also under <em>Check it works</em>) if you’re uncertain.</p>
-<p><em>Remember, interacting like this through GitHub to help each other will count as most of your engagement marks for the course.</em> 
+<p>As with previous exercises, you need to check that everything works
+correctly – that the package installs, and the demos and help files work
+and you can generate reports from the demos – and then we want you to
+get a couple of other people in your subgroup to check your code and
+make sure it works for them, and we want you to check other people’s
+code too. We describe how to do this for packages in GitHub in Practical
+3-1 (also under <em>Check it works</em>) if you’re uncertain.</p>
+<p><em>Remember, interacting like this through GitHub to help each other
+will count as most of your engagement marks for the course.</em>
+
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 
@@ -243,7 +327,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

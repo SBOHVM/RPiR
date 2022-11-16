@@ -149,44 +149,81 @@ pre code {
 
 <div id="section-overview" class="section level2">
 <h2>Overview</h2>
-<p>In this practical we will run a stochastic version of the SIR model and compare it to the deterministic model from practical series 2.</p>
+<p>In this practical we will run a stochastic version of the SIR model
+and compare it to the deterministic model from practical series 2.</p>
 </div>
 <div id="section-background" class="section level2">
 <h2>Background</h2>
-<p>Having created our stochastic version of the SIS model in the previous practical we are now ready to extend this framework to the SIR model.</p>
+<p>Having created our stochastic version of the SIS model in the
+previous practical we are now ready to extend this framework to the SIR
+model.</p>
 </div>
 <div id="section-tasks" class="section level2">
 <h2>Tasks</h2>
-<p>Using the code from the previous demo <code>d0304_run_SIS</code> and <code>timestep_stochastic_SIS()</code> (from Practical 3-4), create a new demo <code>d0305_run_SIR</code> and a new function, <code>timestep_stochastic_SIR()</code> that will simulate the stochastic SIR model.</p>
+<p>Using the code from the previous demo <code>d0304_run_SIS</code> and
+<code>timestep_stochastic_SIS()</code> (from Practical 3-4), create a
+new demo <code>d0305_run_SIR</code> and a new function,
+<code>timestep_stochastic_SIR()</code> that will simulate the stochastic
+SIR model.</p>
 <div id="section-write-a-function" class="section level3">
 <h3>1. Write a function</h3>
-<p>To produce <code>timestep_stochastic_SIR()</code> requires a small change to the update step to move the newly recovered individuals into the recovered class rather than back into the susceptible class. Remember also to include the recovereds in the population size calculation.</p>
-<p>To overlay the corresponding plot from the deterministic model you will also need to use <code>run_simulation()</code> on the <code>timestep_deterministic_SIR()</code> function from Practical 2-4, and then plot using <code>new.graph = FALSE</code>.</p>
+<p>To produce <code>timestep_stochastic_SIR()</code> requires a small
+change to the update step to move the newly recovered individuals into
+the recovered class rather than back into the susceptible class.
+Remember also to include the recovereds in the population size
+calculation.</p>
+<p>To overlay the corresponding plot from the deterministic model you
+will also need to use <code>run_simulation()</code> on the
+<code>timestep_deterministic_SIR()</code> function from Practical 2-4,
+and then plot using <code>new.graph = FALSE</code>.</p>
 </div>
 <div id="section-write-a-demo" class="section level3">
 <h3>2. Write a demo</h3>
-<p>This should be relatively straightforward. To produce <code>d0305_run_SIR</code> you need to add a “recovereds” population to the data frame, remembering to specify initial values for this new population.</p>
+<p>This should be relatively straightforward. To produce
+<code>d0305_run_SIR</code> you need to add a “recovereds” population to
+the data frame, remembering to specify initial values for this new
+population.</p>
 </div>
 </div>
 <div id="section-report" class="section level2">
 <h2>Report</h2>
-<div id="section-compare-stochastic-and-deterministic-models" class="section level3">
+<div id="section-compare-stochastic-and-deterministic-models"
+class="section level3">
 <h3>1. Compare stochastic and deterministic models</h3>
-<p>Run the code with a transmission rate of 0.2, a recovery rate of 0.1, 2 initial infecteds and 0 initial recovereds from a population size of 100. Demonstrate the variability in the results of the stochastic model and overlay the deterministic results from Practical 2-5.</p>
+<p>Run the code with a transmission rate of 0.2, a recovery rate of 0.1,
+2 initial infecteds and 0 initial recovereds from a population size of
+100. Demonstrate the variability in the results of the stochastic model
+and overlay the deterministic results from Practical 2-5.</p>
 </div>
 <div id="section-vary-population-parameters" class="section level3">
 <h3>2. Vary population parameters</h3>
-<p>Run the code for different initial conditions (number of infecteds and recovereds), and population size. Why do the plots of the stochastic simulation end before those of the deterministic simulation? What happens as you increase the population size? Illustrate these effects in your demo.</p>
+<p>Run the code for different initial conditions (number of infecteds
+and recovereds), and population size. Why do the plots of the stochastic
+simulation end before those of the deterministic simulation? What
+happens as you increase the population size? Illustrate these effects in
+your demo.</p>
 </div>
 <div id="section-vary-transmission-rate" class="section level3">
 <h3>3. Vary transmission rate</h3>
-<p>Now try increasing the transmission rate to increase the value of <span class="math inline">\(R_0\)</span>. Given a default value for the recovery rate of 0.1 what would the transmission rate need to be to simulate an outbreak with an <span class="math inline">\(R_0\)</span> of 15?</p>
+<p>Now try increasing the transmission rate to increase the value of
+<span class="math inline">\(R_0\)</span>. Given a default value for the
+recovery rate of 0.1 what would the transmission rate need to be to
+simulate an outbreak with an <span class="math inline">\(R_0\)</span> of
+15?</p>
 </div>
 </div>
 <div id="section-check-it-works" class="section level2">
 <h2>Check it works</h2>
-<p>As with previous exercises, you need to check that everything works correctly – that the package installs, and the demos and help files work and you can generate reports from the demos – and then we want you to get a couple of other people in your subgroup to check your code and make sure it works for them, and we want you to check other people’s code too. We describe how to do this for packages in GitHub in Practical 3-1 (also under <em>Check it works</em>) if you’re uncertain.</p>
-<p><em>Remember, interacting like this through GitHub to help each other will count as most of your engagement marks for the course.</em> 
+<p>As with previous exercises, you need to check that everything works
+correctly – that the package installs, and the demos and help files work
+and you can generate reports from the demos – and then we want you to
+get a couple of other people in your subgroup to check your code and
+make sure it works for them, and we want you to check other people’s
+code too. We describe how to do this for packages in GitHub in Practical
+3-1 (also under <em>Check it works</em>) if you’re uncertain.</p>
+<p><em>Remember, interacting like this through GitHub to help each other
+will count as most of your engagement marks for the course.</em>
+
 <script type="application/shiny-prerendered" data-context="server-start">
 library(learnr)
 
@@ -196,7 +233,7 @@ set.seed(123)
 </p>
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="dependencies">
-{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
+{"type":"list","attributes":{},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["header-attrs"]},{"type":"character","attributes":{},"value":["2.18"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/pandoc"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["header-attrs.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["bootstrap"]},{"type":"character","attributes":{},"value":["3.3.5"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/bootstrap"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["viewport"]}},"value":[{"type":"character","attributes":{},"value":["width=device-width, initial-scale=1"]}]},{"type":"character","attributes":{},"value":["js/bootstrap.min.js","shim/html5shiv.min.js","shim/respond.min.js"]},{"type":"character","attributes":{},"value":["css/bootstrap.min.css"]},{"type":"character","attributes":{},"value":["<style>h1 {font-size: 34px;}\n       h1.title {font-size: 38px;}\n       h2 {font-size: 30px;}\n       h3 {font-size: 24px;}\n       h4 {font-size: 18px;}\n       h5 {font-size: 16px;}\n       h6 {font-size: 12px;}\n       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}\n       pre:not([class]) { background-color: white }<\/style>"]},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["jquery"]},{"type":"character","attributes":{},"value":["3.6.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["lib/3.6.0"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquery-3.6.0.min.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["jquerylib"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["0.1.4"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["navigation"]},{"type":"character","attributes":{},"value":["1.1"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/navigation-1.1"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["tabsets.js"]},{"type":"NULL"},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["name","version","src","meta","script","stylesheet","head","attachment","package","all_files","pkgVersion"]},"class":{"type":"character","attributes":{},"value":["html_dependency"]}},"value":[{"type":"character","attributes":{},"value":["highlightjs"]},{"type":"character","attributes":{},"value":["9.12.0"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["file"]}},"value":[{"type":"character","attributes":{},"value":["rmd/h/highlightjs"]}]},{"type":"NULL"},{"type":"character","attributes":{},"value":["highlight.js"]},{"type":"character","attributes":{},"value":["default.css"]},{"type":"NULL"},{"type":"NULL"},{"type":"character","attributes":{},"value":["rmarkdown"]},{"type":"logical","attributes":{},"value":[true]},{"type":"character","attributes":{},"value":["2.18"]}]}]}
 </script>
 <!--/html_preserve-->
 <!--html_preserve-->

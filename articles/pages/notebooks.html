@@ -182,7 +182,8 @@
 
 
 
-<script src="notebooks_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>R Notebook</h1>
             
@@ -195,7 +196,10 @@
     
     
 <p><em>Formatting R Notebook reports</em></p>
-<p>This page contains information to help you generate reports for your practical coursework and final project. In the examples below, the contents of your scripts are shown on the left, with the compiled report on the right.</p>
+<p>This page contains information to help you generate reports for your
+practical coursework and final project. In the examples below, the
+contents of your scripts are shown on the left, with the compiled report
+on the right.</p>
 <div class="section level3">
 <h3 id="headers">Headers<a class="anchor" aria-label="anchor" href="#headers"></a>
 </h3>
@@ -215,22 +219,45 @@
 <span><span class="co">#' More text</span></span>
 <span><span class="co">#'</span></span></code></pre></div>
 </div>
-<div>
-<h2 id="first-level-header" data-toc-skip="true">First level header</h2>
+<div class="section level2" data-toc-skip="true">
+<h2 id="first-level-header">First level header<a class="anchor" aria-label="anchor" href="#first-level-header"></a>
+</h2>
 <p>A nice paragraph.</p>
-<h3 id="second-level-header" data-toc-skip="true">Second level header</h3>
+<div class="section level3" data-toc-skip="true">
+<h3 id="second-level-header">Second level header<a class="anchor" aria-label="anchor" href="#second-level-header"></a>
+</h3>
 <p>Important information</p>
-<h4 id="third-level-header" data-toc-skip="true">Third level header</h4>
+<div class="section level4" data-toc-skip="true">
+<h4 id="third-level-header">Third level header<a class="anchor" aria-label="anchor" href="#third-level-header"></a>
+</h4>
 <p>More text</p>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="text">Text<a class="anchor" aria-label="anchor" href="#text"></a>
 </h3>
-<p>You can write any text you like after the <code>#'</code> comment characters to describe your program. If you’re using <em>RStudio</em>, you can just press <em>Enter</em> every time you get to the dotted vertical line in the window so that your R text doesn’t scroll off the page unnecessarily. You automatically get the right comment characters so you can just carry on typing. However, there are lots of things you can do to format the text.</p>
-<p>For instance, you can <em>italicise</em> and <strong>bold</strong> text easily if you want to. Information on the some of the basic rules for writing text (not R) are on <a href="http://daringfireball.net/projects/markdown/syntax" class="external-link">daringfireball</a>, though most stuff is explained below too. This format is called Markdown, and it describes everything that happens after the <code>#'</code> symbols, though those symbols are nothing to do with Markdown, they are just how to get <em>Markdown</em> into <em>R</em>.</p>
-<p>You need to press enter twice to start a new paragraph, and when you’re starting a new style of text, like a list or a header you need to have a blank comment line before it to make sure that the words don’t appear in the previous paragraph by accident.</p>
+<p>You can write any text you like after the <code>#'</code> comment
+characters to describe your program. If you’re using <em>RStudio</em>,
+you can just press <em>Enter</em> every time you get to the dotted
+vertical line in the window so that your R text doesn’t scroll off the
+page unnecessarily. You automatically get the right comment characters
+so you can just carry on typing. However, there are lots of things you
+can do to format the text.</p>
+<p>For instance, you can <em>italicise</em> and <strong>bold</strong>
+text easily if you want to. Information on the some of the basic rules
+for writing text (not R) are on <a href="http://daringfireball.net/projects/markdown/syntax" class="external-link">daringfireball</a>,
+though most stuff is explained below too. This format is called
+Markdown, and it describes everything that happens after the
+<code>#'</code> symbols, though those symbols are nothing to do with
+Markdown, they are just how to get <em>Markdown</em> into
+<em>R</em>.</p>
+<p>You need to press enter twice to start a new paragraph, and when
+you’re starting a new style of text, like a list or a header you need to
+have a blank comment line before it to make sure that the words don’t
+appear in the previous paragraph by accident.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -272,8 +299,10 @@
 <div>
 <p>Some text followed by an empty line, then a list.</p>
 <ol style="list-style-type: decimal">
-<li>Lists are started by numbers, letters, or symbols (<code>-</code>, <code>+</code> or <code>*</code>)</li>
-<li>Write an equation by encapsulating an expression in <code>$</code>
+<li>Lists are started by numbers, letters, or symbols (<code>-</code>,
+<code>+</code> or <code>*</code>)</li>
+<li>Write an equation by encapsulating an expression in
+<code>$</code>
 </li>
 <li>For instance:
 <ul>
@@ -294,7 +323,8 @@
 <div class="section level3">
 <h3 id="code">Code<a class="anchor" aria-label="anchor" href="#code"></a>
 </h3>
-<p>R comments just appear as normal, but outputs appear with <code>##</code> before them.</p>
+<p>R comments just appear as normal, but outputs appear with
+<code>##</code> before them.</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
@@ -312,7 +342,8 @@
 <span><span class="co">## [1] 25</span></span></code></pre></div>
 </div>
 </div>
-<p>If you don’t like that, you can remove the <code>##</code> before the output like this:</p>
+<p>If you don’t like that, you can remove the <code>##</code> before the
+output like this:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -322,13 +353,16 @@
 <span><span class="va">x</span> <span class="op">+</span> <span class="fl">3</span></span></code></pre></div>
 </div>
 <div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>x &lt;-<span class="st"> </span><span class="dv">2</span></span>
-<span id="cb7-2"><a href="#cb7-2"></a>x <span class="op">+</span><span class="st"> </span><span class="dv">3</span></span>
-<span id="cb7-3"><a href="#cb7-3"></a>[<span class="dv">1</span>] <span class="dv">5</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>x <span class="sc">+</span> <span class="dv">3</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">5</span></span></code></pre></div>
 </div>
 </div>
 <blockquote>
-<p><strong>Note:</strong> If you want to remove the <code>##</code> from your entire report, you can put <code>knitr::opts_chunk$set(comment = "")</code> at the top of your script.</p>
+<p><strong>Note:</strong> If you want to remove the <code>##</code> from
+your entire report, you can put
+<code>knitr::opts_chunk$set(comment = "")</code> at the top of your
+script.</p>
 </blockquote>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
@@ -340,14 +374,17 @@
 <span><span class="co">#'</span></span></code></pre></div>
 </div>
 <div>
-<p>Text can also include R, so <span class="math inline">\(y = (3+x)^2\)</span> = <code>25</code> gives you the number calculated in R.</p>
+<p>Text can also include R, so <span class="math inline">\(y =
+(3+x)^2\)</span> = <code>25</code> gives you the number calculated in
+R.</p>
 </div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="figures">Figures<a class="anchor" aria-label="anchor" href="#figures"></a>
 </h3>
-<p>Here’s a very basic figure generated using the base R <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> function:</p>
+<p>Here’s a very basic figure generated using the base R
+<code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> function:</p>
 <div style="display: grid; grid-template-columns: 1fr 1fr; grid-column-gap: 10px;">
 <div>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -387,23 +424,32 @@ Figure 2: Some sine curves
 </div>
 </div>
 <blockquote>
-<p><strong>Note:</strong> The <code>#+</code> options don’t need to be split over multiple lines. We did that here to avoid text wrapping in the code block.</p>
+<p><strong>Note:</strong> The <code>#+</code> options don’t need to be
+split over multiple lines. We did that here to avoid text wrapping in
+the code block.</p>
 </blockquote>
 <blockquote>
-<p><strong>Note also:</strong> You can centre the figure using <code>#+ fig.align="center"</code>. We haven’t shown that here because it doesn’t work with the two-column formatting.</p>
+<p><strong>Note also:</strong> You can centre the figure using
+<code>#+ fig.align="center"</code>. We haven’t shown that here because
+it doesn’t work with the two-column formatting.</p>
 </blockquote>
 <div class="section level4">
 <h4 id="plot_populations">
 <code>plot_populations()</code><a class="anchor" aria-label="anchor" href="#plot_populations"></a>
 </h4>
-<p>The <code>RPiR</code> package uses the <code><a href="../../reference/plot_simple.html">plot_simple()</a></code> and <code><a href="../../reference/plot_populations.html">plot_populations()</a></code> functions that automate some of this functionality. In addition, base <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> arguments can be passed to for extra customization, see <code><a href="https://rdrr.io/r/base/plot.html" class="external-link">?base::plot</a></code> for more details. For example, you can generate a plot like this:</p>
+<p>The <code>RPiR</code> package uses the <code><a href="../../reference/plot_simple.html">plot_simple()</a></code> and
+<code><a href="../../reference/plot_populations.html">plot_populations()</a></code> functions that automate some of this
+functionality. In addition, base <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> arguments can be
+passed to for extra customization, see <code><a href="https://rdrr.io/r/base/plot.html" class="external-link">?base::plot</a></code> for more
+details. For example, you can generate a plot like this:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="notebooks_files/figure-html/unnamed-chunk-13-1.png" width="700" style="display: block; margin: auto;"></p>
-<p>Add an additional line with a different style, width, and colour, like this:</p>
+<p>Add an additional line with a different style, width, and colour,
+like this:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">results2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, death <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -411,7 +457,10 @@ Figure 2: Some sine curves
 <span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="notebooks_files/figure-html/unnamed-chunk-14-1.png" width="700" style="display: block; margin: auto;"></p>
-<p>Then fix the legend for the multi-line plot (making sure the order of the elements in the <code>legend</code>, <code>col</code>, and <code>lty</code> arguments matches the order in which you plot the lines!), like this :</p>
+<p>Then fix the legend for the multi-line plot (making sure the order of
+the elements in the <code>legend</code>, <code>col</code>, and
+<code>lty</code> arguments matches the order in which you plot the
+lines!), like this :</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">results2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, death <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -426,13 +475,16 @@ Figure 2: Some sine curves
 <span>       col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"black"</span>, <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="notebooks_files/figure-html/unnamed-chunk-15-1.png" width="700" style="display: block; margin: auto;"></p>
 <blockquote>
-<p><strong>Note:</strong> You can specify the location of the legend using x-y coordinates or strings such as <code>"topright"</code>, see <code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">?legend</a></code> for more details.</p>
+<p><strong>Note:</strong> You can specify the location of the legend
+using x-y coordinates or strings such as <code>"topright"</code>, see
+<code><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">?legend</a></code> for more details.</p>
 </blockquote>
 </div>
 <div class="section level4">
 <h4 id="potential-problems">Potential problems<a class="anchor" aria-label="anchor" href="#potential-problems"></a>
 </h4>
-<p>When compiling your report, you might encounter an error along the lines of:</p>
+<p>When compiling your report, you might encounter an error along the
+lines of:</p>
 <pre><code>Error in plot.xy(xy.coorrds(x, y), type = type, ...): plot.new has not been 
 called yet Calls: &lt;Anonymous&gt; ... plot_populations -&gt; &lt;Anonymous&gt; -&gt; 
 lines.default -&gt; plot.xy Execution halted</code></pre>
@@ -448,7 +500,12 @@ lines.default -&gt; plot.xy Execution halted</code></pre>
 <span></span>
 <span><span class="co"># Try to plot another line on the same figure</span></span>
 <span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p>The error occured because the first call to <code><a href="../../reference/plot_populations.html">plot_populations()</a></code> is separated from the second call to <code><a href="../../reference/plot_populations.html">plot_populations()</a></code> by a text block <code>#'</code>. When we compile the report, the first and second code blocks are called in isolation, so the second call to <code><a href="../../reference/plot_populations.html">plot_populations()</a></code> isn’t aware of the first plots’ existance.</p>
+<p>The error occured because the first call to
+<code><a href="../../reference/plot_populations.html">plot_populations()</a></code> is separated from the second call to
+<code><a href="../../reference/plot_populations.html">plot_populations()</a></code> by a text block <code>#'</code>. When we
+compile the report, the first and second code blocks are called in
+isolation, so the second call to <code><a href="../../reference/plot_populations.html">plot_populations()</a></code> isn’t
+aware of the first plots’ existance.</p>
 <p>To solve this problem, do this:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
@@ -461,7 +518,12 @@ lines.default -&gt; plot.xy Execution halted</code></pre>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/recordplot.html" class="external-link">replayPlot</a></span><span class="op">(</span><span class="va">plt</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<p><code><a href="https://rdrr.io/r/grDevices/recordplot.html" class="external-link">recordPlot()</a></code> stores the plot generated in the first code chunk and saves it in <code>plt</code>, afterwhich <code>replayPlot(plt)</code> recovers the plot generated in the first code chunk, so that <code>plot_populations(results2, lty = 2, lwd = 3, col = "red", new.graph = FALSE)</code> can then be called.</p>
+<p><code><a href="https://rdrr.io/r/grDevices/recordplot.html" class="external-link">recordPlot()</a></code> stores the plot generated in the first code
+chunk and saves it in <code>plt</code>, afterwhich
+<code>replayPlot(plt)</code> recovers the plot generated in the first
+code chunk, so that
+<code>plot_populations(results2, lty = 2, lwd = 3, col = "red", new.graph = FALSE)</code>
+can then be called.</p>
 </div>
 </div>
 <div class="section level3">
@@ -497,19 +559,25 @@ lines.default -&gt; plot.xy Execution halted</code></pre>
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span></span>
-<span><span class="co">## [1] 0.03394166</span></span></code></pre></div>
-<p>Here is the equation we just calculated written out neatly, inline with the text: <span class="math inline">\(\text{mean}(x) = 1/n \sum_{i=1}^n x_i\)</span></p>
+<span><span class="co">## [1] -0.0889268</span></span></code></pre></div>
+<p>Here is the equation we just calculated written out neatly, inline
+with the text: <span class="math inline">\(\text{mean}(x) = 1/n
+\sum_{i=1}^n x_i\)</span></p>
 <p>We can also write an equation on its own line: <span class="math display">\[y = \frac{x_i}{2x^2 + 3}\]</span></p>
 <p>and write greek symbols and accents:</p>
-<p><span class="math display">\[\gamma = \bar{\alpha} \times \beta\]</span></p>
+<p><span class="math display">\[\gamma = \bar{\alpha} \times
+\beta\]</span></p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># And here's another code block</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">## [1] 0.01986276</span></span></code></pre></div>
+<span><span class="co">## [1] -0.05385126</span></span></code></pre></div>
 </div>
 </div>
 <blockquote>
-<p><strong>Note:</strong> This complex syntax for equations is LaTeX. If you haven’t seen it before you don’t need to use it, but there is lots of information on writing formulae <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" class="external-link">here</a>, and there are some specific things you can put in a formula <a href="https://en.wikipedia.org/wiki/Help:Displaying_a_formula#Formatting_using_T" class="external-link">here</a>.</p>
+<p><strong>Note:</strong> This complex syntax for equations is LaTeX. If
+you haven’t seen it before you don’t need to use it, but there is lots
+of information on writing formulae <a href="https://en.wikibooks.org/wiki/LaTeX/Mathematics" class="external-link">here</a>, and
+there are some specific things you can put in a formula <a href="https://en.wikipedia.org/wiki/Help:Displaying_a_formula#Formatting_using_T" class="external-link">here</a>.</p>
 </blockquote>
 </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

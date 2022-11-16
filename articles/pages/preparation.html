@@ -182,7 +182,8 @@
 
 
 
-<script src="preparation_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+
+<div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Course preparation - R</h1>
             
@@ -195,10 +196,15 @@
     
     
 <p><em>Check that R and RStudio are up to date</em></p>
-<p>You’ll need to do a few things before we can start the course. First you need to check you have up-to-date versions of R and RStudio. This means that R should be at least version 4. You can check by typing this in R:</p>
+<p>You’ll need to do a few things before we can start the course. First
+you need to check you have up-to-date versions of R and RStudio. This
+means that R should be at least version 4. You can check by typing this
+in R:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">version</span><span class="op">$</span><span class="va">major</span> <span class="op">&gt;=</span> <span class="fl">4</span></span></code></pre></div>
-<p>If this is <code>FALSE</code>, download and install a new version from <a href="https://www.r-project.org" class="external-link uri">https://www.r-project.org</a>. Then install these packages:</p>
+<p>If this is <code>FALSE</code>, download and install a new version
+from <a href="https://www.r-project.org" class="external-link uri">https://www.r-project.org</a>. Then install these
+packages:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'devtools'</span>, <span class="st">'rstudioapi'</span>, <span class="st">'rdiversity'</span>, <span class="st">'vegan'</span>, <span class="st">'iNEXT'</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>Then check whether RStudio is up to date:</p>
@@ -210,9 +216,12 @@
 <span><span class="co"># which is equivalent to</span></span>
 <span><span class="fu">rstudioapi</span><span class="fu">::</span><span class="fu"><a href="https://rstudio.github.io/rstudioapi/reference/isAvailable.html" class="external-link">isAvailable</a></span><span class="op">(</span><span class="st">"1.4"</span><span class="op">)</span></span></code></pre></div>
 <blockquote>
-<p>Note that <code>rstudioapi::xxx()</code> means <em>“find the <code>xxx()</code> function in the <code>rstudioapi</code> package”</em>.</p>
+<p>Note that <code>rstudioapi::xxx()</code> means <em>“find the
+<code>xxx()</code> function in the <code>rstudioapi</code>
+package”</em>.</p>
 </blockquote>
-<p>If <code>FALSE</code>, download and install the latest version of <a href="https://rstudio.com/products/rstudio" class="external-link">RStudio Desktop</a> and check this has worked by running the above again.</p>
+<p>If <code>FALSE</code>, download and install the latest version of <a href="https://rstudio.com/products/rstudio" class="external-link">RStudio Desktop</a> and
+check this has worked by running the above again.</p>
 <p>Next, check you are now ready to build R packages:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the devtools library and check whether compilers are installed</span></span>
@@ -221,7 +230,8 @@
 <span></span>
 <span><span class="co"># which is equivalent to</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/pkgbuild/man/has_compiler.html" class="external-link">has_devel</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p>If this is <code>FALSE</code> or errors, then you will need to follow instructions given by the function or ask for help until this works.</p>
+<p>If this is <code>FALSE</code> or errors, then you will need to follow
+instructions given by the function or ask for help until this works.</p>
   </main>
 </div>
 
