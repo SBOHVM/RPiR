@@ -145,7 +145,7 @@ jobs:
 
       - name: Deploy Docs
         if: runner.os == 'macOS'
-        uses: JamesIves/github-pages-deploy-action@4
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: build_docs
