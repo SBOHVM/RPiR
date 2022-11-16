@@ -104,7 +104,7 @@ Covers all of these measures.
 
 - Does the package work (installs, docs, functions, demos and dependencies)?
 ```{R, eval = FALSE}
-    devtools::install_github("IBAHCM/pkgname")
+    devtools::install_github("SBOHVM/pkgname")
     library(pkgname)
     library(help="pkgname")
     demo(package="pkgname")

@@ -361,7 +361,7 @@ anywhere*.
 And finally:
 ```{R, eval=FALSE}
 install.packages("tibble")
-devtools::install_github("IBAHCM/RPiR")
+devtools::install_github("SBOHVM/RPiR")
 ```
 This should be done before you run your code (and later we'll show you how
 to make sure it is done as your code is downloaded), but your scripts should

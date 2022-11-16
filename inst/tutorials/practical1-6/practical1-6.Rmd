@@ -29,13 +29,13 @@ organise your workflow.*
 ---
 
 Note that from here on out you will be working in RStudio. First, however,
-you'll need to create a repository in the IBAHCM organisation on GitHub.
+you'll need to create a repository in the SBOHVM organisation on GitHub.
 
 ## GitHub
 
-First you'll need to create a repository in the IBAHCM organisation on GitHub.
+First you'll need to create a repository in the SBOHVM organisation on GitHub.
 You'll find instructions on how to do this
-[here](https://ibahcm.github.io/RPiR/articles/pages/github.html). Call this
+[here](https://sbohvm.github.io/RPiR/articles/pages/github.html). Call this
 repository `githubusernameSeries01` (obviously use your real GitHub username!). 
 Note that you'll need to do this throughout this course, which is why we've kept
 these instructions separate.
@@ -43,7 +43,7 @@ these instructions separate.
 ## RStudio
 
 After you've done that, back in RStudio, create a new project linked to that
-repository using the instructions [here](https://ibahcm.github.io/RPiR/articles/pages/rstudio.html).
+repository using the instructions [here](https://sbohvm.github.io/RPiR/articles/pages/rstudio.html).
 Load the `RPiR` package and run the
 `practical_series_one()` function. This will populate your working directory --
 and therefore your RStudio project and git repository -- with the scripts and
@@ -168,9 +168,9 @@ repository, you need to give people permission to see it. So, click on
 knitr::include_graphics('images/f.png')
 ```
 
-Find the `IBAHCM/rpir21` team (that's you guys) - by searching for `rpir21`.
+Find the `SBOHVM/rpir22` team (that's you guys) - by searching for `rpir22`.
 Make sure <span style="color: #de77ae;">Read</span> access is selected and
-<span style="color: #de77ae;">Add IBAHCM/rpir21 to this repository</span>.
+<span style="color: #de77ae;">Add SBOHVM/rpir22 to this repository</span>.
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/h.png')
@@ -183,10 +183,10 @@ knitr::include_graphics('images/i.png')
 ```
 
 Now, exchange repository names with your group (everyone in your breakout room).
-You should have access if you're part of the `IBAHCM/rpir` team. Now go find 
-them. Either search through the `IBAHCM` organisation, or go directly to their 
+You should have access if you're part of the `SBOHVM/rpir` team. Now go find 
+them. Either search through the `SBOHVM` organisation, or go directly to their 
 URL. For example, if I want to find `louisematthews`, I'd go here
-https://github.com/IBAHCM/louisematthewsSeries01. Remember to take a look at
+https://github.com/SBOHVM/louisematthewsSeries01. Remember to take a look at
 their GitHub readme, you might learn something new!
 
 Just like before, we're going to clone this repository by clicking on the green

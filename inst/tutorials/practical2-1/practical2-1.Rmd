@@ -64,9 +64,9 @@ work for any disease model, but the script is specifically for *E Coli*.
 
 The first thing to do is to create a new GitHub repository and RStudio project
 for this practical. Do this following the *how to* instructions on the [GitHub
-documentation pages](https://ibahcm.github.io/RPiR/articles/pages/github.html)
+documentation pages](https://sbohvm.github.io/RPiR/articles/pages/github.html)
 that you used for the last practical, putting the repository in
-the [IBAHCM](https://github.com/IBAHCM) organisation again, as before. Call this
+the [SBOHVM](https://github.com/SBOHVM) organisation again, as before. Call this
 project `githubusernameSeries02` (obviously use your real GitHub username!).
 You'll use this single project for all of the exercises in this practical
 series. If you are already in a coding group, then add the specific people that

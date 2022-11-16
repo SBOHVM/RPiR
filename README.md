@@ -1,8 +1,8 @@
 # Reproducible Programming in R course (2021/22)
 
 [![](https://img.shields.io/badge/docs-RPIR-blue)][docs]
-[![test-build](https://github.com/IBAHCM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/IBAHCM/RPiR/actions)
-[![CodeFactor](https://www.codefactor.io/repository/github/IBAHCM/RPiR/badge)](https://www.codefactor.io/repository/github/IBAHCM/RPiR)
+[![test-build](https://github.com/SBOHVM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/SBOHVM/RPiR/actions)
+[![CodeFactor](https://www.codefactor.io/repository/github/SBOHVM/RPiR/badge)](https://www.codefactor.io/repository/github/SBOHVM/RPiR)
 [![License: GPL-3.0](https://img.shields.io/badge/license-GPL--3+-brightgreen)](https://opensource.org/licenses/GPL-3.0)
 
 ## Course preparation
@@ -128,5 +128,5 @@ As well as the following additional practicals:
    * `practicalA-4`: Introduction to for and while loops
    * `practicalA-5`: Nested functions
 
-[prep]: https://ibahcm.github.io/RPiR/articles/pages/preparation.html
-[docs]: https://ibahcm.github.io/RPiR
+[prep]: https://sbohvm.github.io/RPiR/articles/pages/preparation.html
+[docs]: https://sbohvm.github.io/RPiR

@@ -1,5 +1,5 @@
 title: RPiR
-url: https://ibahcm.github.io/RPiR/
+url: https://sbohvm.github.io/RPiR/
 
 template:
   bootstrap: 5
@@ -211,8 +211,8 @@ navbar:
 
     discussion:
       icon: far fa-comments
-      href: https://github.com/IBAHCM/RPiR/discussions
+      href: https://github.com/SBOHVM/RPiR/discussions
 
     github:
       icon: fab fa-github
-      href: https://github.com/IBAHCM/RPiR/
+      href: https://github.com/SBOHVM/RPiR/

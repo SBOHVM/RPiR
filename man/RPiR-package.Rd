@@ -44,10 +44,10 @@ The following tutorials are included in this package:
 }
 
 For more information go to our GitHub page;
-\url{https://github.com/IBAHCM/RPiR}
+\url{https://github.com/SBOHVM/RPiR}
 
 Please raise an issue if you find any problems;
-\url{https://github.com/IBAHCM/RPiR/issues}
+\url{https://github.com/SBOHVM/RPiR/issues}
 }
 \examples{
 \dontrun{

@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
 
 Warning: If for any reason you can't get `usethis::use_github()` to work, then
 skip to the end of the page and follow the 
-[alternative setup](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#alternative-setup) instructions.
+[alternative setup](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#alternative-setup) instructions.
 
 ## Package structure
 
@@ -71,7 +71,7 @@ ways to do this, the easiest way to connect an existing RStudio project to
 GitHub is by running this:
 
 ```{r, eval = FALSE}
-usethis::use_github(organisation = "IBAHCM", private = TRUE)
+usethis::use_github(organisation = "SBOHVM", private = TRUE)
 ```
 
 This process will automatically edit your 
@@ -306,7 +306,7 @@ this we need to do four things.
    GitHub repository, you can use this instead:
 
    ```{r, eval = FALSE}
-   usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR")
+   usethis::use_dev_package("RPiR", remote = "SBOHVM/RPiR")
    ```
 
 3. Add an `@import` tag to the 
@@ -431,7 +431,7 @@ data in our package.
 ## Alternative setup
 
 If for any reason you can't get `usethis::use_github()` to work, then follow
-these [instructions](https://ibahcm.github.io/RPiR/articles/pages/github.html)
+these [instructions](https://sbohvm.github.io/RPiR/articles/pages/github.html)
 to create a repository on GitHub with a 
 <span style="color: #de77ae;">README</span> file. Remember that the name of your
 repository should match the name of your package and be aware that the name of
@@ -447,7 +447,7 @@ include a dot. In the following example, the name of our repository
 (and package) is `packagename`.
 
 Once you have a repository on GitHub, follow
-these [instructions](https://ibahcm.github.io/RPiR/articles/pages/rstudio.html)
+these [instructions](https://sbohvm.github.io/RPiR/articles/pages/rstudio.html)
 to clone your repository and add it as a new project in RStudio. Then create the
 package structure by running:
 
@@ -503,7 +503,7 @@ is only possible if we use `devtools::document()` to create a new file.
 Also, don't forget to keep pushing your changes to GitHub.
 
 You can now rejoin the instructions above
-[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
+[here](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
 
 ## Final thoughts
 
@@ -538,12 +538,12 @@ go ahead and give them access (on the GitHub website,
 Then ask them to run:
 
 ```
-devtools::install_github("IBAHCM/packagename")
+devtools::install_github("SBOHVM/packagename")
 ```
 
 Go ahead and try to install my package. Try to run the demo. 
 
 Note that if for some reason you can't install a package using 
 `install_github()`, you can clone a repository as you did
-[here](https://ibahcm.github.io/RPiR/articles/pages/rstudio.html) and instead 
+[here](https://sbohvm.github.io/RPiR/articles/pages/rstudio.html) and instead 
 run `devtools::install()` in the usual way.

@@ -7,7 +7,7 @@ Authors@R: c(person("Sonia", "Mitchell", email = "sonia.mitchell@glasgow.ac.uk",
                   comment = c(ORCID = "0000-0003-1536-2066")),
              person("Richard", "Reeve", email = "richard.reeve@glasgow.ac.uk",
                   role = c("aut"), comment = c(ORCID = "0000-0003-2589-8091")))
-Description: Reproducible Programming in R course at IBAHCM, University of 
+Description: Reproducible Programming in R course at SBOHVM, University of 
     Glasgow. This package provides {learnr} exercises and lectures for the  
     course as well as functionality to help with the exercises.
 License: GPL (>= 3) | file LICENSE

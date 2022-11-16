@@ -37,7 +37,7 @@ Because the `RPiR` package is hosted on github, we need to use `install_github`
 
 ```{r, eval = FALSE}
 library(devtools)
-install_github("IBAHCM/RPiR")
+install_github("SBOHVM/RPiR")
 ```
 
 If you see something like this:
@@ -103,7 +103,7 @@ non-zero is a failed install), in this case `rlang`:
 install.packages("rlang")
 ```
 
-Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("SBOHVM/RPiR")`.
 
 ### Rtools is required to build R packages but is not currently installed...
 
@@ -127,7 +127,7 @@ in this case the `rlang` package:
 install.packages("rlang")
 ```
 
-Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("SBOHVM/RPiR")`.
 
 ### Cannot remove prior installation...
 
@@ -143,7 +143,7 @@ reinstalling whatever package Windows couldn't remove, in this case `rlang`:
 install.packages("rlang")
 ```
 
-Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("SBOHVM/RPiR")`.
 
 ### Try removing ‘C:\.../00LOCK’
 
@@ -161,7 +161,7 @@ in this case `rlang`:
 install.packages("rlang")
 ```
 
-Assuming this worked, restart R again(!), and re-run `install_github("IBAHCM/RPiR")`.
+Assuming this worked, restart R again(!), and re-run `install_github("SBOHVM/RPiR")`.
 
 If that doesn't work after a couple of attempts, then you can try installing the package while ignoring the lock files:
 

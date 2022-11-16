@@ -30,7 +30,7 @@ First, here are some talks about how easy this is from rstudio::global 2021:
 # Creating an R Package
 
 You'll find a guide on how to create an R package linked to GitHub in RStudio
-in [a guide on this website](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html).
+in [a guide on this website](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html).
 
 # Other reference material
 

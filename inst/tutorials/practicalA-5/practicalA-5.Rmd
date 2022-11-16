@@ -49,11 +49,11 @@ itself, but instead just calls your more complex function, perhaps with
 simplified arguments.
 
 > Note, you will also see all of this code on GitHub at
-https://github.com/IBAHCM/practicalA5 if you want to look at it there instead,
+https://github.com/SBOHVM/practicalA5 if you want to look at it there instead,
 or you can install it locally on your computer using
-`devtools::install_github("IBAHCM/practicalA5")` and play with the functions. Or
+`devtools::install_github("SBOHVM/practicalA5")` and play with the functions. Or
 you can download it by cloning the git repo at
-`https://github.com/IBAHCM/practicalA5.git`.
+`https://github.com/SBOHVM/practicalA5.git`.
 
 ## Functions
 
