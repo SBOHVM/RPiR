@@ -8,8 +8,8 @@
 <meta name="description" content="RPiR">
 <title>Debugging • RPiR</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Debugging">
 <meta property="og:description" content="RPiR">
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../../index.html">RPiR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.75.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.76.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,13 +162,13 @@
   </a>
 </li>
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/IBAHCM/RPiR/discussions">
+  <a class="external-link nav-link" href="https://github.com/SBOHVM/RPiR/discussions">
     <span class="far fa far fa-comments"></span>
      
   </a>
 </li>
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/IBAHCM/RPiR/">
+  <a class="external-link nav-link" href="https://github.com/SBOHVM/RPiR/">
     <span class="fab fa fab fa-github"></span>
      
   </a>
@@ -183,10 +183,10 @@
 
 
 <script src="debugging_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Debugging</h1>
             
-            <h4 data-toc-skip class="date">April 01 2022</h4>
+            <h4 data-toc-skip class="date">November 16 2022</h4>
       
       
       <div class="d-none name"><code>debugging.Rmd</code></div>
@@ -215,14 +215,14 @@
 <p>If your code / function is short, it can be helpful to run the code line by line, viewing constructed objects as you go and confirming they match what is expected. This can be done by highlighting individual objects or lines of code and pressing <code>Command</code> + <code>Enter</code> on a Mac (<code>Ctrl</code> + <code>Enter</code> on Windows).</p>
 <p>If your code is more complex – if you have a number of functions that call on each other for example – then running your code line by line might be too confusing. In this case you might want to try inserting <code><a href="https://rdrr.io/r/base/print.html" class="external-link">print()</a></code> or <code><a href="https://rdrr.io/r/utils/str.html" class="external-link">str()</a></code> statements at key points in your code. This is especially useful if you have some idea where the error is occurring! This can be done by calling <code><a href="https://rdrr.io/r/base/traceback.html" class="external-link">traceback()</a></code> immediately after an error occurs.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">a</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span>
-<span class="va">b</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">a</span><span class="op">(</span><span class="va">x</span><span class="op">)</span>
-
-<span class="fu">b</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## Error in a(x): object 'y' not found</span></code></pre>
+<code class="sourceCode R"><span><span class="va">a</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="va">x</span> <span class="op">+</span> <span class="va">y</span></span>
+<span><span class="va">b</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="fu">a</span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">b</span><span class="op">(</span><span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Error in a(x): object 'y' not found</span></span></code></pre>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/traceback.html" class="external-link">traceback</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<pre><code><span class="co">## No traceback available</span></code></pre>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/traceback.html" class="external-link">traceback</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## No traceback available</span></span></code></pre>
 <p>This function prints a list of functions (calls) that have lead to the error being triggered. This list is called the call stack (or stack trace).</p>
 </div>
 <div class="section level2">
@@ -264,12 +264,12 @@
 <span id="cb5-12"><a href="#cb5-12"></a>}</span>
 <span id="cb5-13"><a href="#cb5-13"></a></span>
 <span id="cb5-14"><a href="#cb5-14"></a><span class="kw">calculate</span>(<span class="dv">2</span>)</span></code></pre></div>
-<pre><code><span class="co">## Error in multiplby8(result): could not find function "multiplby8"</span></code></pre>
+<pre><code><span><span class="co">## Error in multiplby8(result): could not find function "multiplby8"</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints" role="tabpanel" aria-labelledby="hints-tab">
 
 <p>In this problem, R couldn’t find the function <code>multiplby8()</code>:</p>
-<pre><code><span class="co">## Error in multiplby8(result): could not find function "multiplby8"</span></code></pre>
+<pre><code><span><span class="co">## Error in multiplby8(result): could not find function "multiplby8"</span></span></code></pre>
 <p>The function <code>calculate()</code> calls <code>add2()</code>, which itself calls <code>multiplby8()</code>, which doesn’t exist!</p>
 </div>
 <div class="tab-pane" id="solution" role="tabpanel" aria-labelledby="solution-tab">
@@ -288,7 +288,7 @@
 <span id="cb8-12"><a href="#cb8-12"></a>}</span>
 <span id="cb8-13"><a href="#cb8-13"></a></span>
 <span id="cb8-14"><a href="#cb8-14"></a><span class="kw">calculate</span>(<span class="dv">2</span>)</span></code></pre></div>
-<pre><code><span class="co">## [1] 32</span></code></pre>
+<pre><code><span><span class="co">## [1] 32</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -336,17 +336,17 @@
 <span id="cb10-24"><a href="#cb10-24"></a>  <span class="kw">print</span>(msg)</span>
 <span id="cb10-25"><a href="#cb10-25"></a></span>
 <span id="cb10-26"><a href="#cb10-26"></a><span class="er">}</span></span></code></pre></div>
-<pre><code><span class="co">## Error: &lt;text&gt;:18:2: unexpected '}'</span>
-<span class="co">## 17:     </span>
-<span class="co">## 18:  }</span>
-<span class="co">##      ^</span></code></pre>
+<pre><code><span><span class="co">## Error: &lt;text&gt;:18:2: unexpected '}'</span></span>
+<span><span class="co">## 17:     </span></span>
+<span><span class="co">## 18:  }</span></span>
+<span><span class="co">##      ^</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-1" role="tabpanel" aria-labelledby="hints-1-tab">
 
-<pre><code><span class="co">## Error: &lt;text&gt;:18:2: unexpected '}'</span>
-<span class="co">## 17:     </span>
-<span class="co">## 18:  }</span>
-<span class="co">##      ^</span></code></pre>
+<pre><code><span><span class="co">## Error: &lt;text&gt;:18:2: unexpected '}'</span></span>
+<span><span class="co">## 17:     </span></span>
+<span><span class="co">## 18:  }</span></span>
+<span><span class="co">##      ^</span></span></code></pre>
 <p>There are too many brackets here. It’s easier to see which opening and closing brackets match by highlighting the lines (or pressing <code>Command</code> + <code>A</code> on a Mac / <code>Ctrl</code> + <code>A</code> on Windows), then using the Reindent Lines shortcut (in the menu bar, select Code, then Reindent Lines; or pressing <code>Command</code> + <code>I</code> on a Mac / <code>Ctrl</code> + <code>I</code> on Windows).</p>
 <p>There are two extra curly brackets on lines 10 and 12.</p>
 <p>To make the code easier to read, even more curly brackets can be removed. Since both the contents of the <code>for</code> loop and the contents of the <code>else</code> statement comprise only a single line.</p>
@@ -373,9 +373,9 @@
 <span id="cb13-18"><a href="#cb13-18"></a>  <span class="kw">print</span>(msg)</span>
 <span id="cb13-19"><a href="#cb13-19"></a>  </span>
 <span id="cb13-20"><a href="#cb13-20"></a>}</span></code></pre></div>
-<pre><code><span class="co">## [1] "Cady Meeooooww!"</span>
-<span class="co">## [1] "Kitten Meeooooww!"</span>
-<span class="co">## [1] "Cleo Pew! Pew!"</span></code></pre>
+<pre><code><span><span class="co">## [1] "Cady Meeooooww!"</span></span>
+<span><span class="co">## [1] "Kitten Meeooooww!"</span></span>
+<span><span class="co">## [1] "Cleo Pew! Pew!"</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -421,18 +421,18 @@
 <span id="cb15-22"><a href="#cb15-22"></a>}</span>
 <span id="cb15-23"><a href="#cb15-23"></a></span>
 <span id="cb15-24"><a href="#cb15-24"></a><span class="kw">countdown</span>(<span class="dv">3</span>)</span></code></pre></div>
-<pre><code><span class="co">## Error: &lt;text&gt;:16:20: unexpected '='</span>
-<span class="co">## 15:       </span>
-<span class="co">## 16:       if (timestep =</span>
-<span class="co">##                        ^</span></code></pre>
+<pre><code><span><span class="co">## Error: &lt;text&gt;:16:20: unexpected '='</span></span>
+<span><span class="co">## 15:       </span></span>
+<span><span class="co">## 16:       if (timestep =</span></span>
+<span><span class="co">##                        ^</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-2" role="tabpanel" aria-labelledby="hints-2-tab">
 
 <p>As the error stated, R has found an unexpected <code>=</code>:</p>
-<pre><code><span class="co">## Error: &lt;text&gt;:16:20: unexpected '='</span>
-<span class="co">## 15:       </span>
-<span class="co">## 16:       if (timestep =</span>
-<span class="co">##                        ^</span></code></pre>
+<pre><code><span><span class="co">## Error: &lt;text&gt;:16:20: unexpected '='</span></span>
+<span><span class="co">## 15:       </span></span>
+<span><span class="co">## 16:       if (timestep =</span></span>
+<span><span class="co">##                        ^</span></span></code></pre>
 <p>Here, the code stops after hitting the first error. That’s because of the way this website is generated. In RStudio, a number of <code>unexpected '}' in ...</code> errors follow this. The number of errors here might seem intimidating, but the important thing to note is that after we fix the first one, the remaining three will cease to occur. It’s very important, therefore, to tackle errors in sequence.</p>
 <p>So, returning to the unexpected <code>=</code>… the only <code>=</code> can be found on line 19. Now, recall that <code>if</code> statements are always followed by a condition. That is, a conditional test that results in <code>TRUE</code> or <code>FALSE</code>.</p>
 </div>
@@ -462,10 +462,10 @@
 <span id="cb18-22"><a href="#cb18-22"></a>}</span>
 <span id="cb18-23"><a href="#cb18-23"></a></span>
 <span id="cb18-24"><a href="#cb18-24"></a><span class="kw">countdown</span>(<span class="dv">3</span>)</span></code></pre></div>
-<pre><code><span class="co">## [1] 3</span>
-<span class="co">## [1] 2</span>
-<span class="co">## [1] 1</span>
-<span class="co">## [1] "Blast off!"</span></code></pre>
+<pre><code><span><span class="co">## [1] 3</span></span>
+<span><span class="co">## [1] 2</span></span>
+<span><span class="co">## [1] 1</span></span>
+<span><span class="co">## [1] "Blast off!"</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -494,12 +494,12 @@
 <span id="cb20-4"><a href="#cb20-4"></a>}</span>
 <span id="cb20-5"><a href="#cb20-5"></a></span>
 <span id="cb20-6"><a href="#cb20-6"></a><span class="kw">displacement</span>(<span class="dv">10</span>, <span class="dv">18</span>)</span></code></pre></div>
-<pre><code><span class="co">## Error in displacement(10, 18): object 'initial_velocity' not found</span></code></pre>
+<pre><code><span><span class="co">## Error in displacement(10, 18): object 'initial_velocity' not found</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-3" role="tabpanel" aria-labelledby="hints-3-tab">
 
 <p>Here, an error is generated on line 3 when R tries to multiply <code>initial_velocity</code> by <code>time</code>, but can’t find an <code>initial_velocity</code> object:</p>
-<pre><code><span class="co">## Error in displacement(10, 18): object 'initial_velocity' not found</span></code></pre>
+<pre><code><span><span class="co">## Error in displacement(10, 18): object 'initial_velocity' not found</span></span></code></pre>
 <p>If an object is not defined earlier in the function, then it must be passed as an argument. It can’t just magically appear out of thin air!</p>
 </div>
 <div class="tab-pane" id="solution-3" role="tabpanel" aria-labelledby="solution-3-tab">
@@ -510,7 +510,7 @@
 <span id="cb23-4"><a href="#cb23-4"></a>}</span>
 <span id="cb23-5"><a href="#cb23-5"></a></span>
 <span id="cb23-6"><a href="#cb23-6"></a><span class="kw">displacement</span>(<span class="dv">10</span>, <span class="dv">18</span>)</span></code></pre></div>
-<pre><code><span class="co">## [1] 1620</span></code></pre>
+<pre><code><span><span class="co">## [1] 1620</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -553,16 +553,16 @@
 <span id="cb25-19"><a href="#cb25-19"></a>  <span class="kw">checker</span>(i)</span>
 <span id="cb25-20"><a href="#cb25-20"></a></span>
 <span id="cb25-21"><a href="#cb25-21"></a>}</span></code></pre></div>
-<pre><code><span class="co">## [1] "Small number"</span>
-<span class="co">## [1] "Small number"</span></code></pre>
-<pre><code><span class="co">## Error in if (value &gt; 10) {: missing value where TRUE/FALSE needed</span></code></pre>
+<pre><code><span><span class="co">## [1] "Small number"</span></span>
+<span><span class="co">## [1] "Small number"</span></span></code></pre>
+<pre><code><span><span class="co">## Error in if (value &gt; 10) {: missing value where TRUE/FALSE needed</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-4" role="tabpanel" aria-labelledby="hints-4-tab">
 
 <p>Here, R is returning an error on the third iteration of the <code>for</code> loop:</p>
-<pre><code><span class="co">## [1] "Small number"</span>
-<span class="co">## [1] "Small number"</span></code></pre>
-<pre><code><span class="co">## Error in if (value &gt; 10) {: missing value where TRUE/FALSE needed</span></code></pre>
+<pre><code><span><span class="co">## [1] "Small number"</span></span>
+<span><span class="co">## [1] "Small number"</span></span></code></pre>
+<pre><code><span><span class="co">## Error in if (value &gt; 10) {: missing value where TRUE/FALSE needed</span></span></code></pre>
 <p>There if an error in <code>if (value &gt; 10)</code> because a <code>TRUE/FALSE</code> value is expected. In this case, <code>checker()</code> is trying to determine whether the <code>value</code>, <code>NA</code>, is greater than 10. Since <code>NA &gt; 10</code> returns <code>NA</code> and <code>if</code> <code>else</code> statements only accept boolean values, an error is generated.</p>
 </div>
 <div class="tab-pane" id="solution-4" role="tabpanel" aria-labelledby="solution-4-tab">
@@ -593,10 +593,10 @@
 <span id="cb30-23"><a href="#cb30-23"></a>  <span class="kw">checker</span>(i)</span>
 <span id="cb30-24"><a href="#cb30-24"></a></span>
 <span id="cb30-25"><a href="#cb30-25"></a>}</span></code></pre></div>
-<pre><code><span class="co">## [1] "Small number"</span>
-<span class="co">## [1] "Small number"</span>
-<span class="co">## [1] "Not a number"</span>
-<span class="co">## [1] "Big number"</span></code></pre>
+<pre><code><span><span class="co">## [1] "Small number"</span></span>
+<span><span class="co">## [1] "Small number"</span></span>
+<span><span class="co">## [1] "Not a number"</span></span>
+<span><span class="co">## [1] "Big number"</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -639,55 +639,47 @@
 <span id="cb32-19"><a href="#cb32-19"></a></span>
 <span id="cb32-20"><a href="#cb32-20"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">27</span>, <span class="dv">15</span>)</span>
 <span id="cb32-21"><a href="#cb32-21"></a><span class="kw">explode</span>(vector)</span></code></pre></div>
-<pre><code><span class="co">## Warning in if (value &gt; 11) {: the condition has length &gt; 1 and only the first</span>
-<span class="co">## element will be used</span></code></pre>
-<pre><code><span class="co">## Warning in if (value == 11) {: the condition has length &gt; 1 and only the first</span>
-<span class="co">## element will be used</span></code></pre>
-<pre><code><span class="co">## [1]  3  5 12 28 16</span></code></pre>
+<pre><code><span><span class="co">## Error in if (value &gt; 11) {: the condition has length &gt; 1</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-5" role="tabpanel" aria-labelledby="hints-5-tab">
 
 <p>Here we have a warning that has been triggered by <code>if (value &gt; 11)</code>. In this case, it’s particularly dangerous because a <code>Warning</code> doesn’t stop your code like an <code>Error</code> does, and here, erroneous values are returned!</p>
-<pre><code><span class="co">## Warning in if (value &gt; 11) {: the condition has length &gt; 1 and only the first</span>
-<span class="co">## element will be used</span></code></pre>
-<pre><code><span class="co">## Warning in if (value == 11) {: the condition has length &gt; 1 and only the first</span>
-<span class="co">## element will be used</span></code></pre>
-<pre><code><span class="co">## [1]  3  5 12 28 16</span></code></pre>
+<pre><code><span><span class="co">## Error in if (value &gt; 11) {: the condition has length &gt; 1</span></span></code></pre>
 <p>The warnings are triggered on lines 3 and 7, where <code>vector</code> (a five element vector) is passed into <code>explode()</code> as the <code>value</code> argument.</p>
 <p>The problem is that the condition (<code>if (condition)</code>) must have a length of 1 and therefore only the first element of the vector is being used in the comparison. That is, <code>value</code> is input as <code>c(2, 4, 11, 27, 15)</code>, but the condition <code>value &gt; 11</code> tests on 2, returning <code>FALSE</code>. Then the condition <code>value == 11</code> tests on 2, again returning <code>FALSE</code>. So then <code>output &lt;- value + 1</code> returns <code>c(3, 5, 12, 28, 16)</code>.</p>
 </div>
 <div class="tab-pane" id="solution-5" role="tabpanel" aria-labelledby="solution-5-tab">
 
 <p>The solution here is to either (1) ensure the function can only take a single input value; or (2) wrap the <code>if</code> <code>else</code> statements in a for loop, so that each element of the vector can be checked and transformed individually. Here we do the former:</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>explode &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
-<span id="cb39-2"><a href="#cb39-2"></a>  </span>
-<span id="cb39-3"><a href="#cb39-3"></a>  <span class="cf">if</span> (<span class="kw">length</span>(value) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)                   <span class="co"># add a check</span></span>
-<span id="cb39-4"><a href="#cb39-4"></a>    <span class="kw">stop</span>(<span class="st">"Input must be a single value"</span>)   <span class="co"># here</span></span>
-<span id="cb39-5"><a href="#cb39-5"></a>  </span>
-<span id="cb39-6"><a href="#cb39-6"></a>  <span class="cf">if</span> (value <span class="op">&gt;</span><span class="st"> </span><span class="dv">11</span>) {</span>
-<span id="cb39-7"><a href="#cb39-7"></a>    </span>
-<span id="cb39-8"><a href="#cb39-8"></a>    output &lt;-<span class="st"> </span><span class="ot">NA</span></span>
-<span id="cb39-9"><a href="#cb39-9"></a>    </span>
-<span id="cb39-10"><a href="#cb39-10"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="op">==</span><span class="st"> </span><span class="dv">11</span>) {</span>
-<span id="cb39-11"><a href="#cb39-11"></a>    </span>
-<span id="cb39-12"><a href="#cb39-12"></a>    output &lt;-<span class="st"> </span><span class="dv">0</span></span>
-<span id="cb39-13"><a href="#cb39-13"></a>    </span>
-<span id="cb39-14"><a href="#cb39-14"></a>  } <span class="cf">else</span> {</span>
-<span id="cb39-15"><a href="#cb39-15"></a>    </span>
-<span id="cb39-16"><a href="#cb39-16"></a>    output &lt;-<span class="st"> </span>value <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
-<span id="cb39-17"><a href="#cb39-17"></a>  </span>
-<span id="cb39-18"><a href="#cb39-18"></a>  }</span>
-<span id="cb39-19"><a href="#cb39-19"></a>  </span>
-<span id="cb39-20"><a href="#cb39-20"></a>  output</span>
-<span id="cb39-21"><a href="#cb39-21"></a>}</span>
-<span id="cb39-22"><a href="#cb39-22"></a></span>
-<span id="cb39-23"><a href="#cb39-23"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">27</span>, <span class="dv">15</span>)</span>
-<span id="cb39-24"><a href="#cb39-24"></a></span>
-<span id="cb39-25"><a href="#cb39-25"></a><span class="cf">for</span> (i <span class="cf">in</span> vector) {                        <span class="co"># and loop</span></span>
-<span id="cb39-26"><a href="#cb39-26"></a>  </span>
-<span id="cb39-27"><a href="#cb39-27"></a>  <span class="kw">explode</span>(i)                               <span class="co"># through the</span></span>
-<span id="cb39-28"><a href="#cb39-28"></a>  </span>
-<span id="cb39-29"><a href="#cb39-29"></a>}                                          <span class="co"># vector here</span></span></code></pre></div>
+<div class="sourceCode" id="cb35"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a>explode &lt;-<span class="st"> </span><span class="cf">function</span>(value) {</span>
+<span id="cb35-2"><a href="#cb35-2"></a>  </span>
+<span id="cb35-3"><a href="#cb35-3"></a>  <span class="cf">if</span> (<span class="kw">length</span>(value) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>)                   <span class="co"># add a check</span></span>
+<span id="cb35-4"><a href="#cb35-4"></a>    <span class="kw">stop</span>(<span class="st">"Input must be a single value"</span>)   <span class="co"># here</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>  </span>
+<span id="cb35-6"><a href="#cb35-6"></a>  <span class="cf">if</span> (value <span class="op">&gt;</span><span class="st"> </span><span class="dv">11</span>) {</span>
+<span id="cb35-7"><a href="#cb35-7"></a>    </span>
+<span id="cb35-8"><a href="#cb35-8"></a>    output &lt;-<span class="st"> </span><span class="ot">NA</span></span>
+<span id="cb35-9"><a href="#cb35-9"></a>    </span>
+<span id="cb35-10"><a href="#cb35-10"></a>  } <span class="cf">else</span> <span class="cf">if</span> (value <span class="op">==</span><span class="st"> </span><span class="dv">11</span>) {</span>
+<span id="cb35-11"><a href="#cb35-11"></a>    </span>
+<span id="cb35-12"><a href="#cb35-12"></a>    output &lt;-<span class="st"> </span><span class="dv">0</span></span>
+<span id="cb35-13"><a href="#cb35-13"></a>    </span>
+<span id="cb35-14"><a href="#cb35-14"></a>  } <span class="cf">else</span> {</span>
+<span id="cb35-15"><a href="#cb35-15"></a>    </span>
+<span id="cb35-16"><a href="#cb35-16"></a>    output &lt;-<span class="st"> </span>value <span class="op">+</span><span class="st"> </span><span class="dv">1</span></span>
+<span id="cb35-17"><a href="#cb35-17"></a>  </span>
+<span id="cb35-18"><a href="#cb35-18"></a>  }</span>
+<span id="cb35-19"><a href="#cb35-19"></a>  </span>
+<span id="cb35-20"><a href="#cb35-20"></a>  output</span>
+<span id="cb35-21"><a href="#cb35-21"></a>}</span>
+<span id="cb35-22"><a href="#cb35-22"></a></span>
+<span id="cb35-23"><a href="#cb35-23"></a>vector &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>, <span class="dv">11</span>, <span class="dv">27</span>, <span class="dv">15</span>)</span>
+<span id="cb35-24"><a href="#cb35-24"></a></span>
+<span id="cb35-25"><a href="#cb35-25"></a><span class="cf">for</span> (i <span class="cf">in</span> vector) {                        <span class="co"># and loop</span></span>
+<span id="cb35-26"><a href="#cb35-26"></a>  </span>
+<span id="cb35-27"><a href="#cb35-27"></a>  <span class="kw">explode</span>(i)                               <span class="co"># through the</span></span>
+<span id="cb35-28"><a href="#cb35-28"></a>  </span>
+<span id="cb35-29"><a href="#cb35-29"></a>}                                          <span class="co"># vector here</span></span></code></pre></div>
 </div>
 </div>
 </div>
@@ -709,47 +701,47 @@
 <div class="active  tab-pane" id="problem-6" role="tabpanel" aria-labelledby="problem-6-tab">
 
 <p>The <code>quadratic()</code> function is used to solve quadratic equations.</p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</span>
-<span id="cb40-2"><a href="#cb40-2"></a>  </span>
-<span id="cb40-3"><a href="#cb40-3"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>4ac)</span>
-<span id="cb40-4"><a href="#cb40-4"></a>  solution1 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span>2a</span>
-<span id="cb40-5"><a href="#cb40-5"></a>  solution2 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span>2a</span>
-<span id="cb40-6"><a href="#cb40-6"></a>  <span class="kw">list</span>(solution1 solution2)</span>
-<span id="cb40-7"><a href="#cb40-7"></a>  </span>
-<span id="cb40-8"><a href="#cb40-8"></a>}</span>
-<span id="cb40-9"><a href="#cb40-9"></a></span>
-<span id="cb40-10"><a href="#cb40-10"></a><span class="kw">quadratic</span>(<span class="dv">1</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
-<pre><code><span class="co">## Error: &lt;text&gt;:3:23: unexpected symbol</span>
-<span class="co">## 2:   </span>
-<span class="co">## 3:   root &lt;- sqrt(b^2 - 4ac</span>
-<span class="co">##                          ^</span></code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</span>
+<span id="cb36-2"><a href="#cb36-2"></a>  </span>
+<span id="cb36-3"><a href="#cb36-3"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span>4ac)</span>
+<span id="cb36-4"><a href="#cb36-4"></a>  solution1 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span>2a</span>
+<span id="cb36-5"><a href="#cb36-5"></a>  solution2 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span>2a</span>
+<span id="cb36-6"><a href="#cb36-6"></a>  <span class="kw">list</span>(solution1 solution2)</span>
+<span id="cb36-7"><a href="#cb36-7"></a>  </span>
+<span id="cb36-8"><a href="#cb36-8"></a>}</span>
+<span id="cb36-9"><a href="#cb36-9"></a></span>
+<span id="cb36-10"><a href="#cb36-10"></a><span class="kw">quadratic</span>(<span class="dv">1</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
+<pre><code><span><span class="co">## Error: &lt;text&gt;:3:23: unexpected symbol</span></span>
+<span><span class="co">## 2:   </span></span>
+<span><span class="co">## 3:   root &lt;- sqrt(b^2 - 4ac</span></span>
+<span><span class="co">##                          ^</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-6" role="tabpanel" aria-labelledby="hints-6-tab">
 
-<pre><code><span class="co">## Error: &lt;text&gt;:3:23: unexpected symbol</span>
-<span class="co">## 2:   </span>
-<span class="co">## 3:   root &lt;- sqrt(b^2 - 4ac</span>
-<span class="co">##                          ^</span></code></pre>
+<pre><code><span><span class="co">## Error: &lt;text&gt;:3:23: unexpected symbol</span></span>
+<span><span class="co">## 2:   </span></span>
+<span><span class="co">## 3:   root &lt;- sqrt(b^2 - 4ac</span></span>
+<span><span class="co">##                          ^</span></span></code></pre>
 <p>An unexpected symbol can often be avoided by keeping good code hygiene and making sure everything is neat and tidy. A good way to do this is to make good use of white space (blank lines between sections of code) as well as making a habit of selecting all of your code (<code>Command</code> + <code>A</code> on Mac / <code>Ctrl</code> + <code>A</code> on Windows), then reindenting your lines (<code>Command</code> + <code>I</code> on Mac / <code>Ctrl</code> + <code>I</code> on Windows).</p>
 <p>In this case, that won’t help because each error occurs on a single line. There are 4 syntax errors – errors in the grammar of code – in total, see if you can find them all.</p>
 </div>
 <div class="tab-pane" id="solution-6" role="tabpanel" aria-labelledby="solution-6-tab">
 
-<div class="sourceCode" id="cb43"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</span>
-<span id="cb43-2"><a href="#cb43-2"></a>  </span>
-<span id="cb43-3"><a href="#cb43-3"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>a <span class="op">*</span><span class="st"> </span>c)    <span class="co"># here,</span></span>
-<span id="cb43-4"><a href="#cb43-4"></a>  solution1 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a   <span class="co"># here,</span></span>
-<span id="cb43-5"><a href="#cb43-5"></a>  solution2 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a   <span class="co"># here,</span></span>
-<span id="cb43-6"><a href="#cb43-6"></a>  <span class="kw">list</span>(solution1, solution2)       <span class="co"># and here!</span></span>
-<span id="cb43-7"><a href="#cb43-7"></a>  </span>
-<span id="cb43-8"><a href="#cb43-8"></a>}</span>
-<span id="cb43-9"><a href="#cb43-9"></a></span>
-<span id="cb43-10"><a href="#cb43-10"></a><span class="kw">quadratic</span>(<span class="dv">1</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
-<pre><code><span class="co">## [[1]]</span>
-<span class="co">## [1] 5.5</span>
-<span class="co">## </span>
-<span class="co">## [[2]]</span>
-<span class="co">## [1] 4.5</span></code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1"></a>quadratic &lt;-<span class="st"> </span><span class="cf">function</span>(a, b, c) {</span>
+<span id="cb39-2"><a href="#cb39-2"></a>  </span>
+<span id="cb39-3"><a href="#cb39-3"></a>  root &lt;-<span class="st"> </span><span class="kw">sqrt</span>(b<span class="op">^</span><span class="dv">2</span> <span class="op">-</span><span class="st"> </span><span class="dv">4</span> <span class="op">*</span><span class="st"> </span>a <span class="op">*</span><span class="st"> </span>c)    <span class="co"># here,</span></span>
+<span id="cb39-4"><a href="#cb39-4"></a>  solution1 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">+</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a   <span class="co"># here,</span></span>
+<span id="cb39-5"><a href="#cb39-5"></a>  solution2 &lt;-<span class="st"> </span><span class="op">-</span>b <span class="op">-</span><span class="st"> </span>root <span class="op">/</span><span class="st"> </span><span class="dv">2</span> <span class="op">*</span><span class="st"> </span>a   <span class="co"># here,</span></span>
+<span id="cb39-6"><a href="#cb39-6"></a>  <span class="kw">list</span>(solution1, solution2)       <span class="co"># and here!</span></span>
+<span id="cb39-7"><a href="#cb39-7"></a>  </span>
+<span id="cb39-8"><a href="#cb39-8"></a>}</span>
+<span id="cb39-9"><a href="#cb39-9"></a></span>
+<span id="cb39-10"><a href="#cb39-10"></a><span class="kw">quadratic</span>(<span class="dv">1</span>, <span class="dv">-5</span>, <span class="dv">6</span>)</span></code></pre></div>
+<pre><code><span><span class="co">## [[1]]</span></span>
+<span><span class="co">## [1] 5.5</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## [[2]]</span></span>
+<span><span class="co">## [1] 4.5</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -771,26 +763,26 @@
 <div class="active  tab-pane" id="problem-7" role="tabpanel" aria-labelledby="problem-7-tab">
 
 <p>There are no functions here. We only wish to add a new column to a dataframe.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
-<span id="cb45-2"><a href="#cb45-2"></a>                              <span class="st">"candyfloss pink"</span>, <span class="st">"quite a nice brown"</span>), </span>
-<span id="cb45-3"><a href="#cb45-3"></a>                   <span class="dt">number =</span> <span class="kw">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
-<span id="cb45-4"><a href="#cb45-4"></a></span>
-<span id="cb45-5"><a href="#cb45-5"></a>data<span class="op">$</span>time &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">2</span>)</span></code></pre></div>
-<pre><code><span class="co">## Error in `$&lt;-.data.frame`(`*tmp*`, time, value = c(0, 2, 4, 6, 8)): replacement has 5 rows, data has 6</span></code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
+<span id="cb41-2"><a href="#cb41-2"></a>                              <span class="st">"candyfloss pink"</span>, <span class="st">"quite a nice brown"</span>), </span>
+<span id="cb41-3"><a href="#cb41-3"></a>                   <span class="dt">number =</span> <span class="kw">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
+<span id="cb41-4"><a href="#cb41-4"></a></span>
+<span id="cb41-5"><a href="#cb41-5"></a>data<span class="op">$</span>time &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">2</span>)</span></code></pre></div>
+<pre><code><span><span class="co">## Error in `$&lt;-.data.frame`(`*tmp*`, time, value = c(0, 2, 4, 6, 8)): replacement has 5 rows, data has 6</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-7" role="tabpanel" aria-labelledby="hints-7-tab">
 
 <p>This error is a little difficult to read:</p>
-<pre><code><span class="co">## Error in `$&lt;-.data.frame`(`*tmp*`, time, value = c(0, 2, 4, 6, 8)): replacement has 5 rows, data has 6</span></code></pre>
+<pre><code><span><span class="co">## Error in `$&lt;-.data.frame`(`*tmp*`, time, value = c(0, 2, 4, 6, 8)): replacement has 5 rows, data has 6</span></span></code></pre>
 <p>The key point to note here is that the replacement has 5 rows but the data has 6… and the replacement here is <code>time</code>.</p>
 </div>
 <div class="tab-pane" id="solution-7" role="tabpanel" aria-labelledby="solution-7-tab">
 
-<div class="sourceCode" id="cb48"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
-<span id="cb48-2"><a href="#cb48-2"></a>                              <span class="st">"candyfloss pink"</span>, <span class="st">"quite a nice brown"</span>), </span>
-<span id="cb48-3"><a href="#cb48-3"></a>                   <span class="dt">number =</span> <span class="kw">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
-<span id="cb48-4"><a href="#cb48-4"></a></span>
-<span id="cb48-5"><a href="#cb48-5"></a>data<span class="op">$</span>time &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="fl">1.67</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb44"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a>data &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">colour =</span> <span class="kw">c</span>(<span class="st">"teal"</span>, <span class="st">"mustard yellow"</span>, <span class="st">"leaf green"</span>, <span class="st">"dark"</span>,</span>
+<span id="cb44-2"><a href="#cb44-2"></a>                              <span class="st">"candyfloss pink"</span>, <span class="st">"quite a nice brown"</span>), </span>
+<span id="cb44-3"><a href="#cb44-3"></a>                   <span class="dt">number =</span> <span class="kw">c</span>(<span class="dv">3328476</span>, <span class="dv">9832</span>, <span class="dv">23992611</span>, <span class="dv">213987</span>, <span class="dv">487621</span>, <span class="dv">6328974</span>))</span>
+<span id="cb44-4"><a href="#cb44-4"></a></span>
+<span id="cb44-5"><a href="#cb44-5"></a>data<span class="op">$</span>time &lt;-<span class="st"> </span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">9</span>, <span class="fl">1.67</span>)</span></code></pre></div>
 </div>
 </div>
 </div>
@@ -812,58 +804,58 @@
 <div class="active  tab-pane" id="problem-8" role="tabpanel" aria-labelledby="problem-8-tab">
 
 <p>The <code><a href="https://rdrr.io/r/base/force.html" class="external-link">force()</a></code> function calculates Newton’s second law of motion.</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1"></a>force &lt;-<span class="st"> </span><span class="cf">function</span>(mass, acceleration) {</span>
-<span id="cb49-2"><a href="#cb49-2"></a>  </span>
-<span id="cb49-3"><a href="#cb49-3"></a>  mass <span class="op">*</span><span class="st"> </span>acceleration</span>
-<span id="cb49-4"><a href="#cb49-4"></a>  </span>
-<span id="cb49-5"><a href="#cb49-5"></a>}</span>
-<span id="cb49-6"><a href="#cb49-6"></a></span>
-<span id="cb49-7"><a href="#cb49-7"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mass =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="dt">acceleration =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
-<span id="cb49-8"><a href="#cb49-8"></a></span>
-<span id="cb49-9"><a href="#cb49-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">nrow</span>(dat))) {</span>
-<span id="cb49-10"><a href="#cb49-10"></a>  </span>
-<span id="cb49-11"><a href="#cb49-11"></a>  mean[i] &lt;-<span class="st"> </span><span class="kw">force</span>(dat<span class="op">$</span>mass[i], dat<span class="op">$</span>acceleration[i])</span>
-<span id="cb49-12"><a href="#cb49-12"></a>  </span>
-<span id="cb49-13"><a href="#cb49-13"></a>}</span></code></pre></div>
-<pre><code><span class="co">## Error in mean[i] &lt;- force(dat$mass[i], dat$acceleration[i]): object of type 'closure' is not subsettable</span></code></pre>
-<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>mean</span></code></pre></div>
-<pre><code><span class="co">## function (x, ...) </span>
-<span class="co">## UseMethod("mean")</span>
-<span class="co">## &lt;bytecode: 0x7fc6096d17b8&gt;</span>
-<span class="co">## &lt;environment: namespace:base&gt;</span></code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a>force &lt;-<span class="st"> </span><span class="cf">function</span>(mass, acceleration) {</span>
+<span id="cb45-2"><a href="#cb45-2"></a>  </span>
+<span id="cb45-3"><a href="#cb45-3"></a>  mass <span class="op">*</span><span class="st"> </span>acceleration</span>
+<span id="cb45-4"><a href="#cb45-4"></a>  </span>
+<span id="cb45-5"><a href="#cb45-5"></a>}</span>
+<span id="cb45-6"><a href="#cb45-6"></a></span>
+<span id="cb45-7"><a href="#cb45-7"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mass =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="dt">acceleration =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
+<span id="cb45-8"><a href="#cb45-8"></a></span>
+<span id="cb45-9"><a href="#cb45-9"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">nrow</span>(dat))) {</span>
+<span id="cb45-10"><a href="#cb45-10"></a>  </span>
+<span id="cb45-11"><a href="#cb45-11"></a>  mean[i] &lt;-<span class="st"> </span><span class="kw">force</span>(dat<span class="op">$</span>mass[i], dat<span class="op">$</span>acceleration[i])</span>
+<span id="cb45-12"><a href="#cb45-12"></a>  </span>
+<span id="cb45-13"><a href="#cb45-13"></a>}</span></code></pre></div>
+<pre><code><span><span class="co">## Error in mean[i] &lt;- force(dat$mass[i], dat$acceleration[i]): object of type 'closure' is not subsettable</span></span></code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>mean</span></code></pre></div>
+<pre><code><span><span class="co">## function (x, ...) </span></span>
+<span><span class="co">## UseMethod("mean")</span></span>
+<span><span class="co">## &lt;bytecode: 0x7f8c91e792b8&gt;</span></span>
+<span><span class="co">## &lt;environment: namespace:base&gt;</span></span></code></pre>
 </div>
 <div class="tab-pane" id="hints-8" role="tabpanel" aria-labelledby="hints-8-tab">
 
 <p>This is a tricky one that might require an internet search (for Stack Overflow) to solve.</p>
 <p>Reading the error message, we know that the error is triggered on line 11 by <code>mean[i] &lt;- force(dat$mass[i], dat$acceleration[i])</code>:</p>
-<pre><code><span class="co">## Error in mean[i] &lt;- force(dat$mass[i], dat$acceleration[i]): object of type 'closure' is not subsettable</span></code></pre>
-<pre><code><span class="co">## function (x, ...) </span>
-<span class="co">## UseMethod("mean")</span>
-<span class="co">## &lt;bytecode: 0x7fc6096d17b8&gt;</span>
-<span class="co">## &lt;environment: namespace:base&gt;</span></code></pre>
+<pre><code><span><span class="co">## Error in mean[i] &lt;- force(dat$mass[i], dat$acceleration[i]): object of type 'closure' is not subsettable</span></span></code></pre>
+<pre><code><span><span class="co">## function (x, ...) </span></span>
+<span><span class="co">## UseMethod("mean")</span></span>
+<span><span class="co">## &lt;bytecode: 0x7f8c91e792b8&gt;</span></span>
+<span><span class="co">## &lt;environment: namespace:base&gt;</span></span></code></pre>
 <p>The problem is that “object of type ‘closure’ is not subsettable”. What does this mean?</p>
 </div>
 <div class="tab-pane" id="solution-8" role="tabpanel" aria-labelledby="solution-8-tab">
 
-<div class="sourceCode" id="cb55"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a>force &lt;-<span class="st"> </span><span class="cf">function</span>(mass, acceleration) {</span>
-<span id="cb55-2"><a href="#cb55-2"></a>  </span>
-<span id="cb55-3"><a href="#cb55-3"></a>  mass <span class="op">*</span><span class="st"> </span>acceleration</span>
-<span id="cb55-4"><a href="#cb55-4"></a>  </span>
-<span id="cb55-5"><a href="#cb55-5"></a>}</span>
-<span id="cb55-6"><a href="#cb55-6"></a></span>
-<span id="cb55-7"><a href="#cb55-7"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mass =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="dt">acceleration =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
-<span id="cb55-8"><a href="#cb55-8"></a></span>
-<span id="cb55-9"><a href="#cb55-9"></a>results &lt;-<span class="st"> </span><span class="kw">c</span>()   <span class="co"># define results object first and don't give an object</span></span>
-<span id="cb55-10"><a href="#cb55-10"></a>                 <span class="co"># the same name as a function!</span></span>
-<span id="cb55-11"><a href="#cb55-11"></a></span>
-<span id="cb55-12"><a href="#cb55-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">nrow</span>(dat))) {</span>
-<span id="cb55-13"><a href="#cb55-13"></a>  </span>
-<span id="cb55-14"><a href="#cb55-14"></a>  results[i] &lt;-<span class="st"> </span><span class="kw">force</span>(dat<span class="op">$</span>mass[i], dat<span class="op">$</span>acceleration[i])</span>
-<span id="cb55-15"><a href="#cb55-15"></a>  </span>
-<span id="cb55-16"><a href="#cb55-16"></a>}</span>
-<span id="cb55-17"><a href="#cb55-17"></a></span>
-<span id="cb55-18"><a href="#cb55-18"></a>results</span></code></pre></div>
-<pre><code><span class="co">## [1]  600  920 1674</span></code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode numberSource r numberLines"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a>force &lt;-<span class="st"> </span><span class="cf">function</span>(mass, acceleration) {</span>
+<span id="cb51-2"><a href="#cb51-2"></a>  </span>
+<span id="cb51-3"><a href="#cb51-3"></a>  mass <span class="op">*</span><span class="st"> </span>acceleration</span>
+<span id="cb51-4"><a href="#cb51-4"></a>  </span>
+<span id="cb51-5"><a href="#cb51-5"></a>}</span>
+<span id="cb51-6"><a href="#cb51-6"></a></span>
+<span id="cb51-7"><a href="#cb51-7"></a>dat &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">mass =</span> <span class="kw">c</span>(<span class="dv">20</span>, <span class="dv">23</span>, <span class="dv">27</span>), <span class="dt">acceleration =</span> <span class="kw">c</span>(<span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">62</span>))</span>
+<span id="cb51-8"><a href="#cb51-8"></a></span>
+<span id="cb51-9"><a href="#cb51-9"></a>results &lt;-<span class="st"> </span><span class="kw">c</span>()   <span class="co"># define results object first and don't give an object</span></span>
+<span id="cb51-10"><a href="#cb51-10"></a>                 <span class="co"># the same name as a function!</span></span>
+<span id="cb51-11"><a href="#cb51-11"></a></span>
+<span id="cb51-12"><a href="#cb51-12"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="kw">seq_len</span>(<span class="kw">nrow</span>(dat))) {</span>
+<span id="cb51-13"><a href="#cb51-13"></a>  </span>
+<span id="cb51-14"><a href="#cb51-14"></a>  results[i] &lt;-<span class="st"> </span><span class="kw">force</span>(dat<span class="op">$</span>mass[i], dat<span class="op">$</span>acceleration[i])</span>
+<span id="cb51-15"><a href="#cb51-15"></a>  </span>
+<span id="cb51-16"><a href="#cb51-16"></a>}</span>
+<span id="cb51-17"><a href="#cb51-17"></a></span>
+<span id="cb51-18"><a href="#cb51-18"></a>results</span></code></pre></div>
+<pre><code><span><span class="co">## [1]  600  920 1674</span></span></code></pre>
 </div>
 </div>
 </div>
@@ -884,7 +876,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

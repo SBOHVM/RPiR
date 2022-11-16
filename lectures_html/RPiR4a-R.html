@@ -285,8 +285,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -294,16 +294,9 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -658,7 +651,7 @@ setwd(&quot;c:\a\b\c\d&quot;)</code></pre>
 <h2>Final comments</h2>
 <p>And finally:</p>
 <pre class="r"><code>install.packages(&quot;tibble&quot;)
-devtools::install_github(&quot;IBAHCM/RPiR&quot;)</code></pre>
+devtools::install_github(&quot;SBOHVM/RPiR&quot;)</code></pre>
 <p>This should be done before you run your code (and later we’ll show you how to make sure it is done as your code is downloaded), but your scripts should not try to install packages themselves. It’s enough that loading the library will fail if the code is run. It’s obvious what to do next if that happens.</p>
 </div>
 </div>

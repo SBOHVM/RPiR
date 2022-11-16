@@ -77,9 +77,9 @@ during the project work at the end of the course.
 
 First, create a new package called `githubusernameBCI` (replacing
 `githubusername` with your actual GitHub username) as a git repository
-connected to GitHub as a repo in the `IBAHCM` organisation. Remember that
+connected to GitHub as a repo in the `SBOHVM` organisation. Remember that
 a guide to creating packages on GitHub is available on the `RPiR` help pages
-[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html) if
+[here](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html) if
 you're not sure what to do.
 
 Generally, you would want to store the raw data from your work in the git
@@ -281,7 +281,7 @@ usethis::use_package("xxx")
 
 to add the `xxx` package to those *imported* by your package in the
 <span style="color: #dd1c77;">DESCRIPTION</span> file. See
-[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies)
+[here](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies)
 for further details. Commit these changes to the repo too, and push them to
 GitHub. **Note that you should not add your own (`githubusernameBCI`) package to
 the package dependencies of `githubusernameBCI`, because it is not a dependency
@@ -294,13 +294,13 @@ as our `RPiR` package), you need to use `usethis::use_dev_package()` instead of
 use:
 
 ```{R, eval = FALSE}
-usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR")
+usethis::use_dev_package("RPiR", remote = "SBOHVM/RPiR")
 ```
 
 where the `remote` argument is the organisation and repo name. In the project,
 when you are using your own data package in your new project package,
 you will need to do this by calling something like
-`usethis::use_dev_package("githubusernameBCI", remote = "IBAHCM/githubusernameBCI")`.
+`usethis::use_dev_package("githubusernameBCI", remote = "SBOHVM/githubusernameBCI")`.
 
 ## Tasks: documenting the package
 
@@ -310,7 +310,7 @@ information about you and the package, and you need to create a documentation
 file for the package in the <span style="color: #dd1c77;">R</span> folder so
 that `?githubusernameBCI` returns a description. You had this in the package for the third
 practical series, but you'll see details on how to do that 
-[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
+[here](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#package-documentation).
 
 Create a new file in the <span style="color: #dd1c77;">R</span> 
 folder -- I'm going to call it <span style="color: #dd1c77;">githubusernameBCI-package.R</span> 
@@ -358,7 +358,7 @@ Second, you need to document the data that you are providing in this package,
 by creating file(s) in the <span style="color: #dd1c77;">R</span> folder again.
 You'll find details on how to create the documentation
 [here](https://r-pkgs.org/data.html), or an abbreviated version in our guide
-[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-data).
+[here](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-data).
 
 Finally, build the documentation (using `devtools::document()`), and commit all
 of the changes to git.
@@ -399,5 +399,5 @@ data frames if you don't load the library.
 ## Sharing is caring
 
 Now give your subgroup partners access to the repo, and get them to install
-your package using `devtools::install_github("IBAHCM/githubusernameBCI")` (or
+your package using `devtools::install_github("SBOHVM/githubusernameBCI")` (or
 cloning the package and installing it directly if need be) and check it works.

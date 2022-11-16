@@ -8,8 +8,8 @@
 <meta name="description" content="RPiR">
 <title>Flow control • RPiR</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../../deps/bootstrap-5.1.0/bootstrap.min.css" rel="stylesheet">
-<script src="../../deps/bootstrap-5.1.0/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
+<script src="../../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="Flow control">
 <meta property="og:description" content="RPiR">
@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../../index.html">RPiR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.75.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.76.0</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -162,13 +162,13 @@
   </a>
 </li>
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/IBAHCM/RPiR/discussions">
+  <a class="external-link nav-link" href="https://github.com/SBOHVM/RPiR/discussions">
     <span class="far fa far fa-comments"></span>
      
   </a>
 </li>
 <li class="nav-item">
-  <a class="external-link nav-link" href="https://github.com/IBAHCM/RPiR/">
+  <a class="external-link nav-link" href="https://github.com/SBOHVM/RPiR/">
     <span class="fab fa fab fa-github"></span>
      
   </a>
@@ -183,10 +183,10 @@
 
 
 <script src="flow_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
-  <main id="main"><div class="page-header">
+  <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>Flow control</h1>
             
-            <h4 data-toc-skip class="date">April 01 2022</h4>
+            <h4 data-toc-skip class="date">November 16 2022</h4>
       
       
       <div class="d-none name"><code>flow.Rmd</code></div>
@@ -230,45 +230,45 @@
 </h2>
 <p>The <code>if</code> command allow us to perform a test, and if the result is <code>TRUE</code> run a block of R code (in curly brackets <code>{ ... }</code>). Optionally, if the test is <code>FALSE</code>, a different block of code can be run instead. This allows us to do a variety of things. To give a very simple example:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Maths works!"</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="co">#&gt; [1] "Maths works!"</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Maths works!"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "Maths works!"</span></span></code></pre></div>
 <p>This prints <code>"Maths works!"</code> because the test is <code>TRUE</code>, so the code block that follows is run. Whereas:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"At least 5."</span><span class="op">)</span>
-<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Less than 5."</span><span class="op">)</span>
-<span class="op">}</span>
-<span class="co">#&gt; [1] "Less than 5."</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"At least 5."</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"Less than 5."</span><span class="op">)</span></span>
+<span><span class="op">}</span></span>
+<span><span class="co">#&gt; [1] "Less than 5."</span></span></code></pre></div>
 <p>This prints <code>"Less than 5."</code> because the test was false, so R continues to the code block after the <code>else</code> statement. If there is no <code>else</code> statement, then no code is run, so:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"At least 5."</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="fl">2</span> <span class="op">&gt;=</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="st">"At least 5."</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>does nothing. We use <code>if</code> and <code>if ... else</code> statements throughout the helper functions and the example code you’ve been provided with. For instance:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gitlab.com/luke-tierney/codetools" class="external-link">codetools</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/codetools/man/findGlobals.html" class="external-link">findGlobals</a></span><span class="op">(</span><span class="va">plot_simple</span>, merge <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">variables</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span>
-  <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Function plot_simple() may not use global variable(s): "</span>,
-       <span class="fu"><a href="https://rdrr.io/pkg/codetools/man/findGlobals.html" class="external-link">findGlobals</a></span><span class="op">(</span><span class="va">plot_simple</span>, merge <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">variables</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://gitlab.com/luke-tierney/codetools" class="external-link">codetools</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/codetools/man/findGlobals.html" class="external-link">findGlobals</a></span><span class="op">(</span><span class="va">plot_simple</span>, merge <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">variables</span><span class="op">)</span> <span class="op">!=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw"><a href="https://rdrr.io/r/base/stop.html" class="external-link">stop</a></span><span class="op">(</span><span class="st">"Function plot_simple() may not use global variable(s): "</span>,</span>
+<span>       <span class="fu"><a href="https://rdrr.io/pkg/codetools/man/findGlobals.html" class="external-link">findGlobals</a></span><span class="op">(</span><span class="va">plot_simple</span>, merge <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span><span class="op">$</span><span class="va">variables</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>This checks whether <code>length(findGlobals(plot_simple, merge=FALSE)$variables)</code> is non-zero, which is to say whether the <code>variables</code> element of what is returned by <code>findGlobals(plot_simple, merge = FALSE)</code> is not of length zero, <em>i.e.</em> whether there are any global variables in the function <code>plot_simple</code>. If there are, then the contents of the curly brackets are run, <code>stop(...)</code> is called, and the code stops running. In fact, <code>plot_simple</code> has no global variables, so the code block is not run.</p>
 <p>In Practical 3-4 we provide a second example of an <code>if</code> statement, used to control code execution:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="va">first.graph</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">final.populations</span>,
-                   new.graph <span class="op">=</span> <span class="cn">TRUE</span>, 
-                   col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>susceptibles <span class="op">=</span> <span class="st">"green"</span>, infecteds <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
-  <span class="va">first.graph</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> 
-<span class="op">}</span> <span class="kw">else</span> <span class="op">{</span>
-  <span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">final.populations</span>,
-                   new.graph <span class="op">=</span> <span class="cn">FALSE</span>,
-                   col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>susceptibles <span class="op">=</span> <span class="st">"green"</span>, infecteds <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="va">first.graph</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">final.populations</span>,</span>
+<span>                   new.graph <span class="op">=</span> <span class="cn">TRUE</span>, </span>
+<span>                   col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>susceptibles <span class="op">=</span> <span class="st">"green"</span>, infecteds <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="va">first.graph</span> <span class="op">&lt;-</span> <span class="cn">FALSE</span> </span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">final.populations</span>,</span>
+<span>                   new.graph <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>                   col <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>susceptibles <span class="op">=</span> <span class="st">"green"</span>, infecteds <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code></pre></div>
 <p>This code tests whether the variable <code>first.graph</code> is <code>TRUE</code>. If it is, the following code block is run, and it plots a graph into a new graphics window and sets <code>first.graph</code> to <code>FALSE</code>. In the practical, this code is run inside a loop, and the next (and every subsequent) time it runs, <code>first.graph</code> is already <code>FALSE</code> so the code block following the <code>else</code> statement is run, and a plot is superimposed on the existing graphics window.</p>
 <p>We introduced these concepts in Lecture 5b. R Coder covers the basics of <code>if</code> statements <a href="https://r-coder.com/if-else-r" class="external-link">here</a>. R4DS seems to consider them too simple, but ironically they have <a href="https://adv-r.hadley.nz/control-flow.html" class="external-link">a chapter in Advanced R</a>; however, this contains a lot of advanced topics in flow control that are well beyond the scope of this course.</p>
 </div>
@@ -285,7 +285,7 @@
 
 <div class="pkgdown-footer-right">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
     </footer>

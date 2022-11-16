@@ -285,8 +285,8 @@ pre code {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -294,16 +294,9 @@ pre code {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -476,9 +469,9 @@ run_simple &lt;- function(step_function, latest.df, end.time, ...)
 <li>How many infections have occurred if there are 50 animals and there is a probability of infection of 0.1 for each one?</li>
 </ul>
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
-<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 2</code></pre>
 <pre class="r"><code>rbinom(1, 50, 0.1)</code></pre>
-<pre><code>## [1] 5</code></pre>
+<pre><code>## [1] 6</code></pre>
 </div>
 </div>
 

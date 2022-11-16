@@ -36,7 +36,7 @@ to work on after the end of the course should be completed in your own time.
 ## R packages and GitHub
 
 **Your work must be written as an R package using git and pushed to a GitHub 
-repository in the IBAHCM organisation as the last two practical series.**
+repository in the SBOHVM organisation as the last two practical series.**
 Please make your repository private and for this project don't add anyone as
 collaborators -- this project is done on your own to assess how much you have
 learned on the course. You must commit a change at least at the end of each
@@ -63,7 +63,7 @@ Remember a few things:
 ## Tasks
 
 1. Create an initial empty R package called **githubusernameDiversity** in
-   RStudio that uses git and is connected to a private repository in the IBAHCM
+   RStudio that uses git and is connected to a private repository in the SBOHVM
    organisation;
    - You will use this package for all of your remaining work in this project
 2. Update the <span style="color: #dd1c77;">DESCRIPTION</span> file with the
@@ -100,20 +100,20 @@ instance every time you need to add a new package dependency into your package.
 
 A quick note on adding dependencies to your package, though this is also covered
 in the packaging guide on the
-[RPiR website](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies).
+[RPiR website](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies).
 
 Note that for adding dependencies to your package, if you run this in the
 console:
 ```{R, eval = FALSE}
 usethis::use_package("ggplot2")
-usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR")
+usethis::use_dev_package("RPiR", remote = "SBOHVM/RPiR")
 ```
 it edits your <span style="color: #dd1c77;">DESCRIPTION</span> file to add the
 CRAN `ggplot2` package to your package's dependencies and the `RPiR` package in
-the IBAHCM organisation on GitHub to your package's dependencies as a package
+the SBOHVM organisation on GitHub to your package's dependencies as a package
 in development on GitHub. You may need to have already installed development
 packages in RStudio first to get this second command to work (using
-`devtools::install_github("IBAHCM/RPiR")` or `devtools::install()` locally). If
+`devtools::install_github("SBOHVM/RPiR")` or `devtools::install()` locally). If
 you then add the following to the documentation in the
 <span style="color: #dd1c77;">R</span> folder, this will mark the functions and
 data in those packages as usable by functions in your package:
