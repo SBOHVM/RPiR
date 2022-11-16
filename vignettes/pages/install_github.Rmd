@@ -145,5 +145,5 @@ usethis::git_sitrep()
 for more information.
 
 [RPiR]: https://github.com/SBOHVM/RPiR
-[registration]: https://github.com/SBOHVM/RPiR/discussions/categories/general/new
+[registration]: https://github.com/SBOHVM/RPiR/discussions/new?category=general
 [rstudio]: https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN
