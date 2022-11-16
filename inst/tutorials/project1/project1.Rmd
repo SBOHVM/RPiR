@@ -70,7 +70,7 @@ tree.pop <- rowSums(bci_2010)
 ```
 
 > Note that if you don't want to use your own BCI package, you can use ours
-instead. It's available as `soniamitchellBCI` in the IBAHCM organisation on
+instead. It's available as `soniamitchellBCI` in the SBOHVM organisation on
 GitHub just like yours. Either way you should install the package you are using
 by running `devtools::install_github()`, and then add it to your
 `githubusernameDiversity` package dependencies by running

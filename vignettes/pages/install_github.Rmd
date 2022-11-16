@@ -36,7 +36,7 @@ email address you are registered with here, so if you already have an account
 be aware of this. You can change the email address GitHub uses on your profile 
 if you need to.
 
-## Ask to be added to the IBAHCM GitHub organisation
+## Ask to be added to the SBOHVM GitHub organisation
 
 Go to the Discussion section of the [RPiR][RPiR]
 repository on GitHub, and create a new discussion (category *Registration*)^[The
@@ -144,6 +144,6 @@ usethis::git_sitrep()
 
 for more information.
 
-[RPiR]: https://github.com/IBAHCM/RPiR
-[registration]: https://github.com/IBAHCM/RPiR/discussions/categories/general/new
+[RPiR]: https://github.com/SBOHVM/RPiR
+[registration]: https://github.com/SBOHVM/RPiR/discussions/categories/general/new
 [rstudio]: https://support.rstudio.com/hc/en-us/articles/200532077-Version-Control-with-Git-and-SVN

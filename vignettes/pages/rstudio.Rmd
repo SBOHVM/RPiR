@@ -24,7 +24,7 @@ knitr::opts_chunk$set(
 
 This guide assumes you have a GitHub repository all set up. If you need help
 doing that, there's another guide 
-[here](https://ibahcm.github.io/RPiR/articles/pages/github.html) that will take you through it. 
+[here](https://sbohvm.github.io/RPiR/articles/pages/github.html) that will take you through it. 
 
 Once you're all set up, click on the green 
 <span style="color: #de77ae;">Code</span> button and 

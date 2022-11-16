@@ -79,7 +79,7 @@ ways to do this, the easiest way to connect an existing project to GitHub is by
 running this:
 
 ```{r, eval = FALSE}
-usethis::use_github(organisation = "IBAHCM", private = TRUE)
+usethis::use_github(organisation = "SBOHVM", private = TRUE)
 ```
 
 This process will automatically edit your 
@@ -218,12 +218,12 @@ Use four spaces when indenting paragraphs within the Description.
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/IBAHCM/soniamitchellSeries03
-BugReports: https://github.com/IBAHCM/soniamitchellSeries03/issues
+URL: https://github.com/SBOHVM/soniamitchellSeries03
+BugReports: https://github.com/SBOHVM/soniamitchellSeries03/issues
 Imports: 
 RPiR (>= 0.56.0),
 Remotes: 
-IBAHCM/RPiR
+SBOHVM/RPiR
 RoxygenNote: 7.1.1
 ```
 
@@ -233,7 +233,7 @@ of package *x* if the functions in package *y* are being used by the functions
 in package *x*. In which case you would need to make it explicit within the 
 functions of package *x* where the dependencies are (we're not doing this just
 yet so don't worry). See
-[here](https://ibahcm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies) 
+[here](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html#add-dependencies) 
 for details.
 
 However, we do use the `RPiR` package in our demo, so we've added a dependency 
@@ -251,7 +251,7 @@ on `RPiR` for you. This was done by:
    `Imports` field:
    ```{r, eval = FALSE}
    Remotes: 
-       IBAHCM/RPiR
+       SBOHVM/RPiR
    ```
 
 2. We then added an `@import` tag in the 
@@ -499,7 +499,7 @@ There are two ways you can check a package:
    would for `RPiR`, and find out what demos are available and run them:
    ```{r, eval = FALSE}
    # Install your colleague's package
-   devtools::install_github("IBAHCM/githubusernameSeries03")
+   devtools::install_github("SBOHVM/githubusernameSeries03")
 
    # Find out what demos are available:
    demo(package = "githubusernameSeries03")

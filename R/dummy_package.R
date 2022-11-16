@@ -69,7 +69,7 @@ dummy_package <- function(package_name) {
 
   # Add dependency on dplyr
   withr::with_dir(package_dir,
-                  usethis::use_dev_package("RPiR", remote = "IBAHCM/RPiR"))
+                  usethis::use_dev_package("RPiR", remote = "SBOHVM/RPiR"))
 
   # Document package
   devtools::document(package_name, quiet = TRUE)

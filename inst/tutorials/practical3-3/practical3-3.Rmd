@@ -28,7 +28,7 @@ When running stochastic simulations we often want to run multiple simulations
 and compare outputs easily. In this practical we will learn how to efficiently 
 plot multiple outputs on the same graph, and use a new set of functions 
 contained within the 
-<span style="color: #1697C0;">IBAHCM/RPiR</span> package on GitHub.
+<span style="color: #1697C0;">SBOHVM/RPiR</span> package on GitHub.
 
 ## Tasks
 
@@ -42,7 +42,7 @@ model more cleanly.
 ### Look at `run_simple()`
 
 Take a look at the new function `run_simple()` online. Go to 
-<span style="color: #1697C0;">https://github.com/IBAHCM/RPiR</span>, open on the 
+<span style="color: #1697C0;">https://github.com/SBOHVM/RPiR</span>, open on the 
 <span style="color: #1697C0;">R</span> folder, and find the file called 
 <span style="color: #1697C0;">run_simple.R</span>. It should look something like
 this:

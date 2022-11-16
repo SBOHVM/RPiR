@@ -129,7 +129,7 @@ populate_package <- function(force = FALSE) {
     usethis::ui_oops(paste("File already exists:", usethis::ui_value(filepath)))
   }
   # Add dependencies
-  usethis::use_dev_package("RPiR", "Imports", remote = "IBAHCM/RPiR")
+  usethis::use_dev_package("RPiR", "Imports", remote = "SBOHVM/RPiR")
 
   # Document package
   devtools::document(quiet = TRUE)

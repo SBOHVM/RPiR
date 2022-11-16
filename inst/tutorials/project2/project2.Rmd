@@ -81,20 +81,20 @@ results if necessary as detailed above.
 
 > You can see an example of creating functions that call other function you have
 written in Practical A-5, or the repository
-[IBAHCM/practicalA5](https://github.com/IBAHCM/practicalA5). Here you can see
+[SBOHVM/practicalA5](https://github.com/SBOHVM/practicalA5). Here you can see
 the general function
-[`muladdpow()`](https://github.com/IBAHCM/practicalA5/blob/master/R/muladdpow.R),
+[`muladdpow()`](https://github.com/SBOHVM/practicalA5/blob/master/R/muladdpow.R),
 which multiples two numbers together, adds a third and then raises the result to
 a power. This is obviously a bit of a silly function for this demostration, but
 we use it to create a simpler function,
-[`muladd()`](https://github.com/IBAHCM/practicalA5/blob/master/R/muladd.R),
+[`muladd()`](https://github.com/SBOHVM/practicalA5/blob/master/R/muladd.R),
 which uses `muladdpow()` but sets the power to 1 to create a function that just
 multiples two numbers together and then adds a third. Finally, we create two
 even simpler functions
-[`mul()`](https://github.com/IBAHCM/practicalA5/blob/master/R/mul.R)
-and [`add()`](https://github.com/IBAHCM/practicalA5/blob/master/R/add.R), which
+[`mul()`](https://github.com/SBOHVM/practicalA5/blob/master/R/mul.R)
+and [`add()`](https://github.com/SBOHVM/practicalA5/blob/master/R/add.R), which
 use `muladd()` to just multiply and add respectively. You can look at the
-code for this online or try it out with `devtools::install_github("IBAHCM/practicalA5")`.
+code for this online or try it out with `devtools::install_github("SBOHVM/practicalA5")`.
 
 You will need to write your species richnes and Simpson diversity functions like
 these functions above, so that rather than calculating the values directly in

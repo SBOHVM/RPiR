@@ -31,8 +31,8 @@ and lecture recordings and some downloads will be available there. However...
 ## 3. GitHub
 
 Once you have GitHub set up we will use it for all of our queries, and the
-course is available at https://github.com/IBAHCM/RPiR. Please ask for help and
-discuss issues on the Discussions tab at https://github.com/IBAHCM/RPiR/discussions.
+course is available at https://github.com/SBOHVM/RPiR. Please ask for help and
+discuss issues on the Discussions tab at https://github.com/SBOHVM/RPiR/discussions.
 
 ## 4. Email
 
@@ -44,8 +44,8 @@ directly.
 ## Get everything installed
 
 All of the course preparation instructions are in the course's documentation at
-https://ibahcm.github.io/RPiR under **Course preparation**. The same page is
-also duplicated on the package's GitHub page at https://github.com/IBAHCM/RPiR:
+https://sbohvm.github.io/RPiR under **Course preparation**. The same page is
+also duplicated on the package's GitHub page at https://github.com/SBOHVM/RPiR:
 
 - First follow the instructions there to make sure you have an up-to-date version
 of R and RStudio.

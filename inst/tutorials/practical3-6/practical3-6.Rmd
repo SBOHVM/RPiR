@@ -43,7 +43,7 @@ runs. Unless you are lucky (in which case run it again!), you will probably find
 the adding up fails because the data frames are different lengths. This is 
 because some (all) simulations finished early because the outbreak died out.
 
-Go to the <span style="color: #1697C0;">IBAHCM/RPiR</span> package on 
+Go to the <span style="color: #1697C0;">SBOHVM/RPiR</span> package on 
 github and look at the `cleanup_timesteps()` function (which actually calls 
 `cleanup_times()` -- both functions are in
 <span style="color: #1697C0;">R/cleanup.R</span>). This function takes a
