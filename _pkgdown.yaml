@@ -189,11 +189,13 @@ navbar:
       icon: far fa-file-alt
       menu:
       - text: Course preparation - R
-        href: articles/pages/preparation.html
+        href: articles/pages/install_R.html
       - text: Course preparation - GitHub
         href: articles/pages/install_github.html
       - text: Course preparation - RPiR
         href: articles/pages/install_RPiR.html
+      - text: Course preparation - troubleshooting
+        href: articles/pages/install_troubleshooting.html
       - text: GitHub repositories
         href: articles/pages/github.html
       - text: RStudio projects and GitHub

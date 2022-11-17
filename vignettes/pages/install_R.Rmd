@@ -32,16 +32,11 @@ If this is `FALSE`, download and install a new version from
 https://www.r-project.org. Then install these packages:
 
 ```{R, eval = FALSE}
-install.packages(c('devtools', 'rstudioapi', 'rdiversity', 'vegan', 'iNEXT'))
+install.packages(c('devtools', 'rstudioapi'))
 ```
 
 If you find yourself stuck in a loop of asking you to restart R, then it's okay
 to say no.
-
-If you have trouble getting vegan to install and you're on a Mac, then you
-should go to [this site](https://github.com/fxcoudert/gfortran-for-macOS/releases)
-and download the correct version of `gfortran` depending on your computer and
-install it. Then restart R and try again!
 
 Then check whether RStudio is up to date:
 
@@ -72,5 +67,11 @@ devtools::has_devel()
 
 If this is `FALSE` or errors, then you will need to follow instructions given
 by the function or ask for help until this works.
+
+Finally install these packages:
+
+```{R, eval = FALSE}
+install.packages(c('rdiversity', 'vegan', 'iNEXT'))
+```
 
 [rstudio]: https://rstudio.com/products/rstudio
