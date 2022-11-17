@@ -9,7 +9,18 @@
 
 There are a few things to do before you can start the course.
 The details are available in the Guides section of the
-[website][docs] under Course preparation.
+[website][docs] under Course preparation. This includes instructions for
+making sure that R and RStudio are up-to-date and the right packages are
+installed [here][install-R], setting yourself up with git and on GitHub
+[here][install-git], and installing this (RPiR) package [here][install-rpir].
+We also provide some troubleshooting tips [here][troubleshooting] in case things
+go a wrong during installation.
+
+## Reference materials for the course
+
+These materials are available on moodle, but frankly we don't really like it,
+so you can find the same (indeed a lot more) information on a reference page
+[here][reference].
 
 ## Running the course
 
@@ -128,5 +139,9 @@ As well as the following additional practicals:
    * `practicalA-4`: Introduction to for and while loops
    * `practicalA-5`: Nested functions
 
-[prep]: https://sbohvm.github.io/RPiR/articles/pages/preparation.html
 [docs]: https://sbohvm.github.io/RPiR
+[install-R]: https://sbohvm.github.io/RPiR/articles/pages/install_R.html
+[install-git]: https://sbohvm.github.io/RPiR/articles/pages/install_github.html
+[install-rpir]: https://sbohvm.github.io/RPiR/articles/pages/install_RPiR.html
+[troubleshooting]: https://sbohvm.github.io/RPiR/articles/pages/install_troubleshooting.html
+[reference]: https://sbohvm.github.io/RPiR/articles/pages/reference.html
