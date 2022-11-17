@@ -35,8 +35,8 @@ As part of the course, **we require you to read the following guides**:
 
 ## Hadley Wickham
 
-[Hadley Wickham][hadley-wickham] is the Chief Scientist at RStudio. He created
-the original `ggplot` library for his PhD. These days his
+[Hadley Wickham][hadley-wickham] is the Chief Scientist at RStudio / Posit PBC.
+He created the original `ggplot` library for his PhD. These days his
 [data analysis packages][tidyverse-packages] are collectively known as the
 [tidyverse][tidyverse], the most famous of which are probably [ggplot2][ggplot2]
 and [dplyr][dplyr]. He has written three very useful books on data analysis and
@@ -55,26 +55,42 @@ We recommend all of these books as reference material, and will point to
 specific chapters at different times, but the books themselves are probably too
 long for you to read in their entirety. Nonetheless keep them for future
 reference, as they contain an enormous amount of knowledge about R in a
-(relatively!) compact form.
+(relatively!) compact form. BOHVM also interviewed Hadley as part of the Naturally
+Speaking blog when he came to Glasgow to receive an award from the university a
+few years ago. You can read / hear the interview [here][naturally-speaking].
 
-## Assorted other materials
+## Jenny Bryan
+
+[Jenny Bryan][jenny-bryan] is a statistician who also works for RStudio / Posit
+PBC. She has also produced an enormous amount of fantastic material, which
+actually aligns even more closely with the course than Hadley's work, since she
+is interested in reproducibility and better coding practice.
 
 ### Understanding, avoiding and fixing errors in your code
 
 As part of the course, **we require you to watch [this
-keynote][rstudioconf2020-jb]** from rstudio::conf 2020 by [Jenny
-Bryan][jenny-bryan] of RStudio. It is an excellent keynote on errors in R and
-how to identify and fix them.
+keynote][rstudioconf2020-jb]** from rstudio::conf 2020 by Jenny. It is an
+excellent keynote on errors in R and how to identify and fix them.
+
+### Better coding practices
+
+Jenny (and Jim Hester) have written a guide on "*What they forgot to tell you
+about R*" which is available online [here][what-they-forgot]. She also gave a
+talk a few years ago (in 2015) at a Reproducible Science Workshop and as part of
+the course **we require you to flick through [the slides][name-files] to give
+you an idea about how to better name your files in the future.
 
 ### Git and GitHub in R and RStudio
 
 Git is a very complex tool -- it is used to manage the development of the whole
-Linux kernel! -- so we cover only the most basic aspects of it. As well as the
-above, Jenny (with others) has written an excellent resource for using git and
-GitHub in R -- [Happy Git and GitHub for the useR][happy-git], which has much
-more detail than our abbreviated materials, and is a good reference if you are
-confused or want to do something complicated. She also gave [a talk on this
-topic][rstudioconf2017-jb] at rstudio::conf 2017.
+Linux kernel! -- so we cover only the most basic aspects of it in this course.
+As well as all of the above, Jenny (with others) has written an excellent
+resource for using git and GitHub in R -- [Happy Git and GitHub for the
+useR][happy-git], which has much more detail than our abbreviated materials, and
+is a good reference if you are confused or want to do something complicated.
+She also gave [a talk on this topic][rstudioconf2017-jb] at rstudio::conf 2017.
+
+## Other materials
 
 ### Reproducible (and generally good) coding practices
 
@@ -135,7 +151,7 @@ We only ask that your style is consistent, that you use meaningful names for
 functions and variables, and that you **never** use dots (`.`) in function names
 or use `rm(...)` or install any packages in the code you submit for assessment.
 
-[hadley-wickham]: https://rstudio.com/speakers/hadley-wickham
+[hadley-wickham]: https://github.com/hadley
 [tidyverse]: https://www.tidyverse.org
 [tidyverse-packages]: https://www.tidyverse.org/packages
 [style-tidyverse]: https://style.tidyverse.org
@@ -149,6 +165,7 @@ or use `rm(...)` or install any packages in the code you submit for assessment.
 [advanced-r2]: https://adv-r.hadley.nz
 [advanced-r2-solutions]: http://advanced-r-solutions.rbind.io
 [r-packages]: https://r-pkgs.org
+[naturally-speaking]: https://naturallyspeaking.blog/2016/06/22/episode-41-conversations-with-an-r-jedi
 
 [BES]: https://www.britishecologicalsociety.org
 [BES-journals]: https://www.britishecologicalsociety.org/publications/journals
@@ -157,9 +174,11 @@ or use `rm(...)` or install any packages in the code you submit for assessment.
 [BES-repro]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Reproducible-Code-2019.pdf
 [BES-data]: https://www.britishecologicalsociety.org/wp-content/uploads/2019/06/BES-Guide-Data-Management-2019.pdf
 
-[jenny-bryan]: https://rstudio.com/speakers/jenny-bryan
+[jenny-bryan]: https://github.com/jennybc
 [happy-git]: https://happygitwithr.com
 [rmd-to-r]: https://happygitwithr.com/r-test-drive.html
+[what-they-forgot]: https://rstats.wtf
+[name-files]: https://speakerdeck.com/jennybc/how-to-name-files
 
 [rstudioconf2020-jb]: https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable
 [rstudioconf2017-jb]: https://rstudio.com/resources/rstudioconf-2017/happy-git-and-gihub-for-the-user-tutorial
