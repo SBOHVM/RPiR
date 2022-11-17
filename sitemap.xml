@@ -31,10 +31,16 @@
     <loc>https://sbohvm.github.io/RPiR/articles/pages/github.html</loc>
   </url>
   <url>
+    <loc>https://sbohvm.github.io/RPiR/articles/pages/install_R.html</loc>
+  </url>
+  <url>
     <loc>https://sbohvm.github.io/RPiR/articles/pages/install_RPiR.html</loc>
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/articles/pages/install_github.html</loc>
+  </url>
+  <url>
+    <loc>https://sbohvm.github.io/RPiR/articles/pages/install_troubleshooting.html</loc>
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/articles/pages/loops.html</loc>
@@ -47,9 +53,6 @@
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html</loc>
-  </url>
-  <url>
-    <loc>https://sbohvm.github.io/RPiR/articles/pages/preparation.html</loc>
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/articles/pages/reference.html</loc>

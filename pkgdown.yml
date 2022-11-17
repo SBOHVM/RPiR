@@ -8,18 +8,19 @@ articles:
   flow: pages/flow.html
   functions: pages/functions.html
   github: pages/github.html
+  install_R: pages/install_R.html
   install_RPiR: pages/install_RPiR.html
   install_github: pages/install_github.html
+  install_troubleshooting: pages/install_troubleshooting.html
   loops: pages/loops.html
   notebooks: pages/notebooks.html
   packages: pages/packages.html
   packages_guide: pages/packages_guide.html
-  preparation: pages/preparation.html
   reference: pages/reference.html
   rstudio: pages/rstudio.html
   tips: pages/tips.html
   vscode_liveshare: pages/vscode_liveshare.html
-last_built: 2022-11-17T00:00Z
+last_built: 2022-11-17T20:56Z
 urls:
   reference: https://sbohvm.github.io/RPiR/reference
   article: https://sbohvm.github.io/RPiR/articles
