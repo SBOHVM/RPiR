@@ -66,21 +66,21 @@ PBC. She has also produced an enormous amount of fantastic material, which
 actually aligns even more closely with the course than Hadley's work, since she
 is interested in reproducibility and better coding practice.
 
-### Understanding, avoiding and fixing errors in your code
+#### Understanding, avoiding and fixing errors in your code
 
 As part of the course, **we require you to watch [this
 keynote][rstudioconf2020-jb]** from rstudio::conf 2020 by Jenny. It is an
 excellent keynote on errors in R and how to identify and fix them.
 
-### Better coding practices
+#### Better coding practices
 
-Jenny (and Jim Hester) have written a guide on "*What they forgot to tell you
+Jenny (and Jim Hester) have written a guide called "*What they forgot to tell you
 about R*" which is available online [here][what-they-forgot]. She also gave a
 talk a few years ago (in 2015) at a Reproducible Science Workshop and as part of
-the course **we require you to flick through [the slides][name-files] to give
+the course **we require you to flick through [the slides][name-files]** to give
 you an idea about how to better name your files in the future.
 
-### Git and GitHub in R and RStudio
+#### Git and GitHub in R and RStudio
 
 Git is a very complex tool -- it is used to manage the development of the whole
 Linux kernel! -- so we cover only the most basic aspects of it in this course.
