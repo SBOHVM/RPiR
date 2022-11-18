@@ -23,10 +23,8 @@ knitr::opts_chunk$set(
 ## Create a GitHub account
 
 1. Create a GitHub account - go to https://github.com/ and sign up
-with your university email address
+with your personal or university email address
 2. Verify your account
-3. Go to https://education.github.com, click **Students** and/or 
-**Get benefits for students**, and follow the instructions
 
 ### Potential problems
 

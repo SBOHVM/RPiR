@@ -1,4 +1,4 @@
-# Reproducible Programming in R course (2022/23)
+# Reproducible Programming in R (2022/23)
 
 [![](https://img.shields.io/badge/docs-RPIR-blue)][docs]
 [![test-build](https://github.com/SBOHVM/RPiR/workflows/R-CMD-check/badge.svg?=1)](https://github.com/SBOHVM/RPiR/actions)
