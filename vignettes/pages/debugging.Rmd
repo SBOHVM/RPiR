@@ -20,7 +20,47 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This page explains how to debug your code. There are many ways in which this 
 can be done, so we've split them into levels ranging from basic to more 
-advanced methods. 
+advanced methods. First though:
+
+## Don't ignore warnings!
+
+People often put statements into their code to reduce the number of warnings it
+generates to make it look prettier. This is *always* a terrible idea, as if new
+warnings are introduced by a mistake, you won't see them (because you suppressed
+them!), so please don't do any of the following:
+
+```{r, eval = FALSE}
+suppressWarnings()
+suppressPackageStartupMessages()
+library(dplyr, warn.conflicts = FALSE)
+```
+
+Or anything else like that. We will never mark you down for generating warning
+messages in your code (unless they are real warnings about real problems in
+your code of course!).
+
+## Restart R and never save .RData files
+
+Errors can often be transitory because of something weird in your current
+environment, and while that's not great it's just not worth worrying too much
+about, so it's always worth restarting R and trying again before you
+panic and try debugging the problem, which can take a while.
+
+However, if you save and restore `.RData` files, then when you restart R you won't
+delete all of the mistakes you made in the last R session - the objects present
+in the last session will still be there after restarting - and your code will
+no longer be reproducible. As a result we strongly encourage you to never save
+or restore these files. To disable this, open the (global) preferences in
+RStudio, and untick "Restore .RData into workspace at startup" and set "Save
+workspace to .RData on exit:" to "Never".
+
+```{r echo = FALSE, fig.align = "center", out.width = "100%"}
+knitr::include_graphics('images/debugging.png')
+```
+
+Once you've not ignoring the error messages, and you've tried restarting R and
+it hasn't helped, then you need to try debugging the code for real, we're
+afraid. Here's an approach you could try:
 
 ## Level 1 - Check for typos
 
