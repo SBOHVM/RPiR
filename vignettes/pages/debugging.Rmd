@@ -62,6 +62,12 @@ Once you've not ignoring the error messages, and you've tried restarting R and
 it hasn't helped, then you need to try debugging the code for real, we're
 afraid. Here's an approach you could try:
 
+## Watch the video on debugging
+
+This would be a good time to watch [this keynote][rstudioconf2020-jb] from
+rstudio::conf 2020 by Jenny Bryan. It is an excellent keynote on errors in
+R and how to identify and fix them.
+
 ## Level 1 - Check for typos
 
 Read the error or warning message carefully and try to decipher it. 
