@@ -707,3 +707,4 @@ results
 
 ### {-}
 
+[rstudioconf2020-jb]: https://rstudio.com/resources/rstudioconf-2020/object-of-type-closure-is-not-subsettable
