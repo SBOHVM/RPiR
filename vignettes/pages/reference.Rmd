@@ -55,9 +55,9 @@ We recommend all of these books as reference material, and will point to
 specific chapters at different times, but the books themselves are probably too
 long for you to read in their entirety. Nonetheless keep them for future
 reference, as they contain an enormous amount of knowledge about R in a
-(relatively!) compact form. BOHVM also interviewed Hadley as part of the Naturally
-Speaking blog when he came to Glasgow to receive an award from the university a
-few years ago. You can read / hear the interview [here][naturally-speaking].
+(relatively!) compact form. BOHVM also interviewed Hadley as part of our Naturally
+Speaking podcast when he came to Glasgow to receive an award from the university
+a few years ago. You can hear the interview [here][naturally-speaking].
 
 ## Jenny Bryan
 
