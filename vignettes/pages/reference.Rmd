@@ -57,7 +57,9 @@ long for you to read in their entirety. Nonetheless keep them for future
 reference, as they contain an enormous amount of knowledge about R in a
 (relatively!) compact form. BOHVM also interviewed Hadley as part of our Naturally
 Speaking podcast when he came to Glasgow to receive an award from the university
-a few years ago. You can hear the interview [here][naturally-speaking].
+a few years ago. You can hear the interview [here][naturally-speaking]. As well
+as a lot on the tidyverse, later on it covers a lot of the reasons why this
+course exists, and the kind of techniques we are teaching on it.
 
 ## Jenny Bryan
 
