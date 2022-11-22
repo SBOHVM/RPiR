@@ -65,12 +65,12 @@ knitr::include_graphics('images/use-github-07.png')
 ```
 
 Congratulations! You have successfully created a new RStudio project (now with
-added version control). In the example below, (1) the RStudio project is called 
-`soniamitchell_0201`, (2) a new directory, `soniamitchell_0201`, has been 
-created, which is now your working directory, and inside this directory are (3) 
+added version control). In my example , (1) the RStudio project is called
+`richardreeveSeries01`, (2) a new directory, `richardreeveSeries01``, has been 
+created, which is now my working directory, and inside this directory are (3) 
 three files, including a GitHub `README.md` file (imported from your GitHub 
-repository), an RStudio project file (`soniamitchell_0201.Rproj`), and an 
-invisible `.gitignore` file (created by RStudio). 
+repository), an RStudio project file (`richardreeveSeries01.Rproj`), and an 
+invisible `.gitignore` file (created by RStudio).
 
 Note the appearance of a new <span style="color: #de77ae;">Git</span> tab next 
 to <span style="color: #de77ae;">Connections</span>. This is 
@@ -87,10 +87,10 @@ Compare the contents of your working directory to the files listed in the
 <span style="color: #de77ae;">Git</span> tab is a useful tool that shows you 
 how your remote
 directory (your GitHub repository) differs from your local directory 
-(in this case `~/Desktop/Git/soniamitchell_0201`). Currently, the `README.md`
+(in this case `~/Desktop/git/richardreeveSeries01`). Currently, the `README.md`
 file in your local directory is identical to the one in your remote directory.
 That's why you can't see it in the <span style="color: #de77ae;">Git</span> tab.
-Instead, `.gitignore` and `soniamitchell_0201.Rproj` are listed with yellow
+Instead, `.gitignore` and `richardreeveSeries01.Rproj` are listed with yellow
 question marks in the <span style="color: #de77ae;">Status</span> column. What
 do these icons mean?
 
