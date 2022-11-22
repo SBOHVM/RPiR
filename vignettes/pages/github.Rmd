@@ -38,7 +38,7 @@ knitr::include_graphics('images/use-github-01.png')
 You should always choose a short, descriptive name for your repository. But in
 this case, to make it easier for us to identify you, please include your name 
 as well as an identifier associated with the practical you're working on, e.g.
-`githubusername_0201`. Make sure you're creating
+`githubusernameSeries01`. Make sure you're creating
 a <span style="color: #de77ae;">Private</span> repository, check the box to
 <span style="color: #de77ae;">Initialize this repository with a README</span>,
 then select <span style="color: #de77ae;">Create repository</span>. 
@@ -48,7 +48,7 @@ knitr::include_graphics('images/use-github-02.png')
 ```
 
 > Note that in Practical series 3 you'll be writing a package... and when doing 
-so it's good practice for the name of your repository to match the name of
+it's good practice for the name of your repository to match the name of
 your package. It's important to be aware that the name of a package 
 "should contain only (ASCII) letters, numbers and dot, have at least two 
 characters and start with a letter and not end in a dot"
@@ -56,9 +56,9 @@ characters and start with a letter and not end in a dot"
 [package](https://cran.r-project.org/web/packages/available_packages_by_name.html)
 names include a dot.
 
-Since we're not working with packages just yet, including an underscore in the 
-name of a repository is perfectly fine. Your GitHub repo should now contain a 
-single `README.md` file look a bit like this:
+Since we're not working with packages just yet, you could be more flexible in
+naming this repository, but it's better to start as you mean to go on. Your
+GitHub repo should now contain a single `README.md` file look a bit like this:
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/use-github-03.png')
