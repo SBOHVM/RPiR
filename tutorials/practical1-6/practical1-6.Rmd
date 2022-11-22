@@ -183,7 +183,7 @@ knitr::include_graphics('images/i.png')
 ```
 
 Now, exchange repository names with your group (everyone in your breakout room).
-You should have access if you're part of the `SBOHVM/rpir` team. Now go find 
+You should have access if you're part of the `SBOHVM/rpir22` team. Now go find 
 them. Either search through the `SBOHVM` organisation, or go directly to their 
 URL. For example, if I want to find `louisematthews`, I'd go here
 https://github.com/SBOHVM/louisematthewsSeries01. Remember to take a look at
