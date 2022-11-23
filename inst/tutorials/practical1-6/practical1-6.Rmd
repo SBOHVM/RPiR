@@ -161,8 +161,9 @@ Then look at your GitHub repository and make sure you can see your changes.
 To share your work, since you created a private (rather than a public) 
 repository, you need to give people permission to see it. So, click on 
 <span style="color: #de77ae;">Settings</span>, 
-<span style="color: #de77ae;">Manage access</span>, then 
-<span style="color: #de77ae;">Add teams</span>.
+<span style="color: #de77ae;">Collaborators and teams</span>, then 
+<span style="color: #de77ae;">Add teams</span>. NB The image is out of date
+showing *Manage access* instead - just ignore this:
 
 ```{r echo = FALSE, fig.align = "center", out.width = "100%"}
 knitr::include_graphics('images/f.png')
