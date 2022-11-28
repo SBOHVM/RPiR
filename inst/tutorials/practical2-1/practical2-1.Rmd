@@ -159,17 +159,19 @@ R0 <- ecoli.transmission / ecoli.recovery
 
 Either using your plots or by asking R to 
 print out the data frame `population` work out the proportion of the population
-susceptible at equilibrium and compare it with the value of $\frac{1}{R_0}$.
+who are susceptible at equilibrium -- when the lines are flat -- and compare it
+with the value of $\frac{1}{R_0}$ for one example value of the transmission
+rate $\beta = 2/3$.
 
 ```{r, echo = FALSE}
-tmp <- vapply(c(1/2, 2/3, 1, 4/3), 
+tmp <- vapply(2/3, 
               function(x) as.character(MASS::fractions(x)),
               character(1))
 table <- data.frame(tmp, NA, NA, NA)
 col <- c("Transmission <br> rate, $\\beta$", 
          "Basic reproduction number, $R_0$",
-         "Proportion susceptible <br> at equilibrium, $\\frac{S}{N}$",
-         "Inverse $R_0$, <br> $\\frac{1}{R_0}$")
+         "Inverse $R_0$, <br> $\\frac{1}{R_0}$",
+         "Proportion susceptible <br> at equilibrium, $\\frac{S}{N}$")
 col <- gsub("&lt;", "<", col)
 col <- gsub("&gt;", ">", col)
 colnames(table) <- col
@@ -183,16 +185,11 @@ data frame.
 
 ## Report
 Adapt your script to generate a report which shows you running the model with at 
-least a couple of different transmission rates and calculating different values
-for $R_0$ from the results with some explanation of what's going on. You 
-should also submit a table in Word or Excel with the above values filled in -- 
-just save it in the project folder. In particular for *E. coli O157* infections 
+least a couple of different transmission rates (including $2/3$) and perhaps try
+calculating different values for $R_0$ from the results with some explanation of
+what's going on. Note that for example for *E. coli O157* infections 
 in cattle, for timesteps in weeks, the recovery rate is about $\frac{1}{3}$ and 
 the transmission rate is 1.
-
-Optionally, try putting the table into the report (possibly using the
-`kable()` function in the `knitr` package). However, the table itself 
-(in any form) is sufficient for assessment.
 
 ## GitHub
 
@@ -207,9 +204,9 @@ RStudio (just commit the R files - not, for instance, any
 html files that were created by generating reports, though you may decide to
 commit a spreadsheet with the table in as well). Don't forget then to push
 the changes to GitHub and check on the website that it contains your new code.
-Notify the partners we have allocated you that you have something for them to
+Notify the partners in your group that you have something for them to
 check. If you're not sitting next to them, then you can create an issue in your
-repository asking for their review and/or talk to them on Zoom - you can contact
+repository asking for their review - you can contact
 them by tagging them in the message with `@theirusername`, and they should
 receive an email and a [notification on the website](https://github.com/notifications).
 They should then create an issue, telling you if they had any problems
@@ -223,9 +220,9 @@ then *Version Control*, *Git*, and then put in the URL from GitHub and tick
 `Open in New Session`. In the new RStudio session that is opened, you can then
 run their code and make sure it works. If it does not, just respond in the Issue
 that they opened on GitHub explaining what went wrong (though it might be easier
-to do this in person on Zoom if they are there). If it works, then you also need
+to do this in person as well!). If it works, then you also need
 to respond saying so. If you have already checked their repo once already, then
 see the instructions in 2-2 for how to update your copy of it.
 
-**Interacting like this through GitHub to help each other will count as your
-engagement marks for the course.**
+**Remember that interacting like this through GitHub to help each other will
+count as your engagement marks for the course.**
