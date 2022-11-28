@@ -20,7 +20,7 @@ jobs:
         config:
           - {os: windows-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-#          - {os: macOS-latest, r: 'release'}
+          - {os: macOS-latest, r: 'release'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -59,7 +59,7 @@ jobs:
 # Build and deploy DOCS -----------------------------------------------------
 
       - name: Build Docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'ubuntu'
         run: |
           options(repos = c(CRAN = "https://cloud.r-project.org"))
           install.packages("rsconnect")
@@ -68,11 +68,11 @@ jobs:
         shell: Rscript {0}
 
       - name: Test whether navbar entries are real
-        if: runner.os == 'macOS'
+        if: runner.os == 'ubuntu'
         run: Rscript inst/scripts/test_navbar.R
 
       - name: Move ioslide lectures to docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'ubuntu'
         run: |
           devtools::install()
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE,
@@ -94,7 +94,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Move ioslide (html) lectures to docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'ubuntu'
         run: |
           # Find files
           all_files <- dir(file.path("inst", "lectures"), recursive = TRUE, full.names = TRUE)
@@ -117,7 +117,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Move learnr tutorials to docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'ubuntu'
         run: |
           if (!file.exists("docs")) dir.create("docs")
 
@@ -136,7 +136,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Create a build_docs branch and commit to it
-        if: runner.os == 'macOS'
+        if: runner.os == 'ubuntu'
         run: |
           git checkout -b build_docs
           git add .
@@ -144,7 +144,7 @@ jobs:
         shell: bash
 
       - name: Deploy Docs
-        if: runner.os == 'macOS'
+        if: runner.os == 'ubuntu'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
