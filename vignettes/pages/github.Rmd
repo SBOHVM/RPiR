@@ -38,7 +38,9 @@ knitr::include_graphics('images/use-github-01.png')
 You should always choose a short, descriptive name for your repository. But in
 this case, to make it easier for us to identify you, please include your name 
 as well as an identifier associated with the practical you're working on, e.g.
-`githubusernameSeries01`. Make sure you're creating
+`githubusernameSeries01`. If your GitHub username has dashes or underscores,
+don't include them in the repository name however, as they are illegal in R
+package names. Make sure you're creating
 a <span style="color: #de77ae;">Private</span> repository, check the box to
 <span style="color: #de77ae;">Initialize this repository with a README</span>,
 then select <span style="color: #de77ae;">Create repository</span>. 
