@@ -138,6 +138,8 @@ jobs:
       - name: Create a build_docs branch and commit to it
         if: runner.os == 'linux'
         run: |
+          git config --global user.email "runner@example.com"
+          git config --global user.name "RPiR Runner"
           git checkout -b build_docs
           git add .
           git commit -m 'build docs'
