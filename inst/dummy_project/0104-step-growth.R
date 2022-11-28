@@ -5,21 +5,23 @@
 #' output: html_document
 #' ---
 
+#'
+#' ### Function: step_deterministic_growth() - A simple deterministic exponential growth model
+#'
+#' Run one step of a simple deterministic exponential growth model
+#'
+#' Arguments:
+#'
+#' - latest -- a data frame containing the latest population count
+#'             (column is 'count')
+#'
+#' - growth.rate -- the growth rate
+#'
+#' Returns:
+#'
+#' - a data.frame containing the updated population
+#'
 step_deterministic_growth <- function(latest, growth.rate) {
-  #' A simple deterministic exponential growth model
-  #'
-  #' Run one step of a simple deterministic exponential growth model
-  #'
-  #' Arguments:
-  #'
-  #' - latest -- a data frame containing the latest population count
-  #'             (column is 'count')
-  #'
-  #' - growth.rate -- the growth rate
-  #'
-  #' Returns:
-  #'
-  #' - a data.frame containing the updated population
 
   ## Calculate population changes
   new.additions <- growth.rate * latest$count
