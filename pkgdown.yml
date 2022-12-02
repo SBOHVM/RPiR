@@ -20,7 +20,7 @@ articles:
   rstudio: pages/rstudio.html
   tips: pages/tips.html
   vscode_liveshare: pages/vscode_liveshare.html
-last_built: 2022-11-28T16:02Z
+last_built: 2022-12-02T12:50Z
 urls:
   reference: https://sbohvm.github.io/RPiR/reference
   article: https://sbohvm.github.io/RPiR/articles
