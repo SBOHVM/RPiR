@@ -383,5 +383,5 @@ if (add_and_square(3, 5) == 64) {
 
 ## Conclusions
 
-See **Reference** section of package website for more details and links to other
+See **R** section of package website for more details and links to other
 resources.

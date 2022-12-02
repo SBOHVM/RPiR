@@ -64,16 +64,16 @@ navbar:
         href: lectures/RPiR5b-modelling.html
       - text: RPiR5c-R
         href: lectures/RPiR5c-R.html
-      - text: RPiR7a-R
-        href: lectures/RPiR7a-R.html
+      - text: RPiR7a-development (pdf)
+        href: lectures/RPiR7a-development.pdf
+      - text: RPiR7b-R
+        href: lectures/RPiR7b-R.html
       - text: RPiR8a-packages
         href: lectures/RPiR8a-packages.html
       - text: RPiR8b-randomness (pdf)
         href: lectures/RPiR8b-randomness.pdf
       - text: RPiR8c-R
         href: lectures/RPiR8c-R.html
-      - text: RPiR8d-development (pdf)
-        href: lectures/RPiR8d-development.pdf
       - text: RPiR11a-data
         href: lectures/RPiR11a-data.html
       - text: RPiR11b-diversity (pdf)
