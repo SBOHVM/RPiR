@@ -74,14 +74,14 @@ navbar:
         href: lectures/RPiR8b-randomness.pdf
       - text: RPiR8c-R
         href: lectures/RPiR8c-R.html
-      - text: RPiR11a-data
-        href: lectures/RPiR11a-data.html
-      - text: RPiR11b-diversity (pdf)
-        href: lectures/RPiR11b-diversity.pdf
-      - text: RPiR12a-programming
-        href: lectures/RPiR12a-programming.html
-      - text: RPiR13a-diversity
-        href: lectures/RPiR13a-diversity.html
+      - text: RPiR12a-diversity
+        href: lectures/RPiR12a-diversity.html
+      - text: RPiR13a-data
+        href: lectures/RPiR13a-data.html
+      - text: RPiR13b-diversity (pdf)
+        href: lectures/RPiR13b-diversity.pdf
+      - text: RPiR13c-programming
+        href: lectures/RPiR13c-programming.html
 
     lecture_html:
       text: Lectures (html)
@@ -111,12 +111,12 @@ navbar:
         href: lectures_html/RPiR8a-packages.html
       - text: RPiR8c-R
         href: lectures_html/RPiR8c-R.html
-      - text: RPiR11a-data
-        href: lectures_html/RPiR11a-data.html
-      - text: RPiR12a-programming
-        href: lectures_html/RPiR12a-programming.html
-      - text: RPiR13a-diversity
-        href: lectures_html/RPiR13a-diversity.html
+      - text: RPiR12a-diversity
+        href: lectures_html/RPiR12a-diversity.html
+      - text: RPiR13a-data
+        href: lectures_html/RPiR13a-data.html
+      - text: RPiR13c-programming
+        href: lectures_html/RPiR13c-programming.html
 
     practicals:
       text: "Practicals (html)"
