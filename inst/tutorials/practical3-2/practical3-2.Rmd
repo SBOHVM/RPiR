@@ -53,12 +53,12 @@ From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation,
 *e.g.*
 
 ```{r, eval = FALSE}
-while (latest.population$time < end.time) {
+while (latest$time < end.time) {
   latest.population <- timestep_deterministic_SIS(latest, 
                                                   ecoli.transmission, 
                                                   ecoli.recovery, 
                                                   timestep)
-  population.df <- rbind(population.df, latest.population)
+  population.df <- rbind(population.df, latest)
 }
 ```
 
@@ -70,7 +70,7 @@ over. We suggest doing something like this:
 
 ```{r, eval = FALSE}
 while (keep.going) {
-  data <- timestep_stochastic_birth_death(latest, 
+  data <- timestep_stochastic_birth_death(latest.population, 
                                           human.annual.birth, 
                                           human.annual.death, 
                                           timestep)
