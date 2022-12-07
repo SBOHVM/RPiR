@@ -183,12 +183,12 @@ style="color: #dd1c77;">d0105_run_birth_death</span> demo, which is a
 good starting point. In this Practical you will edit this code.</p>
 <p>From Practicals 2-3 and 2-4 we have a <code>while()</code> loop which
 runs the simulation, <em>e.g.</em></p>
-<pre class="r"><code>while (latest.population$time &lt; end.time) {
+<pre class="r"><code>while (latest$time &lt; end.time) {
   latest.population &lt;- timestep_deterministic_SIS(latest, 
                                                   ecoli.transmission, 
                                                   ecoli.recovery, 
                                                   timestep)
-  population.df &lt;- rbind(population.df, latest.population)
+  population.df &lt;- rbind(population.df, latest)
 }</code></pre>
 <p>The loop ends when the time runs out. Now, instead, there are two
 reasons why we might stop the simulation – the time may have run out, or
@@ -197,7 +197,7 @@ achieve this, the timestep code will have to return both the updated
 population and whether the simulation is over. We suggest doing
 something like this:</p>
 <pre class="r"><code>while (keep.going) {
-  data &lt;- timestep_stochastic_birth_death(latest, 
+  data &lt;- timestep_stochastic_birth_death(latest.population, 
                                           human.annual.birth, 
                                           human.annual.death, 
                                           timestep)
