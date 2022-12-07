@@ -24,7 +24,7 @@ There are lots of specific rules around when to run specific commands when
 you're editing a package. The simplest one to follow is just to do everything --
 it is a bit time consuming, but it's simpler! First restart R, then:
 
-```R
+```{r, eval = FALSE}
 devtools::document()
 devtools::install()
 library(packagename)
@@ -44,7 +44,7 @@ You should call `devtools::document()` when you:
 
 1. Edit a function's documentation block (this edits a file in the *man* directory)
 
-    ```
+    ```r
     #' title
     #' 
     #' @param argument description
@@ -69,6 +69,6 @@ You should call `devtools::document()` when you:
 
 `library()` will load the version of the package currently installed in your
 instance of R (it doesn't matter whether you've installed it via
-`devtools::install`, `devtools::install_github()`, or `install.packages()`). You
+`devtools::install()`, `devtools::install_github()`, or `install.packages()`). You
 need to restart R before calling library though, or you will be stuck with the
 old version of the package.
