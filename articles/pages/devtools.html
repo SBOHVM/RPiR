@@ -26,7 +26,7 @@
     
     <a class="navbar-brand me-2" href="../../index.html">RPiR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.76.22</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.76.25</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -223,10 +223,11 @@ run the individual commands though, here they are…</p>
 <li>
 <p>Edit a function’s documentation block (this edits a file in the
 <em>man</em> directory)</p>
-<pre><code><span><span class="co">#' title</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">#' title</span></span>
 <span><span class="co">#' </span></span>
 <span><span class="co">#' @param argument description</span></span>
-<span><span class="co">#'</span></span></code></pre>
+<span><span class="co">#'</span></span></code></pre></div>
 </li>
 <li><p>Write a new function with a documentation block (this generates a
 file in the <em>man</em> directory)</p></li>
@@ -266,7 +267,7 @@ instance of R.</p>
 </h3>
 <p><code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> will load the version of the package currently
 installed in your instance of R (it doesn’t matter whether you’ve
-installed it via <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install</a></code>,
+installed it via <code><a href="https://devtools.r-lib.org/reference/install.html" class="external-link">devtools::install()</a></code>,
 <code><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">devtools::install_github()</a></code>, or
 <code><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages()</a></code>). You need to restart R before calling
 library though, or you will be stuck with the old version of the
