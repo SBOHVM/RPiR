@@ -449,7 +449,7 @@ with appropriate documentation. Copy the
 the time being, renamed of course. You'll be using this as a starting point in 
 Practical 3-2. You can also add a check that the functions use no
 global variables to the function definitions by adding a check at
-the bottom of the file after the end of the function.:
+the bottom of the file after the end of the function:
 
 ```{r, eval = FALSE}
 }
