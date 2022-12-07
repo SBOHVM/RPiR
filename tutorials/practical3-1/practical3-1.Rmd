@@ -447,7 +447,22 @@ For Practical 3-2 you'll need to add a function called
 with appropriate documentation. Copy the 
 <span style="color: #dd1c77;">step_deterministic_birth_death</span> function for 
 the time being, renamed of course. You'll be using this as a starting point in 
-Practical 3-2.
+Practical 3-2. You can also add a check that the functions use no
+global variables to the function definitions by adding a check at
+the bottom of the file after the end of the function.:
+
+```{r, eval = FALSE}
+}
+
+# Check for global variables
+RPiR::assert_no_globals(timestep_stochastic_birth_death)
+```
+
+We've provided a new function in the RPiR package to do the checking for
+you (`assert_no_globals()`) to make this simpler than it was in Series 2.
+You can just type `assert_no_globals` without the brackets to read the function
+definition and see that it is very similar to the code snippet we got you to
+use before.
 
 ### 2. Add a demo
 Now create a new R script called 
