@@ -53,12 +53,12 @@ From Practicals 2-3 and 2-4 we have a `while()` loop which runs the simulation,
 *e.g.*
 
 ```{r, eval = FALSE}
-while (latest$time < end.time) {
-  latest.population <- timestep_deterministic_SIS(latest, 
+while (latest.population$time < end.time) {
+  latest.population <- timestep_deterministic_SIS(latest.population, 
                                                   ecoli.transmission, 
                                                   ecoli.recovery, 
                                                   timestep)
-  population.df <- rbind(population.df, latest)
+  population.df <- rbind(population.df, latest.population)
 }
 ```
 
