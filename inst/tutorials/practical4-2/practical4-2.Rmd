@@ -104,8 +104,7 @@ sample_by_subcommunities <- function(dataset, count) {
 }
 ```
 
-## Checking each others' packages
+## GitHub
 
 Once you have redocumented and reinstalled everything, and checked that it 
-is all working, commit and push all of the changes to GitHub and ask your 
-collaborators to check that this works for them as well.
+is all working, commit and push all of the changes to GitHub.
