@@ -396,8 +396,7 @@ You'll see that they are tibbles. Tibbles automatically fall back to being
 data frames if you don't load the library.
 
 
-## Sharing is caring
+## GitHub
 
-Now give your subgroup partners access to the repo, and get them to install
-your package using `devtools::install_github("SBOHVM/githubusernameBCI")` (or
-cloning the package and installing it directly if need be) and check it works.
+Now push all of your changes (commits) to GitHub, and check you can install
+it by using `devtools::install_github("SBOHVM/githubusernameBCI")`.

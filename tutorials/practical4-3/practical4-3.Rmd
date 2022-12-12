@@ -248,10 +248,9 @@ when you compile a report rather than run the demo. Now reinstall the package
 and make sure the demo runs successfully too. Don't forget to delete any html
 files that have been generated and don't commit them to the repo.
 
-## Checking each others' packages
+## GitHub
 
-Now push all of your changes to GitHub and check each other's packages to make
-sure the demo works.
+Now push all of your changes (your commits) to GitHub.
 
 ### A note on generating a report from a demo
 
