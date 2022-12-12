@@ -28,7 +28,7 @@ code for yourself, and structure it appropriately, though some small amounts of
 guidance will be given.
 
 Remember that these practicals constitute the "project" part of the course, 
-which constitutes 33% of the marks, so well-structured and well-commented code, 
+which constitutes 50% of the marks, so well-structured and well-commented code, 
 documented functions and demos that also generate clear reports of the results,
 are very important. Any of the in-course exercises that you decide to continue
 to work on after the end of the course should be completed in your own time.
@@ -39,12 +39,12 @@ to work on after the end of the course should be completed in your own time.
 repository in the SBOHVM organisation as the last two practical series.**
 Please make your repository private and for this project don't add anyone as
 collaborators -- this project is done on your own to assess how much you have
-learned on the course. You must commit a change at least at the end of each
+learned on the course. You must commit a change *at least* at the end of each
 exercise (*i.e.* Projects 0, 1, 2, 3, 4 and 5) with sensible commit messages
-stating what you have just done. You are welcome to do more commits if this is
-useful  to you, and it's completely okay (and indeed normal) if you go back to
-earlier exercises and make further edits and commit them after completing later 
-exercises. 
+stating what you have just done. You are welcome (and indeed encouraged) to do
+more commits if this is useful  to you, and it's completely okay (and indeed
+normal) if you go back to earlier exercises and make further edits and commit
+them after completing later exercises. 
 
 Remember a few things:
 
@@ -62,9 +62,11 @@ Remember a few things:
 
 ## Tasks
 
-1. Create an initial empty R package called **githubusernameDiversity** in
-   RStudio that uses git and is connected to a private repository in the SBOHVM
-   organisation;
+1. Create an [initial empty R
+   package](https://sbohvm.github.io/RPiR/articles/pages/packages_guide.html)
+   called **githubusernameDiversity** in RStudio (remember to use only letters
+   and numbers though) that uses git and is connected to a private repository
+   in the SBOHVM organisation;
    - You will use this package for all of your remaining work in this project
 2. Update the <span style="color: #dd1c77;">DESCRIPTION</span> file with the
    correct information about yourself and the package;
@@ -75,13 +77,14 @@ Remember a few things:
    library by calling `library(githubusernameDiversity)`;
    - Remember you will have to do this again every time you edit a function or
      demo in the package in subsequent exercises
-4. Add your data package as a dependency of the package (or mine if you're using
-   it instead) -- the `usethis::use_dev_package()` function will add the correct
+4. Add our data package ("SBOHVM/soniamitchellBCI") as a dependency of the
+   package (or yours if you're using it instead) -- the
+   `usethis::use_dev_package()` function will add the correct
    entries to the <span style="color: #dd1c77;">DESCRIPTION</span> file, just
    like the `usethis::use_package()` function adds in normal (CRAN) packages;
    - Remember to do this with any subsequent packages that you decide to use
      later in the project
-5. Import your data package into the package by adding the `@import` command to
+5. Import the data package into the package by adding the `@import` command to
    the package's help file in the <span style="color: #dd1c77;">R</span> folder
    that you made in step 3, above;
 6. Add a license. It's completely up to you what license you use. We probably
