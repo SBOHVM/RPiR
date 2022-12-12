@@ -61,7 +61,7 @@ are not observed we will see "effectively" only 1 species, and where all
 species are exactly equally abundant, we will count them all equally, and 
 effectively see the full $N_s$ species. Other species distributions will fall 
 somewhere in between. The species richness of a population is $D_0$, and the 
-Simpson diversity of a population is $\frac{1}{D_2}$.
+Simpson index of a population is $\frac{1}{D_2}$.
 
 ## Tasks
 
@@ -72,10 +72,10 @@ arguments and calculates the $q^{th}$ diversity measure of the counts. Remember
 that the equation described above uses the species proportions, not the counts 
 themselves.
 
-### New species richness and Simpson diversity functions
+### New species richness and Simpson index functions
 
 Now write two more new functions to calculate species richness and Simpson 
-diversity that do almost no work themselves, but instead just call this first 
+index that do almost no work themselves, but instead just call this first 
 function to do the work with the right arguments, and then transform the
 results if necessary as detailed above.
 
@@ -96,7 +96,7 @@ and [`add()`](https://github.com/SBOHVM/practicalA5/blob/master/R/add.R), which
 use `muladd()` to just multiply and add respectively. You can look at the
 code for this online or try it out with `devtools::install_github("SBOHVM/practicalA5")`.
 
-You will need to write your species richnes and Simpson diversity functions like
+You will need to write your species richnes and Simpson index functions like
 these functions above, so that rather than calculating the values directly in
 the function like you did in Project 1, they call your general diversity
 function. Note the functions you write here should produce exactly the same
@@ -131,7 +131,7 @@ values of the `qs` argument.
 Write a demo that loads your package (and therefore the functions you've written
 from both Project 1 and this exercise) and shows that each set of functions 
 generate the same results for $q = 0$ (Species richness) and $q = 2$
-(Simpson diversity). Your demo will probably need to start with the same block
+(Simpson index). Your demo will probably need to start with the same block
 of code that the last demo did, so that it generates the same populations. You
 can just copy it from one demo to the next (or you may come up with a cleverer
 way of dealing with this problem).

@@ -11,7 +11,7 @@
 
 
 
-<title>Project 1: Species richness and Simpson diversity</title>
+<title>Project 1: Species richness and Simpson index</title>
 
 <!-- HEAD_CONTENT -->
 
@@ -143,7 +143,7 @@ pre code {
 
 
 <h1 class="title toc-ignore">Project 1: Species richness and Simpson
-diversity</h1>
+index</h1>
 
 </div>
 
@@ -152,7 +152,7 @@ diversity</h1>
 <h2>Overview</h2>
 <p>In this series of practicals you will develop the code to calculate a
 few diversity measures. In this first exercise we will calculate the
-species richness and Simpson diversity of a population.</p>
+species richness and Simpson index of a population.</p>
 <div id="section-background" class="section level3">
 <h3>Background</h3>
 <p>R provides us with many built-in datasets, but sadly none of them are
@@ -168,12 +168,12 @@ richness – and give us measures of how evenly distributed the trees are
 amongst the tree species (the evenness of the species distribution) by
 various measures. <strong>Species richness</strong> is a very commonly
 used measure of diversity, which simply <strong>counts the number of
-non-zero species abundances</strong>; <strong>Simpson diversity</strong>
-is also commonly used: it simply <strong>calculates the species
-proportions from the counts (so the total sums to 1), squares them all
-individually, and add them all together</strong> – it tells us (amongst
-other things) how likely two randomly chosen individuals are to be from
-the same species.</p>
+non-zero species abundances</strong>; <strong>Simpson index</strong> is
+also commonly used: it simply <strong>calculates the species proportions
+from the counts (so the total sums to 1), squares them all individually,
+and add them all together</strong> – it tells us (amongst other things)
+how likely two randomly chosen individuals are to be from the same
+species.</p>
 </div>
 </div>
 <div id="section-tasks" class="section level2">
@@ -268,12 +268,12 @@ sum(over4s)</code></pre>
 ideas to count the number of non-zero abundances in a population. You
 can see more about this in Practical A-1.</p>
 </div>
-<div id="section-a-simpson-diversity-function" class="section level3">
-<h3>A Simpson diversity function</h3>
+<div id="section-a-simpson-index-function" class="section level3">
+<h3>A Simpson index function</h3>
 <p>Then write and document a second function that will calculate the
-Simpson diversity of the population, remembering, first, that this
-measure works with the relative proportions of the species not the total
-counts and, second, that we can do calculations with the whole vector at
+Simpson index of the population, remembering, first, that this measure
+works with the relative proportions of the species not the total counts
+and, second, that we can do calculations with the whole vector at
 once.</p>
 </div>
 <div id="section-running-the-code" class="section level3">
@@ -285,7 +285,7 @@ something more attractive?) to get a clearer idea of what they look like
 – and decide which you think have the richest species diversity.</p>
 <p>Run the two functions on the populations provided as see whether the
 results of the two diversity measures agree with your assessments. Note
-that a lower value means a higher diversity for the Simpson diversity
+that a lower value means a higher diversity for the Simpson index
 measure.</p>
 <p><strong>NB</strong> Remember that to make the functions you have
 written accessible to your demo, you need to document and install
@@ -305,7 +305,7 @@ demo(package = &quot;githubusernameDiversity&quot;)</code></pre>
 functions (by calling <code>library(githubusernameDiversity)</code>),
 reads in the BCI data, and generates a report that shows some kind of
 plot of each of the series of counts and then calculates their species
-richness and Simpson diversity. Check that your functions also generate
+richness and Simpson index Check that your functions also generate
 appropriate help files (<em>e.g.</em>
 <code>?p1_species_richness</code>).</p>
 <p>Remember to commit the code once you are happy before moving on to
@@ -340,7 +340,7 @@ set.seed(123)
 <!--/html_preserve-->
 <!--html_preserve-->
 <script type="application/shiny-prerendered" data-context="execution_dependencies">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","callr","checkmate","cli","codetools","colorspace","commonmark","compiler","crayon","curl","datasets","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","here","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","MASS","memoise","methods","mime","miniUI","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","profvis","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","sass","scales","sessioninfo","shiny","stats","stringi","stringr","tibble","tidyselect","tools","urlchecker","usethis","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.2.2","0.4.1","1.0.6","3.7.3","2.1.0","3.4.1","0.2-18","2.0-3","1.8.1","4.2.2","1.5.2","4.3.3","4.2.2","1.34","2.4.5","0.6.31","1.0.10","0.3.2","0.18","1.0.3","1.1.0","1.5.2","0.1.3","3.4.0","1.6.2","0.2.11.9000","4.2.2","4.2.2","4.2.2","0.3.1","1.0.1","0.9","0.5.4","1.5.4","1.6.6","0.1.4","1.8.4","1.41","1.3.0","0.11.2.9000","1.0.3","2.0.3","1.4","7.3-58.1","2.0.1","4.2.2","0.12","0.1.1.1","0.5.0","1.8.1","1.4.0","2.0.3","1.3.2","1.1.1","3.8.0","0.3.7","1.2.0.1","1.7.2","0.3.5","2.5.1","1.0.9","2.4.2","1.0.6","2.18","0.76.27","2.0.3","0.14","0.4.4","1.2.1","1.2.2","1.7.3","4.2.2","1.7.8","1.5.0","3.1.8","1.2.0","4.2.2","1.0.1","2.1.6","1.2.2","4.2.2","0.5.1","2.5.0","0.35","1.8-4","2.3.6"]}]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["packages","version"]},"class":{"type":"character","attributes":{},"value":["data.frame"]},"row.names":{"type":"integer","attributes":{},"value":[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87]}},"value":[{"type":"character","attributes":{},"value":["backports","base","bslib","cachem","callr","checkmate","cli","codetools","colorspace","commonmark","compiler","crayon","curl","datasets","deSolve","devtools","digest","dplyr","ellipsis","evaluate","fansi","fastmap","fs","generics","ggplot2","glue","gradethis","graphics","grDevices","grid","gtable","here","highr","htmltools","htmlwidgets","httpuv","jquerylib","jsonlite","knitr","later","learnr","lifecycle","magrittr","markdown","MASS","memoise","methods","mime","miniUI","munsell","pillar","pkgbuild","pkgconfig","pkgload","prettyunits","processx","profvis","promises","ps","purrr","R6","Rcpp","remotes","rlang","rmarkdown","RPiR","rprojroot","rstudioapi","sass","scales","sessioninfo","shiny","stats","stringi","stringr","tibble","tidyselect","tools","urlchecker","usethis","utf8","utils","vctrs","withr","xfun","xtable","yaml"]},{"type":"character","attributes":{},"value":["1.4.1","4.2.2","0.4.1","1.0.6","3.7.3","2.1.0","3.4.1","0.2-18","2.0-3","1.8.1","4.2.2","1.5.2","4.3.3","4.2.2","1.34","2.4.5","0.6.31","1.0.10","0.3.2","0.18","1.0.3","1.1.0","1.5.2","0.1.3","3.4.0","1.6.2","0.2.11.9000","4.2.2","4.2.2","4.2.2","0.3.1","1.0.1","0.9","0.5.4","1.5.4","1.6.6","0.1.4","1.8.4","1.41","1.3.0","0.11.2.9000","1.0.3","2.0.3","1.4","7.3-58.1","2.0.1","4.2.2","0.12","0.1.1.1","0.5.0","1.8.1","1.4.0","2.0.3","1.3.2","1.1.1","3.8.0","0.3.7","1.2.0.1","1.7.2","0.3.5","2.5.1","1.0.9","2.4.2","1.0.6","2.18","0.76.28","2.0.3","0.14","0.4.4","1.2.1","1.2.2","1.7.3","4.2.2","1.7.8","1.5.0","3.1.8","1.2.0","4.2.2","1.0.1","2.1.6","1.2.2","4.2.2","0.5.1","2.5.0","0.35","1.8-4","2.3.6"]}]}]}
 </script>
 <!--/html_preserve-->
 </div>

@@ -52,7 +52,7 @@ point for this exercise. If you do, remember that you need different function
 names in this exercise so that they don't conflict. 
 
 You will be writing a function to calculate diversity, and then two functions to
-calculate species richness and Simpson diversity from it as you did in Project
+calculate species richness and Simpson index from it as you did in Project
 2. Then you need to write two new very simple functions which calculate the
 Shannon entropy and the Berger-Parker index, using the generic function you
 created above and **not** by calculating them from scratch (they will also need
