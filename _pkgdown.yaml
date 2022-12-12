@@ -76,12 +76,12 @@ navbar:
         href: lectures/RPiR8c-R.html
       - text: RPiR11a-diversity
         href: lectures/RPiR11a-diversity.html
-      - text: RPiR13a-data
+      - text: RPiR11b-diversity (pdf)
+        href: lectures/RPiR11b-diversity.pdf
+      - text: RPiR12a-data
         href: lectures/RPiR13a-data.html
-      - text: RPiR13b-diversity (pdf)
-        href: lectures/RPiR13b-diversity.pdf
-      - text: RPiR13c-programming
-        href: lectures/RPiR13c-programming.html
+      - text: RPiR13a-programming
+        href: lectures/RPiR13a-programming.html
 
     lecture_html:
       text: Lectures (html)
@@ -113,10 +113,10 @@ navbar:
         href: lectures_html/RPiR8c-R.html
       - text: RPiR11a-diversity
         href: lectures_html/RPiR11a-diversity.html
-      - text: RPiR13a-data
-        href: lectures_html/RPiR13a-data.html
-      - text: RPiR13c-programming
-        href: lectures_html/RPiR13c-programming.html
+      - text: RPiR12a-data
+        href: lectures_html/RPiR12a-data.html
+      - text: RPiR13a-programming
+        href: lectures_html/RPiR13a-programming.html
 
     practicals:
       text: "Practicals (html)"
