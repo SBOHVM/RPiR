@@ -1,5 +1,5 @@
 ---
-title: "Project 1: Species richness and Simpson diversity"
+title: "Project 1: Species richness and Simpson index"
 output:
   learnr::tutorial:
     theme: lumen
@@ -7,7 +7,7 @@ output:
       in_header: !expr system.file("tutorials/google-font.html", package = "RPiR")
 runtime: shiny_prerendered
 description: >
-  Final project, creating species richness and Simpson diversity functions
+  Final project, creating species richness and Simpson index functions
 ---
 
 ```{r setup, include=FALSE}
@@ -23,7 +23,7 @@ set.seed(123)
 
 In this series of practicals you will develop the code to calculate a few
 diversity measures. In this first exercise we will calculate the species
-richness and Simpson diversity of a population.
+richness and Simpson index of a population.
 
 ### Background
 
@@ -40,7 +40,7 @@ many observed species there are -- the species richness -- and give us measures
 of how evenly distributed the trees are amongst the tree species (the evenness 
 of the species distribution) by various measures. **Species richness** is a 
 very commonly used measure of diversity, which simply **counts the number of
-non-zero species abundances**; **Simpson diversity** is also commonly used: it
+non-zero species abundances**; **Simpson index** is also commonly used: it
 simply **calculates the species proportions from the counts (so the total sums 
 to 1), squares them all individually, and add them all together** -- it tells us
 (amongst other things) how likely two randomly chosen individuals are to be 
@@ -154,10 +154,10 @@ If you think about it, you should be able to see how to use these two ideas to
 count the number of non-zero abundances in a population. You can see more about
 this in Practical A-1.
 
-### A Simpson diversity function
+### A Simpson index function
 
 Then write and document a second function that will calculate the Simpson 
-diversity of the population, remembering, first, that this measure works with 
+index of the population, remembering, first, that this measure works with 
 the relative proportions of the species not the total counts and, second, that 
 we can do calculations with the whole vector at once.
 
@@ -171,7 +171,7 @@ diversity.
 
 Run the two functions on the populations provided as see whether the results of 
 the two diversity measures agree with your assessments. Note that a lower value 
-means a higher diversity for the Simpson diversity measure.
+means a higher diversity for the Simpson index measure.
 
 **NB** Remember that to make the functions you have written accessible to
 your demo, you need to document and install them:
@@ -195,7 +195,7 @@ demo(package = "githubusernameDiversity")
 Edit the demo that you have started above so that it loads in the functions (by
 calling `library(githubusernameDiversity)`),  reads in the BCI data, and
 generates a report that shows some kind of plot of each of the series of counts
-and then calculates their species richness and Simpson diversity. Check that
+and then calculates their species richness and Simpson index Check that
 your functions also generate appropriate help files
 (*e.g.* `?p1_species_richness`).
 

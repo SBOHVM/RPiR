@@ -55,7 +55,7 @@ an ecosystem.
 
 > - Species richness
 >   - Number of species actually present
-> - Simpson diversity
+> - Simpson index
 >   - Chance of two individuals being the same species
 > - Shannon entropy
 >   - Surprise in seeing next individual
@@ -73,7 +73,7 @@ Covers all of these measures.
 
 - Species richness
   - Number of species actually present
-- Simpson diversity
+- Simpson index
   - Chance of two individuals being the same species
 - Shannon entropy
   - Surprise in seeing next individual
@@ -84,7 +84,7 @@ Covers all of these measures.
 
 - Species richness
   - $D_0$
-- Simpson diversity
+- Simpson index
   - $\frac{1}{D_2}$
 - Shannon entropy
   - $log(D_1)$
@@ -97,7 +97,7 @@ Covers all of these measures.
   - $D_0$
 - Shannon entropy
   - $log(D_1)$
-- Simpson diversity
+- Simpson index
   - $\frac{1}{D_2}$
 - Berger-Parker
   - $\frac{1}{D_\infty}$
@@ -109,7 +109,7 @@ Covers all of these measures.
 - $log(D_1)$
   - Shannon entropy
 - $\frac{1}{D_2}$
-  - Simpson diversity
+  - Simpson index
 - $\frac{1}{D_\infty}$
   - Berger-Parker
 
@@ -120,7 +120,7 @@ Covers all of these measures.
 - $D_1$
   - exp(Shannon entropy)
 - $D_2$
-  - 1 / Simpson diversity
+  - 1 / Simpson index
 - $D_\infty$
   - 1 / Berger-Parker
 
