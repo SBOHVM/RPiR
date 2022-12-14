@@ -79,7 +79,7 @@ navbar:
       - text: RPiR11b-diversity (pdf)
         href: lectures/RPiR11b-diversity.pdf
       - text: RPiR12a-data
-        href: lectures/RPiR13a-data.html
+        href: lectures/RPiR12a-data.html
       - text: RPiR13a-programming
         href: lectures/RPiR13a-programming.html
 
