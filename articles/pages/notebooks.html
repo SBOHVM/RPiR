@@ -8,8 +8,8 @@
 <meta name="description" content="RPiR">
 <title>R Notebook • RPiR</title>
 <script src="../../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../../deps/bootstrap-5.1.3/bootstrap.min.css" rel="stylesheet">
-<script src="../../deps/bootstrap-5.1.3/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
+<link href="../../deps/bootstrap-5.2.2/bootstrap.min.css" rel="stylesheet">
+<script src="../../deps/bootstrap-5.2.2/bootstrap.bundle.min.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- bootstrap-toc --><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@v1.0.1/dist/bootstrap-toc.min.js" integrity="sha256-4veVQbu7//Lk5TSmc7YV48MxtMy98e26cf5MrgZYnwo=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- search --><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- pkgdown --><script src="../../pkgdown.js"></script><meta property="og:title" content="R Notebook">
 <meta property="og:description" content="RPiR">
@@ -188,7 +188,7 @@
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="" class="logo" alt=""><h1>R Notebook</h1>
             
-            <h4 data-toc-skip class="date">December 14 2022</h4>
+            <h4 data-toc-skip class="date">December 20 2022</h4>
       
       
       <div class="d-none name"><code>notebooks.Rmd</code></div>
@@ -438,8 +438,8 @@ it doesn’t work with the two-column formatting.</p>
 <h4 id="plot_populations">
 <code>plot_populations()</code><a class="anchor" aria-label="anchor" href="#plot_populations"></a>
 </h4>
-<p>The <code>RPiR</code> package uses the <code><a href="../../reference/plot_simple.html">plot_simple()</a></code> and
-<code><a href="../../reference/plot_populations.html">plot_populations()</a></code> functions that automate some of this
+<p>The <code>RPiR</code> package uses the <code><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_simple.html" class="external-link">plot_simple()</a></code> and
+<code><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations()</a></code> functions that automate some of this
 functionality. In addition, base <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code> arguments can be
 passed to for extra customization, see <code><a href="https://rdrr.io/r/base/plot.html" class="external-link">?base::plot</a></code> for more
 details. For example, you can generate a plot like this:</p>
@@ -447,7 +447,7 @@ details. For example, you can generate a plot like this:</p>
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">RPiR</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span></code></pre></div>
 <p><img src="notebooks_files/figure-html/unnamed-chunk-13-1.png" width="700" style="display: block; margin: auto;"></p>
 <p>Add an additional line with a different style, width, and colour,
 like this:</p>
@@ -455,8 +455,8 @@ like this:</p>
 <code class="sourceCode R"><span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">results2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, death <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><img src="notebooks_files/figure-html/unnamed-chunk-14-1.png" width="700" style="display: block; margin: auto;"></p>
 <p>Then fix the legend for the multi-line plot (making sure the order of
 the elements in the <code>legend</code>, <code>col</code>, and
@@ -466,8 +466,8 @@ lines!), like this :</p>
 <code class="sourceCode R"><span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">results2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, death <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results1</span>, with.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results1</span>, with.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/legend.html" class="external-link">legend</a></span><span class="op">(</span><span class="st">"topright"</span>, </span>
 <span>       legend <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"growth"</span>, <span class="st">"death"</span><span class="op">)</span>, </span>
@@ -495,30 +495,30 @@ lines.default -&gt; plot.xy Execution halted</code></pre>
 <span><span class="va">results2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, death <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Generate a figure</span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#' Some nice descriptive text for my report</span></span>
 <span></span>
 <span><span class="co"># Try to plot another line on the same figure</span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p>The error occured because the first call to
-<code><a href="../../reference/plot_populations.html">plot_populations()</a></code> is separated from the second call to
-<code><a href="../../reference/plot_populations.html">plot_populations()</a></code> by a text block <code>#'</code>. When we
+<code><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations()</a></code> is separated from the second call to
+<code><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations()</a></code> by a text block <code>#'</code>. When we
 compile the report, the first and second code blocks are called in
-isolation, so the second call to <code><a href="../../reference/plot_populations.html">plot_populations()</a></code> isn’t
+isolation, so the second call to <code><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations()</a></code> isn’t
 aware of the first plots’ existance.</p>
 <p>To solve this problem, do this:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">results1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, growth <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="op">(</span><span class="fl">0</span><span class="op">:</span><span class="fl">100</span><span class="op">)</span> <span class="op">/</span> <span class="fl">10</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">results2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>time <span class="op">=</span> <span class="fl">0</span><span class="op">:</span><span class="fl">100</span>, death <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html" class="external-link">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">0</span>, by <span class="op">=</span> <span class="op">-</span><span class="fl">0.1</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results1</span><span class="op">)</span></span>
 <span><span class="va">plt</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/grDevices/recordplot.html" class="external-link">recordPlot</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co">#' Some nice descriptive text for my report</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/grDevices/recordplot.html" class="external-link">replayPlot</a></span><span class="op">(</span><span class="va">plt</span><span class="op">)</span></span>
-<span><span class="fu"><a href="../../reference/plot_populations.html">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://rdrr.io/pkg/RPiR.helper/man/plot_populations.html" class="external-link">plot_populations</a></span><span class="op">(</span><span class="va">results2</span>, lty <span class="op">=</span> <span class="fl">2</span>, lwd <span class="op">=</span> <span class="fl">3</span>, col <span class="op">=</span> <span class="st">"red"</span>, new.graph <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <p><code><a href="https://rdrr.io/r/grDevices/recordplot.html" class="external-link">recordPlot()</a></code> stores the plot generated in the first code
 chunk and saves it in <code>plt</code>, afterwhich
 <code>replayPlot(plt)</code> recovers the plot generated in the first
@@ -560,7 +560,7 @@ can then be called.</p>
 <code class="sourceCode R"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">5</span></span>
 <span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/Normal.html" class="external-link">rnorm</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="va">n</span></span>
-<span><span class="co">## [1] 0.05034722</span></span></code></pre></div>
+<span><span class="co">## [1] 0.8321277</span></span></code></pre></div>
 <p>Here is the equation we just calculated written out neatly, inline
 with the text: <span class="math inline">\(\text{mean}(x) = 1/n
 \sum_{i=1}^n x_i\)</span></p>
@@ -571,7 +571,7 @@ with the text: <span class="math inline">\(\text{mean}(x) = 1/n
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># And here's another code block</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html" class="external-link">var</a></span><span class="op">(</span><span class="va">x</span><span class="op">)</span></span>
-<span><span class="co">## [1] 0.02636154</span></span></code></pre></div>
+<span><span class="co">## [1] 2.92619</span></span></code></pre></div>
 </div>
 </div>
 <blockquote>

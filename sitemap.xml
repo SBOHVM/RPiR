@@ -76,9 +76,6 @@
     <loc>https://sbohvm.github.io/RPiR/reference/RPiR-package.html</loc>
   </url>
   <url>
-    <loc>https://sbohvm.github.io/RPiR/reference/assert_no_globals.html</loc>
-  </url>
-  <url>
     <loc>https://sbohvm.github.io/RPiR/reference/available_lectures.html</loc>
   </url>
   <url>
@@ -86,9 +83,6 @@
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/reference/clean_cached_exercises.html</loc>
-  </url>
-  <url>
-    <loc>https://sbohvm.github.io/RPiR/reference/cleanup_times.html</loc>
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/reference/dummy_package.html</loc>
@@ -106,30 +100,18 @@
     <loc>https://sbohvm.github.io/RPiR/reference/index.html</loc>
   </url>
   <url>
-    <loc>https://sbohvm.github.io/RPiR/reference/plot_populations.html</loc>
-  </url>
-  <url>
-    <loc>https://sbohvm.github.io/RPiR/reference/plot_simple.html</loc>
-  </url>
-  <url>
     <loc>https://sbohvm.github.io/RPiR/reference/populate_package.html</loc>
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/reference/practical_series_one.html</loc>
   </url>
   <url>
-    <loc>https://sbohvm.github.io/RPiR/reference/run_integration.html</loc>
+    <loc>https://sbohvm.github.io/RPiR/reference/reexports.html</loc>
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/reference/run_lecture.html</loc>
   </url>
   <url>
     <loc>https://sbohvm.github.io/RPiR/reference/run_practical.html</loc>
-  </url>
-  <url>
-    <loc>https://sbohvm.github.io/RPiR/reference/run_simple.html</loc>
-  </url>
-  <url>
-    <loc>https://sbohvm.github.io/RPiR/reference/run_simulation.html</loc>
   </url>
 </urlset>
