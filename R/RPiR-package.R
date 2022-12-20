@@ -66,6 +66,7 @@
 #' @import rstudioapi
 #' @import usethis
 #' @import utils
+#' @import RPiR.helper
 #' @importFrom withr with_dir
 #'
 #' @examples

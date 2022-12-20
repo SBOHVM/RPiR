@@ -31,6 +31,7 @@ Imports:
     rlang,
     rmarkdown,
     roxygen2,
+    RPiR.helper (>= 0.1.0),
     rstudioapi,
     tibble,
     usethis,
@@ -38,8 +39,9 @@ Imports:
     withr
 Suggests:
     testthat
-Remotes: 
-    rstudio/gradethis
+Remotes:  
+    rstudio/gradethis,
+    SBOHVM/RPiR.helper
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.2.3
